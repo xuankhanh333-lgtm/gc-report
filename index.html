@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GC1! Forecast Reports</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#faf9f5;color:#1a1a18;display:flex;flex-direction:column;height:100vh}
+  header{padding:12px 18px;border-bottom:1px solid #e7e5dd;background:#fff;flex:0 0 auto}
+  .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  h1{font-size:17px;font-weight:600;margin:0}
+  .sub{color:#6b6a64;font-size:12px;margin-left:auto}
+  .tabs{display:flex;gap:8px;margin-top:10px}
+  .tab{appearance:none;border:1px solid #d9d7cf;background:#f4f2ec;color:#3a3933;font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;cursor:pointer}
+  .tab:hover{background:#ece9e1}
+  .tab.active{background:#BA7517;border-color:#BA7517;color:#fff}
+  .frame{flex:1 1 auto;border:0;width:100%;background:#faf9f5}
+  .hint{font-size:11px;color:#9b9a93;padding:6px 18px;background:#fff;border-top:1px solid #f0eee7;flex:0 0 auto}
+</style>
+</head>
+<body>
+  <header>
+    <div class="row">
+      <h1>GC1! Forecast Reports</h1>
+      <span class="sub">RT cập nhật ~15 phút &middot; H4 ~1 giờ</span>
+    </div>
+    <div class="tabs">
+      <button class="tab active" id="btn-rt" onclick="show('rt')">RT &middot; M15</button>
+      <button class="tab" id="btn-h4" onclick="show('h4')">H4-closed</button>
+    </div>
+  </header>
+  <iframe class="frame" id="frame" src="rt.html" title="report"></iframe>
+  <div class="hint" id="hint">Đang xem: RT &middot; M15 (rt.html)</div>
+  <script>
+    function show(k){
+      var isH4 = (k === 'h4');
+      document.getElementById('frame').src = isH4 ? 'h4.html' : 'rt.html';
+      document.getElementById('btn-rt').classList.toggle('active', !isH4);
+      document.getElementById('btn-h4').classList.toggle('active', isH4);
+      document.getElementById('hint').textContent =
+        'Đang xem: ' + (isH4 ? 'H4-closed (h4.html)' : 'RT · M15 (rt.html)');
+    }
+  </script>
+</body>
+</html>
