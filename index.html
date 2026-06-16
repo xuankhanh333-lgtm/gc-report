@@ -16,11 +16,13 @@
   .tab{appearance:none;border:1px solid #d9d7cf;background:#f4f2ec;color:#3a3933;font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;cursor:pointer}
   .tab:hover{background:#ece9e1}
   .tab.active{background:#BA7517;border-color:#BA7517;color:#fff}
-  .cd-chip{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:#6b6a64;border:1px solid #ece9e1;background:#faf8f3;padding:6px 10px;border-radius:8px}
-  .cd-chip b{font-variant-numeric:tabular-nums;color:#BA7517;font-weight:700;min-width:42px;text-align:right}
-  .cd-chip.soon b{color:#c0392b}
-  .refresh{appearance:none;border:1px solid #BA7517;background:#fff;color:#BA7517;font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer}
+  .refresh{appearance:none;border:1px solid #BA7517;background:#fff;color:#BA7517;font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;margin-left:auto}
   .refresh:hover{background:#fbf3e7}
+  .cds{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center}
+  .cd-chip{display:flex;align-items:center;gap:6px;font-size:12px;color:#6b6a64;border:1px solid #ece9e1;background:#faf8f3;padding:6px 10px;border-radius:8px}
+  .cd-chip b{font-variant-numeric:tabular-nums;color:#BA7517;font-weight:700;text-align:right}
+  .cd-chip.m b{color:#1f7a4d}
+  .cd-chip.soon b{color:#c0392b}
   .frame{flex:1 1 auto;border:0;width:100%;background:#faf9f5}
   .hint{font-size:11px;color:#9b9a93;padding:6px 18px;background:#fff;border-top:1px solid #f0eee7;flex:0 0 auto}
 </style>
@@ -34,26 +36,43 @@
     <div class="tabs">
       <button class="tab active" id="btn-rt" onclick="show('rt')">RT &middot; M15</button>
       <button class="tab" id="btn-h4" onclick="show('h4')">H4-closed</button>
-      <span class="cd-chip" id="cdchip" title="Thời gian tới lần tự làm mới kế tiếp">Làm mới sau <b id="cd">--:--</b></span>
       <button class="refresh" id="btn-refresh" onclick="refreshNow()">&#x21bb; Làm mới</button>
+    </div>
+    <div class="cds">
+      <span class="cd-chip m" id="chip-m15" title="Thời gian tới khi nến M15 đóng (mốc :00/:15/:30/:45)">Nến M15 đóng sau <b id="cd-m15">--:--</b></span>
+      <span class="cd-chip m" id="chip-h4" title="Thời gian tới khi nến H4 đóng (UTC 02/06/10/14/18/22h = GMT+7 01/05/09/13/17/21h)">Nến H4 đóng sau <b id="cd-h4">-:--:--</b></span>
+      <span class="cd-chip" id="cdchip" title="Thời gian tới lần trang tự làm mới">Trang reload sau <b id="cd">--:--</b></span>
     </div>
   </header>
   <iframe class="frame" id="frame" src="about:blank" title="report"></iframe>
   <div class="hint" id="hint">Đang tải…</div>
   <script>
-    var cur = 'rt', timer = null, refreshMs = 300000, nextAt = 0, cdStarted = false;
+    var cur = 'rt', timer = null, refreshMs = 300000, nextAt = 0, started = false;
     function p2(n){ return (n < 10 ? '0' : '') + n; }
     function fmtTime(){
       var d = new Date();
       return p2(d.getHours()) + ':' + p2(d.getMinutes()) + ':' + p2(d.getSeconds());
     }
-    function tickCd(){
-      var el = document.getElementById('cd'), chip = document.getElementById('cdchip');
-      if (!el) return;
+    function fmtMS(s){ return p2(Math.floor(s / 60)) + ':' + p2(s % 60); }
+    function fmtHMS(s){ return Math.floor(s / 3600) + ':' + p2(Math.floor((s % 3600) / 60)) + ':' + p2(s % 60); }
+    // M15 dong o moc :00/:15/:30/:45 (theo UTC, GMT+7 dung chung moc)
+    function remM15(now){ var s = now.getUTCMinutes() * 60 + now.getUTCSeconds(); return 900 - (s % 900); }
+    // H4 dong o UTC 02/06/10/14/18/22h (gio % 4 == 2)
+    function remH4(now){
+      var s = now.getUTCHours() * 3600 + now.getUTCMinutes() * 60 + now.getUTCSeconds();
+      var sh = (((s - 7200) % 86400) + 86400) % 86400;
+      return 14400 - (sh % 14400);
+    }
+    function setChip(idv, idc, txt, soon){
+      var e = document.getElementById(idv); if (e) e.textContent = txt;
+      var c = document.getElementById(idc); if (c) c.classList.toggle('soon', soon);
+    }
+    function tick(){
       var rem = Math.max(0, Math.round((nextAt - Date.now()) / 1000));
-      var m = Math.floor(rem / 60), s = rem % 60;
-      el.textContent = p2(m) + ':' + p2(s);
-      if (chip) chip.classList.toggle('soon', rem <= 30);
+      setChip('cd', 'cdchip', fmtMS(rem), rem <= 30);
+      var now = new Date();
+      var m = remM15(now); setChip('cd-m15', 'chip-m15', fmtMS(m), m <= 30);
+      var h = remH4(now); setChip('cd-h4', 'chip-h4', fmtHMS(h), h <= 60);
     }
     function load(k, isAuto){
       cur = k;
@@ -66,9 +85,9 @@
       var mins = (k === 'h4') ? '15' : '5';
       document.getElementById('hint').textContent =
         'Đang xem: ' + (k === 'h4' ? 'H4-closed' : 'RT · M15') +
-        ' · tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
-      tickCd();
-      if (!cdStarted){ setInterval(tickCd, 1000); cdStarted = true; }
+        ' · trang tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
+      tick();
+      if (!started){ setInterval(tick, 1000); started = true; }
       if (!isAuto) schedule();
     }
     function schedule(){
