@@ -12,10 +12,12 @@
   .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   h1{font-size:17px;font-weight:600;margin:0}
   .sub{color:#6b6a64;font-size:12px;margin-left:auto}
-  .tabs{display:flex;gap:8px;margin-top:10px}
+  .tabs{display:flex;gap:8px;margin-top:10px;align-items:center}
   .tab{appearance:none;border:1px solid #d9d7cf;background:#f4f2ec;color:#3a3933;font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;cursor:pointer}
   .tab:hover{background:#ece9e1}
   .tab.active{background:#BA7517;border-color:#BA7517;color:#fff}
+  .refresh{appearance:none;border:1px solid #BA7517;background:#fff;color:#BA7517;font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;margin-left:auto}
+  .refresh:hover{background:#fbf3e7}
   .frame{flex:1 1 auto;border:0;width:100%;background:#faf9f5}
   .hint{font-size:11px;color:#9b9a93;padding:6px 18px;background:#fff;border-top:1px solid #f0eee7;flex:0 0 auto}
 </style>
@@ -29,19 +31,38 @@
     <div class="tabs">
       <button class="tab active" id="btn-rt" onclick="show('rt')">RT &middot; M15</button>
       <button class="tab" id="btn-h4" onclick="show('h4')">H4-closed</button>
+      <button class="refresh" id="btn-refresh" onclick="refreshNow()">&#x21bb; Làm mới</button>
     </div>
   </header>
-  <iframe class="frame" id="frame" src="rt.html" title="report"></iframe>
-  <div class="hint" id="hint">Đang xem: RT &middot; M15 (rt.html)</div>
+  <iframe class="frame" id="frame" src="about:blank" title="report"></iframe>
+  <div class="hint" id="hint">Đang tải…</div>
   <script>
-    function show(k){
-      var isH4 = (k === 'h4');
-      document.getElementById('frame').src = isH4 ? 'h4.html' : 'rt.html';
-      document.getElementById('btn-rt').classList.toggle('active', !isH4);
-      document.getElementById('btn-h4').classList.toggle('active', isH4);
-      document.getElementById('hint').textContent =
-        'Đang xem: ' + (isH4 ? 'H4-closed (h4.html)' : 'RT · M15 (rt.html)');
+    var cur = 'rt', timer = null;
+    function fmtTime(){
+      var d = new Date();
+      function p(n){ return (n < 10 ? '0' : '') + n; }
+      return p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
     }
+    function load(k, isAuto){
+      cur = k;
+      var base = (k === 'h4') ? 'h4.html' : 'rt.html';
+      document.getElementById('frame').src = base + '?t=' + Date.now();
+      document.getElementById('btn-rt').classList.toggle('active', k !== 'h4');
+      document.getElementById('btn-h4').classList.toggle('active', k === 'h4');
+      var mins = (k === 'h4') ? '15' : '5';
+      document.getElementById('hint').textContent =
+        'Đang xem: ' + (k === 'h4' ? 'H4-closed' : 'RT · M15') +
+        ' · tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
+      if (!isAuto) schedule();
+    }
+    function schedule(){
+      if (timer) clearInterval(timer);
+      var ms = (cur === 'h4') ? 900000 : 300000;
+      timer = setInterval(function(){ load(cur, true); }, ms);
+    }
+    function show(k){ load(k, false); }
+    function refreshNow(){ load(cur, false); }
+    load('rt', false);
   </script>
 </body>
 </html>
