@@ -16,7 +16,10 @@
   .tab{appearance:none;border:1px solid #d9d7cf;background:#f4f2ec;color:#3a3933;font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;cursor:pointer}
   .tab:hover{background:#ece9e1}
   .tab.active{background:#BA7517;border-color:#BA7517;color:#fff}
-  .refresh{appearance:none;border:1px solid #BA7517;background:#fff;color:#BA7517;font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;margin-left:auto}
+  .cd-chip{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:#6b6a64;border:1px solid #ece9e1;background:#faf8f3;padding:6px 10px;border-radius:8px}
+  .cd-chip b{font-variant-numeric:tabular-nums;color:#BA7517;font-weight:700;min-width:42px;text-align:right}
+  .cd-chip.soon b{color:#c0392b}
+  .refresh{appearance:none;border:1px solid #BA7517;background:#fff;color:#BA7517;font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer}
   .refresh:hover{background:#fbf3e7}
   .frame{flex:1 1 auto;border:0;width:100%;background:#faf9f5}
   .hint{font-size:11px;color:#9b9a93;padding:6px 18px;background:#fff;border-top:1px solid #f0eee7;flex:0 0 auto}
@@ -31,17 +34,26 @@
     <div class="tabs">
       <button class="tab active" id="btn-rt" onclick="show('rt')">RT &middot; M15</button>
       <button class="tab" id="btn-h4" onclick="show('h4')">H4-closed</button>
+      <span class="cd-chip" id="cdchip" title="Thời gian tới lần tự làm mới kế tiếp">Làm mới sau <b id="cd">--:--</b></span>
       <button class="refresh" id="btn-refresh" onclick="refreshNow()">&#x21bb; Làm mới</button>
     </div>
   </header>
   <iframe class="frame" id="frame" src="about:blank" title="report"></iframe>
   <div class="hint" id="hint">Đang tải…</div>
   <script>
-    var cur = 'rt', timer = null;
+    var cur = 'rt', timer = null, refreshMs = 300000, nextAt = 0, cdStarted = false;
+    function p2(n){ return (n < 10 ? '0' : '') + n; }
     function fmtTime(){
       var d = new Date();
-      function p(n){ return (n < 10 ? '0' : '') + n; }
-      return p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+      return p2(d.getHours()) + ':' + p2(d.getMinutes()) + ':' + p2(d.getSeconds());
+    }
+    function tickCd(){
+      var el = document.getElementById('cd'), chip = document.getElementById('cdchip');
+      if (!el) return;
+      var rem = Math.max(0, Math.round((nextAt - Date.now()) / 1000));
+      var m = Math.floor(rem / 60), s = rem % 60;
+      el.textContent = p2(m) + ':' + p2(s);
+      if (chip) chip.classList.toggle('soon', rem <= 30);
     }
     function load(k, isAuto){
       cur = k;
@@ -49,16 +61,19 @@
       document.getElementById('frame').src = base + '?t=' + Date.now();
       document.getElementById('btn-rt').classList.toggle('active', k !== 'h4');
       document.getElementById('btn-h4').classList.toggle('active', k === 'h4');
+      refreshMs = (k === 'h4') ? 900000 : 300000;
+      nextAt = Date.now() + refreshMs;
       var mins = (k === 'h4') ? '15' : '5';
       document.getElementById('hint').textContent =
         'Đang xem: ' + (k === 'h4' ? 'H4-closed' : 'RT · M15') +
         ' · tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
+      tickCd();
+      if (!cdStarted){ setInterval(tickCd, 1000); cdStarted = true; }
       if (!isAuto) schedule();
     }
     function schedule(){
       if (timer) clearInterval(timer);
-      var ms = (cur === 'h4') ? 900000 : 300000;
-      timer = setInterval(function(){ load(cur, true); }, ms);
+      timer = setInterval(function(){ load(cur, true); }, refreshMs);
     }
     function show(k){ load(k, false); }
     function refreshNow(){ load(cur, false); }
