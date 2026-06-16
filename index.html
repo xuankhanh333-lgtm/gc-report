@@ -77,7 +77,7 @@
     function load(k, isAuto){
       cur = k;
       var base = (k === 'h4') ? 'h4.html' : 'rt.html';
-      document.getElementById('frame').src = base + '?t=' + Date.now();
+      document.getElementById('frame').src = base + '?embed=1&t=' + Date.now();
       document.getElementById('btn-rt').classList.toggle('active', k !== 'h4');
       document.getElementById('btn-h4').classList.toggle('active', k === 'h4');
       refreshMs = (k === 'h4') ? 900000 : 300000;
