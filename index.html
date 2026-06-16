@@ -47,7 +47,7 @@
   <iframe class="frame" id="frame" src="about:blank" title="report"></iframe>
   <div class="hint" id="hint">Đang tải…</div>
   <script>
-    var cur = 'rt', timer = null, refreshMs = 300000, nextAt = 0, started = false;
+    var cur = 'rt', timer = null, refreshMs = 300000, nextAt = 0, started = false, lastLoadAt = 0;
     function p2(n){ return (n < 10 ? '0' : '') + n; }
     function fmtTime(){
       var d = new Date();
@@ -78,6 +78,7 @@
       cur = k;
       var base = (k === 'h4') ? 'h4.html' : 'rt.html';
       document.getElementById('frame').src = base + '?embed=1&t=' + Date.now();
+      lastLoadAt = Date.now();
       document.getElementById('btn-rt').classList.toggle('active', k !== 'h4');
       document.getElementById('btn-h4').classList.toggle('active', k === 'h4');
       refreshMs = (k === 'h4') ? 900000 : 300000;
@@ -96,6 +97,18 @@
     }
     function show(k){ load(k, false); }
     function refreshNow(){ load(cur, false); }
+    // Mobile: trinh duyet dung timer khi tab o nen / khoa man hinh.
+    // -> reload ngay khi quay lai tab (visibilitychange / pageshow / focus).
+    function refreshIfStale(force){
+      if (force || (Date.now() - lastLoadAt) > 5000) load(cur, false);
+    }
+    document.addEventListener('visibilitychange', function(){
+      if (document.visibilityState === 'visible') refreshIfStale(false);
+    });
+    window.addEventListener('pageshow', function(e){
+      if (e && e.persisted) refreshIfStale(true);   // khoi phuc tu bfcache
+    });
+    window.addEventListener('focus', function(){ refreshIfStale(false); });
     load('rt', false);
   </script>
 </body>
