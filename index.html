@@ -104,17 +104,17 @@
     function show(k){ load(k, false); }
     function refreshNow(){ load(cur, false); }
     // Mobile: trinh duyet dung timer khi tab o nen / khoa man hinh.
-    // -> reload ngay khi quay lai tab (visibilitychange / pageshow / focus).
-    function refreshIfStale(force){
-      if (force || (Date.now() - lastLoadAt) > 5000) load(cur, false);
+    // Chi reload khi da QUA TRON 1 chu ky (refreshMs) — tranh tai lai trang nang (~390KB)
+    // moi lan cham/chuyen ve tab. (Bo 'focus' handler vi qua nhay tren desktop.)
+    function refreshIfStale(){
+      if ((Date.now() - lastLoadAt) >= refreshMs) load(cur, false);
     }
     document.addEventListener('visibilitychange', function(){
-      if (document.visibilityState === 'visible') refreshIfStale(false);
+      if (document.visibilityState === 'visible') refreshIfStale();
     });
     window.addEventListener('pageshow', function(e){
-      if (e && e.persisted) refreshIfStale(true);   // khoi phuc tu bfcache
+      if (e && e.persisted) refreshIfStale();   // khoi phuc tu bfcache
     });
-    window.addEventListener('focus', function(){ refreshIfStale(false); });
     load('rt', false);
   </script>
 </body>
