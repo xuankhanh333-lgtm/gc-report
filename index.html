@@ -12,7 +12,7 @@
   .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   h1{font-size:17px;font-weight:600;margin:0}
   .sub{color:#6b6a64;font-size:12px;margin-left:auto}
-  .tabs{display:flex;gap:8px;margin-top:10px;align-items:center}
+  .tabs{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap}
   .tab{appearance:none;border:1px solid #d9d7cf;background:#f4f2ec;color:#3a3933;font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;cursor:pointer}
   .tab:hover{background:#ece9e1}
   .tab.active{background:#BA7517;border-color:#BA7517;color:#fff}
@@ -31,11 +31,12 @@
   <header>
     <div class="row">
       <h1>GC1! Forecast Reports</h1>
-      <span class="sub">RT cập nhật ~15 phút &middot; H4 ~1 giờ</span>
+      <span class="sub">RT ~15 phút &middot; H4 ~1 giờ &middot; ICT-ML ~1 giờ</span>
     </div>
     <div class="tabs">
       <button class="tab active" id="btn-rt" onclick="show('rt')">RT &middot; M15</button>
       <button class="tab" id="btn-h4" onclick="show('h4')">H4-closed</button>
+      <button class="tab" id="btn-ict" onclick="show('ict')">ICT-ML</button>
       <button class="refresh" id="btn-refresh" onclick="refreshNow()">&#x21bb; Làm mới</button>
     </div>
     <div class="cds">
@@ -76,17 +77,22 @@
     }
     function load(k, isAuto){
       cur = k;
-      var base = (k === 'h4') ? 'h4.html' : 'rt.html';
+      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : 'rt.html';
       document.getElementById('frame').src = base + '?embed=1&t=' + Date.now();
       lastLoadAt = Date.now();
-      document.getElementById('btn-rt').classList.toggle('active', k !== 'h4');
+      document.getElementById('btn-rt').classList.toggle('active', k === 'rt');
       document.getElementById('btn-h4').classList.toggle('active', k === 'h4');
+      document.getElementById('btn-ict').classList.toggle('active', k === 'ict');
+      // M15/H4 close chips chi hop le cho RT/H4 (GC). ICT-ML theo H1 -> iframe tu hien chip H1.
+      var gc = (k !== 'ict');
+      var cm = document.getElementById('chip-m15'); if (cm) cm.style.display = gc ? 'flex' : 'none';
+      var ch = document.getElementById('chip-h4');  if (ch) ch.style.display = gc ? 'flex' : 'none';
       refreshMs = (k === 'h4') ? 900000 : 300000;
       nextAt = Date.now() + refreshMs;
       var mins = (k === 'h4') ? '15' : '5';
+      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : 'RT · M15';
       document.getElementById('hint').textContent =
-        'Đang xem: ' + (k === 'h4' ? 'H4-closed' : 'RT · M15') +
-        ' · trang tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
+        'Đang xem: ' + labl + ' · trang tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
       tick();
       if (!started){ setInterval(tick, 1000); started = true; }
       if (!isAuto) schedule();
