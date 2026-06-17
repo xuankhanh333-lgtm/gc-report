@@ -104,16 +104,17 @@
     function show(k){ load(k, false); }
     function refreshNow(){ load(cur, false); }
     // Mobile: trinh duyet dung timer khi tab o nen / khoa man hinh.
-    // Chi reload khi da QUA TRON 1 chu ky (refreshMs) — tranh tai lai trang nang (~390KB)
-    // moi lan cham/chuyen ve tab. (Bo 'focus' handler vi qua nhay tren desktop.)
+    // Khi quay lai tab: (1) tick() ngay de dong bo lai dem nguoc (khong de hien gia tri dong cu),
+    // (2) chi reload iframe khi da QUA TRON 1 chu ky (tranh tai lai trang nang moi lan cham).
     function refreshIfStale(){
       if ((Date.now() - lastLoadAt) >= refreshMs) load(cur, false);
     }
+    function onReturn(){ tick(); refreshIfStale(); }
     document.addEventListener('visibilitychange', function(){
-      if (document.visibilityState === 'visible') refreshIfStale();
+      if (document.visibilityState === 'visible') onReturn();
     });
     window.addEventListener('pageshow', function(e){
-      if (e && e.persisted) refreshIfStale();   // khoi phuc tu bfcache
+      if (e && e.persisted) onReturn();   // khoi phuc tu bfcache
     });
     load('rt', false);
   </script>
