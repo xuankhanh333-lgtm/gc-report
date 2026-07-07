@@ -224,8 +224,8 @@ const PANELS=[];
     lv+=`<circle cx="${X(bi)}" cy="${y}" r="6.8" fill="none" stroke="var(--pooldir)" stroke-width="1.4" opacity="0.85"
       data-tt="<div class='h'>LIVE snapshot · ${fdt(r.t)} ET</div><div class='row'><span>P-hướng-long</span><b>${r.dp.toFixed(3)}</b></div><div class='row'><span>P_follow gốc · verdict</span><span>${r.pf.toFixed(3)} · ${r.v||''}</span></div>"/>`; });
   const lastDp=[...LIVE].reverse().find(r=>r.dp!=null);
-  if(lastDp){ const bi=nearIdx(lastDp.t);
-    lv+=`<text x="${X(bi)+11}" y="${Y(lastDp.dp)+4}" font-size="11.5" font-weight="700" fill="var(--pooldir)">${lastDp.dp.toFixed(3)}</text>`; }
+  if(lastDp){ const bi=nearIdx(lastDp.t), lx=Math.min(X(bi),W-PADR-26);
+    lv+=`<text x="${lx}" y="${Y(lastDp.dp)-11}" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--pooldir)">${lastDp.dp.toFixed(3)}</text>`; }
   s+=lv;
   let marks='';
   for(const bi in pfByBar){ const evs=pfByBar[bi];
@@ -253,8 +253,8 @@ const PANELS=[];
     lv+=`<circle cx="${X(bi)}" cy="${y}" r="6.4" fill="none" stroke="var(--net)" stroke-width="1.4" opacity="0.85"
       data-tt="<div class='h'>LIVE snapshot · ${fdt(r.t)} ET</div><div class='row'><span>p_up</span><b>${r.pup.toFixed(3)}</b></div>"/>`; });
   const lastUp=[...LIVE].reverse().find(r=>r.pup!=null);
-  if(lastUp){ const bi=nearIdx(lastUp.t);
-    lv+=`<text x="${X(bi)+11}" y="${Y(lastUp.pup)+4}" font-size="11.5" font-weight="700" fill="var(--net)">${lastUp.pup.toFixed(3)}</text>`; }
+  if(lastUp){ const bi=nearIdx(lastUp.t), lx=Math.min(X(bi),W-PADR-26);
+    lv+=`<text x="${lx}" y="${Y(lastUp.pup)-11}" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--net)">${lastUp.pup.toFixed(3)}</text>`; }
   s+=lv;
   let marks='';
   Object.keys(upRep).map(Number).sort((a,b)=>a-b).forEach(bi=>{
