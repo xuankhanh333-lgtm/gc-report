@@ -1,0 +1,319 @@
+<title>3P trend — pooldir × htf-liq3 · 20/06→06/07</title>
+<style>
+:root{
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+  --pooldir:#2a78d6; --net:#1baf7a; --htf:#eda100; --price:#52514e;
+  --long:#0a7d3f; --short:#c23a3a;
+  --wash-long:rgba(10,125,63,.05); --wash-short:rgba(194,58,58,.05);
+  --xh:rgba(11,11,11,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --page:#0d0d0d; --surface:#1a1a19; --ink:#fff; --ink2:#c3c2b7; --muted:#898781;
+    --grid:#262624; --axis:#383835; --border:rgba(255,255,255,.10);
+    --pooldir:#3987e5; --net:#199e70; --htf:#c98500; --price:#c3c2b7;
+    --long:#2fae6b; --short:#e06060;
+    --wash-long:rgba(47,174,107,.07); --wash-short:rgba(224,96,96,.07);
+    --xh:rgba(255,255,255,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#fff; --ink2:#c3c2b7; --muted:#898781;
+  --grid:#262624; --axis:#383835; --border:rgba(255,255,255,.10);
+  --pooldir:#3987e5; --net:#199e70; --htf:#c98500; --price:#c3c2b7;
+  --long:#2fae6b; --short:#e06060;
+  --wash-long:rgba(47,174,107,.07); --wash-short:rgba(224,96,96,.07);
+  --xh:rgba(255,255,255,.4);
+}
+:root[data-theme="light"]{
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+  --pooldir:#2a78d6; --net:#1baf7a; --htf:#eda100; --price:#52514e;
+  --long:#0a7d3f; --short:#c23a3a;
+  --wash-long:rgba(10,125,63,.05); --wash-short:rgba(194,58,58,.05);
+  --xh:rgba(11,11,11,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:24px 20px 48px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 5px}
+h1{font-size:22px;margin:0 0 3px;text-wrap:balance;letter-spacing:-.01em}
+.sub{color:var(--ink2);margin:0 0 16px;max-width:80ch;font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 16px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 13px}
+.kpi .k{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.kpi .v{font-size:19px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.15;letter-spacing:-.01em}
+.kpi .d{font-size:11.5px;color:var(--ink2);margin-top:2px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink2);margin:0 0 10px;align-items:center}
+.legend .it{display:inline-flex;align-items:center;gap:6px}
+.legend .sw{width:14px;height:3px;border-radius:2px;display:inline-block}
+.legend .bx{width:11px;height:11px;border-radius:3px;display:inline-block;border:1px solid var(--border)}
+.stack{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 12px 8px;margin-bottom:16px;overflow-x:auto}
+.prow{position:relative}
+.plabel{position:sticky;left:0;display:flex;align-items:baseline;gap:8px;padding:2px 4px 4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:650}
+.plabel b{color:var(--ink2)}
+.plabel .dot{width:8px;height:8px;border-radius:2px;display:inline-block;transform:translateY(0.5px)}
+svg{display:block;min-width:940px;width:100%;height:auto;font:10.5px system-ui,-apple-system,"Segoe UI",sans-serif}
+svg text{fill:var(--muted)}
+.hr{border:0;border-top:1px solid var(--grid);margin:8px 0}
+.tt{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:9px;
+  padding:9px 11px;font-size:12px;line-height:1.5;color:var(--ink);box-shadow:0 6px 22px rgba(0,0,0,.22);
+  opacity:0;transition:opacity .07s;max-width:300px;z-index:9;font-variant-numeric:tabular-nums}
+.tt .h{font-weight:650;margin-bottom:2px}.tt .m{color:var(--ink2)}.tt .row{display:flex;justify-content:space-between;gap:14px}
+details{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:14px}
+summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--ink2)}
+table{border-collapse:collapse;width:100%;font-size:12px;font-variant-numeric:tabular-nums;margin-top:8px}
+th,td{text-align:left;padding:4px 9px;border-bottom:1px solid var(--grid);white-space:nowrap}
+th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);position:sticky;top:0;background:var(--surface)}
+td.n{text-align:right}
+tbody tr:hover{background:var(--wash-long)}
+.note{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--htf);border-radius:8px;
+  padding:10px 14px;margin-bottom:14px;font-size:12.5px;color:var(--ink2)}
+.foot{color:var(--muted);font-size:11.5px;margin-top:12px;max-width:88ch;line-height:1.6}
+@media (prefers-reduced-motion: reduce){.tt{transition:none}}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">GC1! · COMEX GOLD · H4 · giờ ET (close-stamp) · 21/06 → 06/07/2026</p>
+  <h1>Trend 3 xác suất — pooldir × htf-liq3</h1>
+  <p class="sub">P_follow (chất lượng lệnh) · p_up net-dir (hướng 12 bar) · P_cascade (tại pool). Nền màu = regime từ p_up:
+  <span style="color:var(--long);font-weight:600">xanh = nghiêng LONG</span> · <span style="color:var(--short);font-weight:600">đỏ = nghiêng SHORT</span>. Rê chuột: crosshair đồng bộ 4 panel.</p>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="legend">
+    <span class="it"><span class="sw" style="background:var(--price)"></span>Giá close H4</span>
+    <span class="it"><span class="sw" style="background:var(--pooldir)"></span>P_follow (quy hướng long)</span>
+    <span class="it"><span class="sw" style="background:var(--net)"></span>p_up net-dir</span>
+    <span class="it"><span class="sw" style="background:var(--htf)"></span>P_cascade tại pierce</span>
+    <span class="it"><span class="bx" style="background:var(--wash-long)"></span>regime long</span>
+    <span class="it"><span class="bx" style="background:var(--wash-short)"></span>regime short</span>
+    <span class="it" style="color:var(--muted)">┆ = nghỉ cuối tuần/lễ</span>
+  </div>
+
+  <div class="stack" id="stack">
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--price)"></span><b>Giá</b><span>close H4 · marker vàng = pierce pool</span></div>
+      <svg id="p1" viewBox="0 0 1040 190"></svg></div>
+    <hr class="hr">
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--pooldir)"></span><b>P_follow</b><span>quy hướng long · &gt;0.5 nghiêng long · ▲▼ hướng lệnh verdict</span></div>
+      <svg id="p2" viewBox="0 0 1040 200"></svg></div>
+    <hr class="hr">
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--net)"></span><b>p_up net-dir</b><span>0.5 trung tính · dải tô = CONFIRM ≥0.70 / ≤0.30</span></div>
+      <svg id="p3" viewBox="0 0 1040 170"></svg></div>
+    <hr class="hr">
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--htf)"></span><b>P_cascade</b><span>chỉ tại pierce · ngưỡng 0.85 / 0.42 · nhãn kết cục thật</span></div>
+      <svg id="p4" viewBox="0 0 1040 200"></svg></div>
+  </div>
+
+  <div class="note">⚠ <b>Right-edge maturation:</b> event 02/07 10:00 từng chấm P_cascade <b>0.622 (MID)</b> khi data tới 06/07 06:00,
+  chấm lại với data dài hơn ra <b>0.917</b> — feature FVG/leg của htf-liq3 cần nến xác nhận về sau mới "chín". Kết cục thật: SWEEP —
+  con số live 0.622 (đứng ngoài) mới là hành xử đúng. <b>Điểm gần mép phải luôn là điểm hồi tố.</b></div>
+
+  <details><summary>Bảng đầy đủ 75 event (68 displacement + 7 pierce)</summary>
+    <div style="overflow-x:auto;max-height:420px;overflow-y:auto"><table id="tbl"><thead><tr>
+      <th>Thời điểm (ET)</th><th>Model</th><th>Event</th><th class="n">P</th><th class="n">P₂</th><th>Verdict/Zone</th><th>Lệnh</th><th>Kết cục</th>
+    </tr></thead><tbody></tbody></table></div></details>
+
+  <p class="foot">P_follow = P(lệnh 2:1 theo displacement thắng; TP +2ATR/SL −1ATR/12 bar H4) — <code>follow_2.0</code> WF-AUC 0.744, quy hướng long: long=P, short=1−P; đường nối event "hệ hành động" mỗi bar.
+  p_up — <code>net_h12</code> WF-AUC 0.822, trung bình mỗi bar; conf = max(p_up,1−p_up), CONFIRM ≥0.70. P_cascade — <code>collapse_clean</code> 48f CV-AUC 0.789, ngưỡng kép 0.85/0.42 trên thang gốc.
+  Regime nền = p_up cắt 0.5 (giữ trạng thái qua bar không event). Chấm bằng model production trên data tới 06/07 17:00 ET. Timestamps ET, stamp lúc đóng bar.</p>
+</div>
+<div class="tt" id="tt"></div>
+
+<script>
+const D = {"bars": [[1782079200, 4208.1], [1782093600, 4211.3], [1782108000, 4226.2], [1782122400, 4218.5], [1782136800, 4201.4], [1782147600, 4209.7], [1782165600, 4179.3], [1782180000, 4138.9], [1782194400, 4140.1], [1782208800, 4154.1], [1782223200, 4145.9], [1782234000, 4129.0], [1782252000, 4106.5], [1782266400, 4093.1], [1782280800, 4081.8], [1782295200, 4054.9], [1782309600, 3989.8], [1782320400, 4016.4], [1782338400, 3992.2], [1782352800, 4001.6], [1782367200, 4003.4], [1782381600, 4017.5], [1782396000, 4050.2], [1782406800, 4041.6], [1782424800, 4035.9], [1782439200, 4023.2], [1782453600, 4062.8], [1782468000, 4088.7], [1782482400, 4089.6], [1782493200, 4103.0], [1782684000, 4075.8], [1782698400, 4069.0], [1782712800, 4045.8], [1782727200, 4046.4], [1782741600, 4035.3], [1782752400, 4030.5], [1782770400, 3982.7], [1782784800, 3991.1], [1782799200, 4038.0], [1782813600, 4043.9], [1782828000, 4045.5], [1782838800, 4021.8], [1782856800, 3990.8], [1782871200, 3986.6], [1782885600, 3997.9], [1782900000, 4104.2], [1782914400, 4082.2], [1782925200, 4044.6], [1782943200, 4062.4], [1782957600, 4078.2], [1782972000, 4077.6], [1782986400, 4149.8], [1783000800, 4119.5], [1783011600, 4135.5], [1783029600, 4194.9], [1783044000, 4183.8], [1783058400, 4184.9], [1783072800, 4176.5], [1783083600, 4187.3], [1783288800, 4198.1], [1783303200, 4159.7], [1783317600, 4155.5], [1783332000, 4153.0], [1783346400, 4172.9], [1783357200, 4176.3]], "pf": [{"t": 1782079200, "typ": "FVG", "side": "L", "pf": 0.083, "pfn": 0.133, "pup": 0.331, "conf": 0.669, "v": "FADE", "tr": "SHORT"}, {"t": 1782079200, "typ": "OB", "side": "L", "pf": 0.083, "pfn": 0.133, "pup": 0.331, "conf": 0.669, "v": "FADE", "tr": "SHORT"}, {"t": 1782093600, "typ": "N", "side": "L", "pf": 0.088, "pfn": 0.083, "pup": 0.247, "conf": 0.753, "v": "FADE", "tr": "SHORT"}, {"t": 1782165600, "typ": "FVG", "side": "S", "pf": 0.577, "pfn": 0.584, "pup": 0.256, "conf": 0.744, "v": "TAKE", "tr": "SHORT"}, {"t": 1782165600, "typ": "OB", "side": "S", "pf": 0.577, "pfn": 0.584, "pup": 0.256, "conf": 0.744, "v": "TAKE", "tr": "SHORT"}, {"t": 1782180000, "typ": "MIT", "side": "S", "pf": 0.596, "pfn": 0.597, "pup": 0.204, "conf": 0.796, "v": "TAKE", "tr": "SHORT"}, {"t": 1782180000, "typ": "FVG", "side": "S", "pf": 0.588, "pfn": 0.605, "pup": 0.208, "conf": 0.792, "v": "TAKE", "tr": "SHORT"}, {"t": 1782180000, "typ": "OB", "side": "S", "pf": 0.581, "pfn": 0.605, "pup": 0.21, "conf": 0.79, "v": "TAKE", "tr": "SHORT"}, {"t": 1782180000, "typ": "N", "side": "S", "pf": 0.566, "pfn": 0.581, "pup": 0.208, "conf": 0.792, "v": "TAKE", "tr": "SHORT"}, {"t": 1782194400, "typ": "RB", "side": "L", "pf": 0.103, "pfn": 0.109, "pup": 0.158, "conf": 0.842, "v": "FADE", "tr": "SHORT"}, {"t": 1782223200, "typ": "RB", "side": "S", "pf": 0.568, "pfn": 0.579, "pup": 0.187, "conf": 0.813, "v": "TAKE", "tr": "SHORT"}, {"t": 1782234000, "typ": "FVG", "side": "S", "pf": 0.521, "pfn": 0.533, "pup": 0.301, "conf": 0.699, "v": "TAKE", "tr": "SHORT"}, {"t": 1782234000, "typ": "OB", "side": "S", "pf": 0.521, "pfn": 0.533, "pup": 0.301, "conf": 0.699, "v": "TAKE", "tr": "SHORT"}, {"t": 1782252000, "typ": "BRK", "side": "S", "pf": 0.645, "pfn": 0.579, "pup": 0.167, "conf": 0.833, "v": "TAKE", "tr": "SHORT"}, {"t": 1782252000, "typ": "MIT", "side": "S", "pf": 0.576, "pfn": 0.568, "pup": 0.172, "conf": 0.828, "v": "TAKE", "tr": "SHORT"}, {"t": 1782252000, "typ": "FVG", "side": "S", "pf": 0.58, "pfn": 0.579, "pup": 0.172, "conf": 0.828, "v": "TAKE", "tr": "SHORT"}, {"t": 1782252000, "typ": "OB", "side": "S", "pf": 0.58, "pfn": 0.579, "pup": 0.172, "conf": 0.828, "v": "TAKE", "tr": "SHORT"}, {"t": 1782252000, "typ": "N", "side": "S", "pf": 0.564, "pfn": 0.554, "pup": 0.166, "conf": 0.834, "v": "TAKE", "tr": "SHORT"}, {"t": 1782266400, "typ": "RB", "side": "L", "pf": 0.098, "pfn": 0.112, "pup": 0.268, "conf": 0.732, "v": "FADE", "tr": "SHORT"}, {"t": 1782280800, "typ": "RB", "side": "S", "pf": 0.553, "pfn": 0.609, "pup": 0.288, "conf": 0.712, "v": "TAKE", "tr": "SHORT"}, {"t": 1782295200, "typ": "MIT", "side": "S", "pf": 0.463, "pfn": 0.513, "pup": 0.515, "conf": 0.515, "v": "TAKE", "tr": "SHORT"}, {"t": 1782295200, "typ": "FVG", "side": "S", "pf": 0.471, "pfn": 0.521, "pup": 0.515, "conf": 0.515, "v": "TAKE", "tr": "SHORT"}, {"t": 1782295200, "typ": "RB", "side": "L", "pf": 0.115, "pfn": 0.078, "pup": 0.597, "conf": 0.597, "v": "FADE", "tr": "SHORT"}, {"t": 1782295200, "typ": "N", "side": "S", "pf": 0.445, "pfn": 0.497, "pup": 0.515, "conf": 0.515, "v": "TAKE", "tr": "SHORT"}, {"t": 1782352800, "typ": "RB", "side": "L", "pf": 0.099, "pfn": 0.096, "pup": 0.544, "conf": 0.544, "v": "FADE", "tr": "SHORT"}, {"t": 1782381600, "typ": "N", "side": "L", "pf": 0.09, "pfn": 0.091, "pup": 0.444, "conf": 0.556, "v": "FADE", "tr": "SHORT"}, {"t": 1782439200, "typ": "RB", "side": "L", "pf": 0.088, "pfn": 0.094, "pup": 0.402, "conf": 0.598, "v": "FADE", "tr": "SHORT"}, {"t": 1782453600, "typ": "FVG", "side": "L", "pf": 0.078, "pfn": 0.098, "pup": 0.134, "conf": 0.866, "v": "FADE", "tr": "SHORT"}, {"t": 1782453600, "typ": "OB", "side": "L", "pf": 0.078, "pfn": 0.098, "pup": 0.134, "conf": 0.866, "v": "FADE", "tr": "SHORT"}, {"t": 1782453600, "typ": "N", "side": "L", "pf": 0.09, "pfn": 0.095, "pup": 0.137, "conf": 0.863, "v": "FADE", "tr": "SHORT"}, {"t": 1782468000, "typ": "FVG", "side": "L", "pf": 0.074, "pfn": 0.085, "pup": 0.124, "conf": 0.876, "v": "FADE", "tr": "SHORT"}, {"t": 1782468000, "typ": "OB", "side": "L", "pf": 0.074, "pfn": 0.085, "pup": 0.124, "conf": 0.876, "v": "FADE", "tr": "SHORT"}, {"t": 1782482400, "typ": "RB", "side": "S", "pf": 0.599, "pfn": 0.578, "pup": 0.108, "conf": 0.892, "v": "TAKE", "tr": "SHORT"}, {"t": 1782684000, "typ": "RB", "side": "L", "pf": 0.088, "pfn": 0.083, "pup": 0.177, "conf": 0.823, "v": "FADE", "tr": "SHORT"}, {"t": 1782741600, "typ": "FVG", "side": "S", "pf": 0.525, "pfn": 0.561, "pup": 0.237, "conf": 0.763, "v": "TAKE", "tr": "SHORT"}, {"t": 1782741600, "typ": "OB", "side": "S", "pf": 0.56, "pfn": 0.561, "pup": 0.24, "conf": 0.76, "v": "TAKE", "tr": "SHORT"}, {"t": 1782741600, "typ": "RB", "side": "L", "pf": 0.088, "pfn": 0.082, "pup": 0.312, "conf": 0.688, "v": "FADE", "tr": "SHORT"}, {"t": 1782770400, "typ": "RB", "side": "L", "pf": 0.582, "pfn": 0.598, "pup": 0.909, "conf": 0.909, "v": "TAKE", "tr": "LONG"}, {"t": 1782770400, "typ": "MIT", "side": "S", "pf": 0.126, "pfn": 0.107, "pup": 0.875, "conf": 0.875, "v": "FADE", "tr": "LONG"}, {"t": 1782770400, "typ": "FVG", "side": "S", "pf": 0.107, "pfn": 0.109, "pup": 0.874, "conf": 0.874, "v": "FADE", "tr": "LONG"}, {"t": 1782799200, "typ": "FVG", "side": "L", "pf": 0.565, "pfn": 0.584, "pup": 0.795, "conf": 0.795, "v": "TAKE", "tr": "LONG"}, {"t": 1782799200, "typ": "OB", "side": "L", "pf": 0.575, "pfn": 0.584, "pup": 0.794, "conf": 0.794, "v": "TAKE", "tr": "LONG"}, {"t": 1782828000, "typ": "RB", "side": "S", "pf": 0.097, "pfn": 0.092, "pup": 0.77, "conf": 0.77, "v": "FADE", "tr": "LONG"}, {"t": 1782838800, "typ": "FVG", "side": "S", "pf": 0.082, "pfn": 0.094, "pup": 0.815, "conf": 0.815, "v": "FADE", "tr": "LONG"}, {"t": 1782838800, "typ": "OB", "side": "S", "pf": 0.082, "pfn": 0.094, "pup": 0.81, "conf": 0.81, "v": "FADE", "tr": "LONG"}, {"t": 1782856800, "typ": "FVG", "side": "S", "pf": 0.089, "pfn": 0.098, "pup": 0.834, "conf": 0.834, "v": "FADE", "tr": "LONG"}, {"t": 1782856800, "typ": "OB", "side": "S", "pf": 0.083, "pfn": 0.098, "pup": 0.828, "conf": 0.828, "v": "FADE", "tr": "LONG"}, {"t": 1782885600, "typ": "RB", "side": "L", "pf": 0.606, "pfn": 0.601, "pup": 0.875, "conf": 0.875, "v": "TAKE", "tr": "LONG"}, {"t": 1782900000, "typ": "BRK", "side": "L", "pf": 0.567, "pfn": 0.593, "pup": 0.706, "conf": 0.706, "v": "TAKE", "tr": "LONG"}, {"t": 1782900000, "typ": "FVG", "side": "L", "pf": 0.616, "pfn": 0.596, "pup": 0.718, "conf": 0.718, "v": "TAKE", "tr": "LONG"}, {"t": 1782900000, "typ": "OB", "side": "L", "pf": 0.563, "pfn": 0.596, "pup": 0.702, "conf": 0.702, "v": "TAKE", "tr": "LONG"}, {"t": 1782900000, "typ": "N", "side": "L", "pf": 0.594, "pfn": 0.58, "pup": 0.724, "conf": 0.724, "v": "TAKE", "tr": "LONG"}, {"t": 1782914400, "typ": "RB", "side": "S", "pf": 0.099, "pfn": 0.12, "pup": 0.702, "conf": 0.702, "v": "FADE", "tr": "LONG"}, {"t": 1782925200, "typ": "FVG", "side": "S", "pf": 0.082, "pfn": 0.102, "pup": 0.779, "conf": 0.779, "v": "FADE", "tr": "LONG"}, {"t": 1782925200, "typ": "OB", "side": "S", "pf": 0.114, "pfn": 0.102, "pup": 0.761, "conf": 0.761, "v": "FADE", "tr": "LONG"}, {"t": 1782943200, "typ": "FVG", "side": "L", "pf": 0.572, "pfn": 0.584, "pup": 0.784, "conf": 0.784, "v": "TAKE", "tr": "LONG"}, {"t": 1782943200, "typ": "OB", "side": "L", "pf": 0.585, "pfn": 0.584, "pup": 0.782, "conf": 0.782, "v": "TAKE", "tr": "LONG"}, {"t": 1782986400, "typ": "MIT", "side": "L", "pf": 0.534, "pfn": 0.54, "pup": 0.678, "conf": 0.678, "v": "TAKE", "tr": "LONG"}, {"t": 1782986400, "typ": "FVG", "side": "L", "pf": 0.528, "pfn": 0.54, "pup": 0.686, "conf": 0.686, "v": "TAKE", "tr": "LONG"}, {"t": 1782986400, "typ": "OB", "side": "L", "pf": 0.528, "pfn": 0.54, "pup": 0.681, "conf": 0.681, "v": "TAKE", "tr": "LONG"}, {"t": 1782986400, "typ": "N", "side": "L", "pf": 0.557, "pfn": 0.535, "pup": 0.703, "conf": 0.703, "v": "TAKE", "tr": "LONG"}, {"t": 1783029600, "typ": "FVG", "side": "L", "pf": 0.142, "pfn": 0.093, "pup": 0.116, "conf": 0.884, "v": "FADE", "tr": "SHORT"}, {"t": 1783029600, "typ": "OB", "side": "L", "pf": 0.139, "pfn": 0.093, "pup": 0.116, "conf": 0.884, "v": "FADE", "tr": "SHORT"}, {"t": 1783058400, "typ": "RB", "side": "L", "pf": 0.12, "pfn": 0.093, "pup": 0.132, "conf": 0.868, "v": "FADE", "tr": "SHORT"}, {"t": 1783288800, "typ": "RB", "side": "S", "pf": 0.479, "pfn": 0.525, "pup": 0.11, "conf": 0.89, "v": "TAKE", "tr": "SHORT"}, {"t": 1783288800, "typ": "N", "side": "L", "pf": 0.149, "pfn": 0.09, "pup": 0.129, "conf": 0.871, "v": "FADE", "tr": "SHORT"}, {"t": 1783303200, "typ": "FVG", "side": "S", "pf": 0.529, "pfn": 0.556, "pup": 0.102, "conf": 0.898, "v": "TAKE", "tr": "SHORT"}, {"t": 1783303200, "typ": "OB", "side": "S", "pf": 0.529, "pfn": 0.556, "pup": 0.102, "conf": 0.898, "v": "TAKE", "tr": "SHORT"}], "pc": [{"t": 1782180000, "dir": "D", "p": 0.569, "zone": "MID", "out": "COLLAPSE"}, {"t": 1782252000, "dir": "D", "p": 0.604, "zone": "MID", "out": "COLLAPSE"}, {"t": 1782295200, "dir": "D", "p": 0.504, "zone": "MID", "out": "COLLAPSE"}, {"t": 1782770400, "dir": "D", "p": 0.44, "zone": "MID", "out": "SWEEP"}, {"t": 1782900000, "dir": "U", "p": 0.386, "zone": "REJECT", "out": "SWEEP"}, {"t": 1782986400, "dir": "U", "p": 0.917, "zone": "STRONG", "out": "SWEEP"}, {"t": 1783029600, "dir": "U", "p": 0.758, "zone": "MID", "out": "COLLAPSE"}]};
+const W=1040, PADL=46, PADR=14;
+const bars=D.bars, N=bars.length;
+const step=(W-PADL-PADR)/(N-1);
+const X=i=>PADL+i*step;
+const ti={}; bars.forEach((b,i)=>ti[b[0]]=i);
+function nearIdx(t){ if(ti[t]!=null) return ti[t]; let bi=0; for(let i=0;i<N;i++){ if(bars[i][0]<=t) bi=i; } return bi; }
+function fdt(t){ const d=new Date(t*1000); return String(d.getUTCDate()).padStart(2,'0')+'/'+String(d.getUTCMonth()+1).padStart(2,'0')+' '+String(d.getUTCHours()).padStart(2,'0')+'h'; }
+function fday(t){ const d=new Date(t*1000); return String(d.getUTCDate()).padStart(2,'0')+'/'+String(d.getUTCMonth()+1).padStart(2,'0'); }
+const gaps=[]; for(let i=1;i<N;i++){ if(bars[i][0]-bars[i-1][0]>6*3600) gaps.push(i); }
+const dayTicks=[]; let lastDay='';
+bars.forEach((b,i)=>{ const dd=fday(b[0]); if(dd!==lastDay){ dayTicks.push([i,dd]); lastDay=dd; } });
+
+// ---- du lieu dan xuat per-bar ----
+const dirP=e=>e.side==='L'?e.pf:1-e.pf;
+const pfByBar={}; D.pf.forEach(e=>{ const i=nearIdx(e.t); (pfByBar[i]=pfByBar[i]||[]).push(e); });
+const pfRep={};  // bar -> {v, e}
+Object.keys(pfByBar).forEach(bi=>{ const evs=pfByBar[bi];
+  const rep=evs.reduce((a,b)=>Math.abs(dirP(b)-0.5)>Math.abs(dirP(a)-0.5)?b:a);
+  pfRep[bi]={v:dirP(rep), e:rep}; });
+const upByBar={}; D.pf.forEach(e=>{ if(e.pup==null) return; const i=nearIdx(e.t); (upByBar[i]=upByBar[i]||[]).push(e.pup); });
+const upRep={}; Object.keys(upByBar).forEach(bi=>{ upRep[bi]=upByBar[bi].reduce((a,b)=>a+b,0)/upByBar[bi].length; });
+const pcByBar={}; D.pc.forEach(e=>{ pcByBar[nearIdx(e.t)]=e; });
+
+// regime tung bar: p_up gan nhat (carry-forward); truoc event dau tien -> carry-back
+const regime=new Array(N).fill(null);
+{ let cur=null;
+  for(let i=0;i<N;i++){ if(upRep[i]!=null) cur=upRep[i]>=0.5?'L':'S'; regime[i]=cur; }
+  let nxt=null;
+  for(let i=N-1;i>=0;i--){ if(regime[i]!=null) nxt=regime[i]; else regime[i]=nxt; } }
+
+function regimeRects(H,padT,padB){
+  let s='',a=0;
+  for(let i=1;i<=N;i++){
+    if(i===N||regime[i]!==regime[a]){
+      const x0=a===0?PADL:(X(a-1)+X(a))/2, x1=i===N?W-PADR:(X(i-1)+X(i))/2;
+      s+=`<rect x="${x0}" y="${padT}" width="${x1-x0}" height="${H-padT-padB}" fill="var(--wash-${regime[a]==='L'?'long':'short'})"/>`;
+      a=i;
+    } }
+  return s;
+}
+function chrome(H,padT,padB,ys,withDays){
+  let s='';
+  for(const [v,lab] of ys){ s+=`<line x1="${PADL}" y1="${v}" x2="${W-PADR}" y2="${v}" stroke="var(--grid)"/>`+
+    `<text x="${PADL-5}" y="${v+3}" text-anchor="end" style="font-variant-numeric:tabular-nums">${lab}</text>`; }
+  for(const g of gaps){ const gx=(X(g-1)+X(g))/2;
+    s+=`<line x1="${gx}" y1="${padT}" x2="${gx}" y2="${H-padB}" stroke="var(--axis)" stroke-dasharray="2 4"/>`; }
+  if(withDays) for(const [i,dd] of dayTicks) s+=`<text x="${X(i)}" y="${H-5}" text-anchor="middle" style="font-variant-numeric:tabular-nums">${dd}</text>`;
+  s+=`<line id="xh-${withDays?'d':Math.random().toString(36).slice(2,6)}" class="xh" x1="-9" y1="${padT}" x2="-9" y2="${H-padB}" stroke="var(--xh)" stroke-width="1" stroke-dasharray="3 3"/>`;
+  return s;
+}
+function segLine(pts,color,w,dash){
+  let segs=[[]];
+  pts.forEach(([bi,v],k)=>{ if(k>0 && gaps.some(g=>pts[k-1][0]<g && bi>=g)) segs.push([]); segs[segs.length-1].push([bi,v]); });
+  let s='';
+  for(const sg of segs){ if(sg.length<2){ continue; }
+    s+=`<polyline points="${sg.map(([bi,y])=>X(bi)+','+y).join(' ')}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linejoin="round"${dash?` stroke-dasharray="${dash}"`:''} opacity="0.9"/>`; }
+  return s;
+}
+const tt=document.getElementById('tt');
+function showTT(html,cx,cy){ tt.innerHTML=html; tt.style.opacity=1;
+  tt.style.left=Math.min(cx+16,innerWidth-320)+'px'; tt.style.top=Math.min(cy+16,innerHeight-160)+'px'; }
+function hideTT(){ tt.style.opacity=0; }
+function hookTT(svg){ svg.querySelectorAll('[data-tt]').forEach(el=>{
+  el.addEventListener('mousemove',e=>{e.stopPropagation();showTT(el.dataset.tt,e.clientX,e.clientY);});
+  el.addEventListener('mouseleave',hideTT); }); }
+
+const PANELS=[];
+// ===== P1: gia =====
+(function(){
+  const H=190,padT=10,padB=20;
+  const cs=bars.map(b=>b[1]); const lo=Math.min(...cs)-14, hi=Math.max(...cs)+14;
+  const Y=v=>padT+(hi-v)/(hi-lo)*(H-padT-padB);
+  const ys=[]; for(let g=Math.ceil(lo/50)*50; g<=hi; g+=50) ys.push([Y(g),g]);
+  let s=regimeRects(H,padT,padB)+chrome(H,padT,padB,ys,false);
+  s+=segLine(bars.map((b,i)=>[i,Y(b[1])]),'var(--price)',1.8);
+  // marker pierce tren gia
+  D.pc.forEach(e=>{ const i=nearIdx(e.t); const y=Y(bars[i][1]);
+    s+=`<circle cx="${X(i)}" cy="${y}" r="4.6" fill="var(--htf)" stroke="var(--surface)" stroke-width="1.4"
+      data-tt="<div class='h'>pierce ${e.dir==='U'?'BSL ▲':'SSL ▼'} · ${fdt(e.t)} ET</div><div class='row'><span>close</span><b>${bars[i][1]}</b></div><div class='row'><span>P_cascade gốc</span><b>${e.p.toFixed(3)}</b></div><div class='m'>${e.zone} · kết cục ${e.out}${e.out==='SWEEP'?' (bật lại)':' (đi tiếp)'}</div>"/>`; });
+  const lowI=cs.indexOf(Math.min(...cs)), hiI=cs.indexOf(Math.max(...cs));
+  s+=`<text x="${X(lowI)}" y="${Y(cs[lowI])+14}" text-anchor="middle" fill="var(--ink2)" font-weight="600">${cs[lowI]}</text>`;
+  s+=`<text x="${X(hiI)}" y="${Y(cs[hiI])-7}" text-anchor="middle" fill="var(--ink2)" font-weight="600">${cs[hiI]}</text>`;
+  s+=`<circle cx="${X(N-1)}" cy="${Y(cs[N-1])}" r="3.2" fill="var(--price)"/>`+
+     `<text x="${X(N-1)-7}" y="${Y(cs[N-1])-8}" text-anchor="end" fill="var(--ink)" font-weight="650">${cs[N-1]}</text>`;
+  const svg=document.getElementById('p1'); svg.innerHTML=s; PANELS.push({svg,H,padT,padB});
+})();
+// ===== P2: P_follow dir-long =====
+(function(){
+  const H=200,padT=10,padB=8;
+  const Y=v=>padT+(1-v)*(H-padT-padB);
+  let s=regimeRects(H,padT,padB)+chrome(H,padT,padB,[[Y(0),'0'],[Y(0.25),'0.25'],[Y(0.5),'0.5'],[Y(0.75),'0.75'],[Y(1),'1']],false);
+  s+=`<line x1="${PADL}" y1="${Y(0.5)}" x2="${W-PADR}" y2="${Y(0.5)}" stroke="var(--axis)" stroke-width="1.3"/>`;
+  const reps=Object.keys(pfRep).map(Number).sort((a,b)=>a-b).map(bi=>[bi,Y(pfRep[bi].v)]);
+  s+=segLine(reps,'var(--pooldir)',1.8);
+  let marks='';
+  for(const bi in pfByBar){ const evs=pfByBar[bi];
+    evs.forEach((e,k)=>{ const x=X(+bi)+(k-(evs.length-1)/2)*5, y=Y(dirP(e));
+      const up=e.tr==='LONG';
+      const shape= e.tr==='-' ? `<circle cx="${x}" cy="${y}" r="3.4" fill="none" stroke="var(--pooldir)" stroke-width="1.4"/>`
+        : `<polygon points="${up?`${x},${y-4.4} ${x-4},${y+3.5} ${x+4},${y+3.5}`:`${x},${y+4.4} ${x-4},${y-3.5} ${x+4},${y-3.5}`}" fill="var(--pooldir)" stroke="var(--surface)" stroke-width="1.1"/>`;
+      marks+=shape.replace('/>',` data-tt="<div class='h'>pooldir · ${fdt(e.t)} ET</div><div class='row'><span>close</span><b>${bars[+bi][1]}</b></div><div class='row'><span>${e.typ} disp ${e.side==='L'?'LONG':'SHORT'} · P_follow gốc</span><b>${e.pf.toFixed(3)}</b></div><div class='row'><span>no-ATR gốc</span><span>${e.pfn.toFixed(3)}</span></div><div class='row'><span>vẽ tại (quy hướng long)</span><span>${dirP(e).toFixed(3)}</span></div><div class='m'>★${e.v} → lệnh <b>${e.tr}</b></div>"/>`);
+    }); }
+  const svg=document.getElementById('p2'); svg.innerHTML=s+marks; PANELS.push({svg,H,padT,padB});
+})();
+// ===== P3: p_up =====
+(function(){
+  const H=170,padT=10,padB=8;
+  const Y=v=>padT+(1-v)*(H-padT-padB);
+  let s=regimeRects(H,padT,padB);
+  s+=`<rect x="${PADL}" y="${Y(1)}" width="${W-PADL-PADR}" height="${Y(0.7)-Y(1)}" fill="var(--wash-long)"/>`;
+  s+=`<rect x="${PADL}" y="${Y(0.3)}" width="${W-PADL-PADR}" height="${Y(0)-Y(0.3)}" fill="var(--wash-short)"/>`;
+  s+=chrome(H,padT,padB,[[Y(0),'0'],[Y(0.3),'0.3'],[Y(0.5),'0.5'],[Y(0.7),'0.7'],[Y(1),'1']],false);
+  s+=`<line x1="${PADL}" y1="${Y(0.5)}" x2="${W-PADR}" y2="${Y(0.5)}" stroke="var(--axis)" stroke-width="1.3"/>`;
+  const reps=Object.keys(upRep).map(Number).sort((a,b)=>a-b).map(bi=>[bi,Y(upRep[bi])]);
+  s+=segLine(reps,'var(--net)',1.8);
+  let marks='';
+  Object.keys(upRep).map(Number).sort((a,b)=>a-b).forEach(bi=>{
+    const arr=upByBar[bi], n=arr.length, mn=Math.min(...arr), mx=Math.max(...arr);
+    marks+=`<circle cx="${X(bi)}" cy="${Y(upRep[bi])}" r="3.2" fill="var(--net)" stroke="var(--surface)" stroke-width="1"
+      data-tt="<div class='h'>net-dir · ${fdt(bars[bi][0])} ET</div><div class='row'><span>close</span><b>${bars[bi][1]}</b></div><div class='row'><span>p_up</span><b>${upRep[bi].toFixed(3)}</b></div><div class='row'><span>hướng · conf</span><span><b>${upRep[bi]>=0.5?'LONG':'SHORT'}</b> · ${Math.max(upRep[bi],1-upRep[bi]).toFixed(2)}</span></div>${n>1?`<div class='m'>TB của ${n} event · gốc ${mn.toFixed(3)}–${mx.toFixed(3)}</div>`:''}"/>`; });
+  const svg=document.getElementById('p3'); svg.innerHTML=s+marks; PANELS.push({svg,H,padT,padB});
+})();
+// ===== P4: P_cascade =====
+(function(){
+  const H=200,padT=10,padB=20;
+  const Y=v=>padT+(1-v)*(H-padT-padB);
+  let s=regimeRects(H,padT,padB)+chrome(H,padT,padB,[[Y(0),'0'],[Y(0.42),'0.42'],[Y(0.6),'0.6'],[Y(0.85),'0.85'],[Y(1),'1']],true);
+  s+=`<line x1="${PADL}" y1="${Y(0.85)}" x2="${W-PADR}" y2="${Y(0.85)}" stroke="var(--htf)" stroke-dasharray="5 4" stroke-width="1.2"/>`;
+  s+=`<line x1="${PADL}" y1="${Y(0.42)}" x2="${W-PADR}" y2="${Y(0.42)}" stroke="var(--htf)" stroke-dasharray="2 4" stroke-width="1.2"/>`;
+  s+=`<text x="${W-PADR}" y="${Y(0.85)-4}" text-anchor="end" fill="var(--htf)" font-weight="600">vào mạnh (92%)</text>`;
+  s+=`<text x="${W-PADR}" y="${Y(0.42)+12}" text-anchor="end" fill="var(--htf)" font-weight="600">đánh ngược (68%)</text>`;
+  s+=segLine(D.pc.map(e=>[nearIdx(e.t),Y(e.p)]),'var(--htf)',1.2,'3 4');
+  let marks='';
+  D.pc.forEach(e=>{ const x=X(nearIdx(e.t)), y=Y(e.p);
+    marks+=`<circle cx="${x}" cy="${y}" r="5" fill="var(--htf)" stroke="var(--surface)" stroke-width="1.3"
+      data-tt="<div class='h'>htf-liq3 · ${fdt(e.t)} ET</div><div>pierce ${e.dir==='U'?'BSL (lên)':'SSL (xuống)'} · P <b>${e.p.toFixed(3)}</b> · ${e.zone}</div><div class='m'>kết cục thật: ${e.out}</div>"/>`;
+    marks+=`<text x="${x}" y="${y-9}" text-anchor="middle" fill="var(--ink2)" font-weight="600" style="font-variant-numeric:tabular-nums">${e.p.toFixed(2)}</text>`;
+    marks+=`<text x="${x}" y="${y+18}" text-anchor="middle" style="font-size:9px">${e.dir==='U'?'▲':'▼'}${e.out==='COLLAPSE'?'đi tiếp':'bật lại'}</text>`; });
+  const svg=document.getElementById('p4'); svg.innerHTML=s+marks; PANELS.push({svg,H,padT,padB});
+})();
+
+// ===== crosshair dong bo 4 panel =====
+PANELS.forEach(P=>{
+  const r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+  r.setAttribute('x',PADL);r.setAttribute('y',P.padT);
+  r.setAttribute('width',W-PADL-PADR);r.setAttribute('height',P.H-P.padT-P.padB);
+  r.setAttribute('fill','transparent'); P.svg.appendChild(r);
+  r.addEventListener('mousemove',e=>{
+    const pt=P.svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+    const sp=pt.matrixTransform(P.svg.getScreenCTM().inverse());
+    let bi=Math.round((sp.x-PADL)/step); bi=Math.max(0,Math.min(N-1,bi));
+    PANELS.forEach(Q=>{ Q.svg.querySelectorAll('.xh').forEach(l=>{ l.setAttribute('x1',X(bi)); l.setAttribute('x2',X(bi)); }); });
+    const rep=pfRep[bi], up=upRep[bi], pc=pcByBar[bi];
+    let html=`<div class="h">${fdt(bars[bi][0])} ET · regime ${regime[bi]==='L'?'<span style="color:var(--long)">LONG</span>':'<span style="color:var(--short)">SHORT</span>'}</div>`;
+    html+=`<div class="row"><span>close</span><b>${bars[bi][1]}</b></div>`;
+    if(rep) html+=`<div class="row"><span>P_follow (${rep.e.typ} ${rep.e.side==='L'?'L':'S'} ★${rep.e.v})</span><b>${rep.e.pf.toFixed(3)}</b></div>`;
+    if(up!=null) html+=`<div class="row"><span>p_up net-dir</span><b>${up.toFixed(3)}</b></div>`;
+    if(pc) html+=`<div class="row"><span>P_cascade ${pc.dir==='U'?'▲':'▼'} ${pc.out}</span><b>${pc.p.toFixed(3)}</b></div>`;
+    showTT(html,e.clientX,e.clientY);
+  });
+  r.addEventListener('mouseleave',()=>{ hideTT();
+    PANELS.forEach(Q=>Q.svg.querySelectorAll('.xh').forEach(l=>{ l.setAttribute('x1',-9); l.setAttribute('x2',-9); })); });
+  hookTT(P.svg);
+});
+
+// ===== KPI =====
+(function(){
+  const cs=bars.map(b=>b[1]);
+  const chg=cs[N-1]-cs[0], lo=Math.min(...cs), hi=Math.max(...cs);
+  // regime hien tai bat dau tu bar nao
+  let rs=N-1; while(rs>0 && regime[rs-1]===regime[N-1]) rs--;
+  const lastPf=D.pf[D.pf.length-1];
+  const nT=D.pf.filter(e=>e.v==='TAKE').length, nF=D.pf.filter(e=>e.v==='FADE').length;
+  const k=[
+    ['Close · 06/07 17:00 ET', cs[N-1].toFixed(1), (chg>=0?'+':'')+chg.toFixed(1)+' so đầu kỳ · đáy '+lo.toFixed(0)+' / đỉnh '+hi.toFixed(0)],
+    ['Regime hiện tại', regime[N-1]==='L'?'LONG':'SHORT', 'từ '+fdt(bars[rs][0])+' ET (p_up cắt 0.5)'],
+    ['Tín hiệu mới nhất', (lastPf.side==='L'?'LONG':'SHORT')+' '+lastPf.pf.toFixed(3), '★'+lastPf.v+' → lệnh '+lastPf.tr+' · '+fdt(lastPf.t)+' ET'],
+    ['Event trong kỳ', String(D.pf.length+D.pc.length), nT+' TAKE · '+nF+' FADE · '+D.pc.length+' pierce'],
+  ];
+  document.getElementById('kpis').innerHTML=k.map(([a,b,c])=>{
+    const col = a==='Regime hiện tại' ? (regime[N-1]==='L'?'var(--long)':'var(--short)') : 'var(--ink)';
+    return `<div class="kpi"><div class="k">${a}</div><div class="v" style="color:${col}">${b}</div><div class="d">${c}</div></div>`;}).join('');
+})();
+
+// ===== table =====
+(function(){
+  const rows=[];
+  D.pf.forEach(e=>rows.push({t:e.t,c:[fdt(e.t),'pooldir',e.typ+' '+(e.side==='L'?'LONG':'SHORT'),e.pf.toFixed(3),e.pfn.toFixed(3),'★'+e.v,e.tr,'—']}));
+  D.pc.forEach(e=>rows.push({t:e.t,c:[fdt(e.t),'htf-liq3','pierce '+(e.dir==='U'?'BSL▲':'SSL▼'),e.p.toFixed(3),'',e.zone,'',e.out]}));
+  rows.sort((a,b)=>a.t-b.t);
+  document.querySelector('#tbl tbody').innerHTML=rows.map(r=>
+    `<tr><td>${r.c[0]}</td><td><span style="display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;background:var(--${r.c[1]==='pooldir'?'pooldir':'htf'})"></span>${r.c[1]}</td><td>${r.c[2]}</td><td class="n">${r.c[3]}</td><td class="n">${r.c[4]}</td><td>${r.c[5]}</td><td>${r.c[6]}</td><td>${r.c[7]}</td></tr>`).join('');
+})();
+</script>
