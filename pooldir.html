@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Pooldir — GC1! H4</title>
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --surface-0:#f3f1ea; --surface-1:#efece4; --surface-2:#ffffff;
+  --text-primary:#1a1a18; --text-secondary:#54524d; --text-muted:#8a8881;
+  --border:rgba(0,0,0,.10); --border-strong:rgba(0,0,0,.20); --border-stronger:rgba(0,0,0,.32);
+  --radius:8px;
+  --bg-warning:#faeeda; --text-warning:#854f0b; --border-warning:#ef9f27;
+  --bg-danger:#fcebeb;  --text-danger:#a32d2d;  --border-danger:#e24b4a;
+  --bg-success:#e1f5ee; --text-success:#0f6e56; --border-success:#1d9e75;
+  --bg-accent:#e6f1fb;  --text-accent:#185fa5;  --border-accent:#378add;
+}
+@media (prefers-color-scheme: dark){
+:root{
+  --surface-0:#161614; --surface-1:#1f1f1d; --surface-2:#262624;
+  --text-primary:#f3f2ee; --text-secondary:#bdbcb3; --text-muted:#8a8881;
+  --border:rgba(255,255,255,.12); --border-strong:rgba(255,255,255,.20); --border-stronger:rgba(255,255,255,.34);
+  --bg-warning:#3a2c11; --text-warning:#fac775; --border-warning:#854f0b;
+  --bg-danger:#3a1717;  --text-danger:#f09595;  --border-danger:#791f1f;
+  --bg-success:#063a2d; --text-success:#5dcaa5; --border-success:#085041;
+  --bg-accent:#0c2f53;  --text-accent:#85b7eb;  --border-accent:#0c447c;
+}
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+body{max-width:420px;margin:0 auto;padding:12px 14px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+</style>
+</head>
+<body>
+<h2 class="sr-only">Pooldir GC1 H4 forecast dashboard</h2>
+<div id="pooldir-root"></div>
+<script>window.GC_DATA = {"asof": "2026-07-06 17:00 ET", "age_txt": "H4 toi nen dong 17:00 ET · nen ke dang chay", "close": 4176.3, "atr": 35.1, "verdict": "SKIP", "side": "SHORT", "side_dir": -1, "chain": {"cdir": 1, "cn": 4, "cdist": 1.3, "cfirst": 1}, "disp": {"type": "FVG", "dir": -1, "bars_ago": 4, "date": "06/07 02:00", "is_new": false}, "cands": [{"type": "FVG", "dir": -1, "bars_ago": 4, "pf": 0.529, "take": true, "fade": false}, {"type": "OB", "dir": -1, "bars_ago": 4, "pf": 0.529, "take": true, "fade": false}, {"type": "RB", "dir": -1, "bars_ago": 5, "pf": 0.479, "take": true, "fade": false}, {"type": "N", "dir": 1, "bars_ago": 5, "pf": 0.149, "take": false, "fade": true}, {"type": "RB", "dir": 1, "bars_ago": 8, "pf": 0.12, "take": false, "fade": true}, {"type": "FVG", "dir": 1, "bars_ago": 10, "pf": 0.142, "take": false, "fade": true}, {"type": "OB", "dir": 1, "bars_ago": 10, "pf": 0.139, "take": false, "fade": true}], "context": {"kind": "DIVERGE", "base_win": 0.5239}, "dr": {"ssl": 4042.1, "bsl": 4238.1, "atr": 35.1, "dbsl_atr": 1.8, "dssl_atr": 3.8, "price_pct": 0.685, "tp_pct": 0.327, "sl_pct": 0.864}, "pfollow": {"primary": 0.529, "noatr": 0.556, "take": 0.4, "fade_gate": 0.2}, "fade_strength": null, "ev": 0.87, "ev_bins": [{"lo": 0, "hi": 0.3, "ev": -0.69}, {"lo": 0.3, "hi": 0.4, "ev": 0.0}, {"lo": 0.4, "hi": 0.5, "ev": 0.57}, {"lo": 0.5, "hi": 0.6, "ev": 0.87}, {"lo": 0.6, "hi": 0.7, "ev": 1.21}, {"lo": 0.7, "hi": 1.0, "ev": 2.0}], "plan": {"entry": 4176.3, "tp": 4106.1, "sl": 4211.4, "rr": "2:1"}, "stats": {"wf_auc": 0.7441, "take_mean": 0.73, "take_wr": 0.57, "gate": 0.4}, "intrabar": {"blocked": true, "reason": "nen H4 cuoi chua dong that (M30 con chay)", "now": 4174.3, "death": 4200.1, "sl": 4211.4, "dead": false, "sl_hit": false, "forming": true}, "netdir": {"asof": "2026-07-06 17:00 ET", "side": "SHORT", "conf": 0.9, "p_up": 0.102, "target_kind": "SSL", "target": 4042.1, "dist_atr": -3.8}, "chain_stage": {"asof": "2026-07-06 17:00 ET", "run_at": "2026-07-07 00:10 UTC", "close": 4176.3, "atr": 35.1, "stage1": {"side": "SHORT", "conf": 0.9, "p_up": 0.102, "target_kind": "SSL", "target": 4042.1, "dist_atr": -3.8}, "stage2": {"active": false, "bars_ago": 10, "sweep_dir": "UP", "p_cascade": 0.758, "zone": "MID", "verdict": null, "open": false, "sweep_at": "02/07 22:00"}, "scan": {"up": [[4239.9, 4215.5, 0.372], [4256.0, 4215.5, 0.517], [4270.3, 4215.5, 0.624]], "dn": [[4033.2, 4042.1, 0.605], [4011.7, 4042.1, 0.772]], "note_up": "P<0.42 (danh nguoc) khi close ~4245", "note_dn": "khong cat nguong trong range scan"}}};</script>
+<script>/* pooldir dashboard renderer — doc window.GC_DATA, render vao #pooldir-root.
+   Standalone/offline: dung CSS var (dinh nghia trong template) + glyph Unicode (khong CDN icon). */
+(function () {
+  function clampPct(x) { return Math.max(0, Math.min(100, x * 100)); }
+  function f(x, n) { return Number(x).toFixed(n); }
+  function arrow(d) { return d > 0 ? '\u2191' : (d < 0 ? '\u2193' : '\u00b7'); }
+  function dirColor(d) { return d > 0 ? 'var(--text-success)' : (d < 0 ? 'var(--text-danger)' : 'var(--text-muted)'); }
+
+  function render(d) {
+    var root = document.getElementById('pooldir-root');
+    if (!root || !d) return;
+    var take = d.verdict === 'TAKE';
+    var isFade = d.verdict === 'FADE';
+    // verdict SKIP co 3 ly do khac nhau -> nhan/mau/ket luan phai phan biet:
+    //   (a) M30 chan + nen chua dong (forming) nhung P du gate -> CHO, khong phai skip vi P
+    //   (b) M30 chan vi keo hong (death/SL) -> HUY
+    //   (c) P_follow that su duoi gate -> SKIP
+    var _ib = d.intrabar || null;
+    var _blk = !!(_ib && _ib.blocked), _frm = !!(_ib && _ib.forming);
+    var _pf = d.pfollow || {};
+    var _pp = _pf.primary, _gate = _pf.take != null ? _pf.take : 0.4;
+    var _fadeable = _pf.fade_gate != null && _pp != null && _pp < _pf.fade_gate;
+    var _pEnough = _pp != null && (_pp >= _gate || _fadeable);
+    var vbg, vbd, vtx, vlabel, glyph;
+    if (take) { vbg = 'var(--bg-success)'; vbd = 'var(--border-success)'; vtx = 'var(--text-success)'; vlabel = 'Take \u2014 v\u00e0o l\u1ec7nh'; glyph = '\u25b6'; }
+    else if (isFade) { vbg = 'var(--bg-success)'; vbd = 'var(--border-success)'; vtx = 'var(--text-success)'; vlabel = 'Fade \u2014 v\u00e0o NG\u01af\u1ee2C displacement'; glyph = '\u21c4'; }
+    else if (_blk && _frm && _pEnough) { vbg = 'var(--bg-warning)'; vbd = 'var(--border-warning)'; vtx = 'var(--text-warning)'; vlabel = 'Ch\u1edd \u2014 n\u1ebfn H4 ch\u01b0a \u0111\u00f3ng'; glyph = '\u23f8'; }
+    else if (_blk && !_frm) { vbg = 'var(--bg-danger)'; vbd = 'var(--border-danger)'; vtx = 'var(--text-danger)'; vlabel = 'H\u1ee7y \u2014 k\u00e8o h\u1ecfng (M30)'; glyph = '\u2715'; }
+    else { vbg = 'var(--bg-warning)'; vbd = 'var(--border-warning)'; vtx = 'var(--text-warning)'; vlabel = 'Skip \u2014 kh\u00f4ng v\u00e0o'; glyph = '\u23f8'; }
+
+    var sd = d.side_dir;
+    var sName = sd > 0 ? 'Long' : 'Short';
+    var sColor = sd > 0 ? 'var(--text-success)' : 'var(--text-danger)';
+
+    var ch = d.chain || {};
+    var disp = d.disp || {};
+    var ctx = d.context || {};
+    var corr = ctx.kind === 'CORRELATE';
+    var ctxName = ctx.kind === 'DIVERGE' ? 'diverge' : (ctx.kind === 'CORRELATE' ? 'correlate' : 'trung t\u00ednh');
+    var ctxKind = ctx.kind === 'DIVERGE' ? 'reversal' : (ctx.kind === 'CORRELATE' ? 'continuation' : '');
+    var ctxColor = ctx.kind === 'DIVERGE' ? 'var(--text-success)' : 'var(--text-warning)';
+    var basePct = ctx.base_win != null ? Math.round(ctx.base_win * 100) : null;
+
+    var pf = d.pfollow || {};
+    var pp = pf.primary, gate = pf.take != null ? pf.take : 0.6;
+    var pfFill = pp >= gate ? 'var(--text-success)' : 'var(--text-warning)';
+
+    var ev = d.ev;
+    var evColor = ev >= 0 ? 'var(--text-success)' : 'var(--text-danger)';
+
+    var bins = d.ev_bins || [];
+    var maxabs = 0; bins.forEach(function (b) { if (Math.abs(b.ev) > maxabs) maxabs = Math.abs(b.ev); });
+    if (maxabs === 0) maxabs = 1;
+
+    var dr = d.dr || {};
+    var plan = d.plan || {};
+    var st = d.stats || {};
+
+    var H = [];
+    H.push('<div style="padding:0.5rem 0;font-family:var(--font-sans);">');
+
+    // header
+    H.push('<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;">');
+    H.push('<div><div style="font-size:16px;font-weight:500;color:var(--text-primary);">Pooldir \u2014 GC1! H4</div>');
+    H.push('<div style="font-size:12px;color:var(--text-muted);margin-top:2px;font-variant-numeric:tabular-nums;">close ' + f(d.close, 1) + ' \u00b7 ATR ' + f(d.atr, 1) + '</div></div>');
+    H.push('<div style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-1);color:var(--text-secondary);font-size:11px;padding:4px 9px;border-radius:999px;font-variant-numeric:tabular-nums;">' + (d.age_txt || d.asof || '') + '</div>');
+    H.push('</div>');
+
+    // intrabar M30 invalidation banner
+    if (d.intrabar && d.intrabar.blocked) {
+      var ib = d.intrabar;
+      var rmsg = ib.dead ? 'Displacement b\u1ecb ph\u00e1 extreme \u2014 c\u1ea5u tr\u00fac v\u00f4 hi\u1ec7u' : (ib.sl_hit ? 'Gi\u00e1 \u0111\u00e3 v\u01b0\u1ee3t SL \u2014 setup h\u1ebft hi\u1ec7u l\u1ef1c' : 'N\u1ebfn H4 ch\u01b0a \u0111\u00f3ng th\u1eadt \u2014 ch\u1edd confirm');
+      H.push('<div style="background:var(--bg-danger);border:1px solid var(--border-danger);border-radius:12px;padding:13px 15px;margin-bottom:14px;">');
+      H.push('<div style="display:flex;align-items:center;gap:8px;"><span style="font-size:16px;color:var(--text-danger);">\u2717</span><span style="font-size:14px;font-weight:600;color:var(--text-danger);">H\u1ee6Y T\u00cdN HI\u1ec6U \u00b7 intrabar M30</span></div>');
+      H.push('<div style="font-size:12px;color:var(--text-danger);margin-top:6px;line-height:1.5;">' + rmsg + '. Gi\u00e1 M30 <b>' + f(ib.now, 1) + '</b> \u00b7 death-level ' + f(ib.death, 1) + ' \u00b7 SL ' + f(ib.sl, 1) + '. <b>Kh\u00f4ng v\u00e0o.</b></div>');
+      H.push('<div style="font-size:11px;color:var(--text-muted);margin-top:5px;">pooldir ch\u1ea1y tr\u00ean H4-closed n\u00ean tr\u1ec5 ~1 n\u1ebfn; l\u1edbp M30 ch\u1eb7n k\u00e8o \u0111\u00e3 h\u1ecfng.</div>');
+      H.push('</div>');
+    }
+
+    // ===== CARD QUYET DINH HOP NHAT: verdict + 3 ladder (\u2460 P_follow \u2461 net-dir \u2462 P_cascade) =====
+    var cs = d.chain_stage;
+    var nd = d.netdir;
+    var s1 = nd || null, s1asof = nd ? (nd.asof || '') : '';
+    if (cs && cs.stage1 && (!s1 || (cs.asof || '') > s1asof)) { s1 = cs.stage1; s1asof = cs.asof || ''; }
+    var stale1 = !!(s1asof && d.asof && s1asof !== d.asof);
+    var s2 = (cs && cs.stage2) || null;
+    var stale2 = !!(cs && cs.asof && d.asof && cs.asof !== d.asof);
+
+    function ladderRow(name, lo, hi, zones, val, dec, rightExtra, note) {
+      var pctOf = function (x) { return Math.max(0, Math.min(100, (x - lo) / (hi - lo) * 100)); };
+      H.push('<div style="margin-bottom:11px;">');
+      H.push('<div style="display:flex;justify-content:space-between;align-items:baseline;font-size:12px;margin-bottom:4px;gap:8px;"><span style="color:var(--text-secondary);">' + name + '</span>'
+        + '<span style="font-variant-numeric:tabular-nums;font-weight:600;font-size:15px;color:var(--text-primary);white-space:nowrap;">' + (val != null ? f(val, dec) : '\u2014')
+        + (rightExtra ? ' <span style="font-size:12px;font-weight:400;">' + rightExtra + '</span>' : '') + '</span></div>');
+      H.push('<div style="position:relative;height:18px;border-radius:6px;overflow:hidden;border:0.5px solid var(--border);display:flex;">');
+      zones.forEach(function (z) {
+        var w = pctOf(z.to) - pctOf(z.from);
+        H.push('<div style="width:' + w + '%;background:' + z.bg + ';display:flex;align-items:center;justify-content:center;overflow:hidden;">'
+          + '<span style="font-size:9px;letter-spacing:.02em;white-space:nowrap;color:' + z.labCol + ';">' + z.label + '</span></div>');
+      });
+      if (val != null) H.push('<div style="position:absolute;left:' + pctOf(val) + '%;top:0;bottom:0;width:2px;background:var(--text-primary);"></div>');
+      H.push('</div>');
+      H.push('<div style="position:relative;height:11px;font-size:9px;color:var(--text-muted);font-variant-numeric:tabular-nums;">');
+      zones.slice(0, -1).forEach(function (z) { H.push('<span style="position:absolute;left:' + pctOf(z.to) + '%;transform:translateX(-50%);">' + z.to + '</span>'); });
+      H.push('<span style="position:absolute;left:0;">' + lo + '</span><span style="position:absolute;right:0;">' + hi + '</span>');
+      H.push('</div>');
+      if (note) H.push('<div style="font-size:11px;color:var(--text-secondary);margin-top:2px;line-height:1.45;">' + note + '</div>');
+      H.push('</div>');
+    }
+
+    H.push('<div style="border:0.5px solid ' + vbd + ';border-radius:12px;margin-bottom:14px;overflow:hidden;background:var(--surface-2);">');
+    // header verdict (nen mau theo verdict)
+    H.push('<div style="background:' + vbg + ';padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;">');
+    H.push('<div style="display:flex;align-items:center;gap:9px;"><span style="font-size:18px;color:' + vtx + ';">' + glyph + '</span><span style="font-size:17px;font-weight:500;color:' + vtx + ';">' + vlabel + '</span></div>');
+    H.push('<div style="text-align:right;line-height:1.1;"><div style="font-size:11px;color:' + vtx + ';">h\u01b0\u1edbng' + (take ? '' : ' (n\u1ebfu v\u00e0o)') + '</div><div style="font-size:22px;font-weight:500;color:' + sColor + ';">' + arrow(sd) + ' ' + sName + '</div></div>');
+    H.push('</div>');
+    H.push('<div style="padding:12px 16px 13px;">');
+
+    // dong boi canh: chuoi + displacement -> diverge/correlate
+    H.push('<div style="font-size:13px;color:var(--text-primary);margin-bottom:12px;">');
+    H.push('chu\u1ed7i <span style="color:' + dirColor(ch.cdir) + ';">' + arrow(ch.cdir) + '</span> <span style="font-weight:500;font-variant-numeric:tabular-nums;">\u00d7' + ch.cn + '</span> + displacement <span style="color:' + dirColor(disp.dir) + ';">' + arrow(disp.dir) + '</span> \u2192 <span style="color:' + ctxColor + ';font-weight:500;">' + ctxName + '</span> (' + ctxKind + (basePct != null ? ' \u00b7 base ~' + basePct + '%' : '') + ')');
+    H.push('</div>');
+
+    // \u2460 P_follow \u2014 vao lenh (thay meter cu; EV + no-ATR nhet vao hang)
+    ladderRow('\u2460 P_follow \u00b7 v\u00e0o l\u1ec7nh', 0, 1, [
+      { from: 0, to: 0.20, bg: 'var(--bg-warning)', label: 'FADE*', labCol: 'var(--text-warning)' },
+      { from: 0.20, to: 0.40, bg: 'var(--surface-1)', label: 'SKIP', labCol: 'var(--text-muted)' },
+      { from: 0.40, to: 1, bg: 'var(--bg-success)', label: 'TAKE (EV +0.57\u2192+2.0R)', labCol: 'var(--text-success)' }
+    ], pp, 3,
+      '\u00b7 EV <b style="color:' + evColor + ';">' + (ev >= 0 ? '+' : '\u2212') + f(Math.abs(ev), 2) + 'R</b>',
+      (pf.noatr != null
+        ? ('no-ATR cross-check ' + f(pf.noatr, 3) + ' \u2192 ' +
+           (pp >= gate && pf.noatr >= gate ? '\u0111\u1ed3ng thu\u1eadn take'
+            : (pp < gate && pf.noatr < gate ? '\u0111\u1ed3ng thu\u1eadn skip' : 'hai model L\u1ec6CH nhau \u2014 th\u1eadn tr\u1ecdng')))
+        : (pp >= gate ? '\u0111\u1ee7 gate take' : 'd\u01b0\u1edbi gate take')));
+
+    // \u2461 net-dir \u2014 huong & target pool (thay card Chain S1)
+    ladderRow('\u2461 conf net-dir \u00b7 h\u01b0\u1edbng & target' + (stale1 ? ' <span style="color:var(--text-warning);">\u26a0c\u0169</span>' : ''), 0.5, 1, [
+      { from: 0.5, to: 0.7, bg: 'var(--surface-1)', label: 'y\u1ebfu', labCol: 'var(--text-muted)' },
+      { from: 0.7, to: 1, bg: 'var(--bg-success)', label: 'CONFIRM (+0.51R vs +0.23R)', labCol: 'var(--text-success)' }
+    ], (s1 ? s1.conf : null), 2,
+      (s1 ? '\u2192 <b style="color:' + dirColor(s1.side === 'LONG' ? 1 : -1) + ';">' + arrow(s1.side === 'LONG' ? 1 : -1) + s1.side + '</b>' : null),
+      (s1 ? 'k\u1ef3 v\u1ecdng gi\u00e1 v\u1ec1 <b>' + (s1.target_kind || '') + ' ' + f(s1.target, 1) + '</b> (' + (s1.dist_atr > 0 ? '+' : '') + f(s1.dist_atr, 1) + ' ATR) \u00b7 filter \u0111\u1ed3ng thu\u1eadn, kh\u00f4ng ph\u1ea3i gate v\u00e0o l\u1ec7nh' : 'ch\u01b0a c\u00f3 \u2014 ch\u1ea1y pooldir/chain'));
+
+    // \u2462 P_cascade \u2014 tai pool (thay card Chain S2)
+    var s2note;
+    if (s2 && s2.active) {
+      var brk = s2.verdict === 'BREAK';
+      s2note = '<b style="color:' + (brk ? 'var(--text-success)' : 'var(--text-warning)') + ';">' + s2.verdict + '</b> \u00b7 zone ' + (s2.zone || '') + ' \u00b7 sweep ' + (s2.sweep_dir || '') + ' ' + s2.bars_ago + ' bar' + (s2.open ? ' (\u0111ang m\u1edf)' : '') + ' \u2192 ch\u1ed1t 50% t\u1ea1i pool k\u1ebf \u00b7 runner 50% SL\u2192BE target 3ATR';
+    } else if (s2) {
+      var swSide = s2.sweep_dir === 'UP' ? 'xuy\u00ean L\u00caN qua BSL ph\u00eda tr\u00ean' : 'xuy\u00ean XU\u1ed0NG qua SSL ph\u00eda d\u01b0\u1edbi';
+      s2note = '<b>WAIT</b> \u2014 pierce g\u1ea7n nh\u1ea5t: ' + swSide + (s2.sweep_at ? ' (' + s2.sweep_at + ')' : '') + ', ' + s2.bars_ago + ' bar tr\u01b0\u1edbc \u2014 h\u1ebft hi\u1ec7u l\u1ef1c' + (stale2 ? ' \u00b7 chain ch\u1ea1y ' + cs.asof : '') + '. Pool K\u1ebe TI\u1ebeP: khi gi\u00e1 ch\u1ea1m ' + ((s1 && s1.target_kind) || 'pool') + ' ' + (s1 ? f(s1.target, 1) : '') + ' \u2192 ch\u1ea1y chain \u0111\u1ec3 quy\u1ebft BREAK/GRAB';
+    } else {
+      s2note = 'ch\u01b0a c\u00f3 d\u1eef li\u1ec7u \u2014 ch\u1ea1y predict_chain.py';
+    }
+    ladderRow('\u2462 P_cascade \u00b7 t\u1ea1i pool', 0, 1, [
+      { from: 0, to: 0.42, bg: 'var(--bg-warning)', label: '\u0111\u00e1nh ng\u01b0\u1ee3c (68%)', labCol: 'var(--text-warning)' },
+      { from: 0.42, to: 0.85, bg: 'var(--surface-1)', label: '\u0111\u1ee9ng ngo\u00e0i (43% event)', labCol: 'var(--text-muted)' },
+      { from: 0.85, to: 1, bg: 'var(--bg-success)', label: 'BREAK (92%)', labCol: 'var(--text-success)' }
+    ], (s2 ? s2.p_cascade : null), 2,
+      (s2 && !s2.active ? '<span style="color:var(--text-muted);">(tham kh\u1ea3o)</span>' : null), s2note);
+
+    // What-if scan (scan_pcascade qua predict_chain): nguong gia -> zone hanh dong, biet TRUOC khi cham pool
+    if (cs && cs.scan && (cs.scan.note_up || cs.scan.note_dn)) {
+      var sc = cs.scan;
+      var fmtRows = function (rows) {
+        return (rows || []).map(function (r) { return f(r[0], 0) + '\u2192P' + f(r[2], 2); }).join(' \u00b7 ');
+      };
+      H.push('<div style="background:var(--surface-1);border-radius:8px;padding:8px 11px;margin:2px 0 10px;font-size:11px;color:var(--text-secondary);line-height:1.6;font-variant-numeric:tabular-nums;">');
+      H.push('<b style="color:var(--text-primary);">What-if P_cascade</b> (close H4 gi\u1ea3 \u0111\u1ecbnh \u2192 P t\u1ea1i pool b\u1ecb xuy\u00ean):');
+      if (sc.note_up) H.push('<br>\u25b2 ph\u00e1 L\u00caN: ' + sc.note_up + (sc.up && sc.up.length ? ' <span style="color:var(--text-muted);">(' + fmtRows(sc.up) + ')</span>' : ''));
+      if (sc.note_dn) H.push('<br>\u25bc ph\u00e1 XU\u1ed0NG: ' + sc.note_dn + (sc.dn && sc.dn.length ? ' <span style="color:var(--text-muted);">(' + fmtRows(sc.dn) + ')</span>' : ''));
+      H.push('</div>');
+    }
+
+    // ket luan + footnote \u2014 theo DUNG ly do cua verdict (khong mac dinh "P thap")
+    var concl;
+    if (take) {
+      concl = '\u2192 P_follow \u2265' + f(gate, 2) + ' \u00b7 EV d\u01b0\u01a1ng \u2192 take ' + sName.toLowerCase();
+    } else if (isFade) {
+      concl = '\u2192 correlate & P_follow <' + f(pf.fade_gate != null ? pf.fade_gate : 0.20, 2) + ' \u2192 v\u00e0o NG\u01af\u1ee2C displacement = ' + sName.toLowerCase() + ' (OOS wr 57% \u00b7 +0.61R)';
+    } else if (_blk && _frm && _pEnough) {
+      concl = '\u2192 P_follow ' + f(pp, 3) + ' \u2265' + f(gate, 2) + ' \u0110\u1ee6 take \u2014 ch\u1ec9 ch\u1edd n\u1ebfn H4 \u0111\u00f3ng x\u00e1c nh\u1eadn (M30 ch\u01b0a ph\u00e1 death/SL th\u00ec v\u00e0o)';
+    } else if (_blk && !_frm) {
+      concl = '\u2192 M30 \u0111\u00e3 ph\u00e1 ' + (_ib && _ib.dead ? 'death-level' : 'SL') + ' \u2014 k\u00e8o h\u1ecfng, b\u1ecf qua displacement n\u00e0y';
+    } else {
+      concl = '\u2192 chu\u1ed7i ' + (ch.cdir < 0 ? 'xu\u1ed1ng' : 'l\u00ean') + ' \u0111\u00e3 s\u00e2u (' + ch.cn + ' sweep) + P_follow <' + f(gate, 2) + ' \u2192 skip';
+    }
+    H.push('<div style="font-size:12px;color:' + vtx + ';margin-top:2px;font-weight:500;">' + concl + '</div>');
+    H.push('<div style="font-size:10px;color:var(--text-muted);margin-top:6px;">*FADE ch\u1ec9 khi correlate (same&gt;0) \u00b7 v\u1ea1ch \u0111en = gi\u00e1 tr\u1ecb hi\u1ec7n t\u1ea1i</div>');
+    H.push('</div></div>');
+
+    // signal status: displacement age + "chua co displacement moi"
+    var sigNew = !!disp.is_new;
+    var sigMsg = sigNew
+      ? ('displacement v\u1eeba h\u00ecnh th\u00e0nh \u00b7 ' + disp.type + ' ' + (disp.date || ''))
+      : ('ch\u01b0a c\u00f3 displacement m\u1edbi \u2014 P_follow kh\u00f3a t\u1eeb ' + disp.type + ' ' + (disp.date || '') + ' (' + disp.bars_ago + ' n\u1ebfn tr\u01b0\u1edbc); m\u1ed7i n\u1ebfn ch\u1ec9 c\u1eadp nh\u1eadt levels');
+    H.push('<div style="display:flex;align-items:flex-start;gap:8px;background:' + (sigNew ? 'var(--bg-success)' : 'var(--surface-1)') + ';border-radius:var(--radius);padding:9px 12px;margin-bottom:14px;font-size:11px;color:' + (sigNew ? 'var(--text-success)' : 'var(--text-secondary)') + ';line-height:1.5;"><span style="flex-shrink:0;">\u24d8</span><span>' + sigMsg + '</span></div>');
+
+    // EV by bin
+    H.push('<div style="margin-bottom:14px;"><div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">EV theo bin P_follow (OOS, stop 2:1)</div>');
+    bins.forEach(function (b) {
+      var cur = pp >= b.lo && pp < (b.hi >= 1 ? 1.0001 : b.hi);
+      var w = Math.abs(b.ev) / maxabs * 50;
+      var pos = b.ev >= 0;
+      var barCol = pos ? '#1D9E75' : '#E24B4A';
+      var valCol = pos ? 'var(--text-success)' : 'var(--text-danger)';
+      var lab = (b.hi >= 1 ? f(b.lo, 1) + '+' : f(b.lo, 1) + '\u2013' + f(b.hi, 1));
+      var labCol = cur ? 'var(--text-accent)' : 'var(--text-muted)';
+      var valShow = cur ? 'var(--text-accent)' : valCol;
+      H.push('<div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;padding:2px 4px;border-radius:6px;' + (cur ? 'background:var(--bg-accent);' : '') + '">');
+      H.push('<div style="width:52px;font-size:11px;color:' + labCol + ';font-variant-numeric:tabular-nums;text-align:right;">' + lab + '</div>');
+      H.push('<div style="flex:1;position:relative;height:16px;"><div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--border-strong);"></div>');
+      if (pos) H.push('<div style="position:absolute;left:50%;top:3px;height:10px;width:' + w + '%;background:' + barCol + ';border-radius:0 3px 3px 0;"></div>');
+      else H.push('<div style="position:absolute;right:50%;top:3px;height:10px;width:' + w + '%;background:' + barCol + ';border-radius:3px 0 0 3px;"></div>');
+      H.push('</div><div style="width:46px;font-size:11px;color:' + valShow + ';font-variant-numeric:tabular-nums;">' + (b.ev >= 0 ? '+' : '\u2212') + f(Math.abs(b.ev), 2) + '</div></div>');
+    });
+    H.push('<div style="font-size:11px;color:var(--text-muted);margin-top:6px;">\u00f4 xanh = bin hi\u1ec7n t\u1ea1i \u00b7 v\u00f9ng take khi P_follow \u2265' + f(gate, 1) + '</div></div>');
+
+    // DR / structure
+    H.push('<div style="background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:14px;">');
+    H.push('<div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;margin-bottom:10px;"><span style="color:var(--text-secondary);">Trigger</span><span style="color:var(--text-primary);">' + disp.type + ' ' + (disp.dir < 0 ? 'down' : 'up') + '-displacement \u00b7 ' + (disp.date ? disp.date + ' \u00b7 ' : '') + disp.bars_ago + ' n\u1ebfn tr\u01b0\u1edbc</span></div>');
+    H.push('<div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px;font-variant-numeric:tabular-nums;">');
+    H.push('<span style="color:var(--text-secondary);">SSL ' + f(dr.ssl, 1) + ' <span style="color:var(--text-success);">\u2212' + f(dr.dssl_atr, 1) + ' ATR \u2193target</span></span>');
+    H.push('<span style="color:var(--text-secondary);">BSL ' + f(dr.bsl, 1) + ' <span style="color:var(--text-danger);">+' + f(dr.dbsl_atr, 1) + ' ATR</span></span></div>');
+    H.push('<div style="position:relative;height:8px;background:var(--surface-0);border:0.5px solid var(--border);border-radius:999px;">');
+    if (dr.tp_pct != null) H.push('<div style="position:absolute;left:' + clampPct(dr.tp_pct) + '%;top:-4px;bottom:-4px;width:2px;background:var(--text-success);"></div>');
+    if (dr.sl_pct != null) H.push('<div style="position:absolute;left:' + clampPct(dr.sl_pct) + '%;top:-4px;bottom:-4px;width:2px;background:var(--text-danger);"></div>');
+    H.push('<div style="position:absolute;left:' + clampPct(dr.price_pct) + '%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--text-accent);border:2px solid var(--surface-2);"></div></div>');
+    H.push('<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:5px;"><span style="color:var(--text-success);">| TP ' + Math.round(clampPct(dr.tp_pct)) + '%</span><span style="color:var(--text-accent);">\u25cf gi\u00e1 ' + Math.round(clampPct(dr.price_pct)) + '%</span><span style="color:var(--text-danger);">SL ' + Math.round(clampPct(dr.sl_pct)) + '% |</span></div>');
+    H.push('<div style="font-size:11px;color:var(--text-muted);margin-top:6px;">c\u00f2n ' + f(dr.dssl_atr, 1) + ' ATR room xu\u1ed1ng SSL \u00b7 kh\u00e1ng c\u1ef1 BSL ngay tr\u00ean (' + f(dr.dbsl_atr, 1) + ' ATR) \u2014 TP 2ATR d\u1eebng tr\u01b0\u1edbc pool</div>');
+    H.push('</div>');
+
+    // levels
+    H.push('<div style="background:var(--surface-1);border-radius:12px;padding:12px 14px;margin-bottom:14px;">');
+    H.push('<div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Levels ' + (take ? '\u00b7 v\u00e0o l\u1ec7nh' : 'tham kh\u1ea3o (v\u00e0o khi P_follow \u2265' + f(gate, 2) + ')') + ' \u00b7 R:R ' + (plan.rr || '2:1') + '</div>');
+    H.push('<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;text-align:center;">');
+    H.push('<div><div style="font-size:11px;color:var(--text-muted);">Entry</div><div style="font-size:15px;font-weight:500;font-variant-numeric:tabular-nums;">' + f(plan.entry, 1) + '</div></div>');
+    H.push('<div><div style="font-size:11px;color:var(--text-muted);">TP +2ATR</div><div style="font-size:15px;font-weight:500;color:var(--text-success);font-variant-numeric:tabular-nums;">' + f(plan.tp, 1) + '</div></div>');
+    H.push('<div><div style="font-size:11px;color:var(--text-muted);">SL \u22121ATR</div><div style="font-size:15px;font-weight:500;color:var(--text-danger);font-variant-numeric:tabular-nums;">' + f(plan.sl, 1) + '</div></div>');
+    H.push('</div></div>');
+
+    // (card Chain + Ladder rieng da GOP vao card quyet dinh hop nhat o tren)
+
+    // --- TONG HOP: tat ca displacement gan day + P_follow ---
+    var cands = d.cands || [];
+    if (cands.length) {
+      H.push('<div style="margin-top:14px;padding-top:10px;border-top:0.5px solid var(--border);">');
+      H.push('<div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Tổng hợp ' + cands.length + ' displacement gần đây (mới nhất trước) · ★ = P_follow ≥ ' + f(gate, 2) + '</div>');
+      cands.forEach(function (c) {
+        var isTake = c.take;
+        var pfCol = isTake ? 'var(--text-success)' : 'var(--text-muted)';
+        var w = clampPct(c.pf);
+        H.push('<div style="display:flex;align-items:center;gap:8px;font-size:12px;padding:2.5px 0;">');
+        H.push('<span style="width:30px;color:var(--text-muted);font-variant-numeric:tabular-nums;">d-' + c.bars_ago + '</span>');
+        H.push('<span style="width:36px;font-weight:600;">' + c.type + '</span>');
+        H.push('<span style="width:14px;color:' + dirColor(c.dir) + ';">' + arrow(c.dir) + '</span>');
+        H.push('<div style="flex:1;height:6px;background:var(--surface-1);border-radius:3px;overflow:hidden;"><div style="width:' + w + '%;height:100%;background:' + pfCol + ';"></div></div>');
+        H.push('<span style="width:42px;text-align:right;font-variant-numeric:tabular-nums;color:' + pfCol + ';">' + f(c.pf, 3) + '</span>');
+        H.push('<span style="width:16px;color:var(--text-success);">' + (isTake ? '★' : '') + '</span>');
+        H.push('</div>');
+      });
+      H.push('</div>');
+    }
+
+    // footer
+    H.push('<div style="font-size:11px;color:var(--text-muted);line-height:1.6;border-top:0.5px solid var(--border);padding-top:10px;">H\u01b0\u1edbng = displacement; P_follow = P(l\u1ec7nh 2:1 th\u1eafng, entry t\u1ea1i n\u1ebfn ph\u00e1t hi\u1ec7n). Take \u2265' + f(gate, 2) + ' OOS: win ' + Math.round(st.take_wr * 100) + '% \u00b7 EV +' + f(st.take_mean, 2) + 'R/l\u1ec7nh \u00b7 WF-AUC ' + f(st.wf_auc, 3) + '.</div>');
+
+    H.push('</div>');
+    root.innerHTML = H.join('');
+  }
+
+  window.renderPooldir = render;
+  if (window.GC_DATA) render(window.GC_DATA);
+})();
+</script>
+</body>
+</html>
