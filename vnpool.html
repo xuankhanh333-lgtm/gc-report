@@ -353,7 +353,7 @@ function makeRow(r){
   const verdictHtml = r.err ? `<span class="pill p-err" title="${r.err}">ERR</span>`
     : `<span class="${pillCls(r.verdict)}">${r.verdict==='-'?'không tín hiệu':r.verdict}</span>`;
   tr.innerHTML = `
-    <td class="tk">${r.leader?'<span title="Leader — luôn hiện, miễn mọi filter. Phái sinh: SHORT là lệnh thật.">📌</span> ':''}${r.best?'<span class="best" title="kèo tốt nhất phiên (EV cao nhất)">★</span> ':''}${r.ticker}${r.vn30?'<span class="b30" title="thành viên rổ VN30 — thể hiện được kèo qua phái sinh VN301!">30</span>':''}${r.sym==='HNX:VN301!'&&D.basis?`<span class="bchip ${D.basis.diff>=0?'long':'short'}" title="basis = VN30F ${D.basis.fut} − VN30 cash ${D.basis.cash}. Dương = phái sinh premium (hưng phấn), âm = discount (phòng thủ). Chạy giữa phiên: 2 giá có thể lệch nhịp cập nhật.">basis ${D.basis.diff>0?'+':''}${D.basis.diff}đ</span>`:''}${r.exch!=='HOSE'?`<span class="x">${r.exch}</span>`:''}${r.thin?' <span class="warnflag" title="lịch sử mỏng (<600 bar H4) — model train sẵn nhưng pool/chain nông, đọc P kém tin cậy">⚠</span>':''}<div class="nm" title="${r.name}">${r.nganh}</div></td>
+    <td class="tk">${r.leader?'<span title="Leader — luôn hiện, miễn mọi filter. Phái sinh: SHORT là lệnh thật.">📌</span> ':''}${r.best?'<span class="best" title="kèo tốt nhất phiên (EV cao nhất)">★</span> ':''}<span title="${r.name}">${r.ticker}</span>${r.vn30?'<span class="b30" title="thành viên rổ VN30 — thể hiện được kèo qua phái sinh VN301!">30</span>':''}${r.sym==='HNX:VN301!'&&D.basis?`<span class="bchip ${D.basis.diff>=0?'long':'short'}" title="basis = VN30F ${D.basis.fut} − VN30 cash ${D.basis.cash}. Dương = phái sinh premium (hưng phấn), âm = discount (phòng thủ). Chạy giữa phiên: 2 giá có thể lệch nhịp cập nhật.">${D.basis.diff>0?'+':''}${D.basis.diff}đ</span>`:''}${r.exch!=='HOSE'?`<span class="x">${r.exch}</span>`:''}${r.thin?' <span class="warnflag" title="lịch sử mỏng (<600 bar H4) — model train sẵn nhưng pool/chain nông, đọc P kém tin cậy">⚠</span>':''}<div class="nm" title="${r.name}">${r.nganh}</div></td>
     <td class="num">${fmt(r.close)}</td>
     <td>${verdictHtml}</td>
     <td>${meterPf(r.pf)}</td>
@@ -438,7 +438,7 @@ top10.forEach((r,i)=>{
   const c = document.createElement('div');
   c.className='card'; c.tabIndex=0; c.setAttribute('role','button');
   c.innerHTML = `
-    <div class="l1"><span class="rk">#${i+1}</span><span class="t">${r.ticker}</span>${r.vn30?'<span class="b30" title="thành viên rổ VN30">30</span>':''}${r.best?'<span class="best">★</span>':''}<span class="num px">${fmt(r.close)}</span><span class="ng">${r.nganh}</span></div>
+    <div class="l1"><span class="rk">#${i+1}</span><span class="t" title="${r.name}">${r.ticker}</span>${r.vn30?'<span class="b30" title="thành viên rổ VN30">30</span>':''}${r.best?'<span class="best">★</span>':''}<span class="num px">${fmt(r.close)}</span><span class="ng">${r.nganh}</span></div>
     <div class="l2"><span class="${pillCls(r.verdict)}">${r.verdict}</span>${dirArrow(r.trade_dir)}<span class="num">${r.pf?.toFixed(3)??''}</span>${evHtml(r)}</div>
     <div class="l2" style="font-size:11px;color:var(--ink3)">${r.vol_pct!=null?`%KL <span class="num ${r.vol_pct>=0?'long':'short'}">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`:''}${r.vol_trend!=null?` · trend <span class="num ${r.vol_trend>=0?'long':'short'}">${r.vol_trend>0?'+':''}${r.vol_trend}%</span>`:''}</div>`;
   const go = ()=>{
