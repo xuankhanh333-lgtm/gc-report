@@ -211,6 +211,7 @@ const COLS = [
   {k:'verdict',t:'Verdict', type:'str', get:r=>r.verdict, ph:'!skip'},
   {k:'pf',   t:'P_follow',  type:'num', get:r=>r.pf, ph:'vd <0.2'},
   {k:'ev',   t:'EV≈',       type:'num', get:r=>r.ev_gc},
+  {k:'score',t:'Score',     type:'num', get:r=>r.score>-5?r.score:null, ph:'vd >.8'},
   {k:'keo',  t:'Kèo',       type:'str', get:r=>(r.trade_dir||'')+' '+(r.kind||''), ph:'long/short'},
   {k:'entry',t:'Entry',     type:'num', get:r=>r.entry},
   {k:'sl',   t:'SL',        type:'num', get:r=>r.sl},
@@ -225,7 +226,7 @@ const COLS = [
   {k:'cap',  t:'Vốn hóa',   type:'num', get:r=>r.cap_ty, ph:'tỷ'},
 ];
 const NCOL = COLS.length;
-let sortKey='vpct', sortDir=-1;        // mac dinh: %KL giam dan; click cot 3 lan ve thu tu score
+let sortKey=null, sortDir=0;           // mac dinh: thu tu SCORE (giong Top 10); click cot de doi sort
 const colFil = {};                      // k -> chuoi filter tho
 
 // so: ">5" "<0.2" ">=.4" "=23100"; so tran = ">=so". chuoi: contains (khong dau phan biet)
@@ -289,9 +290,6 @@ for (const c of COLS){
   fr.appendChild(td);
 }
 thead.appendChild(fr);
-// danh dau sort mac dinh (%KL giam dan)
-const th0 = hr.querySelector('th[data-k="vpct"] .arr');
-if (th0) th0.textContent = '▼';
 // do chieu cao hang tieu de de hang filter dinh ngay ben duoi (top:var(--h1))
 requestAnimationFrame(()=>document.documentElement.style.setProperty('--h1',
   hr.getBoundingClientRect().height + 'px'));
@@ -350,6 +348,7 @@ function makeRow(r){
     <td>${verdictHtml}</td>
     <td>${meterPf(r.pf)}</td>
     <td>${evHtml(r)}</td>
+    <td class="num" title="score = EV + event + dòng tiền − thin (thứ tự mặc định của bảng, giống Top 10)">${r.score>-5?r.score.toFixed(2):''}</td>
     <td>${dirHtml(r.trade_dir)}${r.kind?` <span class="small">d-${r.bars_ago} ${r.kind}</span>`:''}</td>
     <td class="num">${fmt(r.entry)}</td><td class="num">${fmt(r.sl)}</td><td class="num">${fmt(r.tp)}</td>
     <td>${r.net_side?`${dirHtml(r.net_side)} <span class="num">${r.net_conf??''}</span>`:''}</td>
