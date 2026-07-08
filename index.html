@@ -39,10 +39,13 @@
       <button class="tab" id="btn-h4" onclick="show('h4')">H4-closed</button>
       <button class="tab" id="btn-ict" onclick="show('ict')">ICT-ML</button>
       <button class="tab" id="btn-pool" onclick="show('pool')">Pooldir</button>
-      <button class="tab" id="btn-3p" onclick="show('3p')">3P Trend</button>
-      <button class="tab" id="btn-sc" onclick="show('sc')">GC Scorecard</button>
       <button class="tab" id="btn-vn" onclick="show('vn')">Vnpool</button>
       <button class="refresh" id="btn-refresh" onclick="refreshNow()">&#x21bb; Làm mới</button>
+    </div>
+    <div class="tabs" id="pool-subtabs" style="display:none">
+      <button class="tab sub" id="btn-pool-dash" onclick="show('pool')">Dashboard</button>
+      <button class="tab sub" id="btn-pool-3p" onclick="show('3p')">3P Trend</button>
+      <button class="tab sub" id="btn-pool-sc" onclick="show('sc')">Scorecard</button>
     </div>
     <div class="tabs" id="vn-subtabs" style="display:none">
       <button class="tab sub" id="btn-vn-dash" onclick="show('vn')">Dashboard</button>
@@ -92,9 +95,12 @@
       document.getElementById('btn-rt').classList.toggle('active', k === 'rt');
       document.getElementById('btn-h4').classList.toggle('active', k === 'h4');
       document.getElementById('btn-ict').classList.toggle('active', k === 'ict');
-      document.getElementById('btn-pool').classList.toggle('active', k === 'pool');
-      document.getElementById('btn-3p').classList.toggle('active', k === '3p');
-      document.getElementById('btn-sc').classList.toggle('active', k === 'sc');
+      var poolGrp = (k === 'pool' || k === '3p' || k === 'sc');
+      document.getElementById('btn-pool').classList.toggle('active', poolGrp);
+      document.getElementById('pool-subtabs').style.display = poolGrp ? 'flex' : 'none';
+      document.getElementById('btn-pool-dash').classList.toggle('active', k === 'pool');
+      document.getElementById('btn-pool-3p').classList.toggle('active', k === '3p');
+      document.getElementById('btn-pool-sc').classList.toggle('active', k === 'sc');
       var vnGrp = (k === 'vn' || k === 'vsc');
       document.getElementById('btn-vn').classList.toggle('active', vnGrp);
       document.getElementById('vn-subtabs').style.display = vnGrp ? 'flex' : 'none';
@@ -107,7 +113,7 @@
       refreshMs = (k === 'h4' || k === 'pool' || k === '3p' || k === 'sc' || k === 'vn' || k === 'vsc') ? 900000 : 300000;
       nextAt = Date.now() + refreshMs;
       var mins = (k === 'h4' || k === 'pool' || k === '3p' || k === 'sc' || k === 'vn' || k === 'vsc') ? '15' : '5';
-      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · H4 (3 model)' : (k === '3p') ? '3P Trend · 15 ngày' : (k === 'sc') ? 'Forward Scorecard · pooldir' : (k === 'vn') ? 'Vnpool · Dashboard (quét EOD)' : (k === 'vsc') ? 'Vnpool · Forward Scorecard' : 'RT · M15';
+      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · Dashboard (3 model)' : (k === '3p') ? 'Pooldir · 3P Trend · 15 ngày' : (k === 'sc') ? 'Pooldir · Forward Scorecard' : (k === 'vn') ? 'Vnpool · Dashboard (quét EOD)' : (k === 'vsc') ? 'Vnpool · Forward Scorecard' : 'RT · M15';
       document.getElementById('hint').textContent =
         'Đang xem: ' + labl + ' · trang tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
       tick();
