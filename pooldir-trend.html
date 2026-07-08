@@ -284,6 +284,8 @@ const PANELS=[];
 })();
 
 // ===== crosshair dong bo 4 panel =====
+const liveByBar={};
+LIVE.forEach(r=>{ liveByBar[nearIdx(r.t)]=r; });
 PANELS.forEach(P=>{
   const r=document.createElementNS('http://www.w3.org/2000/svg','rect');
   r.setAttribute('x',PADL);r.setAttribute('y',P.padT);
@@ -299,6 +301,9 @@ PANELS.forEach(P=>{
     html+=`<div class="row"><span>close</span><b>${bars[bi][1]}</b></div>`;
     if(rep) html+=`<div class="row"><span>P_follow (${rep.e.typ} ${rep.e.side==='L'?'L':'S'} ★${rep.e.v})</span><b>${rep.e.pf.toFixed(3)}</b></div>`;
     if(up!=null) html+=`<div class="row"><span>p_up net-dir</span><b>${up.toFixed(3)}</b></div>`;
+    const lvb=liveByBar[bi];
+    if(!rep && lvb && lvb.pf!=null) html+=`<div class="row"><span>P_follow LIVE${lvb.v?' · '+lvb.v:''}</span><b>${lvb.pf.toFixed(3)}</b></div>`;
+    if(up==null && lvb && lvb.pup!=null) html+=`<div class="row"><span>p_up net-dir LIVE</span><b>${lvb.pup.toFixed(3)}</b></div>`;
     if(pc) html+=`<div class="row"><span>P_cascade ${pc.dir==='U'?'▲':'▼'} ${pc.out}</span><b>${pc.p.toFixed(3)}</b></div>`;
     showTT(html,e.clientX,e.clientY);
   });
