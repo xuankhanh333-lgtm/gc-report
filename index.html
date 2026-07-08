@@ -39,6 +39,7 @@
       <button class="tab" id="btn-ict" onclick="show('ict')">ICT-ML</button>
       <button class="tab" id="btn-pool" onclick="show('pool')">Pooldir</button>
       <button class="tab" id="btn-3p" onclick="show('3p')">3P Trend</button>
+      <button class="tab" id="btn-sc" onclick="show('sc')">GC Scorecard</button>
       <button class="tab" id="btn-vn" onclick="show('vn')">VN Stocks</button>
       <button class="refresh" id="btn-refresh" onclick="refreshNow()">&#x21bb; Làm mới</button>
     </div>
@@ -80,7 +81,7 @@
     }
     function load(k, isAuto){
       cur = k;
-      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : (k === 'pool') ? 'pooldir.html' : (k === '3p') ? 'pooldir-trend.html' : (k === 'vn') ? 'vnpool.html' : 'rt.html';
+      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : (k === 'pool') ? 'pooldir.html' : (k === '3p') ? 'pooldir-trend.html' : (k === 'sc') ? 'pooldir-scorecard.html' : (k === 'vn') ? 'vnpool.html' : 'rt.html';
       document.getElementById('frame').src = base + '?embed=1&t=' + Date.now();
       lastLoadAt = Date.now();
       document.getElementById('btn-rt').classList.toggle('active', k === 'rt');
@@ -88,15 +89,16 @@
       document.getElementById('btn-ict').classList.toggle('active', k === 'ict');
       document.getElementById('btn-pool').classList.toggle('active', k === 'pool');
       document.getElementById('btn-3p').classList.toggle('active', k === '3p');
+      document.getElementById('btn-sc').classList.toggle('active', k === 'sc');
       document.getElementById('btn-vn').classList.toggle('active', k === 'vn');
       // M15/H4 close chips chi hop le cho RT/H4 (GC). ICT-ML theo H1; VN theo phien HOSE.
       var gc = (k !== 'ict' && k !== 'vn');
       var cm = document.getElementById('chip-m15'); if (cm) cm.style.display = gc ? 'flex' : 'none';
       var ch = document.getElementById('chip-h4');  if (ch) ch.style.display = gc ? 'flex' : 'none';
-      refreshMs = (k === 'h4' || k === 'pool' || k === '3p' || k === 'vn') ? 900000 : 300000;
+      refreshMs = (k === 'h4' || k === 'pool' || k === '3p' || k === 'sc' || k === 'vn') ? 900000 : 300000;
       nextAt = Date.now() + refreshMs;
-      var mins = (k === 'h4' || k === 'pool' || k === '3p' || k === 'vn') ? '15' : '5';
-      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · H4 (3 model)' : (k === '3p') ? '3P Trend · 15 ngày' : (k === 'vn') ? 'VN Stocks · vnpool (quét EOD)' : 'RT · M15';
+      var mins = (k === 'h4' || k === 'pool' || k === '3p' || k === 'sc' || k === 'vn') ? '15' : '5';
+      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · H4 (3 model)' : (k === '3p') ? '3P Trend · 15 ngày' : (k === 'sc') ? 'Forward Scorecard · pooldir' : (k === 'vn') ? 'VN Stocks · vnpool (quét EOD)' : 'RT · M15';
       document.getElementById('hint').textContent =
         'Đang xem: ' + labl + ' · trang tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
       tick();
