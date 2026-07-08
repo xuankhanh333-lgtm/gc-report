@@ -35,11 +35,11 @@
       <span class="sub">RT ~15 phút &middot; H4 ~1 giờ &middot; ICT-ML ~1 giờ &middot; Pooldir ~H4 &middot; VN EOD</span>
     </div>
     <div class="tabs">
-      <button class="tab active" id="btn-rt" onclick="show('rt')">RT &middot; M15</button>
+      <button class="tab active" id="btn-vn" onclick="show('vn')">Vnpool</button>
+      <button class="tab" id="btn-pool" onclick="show('pool')">Pooldir</button>
+      <button class="tab" id="btn-rt" onclick="show('rt')">RT &middot; M15</button>
       <button class="tab" id="btn-h4" onclick="show('h4')">H4-closed</button>
       <button class="tab" id="btn-ict" onclick="show('ict')">ICT-ML</button>
-      <button class="tab" id="btn-pool" onclick="show('pool')">Pooldir</button>
-      <button class="tab" id="btn-vn" onclick="show('vn')">Vnpool</button>
       <button class="refresh" id="btn-refresh" onclick="refreshNow()">&#x21bb; Làm mới</button>
     </div>
     <div class="tabs" id="pool-subtabs" style="display:none">
@@ -60,7 +60,7 @@
   <iframe class="frame" id="frame" src="about:blank" title="report"></iframe>
   <div class="hint" id="hint">Đang tải…</div>
   <script>
-    var cur = 'rt', timer = null, refreshMs = 300000, nextAt = 0, started = false, lastLoadAt = 0;
+    var cur = 'vn', timer = null, refreshMs = 300000, nextAt = 0, started = false, lastLoadAt = 0;
     function p2(n){ return (n < 10 ? '0' : '') + n; }
     function fmtTime(){
       var d = new Date();
@@ -139,7 +139,7 @@
     window.addEventListener('pageshow', function(e){
       if (e && e.persisted) onReturn();   // khoi phuc tu bfcache
     });
-    load('rt', false);
+    load('vn', false);
   </script>
 </body>
 </html>
