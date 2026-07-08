@@ -306,11 +306,13 @@ PANELS.forEach(P=>{
     if(up==null && lvb && lvb.pup!=null) html+=`<div class="row"><span>p_up net-dir LIVE</span><b>${lvb.pup.toFixed(3)}</b></div>`;
     if(pc) html+=`<div class="row"><span>P_cascade ${pc.dir==='U'?'▲':'▼'} ${pc.out}</span><b>${pc.p.toFixed(3)}</b></div>`;
     let recent=[];
-    for(let j=bi;j>=0&&recent.length<5;j--){ if(pfByBar[j]) pfByBar[j].forEach(e2=>recent.push({e2,j})); }
-    recent=recent.slice(0,5);
-    if(recent.length){ html+=`<div class="m">Tổng hợp 5 displacement gần đây (mới nhất trước) · ★ = P_follow ≥ 0.40</div>`;
-      recent.forEach(o=>{ const e2=o.e2;
-        html+=`<div class="row"><span>&nbsp;d-${bi-o.j} · <b>${e2.typ}</b> ${e2.side==='L'?'↑':'↓'} ★${e2.v}</span><span><b>${e2.pf.toFixed(3)}</b>${e2.pf>=0.40?' ★':''}</span></div>`; }); }
+    for(let j=bi;j>=0&&bi-j<=10;j--){ if(pfByBar[j]) pfByBar[j].forEach(e2=>recent.push({e2,j})); }
+    recent.sort((a,b)=> b.j-a.j || b.e2.pf-a.e2.pf);   // giong predict_dir: (-bi, -pf)
+    const nAll=recent.length, shown=recent.slice(0,8);
+    if(nAll){ html+=`<div class="m">Tổng hợp ${nAll} displacement trong 10 nến (mới nhất trước) · ★ = P_follow ≥ 0.40</div>`;
+      shown.forEach(o=>{ const e2=o.e2;
+        html+=`<div class="row"><span>&nbsp;d-${bi-o.j} · <b>${e2.typ}</b> ${e2.side==='L'?'↑':'↓'} ★${e2.v}</span><span><b>${e2.pf.toFixed(3)}</b>${e2.pf>=0.40?' ★':''}</span></div>`; });
+      if(nAll>8) html+=`<div class="m">… +${nAll-8} displacement nữa trong cửa sổ</div>`; }
     showTT(html,e.clientX,e.clientY);
   });
   r.addEventListener('mouseleave',()=>{ hideTT();
