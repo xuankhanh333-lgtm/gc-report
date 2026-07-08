@@ -305,14 +305,12 @@ PANELS.forEach(P=>{
     if(!rep && lvb && lvb.pf!=null) html+=`<div class="row"><span>P_follow LIVE${lvb.v?' · '+lvb.v:''}</span><b>${lvb.pf.toFixed(3)}</b></div>`;
     if(up==null && lvb && lvb.pup!=null) html+=`<div class="row"><span>p_up net-dir LIVE</span><b>${lvb.pup.toFixed(3)}</b></div>`;
     if(pc) html+=`<div class="row"><span>P_cascade ${pc.dir==='U'?'▲':'▼'} ${pc.out}</span><b>${pc.p.toFixed(3)}</b></div>`;
-    const evsHere=pfByBar[bi];
-    if(evsHere&&evsHere.length>1){ html+=`<div class="m">${evsHere.length} displacement tại bar này:</div>`;
-      evsHere.forEach(e2=>{ html+=`<div class="row"><span>&nbsp;· ${e2.typ} ${e2.side==='L'?'LONG':'SHORT'} ★${e2.v}</span><span>${e2.pf.toFixed(3)}</span></div>`; }); }
-    let older=[];
-    for(let j=bi-1;j>=0&&older.length<3;j--){ if(pfByBar[j]) pfByBar[j].forEach(e2=>older.push({e2,j})); }
-    older=older.slice(0,3);
-    if(older.length){ html+=`<div class="m">displacement trước đó:</div>`;
-      older.forEach(o=>{ html+=`<div class="row"><span>&nbsp;−${bi-o.j} bar · ${fdt(o.e2.t)} · ${o.e2.typ} ${o.e2.side==='L'?'LONG':'SHORT'} ★${o.e2.v}</span><span>${o.e2.pf.toFixed(3)}</span></div>`; }); }
+    let recent=[];
+    for(let j=bi;j>=0&&recent.length<5;j--){ if(pfByBar[j]) pfByBar[j].forEach(e2=>recent.push({e2,j})); }
+    recent=recent.slice(0,5);
+    if(recent.length){ html+=`<div class="m">Tổng hợp 5 displacement gần đây (mới nhất trước) · ★ = P_follow ≥ 0.40</div>`;
+      recent.forEach(o=>{ const e2=o.e2;
+        html+=`<div class="row"><span>&nbsp;d-${bi-o.j} · <b>${e2.typ}</b> ${e2.side==='L'?'↑':'↓'} ★${e2.v}</span><span><b>${e2.pf.toFixed(3)}</b>${e2.pf>=0.40?' ★':''}</span></div>`; }); }
     showTT(html,e.clientX,e.clientY);
   });
   r.addEventListener('mouseleave',()=>{ hideTT();
