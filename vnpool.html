@@ -301,8 +301,8 @@ const fmtM = v => v==null?'':(v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFix
 const COLS = [
   {k:'ma',   t:'Mã',        type:'str', get:r=>r.ticker+' '+r.nganh+(r.vn30?' vn30':''), ph:'mã/ngành/vn30'},
   {k:'gia',  t:'Giá',       type:'num', get:r=>r.close},
-  {k:'vnay', t:'KL nay',    type:'num', get:r=>r.vol_today/1e6, ph:'triệu, >5'},
-  {k:'vtr',  t:'KL trend 10p', type:'num', get:r=>r.vol_trend, ph:'vd >20'},
+  {k:'vnay', t:'KL',        type:'num', get:r=>r.vol_today/1e6, ph:'triệu, >5'},
+  {k:'vtr',  t:'KL trend', type:'num', get:r=>r.vol_trend, ph:'vd >20'},
   {k:'dr',   t:'DR',        type:'num', get:r=>r.dr_pos, ph:'% 0-100'},
   {k:'verdict',t:'Verdict', type:'str', get:r=>r.verdict, ph:'!skip'},
   {k:'pf',   t:'P_follow',  type:'num', get:r=>r.pf, ph:'vd <0.2'},
