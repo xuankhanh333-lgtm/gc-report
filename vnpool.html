@@ -534,8 +534,7 @@ top10.forEach((r,i)=>{
   c.className='card'; c.tabIndex=0; c.setAttribute('role','button');
   c.innerHTML = `
     <div class="l1"><span class="rk">#${i+1}</span><span class="t" title="${r.name}">${r.ticker}</span>${r.vn30?'<span class="b30" title="thành viên rổ VN30">30</span>':''}${r.best?`<span class="best${r.best>1?' b23':''}" title="kèo tốt #${r.best} phiên này (theo score)">★</span>`:''}<span class="num px">${fmt(r.close)}</span><span class="ng">${r.nganh}</span></div>
-    <div class="l2"><span class="${pillCls(r.verdict)}">${r.verdict}</span>${dirArrow(r.trade_dir)}<span class="num" title="${r.ev_gc==null?'':`EV tham chiếu bin GC: ${r.ev_gc>0?'+':''}${r.ev_gc.toFixed(2)}R`}">${r.pf?.toFixed(3)??''}</span></div>
-    <div class="l2" style="font-size:11px;color:var(--ink3)">${r.vol_pct!=null?`%KL <span class="num ${r.vol_pct>=0?'long':'short'}">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`:''}${r.vol_trend!=null?` · trend <span class="num ${r.vol_trend>=0?'long':'short'}">${r.vol_trend>0?'+':''}${r.vol_trend}%</span>`:''}</div>`;
+    <div class="l2"><span class="${pillCls(r.verdict)}">${r.verdict}</span>${dirArrow(r.trade_dir)}<span class="num" title="${r.ev_gc==null?'':`EV tham chiếu bin GC: ${r.ev_gc>0?'+':''}${r.ev_gc.toFixed(2)}R`}">${r.pf?.toFixed(3)??''}</span>${r.vol_pct!=null?` <span class="num ${r.vol_pct>=0?'long':'short'}" title="%KL — KL hôm nay so KLTB 5 phiên đã đóng">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`:''}${r.vol_trend!=null?` <span class="num ${r.vol_trend>=0?'long':'short'}" title="KL trend 10 phiên — TB 3 phiên cuối so TB 10 phiên">${r.vol_trend>0?'+':''}${r.vol_trend}%</span>`:''}</div>`;
   const go = ()=>{
     mode='list'; filter='all';
     document.querySelectorAll('.chip.mode').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.m==='list')));
