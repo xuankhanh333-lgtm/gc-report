@@ -269,9 +269,7 @@ const COLS = [
   {k:'pftr', t:'pf trend',  type:'num', get:r=>pfDelta(r), ph:'Δ vd >.1'},
   {k:'score',t:'Score',     type:'num', get:r=>r.score>-5?r.score:null, ph:'vd >.8'},
   {k:'tru',  t:'Trụ',       type:'num', get:r=>r.streak||null, ph:'vd >2'},
-  {k:'entry',t:'Entry',     type:'num', get:r=>r.entry},
-  {k:'sl',   t:'SL',        type:'num', get:r=>r.sl},
-  {k:'tp',   t:'TP',        type:'num', get:r=>r.tp},
+  {k:'entry',t:'Entry/SL/TP',type:'num', get:r=>r.entry},
   {k:'net',  t:'net h12',   type:'str', get:r=>(r.net_side||'')+' '+(r.net_conf??''), ph:'long/short'},
   {k:'nettr',t:'net trend', type:'num', get:r=>netDelta(r), ph:'Δ ±'},
   {k:'ccp',  t:'P_cascade', type:'num', get:r=>r.cc_p, ph:'vd >.85'},
@@ -459,7 +457,7 @@ function makeRow(r){
     <td class="num" title="score = EV + verdict pool + dòng tiền − thin (thứ tự mặc định của bảng, giống Top 10)">${r.score>-5?r.score.toFixed(2):''}</td>
     <td class="num" title="số phiên liên tiếp giữ nguyên kèo (verdict + hướng), tính cả hôm nay — đứt khi vắng rổ / đổi verdict / đổi phe">${r.streak>1?'×'+r.streak:''}</td>
 
-    <td class="num">${fmt(r.entry)}</td><td class="num">${fmt(r.sl)}</td><td class="num">${fmt(r.tp)}</td>
+    <td class="num">${r.entry==null?'':`<span class="drwrap" style="align-items:flex-end"><span>${fmt(r.entry)}</span><span class="zone"><span class="short">SL ${fmt(r.sl)}</span></span><span class="zone"><span class="long">TP ${fmt(r.tp)}</span></span></span>`}</td>
     <td>${r.net_side?`${dirArrow(r.net_side)} <span class="num">${r.net_conf??''}</span>`:''}</td>
     <td title="net h12 cac phien (cu -> moi, +LONG/−SHORT): ${netSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du'} · truc giua = 0">${sparkNet(r)}</td>
     <td>${ccHtml(r)}</td>
