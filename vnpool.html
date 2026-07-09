@@ -191,6 +191,7 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
   </div></div>
   <div class="tile" id="t-vnx-wrap" style="display:none"><div class="k">Nhịp VNINDEX</div><div class="v" id="t-vnx"></div></div>
   <div class="tile" id="t-vn30-wrap" style="display:none"><div class="k">Nhịp VN30F</div><div class="v" id="t-vn30"></div></div>
+  <div class="tile" id="t-sect-wrap" style="display:none"><div class="k">Nhịp ngành</div><div class="v v30" id="t-sect"></div></div>
 </div>
 
 <div id="pulse" style="display:none"></div>
@@ -232,11 +233,19 @@ document.getElementById('t-fade').textContent = D.n_fade;
 document.getElementById('t-ev').textContent = D.n_ev;
 // tile Nhip VN30F (user 2026-07-09): gia tri = d% VN30F, tooltip = day du facts2
 (function(){
+  const arr = (D.pulse||{}).sectors||[];
+  if (!arr.length) return;
+  const el = document.getElementById('t-sect'), w = document.getElementById('t-sect-wrap');
+  el.innerHTML = arr.map(x=>`<span title="${x.txt}"><b>${x.ng}</b>: ${x.read}</span>`).join(' · ');
+  w.title = 'nhịp từng ngành (chỉ ngành tín hiệu rõ) — xem đủ ở view Theo ngành';
+  w.style.display = '';
+})();
+(function(){
   const f1 = (D.pulse||{}).facts||'';
-  const r1 = (D.pulse||{}).read1||'';
+  const r1 = [(D.pulse||{}).read1, (D.pulse||{}).read].filter(Boolean).join(' · ');
   if (!r1 && !f1) return;
   const el = document.getElementById('t-vnx'), w = document.getElementById('t-vnx-wrap');
-  el.textContent = r1 || '—';
+  el.textContent = r1 ? ('🫀 ' + r1) : '—';
   el.classList.add('v30');
   w.title = [f1, r1].filter(Boolean).join('\n');
   w.style.display = '';
@@ -576,15 +585,7 @@ top10.forEach((r,i)=>{
 });
 if (!top10.length) document.getElementById('top10').style.display='none';
 
-// Nhip phien — tom tat tu dong (luat co dinh trong gen_dashboard._pulse)
-if (D.pulse){
-  const el = document.getElementById('pulse');
-  const sect = (D.pulse.sectors||[]).map(s=>`<span title="${s.txt}"><b>${s.ng}</b>: ${s.read}</span>`).join(' · ');
-  // so lieu facts VNINDEX/VN30F chuyen vao tooltip cua dong dien giai (user 2026-07-09)
-  const facts = [D.pulse.facts, D.pulse.facts2].filter(Boolean).join('\n');
-  el.innerHTML = `<span class="rd" title="${facts}\n— diễn giải tự động theo luật cố định: hướng giá × tính chất KL + phân kỳ trụ–chợ + basis + độ rộng kèo + kết cục pool">🫀 ${D.pulse.read}</span>${sect?`<br><span class="fx">ngành: ${sect}</span>`:''}`;
-  el.style.display = 'block';
-}
+// banner Nhip phien da giai the (user 2026-07-09): dien giai chia het len 4 card dau trang
 
 // Bien dong vs phien truoc — noi len / sut xuong, bam chip de loc ma trong bang
 (function(){
