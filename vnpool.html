@@ -269,6 +269,7 @@ const COLS = [
   {k:'gia',  t:'Giá',       type:'num', get:r=>r.close},
   {k:'vnay', t:'KL nay',    type:'num', get:r=>r.vol_today/1e6, ph:'triệu, >5'},
   {k:'vtr',  t:'KL trend 10p', type:'num', get:r=>r.vol_trend, ph:'vd >20'},
+  {k:'dr',   t:'DR',        type:'num', get:r=>r.dr_pos, ph:'% 0-100'},
   {k:'verdict',t:'Verdict', type:'str', get:r=>r.verdict, ph:'!skip'},
   {k:'pf',   t:'P_follow',  type:'num', get:r=>r.pf, ph:'vd <0.2'},
   {k:'pftr', t:'pf trend',  type:'num', get:r=>pfDelta(r), ph:'Δ vd >.1'},
@@ -276,7 +277,6 @@ const COLS = [
   {k:'nettr',t:'net trend', type:'num', get:r=>netDelta(r), ph:'Δ ±'},
   {k:'ccp',  t:'P_cascade', type:'num', get:r=>r.cc_p, ph:'vd >.85'},
   {k:'cctr', t:'cc trend',  type:'num', get:r=>ccLast(r), ph:''},
-  {k:'dr',   t:'DR',        type:'num', get:r=>r.dr_pos, ph:'% 0-100'},
   {k:'cap',  t:'Vốn hóa',   type:'num', get:r=>r.cap_ty, ph:'tỷ'},
   {k:'score',t:'Score',     type:'num', get:r=>r.score>-5?r.score:null, ph:'vd >.8'},
 ];
@@ -452,6 +452,7 @@ function makeRow(r){
     <td class="num">${fmt(r.close)}${r.dpx==null?'':`<span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="${r.dpxd>0?'+':''}${fmt(r.dpxd)}đ so close phiên trước (${fmt(r.pxprev)} → ${fmt(r.close)})">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}${r.entry==null?'':`<div class="zone dim" title="SL ${fmt(r.sl)} · TP ${fmt(r.tp)} — entry = giá đóng cửa lúc scan (nến phát hiện)">${fmt(r.sl)} / ${fmt(r.tp)}</div>`}</td>
     <td class="num">${fmtM(r.vol_today)}${r.vol_pct==null?'':`<span class="pxchip ${r.vol_pct>0?'up':r.vol_pct<0?'dn':'fl'}" title="KL hôm nay so KLTB 5 phiên đã đóng (giữa phiên = lũy kế tới lúc quét)">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`}${r.vol5d==null?'':`<div class="zone dim" title="KL trung bình 5 phiên đã đóng">${fmtM(r.vol5d)}</div>`}</td>
     <td>${sparkVol(r)}</td>
+    <td>${meterDr(r.dr_pos, r.dr_zone)}</td>
     <td>${verdictHtml}</td>
     <td>${meterPf(r)}</td>
     <td title="pf cac phien gan nhat (cu -> moi): ${pfSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du lich su'} · 2 vach = gate 0.40 / 0.20">${sparkPf(r)}</td>
@@ -460,7 +461,6 @@ function makeRow(r){
     <td title="net h12 cac phien (cu -> moi, +LONG/−SHORT): ${netSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du'} · truc giua = 0">${sparkNet(r)}</td>
     <td>${ccHtml(r)}</td>
     <td title="P_cascade cac phien co event (cham roi — ngay khong pierce la trong) · 2 vach = 0.85 / 0.42">${sparkCc(r)}</td>
-    <td>${meterDr(r.dr_pos, r.dr_zone)}</td>
     <td class="num">${r.leader?'':fmt(r.cap_ty)}</td>
     <td class="num" title="score = EV + verdict pool + dòng tiền − thin (thứ tự mặc định của bảng, giống Top 10)">${r.score>-5?r.score.toFixed(2):''}${r.streak>1?`<div class="zone dim" title="trụ ×${r.streak} — số phiên liên tiếp giữ nguyên kèo (verdict + hướng), đứt khi vắng rổ / đổi verdict / đổi phe">×${r.streak}</div>`:''}</td>`;
   tr.addEventListener('click', ()=>toggleDetail(tr, r));
