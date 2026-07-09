@@ -186,6 +186,7 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
   <div class="tile take"><div class="k">Take</div><div class="v" id="t-take"></div></div>
   <div class="tile fade"><div class="k">Fade</div><div class="v" id="t-fade"></div></div>
   <div class="tile ev" title="Số mã có verdict tại pool: giá đang chạm pool thanh khoản H4 và P_cascade đã ngã ngũ — >0.85 vào mạnh (pool vỡ, quét tiếp) / <0.42 đánh ngược (pool giữ, bật lại). Chạm pool mà P lơ lửng giữa = giằng co, không đếm."><div class="k">Verdict pool</div><div class="v" id="t-ev"></div></div>
+  <div class="tile" id="t-vn30-wrap" style="display:none"><div class="k">Nhịp VN30F</div><div class="v" id="t-vn30"></div></div>
 </div>
 
 <div id="pulse" style="display:none"></div>
@@ -225,6 +226,16 @@ document.getElementById('t-n').textContent = D.n;
 document.getElementById('t-take').textContent = D.n_take;
 document.getElementById('t-fade').textContent = D.n_fade;
 document.getElementById('t-ev').textContent = D.n_ev;
+// tile Nhip VN30F (user 2026-07-09): gia tri = d% VN30F, tooltip = day du facts2
+(function(){
+  const f2 = (D.pulse||{}).facts2||'';
+  const m = f2.match(/VN30F\s+([+\-−]?[\d.,]+%)/);
+  if (!m) return;
+  const el = document.getElementById('t-vn30'), w = document.getElementById('t-vn30-wrap');
+  el.textContent = m[1];
+  el.style.color = m[1].startsWith('-')||m[1].startsWith('−') ? 'var(--down)' : 'var(--up)';
+  w.title = f2; w.style.display = '';
+})();
 
 const pillCls = v => v==='TAKE'?'pill p-take':v==='FADE'?'pill p-fade':v==='SKIP'?'pill p-skip':v==='ERR'?'pill p-err':'p-none';
 const dirHtml = d => d ? `<span class="${d==='LONG'?'long':'short'}">${d==='LONG'?'▲ LONG':'▼ SHORT'}</span>` : '';
