@@ -432,7 +432,7 @@ function makeRow(r){
     <td class="num" title="số phiên liên tiếp giữ nguyên kèo (verdict + hướng), tính cả hôm nay — đứt khi vắng rổ / đổi verdict / đổi phe">${r.streak>1?'×'+r.streak:''}</td>
     <td>${dirHtml(r.trade_dir)}${r.kind?` <span class="small">d-${r.bars_ago} ${r.kind}</span>`:''}</td>
     <td class="num">${fmt(r.entry)}</td><td class="num">${fmt(r.sl)}</td><td class="num">${fmt(r.tp)}</td>
-    <td>${r.net_side?`${dirHtml(r.net_side)} <span class="num">${r.net_conf??''}</span>`:''}</td>
+    <td>${r.net_side?`${dirArrow(r.net_side)} <span class="num">${r.net_conf??''}</span>`:''}</td>
     <td title="net h12 cac phien (cu -> moi, +LONG/−SHORT): ${netSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du'} · truc giua = 0">${sparkNet(r)}</td>
     <td>${ccHtml(r)}</td>
     <td title="P_cascade cac phien co event (cham roi — ngay khong pierce la trong) · 2 vach = 0.85 / 0.42">${sparkCc(r)}</td>
