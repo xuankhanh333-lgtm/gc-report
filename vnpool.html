@@ -244,7 +244,7 @@ function meterDr(pos, zone){
   if (pos==null) return '';
   const p = Math.max(0, Math.min(100, pos));
   // text nam DUOI thanh truot (user 2026-07-09) — drwrap xep doc: meter tren, zone duoi
-  return `<span class="drwrap"><span class="meter" title="0% = SSL (discount) · 100% = BSL (premium)"><i style="left:calc(${p}% - 3px);width:6px"></i></span><span class="zone">${zone||''} ${p}%</span></span>`;
+  return `<span class="drwrap"><span class="meter" title="0% = SSL (discount) · 100% = BSL (premium)"><i style="left:calc(${p}% - 3px);width:6px"></i></span><span class="zone dim">${(zone||'').toLowerCase()} ${p}%</span></span>`;
 }
 function ccHtml(r){
   if (!r.cc_live) return '<span class="zone">WAIT</span>';
