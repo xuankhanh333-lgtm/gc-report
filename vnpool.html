@@ -276,9 +276,7 @@ const COLS = [
   {k:'ccp',  t:'P_cascade', type:'num', get:r=>r.cc_p, ph:'vd >.85'},
   {k:'cctr', t:'cc trend',  type:'num', get:r=>ccLast(r), ph:''},
   {k:'dr',   t:'DR',        type:'num', get:r=>r.dr_pos, ph:'% 0-100'},
-  {k:'v5',   t:'KLTB 5p',   type:'num', get:r=>r.vol5d!=null?r.vol5d/1e6:null, ph:'triệu, >5'},
   {k:'vnay', t:'KL nay',    type:'num', get:r=>r.vol_today/1e6, ph:'triệu, >5'},
-  {k:'vpct', t:'%KL',       type:'num', get:r=>r.vol_pct, ph:'vd >50'},
   {k:'vtr',  t:'KL trend 10p', type:'num', get:r=>r.vol_trend, ph:'vd >20'},
   {k:'cap',  t:'Vốn hóa',   type:'num', get:r=>r.cap_ty, ph:'tỷ'},
 ];
@@ -462,9 +460,7 @@ function makeRow(r){
     <td>${ccHtml(r)}</td>
     <td title="P_cascade cac phien co event (cham roi — ngay khong pierce la trong) · 2 vach = 0.85 / 0.42">${sparkCc(r)}</td>
     <td>${meterDr(r.dr_pos, r.dr_zone)}</td>
-    <td class="num">${r.vol5d!=null?fmtM(r.vol5d):''}</td>
-    <td class="num">${fmtM(r.vol_today)}</td>
-    <td class="num" title="KL hôm nay so KLTB 5 phiên đã đóng (giữa phiên = lũy kế tới lúc quét)">${r.vol_pct==null?'':`<span class="${r.vol_pct>=0?'long':'short'}">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`}</td>
+    <td class="num">${fmtM(r.vol_today)}${r.vol_pct==null?'':`<span class="pxchip ${r.vol_pct>0?'up':r.vol_pct<0?'dn':'fl'}" title="KL hôm nay so KLTB 5 phiên đã đóng (giữa phiên = lũy kế tới lúc quét)">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`}${r.vol5d==null?'':`<div class="zone dim" title="KL trung bình 5 phiên đã đóng">TB5p ${fmtM(r.vol5d)}</div>`}</td>
     <td>${sparkVol(r)}</td>
     <td class="num">${r.leader?'':fmt(r.cap_ty)}</td>`;
   tr.addEventListener('click', ()=>toggleDetail(tr, r));
