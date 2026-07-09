@@ -272,13 +272,13 @@ const COLS = [
   {k:'verdict',t:'Verdict', type:'str', get:r=>r.verdict, ph:'!skip'},
   {k:'pf',   t:'P_follow',  type:'num', get:r=>r.pf, ph:'vd <0.2'},
   {k:'pftr', t:'pf trend',  type:'num', get:r=>pfDelta(r), ph:'Δ vd >.1'},
-  {k:'score',t:'Score',     type:'num', get:r=>r.score>-5?r.score:null, ph:'vd >.8'},
   {k:'net',  t:'net h12',   type:'str', get:r=>(r.net_side||'')+' '+(r.net_conf??''), ph:'long/short'},
   {k:'nettr',t:'net trend', type:'num', get:r=>netDelta(r), ph:'Δ ±'},
   {k:'ccp',  t:'P_cascade', type:'num', get:r=>r.cc_p, ph:'vd >.85'},
   {k:'cctr', t:'cc trend',  type:'num', get:r=>ccLast(r), ph:''},
   {k:'dr',   t:'DR',        type:'num', get:r=>r.dr_pos, ph:'% 0-100'},
   {k:'cap',  t:'Vốn hóa',   type:'num', get:r=>r.cap_ty, ph:'tỷ'},
+  {k:'score',t:'Score',     type:'num', get:r=>r.score>-5?r.score:null, ph:'vd >.8'},
 ];
 const NCOL = COLS.length;
 let sortKey=null, sortDir=0;           // mac dinh: thu tu SCORE (giong Top 10); click cot de doi sort
@@ -455,14 +455,14 @@ function makeRow(r){
     <td>${verdictHtml}</td>
     <td>${meterPf(r)}</td>
     <td title="pf cac phien gan nhat (cu -> moi): ${pfSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du lich su'} · 2 vach = gate 0.40 / 0.20">${sparkPf(r)}</td>
-    <td class="num" title="score = EV + verdict pool + dòng tiền − thin (thứ tự mặc định của bảng, giống Top 10)">${r.score>-5?r.score.toFixed(2):''}${r.streak>1?`<div class="zone dim" title="trụ ×${r.streak} — số phiên liên tiếp giữ nguyên kèo (verdict + hướng), đứt khi vắng rổ / đổi verdict / đổi phe">×${r.streak}</div>`:''}</td>
 
     <td>${r.net_side?`${dirArrow(r.net_side)} <span class="num">${r.net_conf??''}</span>`:''}</td>
     <td title="net h12 cac phien (cu -> moi, +LONG/−SHORT): ${netSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du'} · truc giua = 0">${sparkNet(r)}</td>
     <td>${ccHtml(r)}</td>
     <td title="P_cascade cac phien co event (cham roi — ngay khong pierce la trong) · 2 vach = 0.85 / 0.42">${sparkCc(r)}</td>
     <td>${meterDr(r.dr_pos, r.dr_zone)}</td>
-    <td class="num">${r.leader?'':fmt(r.cap_ty)}</td>`;
+    <td class="num">${r.leader?'':fmt(r.cap_ty)}</td>
+    <td class="num" title="score = EV + verdict pool + dòng tiền − thin (thứ tự mặc định của bảng, giống Top 10)">${r.score>-5?r.score.toFixed(2):''}${r.streak>1?`<div class="zone dim" title="trụ ×${r.streak} — số phiên liên tiếp giữ nguyên kèo (verdict + hướng), đứt khi vắng rổ / đổi verdict / đổi phe">×${r.streak}</div>`:''}</td>`;
   tr.addEventListener('click', ()=>toggleDetail(tr, r));
   tr.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleDetail(tr,r);} });
   return tr;
