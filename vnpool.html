@@ -238,6 +238,7 @@ const COLS = [
   {k:'gia',  t:'Giá',       type:'num', get:r=>r.close},
   {k:'verdict',t:'Verdict', type:'str', get:r=>r.verdict, ph:'!skip'},
   {k:'pf',   t:'P_follow',  type:'num', get:r=>r.pf, ph:'vd <0.2'},
+  {k:'pftr', t:'pf trend',  type:'num', get:r=>pfDelta(r), ph:'Δ vd >.1'},
   {k:'ev',   t:'EV≈',       type:'num', get:r=>r.ev_gc},
   {k:'score',t:'Score',     type:'num', get:r=>r.score>-5?r.score:null, ph:'vd >.8'},
   {k:'tru',  t:'Trụ',       type:'num', get:r=>r.streak||null, ph:'vd >2'},
@@ -343,6 +344,23 @@ function match(r){
   if (filter==='LONG') return r.trade_dir==='LONG' && (r.verdict==='TAKE'||r.verdict==='FADE');
   return r.verdict===filter;
 }
+// pf trend qua cac phien (tu hist da nhung trong row — cung nguon voi expand)
+function pfSeries(r){ return (r.hist||[]).map(h=>h.pf).filter(v=>v!=null); }
+function pfDelta(r){ const s=pfSeries(r); return s.length>=2 ? +(s[s.length-1]-s[0]).toFixed(3) : null; }
+function sparkPf(r){
+  const s = pfSeries(r);
+  if (s.length<2) return '';
+  const W=62,H=18,step=W/(s.length-1);
+  const mx=Math.max(0.5,...s);
+  const y=v=>H-2-(v/mx)*(H-4);
+  const pts=s.map((v,i)=>`${(i*step).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const g=v=>`<line x1="0" x2="${W}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}" stroke="var(--line)" stroke-dasharray="2,2"/>`;
+  const last=s[s.length-1];
+  const col=last>=0.4?'var(--up)':last<0.2?'var(--down)':'var(--ink3)';
+  return `<svg width="${W}" height="${H}" aria-hidden="true">${g(0.4)}${g(0.2)}`
+    + `<polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.5"/>`
+    + `<circle cx="${W-1}" cy="${y(last).toFixed(1)}" r="2" fill="${col}"/></svg>`;
+}
 function sparkVol(r){
   const vs = r.vol_hist||[];
   if (!vs.length) return '';
@@ -376,6 +394,7 @@ function makeRow(r){
     <td class="num">${fmt(r.close)}</td>
     <td>${verdictHtml}</td>
     <td>${meterPf(r.pf)}</td>
+    <td title="pf cac phien gan nhat (cu -> moi): ${pfSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du lich su'} · 2 vach = gate 0.40 / 0.20">${sparkPf(r)}</td>
     <td>${evHtml(r)}</td>
     <td class="num" title="score = EV + verdict pool + dòng tiền − thin (thứ tự mặc định của bảng, giống Top 10)">${r.score>-5?r.score.toFixed(2):''}</td>
     <td class="num" title="số phiên liên tiếp giữ nguyên kèo (verdict + hướng), tính cả hôm nay — đứt khi vắng rổ / đổi verdict / đổi phe">${r.streak>1?'×'+r.streak:''}</td>
