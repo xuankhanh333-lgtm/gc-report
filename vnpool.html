@@ -46,7 +46,7 @@ header h1 em{font-style:normal;color:var(--accent)}
   padding:7px 13px;min-width:100px}
 .tile .k{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3)}
 .tile .v{font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:1px}
-.tile.take .v{color:var(--up)} .tile.fade .v{color:var(--warn)} .tile.ev .v{color:var(--accent-ink)}
+.tile .take .v{color:var(--up)} .tile .fade .v{color:var(--warn)} .tile .ev .v{color:var(--accent-ink)}
 .tile .v.v30{font-size:12px;font-weight:600;line-height:1.35;max-width:240px;white-space:normal;margin-top:4px}
 .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px}
 .chip{border:1px solid var(--line);background:var(--surface);color:var(--ink2);
@@ -183,10 +183,12 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
 </header>
 
 <div class="tiles">
-  <div class="tile"><div class="k">Universe</div><div class="v" id="t-n"></div></div>
-  <div class="tile take"><div class="k">Take</div><div class="v" id="t-take"></div></div>
-  <div class="tile fade"><div class="k">Fade</div><div class="v" id="t-fade"></div></div>
-  <div class="tile ev" title="Số mã có verdict tại pool: giá đang chạm pool thanh khoản H4 và P_cascade đã ngã ngũ — >0.85 vào mạnh (pool vỡ, quét tiếp) / <0.42 đánh ngược (pool giữ, bật lại). Chạm pool mà P lơ lửng giữa = giằng co, không đếm."><div class="k">Verdict pool</div><div class="v" id="t-ev"></div></div>
+  <div class="tile"><div style="display:flex;gap:18px">
+    <div><div class="k">Universe</div><div class="v" id="t-n"></div></div>
+    <div class="take"><div class="k">Take</div><div class="v" id="t-take"></div></div>
+    <div class="fade"><div class="k">Fade</div><div class="v" id="t-fade"></div></div>
+    <div class="ev" title="Số mã có verdict tại pool: giá đang chạm pool thanh khoản H4 và P_cascade đã ngã ngũ — >0.85 vào mạnh (pool vỡ, quét tiếp) / <0.42 đánh ngược (pool giữ, bật lại). Chạm pool mà P lơ lửng giữa = giằng co, không đếm."><div class="k">Verdict pool</div><div class="v" id="t-ev"></div></div>
+  </div></div>
   <div class="tile" id="t-vnx-wrap" style="display:none"><div class="k">Nhịp VNINDEX</div><div class="v" id="t-vnx"></div></div>
   <div class="tile" id="t-vn30-wrap" style="display:none"><div class="k">Nhịp VN30F</div><div class="v" id="t-vn30"></div></div>
 </div>
