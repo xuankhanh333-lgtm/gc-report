@@ -189,9 +189,9 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
     <div class="fade"><div class="k">Fade</div><div class="v" id="t-fade"></div></div>
     <div class="ev" title="Số mã có verdict tại pool: giá đang chạm pool thanh khoản H4 và P_cascade đã ngã ngũ — >0.85 vào mạnh (pool vỡ, quét tiếp) / <0.42 đánh ngược (pool giữ, bật lại). Chạm pool mà P lơ lửng giữa = giằng co, không đếm."><div class="k">Verdict pool</div><div class="v" id="t-ev"></div></div>
   </div></div>
-  <div class="tile" id="t-vnx-wrap" style="display:none"><div class="k">Nhịp VNINDEX</div><div class="v" id="t-vnx"></div></div>
-  <div class="tile" id="t-vn30-wrap" style="display:none"><div class="k">Nhịp VN30F</div><div class="v" id="t-vn30"></div></div>
-  <div class="tile" id="t-sect-wrap" style="display:none"><div class="k">Nhịp ngành</div><div class="v v30" id="t-sect"></div></div>
+  <div class="tile" id="t-vnx-wrap" style="display:none"><div class="k">VNINDEX</div><div class="v" id="t-vnx"></div></div>
+  <div class="tile" id="t-vn30-wrap" style="display:none"><div class="k">VN30F</div><div class="v" id="t-vn30"></div></div>
+  <div class="tile" id="t-sect-wrap" style="display:none"><div class="k">Ngành</div><div class="v v30" id="t-sect"></div></div>
 </div>
 
 <div id="pulse" style="display:none"></div>
@@ -245,7 +245,7 @@ document.getElementById('t-ev').textContent = D.n_ev;
   const r1 = [(D.pulse||{}).read1, (D.pulse||{}).read].filter(Boolean).join(' · ');
   if (!r1 && !f1) return;
   const el = document.getElementById('t-vnx'), w = document.getElementById('t-vnx-wrap');
-  el.textContent = r1 ? ('🫀 ' + r1) : '—';
+  el.textContent = r1 ? ('💓 ' + r1) : '—';
   el.classList.add('v30');
   w.title = [f1, r1].filter(Boolean).join('\n');
   w.style.display = '';
@@ -525,7 +525,7 @@ function render(){
       ? `tốt nhất: <b>${best.ticker}</b> ${best.verdict} ${best.pf?.toFixed(3)??''}${best.ev_gc!=null?` · EV ${best.ev_gc>0?'+':''}${best.ev_gc.toFixed(2)}R`:''}`
       : 'không có kèo';
     const sp = (D.sector_pulse||{})[nganh];
-    h.innerHTML = `<td colspan="${NCOL}"><div class="swrap"><span class="sname">${nganh}</span> <span class="scount">${rs.length} mã</span> — <span class="small">${bestTxt}</span>${sp?` <span class="spulse" title="${sp.txt}">🫀 ${sp.read}</span>`:''}</div></td>`;
+    h.innerHTML = `<td colspan="${NCOL}"><div class="swrap"><span class="sname">${nganh}</span> <span class="scount">${rs.length} mã</span> — <span class="small">${bestTxt}</span>${sp?` <span class="spulse" title="${sp.txt}">💓 ${sp.read}</span>`:''}</div></td>`;
     tb.appendChild(h);
     for (const r of rs) tb.appendChild(makeRow(r));
   }
