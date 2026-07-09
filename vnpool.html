@@ -554,7 +554,11 @@ if (!top10.length) document.getElementById('top10').style.display='none';
 if (D.pulse){
   const el = document.getElementById('pulse');
   const sect = (D.pulse.sectors||[]).map(s=>`<span title="${s.txt}"><b>${s.ng}</b>: ${s.read}</span>`).join(' · ');
-  el.innerHTML = `<span class="rd" title="diễn giải tự động theo luật cố định: hướng giá × tính chất KL + phân kỳ trụ–chợ + basis + độ rộng kèo + kết cục pool">🫀 ${D.pulse.read}</span><br><span class="fx">${D.pulse.facts}</span>${D.pulse.facts2?`<br><span class="fx">${D.pulse.facts2}</span>`:''}${sect?`<br><span class="fx">ngành: ${sect}</span>`:''}`;
+  // so lieu facts VNINDEX/VN30F chuyen vao tooltip cua dong dien giai (user 2026-07-09)
+  const facts = [D.pulse.facts, D.pulse.facts2].filter(Boolean).join('
+');
+  el.innerHTML = `<span class="rd" title="${facts}
+— diễn giải tự động theo luật cố định: hướng giá × tính chất KL + phân kỳ trụ–chợ + basis + độ rộng kèo + kết cục pool">🫀 ${D.pulse.read}</span>${sect?`<br><span class="fx">ngành: ${sect}</span>`:''}`;
   el.style.display = 'block';
 }
 
