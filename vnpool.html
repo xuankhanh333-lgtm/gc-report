@@ -98,6 +98,11 @@ tr.r:hover td{background:var(--mut-soft)}
 .drwrap{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;vertical-align:middle}
 .drwrap .meter{margin-right:0}
 .drwrap .zone{line-height:1;white-space:nowrap}
+.mrow{display:inline-flex;align-items:center;gap:7px}
+.pxchip{font-size:9.5px;font-weight:700;border-radius:4px;padding:0 4px}
+.pxchip.up{background:var(--up-soft);color:var(--up)}
+.pxchip.dn{background:var(--down-soft);color:var(--down)}
+.pxchip.fl{background:var(--meter-track);color:var(--ink2)}
 .small{font-size:12px;color:var(--ink2)}
 .warnflag{color:var(--warn);font-size:11px}
 tr.detail td{background:var(--mut-soft);white-space:normal;padding:0;font-size:13px}
@@ -225,9 +230,11 @@ const dirArrow = d => d ? `<span class="${d==='LONG'?'long':'short'}" title="${d
 function meterPf(r){
   if (r.pf==null) return '';
   const w = Math.min(100, r.pf*100);
-  // xep doc nhu cot DR (user 2026-07-09): meter tren, duoi = so pf + noi dung cot Keo cu
-  const keo = r.trade_dir ? ` ${dirHtml(r.trade_dir)}${r.kind?` <span class="small">d-${r.bars_ago} ${r.kind}</span>`:''}` : '';
-  return `<span class="drwrap"><span class="meter" title="gate FADE 0.20 · gate TAKE 0.40"><i style="left:0;width:${w}%"></i><b style="left:20%"></b><b style="left:40%"></b></span><span class="zone"><span class="num">${r.pf.toFixed(3)}</span>${keo}</span></span>`;
+  // hang tren = meter + so pf (nhu ban goc, user 2026-07-09: 'de nhu luc nay dep hon');
+  // hang duoi = noi dung cot Keo cu (huong + tuoi displacement + kind)
+  const keo = r.trade_dir ? `${dirHtml(r.trade_dir)}${r.kind?` <span class="small">d-${r.bars_ago} ${r.kind}</span>`:''}` : '';
+  const top = `<span class="mrow"><span class="meter" title="gate FADE 0.20 · gate TAKE 0.40"><i style="left:0;width:${w}%"></i><b style="left:20%"></b><b style="left:40%"></b></span><span class="num">${r.pf.toFixed(3)}</span></span>`;
+  return `<span class="drwrap">${top}${keo?`<span class="zone">${keo}</span>`:''}</span>`;
 }
 function meterDr(pos, zone){
   if (pos==null) return '';
@@ -442,7 +449,7 @@ function makeRow(r){
     : `<span class="${pillCls(r.verdict)}">${r.verdict==='-'?'không tín hiệu':r.verdict}</span>`;
   tr.innerHTML = `
     <td class="tk">${r.leader?'<span title="Leader — luôn hiện, miễn mọi filter. Phái sinh: SHORT là lệnh thật.">📌</span> ':''}${r.best?`<span class="best${r.best>1?' b23':''}" title="kèo tốt #${r.best} phiên này (theo score)">★</span> `:''}<span title="${r.name}">${r.ticker}</span>${r.vn30?'<span class="b30" title="thành viên rổ VN30 — thể hiện được kèo qua phái sinh VN301!">30</span>':''}${r.sym==='HNX:VN301!'&&D.basis?`<span class="bchip ${D.basis.diff>=0?'long':'short'}" title="basis = VN30F ${D.basis.fut} − VN30 cash ${D.basis.cash}. Dương = phái sinh premium (hưng phấn), âm = discount (phòng thủ). Chạy giữa phiên: 2 giá có thể lệch nhịp cập nhật.">${D.basis.diff>0?'+':''}${D.basis.diff}đ</span>`:''}${r.exch!=='HOSE'?`<span class="x">${r.exch}</span>`:''}${r.thin?' <span class="warnflag" title="lịch sử mỏng (<600 bar H4) — model train sẵn nhưng pool/chain nông, đọc P kém tin cậy">⚠</span>':''}${r.nhip?` <span class="nhipchip ${r.nhip.k}" title="${r.nhip.txt}">${r.nhip.lab}</span>`:''}<div class="nm" title="${r.name}">${r.nganh}</div></td>
-    <td class="num">${fmt(r.close)}</td>
+    <td class="num">${fmt(r.close)}${r.dpx==null?'':`<div><span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="so close phiên trước">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span></div>`}</td>
     <td>${verdictHtml}</td>
     <td>${meterPf(r)}</td>
     <td title="pf cac phien gan nhat (cu -> moi): ${pfSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du lich su'} · 2 vach = gate 0.40 / 0.20">${sparkPf(r)}</td>
