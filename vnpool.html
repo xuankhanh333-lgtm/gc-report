@@ -267,6 +267,8 @@ const fmtM = v => v==null?'':(v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFix
 const COLS = [
   {k:'ma',   t:'Mã',        type:'str', get:r=>r.ticker+' '+r.nganh+(r.vn30?' vn30':''), ph:'mã/ngành/vn30'},
   {k:'gia',  t:'Giá',       type:'num', get:r=>r.close},
+  {k:'vnay', t:'KL nay',    type:'num', get:r=>r.vol_today/1e6, ph:'triệu, >5'},
+  {k:'vtr',  t:'KL trend 10p', type:'num', get:r=>r.vol_trend, ph:'vd >20'},
   {k:'verdict',t:'Verdict', type:'str', get:r=>r.verdict, ph:'!skip'},
   {k:'pf',   t:'P_follow',  type:'num', get:r=>r.pf, ph:'vd <0.2'},
   {k:'pftr', t:'pf trend',  type:'num', get:r=>pfDelta(r), ph:'Δ vd >.1'},
@@ -276,8 +278,6 @@ const COLS = [
   {k:'ccp',  t:'P_cascade', type:'num', get:r=>r.cc_p, ph:'vd >.85'},
   {k:'cctr', t:'cc trend',  type:'num', get:r=>ccLast(r), ph:''},
   {k:'dr',   t:'DR',        type:'num', get:r=>r.dr_pos, ph:'% 0-100'},
-  {k:'vnay', t:'KL nay',    type:'num', get:r=>r.vol_today/1e6, ph:'triệu, >5'},
-  {k:'vtr',  t:'KL trend 10p', type:'num', get:r=>r.vol_trend, ph:'vd >20'},
   {k:'cap',  t:'Vốn hóa',   type:'num', get:r=>r.cap_ty, ph:'tỷ'},
 ];
 const NCOL = COLS.length;
@@ -450,6 +450,8 @@ function makeRow(r){
   tr.innerHTML = `
     <td class="tk">${r.leader?'<span title="Leader — luôn hiện, miễn mọi filter. Phái sinh: SHORT là lệnh thật.">📌</span> ':''}${r.best?`<span class="best${r.best>1?' b23':''}" title="kèo tốt #${r.best} phiên này (theo score)">★</span> `:''}<span title="${r.name}">${r.ticker}</span>${r.vn30?'<span class="b30" title="thành viên rổ VN30 — thể hiện được kèo qua phái sinh VN301!">30</span>':''}${r.sym==='HNX:VN301!'&&D.basis?`<span class="bchip ${D.basis.diff>=0?'long':'short'}" title="basis = VN30F ${D.basis.fut} − VN30 cash ${D.basis.cash}. Dương = phái sinh premium (hưng phấn), âm = discount (phòng thủ). Chạy giữa phiên: 2 giá có thể lệch nhịp cập nhật.">${D.basis.diff>0?'+':''}${D.basis.diff}đ</span>`:''}${r.exch!=='HOSE'?`<span class="x">${r.exch}</span>`:''}${r.thin?' <span class="warnflag" title="lịch sử mỏng (<600 bar H4) — model train sẵn nhưng pool/chain nông, đọc P kém tin cậy">⚠</span>':''}${r.nhip?` <span class="nhipchip ${r.nhip.k}" title="${r.nhip.txt}">${r.nhip.lab}</span>`:''}<div class="nm" title="${r.name}">${r.nganh}</div></td>
     <td class="num">${fmt(r.close)}${r.dpx==null?'':`<span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="${r.dpxd>0?'+':''}${fmt(r.dpxd)}đ so close phiên trước (${fmt(r.pxprev)} → ${fmt(r.close)})">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}${r.entry==null?'':`<div class="zone dim" title="entry = giá đóng cửa lúc scan (nến phát hiện)"><span class="short">SL ${fmt(r.sl)}</span> <span class="long">TP ${fmt(r.tp)}</span></div>`}</td>
+    <td class="num">${fmtM(r.vol_today)}${r.vol_pct==null?'':`<span class="pxchip ${r.vol_pct>0?'up':r.vol_pct<0?'dn':'fl'}" title="KL hôm nay so KLTB 5 phiên đã đóng (giữa phiên = lũy kế tới lúc quét)">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`}${r.vol5d==null?'':`<div class="zone dim" title="KL trung bình 5 phiên đã đóng">TB5p ${fmtM(r.vol5d)}</div>`}</td>
+    <td>${sparkVol(r)}</td>
     <td>${verdictHtml}</td>
     <td>${meterPf(r)}</td>
     <td title="pf cac phien gan nhat (cu -> moi): ${pfSeries(r).map(v=>v.toFixed(2)).join(' → ')||'chua du lich su'} · 2 vach = gate 0.40 / 0.20">${sparkPf(r)}</td>
@@ -460,8 +462,6 @@ function makeRow(r){
     <td>${ccHtml(r)}</td>
     <td title="P_cascade cac phien co event (cham roi — ngay khong pierce la trong) · 2 vach = 0.85 / 0.42">${sparkCc(r)}</td>
     <td>${meterDr(r.dr_pos, r.dr_zone)}</td>
-    <td class="num">${fmtM(r.vol_today)}${r.vol_pct==null?'':`<span class="pxchip ${r.vol_pct>0?'up':r.vol_pct<0?'dn':'fl'}" title="KL hôm nay so KLTB 5 phiên đã đóng (giữa phiên = lũy kế tới lúc quét)">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`}${r.vol5d==null?'':`<div class="zone dim" title="KL trung bình 5 phiên đã đóng">TB5p ${fmtM(r.vol5d)}</div>`}</td>
-    <td>${sparkVol(r)}</td>
     <td class="num">${r.leader?'':fmt(r.cap_ty)}</td>`;
   tr.addEventListener('click', ()=>toggleDetail(tr, r));
   tr.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleDetail(tr,r);} });
