@@ -236,18 +236,22 @@ function cntChip(cur, key){
   const seq = h.map(x=>`${x.d}: ${x[key]}`).concat(`nay: ${cur}`).join(' · ');
   return ` <span class="pxchip ${d>0?'up':d<0?'dn':'fl'}" title="${seq}">${d>0?'+':''}${d}</span>`;
 }
+// sparkline mini dung chung (Universe + Bracket): chuoi n theo ban chot, cham cuoi = hom nay
+function spark(ns, tt){
+  if (!ns || ns.length < 2) return '';
+  const mn = Math.min(...ns), mx = Math.max(...ns), sp = Math.max(mx-mn,1);
+  const W = 62, Hh = 15;
+  const pts = ns.map((v,i)=>[(i*(W-4)/(ns.length-1)+2).toFixed(1), (Hh-2-(v-mn)*(Hh-4)/sp).toFixed(1)]);
+  return ` <svg width="${W}" height="${Hh}" style="vertical-align:-2px;opacity:.8"><title>${tt}</title>`
+       + `<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="var(--ink3)" stroke-width="1.5"/>`
+       + `<circle cx="${pts[pts.length-1][0]}" cy="${pts[pts.length-1][1]}" r="2" fill="var(--accent)"/></svg>`;
+}
 // Universe: so + chip + sparkline n theo ban chot + dong vao/rot ro (tooltip = lich su)
 (function(){
   const u = D.uni_trend||[];
   let html = D.n + cntChip(D.n,'n');
   if (u.length >= 2){
-    const ns = u.map(x=>x.n), mn = Math.min(...ns), mx = Math.max(...ns), sp = Math.max(mx-mn,1);
-    const W = 62, Hh = 15;
-    const pts = ns.map((v,i)=>[(i*(W-4)/(ns.length-1)+2).toFixed(1), (Hh-2-(v-mn)*(Hh-4)/sp).toFixed(1)]);
-    const tt = u.map(x=>`${x.d}: ${x.n}`).join(' · ');
-    html += ` <svg width="${W}" height="${Hh}" style="vertical-align:-2px;opacity:.8"><title>số mã trong rổ theo bản chốt — ${tt}</title>`
-          + `<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="var(--ink3)" stroke-width="1.5"/>`
-          + `<circle cx="${pts[pts.length-1][0]}" cy="${pts[pts.length-1][1]}" r="2" fill="var(--accent)"/></svg>`;
+    html += spark(u.map(x=>x.n), `số mã trong rổ theo bản chốt — ${u.map(x=>`${x.d}: ${x.n}`).join(' · ')}`);
     const hist = u.slice(1).map(x=>{
       const io = [x.in&&x.in.length?'vào '+x.in.join(','):'', x.out&&x.out.length?'rớt '+x.out.join(','):''].filter(Boolean).join(' · ');
       return io ? `${x.d}: ${io}` : null;
@@ -270,6 +274,7 @@ document.getElementById('t-ev').innerHTML = D.n_ev + cntChip(D.n_ev,'ev');
   if (h.length >= 2){
     const d = h[h.length-1].n - h[h.length-2].n;
     html += ` <span class="pxchip ${d>0?'up':d<0?'dn':'fl'}" title="số mã bracket theo ngày — ${h.map(x=>`${x.d}: ${x.n}`).join(' · ')}">${d>0?'+':''}${d}</span>`;
+    html += spark(h.map(x=>x.n), `số mã bracket theo ngày — ${h.map(x=>`${x.d}: ${x.n}`).join(' · ')}`);
   }
   if (b.wait && b.wait.length){
     const shown = b.wait.slice(0,4).map(x=>x.t).join(' ');
