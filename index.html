@@ -50,6 +50,7 @@
     <div class="tabs" id="vn-subtabs" style="display:none">
       <button class="tab sub" id="btn-vn-dash" onclick="show('vn')">Dashboard</button>
       <button class="tab sub" id="btn-vn-sc" onclick="show('vsc')">Scorecard</button>
+      <button class="tab sub" id="btn-vn-d1" onclick="show('vd1')" title="Nhánh D1 chạy song song (thử nghiệm) — sổ điểm riêng, so với bản H4 vài tuần rồi quyết">Scorecard D1</button>
     </div>
     <div class="cds">
       <span class="cd-chip m" id="chip-m15" title="Thời gian tới khi nến M15 đóng (mốc :00/:15/:30/:45)">Nến M15 đóng sau <b id="cd-m15">--:--</b></span>
@@ -89,7 +90,7 @@
     }
     function load(k, isAuto){
       cur = k;
-      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : (k === 'pool') ? 'pooldir.html' : (k === '3p') ? 'pooldir-trend.html' : (k === 'sc') ? 'pooldir-scorecard.html' : (k === 'vn') ? 'vnpool.html' : (k === 'vsc') ? 'vnpool-scorecard.html' : 'rt.html';
+      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : (k === 'pool') ? 'pooldir.html' : (k === '3p') ? 'pooldir-trend.html' : (k === 'sc') ? 'pooldir-scorecard.html' : (k === 'vn') ? 'vnpool.html' : (k === 'vsc') ? 'vnpool-scorecard.html' : (k === 'vd1') ? 'vnpool-scorecard-d1.html' : 'rt.html';
       document.getElementById('frame').src = base + '?embed=1&t=' + Date.now();
       lastLoadAt = Date.now();
       document.getElementById('btn-rt').classList.toggle('active', k === 'rt');
@@ -101,19 +102,20 @@
       document.getElementById('btn-pool-dash').classList.toggle('active', k === 'pool');
       document.getElementById('btn-pool-3p').classList.toggle('active', k === '3p');
       document.getElementById('btn-pool-sc').classList.toggle('active', k === 'sc');
-      var vnGrp = (k === 'vn' || k === 'vsc');
+      var vnGrp = (k === 'vn' || k === 'vsc' || k === 'vd1');
       document.getElementById('btn-vn').classList.toggle('active', vnGrp);
       document.getElementById('vn-subtabs').style.display = vnGrp ? 'flex' : 'none';
       document.getElementById('btn-vn-dash').classList.toggle('active', k === 'vn');
       document.getElementById('btn-vn-sc').classList.toggle('active', k === 'vsc');
+      document.getElementById('btn-vn-d1').classList.toggle('active', k === 'vd1');
       // M15/H4 close chips chi hop le cho RT/H4 (GC). ICT-ML theo H1; VN theo phien HOSE.
-      var gc = (k !== 'ict' && k !== 'vn' && k !== 'vsc');
+      var gc = (k !== 'ict' && k !== 'vn' && k !== 'vsc' && k !== 'vd1');
       var cm = document.getElementById('chip-m15'); if (cm) cm.style.display = gc ? 'flex' : 'none';
       var ch = document.getElementById('chip-h4');  if (ch) ch.style.display = gc ? 'flex' : 'none';
-      refreshMs = (k === 'h4' || k === 'pool' || k === '3p' || k === 'sc' || k === 'vn' || k === 'vsc') ? 900000 : 300000;
+      refreshMs = (k === 'h4' || k === 'pool' || k === '3p' || k === 'sc' || k === 'vn' || k === 'vsc' || k === 'vd1') ? 900000 : 300000;
       nextAt = Date.now() + refreshMs;
-      var mins = (k === 'h4' || k === 'pool' || k === '3p' || k === 'sc' || k === 'vn' || k === 'vsc') ? '15' : '5';
-      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · Dashboard (3 model)' : (k === '3p') ? 'Pooldir · 3P Trend · 15 ngày' : (k === 'sc') ? 'Pooldir · Forward Scorecard' : (k === 'vn') ? 'Vnpool · Dashboard (quét EOD)' : (k === 'vsc') ? 'Vnpool · Forward Scorecard' : 'RT · M15';
+      var mins = (k === 'h4' || k === 'pool' || k === '3p' || k === 'sc' || k === 'vn' || k === 'vsc' || k === 'vd1') ? '15' : '5';
+      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · Dashboard (3 model)' : (k === '3p') ? 'Pooldir · 3P Trend · 15 ngày' : (k === 'sc') ? 'Pooldir · Forward Scorecard' : (k === 'vn') ? 'Vnpool · Dashboard (quét EOD)' : (k === 'vsc') ? 'Vnpool · Forward Scorecard' : (k === 'vd1') ? 'Vnpool · Scorecard D1 (thử nghiệm song song)' : 'RT · M15';
       document.getElementById('hint').textContent =
         'Đang xem: ' + labl + ' · trang tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
       tick();
