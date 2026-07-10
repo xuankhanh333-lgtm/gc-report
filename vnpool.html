@@ -130,6 +130,7 @@ footer{color:var(--ink3);font-size:12px;margin-top:14px}
 .card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .card .l1{display:flex;align-items:baseline;gap:6px}
 .card .rk{font-size:11px;color:var(--ink3);font-variant-numeric:tabular-nums;min-width:20px}
+.tk .rk{font-size:10.5px;color:var(--ink3);font-variant-numeric:tabular-nums;margin-right:4px}
 .card .t{font-weight:700}
 .card .px{font-size:12px;color:var(--ink2)}
 .card .ng{font-size:11px;color:var(--ink3);margin-left:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:80px}
@@ -536,7 +537,7 @@ function evHtml(r){
   const cls = r.ev_gc>0 ? 'long' : r.ev_gc<0 ? 'short' : '';
   return `<span class="num ${cls}">${r.ev_gc>0?'+':''}${r.ev_gc.toFixed(2)}R</span>`;
 }
-function makeRow(r){
+function makeRow(r, rk){
   const tr = document.createElement('tr');
   tr.className='r'+(r.leader?' lead':''); tr.tabIndex=0;
   tr.setAttribute('aria-expanded','false');
@@ -546,7 +547,7 @@ function makeRow(r){
   const _ev = evHtml(r);
   const verdictHtml = `<span class="drwrap">${_vpill}${_ev?`<span class="zone dim" title="EV tham chiếu bin GC">${_ev}</span>`:''}</span>`;
   tr.innerHTML = `
-    <td class="tk">${r.leader?'<span title="Leader — luôn hiện, miễn mọi filter. Phái sinh: SHORT là lệnh thật.">📌</span> ':''}${r.best?`<span class="best${r.best>1?' b23':''}" title="kèo tốt #${r.best} phiên này (theo score)">★</span> `:''}<span class="${r.buy?'tkhl b':r.exit?'tkhl x':r.hold?'tkhl h':''}" title="${r.name}${r.exch!=='HOSE'?` · sàn ${r.exch}`:''}${r.buy?' · FLIP SHORT→LONG hôm nay — điểm vào thật':r.exit?' · FLIP LONG→SHORT — tín hiệu THOÁT nếu đang giữ':r.hold?' · trụ hạng LONG — kèo LONG giữ từ phiên trước':''}">${r.ticker}</span>${r.vn30?'<span class="b30" title="thành viên rổ VN30 — thể hiện được kèo qua phái sinh VN301!">30</span>':''}${r.sym==='HNX:VN301!'&&D.basis?`<span class="bchip ${D.basis.diff>=0?'long':'short'}" title="basis = VN30F ${D.basis.fut} − VN30 cash ${D.basis.cash}. Dương = phái sinh premium (hưng phấn), âm = discount (phòng thủ). Chạy giữa phiên: 2 giá có thể lệch nhịp cập nhật.">${D.basis.diff>0?'+':''}${D.basis.diff}đ</span>`:''}${r.exch!=='HOSE'&&!r.leader?`<span class="x">${r.exch}</span>`:''}${r.thin?' <span class="warnflag" title="lịch sử mỏng (<600 bar H4) — model train sẵn nhưng pool/chain nông, đọc P kém tin cậy">⚠</span>':''}${r.nhip?` <span class="nhipchip ${r.nhip.k}" title="${r.nhip.txt}">${r.nhip.lab}</span>`:''}<div class="nm" title="${r.name}">${r.nganh}</div></td>
+    <td class="tk">${rk?`<span class="rk" title="thứ tự theo cách sắp xếp hiện tại của bảng (mặc định = score, giống Top 10)">#${rk}</span>`:''}${r.leader?'<span title="Leader — luôn hiện, miễn mọi filter. Phái sinh: SHORT là lệnh thật.">📌</span> ':''}${r.best?`<span class="best${r.best>1?' b23':''}" title="kèo tốt #${r.best} phiên này (theo score)">★</span> `:''}<span class="${r.buy?'tkhl b':r.exit?'tkhl x':r.hold?'tkhl h':''}" title="${r.name}${r.exch!=='HOSE'?` · sàn ${r.exch}`:''}${r.buy?' · FLIP SHORT→LONG hôm nay — điểm vào thật':r.exit?' · FLIP LONG→SHORT — tín hiệu THOÁT nếu đang giữ':r.hold?' · trụ hạng LONG — kèo LONG giữ từ phiên trước':''}">${r.ticker}</span>${r.vn30?'<span class="b30" title="thành viên rổ VN30 — thể hiện được kèo qua phái sinh VN301!">30</span>':''}${r.sym==='HNX:VN301!'&&D.basis?`<span class="bchip ${D.basis.diff>=0?'long':'short'}" title="basis = VN30F ${D.basis.fut} − VN30 cash ${D.basis.cash}. Dương = phái sinh premium (hưng phấn), âm = discount (phòng thủ). Chạy giữa phiên: 2 giá có thể lệch nhịp cập nhật.">${D.basis.diff>0?'+':''}${D.basis.diff}đ</span>`:''}${r.exch!=='HOSE'&&!r.leader?`<span class="x">${r.exch}</span>`:''}${r.thin?' <span class="warnflag" title="lịch sử mỏng (<600 bar H4) — model train sẵn nhưng pool/chain nông, đọc P kém tin cậy">⚠</span>':''}${r.nhip?` <span class="nhipchip ${r.nhip.k}" title="${r.nhip.txt}">${r.nhip.lab}</span>`:''}<div class="nm" title="${r.name}">${r.nganh}</div></td>
     <td class="num">${fmt(r.close)}${r.dpx==null?'':`<span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="${r.dpxd>0?'+':''}${fmt(r.dpxd)}đ so close phiên trước (${fmt(r.pxprev)} → ${fmt(r.close)})">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}${r.entry==null?'':`<div class="zone dim" title="SL ${fmt(r.sl)} · TP ${fmt(r.tp)} — entry = giá đóng cửa lúc scan (nến phát hiện)">${fmt(r.sl)} / ${fmt(r.tp)}</div>`}</td>
     <td class="num">${fmtM(r.vol_today)}${r.vol_pct==null?'':`<span class="pxchip ${r.vol_pct>0?'up':r.vol_pct<0?'dn':'fl'}" title="KL hôm nay so KLTB 5 phiên đã đóng (giữa phiên = lũy kế tới lúc quét)">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`}${r.vol5d==null?'':`<div class="zone dim" title="KL trung bình 5 phiên đã đóng">${fmtM(r.vol5d)}</div>`}</td>
     <td>${sparkVol(r)}</td>
@@ -567,11 +568,12 @@ function makeRow(r){
 }
 function render(){
   tb.innerHTML='';
-  // leader: luon ghim dau bang, mien moi filter/search
+  // leader: luon ghim dau bang, mien moi filter/search (khong danh so — chi bao, khong xep hang)
   for (const r of D.rows.filter(x=>x.leader)) tb.appendChild(makeRow(r));
   const vis = sortRows(D.rows.filter(r=>!r.leader&&match(r)&&colMatch(r)));
+  let rk = 0;
   if (mode==='list'){
-    for (const r of vis) tb.appendChild(makeRow(r));
+    for (const r of vis) tb.appendChild(makeRow(r, ++rk));
     return;
   }
   // theo nganh: nhom xep theo keo tot nhat cua nganh; trong nhom theo sort dang chon (mac dinh score)
@@ -591,7 +593,7 @@ function render(){
     const sp = (D.sector_pulse||{})[nganh];
     h.innerHTML = `<td colspan="${NCOL}"><div class="swrap"><span class="sname">${nganh}</span> <span class="scount">${rs.length} mã</span> — <span class="small">${bestTxt}</span>${sp?` <span class="spulse" title="${sp.txt}">💓 ${sp.read}</span>`:''}</div></td>`;
     tb.appendChild(h);
-    for (const r of rs) tb.appendChild(makeRow(r));
+    for (const r of rs) tb.appendChild(makeRow(r, ++rk));
   }
 }
 function toggleDetail(tr, r){
