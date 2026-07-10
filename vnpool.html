@@ -157,12 +157,13 @@ footer{color:var(--ink3);font-size:12px;margin-top:14px}
 .mv:hover{border-color:var(--accent)}
 .mv .why{color:var(--ink3);font-size:11px}
 .mv.hot{border-color:var(--warn);background:var(--warn-soft);box-shadow:0 0 0 1px var(--warn)}
-.mv.buy{border-color:var(--up);box-shadow:0 0 0 1px var(--up)}
-.mv.exit{border-color:var(--down);box-shadow:0 0 0 1px var(--down)}
-.mv.hold{border-color:var(--hold)}
-.card.buy{border-color:var(--up);box-shadow:0 0 0 1px var(--up)}
-.card.exit{border-color:var(--down);box-shadow:0 0 0 1px var(--down)}
-.card.hold{border-color:var(--hold);box-shadow:0 0 0 1px var(--hold)}
+/* khung nhat (user 10/07: giam size/do mo — highlight chinh la pill tren ticker) */
+.mv.buy{border-color:color-mix(in srgb, var(--up) 55%, var(--line))}
+.mv.exit{border-color:color-mix(in srgb, var(--down) 55%, var(--line))}
+.mv.hold{border-color:color-mix(in srgb, var(--hold) 45%, var(--line))}
+.card.buy{border-color:color-mix(in srgb, var(--up) 55%, var(--line))}
+.card.exit{border-color:color-mix(in srgb, var(--down) 55%, var(--line))}
+.card.hold{border-color:color-mix(in srgb, var(--hold) 45%, var(--line))}
 /* highlight thang vao ticker (user 10/07: khong badge ton cho): b=vao x=thoat h=tru LONG */
 .tkhl{color:#fff !important;border-radius:4px;padding:0 4px}
 .tkhl.b{background:var(--up)} .tkhl.x{background:var(--down)} .tkhl.h{background:var(--hold)}
