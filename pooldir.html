@@ -352,6 +352,17 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
       H.push('<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;gap:8px;">'
         + '<span style="font-size:12px;color:var(--text-secondary);font-weight:500;">Tin t\u1ee9c quan tr\u1ecdng \u00b7 l\u1ecbch kinh t\u1ebf</span>'
         + '<span style="font-size:10px;color:var(--text-muted);white-space:nowrap;">' + (news.source || '') + '</span></div>');
+      // note pattern: quanh gio tin, gia thuong QUET pool NGUOC huong truoc roi moi ve target
+      var _ndSide = (d.netdir && d.netdir.side) || (d.side_dir > 0 ? 'LONG' : (d.side_dir < 0 ? 'SHORT' : null));
+      var _hasHiUpc = _newsUpc.some(function (e) { return e.impact === 'High'; });
+      if (_hasHiUpc && _ndSide && dr.ssl != null && dr.bsl != null) {
+        var _long = _ndSide === 'LONG';
+        var _sweep = _long ? ('SSL ' + f(dr.ssl, 1)) : ('BSL ' + f(dr.bsl, 1));
+        var _then = _long ? ('BSL ' + f(dr.bsl, 1)) : ('SSL ' + f(dr.ssl, 1));
+        var _sd = _long ? 'dưới' : 'trên';
+        H.push('<div style="background:var(--surface-1);border-radius:8px;padding:8px 11px;margin:6px 0 4px;font-size:11px;color:var(--text-secondary);line-height:1.55;">'
+          + '<b style="color:' + (_long ? 'var(--text-success)' : 'var(--text-danger)') + ';">Bias ' + _ndSide + '</b> · quanh giờ tin high-impact: giá thường <b>quét ' + _sweep + '</b> (thanh khoản ' + _sd + ') trước — trong &amp; sau tin — rồi mới về <b>' + _then + '</b>. Cú quét ngược đầu tiên dễ là <b>bẫy</b>; chờ quét xong mới thuận hướng.</div>');
+      }
       if (!_rows.length && !_recent.length) {
         H.push('<div style="font-size:11px;color:var(--text-muted);padding:4px 0;">Kh\u00f4ng c\u00f3 s\u1ef1 ki\u1ec7n high-impact s\u1eafp t\u1edbi.</div>');
       }
