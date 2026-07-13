@@ -125,7 +125,7 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     H.push('<div style="font-size:12px;color:var(--text-muted);margin-top:2px;font-variant-numeric:tabular-nums;">close ' + f(d.close, 1) + ' \u00b7 ATR ' + f(d.atr, 1) + '</div></div>');
     H.push('<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">');
     H.push('<div style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-1);color:var(--text-secondary);font-size:11px;padding:4px 9px;border-radius:999px;font-variant-numeric:tabular-nums;">' + (d.age_txt || d.asof || '') + '</div>');
-    H.push('<a href="pooldir-structure.html" style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-1);color:var(--text-secondary);font-size:11px;padding:4px 9px;border-radius:999px;text-decoration:none;">⇄ Cấu trúc</a>');
+    H.push('<a href="pooldir-structure.html" onclick="this.href=\'pooldir-structure.html?v=\'+Date.now()" style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-1);color:var(--text-secondary);font-size:11px;padding:4px 9px;border-radius:999px;text-decoration:none;">⇄ Cấu trúc</a>');
     H.push('</div>');
     H.push('</div>');
 
