@@ -99,14 +99,15 @@ footer{margin-top:18px;font-size:11.5px;color:var(--ink3);max-width:80ch;line-he
 <h1>Cấu trúc <b>VN</b> — bản đồ thanh khoản bracket · 45 ngày
   <a href="vnpool.html" style="font-size:11px;font-weight:600;color:var(--amber);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:2px 10px;vertical-align:middle;margin-left:8px" onclick="this.href='vnpool.html?v='+Date.now()">⇄ Dashboard</a></h1>
 <p class="sub">Toàn bộ mã trong <b>bracket</b> (đã từng đủ tư cách universe — gồm cả nhóm chờ thanh khoản):
-kệ ERL sống/chết theo thời gian, giá H4, kèo = chấm (viền hướng, ruột kết quả T+ open-fill). Cập nhật 13/07/2026 15:56.</p>
+kệ ERL sống/chết theo thời gian, giá H4, kèo = chấm (viền hướng, ruột kết quả T+ open-fill). Cập nhật 13/07/2026 16:20.</p>
 <div class="bar">
   <input id="q" placeholder="lọc mã / ngành... (vd HPG, thép, chờ)" autocomplete="off">
   <div class="viewtg" role="group" aria-label="Kiểu hiển thị giá">
     <button id="vg-line" type="button">LINE</button><button id="vg-candle" type="button">NẾN</button>
   </div>
   <span class="legend">thứ tự: leader → mã có kèo (pf cực đoan trước) → theo vốn hóa → chờ TK cuối ·
-  <span style="color:var(--bsl)">BSL</span>/<span style="color:var(--ssl)">SSL</span> · ✝ đã quét · ● kèo</span>
+  <span style="color:var(--bsl)">BSL</span>/<span style="color:var(--ssl)">SSL</span> · ✝ đã quét · ● kèo ·
+  <b>kéo = pan · Ctrl+lăn = zoom · double-click = reset</b></span>
 </div>
 <div class="grid" id="g"></div>
 
@@ -323,6 +324,37 @@ const META = [{"sym":"HOSE:VNINDEX","tk":"VNINDEX","v":"TAKE","pf":0.539,"dir":"
 const fmt = n => n >= 5000 ? n.toLocaleString('vi-VN') : n;
 const g = document.getElementById('g');
 
+// pan + zoom qua viewBox: keo = di chuyen, Ctrl+lan = zoom quanh con tro, dblclick = reset
+function panzoom(svg, W, H){
+  let vb={x:0,y:0,w:W,h:H};
+  const apply=()=>svg.setAttribute('viewBox',vb.x+' '+vb.y+' '+vb.w+' '+vb.h);
+  svg.style.cursor='grab'; svg.style.touchAction='none';
+  svg.addEventListener('wheel',e=>{
+    if(!e.ctrlKey) return;
+    e.preventDefault();
+    const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;
+    const p=pt.matrixTransform(svg.getScreenCTM().inverse());
+    const f=e.deltaY>0?1.2:1/1.2;
+    const nw=Math.min(W,Math.max(W/10,vb.w*f)), nh=nw*(H/W);
+    if(nw>=W){vb={x:0,y:0,w:W,h:H};}
+    else{vb.x=p.x-(p.x-vb.x)*(nw/vb.w); vb.y=p.y-(p.y-vb.y)*(nh/vb.h); vb.w=nw; vb.h=nh;}
+    apply();
+  },{passive:false});
+  let drag=null;
+  svg.addEventListener('pointerdown',e=>{e.preventDefault();drag={x:e.clientX,y:e.clientY};
+    try{svg.setPointerCapture(e.pointerId)}catch(_){};svg.style.cursor='grabbing';});
+  svg.addEventListener('pointermove',e=>{
+    if(!drag) return;
+    const r=svg.getBoundingClientRect();
+    vb.x-=(e.clientX-drag.x)*(vb.w/r.width);
+    vb.y-=(e.clientY-drag.y)*(vb.h/r.height);
+    drag={x:e.clientX,y:e.clientY}; apply();
+  });
+  const end=()=>{drag=null;svg.style.cursor='grab';};
+  svg.addEventListener('pointerup',end); svg.addEventListener('pointercancel',end);
+  svg.addEventListener('dblclick',()=>{vb={x:0,y:0,w:W,h:H};apply();});
+}
+
 function panel(m, mode){
   const d = DATA[m.sym]; if(!d || !d.bars || d.bars.length < 10) return null;
   const B = d.bars;
@@ -444,6 +476,7 @@ function panel(m, mode){
     TIP.style.left=Math.max(4,lx)+'px'; TIP.style.top=Math.max(4,ly)+'px';
   };
   svg.onmouseleave=hide;
+  panzoom(svg, W, H);
   return el;
 }
 const TIP=document.createElement('div');TIP.className='tip';document.body.appendChild(TIP);
