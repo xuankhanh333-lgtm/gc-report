@@ -328,7 +328,15 @@ document.getElementById('t-ev').innerHTML = D.n_ev + cntChip(D.n_ev,'ev');
   const el = document.getElementById('t-vn30'), w = document.getElementById('t-vn30-wrap');
   el.textContent = r30 || '—';
   el.classList.add('v30');
-  w.title = [f2, r30].filter(Boolean).join('\n');
+  // "tru" trong dien giai = ro VN30 do qua VN301! (Δgia + KL phai sinh) — khong phai tung ma.
+  // tooltip liet ke CP TRU that: ma VN30 von hoa lon nhat trong ro quet + %gia/%KL hom nay.
+  const tru = (D.rows||[]).filter(r=>r.vn30&&!r.leader&&r.cap_ty)
+    .sort((a,b)=>b.cap_ty-a.cap_ty).slice(0,10)
+    .map(r=>`  ${r.ticker} ${r.dpx==null?'·':(r.dpx>0?'+':'')+r.dpx.toFixed(1)+'%'}${r.vol_pct!=null?' (KL '+(r.vol_pct>0?'+':'')+r.vol_pct+'%)':''}`);
+  const truTxt = tru.length? 'CP trụ — mã VN30 vốn hoá lớn nhất trong rổ quét (%giá hôm nay · %KL vs TB5):\n'+tru.join('\n') : '';
+  w.title = [f2, r30,
+    '── "trụ" ở đây = cả rổ VN30 đo qua VN301! (Δgiá + khối lượng phái sinh), không phải từng mã riêng.',
+    truTxt].filter(Boolean).join('\n');
   w.style.display = '';
 })();
 
