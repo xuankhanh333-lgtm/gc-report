@@ -187,7 +187,7 @@ function render(mode){
 }
 (function(){
   const KEY='pooldir_struct_view';
-  let mode=localStorage.getItem(KEY)||'candle';
+  let mode=localStorage.getItem(KEY)||'line';
   const set=m=>{mode=m;try{localStorage.setItem(KEY,m)}catch(e){};render(m)};
   document.getElementById('vg-candle').onclick=()=>set('candle');
   document.getElementById('vg-line').onclick=()=>set('line');
