@@ -102,7 +102,8 @@ Giá đè lên, kèo là chấm trên đường giá. Dựng tự động mỗi 
   <div class="caption">● kèo (viền = hướng, ruột = kết quả: xanh thắng / đỏ thua / rỗng chờ) · ⚡ sweep ·
   ✝ kệ bị quét / kèo chết · <span style="color:var(--bsl)">▲</span>/<span style="color:var(--ssl)">▼</span> displacement
   (RB/FVG/OB/MIT/BRK/N tại bar hình thành, mờ = đã chết — rê chuột xem loại) ·
-  nét đứt hổ phách = mốc chuỗi scan đang canh (chưa đủ pivot thành kệ)</div>
+  nét đứt hổ phách = mốc chuỗi scan đang canh (chưa đủ pivot thành kệ) ·
+  <b>kéo chuột = di chuyển · Ctrl+lăn = zoom · double-click = reset</b></div>
 </div>
 
 <section class="tl" aria-label="Bảng kèo">
@@ -284,6 +285,36 @@ function render(mode){
   };
   svg.onmouseleave=hide;
 }
+// pan + zoom qua viewBox: keo = di chuyen, Ctrl+lan = zoom quanh con tro, dblclick = reset
+function panzoom(svg, W, H){
+  let vb={x:0,y:0,w:W,h:H};
+  const apply=()=>svg.setAttribute('viewBox',vb.x+' '+vb.y+' '+vb.w+' '+vb.h);
+  svg.style.cursor='grab'; svg.style.touchAction='none';
+  svg.addEventListener('wheel',e=>{
+    if(!e.ctrlKey) return;              // wheel thuong = cuon trang binh thuong
+    e.preventDefault();
+    const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;
+    const p=pt.matrixTransform(svg.getScreenCTM().inverse());
+    const f=e.deltaY>0?1.2:1/1.2;
+    const nw=Math.min(W,Math.max(W/10,vb.w*f)), nh=nw*(H/W);
+    if(nw>=W){vb={x:0,y:0,w:W,h:H};}
+    else{vb.x=p.x-(p.x-vb.x)*(nw/vb.w); vb.y=p.y-(p.y-vb.y)*(nh/vb.h); vb.w=nw; vb.h=nh;}
+    apply();
+  },{passive:false});
+  let drag=null;
+  svg.addEventListener('pointerdown',e=>{e.preventDefault();drag={x:e.clientX,y:e.clientY};
+    try{svg.setPointerCapture(e.pointerId)}catch(_){};svg.style.cursor='grabbing';});
+  svg.addEventListener('pointermove',e=>{
+    if(!drag) return;
+    const r=svg.getBoundingClientRect();
+    vb.x-=(e.clientX-drag.x)*(vb.w/r.width);
+    vb.y-=(e.clientY-drag.y)*(vb.h/r.height);
+    drag={x:e.clientX,y:e.clientY}; apply();
+  });
+  const end=()=>{drag=null;svg.style.cursor='grab';};
+  svg.addEventListener('pointerup',end); svg.addEventListener('pointercancel',end);
+  svg.addEventListener('dblclick',()=>{vb={x:0,y:0,w:W,h:H};apply();});
+}
 // bang displacement gan nhat (fill 1 lan tu payload — khong phu thuoc mode)
 (function(){
   const tb=document.getElementById('dtb');
@@ -309,6 +340,7 @@ function render(mode){
   document.getElementById('vg-candle').onclick=()=>set('candle');
   document.getElementById('vg-line').onclick=()=>set('line');
   render(mode);
+  panzoom(document.getElementById('map'), 560, 600);
 })();
 </script>
 </body>
