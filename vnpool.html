@@ -252,14 +252,41 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
   const pct = (v,plus)=> v==null?'·':((plus&&v>0?'+':'')+v.toFixed(0)+'%');
   const col = v=> v==null?'':(v>0?'color:var(--up)':v<0?'color:var(--down)':'');
   const td = (s,style)=>`<td style="padding:3px 9px 3px 5px;${style||''}">${s}</td>`;
-  function tbl(title,tint,tks){
+  // tooltip LY DO xep hang per-ma (tieu chi + so kich hoat, khop CFG rank_watchlist)
+  function rsn(kind,r,f){
+    const L=[];
+    const keo=`kèo kỹ thuật: ${r.verdict} ${r.trade_dir||''} (pf ${r.pf!=null?r.pf.toFixed(3):'·'})`;
+    if(kind==='dip'){
+      L.push('GOM ĐÁY — đủ 3 điều kiện:');
+      L.push('• '+keo+' — phía mua (LONG/FADE)');
+      L.push(`• robust: dự phóng LN ${pct(r.g_fwd,1)} dương + momentum thực dương (LN yoy ${f.lnst_yoy!=null?(f.lnst_yoy>0?'+':'')+f.lnst_yoy.toFixed(0)+'%':'·'} / DT yoy ${f.dt_yoy!=null?(f.dt_yoy>0?'+':'')+f.dt_yoy.toFixed(0)+'%':'·'}) + không cờ bẫy`);
+      L.push(`• thứ hạng theo rk_score ${r.rk_score!=null?r.rk_score.toFixed(2):'·'} = 0.28·dự-phóng + 0.22·upside + 0.22·ROE + 0.18·net-cash − 0.10·D/E (z-score toàn rổ, có cap)`);
+      L.push(`số nền: net-cash ${pct(r.netcash,1)} vốn hoá · D/E ${f.de!=null?f.de:'·'} · giảm từ đỉnh pool ${pct(r._dd)}`);
+    } else if(kind==='short'){
+      L.push('SHORT/TRÁNH — đủ 2 điều kiện:');
+      L.push('• '+keo);
+      L.push(`• dự phóng LN ${pct(r.g_fwd,1)} ÂM — consensus FY tới thấp hơn ttm`);
+      L.push('thứ tự trong bảng: dự phóng giảm sâu nhất trước');
+    } else {
+      L.push('BẪY (loại khỏi phía mua) — dính cờ dù kỹ thuật đang phía mua:');
+      (r.flags||[]).forEach(fl=>{
+        if(fl==='ROE-ao') L.push(`• ROE-ảo: ROE ${f.roe}% > 60% — vốn chủ gần 0, sinh lời ảo`);
+        else if(fl==='nen-thap') L.push(`• nền-thấp: dự phóng ${pct(r.g_fwd,1)} > +60% nhưng ROE ${f.roe!=null?f.roe:'·'}% < 6% — tăng trưởng từ nền quá thấp, không bền`);
+        else if(fl==='dinh-LN') L.push(`• đỉnh-LN: LN yoy ${f.lnst_yoy!=null?'+'+f.lnst_yoy.toFixed(0)+'%':'·'} > +80% mà dự phóng ${pct(r.g_fwd,1)} âm — đỉnh chu kỳ lợi nhuận, sắp giảm`);
+        else if(fl==='bay-gia-tri') L.push(`• bẫy-giá-trị: P/E ${f.pe} < 8 nhưng dự phóng ${pct(r.g_fwd,1)} < −5% — rẻ vì lợi nhuận sắp gãy`);
+      });
+      L.push('• '+keo);
+    }
+    return L.join('\n');
+  }
+  function tbl(title,tint,tks,kind){
     let h = `<div style="min-width:0;overflow-x:auto"><div style="font-size:12px;font-weight:700;color:${tint};margin:0 0 5px">${title} <span style="color:var(--ink3);font-weight:400">(${tks.length})</span></div>`;
     // width:auto + min-width:0 de OVERRIDE rule toan cuc `table{width:100%;min-width:1180px}` (danh cho #tbl)
     h += '<table style="border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;width:auto;min-width:0">';
     h += '<tr style="color:var(--ink3);font-size:10px;text-align:right"><td></td><td style="text-align:left">mã</td><td>giá</td><td>giảm</td><td>LNdp</td><td>ROE</td><td>up</td><td style="text-align:left">cờ</td></tr>';
     tks.slice(0,8).forEach((tk,i)=>{ const r=byTk[tk]; if(!r) return; const f=r.fund||{};
       const px = `${fmt(r.close)}${r.dpx==null?'':` <span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="so close phiên trước">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}`;
-      h += `<tr style="border-top:1px solid var(--line);text-align:right">`
+      h += `<tr style="border-top:1px solid var(--line);text-align:right;cursor:help" title="${rsn(kind,r,f)}">`
         + td(i+1,'color:var(--ink3);text-align:left')
         + td(`<b>${tk}</b>`,'text-align:left;font-size:12.5px')
         + td(px,'font-family:ui-monospace,Consolas,monospace')
@@ -274,9 +301,9 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
   }
   let html = '<h2 title="dip = kỹ thuật LONG/FADE + dự phóng LN dương + momentum thực dương + không cờ bẫy · short = kỹ thuật SHORT + dự phóng giảm · bẫy = ROE ảo / nền thấp / đỉnh LN / bẫy giá trị">Xếp hạng cơ bản × kỹ thuật <span style="font-weight:400;text-transform:none;letter-spacing:0">(dự phóng LN + định giá + tín hiệu)</span></h2>';
   html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px 30px;align-items:start">';
-  html += tbl('🟢 Gom đáy','var(--up)', D.rank.dip||[]);
-  html += tbl('🔴 Short','var(--down)', D.rank.short||[]);
-  html += tbl('⚠️ Bẫy (loại)','var(--warn)', D.rank.trap||[]);
+  html += tbl('🟢 Gom đáy','var(--up)', D.rank.dip||[], 'dip');
+  html += tbl('🔴 Short','var(--down)', D.rank.short||[], 'short');
+  html += tbl('⚠️ Bẫy (loại)','var(--warn)', D.rank.trap||[], 'trap');
   html += '</div>';
   box.innerHTML = html;
 })();
