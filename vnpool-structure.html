@@ -41,6 +41,10 @@ h1 b{color:var(--amber)}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 8px 4px}
 .panel h3{font-size:13px;font-weight:700;margin:0 4px 6px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .panel h3 .px{color:var(--amber);font-weight:750}
+.pxc{font-size:10px;font-weight:750;padding:0 6px;border-radius:10px;font-family:ui-monospace,Consolas,monospace}
+.pxc.up{color:var(--win);background:color-mix(in srgb, var(--win) 13%, transparent)}
+.pxc.dn{color:var(--loss);background:color-mix(in srgb, var(--loss) 13%, transparent)}
+.pxc.fl{color:var(--ink3);background:var(--grid)}
 .panel h3 .tag{font-size:10px;color:var(--ink3);font-weight:500}
 .panel h3 .vd{font-size:10px;font-weight:750;padding:0 7px;border-radius:10px}
 .panel h3 .vd.T{color:var(--win);background:color-mix(in srgb, var(--win) 13%, transparent)}
@@ -99,7 +103,7 @@ footer{margin-top:18px;font-size:11.5px;color:var(--ink3);max-width:80ch;line-he
 <h1>Cấu trúc <b>VN</b> — bản đồ thanh khoản bracket · 45 ngày
   <a href="vnpool.html" style="font-size:11px;font-weight:600;color:var(--amber);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:2px 10px;vertical-align:middle;margin-left:8px" onclick="this.href='vnpool.html?v='+Date.now()">⇄ Dashboard</a></h1>
 <p class="sub">Toàn bộ mã trong <b>bracket</b> (đã từng đủ tư cách universe — gồm cả nhóm chờ thanh khoản):
-kệ ERL sống/chết theo thời gian, giá H4, kèo = chấm (viền hướng, ruột kết quả T+ open-fill). Cập nhật 13/07/2026 16:20.</p>
+kệ ERL sống/chết theo thời gian, giá H4, kèo = chấm (viền hướng, ruột kết quả T+ open-fill). Cập nhật 13/07/2026 19:11.</p>
 <div class="bar">
   <input id="q" placeholder="lọc mã / ngành... (vd HPG, thép, chờ)" autocomplete="off">
   <div class="viewtg" role="group" aria-label="Kiểu hiển thị giá">
@@ -440,7 +444,12 @@ function panel(m, mode){
       `<span style="color:var(--ink3)">${fmt(dp.bot)} – ${fmt(dp.top)}</span></div>`+
       `<span class="st ${dp.dead?'dead':'wait'}">${dp.dead?'✝':'sống'}</span></div>`;
   }).join('');
-  el.innerHTML=`<h3>${m.tk} <span class="px mono">${fmt(last[3])}</span> ${vd} ${tags}
+  // % thay doi vs close phien truoc (ngay VN — bar cuoi cua ngay lich truoc do)
+  const dayOf=t=>{const x=new Date(t+7*36e5);return x.getUTCFullYear()*10000+(x.getUTCMonth()+1)*100+x.getUTCDate()};
+  let pvc=null;{const ld=dayOf(last[0]);for(let i=n-1;i>=0;i--){if(dayOf(B[i][0])<ld){pvc=B[i][3];break}}}
+  const dch=pvc?(last[3]-pvc)/pvc*100:null;
+  const pxc=dch==null?'':`<span class="pxc ${dch>0.001?'up':dch<-0.001?'dn':'fl'}" title="so close phiên trước ${fmt(pvc)}">${dch>0?'+':''}${dch.toFixed(1)}%</span>`;
+  el.innerHTML=`<h3>${m.tk} <span class="px mono">${fmt(last[3])}</span>${pxc} ${vd} ${tags}
     <span class="tag">${d.pools.filter(p=>!p.death).length} kệ · ${(d.keos||[]).length} kèo · ${m.nganh}</span></h3>
     <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cấu trúc ${m.tk}">${S.join('')}</svg>
     ${dsp?`<div class="evs"><div class="evh">DISPLACEMENT GẦN NHẤT</div>${dsp}</div>`:''}
