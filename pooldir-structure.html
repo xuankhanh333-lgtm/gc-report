@@ -46,6 +46,14 @@ h1 b{color:var(--amber);font-weight:750}
 .tl{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px 10px}
 .tl h2{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin:0 0 12px}
 .evscroll{max-height:560px;overflow-y:auto;padding-right:8px;scrollbar-width:thin}
+.tblscroll{max-height:420px;overflow-y:auto;scrollbar-width:thin;border:1px solid var(--line);border-radius:8px}
+.keotbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.keotbl th{position:sticky;top:0;background:var(--surface);color:var(--ink3);font-size:10px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;text-align:left;padding:6px 9px;border-bottom:1px solid var(--line)}
+.keotbl td{padding:5px 9px;border-bottom:1px solid var(--grid);white-space:nowrap}
+.keotbl td.num{font-family:ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums}
+.keotbl .long{color:var(--bsl)} .keotbl .short{color:var(--ssl)} .keotbl .dim{color:var(--ink3);font-size:10.5px}
+.keotbl .st{font-size:9.5px;font-weight:750;padding:1px 7px;border-radius:10px;white-space:nowrap}
 .ev{display:grid;grid-template-columns:92px 22px 1fr auto;gap:0 10px;align-items:baseline;position:relative;padding:7px 0}
 .ev .t{font-size:11px;color:var(--ink3);text-align:right}
 .ev .rail{position:relative;align-self:stretch}
@@ -96,6 +104,26 @@ Giá đè lên, kèo là chấm trên đường giá. Dựng tự động mỗi 
   (RB/FVG/OB/MIT/BRK/N tại bar hình thành, mờ = đã chết — rê chuột xem loại) ·
   nét đứt hổ phách = mốc chuỗi scan đang canh (chưa đủ pivot thành kệ)</div>
 </div>
+
+<section class="tl" aria-label="Bảng kèo">
+  <h2>Bảng kèo — cửa sổ 45 ngày · mới nhất trước (giờ ET)</h2>
+  <div class="tblscroll"><table class="keotbl">
+    <thead><tr><th>Ngày</th><th>Kèo</th><th>pf</th><th>Entry</th><th>TP</th><th>SL</th><th>KQ</th><th>Disp</th></tr></thead>
+    <tbody>
+<tr><td class="mono">12/07 22:00</td><td><b class="long">DEAD LONG</b></td><td class="num">0.158</td><td class="num">4061.8</td><td class="num">4124.2</td><td class="num">4030.6</td><td><span class="st dead">✝ HỦY M30 </span></td><td class="dim">FVG · correlate</td></tr>
+<tr><td class="mono">12/07 18:00</td><td><b class="long">FADE LONG</b></td><td class="num">0.151</td><td class="num">4080.2</td><td class="num">4142.6</td><td class="num">4049.0</td><td><span class="st wait">CHỜ </span></td><td class="dim">N · correlate</td></tr>
+<tr><td class="mono">10/07 13:00</td><td><b class="long">TAKE LONG</b></td><td class="num">0.494</td><td class="num">4128.9</td><td class="num">4190.6</td><td class="num">4098.1</td><td><span class="st wait">CHỜ </span></td><td class="dim">RB · diverge</td></tr>
+<tr><td class="mono">10/07 02:00</td><td><b class="long">DEAD LONG</b></td><td class="num">0.189</td><td class="num">4113.7</td><td class="num">4185.2</td><td class="num">4077.9</td><td><span class="st dead">✝ HỦY M30 </span></td><td class="dim">RB · correlate</td></tr>
+<tr><td class="mono">09/07 06:00</td><td><b class="long">TAKE LONG</b></td><td class="num">0.512</td><td class="num">4131.7</td><td class="num">4212.7</td><td class="num">4091.2</td><td><span class="st wait">CHỜ </span></td><td class="dim">FVG · diverge</td></tr>
+<tr><td class="mono">09/07 02:00</td><td><b class="long">TAKE LONG</b></td><td class="num">0.507</td><td class="num">4115.7</td><td class="num">4195.6</td><td class="num">4075.7</td><td><span class="st loss">LOSS -1.00</span></td><td class="dim">N · diverge</td></tr>
+<tr><td class="mono">08/07 18:00</td><td><b class="long">DEAD LONG</b></td><td class="num">0.101</td><td class="num">4081.8</td><td class="num">4159.9</td><td class="num">4042.7</td><td><span class="st dead">✝ HỦY M30 </span></td><td class="dim">RB · correlate</td></tr>
+<tr><td class="mono">08/07 13:00</td><td><b class="long">TAKE LONG</b></td><td class="num">0.596</td><td class="num">4086.6</td><td class="num">4165.5</td><td class="num">4047.2</td><td><span class="st wait">CHỜ </span></td><td class="dim">RB · diverge</td></tr>
+<tr><td class="mono">08/07 10:00</td><td><b class="long">FADE LONG</b></td><td class="num">0.087</td><td class="num">4076.4</td><td class="num">4155.4</td><td class="num">4036.9</td><td><span class="st wait">CHỜ +0.84</span></td><td class="dim">BRK · correlate</td></tr>
+<tr><td class="mono">08/07 06:00</td><td><b class="short">TAKE SHORT</b></td><td class="num">0.571</td><td class="num">4081.6</td><td class="num">4006.1</td><td class="num">4119.4</td><td><span class="st loss">LOSS -1.00</span></td><td class="dim">N · diverge</td></tr>
+<tr><td class="mono">08/07 02:00</td><td><b class="short">TAKE SHORT</b></td><td class="num">0.570</td><td class="num">4053.1</td><td class="num">3978.0</td><td class="num">4090.6</td><td><span class="st wait">CHỜ </span></td><td class="dim">OB · diverge</td></tr>
+    </tbody>
+  </table></div>
+</section>
 
 <section class="tl" aria-label="Chuỗi sự kiện">
   <h2>Chuỗi sự kiện — cửa sổ 45 ngày (giờ ET)</h2>
