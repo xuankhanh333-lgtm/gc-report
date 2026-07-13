@@ -33,6 +33,9 @@ h1 b{color:var(--amber)}
   background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 9px;
   font:10.5px ui-monospace,Consolas,monospace;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.14)}
 .tip b{color:var(--amber)}
+.tip .evl{color:var(--ink2);margin-top:2px}
+.tip .evl .long{color:var(--bsl)} .tip .evl .short{color:var(--ssl)}
+.tip .evl .win{color:var(--win);font-weight:700} .tip .evl .loss{color:var(--loss);font-weight:700}
 .legend{font-size:11px;color:var(--ink3)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:14px}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 8px 4px}
@@ -71,7 +74,7 @@ footer{margin-top:18px;font-size:11.5px;color:var(--ink3);max-width:80ch;line-he
 <div class="wrap">
 <h1>Cấu trúc <b>VN</b> — bản đồ thanh khoản bracket · 45 ngày</h1>
 <p class="sub">Toàn bộ mã trong <b>bracket</b> (đã từng đủ tư cách universe — gồm cả nhóm chờ thanh khoản):
-kệ ERL sống/chết theo thời gian, giá H4, kèo = chấm (viền hướng, ruột kết quả T+ open-fill). Cập nhật 13/07/2026 12:11.</p>
+kệ ERL sống/chết theo thời gian, giá H4, kèo = chấm (viền hướng, ruột kết quả T+ open-fill). Cập nhật 13/07/2026 12:19.</p>
 <div class="bar">
   <input id="q" placeholder="lọc mã / ngành... (vd HPG, thép, chờ)" autocomplete="off">
   <div class="viewtg" role="group" aria-label="Kiểu hiển thị giá">
@@ -156,7 +159,12 @@ function panel(m, mode){
     <span class="tag">${d.pools.filter(p=>!p.death).length} kệ · ${(d.keos||[]).length} kèo · ${m.nganh}</span></h3>
     <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cấu trúc ${m.tk}">${S.join('')}</svg>
     ${evs?`<div class="evs">${evs}</div>`:''}`;
-  // hover: crosshair + tooltip OHLC (gio VN)
+  // hover: crosshair + tooltip OHLC (gio VN) + su kien tai nen (keo / ke bi quet)
+  const evAt={};
+  const addEv=(t,s)=>{const i=idxOf(t);(evAt[i]=evAt[i]||[]).push(s)};
+  for(const k of (d.keos||[]))
+    addEv(k.t,`<span class="${k.side==='L'?'long':'short'}">●</span> ${k.v||'kèo'} ${k.side==='L'?'LONG':'SHORT'} @${fmt(k.px)} — ${k.res==='win'?'<span class="win">WIN</span>':k.res==='loss'?'<span class="loss">LOSS</span>':'chờ'}`);
+  for(const q of d.pools) if(q.death) addEv(q.death,`✝ kệ ${q.isH?'BSL':'SSL'} ${fmt(q.px)} bị quét`);
   const svg=el.querySelector('svg');
   const NS='http://www.w3.org/2000/svg';
   const hv=document.createElementNS(NS,'line');
@@ -172,7 +180,8 @@ function panel(m, mode){
     const b=B[i],dt1=new Date(b[0]+7*36e5);
     hv.setAttribute('x1',X(i));hv.setAttribute('x2',X(i));hv.style.display='';
     const hm=String(dt1.getUTCHours()).padStart(2,'0')+':'+String(dt1.getUTCMinutes()).padStart(2,'0');
-    TIP.innerHTML=`<b>${m.tk} ${dt1.getUTCDate()}/${dt1.getUTCMonth()+1} ${hm}</b> · O ${fmt(b[4]??0)||'—'}  H ${fmt(b[1])}  L ${fmt(b[2])}  C ${fmt(b[3])}`;
+    TIP.innerHTML=`<b>${m.tk} ${dt1.getUTCDate()}/${dt1.getUTCMonth()+1} ${hm}</b> · O ${fmt(b[4]??0)||'—'}  H ${fmt(b[1])}  L ${fmt(b[2])}  C ${fmt(b[3])}`
+      +(evAt[i]||[]).map(s=>`<div class="evl">${s}</div>`).join('');
     TIP.style.display='block';
     let lx=e.clientX+14, ly=e.clientY-30;
     if(lx+TIP.offsetWidth>innerWidth-8) lx=e.clientX-TIP.offsetWidth-14;
