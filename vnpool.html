@@ -251,10 +251,11 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
   const byTk = {}; D.rows.forEach(r=>byTk[r.ticker]=r);
   const pct = (v,plus)=> v==null?'·':((plus&&v>0?'+':'')+v.toFixed(0)+'%');
   const col = v=> v==null?'':(v>0?'color:var(--up)':v<0?'color:var(--down)':'');
-  const td = (s,style)=>`<td style="padding:3px 5px;${style||''}">${s}</td>`;
+  const td = (s,style)=>`<td style="padding:3px 9px 3px 5px;${style||''}">${s}</td>`;
   function tbl(title,tint,tks){
-    let h = `<div style="flex:1 1 300px;min-width:270px"><div style="font-size:12px;font-weight:700;color:${tint};margin:0 0 5px">${title} <span style="color:var(--ink3);font-weight:400">(${tks.length})</span></div>`;
-    h += '<table style="width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums">';
+    let h = `<div style="min-width:0;overflow-x:auto"><div style="font-size:12px;font-weight:700;color:${tint};margin:0 0 5px">${title} <span style="color:var(--ink3);font-weight:400">(${tks.length})</span></div>`;
+    // width:auto + min-width:0 de OVERRIDE rule toan cuc `table{width:100%;min-width:1180px}` (danh cho #tbl)
+    h += '<table style="border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;width:auto;min-width:0">';
     h += '<tr style="color:var(--ink3);font-size:10px;text-align:right"><td></td><td style="text-align:left">mã</td><td>giảm</td><td>LNdp</td><td>ROE</td><td>up</td><td style="text-align:left">cờ</td></tr>';
     tks.slice(0,8).forEach((tk,i)=>{ const r=byTk[tk]; if(!r) return; const f=r.fund||{};
       h += `<tr style="border-top:1px solid var(--line);text-align:right">`
@@ -270,7 +271,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     return h + '</table></div>';
   }
   let html = '<h2 title="dip = kỹ thuật LONG/FADE + dự phóng LN dương + momentum thực dương + không cờ bẫy · short = kỹ thuật SHORT + dự phóng giảm · bẫy = ROE ảo / nền thấp / đỉnh LN / bẫy giá trị">Xếp hạng cơ bản × kỹ thuật <span style="font-weight:400;text-transform:none;letter-spacing:0">(dự phóng LN + định giá + tín hiệu)</span></h2>';
-  html += '<div style="display:flex;flex-wrap:wrap;gap:18px">';
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px 30px;align-items:start">';
   html += tbl('🟢 Gom đáy','var(--up)', D.rank.dip||[]);
   html += tbl('🔴 Short','var(--down)', D.rank.short||[]);
   html += tbl('⚠️ Bẫy (loại)','var(--warn)', D.rank.trap||[]);
