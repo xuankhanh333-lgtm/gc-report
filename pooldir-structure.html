@@ -128,7 +128,7 @@ Giá đè lên, kèo là chấm trên đường giá. Dựng tự động mỗi 
 <section class="tl" aria-label="Displacement gần nhất">
   <h2>Displacement gần nhất — H4 · mới nhất trước (giờ ET)</h2>
   <div class="tblscroll" style="max-height:300px"><table class="keotbl">
-    <thead><tr><th>Nến</th><th>Loại</th><th>Hướng</th><th>Leg (bot–top)</th><th>Biên độ</th><th>Trạng thái</th></tr></thead>
+    <thead><tr><th>d</th><th>Nến</th><th>Loại</th><th>Hướng</th><th>Leg (bot–top)</th><th>Biên độ</th><th>Trạng thái</th></tr></thead>
     <tbody id="dtb"></tbody>
   </table></div>
 </section>
@@ -287,11 +287,14 @@ function render(mode){
 // bang displacement gan nhat (fill 1 lan tu payload — khong phu thuoc mode)
 (function(){
   const tb=document.getElementById('dtb');
-  if(!tb||!D||!D.disps||!D.disps.length){ if(tb) tb.innerHTML='<tr><td colspan="6" class="dim">chưa có displacement trong cửa sổ</td></tr>'; return; }
+  if(!tb||!D||!D.disps||!D.disps.length){ if(tb) tb.innerHTML='<tr><td colspan="7" class="dim">chưa có displacement trong cửa sổ</td></tr>'; return; }
+  // d-N = so nen truoc nen dong cuoi (cung quy uoc voi log engine)
+  const B=D.bars.slice().sort((a,b)=>a[0]-b[0]), n=B.length;
+  const iOf=t=>{let k=0;for(let i=0;i<n;i++)if(B[i][0]<=t)k=i;return k};
   tb.innerHTML=D.disps.slice().sort((a,b)=>b.t-a.t).map(dp=>{
-    const up=dp.dir>0, d=new Date(dp.t);
+    const up=dp.dir>0, d=new Date(dp.t), dn=(n-1)-iOf(dp.t);
     const hm=String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');
-    return `<tr><td class="mono">${d.getUTCDate()}/${d.getUTCMonth()+1} ${hm}</td>`+
+    return `<tr><td class="mono"><b>d-${dn}</b></td><td class="mono">${d.getUTCDate()}/${d.getUTCMonth()+1} ${hm}</td>`+
       `<td><b class="${up?'long':'short'}">${up?'▲':'▼'} ${dp.k}</b></td>`+
       `<td class="${up?'long':'short'}">${up?'LONG':'SHORT'}</td>`+
       `<td class="num">${dp.bot} – ${dp.top}</td>`+
