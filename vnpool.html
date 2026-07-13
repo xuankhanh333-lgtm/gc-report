@@ -570,6 +570,13 @@ function fundTip(r){
   else if(f.eps_fc_q!=null)p.push('EPS dự phóng Q tới '+f.eps_fc_q.toLocaleString('vi-VN'));
   if(f.lnst_fc_fy_ty!=null)p.push('LNST dự phóng FY tới ≈'+f.lnst_fc_fy_ty.toLocaleString('vi-VN')+' tỷ'+(f.lnst_ty?' ('+(f.lnst_fc_fy_ty>=f.lnst_ty?'+':'')+Math.round((f.lnst_fc_fy_ty/f.lnst_ty-1)*100)+'% vs ttm)':''));
   if(f.target!=null)p.push('Giá mục tiêu TB '+f.target.toLocaleString('vi-VN'));
+  // Buffett check (Buffettology, chi tham khao)
+  const bt=[['ROE≥15%',f.roe==null?null:f.roe>=15],['Biên ròng≥10%',f.margin==null?null:f.margin>=10],
+    ['Nợ/LNST≤4năm',(f.no_ty==null||f.lnst_ty==null)?null:(f.lnst_ty>0&&f.no_ty/f.lnst_ty<=4)],
+    ['FCF>0',f.fcf_ty==null?null:f.fcf_ty>0],['ROIC≥12%',f.roic==null?null:f.roic>=12],
+    ['P/E 0–15',f.pe==null?null:(f.pe>0&&f.pe<=15)]];
+  const ev=bt.filter(x=>x[1]!=null), ps=ev.filter(x=>x[1]).length;
+  if(ev.length>=3)p.push('Buffett '+ps+'/'+ev.length+' ['+bt.map(x=>(x[1]==null?'·':x[1]?'✓':'✗')+x[0]).join(' ')+']');
   return p.length?' ── '+p.join(' · '):'';
 }
 function bctcChip(r){
