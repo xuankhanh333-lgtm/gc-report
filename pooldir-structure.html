@@ -45,6 +45,7 @@ h1 b{color:var(--amber);font-weight:750}
 .caption{font-size:11px;color:var(--ink3);padding:8px 12px 6px;line-height:1.6}
 .tl{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px 10px}
 .tl h2{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin:0 0 12px}
+.evscroll{max-height:560px;overflow-y:auto;padding-right:8px;scrollbar-width:thin}
 .ev{display:grid;grid-template-columns:92px 22px 1fr auto;gap:0 10px;align-items:baseline;position:relative;padding:7px 0}
 .ev .t{font-size:11px;color:var(--ink3);text-align:right}
 .ev .rail{position:relative;align-self:stretch}
@@ -94,7 +95,8 @@ Giá đè lên, kèo là chấm trên đường giá. Dựng tự động mỗi 
 </div>
 
 <section class="tl" aria-label="Chuỗi sự kiện">
-  <h2>Chuỗi sự kiện — cửa sổ 14 ngày (giờ ET)</h2>
+  <h2>Chuỗi sự kiện — cửa sổ 45 ngày (giờ ET)</h2>
+  <div class="evscroll">
 <div class="ev short"><div class="t mono">08/07 02:00</div><div class="rail"><span class="dot"></span></div><div class="h">DIVE OB → <span class="short">TAKE SHORT</span> @4053.1 <span class="dim mono">pf 0.570</span></div><span class="st wait">CHỜ</span><div class="d">Displacement ngược chuỗi (diverge) · chuỗi đảo nhịp.</div><div class="votes"><span class="vote pf yes">pf 0.570 TAKE</span><span class="vote net yes">net SHORT 0.88 CONFIRM ✓</span><span class="vote off">pool: im (19 bar)</span></div></div>
 <div class="ev short"><div class="t mono">08/07 06:00</div><div class="rail"><span class="dot"></span></div><div class="h">DIVE N → <span class="short">TAKE SHORT</span> @4081.6 <span class="dim mono">pf 0.571</span></div><span class="st loss">LOSS -1.00</span><div class="d">Displacement ngược chuỗi (diverge) · chuỗi đảo nhịp.</div><div class="votes"><span class="vote pf yes">pf 0.571 TAKE</span><span class="vote net yes">net SHORT 0.76 CONFIRM ✓</span><span class="vote off">pool: im (20 bar)</span></div></div>
 <div class="ev sweep"><div class="t mono">08/07 10:00</div><div class="rail"><span class="dot"></span></div><div class="h">⚡ SWEEP xuống — P_cascade 0.254 [REJECT]</div><span class="st dead">GIỮ</span><div class="d">Collapse_clean phán tại pierce — pool giữ, nghiêng bật lại.</div></div>
@@ -107,6 +109,7 @@ Giá đè lên, kèo là chấm trên đường giá. Dựng tự động mỗi 
 <div class="ev long"><div class="t mono">10/07 13:00</div><div class="rail"><span class="dot"></span></div><div class="h">DIVE RB → <span class="long">TAKE LONG</span> @4128.9 <span class="dim mono">pf 0.494</span></div><span class="st wait">CHỜ</span><div class="d">Displacement ngược chuỗi (diverge) · chuỗi đảo nhịp.</div><div class="votes"><span class="vote pf yes">pf 0.494 TAKE</span><span class="vote net yes">net LONG 0.89 CONFIRM ✓</span><span class="vote off">pool: im (13 bar)</span></div></div>
 <div class="ev long"><div class="t mono">12/07 18:00</div><div class="rail"><span class="dot"></span></div><div class="h">CORR N → <span class="long">FADE LONG</span> @4080.2 <span class="dim mono">pf 0.151</span></div><span class="st wait">CHỜ</span><div class="d">Displacement cùng chuỗi (correlate) · chuỗi tiếp diễn.</div><div class="votes"><span class="vote pf yes">pf 0.151 FADE</span><span class="vote net yes">net LONG 0.86 CONFIRM ✓</span><span class="vote off">pool: im (14 bar)</span></div></div>
 <div class="ev now"><div class="t mono">12/07 18:00</div><div class="rail"><span class="dot"></span></div><div class="h">Bây giờ — giá <span class="mono">4080.2</span> · net <b>LONG 0.86</b> → 4192.4</div><span class="st wait">FADE</span><div class="d">khong cat nguong trong range scan · khong cat nguong trong range scan</div></div>
+  </div>
 </section>
 
 <footer style="margin-top:20px;font-size:11.5px;color:var(--ink3);max-width:78ch;line-height:1.6">
