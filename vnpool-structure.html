@@ -76,7 +76,7 @@ footer{margin-top:18px;font-size:11.5px;color:var(--ink3);max-width:80ch;line-he
 <h1>Cấu trúc <b>VN</b> — bản đồ thanh khoản bracket · 45 ngày
   <a href="vnpool.html" style="font-size:11px;font-weight:600;color:var(--amber);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:2px 10px;vertical-align:middle;margin-left:8px" onclick="this.href='vnpool.html?v='+Date.now()">⇄ Dashboard</a></h1>
 <p class="sub">Toàn bộ mã trong <b>bracket</b> (đã từng đủ tư cách universe — gồm cả nhóm chờ thanh khoản):
-kệ ERL sống/chết theo thời gian, giá H4, kèo = chấm (viền hướng, ruột kết quả T+ open-fill). Cập nhật 13/07/2026 14:26.</p>
+kệ ERL sống/chết theo thời gian, giá H4, kèo = chấm (viền hướng, ruột kết quả T+ open-fill). Cập nhật 13/07/2026 14:32.</p>
 <div class="bar">
   <input id="q" placeholder="lọc mã / ngành... (vd HPG, thép, chờ)" autocomplete="off">
   <div class="viewtg" role="group" aria-label="Kiểu hiển thị giá">
@@ -140,12 +140,17 @@ function panel(m, mode){
     S.push(`<polyline points="${B.map((b,i)=>X(i).toFixed(1)+','+Y(b[3]).toFixed(1)).join(' ')}" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".9"/>`);
   }
   // displacement ▲▼ tai bar hinh thanh (mau theo huong, mo = da chet)
+  // con SONG: ve them THAN LEG (vach doc bot→top) + nhan loai
   const stU={},stD={};
   for(const dp of (d.disps||[])){
-    const i=idxOf(dp.t), up=dp.dir>0;
+    const i=idxOf(dp.t), up=dp.dir>0, col=up?'var(--bsl)':'var(--ssl)';
     const st=up?(stU[i]=(stU[i]||0)+1):(stD[i]=(stD[i]||0)+1);
     const y=up? Y(dp.bot)+8+8*(st-1) : Y(dp.top)-3-8*(st-1);
-    S.push(`<text x="${X(i)}" y="${y.toFixed(1)}" font-size="7" text-anchor="middle" fill="${up?'var(--bsl)':'var(--ssl)'}" opacity="${dp.dead?0.35:0.95}">${up?'▲':'▼'}</text>`);
+    if(!dp.dead){
+      S.push(`<line x1="${X(i)}" y1="${Y(dp.top).toFixed(1)}" x2="${X(i)}" y2="${Y(dp.bot).toFixed(1)}" stroke="${col}" stroke-width="2.2" opacity=".3"/>`);
+      S.push(`<text x="${(X(i)+3.5).toFixed(1)}" y="${(y+2).toFixed(1)}" font-size="6.5" fill="${col}" font-weight="700" font-family="ui-monospace,Consolas,monospace">${dp.k}</text>`);
+    }
+    S.push(`<text x="${X(i)}" y="${y.toFixed(1)}" font-size="7" text-anchor="middle" fill="${col}" opacity="${dp.dead?0.35:0.95}">${up?'▲':'▼'}</text>`);
   }
   for(const k of (d.keos||[])){
     const c=k.side==='L'?'var(--bsl)':'var(--ssl)';
