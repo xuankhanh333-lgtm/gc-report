@@ -183,12 +183,17 @@ function render(mode){
     S.push(`<polyline points="${B.map((b,i)=>`${X(i).toFixed(1)},${Y(b[3]).toFixed(1)}`).join(' ')}" fill="none" stroke="var(--ink)" stroke-width="1.1" opacity=".9"/>`);
   }
   // displacement ▲▼ tai bar hinh thanh (mau theo huong, mo = da chet)
+  // con SONG: ve them THAN LEG (vach doc bot→top) + nhan loai (RB/FVG/OB/MIT/BRK/N)
   const stU={},stD={};
   for(const dp of (D.disps||[])){
-    const i=idxOf(dp.t), up=dp.dir>0;
+    const i=idxOf(dp.t), up=dp.dir>0, col=up?'var(--bsl)':'var(--ssl)';
     const st=up?(stU[i]=(stU[i]||0)+1):(stD[i]=(stD[i]||0)+1);
     const y=up? Y(dp.bot)+9+9*(st-1) : Y(dp.top)-4-9*(st-1);
-    S.push(`<text x="${X(i)}" y="${y.toFixed(1)}" font-size="8" text-anchor="middle" fill="${up?'var(--bsl)':'var(--ssl)'}" opacity="${dp.dead?0.35:0.95}">${up?'▲':'▼'}</text>`);
+    if(!dp.dead){
+      S.push(`<line x1="${X(i)}" y1="${Y(dp.top).toFixed(1)}" x2="${X(i)}" y2="${Y(dp.bot).toFixed(1)}" stroke="${col}" stroke-width="2.6" opacity=".3"/>`);
+      S.push(`<text x="${(X(i)+4).toFixed(1)}" y="${(y+2.5).toFixed(1)}" font-size="7.5" fill="${col}" font-weight="700" font-family="ui-monospace,Consolas,monospace">${dp.k}</text>`);
+    }
+    S.push(`<text x="${X(i)}" y="${y.toFixed(1)}" font-size="8" text-anchor="middle" fill="${col}" opacity="${dp.dead?0.35:0.95}">${up?'▲':'▼'}</text>`);
   }
   // sweep / death / keo
   for(const s of (D.sweeps||[]))
