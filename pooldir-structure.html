@@ -35,6 +35,10 @@ h1 b{color:var(--amber);font-weight:750}
 .viewtg button{font:600 10.5px/1 system-ui,"Segoe UI",sans-serif;letter-spacing:.04em;color:var(--ink3);
   background:transparent;border:0;padding:5px 10px;cursor:pointer}
 .viewtg button.on{background:var(--amber-soft);color:var(--amber)}
+.tip{position:absolute;display:none;pointer-events:none;z-index:3;white-space:nowrap;
+  background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 9px;
+  font:10.5px ui-monospace,Consolas,monospace;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.tip b{color:var(--amber)}
 .caption{font-size:11px;color:var(--ink3);padding:8px 12px 6px;line-height:1.6}
 .tl{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px 10px}
 .tl h2{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin:0 0 12px}
@@ -81,6 +85,7 @@ Giá đè lên, kèo là chấm trên đường giá. Dựng tự động mỗi 
     <button id="vg-candle" type="button">NẾN</button><button id="vg-line" type="button">LINE</button>
   </div>
   <svg id="map" viewBox="0 0 560 600" role="img" aria-label="Bản đồ giá-thời gian với các kệ thanh khoản"></svg>
+  <div id="tip" class="tip"></div>
   <div class="caption">● kèo (viền = hướng, ruột = kết quả: xanh thắng / đỏ thua / rỗng chờ) · ⚡ sweep ·
   ✝ kệ bị quét / kèo chết · nét đứt hổ phách = mốc chuỗi scan đang canh (chưa đủ pivot thành kệ)</div>
 </div>
@@ -181,9 +186,34 @@ function render(mode){
   const last=B[n-1];
   S.push(`<circle cx="${X(n-1)}" cy="${Y(last[3])}" r="3.4" fill="var(--amber)" class="pulse"/>`);
   txt(PR+34,Y(last[3])+3.5,`giá ${last[3]}`,'var(--amber)',10.5,'start','font-weight="750"');
-  document.getElementById('map').innerHTML=S.join('');
+  const svg=document.getElementById('map');
+  svg.innerHTML=S.join('');
   document.getElementById('vg-candle').classList.toggle('on',mode==='candle');
   document.getElementById('vg-line').classList.toggle('on',mode!=='candle');
+  // hover: crosshair + tooltip OHLC theo nen gan con tro
+  const NS='http://www.w3.org/2000/svg';
+  const hv=document.createElementNS(NS,'line');
+  hv.setAttribute('stroke','var(--amber)');hv.setAttribute('stroke-width','0.8');
+  hv.setAttribute('stroke-dasharray','3 3');hv.setAttribute('y1',PT);hv.setAttribute('y2',PB);
+  hv.style.display='none';svg.appendChild(hv);
+  const tip=document.getElementById('tip');
+  const hide=()=>{hv.style.display='none';tip.style.display='none'};
+  svg.onmousemove=e=>{
+    const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;
+    const p=pt.matrixTransform(svg.getScreenCTM().inverse());
+    const i=Math.round((p.x-PL)/(PR-PL)*(n-1));
+    if(i<0||i>n-1||p.x>PR+6||p.y<PT-6||p.y>PB+6){hide();return}
+    const b=B[i],d=new Date(b[0]);
+    hv.setAttribute('x1',X(i));hv.setAttribute('x2',X(i));hv.style.display='';
+    const hm=String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');
+    tip.innerHTML=`<b>${d.getUTCDate()}/${d.getUTCMonth()+1} ${hm} ET</b> · O ${b[4]??'—'}  H ${b[1]}  L ${b[2]}  C ${b[3]}`;
+    tip.style.display='block';
+    const r=svg.parentElement.getBoundingClientRect();
+    let lx=e.clientX-r.left+14, ly=e.clientY-r.top-30;
+    if(lx+tip.offsetWidth>r.width-8) lx=e.clientX-r.left-tip.offsetWidth-14;
+    tip.style.left=Math.max(4,lx)+'px'; tip.style.top=Math.max(4,ly)+'px';
+  };
+  svg.onmouseleave=hide;
 }
 (function(){
   const KEY='pooldir_struct_view';
