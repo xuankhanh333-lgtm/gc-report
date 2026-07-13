@@ -87,6 +87,7 @@ h1 b{color:var(--amber);font-weight:750}
 <header>
   <h1>Cấu trúc <b>GC1!</b> — bản đồ thanh khoản 14 ngày</h1>
   <span class="chip mono">2026-07-13 06:00 ET</span>
+  <span class="chip mono" id="pxchip" style="display:none"></span>
   <a class="chip" href="pooldir.html" style="text-decoration:none" onclick="this.href='pooldir.html?v='+Date.now()">⇄ Dashboard</a>
 </header>
 <p class="sub">Kệ thanh khoản là các <b>đoạn ngang sống theo thời gian</b>: sinh tại swing, mờ + ✝ khi bị quét.
@@ -315,6 +316,20 @@ function panzoom(svg, W, H){
   svg.addEventListener('pointerup',end); svg.addEventListener('pointercancel',end);
   svg.addEventListener('dblclick',()=>{vb={x:0,y:0,w:W,h:H};apply();});
 }
+// chip gia + % vs close phien truoc (ngay ET — bar cuoi cua ngay lich truoc)
+(function(){
+  const el=document.getElementById('pxchip');
+  if(!el||!D||!D.bars||D.bars.length<2) return;
+  const B=D.bars.slice().sort((a,b)=>a[0]-b[0]), n=B.length, last=B[n-1];
+  const dayOf=t=>{const x=new Date(t);return x.getUTCFullYear()*10000+(x.getUTCMonth()+1)*100+x.getUTCDate()};
+  let pvc=null;{const ld=dayOf(last[0]);for(let i=n-1;i>=0;i--){if(dayOf(B[i][0])<ld){pvc=B[i][3];break}}}
+  if(pvc==null) return;
+  const dch=(last[3]-pvc)/pvc*100, up=dch>0.001, dn=dch<-0.001;
+  el.style.display='';
+  el.style.color=up?'var(--win)':dn?'var(--loss)':'var(--ink3)';
+  el.innerHTML=`giá ${last[3]} · ${dch>0?'+':''}${dch.toFixed(2)}%`;
+  el.title=`so close phiên trước ${pvc}`;
+})();
 // bang displacement gan nhat (fill 1 lan tu payload — khong phu thuoc mode)
 (function(){
   const tb=document.getElementById('dtb');
