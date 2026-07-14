@@ -282,11 +282,11 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     return L.join('\n');
   }
   function tbl(title,tint,tks,kind){
-    let h = `<div style="min-width:0;overflow-x:auto"><div style="font-size:12px;font-weight:700;color:${tint};margin:0 0 5px">${title} <span style="color:var(--ink3);font-weight:400">(${tks.length})</span></div>`;
+    let h = `<div style="min-width:0;max-height:330px;overflow:auto;scrollbar-width:thin"><div style="font-size:12px;font-weight:700;color:${tint};margin:0 0 5px">${title} <span style="color:var(--ink3);font-weight:400">(${tks.length})</span></div>`;
     // width:auto + min-width:0 de OVERRIDE rule toan cuc `table{width:100%;min-width:1180px}` (danh cho #tbl)
     h += '<table style="border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;width:auto;min-width:0">';
     h += '<tr style="color:var(--ink3);font-size:10px;text-align:right"><td></td><td style="text-align:left">mã</td><td>giá</td><td>giảm</td><td>LNdp</td><td>ROE</td><td>up</td><td style="text-align:left">cờ</td></tr>';
-    tks.slice(0,8).forEach((tk,i)=>{ const r=byTk[tk]; if(!r) return; const f=r.fund||{};
+    tks.forEach((tk,i)=>{ const r=byTk[tk]; if(!r) return; const f=r.fund||{};   // hien DU danh sach, khung cuon 330px
       const px = `${fmt(r.close)}${r.dpx==null?'':` <span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="so close phiên trước">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}`;
       h += `<tr style="border-top:1px solid var(--line);text-align:right;cursor:help" title="${rsn(kind,r,f)}">`
         + td(i+1,'color:var(--ink3);text-align:left')
