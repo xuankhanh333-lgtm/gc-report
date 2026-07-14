@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>📖 Từ mới — English vocab</title>
+<style>
+:root{--bg:#0e1117;--card:#161b22;--card2:#1c2330;--line:#2d333b;--ink:#e6edf3;--ink2:#8b949e;--grn:#3fb950;--red:#f85149;--yel:#d29922;--blu:#58a6ff;--pur:#bc8cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",system-ui,sans-serif;padding:14px;max-width:860px;margin:0 auto}
+h1{font-size:19px;margin-bottom:2px}
+.sub{color:var(--ink2);font-size:12.5px;margin-bottom:12px}
+.statbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-size:12.5px;color:var(--ink2)}
+.chip b{color:var(--ink)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tab{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:13.5px;color:var(--ink2);cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--card2);color:var(--ink);border-color:var(--blu)}
+.tab .bdg{background:var(--red);color:#fff;border-radius:999px;padding:0 6px;font-size:11px;margin-left:4px}
+select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:5px 8px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.card.done{opacity:.45}
+.wrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.w{font-size:21px;font-weight:700}
+.ipa{color:var(--blu);font-size:14px}
+.pos{background:var(--card2);border-radius:6px;padding:1px 7px;font-size:11.5px;color:var(--pur)}
+.top{background:var(--card2);border-radius:6px;padding:1px 7px;font-size:11.5px;color:var(--yel)}
+.lv{border-radius:6px;padding:1px 7px;font-size:11.5px;cursor:help}
+.lvA{background:#0d2818;color:var(--grn)}.lvB{background:#0d1f33;color:var(--blu)}.lvC{background:#241333;color:var(--pur)}
+.spk{cursor:pointer;font-size:16px;background:none;border:none;color:var(--blu)}
+.mean{margin-top:8px;display:none}
+.mean.open{display:block}
+.vn{font-size:15.5px;color:var(--grn);font-weight:600}
+.ex{margin-top:4px;font-size:13.5px}
+.exvn{color:var(--ink2);font-size:12.5px;font-style:italic}
+.btns{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+button.b{border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;background:var(--card2);color:var(--ink)}
+button.b.show{border-color:var(--blu);color:var(--blu)}
+button.b.ok{border-color:var(--grn);color:var(--grn)}
+button.b.no{border-color:var(--red);color:var(--red)}
+.boxchip{font-size:11px;color:var(--ink2);margin-left:auto}
+.empty{color:var(--ink2);padding:30px 10px;text-align:center}
+/* quiz */
+.qword{font-size:26px;font-weight:700;text-align:center;margin:18px 0 4px}
+.qipa{text-align:center;color:var(--blu);margin-bottom:14px}
+.qopt{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:14.5px;color:var(--ink);cursor:pointer}
+.qopt.right{border-color:var(--grn);background:#12261a}
+.qopt.wrong{border-color:var(--red);background:#2b1618}
+.qprog{color:var(--ink2);font-size:12.5px;text-align:center;margin-bottom:6px}
+/* all table */
+input[type=search]{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13.5px;width:220px;margin-bottom:10px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--ink2);font-weight:600;font-size:12px}
+.lvl{border-radius:6px;padding:0 7px;font-size:11px}
+.l0{background:#21262d;color:var(--ink2)}.l1{background:#3b2300;color:var(--yel)}.l2{background:#0d2818;color:var(--grn)}
+footer{color:var(--ink2);font-size:11.5px;margin-top:18px;text-align:center}
+</style>
+</head>
+<body>
+<h1>📖 Từ mới mỗi ngày</h1>
+<div class="sub">Flashcard tiếng Anh — tài chính · công việc · giao tiếp. Ôn tập ngắt quãng (Leitner): nhớ → giãn cách 1→2→4→7→14→30→60 ngày.</div>
+<div class="statbar" id="stats"></div>
+<div class="tabs">
+  <button class="tab" data-t="today" aria-pressed="true">Hôm nay</button>
+  <button class="tab" data-t="review" aria-pressed="false">Ôn tập <span class="bdg" id="duebdg" style="display:none"></span></button>
+  <button class="tab" data-t="quiz" aria-pressed="false">Trắc nghiệm</button>
+  <button class="tab" data-t="all" aria-pressed="false">Tất cả</button>
+  <select id="perday" title="Số từ mới mỗi ngày">
+    <option value="5">5 từ/ngày</option>
+    <option value="10" selected>10 từ/ngày</option>
+    <option value="15">15 từ/ngày</option>
+  </select>
+</div>
+<div id="main"></div>
+<footer>Tiến độ lưu trong trình duyệt (localStorage) · 🔊 dùng giọng đọc hệ thống · muốn thêm từ mới cứ bảo Claude</footer>
+<script>
+'use strict';
+// ===== WORD BANK: [word, ipa, pos, nghĩa, ví dụ EN, dịch VN, topic] =====
+const BANK=[
+// ---- TÀI CHÍNH / KINH TẾ ----
+["inflation","ɪnˈfleɪʃən","n","lạm phát","Inflation eased to 3% in June.","Lạm phát hạ nhiệt còn 3% trong tháng 6.","fin","B2"],
+["recession","rɪˈseʃən","n","suy thoái kinh tế","Gold often rises during a recession.","Vàng thường tăng trong suy thoái.","fin","C1"],
+["interest rate","ˈɪntrəst reɪt","n","lãi suất","The Fed kept interest rates unchanged.","Fed giữ nguyên lãi suất.","fin","B1"],
+["yield","jiːld","n","lợi suất","Bond yields jumped after the CPI report.","Lợi suất trái phiếu bật tăng sau báo cáo CPI.","fin","C1"],
+["bond","bɑːnd","n","trái phiếu","He moved half his money into government bonds.","Anh ấy chuyển nửa số tiền sang trái phiếu chính phủ.","fin","B2"],
+["equity","ˈekwəti","n","cổ phiếu; vốn chủ sở hữu","Equities sold off while gold held firm.","Cổ phiếu bị bán tháo trong khi vàng giữ giá.","fin","C1"],
+["commodity","kəˈmɑːdəti","n","hàng hóa (vàng, dầu…)","Gold is the most watched commodity this week.","Vàng là hàng hóa được theo dõi nhiều nhất tuần này.","fin","C1"],
+["volatility","ˌvɑːləˈtɪləti","n","độ biến động","Volatility spiked around the news release.","Độ biến động tăng vọt quanh lúc ra tin.","fin","C1"],
+["leverage","ˈlevərɪdʒ","n","đòn bẩy","High leverage can wipe out an account fast.","Đòn bẩy cao có thể thổi bay tài khoản rất nhanh.","fin","C1"],
+["margin","ˈmɑːrdʒɪn","n","ký quỹ; biên lợi nhuận","The broker raised margin requirements.","Sàn nâng yêu cầu ký quỹ.","fin","B2"],
+["liquidity","lɪˈkwɪdəti","n","thanh khoản","Price hunts liquidity above old highs.","Giá săn thanh khoản phía trên đỉnh cũ.","fin","C1"],
+["hedge","hedʒ","v/n","phòng hộ rủi ro","They hedge currency risk with futures.","Họ phòng hộ rủi ro tỷ giá bằng hợp đồng tương lai.","fin","C1"],
+["portfolio","pɔːrtˈfoʊlioʊ","n","danh mục đầu tư","My portfolio is down 14% this year.","Danh mục của tôi giảm 14% năm nay.","fin","B2"],
+["dividend","ˈdɪvɪdend","n","cổ tức","The bank pays a 5% dividend.","Ngân hàng này trả cổ tức 5%.","fin","B2"],
+["earnings","ˈɜːrnɪŋz","n","lợi nhuận (công bố)","Earnings season starts next week.","Mùa báo cáo lợi nhuận bắt đầu tuần sau.","fin","B2"],
+["revenue","ˈrevənuː","n","doanh thu","Revenue grew but profit fell.","Doanh thu tăng nhưng lợi nhuận giảm.","fin","B2"],
+["forecast","ˈfɔːrkæst","n/v","dự báo","Analysts forecast higher earnings next year.","Giới phân tích dự báo lợi nhuận năm sau cao hơn.","fin","B2"],
+["outlook","ˈaʊtlʊk","n","triển vọng","The outlook for steel stocks is improving.","Triển vọng nhóm thép đang cải thiện.","fin","B2"],
+["surplus","ˈsɜːrpləs","n","thặng dư","Vietnam posted a trade surplus in Q2.","Việt Nam có thặng dư thương mại trong quý 2.","fin","C1"],
+["deficit","ˈdefɪsɪt","n","thâm hụt","The budget deficit keeps widening.","Thâm hụt ngân sách tiếp tục nới rộng.","fin","C1"],
+["asset","ˈæset","n","tài sản","Cash is a safe but lazy asset.","Tiền mặt là tài sản an toàn nhưng 'lười'.","fin","B2"],
+["liability","ˌlaɪəˈbɪləti","n","nợ phải trả","Liabilities exceed assets — that is a red flag.","Nợ vượt tài sản — đó là dấu hiệu xấu.","fin","C1"],
+["valuation","ˌvæljuˈeɪʃən","n","định giá","The valuation looks cheap at P/E 8.","Định giá trông rẻ ở P/E 8.","fin","C1"],
+["undervalued","ˌʌndərˈvæljuːd","adj","bị định giá thấp","The stock seems undervalued versus its peers.","Cổ phiếu này có vẻ bị định giá thấp so với cùng ngành.","fin","C1"],
+["bullish","ˈbʊlɪʃ","adj","thiên hướng giá lên","Funds turned bullish on gold.","Các quỹ chuyển sang lạc quan với vàng.","fin","C1"],
+["bearish","ˈberɪʃ","adj","thiên hướng giá xuống","The chart looks bearish below 4000.","Đồ thị nhìn tiêu cực dưới mốc 4000.","fin","C1"],
+["rally","ˈræli","n/v","đợt tăng giá mạnh","The rally stalled at resistance.","Đà tăng khựng lại ở kháng cự.","fin","C1"],
+["plunge","plʌndʒ","v","lao dốc","Gold plunged 80 dollars in two hours.","Vàng lao dốc 80 đô trong hai giờ.","fin","C1"],
+["surge","sɜːrdʒ","v","tăng vọt","Volume surged at the open.","Khối lượng tăng vọt lúc mở cửa.","fin","B2"],
+["slump","slʌmp","n/v","sụt giảm kéo dài","Property stocks are in a long slump.","Cổ phiếu bất động sản chìm trong đợt sụt giảm dài.","fin","C1"],
+["rebound","rɪˈbaʊnd","v/n","hồi phục","The index rebounded from the 1200 level.","Chỉ số hồi phục từ vùng 1200.","fin","C1"],
+["correction","kəˈrekʃən","n","nhịp điều chỉnh","A 10% drop is a correction, not a crash.","Giảm 10% là điều chỉnh, chưa phải sụp đổ.","fin","B2"],
+["momentum","moʊˈmentəm","n","đà, quán tính giá","Momentum favors the sellers today.","Đà giá hôm nay nghiêng về bên bán.","fin","C1"],
+["shareholder","ˈʃerhoʊldər","n","cổ đông","Shareholders approved the plan.","Cổ đông đã thông qua kế hoạch.","fin","B2"],
+["merger","ˈmɜːrdʒər","n","sáp nhập","The merger created the largest broker in Vietnam.","Thương vụ sáp nhập tạo ra công ty chứng khoán lớn nhất VN.","fin","C1"],
+["acquisition","ˌækwɪˈzɪʃən","n","thâu tóm, mua lại","The acquisition was paid for in cash.","Thương vụ mua lại được thanh toán bằng tiền mặt.","fin","C1"],
+["bankruptcy","ˈbæŋkrʌptsi","n","phá sản","The developer filed for bankruptcy.","Chủ đầu tư đã nộp đơn phá sản.","fin","B2"],
+["default","dɪˈfɔːlt","n/v","vỡ nợ","The company defaulted on its bonds.","Công ty vỡ nợ trái phiếu.","fin","C1"],
+["collateral","kəˈlætərəl","n","tài sản thế chấp","Shares were pledged as collateral.","Cổ phiếu được cầm cố làm tài sản thế chấp.","fin","C1"],
+["tariff","ˈtærɪf","n","thuế quan","New tariffs hit exporters hard.","Thuế quan mới giáng mạnh vào các nhà xuất khẩu.","fin","C1"],
+["subsidy","ˈsʌbsədi","n","trợ cấp","Fuel subsidies were cut last month.","Trợ giá nhiên liệu bị cắt tháng trước.","fin","C1"],
+["stimulus","ˈstɪmjələs","n","gói kích thích","Markets rallied on stimulus hopes.","Thị trường tăng nhờ kỳ vọng gói kích thích.","fin","C1"],
+["tighten","ˈtaɪtn","v","thắt chặt","The central bank tightened policy again.","Ngân hàng trung ương lại thắt chặt chính sách.","fin","B2"],
+["hawkish","ˈhɔːkɪʃ","adj","'diều hâu' — thiên về tăng lãi suất","The speech sounded hawkish, so gold fell.","Bài phát biểu nghe 'diều hâu' nên vàng giảm.","fin","C2"],
+["dovish","ˈdʌvɪʃ","adj","'bồ câu' — thiên về nới lỏng","A dovish Fed usually lifts gold.","Fed 'bồ câu' thường đẩy vàng lên.","fin","C2"],
+["benchmark","ˈbentʃmɑːrk","n","chuẩn tham chiếu","VN-Index is the local benchmark.","VN-Index là chỉ số tham chiếu trong nước.","fin","C1"],
+["exposure","ɪkˈspoʊʒər","n","mức rủi ro đang nắm","Cut your exposure before the news.","Giảm vị thế rủi ro trước giờ ra tin.","fin","C1"],
+["diversify","daɪˈvɜːrsəfaɪ","v","đa dạng hóa","Never put all your money in one stock — diversify.","Đừng dồn hết tiền vào một mã — hãy đa dạng hóa.","fin","B2"],
+["allocate","ˈæləkeɪt","v","phân bổ","He allocates 20% of income to savings.","Anh ấy phân bổ 20% thu nhập vào tiết kiệm.","fin","C1"],
+["compound","ˈkɑːmpaʊnd","v","lãi kép, cộng dồn","Small gains compound into big results.","Lãi nhỏ cộng dồn thành kết quả lớn.","fin","C1"],
+["depreciate","dɪˈpriːʃieɪt","v","mất giá","The dong depreciated 3% against the dollar.","Tiền đồng mất giá 3% so với đô la.","fin","C1"],
+["appreciate","əˈpriːʃieɪt","v","tăng giá; trân trọng","Gold appreciated 30% this year. I appreciate your help.","Vàng tăng giá 30% năm nay. Tôi rất cảm kích sự giúp đỡ của bạn.","fin","B2"],
+["exchange rate","ɪksˈtʃeɪndʒ reɪt","n","tỷ giá","The exchange rate hit a record high.","Tỷ giá chạm mức cao kỷ lục.","fin","B1"],
+["monetary policy","ˈmɑːnəteri ˈpɑːləsi","n","chính sách tiền tệ","Monetary policy stays loose this year.","Chính sách tiền tệ năm nay vẫn nới lỏng.","fin","C1"],
+["fiscal","ˈfɪskəl","adj","thuộc tài khóa/ngân sách","Fiscal spending boosted growth.","Chi tiêu tài khóa thúc đẩy tăng trưởng.","fin","C1"],
+["payroll","ˈpeɪroʊl","n","bảng lương; việc làm (tin NFP)","Nonfarm payrolls beat expectations.","Số việc làm phi nông nghiệp vượt kỳ vọng.","fin","C1"],
+["unemployment","ˌʌnɪmˈplɔɪmənt","n","thất nghiệp","Unemployment rose to 4.2%.","Tỷ lệ thất nghiệp tăng lên 4.2%.","fin","B1"],
+["retail sales","ˈriːteɪl seɪlz","n","doanh số bán lẻ","Weak retail sales dragged the dollar down.","Doanh số bán lẻ yếu kéo đồng đô đi xuống.","fin","B1"],
+["consensus","kənˈsensəs","n","sự đồng thuận (giới phân tích)","The consensus target is 45% above the price.","Giá mục tiêu đồng thuận cao hơn thị giá 45%.","fin","C1"],
+["speculation","ˌspekjəˈleɪʃən","n","đầu cơ; đồn đoán","Speculation about a rate cut lifted stocks.","Đồn đoán về hạ lãi suất kéo cổ phiếu tăng.","fin","C1"],
+["stake","steɪk","n","phần vốn góp","The fund bought a 5% stake in the bank.","Quỹ mua 5% cổ phần ngân hàng.","fin","C1"],
+["downturn","ˈdaʊntɜːrn","n","chu kỳ đi xuống","Steel demand falls in a housing downturn.","Nhu cầu thép giảm khi bất động sản đi xuống.","fin","C1"],
+["turnover","ˈtɜːrnoʊvər","n","doanh số; giá trị giao dịch","Market turnover doubled this month.","Thanh khoản thị trường tăng gấp đôi tháng này.","fin","C1"],
+["breakout","ˈbreɪkaʊt","n","cú phá vỡ (giá vượt cản)","The breakout failed and price fell back.","Cú phá vỡ thất bại và giá quay đầu giảm.","fin","C1"],
+["upside","ˈʌpsaɪd","n","dư địa tăng giá; mặt tích cực","NVL has 45% upside to the consensus target.","NVL còn dư địa tăng 45% so với giá mục tiêu đồng thuận.","fin","C1"],
+["release","rɪˈliːs","n/v","kỳ công bố (tin/số liệu); phát hành","Gold spiked right after the CPI release.","Vàng giật mạnh ngay sau kỳ công bố CPI.","fin","B1"],
+["spike","spaɪk","v/n","giật tăng đột ngột; cái gai/đinh nhọn","Gold spiked 80 dollars on the soft CPI.","Vàng giật tăng 80 đô nhờ CPI mềm.","fin","B2","a spike in inflation (cú vọt lạm phát) · price spike (cú giật giá) · volatility spike"],
+["downside","ˈdaʊnsaɪd","n","rủi ro giảm giá; mặt trái","The downside is limited by the stop loss.","Rủi ro giảm được chặn bởi lệnh cắt lỗ.","fin","C1"],
+["entry","ˈentri","n","điểm vào lệnh; mục nhập","My entry is 12,200 with a stop at 12,560.","Điểm vào lệnh của tôi là 12.200, cắt lỗ 12.560.","fin","B1"],
+["target","ˈtɑːrɡɪt","n","mục tiêu; giá mục tiêu","The consensus target is far above the price.","Giá mục tiêu đồng thuận cao hơn thị giá rất nhiều.","fin","A2"],
+["rating","ˈreɪtɪŋ","n","xếp hạng đánh giá","Analysts kept a Buy rating on the stock.","Giới phân tích giữ khuyến nghị Mua cho cổ phiếu.","fin","B1"],
+["fade","feɪd","v","mờ dần; (trading) đánh ngược tín hiệu","Pros often fade the breakout when volume is weak.","Dân chuyên hay đánh ngược cú phá vỡ khi khối lượng yếu.","fin","C1"],
+["trap","træp","n","cái bẫy","That rally was a bull trap.","Cú tăng đó là một bẫy tăng giá.","fin","B1"],
+["displacement","dɪsˈpleɪsmənt","n","cú dịch chuyển giá mạnh (ICT); sự dời chỗ","A strong displacement broke the old low.","Một cú dịch chuyển mạnh phá đáy cũ.","fin","C1"],
+["exhaustion","ɪɡˈzɔːstʃən","n","sự kiệt sức, cạn đà","The long sweep chain ended in exhaustion.","Chuỗi sweep dài kết thúc trong kiệt sức.","fin","C1"],
+["verdict","ˈvɜːrdɪkt","n","phán quyết, kết luận","The jury reached a verdict after two days.","Bồi thẩm đoàn ra phán quyết sau hai ngày.","daily","C1"],
+["robust","roʊˈbʌst","adj","vững chắc, bền bỉ","The signal is robust across all thresholds.","Tín hiệu vẫn vững qua mọi ngưỡng thử.","daily","C1"],
+["pending","ˈpendɪŋ","adj","đang chờ xử lý","Two orders are still pending.","Hai lệnh vẫn đang chờ khớp.","work","B2"],
+["streak","striːk","n","chuỗi liên tiếp","He is on a five-day winning streak.","Anh ấy đang có chuỗi thắng năm ngày liên tiếp.","daily","B2"],
+["flag","flæɡ","n/v","lá cờ; đánh dấu cảnh báo","The system flagged the stock as a value trap.","Hệ thống gắn cờ cảnh báo mã này là bẫy giá trị.","work","B2"],
+["pullback","ˈpʊlbæk","n","nhịp giảm ngắn trong xu hướng tăng","Buy the pullback, not the top.","Mua nhịp chỉnh, đừng đua đỉnh.","fin","C1"],
+// ---- CÔNG VIỆC / VĂN PHÒNG ----
+["deadline","ˈdedlaɪn","n","hạn chót","We are behind the deadline again.","Chúng ta lại trễ hạn chót rồi.","work","B1"],
+["postpone","poʊstˈpoʊn","v","hoãn lại","The meeting was postponed to Friday.","Cuộc họp bị hoãn sang thứ Sáu.","work","B2"],
+["negotiate","nɪˈɡoʊʃieɪt","v","đàm phán","We negotiated a better price with the supplier.","Chúng tôi đàm phán được giá tốt hơn với nhà cung cấp.","work","B2"],
+["agenda","əˈdʒendə","n","chương trình họp","Please send the agenda before the meeting.","Vui lòng gửi chương trình trước cuộc họp.","work","B2"],
+["delegate","ˈdelɪɡeɪt","v","giao việc, ủy quyền","A good manager knows how to delegate.","Quản lý giỏi biết cách giao việc.","work","C1"],
+["supervisor","ˈsuːpərvaɪzər","n","người giám sát, cấp trên","Ask your supervisor for approval first.","Hỏi cấp trên phê duyệt trước đã.","work","B1"],
+["colleague","ˈkɑːliːɡ","n","đồng nghiệp","My colleagues helped me finish the report.","Đồng nghiệp giúp tôi hoàn thành báo cáo.","work","B1"],
+["procurement","prəˈkjʊrmənt","n","mua sắm, cung ứng (bộ phận)","Procurement is reviewing the quotation.","Bộ phận mua hàng đang xem xét báo giá.","work","C1"],
+["quotation","kwoʊˈteɪʃən","n","báo giá","Please send us your best quotation.","Vui lòng gửi báo giá tốt nhất của bên bạn.","work","B2"],
+["invoice","ˈɪnvɔɪs","n","hóa đơn","The invoice is due within 30 days.","Hóa đơn đến hạn thanh toán trong 30 ngày.","work","B1"],
+["warranty","ˈwɔːrənti","n","bảo hành","The pump comes with a two-year warranty.","Máy bơm được bảo hành hai năm.","work","B2"],
+["maintenance","ˈmeɪntənəns","n","bảo trì","The line is down for scheduled maintenance.","Dây chuyền dừng để bảo trì định kỳ.","work","B1"],
+["inspection","ɪnˈspekʃən","n","kiểm tra, nghiệm thu","The unit passed final inspection.","Thiết bị đã qua kiểm tra cuối.","work","B2"],
+["compliance","kəmˈplaɪəns","n","tuân thủ (quy định)","Compliance rejected the contract terms.","Bộ phận tuân thủ từ chối các điều khoản hợp đồng.","work","C1"],
+["procedure","prəˈsiːdʒər","n","quy trình","Follow the safety procedure strictly.","Tuân thủ nghiêm quy trình an toàn.","work","B1"],
+["efficiency","ɪˈfɪʃənsi","n","hiệu suất","The new system improved efficiency by 20%.","Hệ thống mới cải thiện hiệu suất 20%.","work","B2"],
+["feasibility","ˌfiːzəˈbɪləti","n","tính khả thi","We ran a feasibility study first.","Chúng tôi làm nghiên cứu khả thi trước.","work","C1"],
+["implement","ˈɪmplɪment","v","triển khai","The plan will be implemented next quarter.","Kế hoạch sẽ được triển khai quý tới.","work","B2"],
+["streamline","ˈstriːmlaɪn","v","tinh gọn (quy trình)","We streamlined the approval process.","Chúng tôi tinh gọn quy trình phê duyệt.","work","C1"],
+["bottleneck","ˈbɑːtlnek","n","nút thắt cổ chai","Customs clearance is the main bottleneck.","Thông quan là nút thắt chính.","work","C1"],
+["milestone","ˈmaɪlstoʊn","n","mốc quan trọng","We hit the first milestone on time.","Chúng tôi đạt mốc đầu tiên đúng hạn.","work","B2"],
+["deliverable","dɪˈlɪvərəbl","n","sản phẩm bàn giao","The report is the key deliverable this week.","Báo cáo là sản phẩm bàn giao chính tuần này.","work","C1"],
+["overhead","ˈoʊvərhed","n","chi phí cố định/vận hành","High overhead eats into profit.","Chi phí vận hành cao ăn mòn lợi nhuận.","work","C1"],
+["recruit","rɪˈkruːt","v","tuyển dụng","We are recruiting two engineers.","Chúng tôi đang tuyển hai kỹ sư.","work","B2"],
+["resign","rɪˈzaɪn","v","từ chức, nghỉ việc","The CFO resigned unexpectedly.","Giám đốc tài chính bất ngờ từ chức.","work","B2"],
+["appraisal","əˈpreɪzl","n","đánh giá (nhân sự/tài sản)","Salary depends on the annual appraisal.","Lương phụ thuộc vào kỳ đánh giá hằng năm.","work","C1"],
+["feedback","ˈfiːdbæk","n","phản hồi, góp ý","Customer feedback was mostly positive.","Phản hồi của khách hàng phần lớn tích cực.","work","B1"],
+["initiative","ɪˈnɪʃətɪv","n","sáng kiến; sự chủ động","She showed great initiative on the project.","Cô ấy rất chủ động trong dự án.","work","B2"],
+["objective","əbˈdʒektɪv","n","mục tiêu","Our objective is to cut costs by 10%.","Mục tiêu của chúng tôi là giảm 10% chi phí.","work","B2"],
+["commitment","kəˈmɪtmənt","n","cam kết","Delivery time is a firm commitment.","Thời gian giao hàng là cam kết chắc chắn.","work","B2"],
+["accountability","əˌkaʊntəˈbɪləti","n","trách nhiệm giải trình","Clear roles create accountability.","Phân vai rõ ràng tạo ra trách nhiệm.","work","C1"],
+["transparency","trænsˈpærənsi","n","sự minh bạch","Investors demand more transparency.","Nhà đầu tư đòi hỏi minh bạch hơn.","work","C1"],
+["workflow","ˈwɜːrkfloʊ","n","luồng công việc","The new tool fits our workflow well.","Công cụ mới khớp với luồng việc của chúng tôi.","work","B2"],
+["approval","əˈpruːvl","n","sự phê duyệt","The budget is waiting for approval.","Ngân sách đang chờ phê duyệt.","work","B1"],
+["authorize","ˈɔːθəraɪz","v","cho phép, ủy quyền","Only the director can authorize this payment.","Chỉ giám đốc mới duyệt được khoản chi này.","work","B2"],
+["escalate","ˈeskəleɪt","v","đẩy lên cấp cao hơn; leo thang","If it is not fixed today, escalate to the manager.","Nếu hôm nay chưa xử lý xong thì báo lên quản lý.","work","C1"],
+["troubleshoot","ˈtrʌblʃuːt","v","chẩn đoán và sửa lỗi","He is troubleshooting the vacuum pump.","Anh ấy đang dò lỗi máy bơm chân không.","work","B2"],
+["downtime","ˈdaʊntaɪm","n","thời gian ngừng máy","Unplanned downtime costs us a fortune.","Ngừng máy ngoài kế hoạch tốn của ta cả gia tài.","work","B2"],
+["capacity","kəˈpæsəti","n","công suất; năng lực","The plant runs at 90% capacity.","Nhà máy chạy 90% công suất.","work","B2"],
+["inventory","ˈɪnvəntɔːri","n","hàng tồn kho","Inventory is piling up in the warehouse.","Hàng tồn đang chất đống trong kho.","work","B2"],
+["warehouse","ˈwerhaʊs","n","nhà kho","The parts ship from our Hanoi warehouse.","Linh kiện xuất từ kho Hà Nội của chúng tôi.","work","B1"],
+["logistics","ləˈdʒɪstɪks","n","hậu cần, vận chuyển","Logistics costs rose after the port closed.","Chi phí logistics tăng sau khi cảng đóng cửa.","work","B2"],
+["shipment","ˈʃɪpmənt","n","lô hàng","The shipment arrives on Monday.","Lô hàng sẽ đến vào thứ Hai.","work","B1"],
+["freight","freɪt","n","cước vận chuyển; hàng hóa chở","Sea freight is cheaper than air.","Cước đường biển rẻ hơn đường hàng không.","work","C1"],
+["customs","ˈkʌstəmz","n","hải quan","The goods are stuck at customs.","Hàng đang kẹt ở hải quan.","work","B1"],
+["supplier","səˈplaɪər","n","nhà cung cấp","We audit every new supplier.","Chúng tôi đánh giá mọi nhà cung cấp mới.","work","B1"],
+["tender","ˈtendər","n","gói thầu","Three firms joined the tender.","Ba công ty tham gia gói thầu.","work","C1"],
+["bid","bɪd","n/v","chào giá, đấu thầu","We bid low to win the contract.","Chúng tôi chào giá thấp để thắng hợp đồng.","work","B2"],
+["clause","klɔːz","n","điều khoản (hợp đồng)","Read the penalty clause carefully.","Đọc kỹ điều khoản phạt.","work","C1"],
+["penalty","ˈpenəlti","n","khoản phạt","Late delivery carries a 2% penalty.","Giao trễ chịu phạt 2%.","work","B1"],
+["dispute","dɪˈspjuːt","n/v","tranh chấp","The payment dispute lasted months.","Tranh chấp thanh toán kéo dài nhiều tháng.","work","B2"],
+["settle","ˈsetl","v","dàn xếp, giải quyết; thanh toán","Both sides agreed to settle out of court.","Hai bên đồng ý dàn xếp ngoài tòa.","work","B2"],
+["follow up","ˈfɑːloʊ ʌp","phr.v","theo sát, hỏi tiếp","I will follow up with the client tomorrow.","Mai tôi sẽ liên hệ lại với khách.","work","A2"],
+["minutes","ˈmɪnɪts","n","biên bản họp","Who is taking the minutes today?","Hôm nay ai ghi biên bản?","work","B2"],
+["attachment","əˈtætʃmənt","n","tệp đính kèm","Please see the attachment for details.","Chi tiết xin xem tệp đính kèm.","work","A2"],
+["urgent","ˈɜːrdʒənt","adj","khẩn cấp","This is urgent — reply before noon.","Việc này gấp — trả lời trước trưa nhé.","work","A2"],
+["confirm","kənˈfɜːrm","v","xác nhận","Please confirm the order by email.","Vui lòng xác nhận đơn hàng qua email.","work","A2"],
+["schedule","ˈskedʒuːl","n/v","lịch trình; xếp lịch","The audit is scheduled for next week.","Buổi kiểm toán được xếp lịch tuần sau.","work","A2"],
+["estimate","ˈestɪmət","n/v","ước tính","Give me a rough estimate of the cost.","Cho tôi con số chi phí ước tính thô.","work","B1"],
+["priority","praɪˈɔːrəti","n","mức ưu tiên","Safety is our top priority.","An toàn là ưu tiên số một của chúng tôi.","work","B1"],
+// ---- GIAO TIẾP / TỔNG QUÁT ----
+["convenient","kənˈviːniənt","adj","thuận tiện","Is 2 PM convenient for you?","2 giờ chiều có tiện cho anh không?","daily","A2"],
+["reliable","rɪˈlaɪəbl","adj","đáng tin cậy","We need a reliable data source.","Chúng ta cần nguồn dữ liệu đáng tin cậy.","daily","B1"],
+["accurate","ˈækjərət","adj","chính xác","The forecast was surprisingly accurate.","Dự báo chính xác đến bất ngờ.","daily","B1"],
+["roughly","ˈrʌfli","adv","khoảng chừng","It costs roughly two million dong.","Nó tốn khoảng hai triệu đồng.","daily","B1"],
+["approximately","əˈprɑːksɪmətli","adv","xấp xỉ","The trip takes approximately three hours.","Chuyến đi mất xấp xỉ ba tiếng.","daily","B1"],
+["gradually","ˈɡrædʒuəli","adv","dần dần","Prices gradually recovered.","Giá dần dần hồi phục.","daily","B1"],
+["significantly","sɪɡˈnɪfɪkəntli","adv","đáng kể","Costs dropped significantly.","Chi phí giảm đáng kể.","daily","B2"],
+["barely","ˈberli","adv","suýt soát, hầu như không","We barely made the deadline.","Chúng tôi suýt nữa trễ hạn.","daily","B1"],
+["likely","ˈlaɪkli","adj","có khả năng xảy ra","A rate cut is likely in September.","Khả năng hạ lãi suất vào tháng 9 là cao.","daily","A2"],
+["tend to","tend tuː","phr","có xu hướng","Gold tends to rise when the dollar weakens.","Vàng có xu hướng tăng khi đô la yếu đi.","daily","B1"],
+["in advance","ɪn ədˈvæns","phr","trước, sớm","Please book the room in advance.","Vui lòng đặt phòng trước.","daily","B1"],
+["on time","ɑːn taɪm","phr","đúng giờ","The shipment arrived on time.","Lô hàng đến đúng hẹn.","daily","A1"],
+["run out of","rʌn aʊt əv","phr.v","hết, cạn","We ran out of spare parts.","Chúng tôi hết linh kiện dự phòng rồi.","daily","A2"],
+["figure out","ˈfɪɡjər aʊt","phr.v","tìm ra, hiểu ra","I finally figured out the bug.","Cuối cùng tôi cũng tìm ra lỗi.","daily","A2"],
+["come up with","kʌm ʌp wɪð","phr.v","nghĩ ra","She came up with a better plan.","Cô ấy nghĩ ra một kế hoạch hay hơn.","daily","B1"],
+["deal with","diːl wɪð","phr.v","xử lý, đối phó","I will deal with the customer complaint.","Tôi sẽ xử lý khiếu nại của khách.","daily","A2"],
+["look into","lʊk ˈɪntuː","phr.v","tìm hiểu, điều tra","We are looking into the issue.","Chúng tôi đang tìm hiểu vấn đề.","daily","B1"],
+["carry out","ˈkæri aʊt","phr.v","tiến hành, thực hiện","They carried out the test last night.","Họ tiến hành thử nghiệm tối qua.","daily","B1"],
+["put off","pʊt ɔːf","phr.v","trì hoãn","Do not put off the decision again.","Đừng trì hoãn quyết định thêm nữa.","daily","B1"],
+["set up","set ʌp","phr.v","thiết lập, cài đặt","I set up the alert on TradingView.","Tôi đã cài cảnh báo trên TradingView.","daily","A2"],
+["break down","breɪk daʊn","phr.v","hỏng; chia nhỏ","The machine broke down again. Let me break down the numbers.","Máy lại hỏng rồi. Để tôi bóc tách các con số.","daily","B1"],
+["keep track of","kiːp træk əv","phr","theo dõi sát","I keep track of every trade in a journal.","Tôi ghi lại mọi lệnh vào nhật ký giao dịch.","daily","B1"],
+["make sense","meɪk sens","phr","hợp lý, có nghĩa","The plan makes sense to me.","Kế hoạch này với tôi là hợp lý.","daily","B1"],
+["take advantage of","teɪk ədˈvæntɪdʒ əv","phr","tận dụng","Take advantage of the low price.","Hãy tận dụng lúc giá thấp.","daily","B1"],
+["in terms of","ɪn tɜːrmz əv","phr","xét về mặt","In terms of risk, this trade is small.","Xét về rủi ro, lệnh này nhỏ.","daily","B2"],
+["despite","dɪˈspaɪt","prep","mặc dù","Despite the bad news, the stock rose.","Bất chấp tin xấu, cổ phiếu vẫn tăng.","daily","B1"],
+["whereas","werˈæz","conj","trong khi (đối lập)","Banks rose, whereas steel fell.","Ngân hàng tăng, trong khi thép giảm.","daily","B2"],
+["therefore","ˈðerfɔːr","adv","do đó","The signal failed; therefore we exit.","Tín hiệu hỏng; do đó ta thoát lệnh.","daily","B1"],
+["moreover","mɔːrˈoʊvər","adv","hơn nữa","Moreover, the volume confirms the move.","Hơn nữa, khối lượng xác nhận cú đi này.","daily","B2"],
+["consequently","ˈkɑːnsəkwentli","adv","hệ quả là","Rates rose; consequently, gold fell.","Lãi suất tăng; hệ quả là vàng giảm.","daily","B2"],
+["meanwhile","ˈmiːnwaɪl","adv","trong lúc đó","Meanwhile, the VN-Index kept climbing.","Trong lúc đó, VN-Index tiếp tục leo dốc.","daily","B1"],
+["eventually","ɪˈventʃuəli","adv","rốt cuộc","Eventually, price returned to the pool.","Rốt cuộc giá cũng quay về vùng pool.","daily","B1"],
+["currently","ˈkɜːrəntli","adv","hiện tại","We are currently testing a new model.","Hiện chúng tôi đang thử một mô hình mới.","daily","A2"],
+["immediately","ɪˈmiːdiətli","adv","ngay lập tức","Cancel the order immediately.","Hủy lệnh ngay lập tức.","daily","A2"],
+["occasionally","əˈkeɪʒnəli","adv","thỉnh thoảng","The system occasionally skips a signal.","Hệ thống thỉnh thoảng bỏ qua tín hiệu.","daily","B1"],
+["frequently","ˈfriːkwəntli","adv","thường xuyên","This level gets tested frequently.","Vùng giá này thường xuyên bị kiểm định.","daily","A2"],
+["rarely","ˈrerli","adv","hiếm khi","He rarely trades during news.","Anh ấy hiếm khi giao dịch lúc ra tin.","daily","A2"],
+["essential","ɪˈsenʃl","adj","thiết yếu","Risk control is essential for survival.","Kiểm soát rủi ro là thiết yếu để sống sót.","daily","B1"],
+["crucial","ˈkruːʃl","adj","then chốt","The 4000 level is crucial for gold.","Mốc 4000 là then chốt với vàng.","daily","B2"],
+["sufficient","səˈfɪʃnt","adj","đủ","We have sufficient data to decide.","Ta đã đủ dữ liệu để quyết định.","daily","B2"],
+["adequate","ˈædɪkwət","adj","đạt yêu cầu, tạm đủ","The sample size is adequate but not great.","Cỡ mẫu tạm đủ nhưng chưa lý tưởng.","daily","B2"],
+["appropriate","əˈproʊpriət","adj","phù hợp","Choose an appropriate position size.","Chọn khối lượng lệnh phù hợp.","daily","B1"],
+["relevant","ˈreləvənt","adj","liên quan, sát chủ đề","Only relevant news moves the price.","Chỉ tin tức liên quan mới làm giá chạy.","daily","B1"],
+["obvious","ˈɑːbviəs","adj","hiển nhiên","The trend is obvious on the daily chart.","Xu hướng hiện rõ trên đồ thị ngày.","daily","B1"],
+["particular","pərˈtɪkjələr","adj","cụ thể, riêng biệt","This particular setup wins 60% of the time.","Riêng mẫu hình này thắng 60% số lần.","daily","B1"],
+["various","ˈveriəs","adj","nhiều loại","We tested various thresholds.","Chúng tôi thử nhiều ngưỡng khác nhau.","daily","A2"],
+["entire","ɪnˈtaɪər","adj","toàn bộ","He lost the entire profit in one day.","Anh ấy mất toàn bộ lợi nhuận trong một ngày.","daily","B1"],
+["remaining","rɪˈmeɪnɪŋ","adj","còn lại","Close half now, keep the remaining half.","Chốt một nửa, giữ nửa còn lại.","daily","B1"],
+["previous","ˈpriːviəs","adj","trước đó","Compare with the previous day's high.","So với đỉnh của ngày hôm trước.","daily","A2"],
+["upcoming","ˈʌpkʌmɪŋ","adj","sắp diễn ra","Watch the upcoming CPI release.","Chú ý kỳ công bố CPI sắp tới.","daily","B1"],
+["ongoing","ˈɑːnɡoʊɪŋ","adj","đang diễn ra","The investigation is still ongoing.","Cuộc điều tra vẫn đang tiếp diễn.","daily","B2"],
+["worthwhile","ˌwɜːrθˈwaɪl","adj","đáng công, đáng giá","The test was worthwhile despite the cost.","Bài test đáng công dù tốn kém.","daily","B2"],
+["misleading","ˌmɪsˈliːdɪŋ","adj","gây hiểu lầm","Averages can be misleading.","Số trung bình có thể gây hiểu lầm.","daily","B2"],
+["assume","əˈsuːm","v","giả định","Do not assume the trend will continue.","Đừng mặc định xu hướng sẽ tiếp diễn.","daily","B1"],
+["evidence","ˈevɪdəns","n","bằng chứng","There is no evidence the edge is gone.","Chưa có bằng chứng là lợi thế đã mất.","daily","B1"],
+["threshold","ˈθreʃhoʊld","n","ngưỡng","Signals below the threshold are skipped.","Tín hiệu dưới ngưỡng sẽ bị bỏ qua.","daily","C1"],
+["bias","ˈbaɪəs","n","thiên kiến","Confirmation bias ruins traders.","Thiên kiến xác nhận hủy hoại trader.","daily","B2"],
+["random","ˈrændəm","adj","ngẫu nhiên","Short-term moves look almost random.","Biến động ngắn hạn trông gần như ngẫu nhiên.","daily","B1"],
+["pattern","ˈpætərn","n","mẫu hình, quy luật","The same pattern repeats every quarter.","Mẫu hình đó lặp lại mỗi quý.","daily","B1"],
+["discipline","ˈdɪsəplɪn","n","kỷ luật","Discipline beats prediction.","Kỷ luật thắng dự đoán.","daily","B2"],
+["patience","ˈpeɪʃns","n","sự kiên nhẫn","Patience pays in this game.","Trong cuộc chơi này, kiên nhẫn được đền đáp.","daily","B1"],
+["recap","ˈriːkæp","n/v","tóm tắt nhắc lại","Here is a quick recap of today's new words.","Đây là phần tóm tắt nhanh các từ mới hôm nay.","daily","B2"],
+["proficiency","prəˈfɪʃnsi","n","trình độ thành thạo","Her English proficiency is around B2.","Trình độ tiếng Anh của cô ấy khoảng B2.","daily","C1"],
+];
+// ===== state =====
+const LSK='envocab1';
+const INT=[1,1,2,4,7,14,30,60]; // ngày chờ theo box (index = box)
+const TOPIC={fin:'tài chính',work:'công việc',daily:'giao tiếp'};
+const LVI={A1:'IELTS ~2-3 · từ nền tảng',A2:'IELTS ~3-4 · rất phổ biến',B1:'IELTS ~4-5 · phổ biến',B2:'IELTS ~5.5-6.5 · trung cao',C1:'IELTS ~7-8 · nâng cao/chuyên ngành',C2:'IELTS ~8.5-9 · hiếm gặp'};
+function lvChip(e){const l=e[7];if(!l)return'';return '<span class="lv lv'+l[0]+'" title="CEFR '+l+' — '+(LVI[l]||'')+'">'+l+'</span>'}
+function load(){try{return JSON.parse(localStorage.getItem(LSK))||{}}catch(e){return{}}}
+function save(){localStorage.setItem(LSK,JSON.stringify(S))}
+const S=load(); S.prog=S.prog||{}; S.streak=S.streak||{last:'',n:0}; S.size=S.size||10;
+function ymd(d){const p=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())}
+const TODAY=ymd(new Date());
+function addDays(s,n){const d=new Date(s+'T00:00:00');d.setDate(d.getDate()+n);return ymd(d)}
+const byW={}; BANK.forEach(e=>{byW[e[0]]=e});
+function dueList(){return BANK.filter(e=>{const p=S.prog[e[0]];return p&&p.due<=TODAY}).map(e=>e[0])}
+function todayList(){
+  if(S.today&&S.today.d===TODAY) return S.today.list.filter(w=>byW[w]);
+  // tron deu 3 chu de: fin -> work -> daily -> fin...
+  const un={};
+  BANK.forEach(e=>{if(!S.prog[e[0]])(un[e[6]]=un[e[6]]||[]).push(e[0])});
+  const order=['fin','work','daily'], list=[];
+  let i=0;
+  while(list.length<S.size && Object.values(un).some(a=>a.length)){
+    const a=un[order[i%order.length]]; i++;
+    if(a&&a.length) list.push(a.shift());
+  }
+  S.today={d:TODAY,list}; save(); return list;
+}
+function bumpStreak(){
+  if(S.streak.last===TODAY) return;
+  S.streak.n=(S.streak.last===addDays(TODAY,-1))?S.streak.n+1:1;
+  S.streak.last=TODAY; save();
+}
+function grade(w,ok){
+  const p=S.prog[w]||{b:0,due:TODAY,n:0};
+  p.n++;
+  if(ok){p.b=Math.min(p.b+1,INT.length-1);p.due=addDays(TODAY,INT[p.b]);}
+  else{p.b=1;p.due=addDays(TODAY,1);}
+  S.prog[w]=p; bumpStreak(); save(); paintStats();
+}
+function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=0.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+window.__say=say;
+// ===== render =====
+const $=s=>document.querySelector(s);
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function paintStats(){
+  const learned=Object.keys(S.prog).length, due=dueList().length;
+  $('#stats').innerHTML=
+    '<span class="chip">Đã học <b>'+learned+'</b>/'+BANK.length+'</span>'+
+    '<span class="chip">Đến hạn ôn <b>'+due+'</b></span>'+
+    '<span class="chip">🔥 chuỗi <b>'+(S.streak.n||0)+'</b> ngày</span>';
+  const b=$('#duebdg'); if(due>0){b.style.display='';b.textContent=due}else b.style.display='none';
+}
+function cardHTML(w,i,mode){
+  const e=byW[w]; if(!e)return'';
+  const p=S.prog[w];
+  return '<div class="card" id="c'+mode+i+'">'+
+    '<div class="wrow"><span class="w">'+esc(e[0])+'</span><span class="ipa">/'+esc(e[1])+'/</span>'+
+    '<button class="spk" onclick="__say('+JSON.stringify(e[0])+')" title="Nghe phát âm">🔊</button>'+
+    '<span class="pos">'+esc(e[2])+'</span><span class="top">'+(TOPIC[e[6]]||e[6])+'</span>'+lvChip(e)+
+    (p?'<span class="boxchip">hộp '+p.b+' · ôn '+p.due+'</span>':'')+
+    '</div>'+
+    '<div class="mean" id="m'+mode+i+'"><div class="vn">'+esc(e[3])+'</div>'+
+    '<div class="ex">“'+esc(e[4])+'”</div><div class="exvn">'+esc(e[5])+'</div>'+
+    (e[8]?'<div class="ex" style="color:var(--yel)">▸ cụm hay dùng: '+esc(e[8])+'</div>':'')+'</div>'+
+    '<div class="btns" id="b'+mode+i+'">'+
+    '<button class="b show" onclick="__reveal(\''+mode+'\','+i+')">Hiện nghĩa</button>'+
+    '</div></div>';
+}
+window.__reveal=function(mode,i){
+  $('#m'+mode+i).classList.add('open');
+  $('#b'+mode+i).innerHTML=
+    '<button class="b no" onclick="__grade(\''+mode+'\','+i+',0)">✗ Chưa nhớ</button>'+
+    '<button class="b ok" onclick="__grade(\''+mode+'\','+i+',1)">✓ Nhớ rồi</button>';
+};
+let CUR=[];
+window.__grade=function(mode,i,ok){
+  grade(CUR[i],!!ok);
+  const c=$('#c'+mode+i); c.classList.add('done');
+  $('#b'+mode+i).innerHTML='<span style="color:'+(ok?'var(--grn)':'var(--red)')+';font-size:13px">'+(ok?'✓ hẹn ôn sau '+INT[S.prog[CUR[i]].b]+' ngày':'✗ mai ôn lại')+'</span>';
+};
+function viewToday(){
+  CUR=todayList();
+  if(!CUR.length) return '<div class="empty">🎉 Đã học hết kho từ! Bảo Claude nạp thêm từ mới.</div>';
+  return '<div class="sub">'+CUR.length+' từ mới hôm nay — đọc, nghe 🔊, tự đoán nghĩa rồi bấm <b>Hiện nghĩa</b> và tự chấm.</div>'+
+    CUR.map((w,i)=>cardHTML(w,i,'t')).join('');
+}
+function viewReview(){
+  CUR=dueList();
+  if(!CUR.length) return '<div class="empty">Không có từ nào đến hạn ôn hôm nay ✓</div>';
+  return '<div class="sub">'+CUR.length+' từ đến hạn ôn — nhớ đúng thì khoảng cách ôn sẽ giãn dần ra.</div>'+
+    CUR.map((w,i)=>cardHTML(w,i,'r')).join('');
+}
+// ===== quiz =====
+let QZ=null;
+function pick(arr,n){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a.slice(0,n)}
+function startQuiz(){
+  const learned=Object.keys(S.prog).filter(w=>byW[w]);
+  const pool=learned.length>=10?learned:BANK.map(e=>e[0]);
+  QZ={qs:pick(pool,Math.min(10,pool.length)),i:0,ok:0};
+  paintQuiz();
+}
+function paintQuiz(){
+  const m=$('#main');
+  if(QZ.i>=QZ.qs.length){
+    m.innerHTML='<div class="empty" style="font-size:17px">Kết quả: <b style="color:var(--grn)">'+QZ.ok+'/'+QZ.qs.length+'</b> câu đúng'+
+      '<div style="margin-top:14px"><button class="b show" onclick="__quiz()">Chơi lại</button></div></div>';
+    return;
+  }
+  const w=QZ.qs[QZ.i], e=byW[w];
+  const wrong=pick(BANK.filter(x=>x[0]!==w).map(x=>x[3]),3);
+  const opts=pick([e[3],...wrong],4);
+  m.innerHTML='<div class="qprog">Câu '+(QZ.i+1)+'/'+QZ.qs.length+' · đúng '+QZ.ok+'</div>'+
+    '<div class="qword">'+esc(w)+' <button class="spk" onclick="__say('+JSON.stringify(w)+')">🔊</button></div>'+
+    '<div class="qipa">/'+esc(e[1])+'/ '+lvChip(e)+'</div>'+
+    opts.map(o=>'<button class="qopt" data-v="'+esc(o)+'">'+esc(o)+'</button>').join('');
+  m.querySelectorAll('.qopt').forEach(b=>b.addEventListener('click',()=>{
+    const right=b.dataset.v===e[3];
+    m.querySelectorAll('.qopt').forEach(x=>{
+      if(x.dataset.v===e[3])x.classList.add('right');
+      else if(x===b)x.classList.add('wrong');
+      x.disabled=true;
+    });
+    if(right)QZ.ok++;
+    else{const p=S.prog[w];if(p){p.b=1;p.due=TODAY;save();}}
+    setTimeout(()=>{QZ.i++;paintQuiz();paintStats()},900);
+  }));
+}
+window.__quiz=startQuiz;
+// ===== all =====
+function viewAll(){
+  return '<input type="search" id="qs" placeholder="Tìm từ / nghĩa…">'+
+    '<div style="overflow-x:auto"><table><thead><tr><th></th><th>Từ</th><th>Nghĩa</th><th>Chủ đề</th><th>Level</th><th>Trạng thái</th></tr></thead><tbody id="allb"></tbody></table></div>';
+}
+function paintAll(q){
+  q=(q||'').toLowerCase();
+  const rows=BANK.filter(e=>!q||e[0].toLowerCase().includes(q)||e[3].toLowerCase().includes(q))
+    .map(e=>{
+      const p=S.prog[e[0]];
+      const st=p?(p.b>=3?'<span class="lvl l2">thuộc (hộp '+p.b+')</span>':'<span class="lvl l1">đang học · ôn '+p.due+'</span>'):'<span class="lvl l0">chưa học</span>';
+      return '<tr><td><button class="spk" onclick="__say('+JSON.stringify(e[0])+')">🔊</button></td>'+
+        '<td><b>'+esc(e[0])+'</b> <span class="ipa" style="font-size:12px">/'+esc(e[1])+'/</span></td>'+
+        '<td>'+esc(e[3])+'</td><td style="color:var(--yel)">'+(TOPIC[e[6]]||'')+'</td><td>'+lvChip(e)+'</td><td>'+st+'</td></tr>';
+    }).join('');
+  $('#allb').innerHTML=rows||'<tr><td colspan="6" class="empty">Không tìm thấy</td></tr>';
+}
+// ===== tabs =====
+function show(t){
+  document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.t===t)));
+  const m=$('#main');
+  if(t==='today')m.innerHTML=viewToday();
+  else if(t==='review')m.innerHTML=viewReview();
+  else if(t==='quiz')startQuiz();
+  else{m.innerHTML=viewAll();paintAll('');$('#qs').addEventListener('input',e=>paintAll(e.target.value));}
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>show(b.dataset.t)));
+const pd=$('#perday'); pd.value=String(S.size);
+pd.addEventListener('change',()=>{S.size=parseInt(pd.value,10)||10;delete S.today;save();show('today');paintStats();});
+paintStats(); show('today');
+</script>
+</body>
+</html>
