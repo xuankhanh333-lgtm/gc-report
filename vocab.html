@@ -65,6 +65,7 @@ footer{color:var(--ink2);font-size:11.5px;margin-top:18px;text-align:center}
   <button class="tab" data-t="today" aria-pressed="true">Hôm nay</button>
   <button class="tab" data-t="review" aria-pressed="false">Ôn tập <span class="bdg" id="duebdg" style="display:none"></span></button>
   <button class="tab" data-t="quiz" aria-pressed="false">Trắc nghiệm</button>
+  <button class="tab" data-t="ipa" aria-pressed="false">Phiên âm</button>
   <button class="tab" data-t="all" aria-pressed="false">Tất cả</button>
   <select id="perday" title="Số từ mới mỗi ngày">
     <option value="5">5 từ/ngày</option>
@@ -146,6 +147,7 @@ const BANK=[
 ["upside","ˈʌpsaɪd","n","dư địa tăng giá; mặt tích cực","NVL has 45% upside to the consensus target.","NVL còn dư địa tăng 45% so với giá mục tiêu đồng thuận.","fin","C1"],
 ["release","rɪˈliːs","n/v","kỳ công bố (tin/số liệu); phát hành","Gold spiked right after the CPI release.","Vàng giật mạnh ngay sau kỳ công bố CPI.","fin","B1"],
 ["spike","spaɪk","v/n","giật tăng đột ngột; cái gai/đinh nhọn","Gold spiked 80 dollars on the soft CPI.","Vàng giật tăng 80 đô nhờ CPI mềm.","fin","B2","a spike in inflation (cú vọt lạm phát) · price spike (cú giật giá) · volatility spike"],
+["proprietary","prəˈpraɪəteri","adj","thuộc sở hữu riêng; (tài chính) tự doanh","The broker's proprietary trading desk bought 2 million shares.","Bàn tự doanh của công ty chứng khoán mua 2 triệu cổ phiếu.","fin","C1","proprietary trading / prop desk (tự doanh) · proprietary data (dữ liệu độc quyền)"],
 ["downside","ˈdaʊnsaɪd","n","rủi ro giảm giá; mặt trái","The downside is limited by the stop loss.","Rủi ro giảm được chặn bởi lệnh cắt lỗ.","fin","C1"],
 ["entry","ˈentri","n","điểm vào lệnh; mục nhập","My entry is 12,200 with a stop at 12,560.","Điểm vào lệnh của tôi là 12.200, cắt lỗ 12.560.","fin","B1"],
 ["target","ˈtɑːrɡɪt","n","mục tiêu; giá mục tiêu","The consensus target is far above the price.","Giá mục tiêu đồng thuận cao hơn thị giá rất nhiều.","fin","A2"],
@@ -285,6 +287,11 @@ const BANK=[
 ["patience","ˈpeɪʃns","n","sự kiên nhẫn","Patience pays in this game.","Trong cuộc chơi này, kiên nhẫn được đền đáp.","daily","B1"],
 ["recap","ˈriːkæp","n/v","tóm tắt nhắc lại","Here is a quick recap of today's new words.","Đây là phần tóm tắt nhanh các từ mới hôm nay.","daily","B2"],
 ["proficiency","prəˈfɪʃnsi","n","trình độ thành thạo","Her English proficiency is around B2.","Trình độ tiếng Anh của cô ấy khoảng B2.","daily","C1"],
+["mismatch","ˈmɪsmætʃ","n","sự lệch/không khớp","The scanner crashed on a feature shape mismatch: 350 vs 351.","Scanner crash vì lệch số feature: 350 vs 351.","work","B2","shape mismatch · a mismatch between X and Y"],
+["stale","steɪl","adj","cũ/hết tươi (data, bánh mì)","The repo copy was stale — it lagged a month behind.","Bản trên repo đã cũ — tụt hậu cả tháng.","work","B2","stale data · go stale"],
+["track record","ˈtræk ˌrekɔːd","n","thành tích quá khứ (có kiểm chứng)","The easing regime has a solid track record: gold rose 7 of 9 times.","Regime easing có thành tích tốt: vàng tăng 7/9 lần.","fin","B2","a proven track record · track record of doing sth"],
+["expire","ɪkˈspaɪər","v","hết hạn (lệnh, hợp đồng, thẻ)","Seven gc-llm setups expired before price ever touched the entry zone.","Bảy setup gc-llm hết hạn trước khi giá chạm vùng vào lệnh.","fin","B1","expire worthless · the order expires at close"],
+["canonical","kəˈnɑːnɪkl","adj","chuẩn/gốc (bản chính thức để mọi nơi theo)","We pushed the fix to the canonical copy on gc-forecast-data.","Đã đẩy bản vá lên bản chuẩn trên gc-forecast-data.","work","C1","canonical copy · single canonical source"],
 ];
 // ===== state =====
 const LSK='envocab1';
@@ -431,6 +438,50 @@ function paintAll(q){
     }).join('');
   $('#allb').innerHTML=rows||'<tr><td colspan="6" class="empty">Không tìm thấy</td></tr>';
 }
+// ===== IPA guide =====
+const IPA_GUIDE=[
+["Ký hiệu khung — đọc TRƯỚC khi đọc âm",[
+ ["ˈ","đứng TRƯỚC âm tiết nhấn CHÍNH: đọc TO hơn, cao giọng hơn","track record","ˈtræk ˌrekɔːd"],
+ ["ˌ","trọng âm PHỤ: vẫn nhấn nhưng nhẹ hơn ˈ","fundamental","ˌfʌndəˈmentl"],
+ ["ː","kéo DÀI nguyên âm đứng trước (dài gấp ~2 lần)","fee","fiː"],
+]],
+["Nguyên âm — cặp dễ lẫn với người Việt",[
+ ["ɪ / iː","\"i\" ngắn vs \"i\" dài — sit ≠ seat","seat","siːt"],
+ ["æ","há miệng RỘNG, nằm giữa \"a\" và \"e\" — âm của track","cat","kæt"],
+ ["ʌ","như \"ă\" tiếng Việt, ngắn gọn","cup","kʌp"],
+ ["ɑː","\"a\" dài, mở họng","car","kɑːr"],
+ ["ɒ / ɔː","\"o\" ngắn vs \"o\" dài — record có ɔː","call","kɔːl"],
+ ["ʊ / uː","\"u\" ngắn vs \"u\" dài — put ≠ too","too","tuː"],
+ ["ə","schwa — \"ơ\" LƯỜI, xuất hiện ở mọi âm tiết KHÔNG nhấn","again","əˈɡen"],
+ ["ɜː","\"ơ\" dài có nhấn","bird","bɜːd"],
+]],
+["Nguyên âm đôi — lướt từ âm 1 sang âm 2",[
+ ["eɪ","\"ây\"","say","seɪ"],
+ ["aɪ","\"ai\"","buy","baɪ"],
+ ["ɔɪ","\"oi\"","boy","bɔɪ"],
+ ["aʊ","\"ao\"","now","naʊ"],
+ ["əʊ","\"âu\" (Mỹ ghi oʊ)","go","ɡəʊ"],
+ ["ɪə / eə","\"ia\" / \"e-ơ\"","near","nɪə"],
+]],
+["Phụ âm người Việt hay sai",[
+ ["θ","đầu lưỡi kẹp giữa 2 hàm răng rồi THỔI hơi — không phải \"t\"/\"th\"","think","θɪŋk"],
+ ["ð","như θ nhưng RUNG cổ họng (\"đ\" nhẹ)","this","ðɪs"],
+ ["ʃ","\"s\" tròn môi (sh)","share","ʃeə"],
+ ["ʒ","như ʃ nhưng rung","vision","ˈvɪʒn"],
+ ["tʃ","\"ch\"","chart","tʃɑːt"],
+ ["dʒ","\"ch\" có rung (\"gi\" mạnh)","hedge","hedʒ"],
+ ["z","rung cổ họng — người Việt hay đọc nhầm thành \"s\"","zone","zəʊn"],
+ ["ŋ","\"ng\" cuối từ","long","lɒŋ"],
+ ["âm cuối","/k/ /t/ /s/ cuối từ phải BẬT ra — người Việt hay nuốt","track","træk"],
+]]];
+function viewIPA(){
+  return '<div class="sub" style="margin-bottom:10px">Bấm 🔊 nghe từ ví dụ rồi nhại theo — để ý đúng cái âm đang học. Học kiểu thực chiến: mỗi từ mới trong chat sẽ kèm 1 ký hiệu được giải mã.</div>'+
+    IPA_GUIDE.map(g=>'<div class="card"><b style="color:var(--yel)">'+g[0]+'</b><div style="overflow-x:auto"><table style="margin-top:6px">'+
+      g[1].map(r=>'<tr><td style="white-space:nowrap"><b style="color:var(--blu);font-size:16px">'+r[0]+'</b></td>'+
+        '<td>'+r[1]+'</td>'+
+        '<td style="white-space:nowrap"><button class="spk" onclick="__say('+JSON.stringify(r[2])+')">🔊</button> <b>'+esc(r[2])+'</b> <span class="ipa" style="font-size:12px">/'+esc(r[3])+'/</span></td></tr>').join('')+
+      '</table></div></div>').join('');
+}
 // ===== tabs =====
 function show(t){
   document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.t===t)));
@@ -438,6 +489,7 @@ function show(t){
   if(t==='today')m.innerHTML=viewToday();
   else if(t==='review')m.innerHTML=viewReview();
   else if(t==='quiz')startQuiz();
+  else if(t==='ipa')m.innerHTML=viewIPA();
   else{m.innerHTML=viewAll();paintAll('');$('#qs').addEventListener('input',e=>paintAll(e.target.value));}
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>show(b.dataset.t)));
