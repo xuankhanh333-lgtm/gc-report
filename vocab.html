@@ -66,6 +66,7 @@ footer{color:var(--ink2);font-size:11.5px;margin-top:18px;text-align:center}
   <button class="tab" data-t="review" aria-pressed="false">Ôn tập <span class="bdg" id="duebdg" style="display:none"></span></button>
   <button class="tab" data-t="quiz" aria-pressed="false">Trắc nghiệm</button>
   <button class="tab" data-t="ipa" aria-pressed="false">Phiên âm</button>
+  <button class="tab" data-t="gram" aria-pressed="false">Ngữ pháp</button>
   <button class="tab" data-t="all" aria-pressed="false">Tất cả</button>
   <select id="perday" title="Số từ mới mỗi ngày">
     <option value="5">5 từ/ngày</option>
@@ -436,7 +437,7 @@ function paintAll(q){
       const st=p?(p.b>=3?'<span class="lvl l2">thuộc (hộp '+p.b+')</span>':'<span class="lvl l1">đang học · ôn '+p.due+'</span>'):'<span class="lvl l0">chưa học</span>';
       return '<tr><td><button class="spk" onclick="__say('+JSON.stringify(e[0])+')">🔊</button></td>'+
         '<td><b>'+esc(e[0])+'</b> <span class="ipa" style="font-size:12px">/'+esc(e[1])+'/</span></td>'+
-        '<td>'+esc(e[3])+'</td><td style="color:var(--yel)">'+(TOPIC[e[6]]||'')+'</td><td>'+lvChip(e)+'</td><td>'+st+'</td></tr>';
+        '<td>'+esc(e[3])+(e[8]?'<div style="color:var(--yel);font-size:11.5px">▸ '+esc(e[8])+'</div>':'')+'</td><td style="color:var(--yel)">'+(TOPIC[e[6]]||'')+'</td><td>'+lvChip(e)+'</td><td>'+st+'</td></tr>';
     }).join('');
   $('#allb').innerHTML=rows||'<tr><td colspan="6" class="empty">Không tìm thấy</td></tr>';
 }
@@ -484,6 +485,18 @@ function viewIPA(){
         '<td style="white-space:nowrap"><button class="spk" onclick="__say('+JSON.stringify(r[2])+')">🔊</button> <b>'+esc(r[2])+'</b> <span class="ipa" style="font-size:12px">/'+esc(r[3])+'/</span></td></tr>').join('')+
       '</table></div></div>').join('');
 }
+// ===== grammar log: [ngày, tên điểm, câu ví dụ EN, giải thích VN] — mỗi điểm ⚙ dạy trong chat nạp vào đây =====
+const GRAM=[
+["14/07/2026","Tỷ lệ dùng of: X of Y","gold rose 7 of 9 times","Nói tỷ lệ/tần suất dùng of, không dùng on/in: won 7 of 9 trades · 3 of 4 setups hit TP."],
+["14/07/2026","Câu báo cáo rút gọn (bỏ be)","13 trades resolved, 1 still pending.","Văn báo cáo/log/tiêu đề hay bỏ are/is — đầy đủ là: 13 trades ARE resolved, 1 IS still pending. Gặp đầy trong scorecard và tin nhanh."],
+["14/07/2026","Hiện tại đơn cho lịch/quy tắc","The order expires at close.","Sự việc theo lịch/quy tắc cố định dùng hiện tại đơn dù nói chuyện tương lai: the market opens at 9:15 · VN30F expires on Thursday."],
+];
+function viewGram(){
+  return '<div class="sub" style="margin-bottom:10px">Mỗi lượt chat dạy tối đa 1 điểm ⚙ rút từ chính câu ví dụ vừa dùng — sổ này gom lại để ôn. Mới nhất trên cùng.</div>'+
+    GRAM.slice().reverse().map(g=>'<div class="card"><div class="wrow"><b style="color:var(--yel)">⚙ '+esc(g[1])+'</b><span class="boxchip">'+esc(g[0])+'</span></div>'+
+      '<div class="ex" style="margin-top:6px"><button class="spk" onclick="__say('+JSON.stringify(g[2])+')">🔊</button> “'+esc(g[2])+'”</div>'+
+      '<div class="exvn" style="margin-top:4px">'+esc(g[3])+'</div></div>').join('');
+}
 // ===== tabs =====
 function show(t){
   document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.t===t)));
@@ -492,6 +505,7 @@ function show(t){
   else if(t==='review')m.innerHTML=viewReview();
   else if(t==='quiz')startQuiz();
   else if(t==='ipa')m.innerHTML=viewIPA();
+  else if(t==='gram')m.innerHTML=viewGram();
   else{m.innerHTML=viewAll();paintAll('');$('#qs').addEventListener('input',e=>paintAll(e.target.value));}
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>show(b.dataset.t)));
