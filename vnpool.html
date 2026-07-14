@@ -249,6 +249,8 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
   const box = document.getElementById('rankbox');
   if(!box || !D.rank){ if(box) box.style.display='none'; return; }
   const byTk = {}; D.rows.forEach(r=>byTk[r.ticker]=r);
+  // ★ cross-ref: ma dang dong thoi nam Top 10 (cung bieu thuc voi khoi top10 ben duoi)
+  const T10 = new Set(D.rows.filter(r=>r.verdict==='TAKE'||r.verdict==='FADE').slice(0,10).map(x=>x.ticker));
   const pct = (v,plus)=> v==null?'·':((plus&&v>0?'+':'')+v.toFixed(0)+'%');
   const col = v=> v==null?'':(v>0?'color:var(--up)':v<0?'color:var(--down)':'');
   const td = (s,style)=>`<td style="padding:3px 9px 3px 5px;${style||''}">${s}</td>`;
@@ -288,7 +290,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
       const px = `${fmt(r.close)}${r.dpx==null?'':` <span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="so close phiên trước">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}`;
       h += `<tr style="border-top:1px solid var(--line);text-align:right;cursor:help" title="${rsn(kind,r,f)}">`
         + td(i+1,'color:var(--ink3);text-align:left')
-        + td(`<b>${tk}</b>`,'text-align:left;font-size:12.5px')
+        + td(`<b>${tk}</b>${T10.has(tk)?' <span class="best" title="mã này đang đồng thời nằm TOP 10 tín hiệu mạnh nhất — hai bảng đồng thuận">★</span>':''}`,'text-align:left;font-size:12.5px')
         + td(px,'font-family:ui-monospace,Consolas,monospace')
         + td(pct(r._dd), col(r._dd))
         + td(pct(r.g_fwd,1), col(r.g_fwd))
