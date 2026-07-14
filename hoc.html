@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>📒 Sổ học thực chiến</title>
+<style>
+:root{--bg:#0e1117;--card:#161b22;--line:#2d333b;--ink:#e6edf3;--ink2:#8b949e;--yel:#d29922;--blu:#58a6ff;--grn:#3fb950}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:14.5px/1.55 "Segoe UI",system-ui,sans-serif;padding:14px;max-width:1000px;margin:0 auto}
+h1{font-size:19px;margin-bottom:2px}
+.sub{color:var(--ink2);font-size:12.5px;margin-bottom:14px}
+h2{font-size:16px;margin:18px 0 8px;color:var(--yel)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:14px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:640px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--ink2);font-weight:600;font-size:12px;white-space:nowrap}
+td:first-child{white-space:nowrap;color:var(--ink2)}
+td:nth-child(2){font-weight:600;color:var(--blu)}
+b{color:var(--grn)}
+.empty{color:var(--ink2);padding:16px;text-align:center}
+footer{color:var(--ink2);font-size:11.5px;margin-top:16px;text-align:center}
+</style>
+</head>
+<body>
+<h1>📒 Sổ học thực chiến</h1>
+<div class="sub">Mỗi lượt chat dạy tối đa 1 khái niệm AI + 1 bài tin tức, gắn số liệu thật của hệ — sổ này là mục lục ôn lại. Mới nhất trên cùng. (Từ vựng có app riêng ở tab 📖.)</div>
+<h2>🤖 AI thực chiến</h2>
+<div class="card" id="ai"><div class="empty">Đang tải…</div></div>
+<h2>📰 Tin tức thực chiến</h2>
+<div class="card" id="news"><div class="empty">Đang tải…</div></div>
+<footer>Nguồn: sổ log của skill ailearning + news-thucchien, tự đồng bộ mỗi kỳ 4h khi có bài mới</footer>
+<script>
+'use strict';
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function fmt(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}
+function renderMD(md,el){
+  const lines=md.split(/\r?\n/).filter(l=>l.trim().startsWith('|'));
+  if(lines.length<3){el.innerHTML='<div class="empty">Sổ chưa có bài nào</div>';return}
+  const cells=l=>l.replace(/^\||\|$/g,'').split('|').map(c=>c.trim());
+  const head=cells(lines[0]);
+  const rows=lines.slice(2).map(cells).reverse(); // mới nhất lên đầu
+  el.innerHTML='<table><thead><tr>'+head.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+
+    rows.map(r=>'<tr>'+r.map(c=>'<td>'+fmt(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+}
+function loadMD(url,el){
+  fetch(url+'?t='+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()})
+    .then(md=>renderMD(md,el))
+    .catch(()=>{el.innerHTML='<div class="empty">Không tải được '+esc(url)+' — trang này xem qua hub Pages (file local không fetch được)</div>'});
+}
+loadMD('hoc-ai.md',document.getElementById('ai'));
+loadMD('hoc-news.md',document.getElementById('news'));
+</script>
+</body>
+</html>
