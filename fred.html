@@ -31,24 +31,24 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 06:30:26 15/7/2026 · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 11:07:49 15/7/2026 · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div class="kpis">
-  <div class="kpi"><div class="lbl">GOLD BIAS (tổng 29 chỉ số active)</div><div class="val">-2</div>
+  <div class="kpi"><div class="lbl">GOLD BIAS (tổng 30 chỉ số active)</div><div class="val">-3</div>
     <div class="word neu">TRUNG TÍNH</div>
-    <div class="bar"><i class="n" style="width:10%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>4 lần chạy · min -3 · max -2</title>
+    <div class="bar"><i class="n" style="width:15%;transform:translateX(-100%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>5 lần chạy · min -3 · max -2</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 34.3,22.2 65.7,22.2 97.0,19.8"/>
-    <circle cx="97.0" cy="19.8" r="3" class="n"/></svg><div class="lbl">history 4 lần chạy</div></div>
-  <div class="kpi"><div class="lbl">USD BIAS (tổng 26 chỉ số active)</div><div class="val">+4</div>
-    <div class="word pos">NGHIÊNG TĂNG</div>
-    <div class="bar"><i class="" style="width:23%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>4 lần chạy · min 3 · max 4</title>
+    <polyline points="3.0,22.2 26.5,22.2 50.0,22.2 73.5,19.8 97.0,22.2"/>
+    <circle cx="97.0" cy="22.2" r="3" class="n"/></svg><div class="lbl">history 5 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">USD BIAS (tổng 27 chỉ số active)</div><div class="val">+3</div>
+    <div class="word neu">TRUNG TÍNH</div>
+    <div class="bar"><i class="" style="width:17%;transform:translateX(0%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>5 lần chạy · min 3 · max 4</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 34.3,7.8 65.7,7.8 97.0,5.4"/>
-    <circle cx="97.0" cy="5.4" r="3" class="p"/></svg><div class="lbl">history 4 lần chạy</div></div>
-  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">31/32</div>
-    <div class="word neu">0 stale · 0 bị cắt lịch sử · 1 lỗi</div></div>
+    <polyline points="3.0,7.8 26.5,7.8 50.0,7.8 73.5,5.4 97.0,7.8"/>
+    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 5 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">32/32</div>
+    <div class="word neu">0 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
 <div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest.</div>
 
@@ -123,9 +123,9 @@ tr:hover td{background:var(--card)}
         <td class="name">Chỉ số giá vàng (QGLDI)<span class="sid">NASDAQQGLDI · target — proxy giá vàng</span>
           
           </td>
-        <td><b>2,504</b><span class="sid">2026-07-13</span></td>
-        <td class="neg">▼ -117.54</td>
-        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 2503.69 · max 2887.94</title><polyline points="2.0,2.0 5.6,3.3 9.1,2.0 12.7,7.6 16.2,7.2 19.8,9.5 23.3,15.5 26.9,11.3 30.4,16.8 34.0,13.7 37.6,13.2 41.1,16.1 44.7,16.3 48.2,16.8 51.8,19.4 55.3,23.7 58.9,22.3 62.4,20.7 66.0,22.6 69.6,22.6 73.1,21.8 76.7,18.9 80.2,17.3 83.8,19.1 87.3,20.2 90.9,18.9 94.4,19.1 98.0,24.0"/></svg></td>
+        <td><b>2,535</b><span class="sid">2026-07-14</span></td>
+        <td class="neg">▼ -55.1</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 2503.69 · max 2887.15</title><polyline points="2.0,3.3 5.6,2.0 9.1,7.6 12.7,7.1 16.2,9.5 19.8,15.4 23.3,11.3 26.9,16.8 30.4,13.7 34.0,13.2 37.6,16.0 41.1,16.2 44.7,16.8 48.2,19.4 51.8,23.7 55.3,22.3 58.9,20.7 62.4,22.6 66.0,22.6 69.6,21.8 73.1,18.8 76.7,17.3 80.2,19.1 83.8,20.2 87.3,18.8 90.9,19.1 94.4,24.0 98.0,22.2"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr>
@@ -212,7 +212,16 @@ tr:hover td{background:var(--card)}
         <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 2.63 · max 2.83</title><polyline points="2.0,15.2 5.3,10.8 8.6,11.9 11.9,9.7 15.2,10.8 18.6,7.5 21.9,5.3 25.2,7.5 28.5,15.2 31.8,20.7 35.1,15.2 38.4,24.0 41.7,20.7 45.0,20.7 48.3,21.8 51.7,15.2 55.0,9.7 58.3,7.5 61.6,2.0 64.9,5.3 68.2,10.8 71.5,11.9 74.8,10.8 78.1,11.9 81.4,14.1 84.8,19.6 88.1,16.3 91.4,16.3 94.7,17.4 98.0,17.4"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
-      </tr><tr><td class="name">Điều kiện tài chính (NFCI)<span class="sid">NFCI</span></td><td colspan="5" class="muted">lỗi: /series/observations 502</td></tr><tr>
+      </tr><tr>
+        <td class="name">Điều kiện tài chính (NFCI)<span class="sid">NFCI</span>
+          
+          </td>
+        <td><b>-0.515</b><span class="sid">2026-07-03</span></td>
+        <td class="neg">▼ -0.02</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min -0.57 · max -0.46</title><polyline points="2.0,22.2 5.8,23.6 9.7,24.0 13.5,23.2 17.4,21.6 21.2,19.0 25.0,15.6 28.9,11.8 32.7,8.0 36.6,4.8 40.4,2.8 44.2,2.0 48.1,3.0 51.9,4.8 55.8,7.0 59.6,9.0 63.4,10.4 67.3,11.0 71.1,11.0 75.0,10.4 78.8,10.0 82.6,9.6 86.5,9.6 90.3,10.4 94.2,11.6 98.0,13.6"/></svg></td>
+        <td><span class="chip neg">▼ −1</span></td>
+        <td><span class="chip neg">▼ −1</span></td>
+      </tr><tr>
         <td class="name">Bảng cân đối Fed<span class="sid">WALCL</span>
           
           </td>
