@@ -31,23 +31,23 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 11:07:49 15/7/2026 · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 11:43:13 15/7/2026 · 37 series (mở rộng 32→37 từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div class="kpis">
-  <div class="kpi"><div class="lbl">GOLD BIAS (tổng 30 chỉ số active)</div><div class="val">-3</div>
+  <div class="kpi"><div class="lbl">GOLD BIAS (tổng 35 chỉ số active)</div><div class="val">-3</div>
     <div class="word neu">TRUNG TÍNH</div>
-    <div class="bar"><i class="n" style="width:15%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>5 lần chạy · min -3 · max -2</title>
+    <div class="bar"><i class="n" style="width:13%;transform:translateX(-100%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>6 lần chạy · min -3 · max -2</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 26.5,22.2 50.0,22.2 73.5,19.8 97.0,22.2"/>
-    <circle cx="97.0" cy="22.2" r="3" class="n"/></svg><div class="lbl">history 5 lần chạy</div></div>
-  <div class="kpi"><div class="lbl">USD BIAS (tổng 27 chỉ số active)</div><div class="val">+3</div>
+    <polyline points="3.0,22.2 21.8,22.2 40.6,22.2 59.4,19.8 78.2,22.2 97.0,22.2"/>
+    <circle cx="97.0" cy="22.2" r="3" class="n"/></svg><div class="lbl">history 6 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">USD BIAS (tổng 32 chỉ số active)</div><div class="val">+3</div>
     <div class="word neu">TRUNG TÍNH</div>
-    <div class="bar"><i class="" style="width:17%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>5 lần chạy · min 3 · max 4</title>
+    <div class="bar"><i class="" style="width:14%;transform:translateX(0%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>6 lần chạy · min 3 · max 4</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 26.5,7.8 50.0,7.8 73.5,5.4 97.0,7.8"/>
-    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 5 lần chạy</div></div>
-  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">32/32</div>
+    <polyline points="3.0,7.8 21.8,7.8 40.6,7.8 59.4,5.4 78.2,7.8 97.0,7.8"/>
+    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 6 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">37/37</div>
     <div class="word neu">0 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
 <div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest.</div>
@@ -130,7 +130,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
       </tr>
   </tbody></table></div>
-  <h2>B. Kênh Fed (lạm phát · lao động)</h2>
+  <h2>B. Kênh Fed (lạm phát · lao động · hoạt động)</h2>
   <div class="tblwrap"><table>
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th>30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
@@ -152,6 +152,15 @@ tr:hover td{background:var(--card)}
         <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 2.61 · max 3.41</title><polyline points="2.0,20.2 6.2,18.7 10.3,16.9 14.5,17.8 18.7,13.7 22.9,13.9 27.0,13.7 31.2,19.4 35.4,14.2 39.6,22.5 43.7,24.0 47.9,19.3 52.1,18.7 56.3,17.1 60.4,15.8 64.6,18.2 68.8,20.1 73.0,18.1 77.1,14.2 81.3,10.5 85.5,12.0 89.7,6.4 93.8,4.6 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
+      </tr><tr>
+        <td class="name">Core PPI YoY (final demand)<span class="sid">PPIFES</span>
+          
+          </td>
+        <td><b>4.9 %</b><span class="sid">2026-05-01</span></td>
+        <td class="neu">— +0.034</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 2.60 · max 4.90</title><polyline points="2.0,17.4 6.2,24.0 10.3,21.7 14.5,17.2 18.7,14.5 22.9,16.6 27.0,13.1 31.2,11.5 35.4,13.3 39.6,12.7 43.7,19.6 47.9,18.4 52.1,23.1 56.3,14.8 60.4,21.0 64.6,20.2 68.8,20.4 73.0,17.9 77.1,16.1 81.3,13.4 85.5,12.1 89.7,11.3 93.8,2.3 98.0,2.0"/></svg></td>
+        <td><span class="chip neu">— 0</span></td>
+        <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Median CPI (Cleveland)<span class="sid">MEDCPIM158SFRBCLE</span>
           
@@ -186,6 +195,33 @@ tr:hover td{background:var(--card)}
         <td><b>215,000</b><span class="sid">2026-07-04</span></td>
         <td class="neg">▼ -15,000</td>
         <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min 190000.00 · max 230000.00</title><polyline points="2.0,17.9 5.8,13.0 9.7,12.4 13.5,2.0 17.4,2.0 21.2,14.1 25.0,12.4 28.9,10.8 32.7,11.4 36.6,15.8 40.4,12.4 44.2,16.9 48.1,8.6 51.9,14.1 55.8,10.3 59.6,24.0 63.4,19.1 67.3,11.9 71.1,13.0 75.0,11.9 78.8,4.8 82.6,2.0 86.5,3.6 90.3,9.7 94.2,9.1 98.0,10.3"/></svg></td>
+        <td><span class="chip neg">▼ −1</span></td>
+        <td><span class="chip pos">▲ +1</span></td>
+      </tr><tr>
+        <td class="name">Việc làm ADP<span class="sid">ADPMNUSNERSA · bản weekly ADPWNUSNERSA đứng từ 16/05/2026</span>
+          
+          </td>
+        <td><b>132.7 triệu người</b><span class="sid">2026-06-01</span></td>
+        <td class="pos">▲ +0.098</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 131.59 · max 132.72</title><polyline points="2.0,24.0 6.2,23.1 10.3,23.5 14.5,23.7 18.7,21.8 22.9,18.7 27.0,16.0 31.2,15.7 35.4,16.8 39.6,17.2 43.7,17.7 47.9,17.7 52.1,16.2 56.3,15.2 60.4,13.5 64.6,13.1 68.8,11.7 73.0,11.0 77.1,10.8 81.3,9.5 85.5,8.3 89.7,6.3 93.8,3.9 98.0,2.0"/></svg></td>
+        <td><span class="chip neg">▼ −1</span></td>
+        <td><span class="chip pos">▲ +1</span></td>
+      </tr><tr>
+        <td class="name">Empire State (NY Fed)<span class="sid">GACDISA066MSFRBNY</span>
+          
+          </td>
+        <td><b>5.7</b><span class="sid">2026-06-01</span></td>
+        <td class="neg">▼ -13.9</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -16.70 · max 19.60</title><polyline points="2.0,24.0 6.2,13.8 10.3,11.6 14.5,22.4 18.7,3.7 22.9,12.5 27.0,18.4 31.2,11.3 35.4,23.4 39.6,19.1 43.7,18.1 47.9,22.9 52.1,12.0 56.3,8.4 60.4,18.1 64.6,9.2 68.8,5.7 73.0,16.1 77.1,9.2 81.3,9.6 85.5,14.0 89.7,7.2 93.8,2.0 98.0,10.4"/></svg></td>
+        <td><span class="chip pos">▲ +1</span></td>
+        <td><span class="chip neg">▼ −1</span></td>
+      </tr><tr>
+        <td class="name">Philly Fed activity<span class="sid">GACDFSA066MSFRBPHI</span>
+          
+          </td>
+        <td><b>10.3</b><span class="sid">2026-06-01</span></td>
+        <td class="pos">▲ +10.7</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -12.90 · max 32.90</title><polyline points="2.0,13.0 6.2,19.2 10.3,18.6 14.5,14.2 18.7,18.5 22.9,22.4 27.0,2.0 31.2,11.4 35.4,12.9 39.6,24.0 43.7,18.1 47.9,18.5 52.1,12.3 56.3,17.5 60.4,8.4 64.6,22.7 68.8,17.5 73.0,22.0 77.1,11.8 81.3,10.0 85.5,9.1 89.7,5.0 93.8,18.0 98.0,12.9"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr>
@@ -297,6 +333,15 @@ tr:hover td{background:var(--card)}
         <td><b>2.597 nghìn tỷ $</b><span class="sid">2026-07-08</span></td>
         <td class="neg">▼ -0.036</td>
         <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min 2.60 · max 2.80</title><polyline points="2.0,6.3 5.8,5.3 9.7,3.1 13.5,3.5 17.4,2.0 21.2,3.1 25.0,4.7 28.9,5.7 32.7,10.0 36.6,11.0 40.4,13.5 44.2,9.4 48.1,13.6 51.9,12.3 55.8,9.8 59.6,9.1 63.4,10.0 67.3,14.3 71.1,16.5 75.0,15.1 78.8,18.6 82.6,20.1 86.5,20.3 90.3,19.7 94.2,20.9 98.0,24.0"/></svg></td>
+        <td><span class="chip pos">▲ +1</span></td>
+        <td><span class="chip neg">▼ −1</span></td>
+      </tr><tr>
+        <td class="name">Cân đối ngân sách LB<span class="sid">MTSDS133FMS · Δ so cùng kỳ 12 tháng — seasonality mạnh</span>
+          
+          </td>
+        <td><b>-120.3 tỷ $</b><span class="sid">2026-06-01</span></td>
+        <td class="neg">▼ -147.32</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -380.08 · max 258.40</title><polyline points="2.0,19.3 6.2,24.0 10.3,8.7 14.5,19.8 18.7,23.5 22.9,13.9 27.0,15.3 31.2,21.5 35.4,16.4 39.6,2.0 43.7,21.8 47.9,10.0 52.1,20.9 56.3,22.8 60.4,4.1 64.6,20.7 68.8,16.9 73.0,15.9 77.1,14.2 81.3,21.5 85.5,16.6 89.7,3.5 93.8,21.0 98.0,15.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
