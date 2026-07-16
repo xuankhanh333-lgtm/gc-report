@@ -31,22 +31,22 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 23:16:14 16/7/2026 · 48 series (32→37→44→48: +bạc/BTC/USDCNY/repo-stress 16/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 23:23:51 16/7/2026 · 56 series (32→37→44→56: nâng 2 vòng 16/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div class="kpis">
-  <div class="kpi"><div class="lbl">GOLD BIAS (tổng 37 chỉ số active)</div><div class="val">-3</div>
+  <div class="kpi"><div class="lbl">GOLD BIAS (tổng 44 chỉ số active)</div><div class="val">-4</div>
     <div class="word neu">TRUNG TÍNH</div>
-    <div class="bar"><i class="n" style="width:12%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>21 lần chạy · min -5 · max -1</title>
+    <div class="bar"><i class="n" style="width:14%;transform:translateX(-100%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>22 lần chạy · min -5 · max -1</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 7.7,22.2 12.4,22.2 17.1,19.8 21.8,22.2 26.5,22.2 31.2,27.0 35.9,27.0 40.6,27.0 45.3,17.4 50.0,17.4 54.7,17.4 59.4,17.4 64.1,17.4 68.8,17.4 73.5,17.4 78.2,17.4 82.9,19.8 87.6,19.8 92.3,19.8 97.0,22.2"/>
-    <circle cx="97.0" cy="22.2" r="3" class="n"/></svg><div class="lbl">history 21 lần chạy</div></div>
-  <div class="kpi"><div class="lbl">USD BIAS (tổng 41 chỉ số active)</div><div class="val">+1</div>
+    <polyline points="3.0,22.2 7.5,22.2 12.0,22.2 16.4,19.8 20.9,22.2 25.4,22.2 29.9,27.0 34.3,27.0 38.8,27.0 43.3,17.4 47.8,17.4 52.2,17.4 56.7,17.4 61.2,17.4 65.7,17.4 70.1,17.4 74.6,17.4 79.1,19.8 83.6,19.8 88.0,19.8 92.5,22.2 97.0,24.6"/>
+    <circle cx="97.0" cy="24.6" r="3" class="n"/></svg><div class="lbl">history 22 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">USD BIAS (tổng 46 chỉ số active)</div><div class="val">-2</div>
     <div class="word neu">TRUNG TÍNH</div>
-    <div class="bar"><i class="" style="width:4%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>21 lần chạy · min 1 · max 5</title>
+    <div class="bar"><i class="n" style="width:7%;transform:translateX(-100%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>22 lần chạy · min -2 · max 5</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 7.7,7.8 12.4,7.8 17.1,5.4 21.8,7.8 26.5,7.8 31.2,3.0 35.9,3.0 40.6,3.0 45.3,7.8 50.0,7.8 54.7,7.8 59.4,7.8 64.1,7.8 68.8,7.8 73.5,7.8 78.2,7.8 82.9,10.2 87.6,10.2 92.3,10.2 97.0,12.6"/>
-    <circle cx="97.0" cy="12.6" r="3" class="p"/></svg><div class="lbl">history 21 lần chạy</div></div>
+    <polyline points="3.0,7.8 7.5,7.8 12.0,7.8 16.4,5.4 20.9,7.8 25.4,7.8 29.9,3.0 34.3,3.0 38.8,3.0 43.3,7.8 47.8,7.8 52.2,7.8 56.7,7.8 61.2,7.8 65.7,7.8 70.1,7.8 74.6,7.8 79.1,10.2 83.6,10.2 88.0,10.2 92.5,12.6 97.0,19.8"/>
+    <circle cx="97.0" cy="19.8" r="3" class="n"/></svg><div class="lbl">history 22 lần chạy</div></div>
   <div class="kpi"><div class="lbl">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng)</div>
     <div class="val">2.33%</div>
     <div class="word neg">▲ +0.40 /3 tháng · cản vàng</div>
@@ -63,7 +63,11 @@ tr:hover td{background:var(--card)}
     <div class="val">-0.42</div>
     <div class="word neu">nghịch chuẩn — vàng vẫn giao dịch theo real yield</div>
     <div class="lbl" style="margin-top:8px">chuẩn lịch sử ÂM · dương kéo dài = vàng đổi driver (regime hậu-2022)</div></div>
-  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">48/48</div>
+  <div class="kpi"><div class="lbl">COPPER/GOLD (growth vs fear · dẫn 10Y)</div>
+    <div class="val">+42.0%<span style="font-size:13px;font-weight:400"> /6T</span></div>
+    <div class="word neg">▲ +42.0% /6 tháng · growth impulse — yields dễ lên, cản vàng</div>
+    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>23 obs · min 3.14 · max 5.36</title><polyline points="2.0,22.6 6.4,22.0 10.7,21.7 15.1,22.6 19.5,22.9 23.8,23.7 28.2,21.5 32.5,21.8 36.9,24.0 41.3,22.1 45.6,21.0 50.0,20.7 54.4,22.3 58.7,22.5 63.1,19.9 67.5,20.6 71.8,17.7 76.2,14.6 80.5,15.9 84.9,13.7 89.3,12.0 93.6,9.1 98.0,2.0"/></svg><div class="lbl">PCOPPUSDM / QGLDI theo tháng (23 obs)</div></div>
+  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">56/56</div>
     <div class="word neu">0 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
 <div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng. <button id="obsbtn" type="button">📈 Hiện cột 30 obs</button></div>
@@ -268,6 +272,46 @@ tr:hover td{background:var(--card)}
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -12.90 · max 41.40</title><polyline points="2.0,20.0 6.2,19.4 10.3,15.7 14.5,19.4 18.7,22.7 22.9,5.4 27.0,13.3 31.2,14.6 35.4,24.0 39.6,19.1 43.7,19.3 47.9,14.2 52.1,18.5 56.3,10.9 60.4,22.9 64.6,18.5 68.8,22.3 73.0,13.7 77.1,12.2 81.3,11.4 85.5,8.0 89.7,18.9 93.8,14.6 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
+      </tr><tr>
+        <td class="name"><span class="tipname" data-tip="Giá dầu WTI trung bình tháng. Dầu = đầu vào lạm phát lớn nhất: dầu tăng bền → CPI khó xuống → phức tạp cho Fed. Cũng dùng cho gold/oil ratio. Bản daily trên FRED trễ ~1 tuần nên dùng bản tháng." data-tipid="WTISPLC" tabindex="0">Dầu WTI (tháng)</span><span class="sid">WTISPLC · đầu vào lạm phát + gold/oil</span>
+          
+          
+          </td>
+        <td><b>84.8 $/thùng</b><span class="sid">2026-06-01</span></td>
+        <td class="neg">▼ -17.32</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 57.97 · max 102.13</title><polyline points="2.0,12.1 6.2,14.7 10.3,17.9 14.5,17.0 18.7,18.0 22.9,17.9 27.0,15.1 31.2,17.2 35.4,18.9 39.6,21.2 43.7,21.9 47.9,18.9 52.1,18.8 56.3,20.6 60.4,21.0 64.6,22.5 68.8,23.0 73.0,24.0 77.1,23.0 81.3,20.7 85.5,7.4 89.7,2.9 93.8,2.0 98.0,10.6"/></svg></td>
+        <td><span class="chip neg">▼ −1</span></td>
+        <td><span class="chip neu">ctx</span></td>
+      </tr><tr>
+        <td class="name"><span class="tipname" data-tip="Giá đồng toàn cầu (IMF, tháng) — không chấm điểm (ctx). Nguyên liệu cho tile COPPER/GOLD phía trên: đồng khỏe hơn vàng = growth impulse, yếu hơn = fear thắng." data-tipid="PCOPPUSDM" tabindex="0">Đồng (IMF, tháng)</span><span class="sid">PCOPPUSDM · ctx — nguyên liệu cho tile COPPER/GOLD</span>
+          
+          
+          </td>
+        <td><b>13.55 k$/tấn</b><span class="sid">2026-06-01</span></td>
+        <td class="neu">— +0.04</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 8.91 · max 13.55</title><polyline points="2.0,21.7 6.2,23.7 10.3,22.3 14.5,21.0 18.7,23.2 22.9,24.0 27.0,23.7 31.2,22.0 35.4,20.1 39.6,22.8 43.7,21.1 47.9,19.6 52.1,19.9 56.3,20.4 60.4,18.9 64.6,15.3 68.8,15.0 73.0,10.3 77.1,4.7 81.3,4.8 85.5,6.8 89.7,5.1 93.8,2.2 98.0,2.0"/></svg></td>
+        <td><span class="chip neu">ctx</span></td>
+        <td><span class="chip neu">ctx</span></td>
+      </tr><tr>
+        <td class="name"><span class="tipname" data-tip="Sticky CPI lõi (Atlanta Fed) — chỉ gồm nhóm hàng ĐỔI GIÁ CHẬM (thuê nhà, dịch vụ, bảo hiểm). Cao dai = lạm phát đã bám rễ vào hợp đồng/kỳ vọng, Fed khó xoay nhanh. Cặp đối chiếu với Median CPI." data-tipid="CORESTICKM159SFRBATL" tabindex="0">Sticky CPI lõi YoY (Atlanta)</span><span class="sid">CORESTICKM159SFRBATL · nhóm giá đổi chậm — lạm phát bám rễ</span>
+          
+          
+          </td>
+        <td><b>2.81</b><span class="sid">2026-06-01</span></td>
+        <td class="neg">▼ -0.284</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 2.81 · max 4.18</title><polyline points="2.0,2.0 6.2,3.1 10.3,4.7 14.5,5.3 18.7,6.7 22.9,8.9 27.0,10.9 31.2,12.6 35.4,16.7 39.6,18.1 43.7,18.2 47.9,16.1 52.1,14.1 56.3,14.0 60.4,15.8 64.6,19.7 68.8,21.6 73.0,20.8 77.1,21.2 81.3,22.4 85.5,22.0 89.7,20.3 93.8,19.5 98.0,24.0"/></svg></td>
+        <td><span class="chip pos">▲ +1</span></td>
+        <td><span class="chip neg">▼ −1</span></td>
+      </tr><tr>
+        <td class="name"><span class="tipname" data-tip="Xác suất lạm phát PCE 12 tháng tới vượt 2.5% (model St. Louis Fed, 0-1). Tăng = thị trường tin lạm phát quay lại → đỡ vàng, khó cho Fed. Rơi về 0 kèm STLPPMDEF tăng = lo giảm phát." data-tipid="STLPPM" tabindex="0">P(lạm phát >2.5%) 12T</span><span class="sid">STLPPM · St. Louis Fed — xác suất PCE 12 tháng tới vượt 2.5%</span>
+          
+          
+          </td>
+        <td><b>1</b><span class="sid">2026-06-01</span></td>
+        <td class="pos">▲ +0.187</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 0.12 · max 1.00</title><polyline points="2.0,19.2 6.2,19.6 10.3,22.5 14.5,23.3 18.7,18.6 22.9,20.4 27.0,15.0 31.2,12.7 35.4,11.6 39.6,22.5 43.7,24.0 47.9,20.3 52.1,16.3 56.3,15.5 60.4,18.2 64.6,17.5 68.8,20.2 73.0,17.0 77.1,15.0 81.3,11.9 85.5,11.9 89.7,7.6 93.8,6.7 98.0,2.0"/></svg></td>
+        <td><span class="chip pos">▲ +1</span></td>
+        <td><span class="chip neg">▼ −1</span></td>
       </tr>
   </tbody></table></div>
   <h2>C. Risk & thanh khoản</h2>
@@ -374,6 +418,36 @@ tr:hover td{background:var(--card)}
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 58585.96 · max 65679.13</title><polyline points="2.0,2.0 5.3,5.6 8.6,10.8 11.9,8.7 15.2,6.6 18.6,9.3 21.9,7.4 25.2,11.3 28.5,16.7 31.8,20.3 35.1,19.6 38.4,19.7 41.7,21.6 45.0,19.2 48.3,24.0 51.7,20.0 55.0,15.2 58.3,11.7 61.6,10.2 64.9,8.5 68.2,7.3 71.5,9.2 74.8,12.9 78.1,9.8 81.4,7.0 84.8,7.7 88.1,7.8 91.4,12.7 94.7,4.2 98.0,4.9"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
+      </tr><tr>
+        <td class="name"><span class="tipname" data-tip="Chỉ số stress tài chính tổng hợp St. Louis (18 biến: lãi suất, spread, vol). 0 = mức trung bình lịch sử, âm = thị trường lỏng/yên, dương vọt = stress lan hệ thống → risk-off, trú ẩn bid cả vàng lẫn USD." data-tipid="STLFSI4" tabindex="0">Financial Stress (St. Louis)</span><span class="sid">STLFSI4 · 0 = trung bình lịch sử; âm = lỏng</span>
+          
+          
+          </td>
+        <td><b>-0.88</b><span class="sid">2026-07-10</span></td>
+        <td class="neu">— -0.114</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min -0.96 · max -0.18</title><polyline points="2.0,15.2 5.8,17.0 9.7,16.0 13.5,15.4 17.4,14.3 21.2,10.6 25.0,9.3 28.9,9.0 32.7,5.3 36.6,7.2 40.4,2.0 44.2,3.6 48.1,15.1 51.9,18.3 55.8,16.0 59.6,15.9 63.4,18.4 67.3,17.8 71.1,18.4 75.0,16.3 78.8,21.5 82.6,18.7 86.5,24.0 90.3,15.2 94.2,17.5 98.0,21.9"/></svg></td>
+        <td><span class="chip neu">— 0</span></td>
+        <td><span class="chip neu">— 0</span></td>
+      </tr><tr>
+        <td class="name"><span class="tipname" data-tip="Bất định chính sách kinh tế TOÀN CẦU (GDP-weighted 20 nước, tháng). Bản mở rộng của EPU Mỹ: bất định toàn cầu cao kéo dài = môi trường thuận cho vàng bất kể Fed." data-tipid="GEPUCURRENT" tabindex="0">EPU toàn cầu (tháng)</span><span class="sid">GEPUCURRENT</span>
+          
+          
+          </td>
+        <td><b>278.23</b><span class="sid">2026-06-01</span></td>
+        <td class="neg">▼ -43.08</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 189.06 · max 621.41</title><polyline points="2.0,22.2 6.2,24.0 10.3,23.4 14.5,23.3 18.7,19.4 22.9,17.2 27.0,18.0 31.2,16.9 35.4,9.7 39.6,2.0 43.7,7.9 47.9,15.0 52.1,13.2 56.3,16.4 60.4,18.1 64.6,13.4 68.8,15.0 73.0,16.7 77.1,14.5 81.3,15.8 85.5,10.9 89.7,16.2 93.8,17.3 98.0,19.5"/></svg></td>
+        <td><span class="chip neg">▼ −1</span></td>
+        <td><span class="chip neg">▼ −1</span></td>
+      </tr><tr>
+        <td class="name"><span class="tipname" data-tip="Bất định chính sách Trung Quốc (báo chí đại lục, tháng). TQ bất định → hộ gia đình TQ trú vào vàng (cầu vật chất số 1 thế giới) + dòng vốn tháo chạy → USD mạnh." data-tipid="CHNMAINLANDEPU" tabindex="0">EPU Trung Quốc (tháng)</span><span class="sid">CHNMAINLANDEPU · TQ bất định → dân TQ trú vàng</span>
+          
+          
+          </td>
+        <td><b>231.45</b><span class="sid">2026-06-01</span></td>
+        <td class="neu">— -35.78</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 207.98 · max 570.77</title><polyline points="2.0,19.7 6.2,24.0 10.3,23.0 14.5,22.8 18.7,22.4 22.9,14.5 27.0,21.0 31.2,22.0 35.4,10.7 39.6,4.8 43.7,6.6 47.9,15.8 52.1,15.7 56.3,18.3 60.4,23.2 64.6,4.9 68.8,9.1 73.0,11.1 77.1,13.8 81.3,16.1 85.5,2.0 89.7,16.6 93.8,20.4 98.0,22.6"/></svg></td>
+        <td><span class="chip neu">— 0</span></td>
+        <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name"><span class="tipname" data-tip="Chênh lệch SOFR − IORB = nhiệt kế khan tiền repo. Bình thường ÂM nhẹ (SOFR dưới sàn IORB); dương vượt 0.05 đpt = ngân hàng tranh nhau vay qua đêm (kiểu 09/2019) → USD squeeze đột ngột, thanh khoản rút khỏi mọi tài sản." data-tipid="SOFR_IORB" tabindex="0">Repo stress SOFR−IORB</span><span class="sid">SOFR_IORB · bình thường ≤0; >0.05 = khan tiền repo thật</span>
           
@@ -516,6 +590,16 @@ tr:hover td{background:var(--card)}
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 119.04 · max 121.41</title><polyline points="2.0,22.8 5.6,24.0 9.1,20.8 12.7,21.0 16.2,14.3 19.8,14.8 23.3,15.4 26.9,15.9 30.4,14.0 34.0,19.6 37.6,21.4 41.1,22.0 44.7,20.7 48.2,11.4 51.8,10.0 55.3,5.3 58.9,2.0 62.4,5.3 66.0,6.9 69.6,6.3 73.1,6.5 76.7,4.5 80.2,8.7 83.8,7.3 87.3,7.5 90.9,4.6 94.4,8.1 98.0,10.4"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">ctx</span></td>
+      </tr><tr>
+        <td class="name"><span class="tipname" data-tip="Broad dollar THỰC — đã trừ chênh lạm phát với đối tác. Thước đo USD đang đắt/rẻ thật ở tầm nhìn năm: vùng đỉnh lịch sử = USD quá đắt, dư địa mất giá dài hạn (đỡ vàng). Đọc regime, không đọc tuần." data-tipid="RTWEXBGS" tabindex="0">Real Broad Dollar (tháng)</span><span class="sid">RTWEXBGS · USD thực sau lạm phát — thước đắt/rẻ dài hạn</span>
+          
+          
+          </td>
+        <td><b>115.4</b><span class="sid">2026-06-01</span></td>
+        <td class="pos">▲ +1.311</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 112.48 · max 122.41</title><polyline points="2.0,15.0 6.2,16.5 10.3,17.5 14.5,13.9 18.7,8.0 22.9,5.1 27.0,2.0 31.2,3.8 35.4,7.5 39.6,12.1 43.7,16.0 47.9,19.5 52.1,20.4 56.3,18.8 60.4,19.8 64.6,18.6 68.8,17.3 73.0,19.6 77.1,21.3 81.3,24.0 85.5,19.1 89.7,20.4 93.8,20.5 98.0,17.6"/></svg></td>
+        <td><span class="chip neg">▼ −1</span></td>
+        <td><span class="chip neu">ctx</span></td>
       </tr>
   </tbody></table></div>
   <h2>F. USD độc lập — chênh lệch lãi suất (carry)</h2>
@@ -584,6 +668,11 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr>
   </tbody></table></div>
+<h2>🌐 Liên thị trường (12 leg · cập nhật 4h — pipeline riêng)</h2>
+<div class="legend">Trang intermarket nhúng tại chỗ, luôn là bản mới nhất do task intermarket-4h đẩy lên —
+  <button id="imbtn" type="button">🌐 Mở liên thị trường</button> · <a href="intermarket.html" target="_blank">mở tab riêng ↗</a></div>
+<iframe id="imfr" data-src="intermarket.html" title="Intermarket 12 leg" loading="lazy"
+  style="display:none;width:100%;height:1400px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin-top:8px"></iframe>
 <style>
 .tipname{cursor:help;border-bottom:1px dotted var(--ink2)}
 #tipfx{display:none;position:fixed;z-index:99;max-width:380px;padding:10px 13px;border-radius:10px;
@@ -592,9 +681,9 @@ tr:hover td{background:var(--card)}
 #tipfx b{display:block;font-size:11px;color:var(--ink2);letter-spacing:.04em;margin-bottom:3px}
 .obscol{display:none}
 body.showobs .obscol{display:table-cell}
-#obsbtn{margin-left:8px;font:inherit;font-size:12px;padding:2px 10px;border-radius:6px;cursor:pointer;
+#obsbtn,#imbtn{margin-left:8px;font:inherit;font-size:12px;padding:2px 10px;border-radius:6px;cursor:pointer;
   background:var(--neu);color:var(--ink);border:1px solid var(--line)}
-#obsbtn:hover{background:var(--card)}
+#obsbtn:hover,#imbtn:hover{background:var(--card)}
 </style>
 <div id="tipfx"></div>
 <script>
@@ -627,6 +716,19 @@ body.showobs .obscol{display:table-cell}
   ob.addEventListener("click", function(e){ e.stopPropagation(); setObs(!document.body.classList.contains("showobs")); });
   var saved = "0"; try { saved = localStorage.getItem("fredObsCol") || "0"; } catch (e) {}
   setObs(saved === "1");
+  var ib = document.getElementById("imbtn"), fr = document.getElementById("imfr");
+  function setIm(on){
+    if (on && !fr.src) fr.src = fr.dataset.src;
+    fr.style.display = on ? "block" : "none";
+    ib.textContent = on ? "🌐 Thu gọn liên thị trường" : "🌐 Mở liên thị trường";
+    try { localStorage.setItem("fredImFrame", on ? "1" : "0"); } catch (e) {}
+  }
+  ib.addEventListener("click", function(e){ e.stopPropagation(); setIm(fr.style.display === "none"); });
+  fr.addEventListener("load", function(){
+    try { var h = fr.contentDocument.body.scrollHeight; if (h > 300) fr.style.height = (h + 40) + "px"; } catch (e) {}
+  });
+  var sim = "0"; try { sim = localStorage.getItem("fredImFrame") || "0"; } catch (e) {}
+  setIm(sim === "1");
 })();
 </script>
 </body></html>
