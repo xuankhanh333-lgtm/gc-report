@@ -31,22 +31,22 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 23:33:49 16/7/2026 · 56 series (32→37→44→56: nâng 2 vòng 16/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 23:42:51 16/7/2026 · 56 series (32→37→44→56: nâng 2 vòng 16/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div class="kpis">
   <div class="kpi"><div class="lbl">GOLD BIAS (tổng 44 chỉ số active)</div><div class="val">-4</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="n" style="width:14%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>23 lần chạy · min -5 · max -1</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>24 lần chạy · min -5 · max -1</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 7.3,22.2 11.5,22.2 15.8,19.8 20.1,22.2 24.4,22.2 28.6,27.0 32.9,27.0 37.2,27.0 41.5,17.4 45.7,17.4 50.0,17.4 54.3,17.4 58.5,17.4 62.8,17.4 67.1,17.4 71.4,17.4 75.6,19.8 79.9,19.8 84.2,19.8 88.5,22.2 92.7,24.6 97.0,24.6"/>
-    <circle cx="97.0" cy="24.6" r="3" class="n"/></svg><div class="lbl">history 23 lần chạy</div></div>
+    <polyline points="3.0,22.2 7.1,22.2 11.2,22.2 15.3,19.8 19.3,22.2 23.4,22.2 27.5,27.0 31.6,27.0 35.7,27.0 39.8,17.4 43.9,17.4 48.0,17.4 52.0,17.4 56.1,17.4 60.2,17.4 64.3,17.4 68.4,17.4 72.5,19.8 76.6,19.8 80.7,19.8 84.7,22.2 88.8,24.6 92.9,24.6 97.0,24.6"/>
+    <circle cx="97.0" cy="24.6" r="3" class="n"/></svg><div class="lbl">history 24 lần chạy</div></div>
   <div class="kpi"><div class="lbl">USD BIAS (tổng 46 chỉ số active)</div><div class="val">-2</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="n" style="width:7%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>23 lần chạy · min -2 · max 5</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>24 lần chạy · min -2 · max 5</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 7.3,7.8 11.5,7.8 15.8,5.4 20.1,7.8 24.4,7.8 28.6,3.0 32.9,3.0 37.2,3.0 41.5,7.8 45.7,7.8 50.0,7.8 54.3,7.8 58.5,7.8 62.8,7.8 67.1,7.8 71.4,7.8 75.6,10.2 79.9,10.2 84.2,10.2 88.5,12.6 92.7,19.8 97.0,19.8"/>
-    <circle cx="97.0" cy="19.8" r="3" class="n"/></svg><div class="lbl">history 23 lần chạy</div></div>
+    <polyline points="3.0,7.8 7.1,7.8 11.2,7.8 15.3,5.4 19.3,7.8 23.4,7.8 27.5,3.0 31.6,3.0 35.7,3.0 39.8,7.8 43.9,7.8 48.0,7.8 52.0,7.8 56.1,7.8 60.2,7.8 64.3,7.8 68.4,7.8 72.5,10.2 76.6,10.2 80.7,10.2 84.7,12.6 88.8,19.8 92.9,19.8 97.0,19.8"/>
+    <circle cx="97.0" cy="19.8" r="3" class="n"/></svg><div class="lbl">history 24 lần chạy</div></div>
   <div class="kpi"><div class="lbl">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng)</div>
     <div class="val">2.33%</div>
     <div class="word neg">▲ +0.40 /3 tháng · cản vàng</div>
@@ -668,7 +668,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr>
   </tbody></table></div>
-<h2>🌐 Liên thị trường (12 leg · snap 4h — pipeline riêng) · <a href="intermarket.html" target="_blank" style="font-size:12px;font-weight:400">trang gốc ↗</a></h2>
+<h2>🌐 Liên thị trường (12 leg · snap 4h · tự refresh khi mở trang)</h2><div id="imsec">
 <div class="legend"><b class="neg" style="font-size:14px">🔥 GIÁ CỦA TIỀN TĂNG (tightening)</b> · snap 21:35 16/7 VN · Δ4h = 1 bar H4, Δ24h = 6 bar · 2 leg VN theo kỳ snap</div>
 <div class="tblwrap"><table>
 <thead><tr><th>Leg</th><th>Giá</th><th>Δ4h</th><th>Δ24h</th><th>~5 ngày (30 bar H4)</th></tr></thead>
@@ -710,7 +710,7 @@ tr:hover td{background:var(--card)}
         <td><b>1,782.1</b></td>
         <td class="neu">+0.00%</td>
         <td class="neu">+0.00%</td>
-        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>15 obs · min 1782.12 · max 1806.63</title><polyline points="2.0,2.0 8.9,2.0 15.7,2.0 22.6,2.0 29.4,2.0 36.3,2.0 43.1,2.0 50.0,2.0 56.9,2.0 63.7,16.0 70.6,24.0 77.4,24.0 84.3,24.0 91.1,24.0 98.0,24.0"/></svg></td></tr></tbody></table></div>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>15 obs · min 1782.12 · max 1806.63</title><polyline points="2.0,2.0 8.9,2.0 15.7,2.0 22.6,2.0 29.4,2.0 36.3,2.0 43.1,2.0 50.0,2.0 56.9,2.0 63.7,16.0 70.6,24.0 77.4,24.0 84.3,24.0 91.1,24.0 98.0,24.0"/></svg></td></tr></tbody></table></div></div>
 <style>
 .tipname{cursor:help;border-bottom:1px dotted var(--ink2)}
 #tipfx{display:none;position:fixed;z-index:99;max-width:380px;padding:10px 13px;border-radius:10px;
@@ -754,6 +754,61 @@ body.showobs .obscol{display:table-cell}
   ob.addEventListener("click", function(e){ e.stopPropagation(); setObs(!document.body.classList.contains("showobs")); });
   var saved = "0"; try { saved = localStorage.getItem("fredObsCol") || "0"; } catch (e) {}
   setObs(saved === "1");
+  // ---- Liên thị trường: live-refresh — fetch 2 JSON (cùng origin trên Pages) và render lại section
+  // mỗi lần mở trang, nên section luôn theo kỳ 4h mới nhất dù fred.html chỉ regen 2 lần/ngày.
+  // Trên file:// fetch fail → giữ nguyên bản render sẵn lúc scorecard chạy.
+  var IMR = { ez: ["💧 GIÁ CỦA TIỀN GIẢM (easing)", "pos"], tt: ["🔥 GIÁ CỦA TIỀN TĂNG (tightening)", "neg"],
+    ro: ["🔻 RISK-OFF (trú ẩn)", "neg"], rn: ["🟢 RISK-ON (rời trú ẩn)", "pos"], mix: ["◽ HỖN HỢP / TRUNG TÍNH", "neu"] };
+  function imNum(x, dp) { return x.toLocaleString("en-US", { maximumFractionDigits: dp }); }
+  function imDelta(x) { return (x >= 0 ? "+" : "-") + imNum(Math.abs(x), Math.abs(x) >= 2 ? 2 : 3); }
+  function imSpark(vs) {
+    var n = vs.length, mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs), rg = mx - mn || 1, pts = [];
+    for (var i = 0; i < n; i++) pts.push((2 + i * 96 / (n - 1)).toFixed(1) + "," + (2 + (1 - (vs[i] - mn) / rg) * 22).toFixed(1));
+    return '<svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><polyline points="' + pts.join(" ") + '"/></svg>';
+  }
+  function imBuild(B, H) {
+    var hL = H[H.length - 1] || {}, YL = { y10: 1, y02: 1 }, rows = "";
+    var av = new Date((B.asof + 7 * 3600) * 1000);
+    var asof = ("0" + av.getUTCHours()).slice(-2) + ":" + ("0" + av.getUTCMinutes()).slice(-2) + " " + av.getUTCDate() + "/" + (av.getUTCMonth() + 1);
+    var age = (Date.now() - B.asof * 1000) / 36e5;
+    var rg = IMR[hL.regime] || IMR.mix;
+    Object.keys(B.legs).forEach(function (k) {
+      var leg = B.legs[k], bars = leg.bars || [];
+      if (bars.length < 8) return;
+      var c = bars[bars.length - 1][1], p1 = bars[bars.length - 2][1], p6 = bars[bars.length - 7][1];
+      var d4 = YL[k] ? c - p1 : (c / p1 - 1) * 100, d24 = YL[k] ? c - p6 : (c / p6 - 1) * 100;
+      var f = function (d) { return YL[k] ? imDelta(d) + " đpt" : (d >= 0 ? "+" : "") + d.toFixed(2) + "%"; };
+      var cl = function (d) { return d > 0 ? "pos" : d < 0 ? "neg" : "neu"; };
+      rows += '<tr><td class="name">' + leg.name + '<span class="sid">' + leg.symbol + '</span></td><td><b>' +
+        imNum(c, Math.abs(c) >= 100 ? 1 : 3) + '</b></td><td class="' + cl(d4) + '">' + f(d4) + '</td><td class="' + cl(d24) + '">' + f(d24) +
+        '</td><td>' + imSpark(bars.slice(-30).map(function (b) { return b[1]; })) + '</td></tr>';
+    });
+    ["vn30f", "vnindex"].forEach(function (k) {
+      var c = hL.last && hL.last[k];
+      if (c === undefined) return;
+      var eP = H[H.length - 2], e24 = null;
+      for (var i = H.length - 1; i >= 0; i--) { if (hL.t - H[i].t >= 22 * 3600) { e24 = H[i]; break; } }
+      var dP = eP && eP.last[k] ? (c / eP.last[k] - 1) * 100 : null, d24 = e24 && e24.last[k] ? (c / e24.last[k] - 1) * 100 : null;
+      var hs = H.map(function (e) { return e.last && e.last[k]; }).filter(Boolean);
+      var cl = function (d) { return d === null ? "neu" : d > 0 ? "pos" : d < 0 ? "neg" : "neu"; };
+      var f = function (d) { return d === null ? "—" : (d >= 0 ? "+" : "") + d.toFixed(2) + "%"; };
+      rows += '<tr><td class="name">' + (k === "vn30f" ? "VN30 Futures" : "VNINDEX") + '<span class="sid">' +
+        (k === "vn30f" ? "VN301! (vnpool)" : "HOSE (vnpool)") + '</span></td><td><b>' + imNum(c, 1) + '</b></td><td class="' +
+        cl(dP) + '">' + f(dP) + '</td><td class="' + cl(d24) + '">' + f(d24) + '</td><td>' + (hs.length >= 3 ? imSpark(hs) : "") + '</td></tr>';
+    });
+    return '<div class="legend"><b class="' + rg[1] + '" style="font-size:14px">' + rg[0] + '</b> · snap ' + asof + ' VN' +
+      (age > 8 ? ' · <span class="warn">⚠ data cũ ' + age.toFixed(0) + 'h — kỳ 4h chưa chạy?</span>' : '') +
+      ' · Δ4h = 1 bar H4, Δ24h = 6 bar · 2 leg VN theo kỳ snap · đã refresh lúc mở trang</div>' +
+      '<div class="tblwrap"><table><thead><tr><th>Leg</th><th>Giá</th><th>Δ4h</th><th>Δ24h</th><th>~5 ngày (30 bar H4)</th></tr></thead><tbody>' +
+      rows + '</tbody></table></div>';
+  }
+  Promise.all([fetch("intermarket_bars.json"), fetch("intermarket_history.json")]).then(function (rs) {
+    if (!rs[0].ok || !rs[1].ok) throw 0;
+    return Promise.all([rs[0].json(), rs[1].json()]);
+  }).then(function (js) {
+    var el = document.getElementById("imsec");
+    if (el) el.innerHTML = imBuild(js[0], js[1]);
+  }).catch(function () {});
 })();
 </script>
 </body></html>
