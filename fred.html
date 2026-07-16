@@ -31,22 +31,22 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 22:36:31 16/7/2026 · 44 series (32→37→44, nhóm F = USD độc lập từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 22:56:11 16/7/2026 · 44 series (32→37→44, nhóm F = USD độc lập từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div class="kpis">
   <div class="kpi"><div class="lbl">GOLD BIAS (tổng 35 chỉ số active)</div><div class="val">-2</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="n" style="width:9%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>18 lần chạy · min -5 · max -1</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>19 lần chạy · min -5 · max -1</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 8.5,22.2 14.1,22.2 19.6,19.8 25.1,22.2 30.6,22.2 36.2,27.0 41.7,27.0 47.2,27.0 52.8,17.4 58.3,17.4 63.8,17.4 69.4,17.4 74.9,17.4 80.4,17.4 85.9,17.4 91.5,17.4 97.0,19.8"/>
-    <circle cx="97.0" cy="19.8" r="3" class="n"/></svg><div class="lbl">history 18 lần chạy</div></div>
+    <polyline points="3.0,22.2 8.2,22.2 13.4,22.2 18.7,19.8 23.9,22.2 29.1,22.2 34.3,27.0 39.6,27.0 44.8,27.0 50.0,17.4 55.2,17.4 60.4,17.4 65.7,17.4 70.9,17.4 76.1,17.4 81.3,17.4 86.6,17.4 91.8,19.8 97.0,19.8"/>
+    <circle cx="97.0" cy="19.8" r="3" class="n"/></svg><div class="lbl">history 19 lần chạy</div></div>
   <div class="kpi"><div class="lbl">USD BIAS (tổng 39 chỉ số active)</div><div class="val">+2</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="" style="width:8%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>18 lần chạy · min 2 · max 5</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>19 lần chạy · min 2 · max 5</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 8.5,7.8 14.1,7.8 19.6,5.4 25.1,7.8 30.6,7.8 36.2,3.0 41.7,3.0 47.2,3.0 52.8,7.8 58.3,7.8 63.8,7.8 69.4,7.8 74.9,7.8 80.4,7.8 85.9,7.8 91.5,7.8 97.0,10.2"/>
-    <circle cx="97.0" cy="10.2" r="3" class="p"/></svg><div class="lbl">history 18 lần chạy</div></div>
+    <polyline points="3.0,7.8 8.2,7.8 13.4,7.8 18.7,5.4 23.9,7.8 29.1,7.8 34.3,3.0 39.6,3.0 44.8,3.0 50.0,7.8 55.2,7.8 60.4,7.8 65.7,7.8 70.9,7.8 76.1,7.8 81.3,7.8 86.6,7.8 91.8,10.2 97.0,10.2"/>
+    <circle cx="97.0" cy="10.2" r="3" class="p"/></svg><div class="lbl">history 19 lần chạy</div></div>
   <div class="kpi"><div class="lbl">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng)</div>
     <div class="val">2.33%</div>
     <div class="word neg">▲ +0.40 /3 tháng · cản vàng</div>
@@ -58,14 +58,14 @@ tr:hover td{background:var(--card)}
   <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">44/44</div>
     <div class="word neu">0 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
-<div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest.</div>
+<div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng.</div>
 
   <h2>A. Gold — trực tiếp</h2>
   <div class="tblwrap"><table>
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th>30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
   <tr>
-        <td class="name">Lợi suất thực 10Y (TIPS)<span class="sid">DFII10</span>
+        <td class="name"><span class="tipname" data-tip="Lợi suất TIPS 10Y = lãi suất thực sau lạm phát — chi phí cơ hội của việc ôm vàng (vàng không trả lãi). Driver #1 của vàng: real yield tăng → vàng giảm, real yield rơi → vàng bay. USD cùng chiều real yield." data-tipid="DFII10" tabindex="0">Lợi suất thực 10Y (TIPS)</span><span class="sid">DFII10</span>
           
           
           </td>
@@ -75,7 +75,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Lợi suất thực 5Y<span class="sid">DFII5</span>
+        <td class="name"><span class="tipname" data-tip="Bản 5 năm của lợi suất thực — nhạy với chu kỳ cắt/tăng lãi Fed hơn bản 10Y. Đọc cặp với DFII10: cả hai cùng chiều thì tín hiệu real yield đáng tin." data-tipid="DFII5" tabindex="0">Lợi suất thực 5Y</span><span class="sid">DFII5</span>
           
           <span class="warn" style="background:color-mix(in srgb,var(--neg) 22%,transparent);color:var(--neg);font-weight:600">🔺 sát đỉnh — cản vàng · đỉnh 28 phiên</span>
           </td>
@@ -85,7 +85,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Breakeven 10Y<span class="sid">T10YIE</span>
+        <td class="name"><span class="tipname" data-tip="Kỳ vọng lạm phát 10 năm mà thị trường trái phiếu đang định giá (= 10Y danh nghĩa − 10Y TIPS). Tăng = thị trường sợ lạm phát → đỡ vàng, xói mòn sức mua USD." data-tipid="T10YIE" tabindex="0">Breakeven 10Y</span><span class="sid">T10YIE</span>
           
           
           </td>
@@ -95,7 +95,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">5y5y forward breakeven<span class="sid">T5YIFR</span>
+        <td class="name"><span class="tipname" data-tip="Kỳ vọng lạm phát 5 năm bắt đầu sau 5 năm nữa — thước Fed dùng để xem kỳ vọng DÀI HẠN còn neo không. Vượt vùng ~2.5 = de-anchor → rất tốt cho vàng." data-tipid="T5YIFR" tabindex="0">5y5y forward breakeven</span><span class="sid">T5YIFR</span>
           
           
           </td>
@@ -105,7 +105,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Fed Funds (effective)<span class="sid">DFF</span>
+        <td class="name"><span class="tipname" data-tip="Lãi suất qua đêm thực tế Fed đang áp — mức chính sách hiện hành. Nhảy 1 nấc = Fed vừa tăng/cắt. Lãi cao = tiền đắt → cản vàng, đỡ USD." data-tipid="DFF" tabindex="0">Fed Funds (effective)</span><span class="sid">DFF</span>
           
           
           </td>
@@ -115,7 +115,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name">RORO nhánh Gold+USD (KC Fed)<span class="sid">KCROROG</span>
+        <td class="name"><span class="tipname" data-tip="Chỉ số risk-on/risk-off của Fed Kansas City, nhánh đo riêng dòng tiền TRÚ ẨN vào vàng+USD. Tăng = risk-off, tiền chảy vào cả hai → +1 cho cả gold lẫn USD." data-tipid="KCROROG" tabindex="0">RORO nhánh Gold+USD (KC Fed)</span><span class="sid">KCROROG</span>
           
           
           </td>
@@ -125,7 +125,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Gold VIX (GVZ)<span class="sid">GVZCLS · context — vol ẩn của vàng</span>
+        <td class="name"><span class="tipname" data-tip="VIX của vàng — biến động ngụ ý từ option GLD. Không chấm hướng (ctx): GVZ bùng = sắp có swing mạnh nhưng 2 chiều — dùng để chỉnh size/SL, không dùng đoán hướng." data-tipid="GVZCLS" tabindex="0">Gold VIX (GVZ)</span><span class="sid">GVZCLS · context — vol ẩn của vàng</span>
           
           
           </td>
@@ -135,7 +135,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
-        <td class="name">Chỉ số giá vàng (QGLDI)<span class="sid">NASDAQQGLDI · target — proxy giá vàng</span>
+        <td class="name"><span class="tipname" data-tip="Proxy giá vàng daily ngay trên FRED (chỉ số, không phải USD/oz — FRED đã gỡ giá LBMA). Là TARGET đối chiếu: xem tally scorecard có khớp giá vàng thật không." data-tipid="NASDAQQGLDI" tabindex="0">Chỉ số giá vàng (QGLDI)</span><span class="sid">NASDAQQGLDI · target — proxy giá vàng</span>
           
           
           </td>
@@ -151,7 +151,7 @@ tr:hover td{background:var(--card)}
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th>30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
   <tr>
-        <td class="name">CPI YoY<span class="sid">CPIAUCSL</span>
+        <td class="name"><span class="tipname" data-tip="Lạm phát tiêu dùng YoY — con số CPI nóng nhất mỗi tháng (công bố ~13-15 hàng tháng, 19:30 VN). Nóng = Fed phải rắn → cản vàng ngắn hạn, đỡ USD." data-tipid="CPIAUCSL" tabindex="0">CPI YoY</span><span class="sid">CPIAUCSL</span>
           
           
           </td>
@@ -161,7 +161,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name">Core PCE YoY (thước Fed)<span class="sid">PCEPILFE</span>
+        <td class="name"><span class="tipname" data-tip="Core PCE YoY — thước lạm phát Fed CHÍNH THỨC nhắm 2%. Còn xa 2% = Fed khó cắt lãi. Với chính sách, số này nặng ký hơn CPI." data-tipid="PCEPILFE" tabindex="0">Core PCE YoY (thước Fed)</span><span class="sid">PCEPILFE</span>
           
           
           </td>
@@ -171,7 +171,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name">Core PPI YoY (final demand)<span class="sid">PPIFES</span>
+        <td class="name"><span class="tipname" data-tip="Lạm phát giá sản xuất lõi — chi phí đầu vào của doanh nghiệp, thường dẫn trước CPI 1-2 tháng. Dùng làm chỉ báo sớm cho chiều CPI sắp tới." data-tipid="PPIFES" tabindex="0">Core PPI YoY (final demand)</span><span class="sid">PPIFES</span>
           
           
           </td>
@@ -181,7 +181,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Median CPI (Cleveland)<span class="sid">MEDCPIM158SFRBCLE</span>
+        <td class="name"><span class="tipname" data-tip="CPI trung vị (Cleveland Fed) — lấy mặt hàng ở giữa phân phối, lọc sạch outlier. Đo lạm phát nền ít nhiễu nhất; xu hướng của nó bền hơn CPI headline." data-tipid="MEDCPIM158SFRBCLE" tabindex="0">Median CPI (Cleveland)</span><span class="sid">MEDCPIM158SFRBCLE</span>
           
           
           </td>
@@ -191,7 +191,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name">Kỳ vọng lạm phát 1Y (Cleveland)<span class="sid">EXPINF1YR</span>
+        <td class="name"><span class="tipname" data-tip="Kỳ vọng lạm phát 1 năm từ model Cleveland Fed. Tăng = dân và thị trường sợ giá lên → đỡ vàng. Rơi nhanh = disinflation → Fed dễ dovish." data-tipid="EXPINF1YR" tabindex="0">Kỳ vọng lạm phát 1Y (Cleveland)</span><span class="sid">EXPINF1YR</span>
           
           
           </td>
@@ -201,7 +201,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name">Thất nghiệp<span class="sid">UNRATE</span>
+        <td class="name"><span class="tipname" data-tip="Tỷ lệ thất nghiệp. Tăng = kinh tế yếu → Fed cắt lãi → đỡ vàng, hại USD. Ra cùng báo cáo NFP thứ Sáu đầu tháng." data-tipid="UNRATE" tabindex="0">Thất nghiệp</span><span class="sid">UNRATE</span>
           
           
           </td>
@@ -211,7 +211,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name">Đơn trợ cấp thất nghiệp (tuần)<span class="sid">ICSA</span>
+        <td class="name"><span class="tipname" data-tip="Đơn xin trợ cấp thất nghiệp LẦN ĐẦU hàng tuần — chỉ báo lao động nhanh nhất hệ thống. Vọt lên = thị trường lao động nứt, thấy sớm hơn UNRATE cả tháng." data-tipid="ICSA" tabindex="0">Đơn trợ cấp thất nghiệp (tuần)</span><span class="sid">ICSA</span>
           
           
           </td>
@@ -221,7 +221,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name">Việc làm ADP<span class="sid">ADPMNUSNERSA · bản weekly ADPWNUSNERSA đứng từ 16/05/2026</span>
+        <td class="name"><span class="tipname" data-tip="Việc làm khu vực tư nhân từ dữ liệu payroll thật của ADP. Bản đối chiếu độc lập với NFP chính thức — hai nguồn lệch nhau to là tín hiệu đáng ngờ." data-tipid="ADPMNUSNERSA" tabindex="0">Việc làm ADP</span><span class="sid">ADPMNUSNERSA · bản weekly ADPWNUSNERSA đứng từ 16/05/2026</span>
           
           
           </td>
@@ -231,7 +231,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name">Empire State (NY Fed)<span class="sid">GACDISA066MSFRBNY</span>
+        <td class="name"><span class="tipname" data-tip="Khảo sát sản xuất bang New York — PMI khu vực ra SỚM nhất mỗi tháng. Dương = mở rộng, âm = co. Thay một phần vai trò ISM (FRED không có ISM)." data-tipid="GACDISA066MSFRBNY" tabindex="0">Empire State (NY Fed)</span><span class="sid">GACDISA066MSFRBNY</span>
           
           
           </td>
@@ -241,7 +241,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name">Philly Fed activity<span class="sid">GACDFSA066MSFRBPHI</span>
+        <td class="name"><span class="tipname" data-tip="Khảo sát sản xuất Philadelphia Fed — đọc cặp với Empire State: hai cái cùng chiều thì tín hiệu sản xuất tháng đó đáng tin." data-tipid="GACDFSA066MSFRBPHI" tabindex="0">Philly Fed activity</span><span class="sid">GACDFSA066MSFRBPHI</span>
           
           
           </td>
@@ -257,7 +257,7 @@ tr:hover td{background:var(--card)}
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th>30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
   <tr>
-        <td class="name">VIX<span class="sid">VIXCLS</span>
+        <td class="name"><span class="tipname" data-tip="Biến động ngụ ý S&P 500 — thước sợ hãi của cổ phiếu. Vọt = risk-off → tiền trú vào cả vàng lẫn USD (+1 cả hai)." data-tipid="VIXCLS" tabindex="0">VIX</span><span class="sid">VIXCLS</span>
           
           
           </td>
@@ -267,7 +267,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">HY credit spread<span class="sid">BAMLH0A0HYM2 · ⚠ FRED cắt còn 3 năm từ 04/2026</span>
+        <td class="name"><span class="tipname" data-tip="Chênh lệch lợi suất trái phiếu rác so với Treasury = giá của rủi ro tín dụng. Hẹp = risk-on khỏe; toác nhanh = stress tín dụng thật — cảnh báo sớm hơn VIX ở khủng hoảng nợ." data-tipid="BAMLH0A0HYM2" tabindex="0">HY credit spread</span><span class="sid">BAMLH0A0HYM2 · ⚠ FRED cắt còn 3 năm từ 04/2026</span>
           
           
           </td>
@@ -277,7 +277,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Điều kiện tài chính (NFCI)<span class="sid">NFCI</span>
+        <td class="name"><span class="tipname" data-tip="Điều kiện tài chính tổng hợp Chicago Fed (âm = lỏng, dương = thắt). Thắt nhanh = stress hệ thống lan rộng → risk-off, trú ẩn bid." data-tipid="NFCI" tabindex="0">Điều kiện tài chính (NFCI)</span><span class="sid">NFCI</span>
           
           
           </td>
@@ -287,7 +287,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name">Bảng cân đối Fed<span class="sid">WALCL</span>
+        <td class="name"><span class="tipname" data-tip="Tổng tài sản trên bảng cân đối Fed — QE làm phình, QT làm xẹp. Phình = bơm thanh khoản → đỡ vàng và tài sản rủi ro, pha loãng USD." data-tipid="WALCL" tabindex="0">Bảng cân đối Fed</span><span class="sid">WALCL</span>
           
           
           </td>
@@ -297,7 +297,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Reverse Repo (RRP)<span class="sid">RRPONTSYD</span>
+        <td class="name"><span class="tipname" data-tip="Tiền các quỹ MMF gửi qua đêm tại Fed — thanh khoản thừa đang đỗ tạm. Cạn về ~0 (hiện tại) = đệm thanh khoản đã hết, hệ thống nhạy hơn nhiều với QT và phát hành nợ." data-tipid="RRPONTSYD" tabindex="0">Reverse Repo (RRP)</span><span class="sid">RRPONTSYD</span>
           
           
           </td>
@@ -307,7 +307,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">TGA (két Kho bạc)<span class="sid">WTREGEN</span>
+        <td class="name"><span class="tipname" data-tip="Két tiền mặt của Kho bạc Mỹ tại Fed (TGA). Kho bạc xả két = bơm thanh khoản ra hệ thống; nạp két bằng phát hành nợ = hút thanh khoản về." data-tipid="WTREGEN" tabindex="0">TGA (két Kho bạc)</span><span class="sid">WTREGEN</span>
           
           
           </td>
@@ -317,7 +317,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Bất định chính sách (EPU)<span class="sid">USEPUINDXD</span>
+        <td class="name"><span class="tipname" data-tip="Bất định chính sách kinh tế đo bằng đếm tin báo chí, daily. Spike = bất định → trú ẩn bid cả vàng lẫn USD. Series rất nhiễu — dead-zone rộng, chỉ spike to mới được chấm điểm." data-tipid="USEPUINDXD" tabindex="0">Bất định chính sách (EPU)</span><span class="sid">USEPUINDXD</span>
           
           
           </td>
@@ -327,7 +327,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Swap thanh khoản Fed (khan USD)<span class="sid">SWPT · USD+ khi >5000tr (stress thật); routine 16-250tr = noise không chấm; 2020 đạt ~450k tr</span>
+        <td class="name"><span class="tipname" data-tip="Fed cho NHTW nước ngoài vay USD qua swap line — nhiệt kế KHAN USD toàn cầu. Bình thường ~0-250 triệu (noise, không chấm); vượt 5 tỷ = stress đô la thật (2020: ~450 tỷ) → USD bid mạnh." data-tipid="SWPT" tabindex="0">Swap thanh khoản Fed (khan USD)</span><span class="sid">SWPT · USD+ khi >5000tr (stress thật); routine 16-250tr = noise không chấm; 2020 đạt ~450k tr</span>
           
           
           </td>
@@ -337,7 +337,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Cung tiền M2<span class="sid">M2SL</span>
+        <td class="name"><span class="tipname" data-tip="Cung tiền M2. Tăng nhanh = pha loãng tiền giấy → nhiên liệu dài hạn của vàng (luận điểm định giá gold/M2). Tác động chậm, đọc theo quý chứ không theo tuần." data-tipid="M2SL" tabindex="0">Cung tiền M2</span><span class="sid">M2SL</span>
           
           
           </td>
@@ -353,7 +353,7 @@ tr:hover td{background:var(--card)}
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th>30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
   <tr>
-        <td class="name">Real rate 10Y (model-based)<span class="sid">REAINTRATREARAT10Y</span>
+        <td class="name"><span class="tipname" data-tip="Real rate 10Y theo model Cleveland — dùng kỳ vọng lạm phát survey thay vì giá TIPS. Bản đối chiếu chậm-mà-sạch của DFII10 (không dính nhiễu thanh khoản TIPS)." data-tipid="REAINTRATREARAT10Y" tabindex="0">Real rate 10Y (model-based)</span><span class="sid">REAINTRATREARAT10Y</span>
           
           
           </td>
@@ -363,7 +363,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name">Term premium 10Y (Kim-Wright)<span class="sid">THREEFYTP10 · trễ 1-2 tuần — regime only</span>
+        <td class="name"><span class="tipname" data-tip="Phần bù kỳ hạn 10Y (Kim-Wright) — phần lợi suất KHÔNG giải thích được bằng kỳ vọng Fed, tức phí rủi ro ôm trái phiếu dài. Nó tăng mạnh hậu-2022 chính là lúc vàng tách khỏi real yield. Trễ 1-2 tuần — đọc regime, không đọc daily." data-tipid="THREEFYTP10" tabindex="0">Term premium 10Y (Kim-Wright)</span><span class="sid">THREEFYTP10 · trễ 1-2 tuần — regime only</span>
           
           
           </td>
@@ -373,7 +373,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
-        <td class="name">Custody Treasuries NHTW ngoại<span class="sid">WMTSECL1 · giảm = de-dollarization → gold +</span>
+        <td class="name"><span class="tipname" data-tip="Treasuries mà NHTW nước ngoài gửi Fed NY giữ hộ. GIẢM đều = họ đang bán/rút → de-dollarization → cực tốt cho vàng. Proxy duy nhất trên FRED cho câu chuyện này." data-tipid="WMTSECL1" tabindex="0">Custody Treasuries NHTW ngoại</span><span class="sid">WMTSECL1 · giảm = de-dollarization → gold +</span>
           
           <span class="warn" style="background:color-mix(in srgb,var(--pos) 22%,transparent);color:var(--pos);font-weight:600">🔻 de-dollarization mạnh · đáy 26 tuần</span>
           </td>
@@ -383,7 +383,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name">Cân đối ngân sách LB<span class="sid">MTSDS133FMS · Δ so cùng kỳ 12 tháng — seasonality mạnh</span>
+        <td class="name"><span class="tipname" data-tip="Cân đối ngân sách liên bang theo tháng (âm = thâm hụt). So với CÙNG KỲ năm trước (seasonality nặng). Thâm hụt phình = phát hành nợ nhiều → luận điểm fiscal-hedge đỡ vàng dài hạn." data-tipid="MTSDS133FMS" tabindex="0">Cân đối ngân sách LB</span><span class="sid">MTSDS133FMS · Δ so cùng kỳ 12 tháng — seasonality mạnh</span>
           
           
           </td>
@@ -393,7 +393,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name">Michigan sentiment<span class="sid">UMCSENT · trễ 1 tháng</span>
+        <td class="name"><span class="tipname" data-tip="Niềm tin tiêu dùng Michigan. Vùng đáy lịch sử = recession fear → ép Fed dovish → đỡ vàng. Trễ 1 tháng — chỉ đọc khi ở cực trị, đừng đọc nhiễu giữa biên độ." data-tipid="UMCSENT" tabindex="0">Michigan sentiment</span><span class="sid">UMCSENT · trễ 1 tháng</span>
           
           <span class="warn" style="background:color-mix(in srgb,var(--pos) 22%,transparent);color:var(--pos);font-weight:600">😟 tâm lý đáy — recession fear · đáy 24 tháng</span>
           </td>
@@ -409,7 +409,7 @@ tr:hover td{background:var(--card)}
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th>30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
   <tr>
-        <td class="name">Lợi suất 2Y (kỳ vọng Fed)<span class="sid">DGS2</span>
+        <td class="name"><span class="tipname" data-tip="Lợi suất Treasury 2Y — nhạy nhất với kỳ vọng đường đi lãi suất Fed 1-2 năm tới. Rơi nhanh = thị trường ngửi thấy cắt lãi → đỡ vàng, hại USD." data-tipid="DGS2" tabindex="0">Lợi suất 2Y (kỳ vọng Fed)</span><span class="sid">DGS2</span>
           
           
           </td>
@@ -419,7 +419,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Lợi suất 10Y<span class="sid">DGS10</span>
+        <td class="name"><span class="tipname" data-tip="Lợi suất Treasury 10Y — mỏ neo định giá toàn cầu (vay mua nhà, chiết khấu cổ phiếu). Đọc cùng DGS2 để dựng hình dạng đường cong." data-tipid="DGS10" tabindex="0">Lợi suất 10Y</span><span class="sid">DGS10</span>
           
           
           </td>
@@ -429,7 +429,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Đường cong 10Y−2Y<span class="sid">T10Y2Y</span>
+        <td class="name"><span class="tipname" data-tip="Độ dốc đường cong 10Y−2Y. Âm (đảo ngược) rồi bật dương trở lại thường là đêm trước suy thoái — tín hiệu regime cho vàng, không phải tín hiệu daily." data-tipid="T10Y2Y" tabindex="0">Đường cong 10Y−2Y</span><span class="sid">T10Y2Y</span>
           
           
           </td>
@@ -439,7 +439,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name">EURUSD<span class="sid">DEXUSEU</span>
+        <td class="name"><span class="tipname" data-tip="EUR/USD — đồng nặng nhất rổ DXY (~58%). EUR mạnh = USD yếu → đỡ vàng. Chấm theo hướng biến động tuần." data-tipid="DEXUSEU" tabindex="0">EURUSD</span><span class="sid">DEXUSEU</span>
           
           
           </td>
@@ -449,7 +449,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">USDJPY<span class="sid">DEXJPUS</span>
+        <td class="name"><span class="tipname" data-tip="USD/JPY — cặp carry chủ lực thế giới. Vọt lên = carry trade sôi động (risk-on); sập nhanh = unwind carry (risk-off) — thường kéo theo biến động mạnh mọi tài sản." data-tipid="DEXJPUS" tabindex="0">USDJPY</span><span class="sid">DEXJPUS</span>
           
           
           </td>
@@ -459,7 +459,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Broad Dollar Index<span class="sid">DTWEXBGS · target phía USD</span>
+        <td class="name"><span class="tipname" data-tip="Chỉ số đô la rộng của Fed (trade-weighted, gồm cả EM) — TARGET phía USD của scorecard, không chấm điểm. Proxy thay DXY vì FRED không có DXY chuẩn ICE." data-tipid="DTWEXBGS" tabindex="0">Broad Dollar Index</span><span class="sid">DTWEXBGS · target phía USD</span>
           
           
           </td>
@@ -475,7 +475,7 @@ tr:hover td{background:var(--card)}
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th>30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
   <tr>
-        <td class="name">Chênh lệch 10Y Mỹ−Đức<span class="sid">US_DE_10Y · EUR ~58% rổ DXY (Bund = benchmark euro)</span>
+        <td class="name"><span class="tipname" data-tip="Chênh lệch 10Y Mỹ−Đức = carry của USD so với EUR (Bund là benchmark khối euro, EUR ~58% rổ DXY). Nới = tiền chảy về Mỹ ăn chênh lệch → đỡ USD; thu hẹp = cản USD." data-tipid="US_DE_10Y" tabindex="0">Chênh lệch 10Y Mỹ−Đức</span><span class="sid">US_DE_10Y · EUR ~58% rổ DXY (Bund = benchmark euro)</span>
           
           
           </td>
@@ -485,7 +485,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Chênh lệch 10Y Mỹ−Nhật<span class="sid">US_JP_10Y · carry yen ~14% rổ</span>
+        <td class="name"><span class="tipname" data-tip="Chênh lệch 10Y Mỹ−Nhật — carry so với yen (~14% rổ). BoJ tăng lãi làm hẹp chênh lệch = yen mạnh lên, áp lực unwind carry toàn cầu." data-tipid="US_JP_10Y" tabindex="0">Chênh lệch 10Y Mỹ−Nhật</span><span class="sid">US_JP_10Y · carry yen ~14% rổ</span>
           
           
           </td>
@@ -495,7 +495,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Chênh lệch 10Y Mỹ−Anh<span class="sid">US_GB_10Y · GBP ~12% rổ</span>
+        <td class="name"><span class="tipname" data-tip="Chênh lệch 10Y Mỹ−Anh — carry so với bảng Anh (~12% rổ DXY)." data-tipid="US_GB_10Y" tabindex="0">Chênh lệch 10Y Mỹ−Anh</span><span class="sid">US_GB_10Y · GBP ~12% rổ</span>
           
           
           </td>
@@ -505,7 +505,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Chênh lệch 10Y Mỹ−Thụy Sĩ<span class="sid">US_CH_10Y · CHF ~4% rổ</span>
+        <td class="name"><span class="tipname" data-tip="Chênh lệch 10Y Mỹ−Thụy Sĩ — carry so với franc (~4% rổ nhưng CHF là tài sản trú ẩn cạnh tranh trực tiếp với vàng)." data-tipid="US_CH_10Y" tabindex="0">Chênh lệch 10Y Mỹ−Thụy Sĩ</span><span class="sid">US_CH_10Y · CHF ~4% rổ</span>
           
           
           </td>
@@ -515,7 +515,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Chênh lệch 10Y Mỹ−Canada<span class="sid">US_CA_10Y · CAD ~9% rổ</span>
+        <td class="name"><span class="tipname" data-tip="Chênh lệch 10Y Mỹ−Canada — carry so với CAD (~9% rổ DXY)." data-tipid="US_CA_10Y" tabindex="0">Chênh lệch 10Y Mỹ−Canada</span><span class="sid">US_CA_10Y · CAD ~9% rổ</span>
           
           
           </td>
@@ -525,7 +525,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name">Chênh lệch LS chính sách Fed−ECB<span class="sid">US_EU_POL · carry ngắn hạn EUR — daily, sạch hơn 10Y (không term premium); song song US_DE_10Y</span>
+        <td class="name"><span class="tipname" data-tip="Chênh lệch lãi suất CHÍNH SÁCH Fed−ECB, daily — bản sạch nhất của carry EUR (không dính term premium như bản 10Y). Driver #1 của USD — đọc cùng tile CARRY phía trên." data-tipid="US_EU_POL" tabindex="0">Chênh lệch LS chính sách Fed−ECB</span><span class="sid">US_EU_POL · carry ngắn hạn EUR — daily, sạch hơn 10Y (không term premium); song song US_DE_10Y</span>
           
           
           </td>
@@ -536,4 +536,35 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr>
   </tbody></table></div>
+<style>
+.tipname{cursor:help;border-bottom:1px dotted var(--ink2)}
+#tipfx{display:none;position:fixed;z-index:99;max-width:380px;padding:10px 13px;border-radius:10px;
+  background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 28px rgba(0,0,0,.30);
+  font-size:12.5px;line-height:1.55;white-space:normal;pointer-events:none}
+#tipfx b{display:block;font-size:11px;color:var(--ink2);letter-spacing:.04em;margin-bottom:3px}
+</style>
+<div id="tipfx"></div>
+<script>
+(function(){
+  var tf = document.getElementById("tipfx"), open = null;
+  function show(el, x, y){ tf.innerHTML = "<b>" + el.dataset.tipid + "</b>" + el.dataset.tip; tf.style.display = "block"; move(x, y); }
+  function move(x, y){
+    var w = tf.offsetWidth, h = tf.offsetHeight, px = x + 14, py = y + 16;
+    if (px + w > innerWidth - 8) px = innerWidth - w - 8;
+    if (py + h > innerHeight - 8) py = y - h - 12;
+    tf.style.left = Math.max(4, px) + "px"; tf.style.top = Math.max(4, py) + "px";
+  }
+  document.querySelectorAll(".tipname").forEach(function(el){
+    el.addEventListener("mouseenter", function(e){ show(el, e.clientX, e.clientY); });
+    el.addEventListener("mousemove", function(e){ move(e.clientX, e.clientY); });
+    el.addEventListener("mouseleave", function(){ tf.style.display = "none"; open = null; });
+    el.addEventListener("click", function(e){
+      if (open === el) { tf.style.display = "none"; open = null; }
+      else { show(el, e.clientX, e.clientY); open = el; }
+      e.stopPropagation();
+    });
+  });
+  document.addEventListener("click", function(){ tf.style.display = "none"; open = null; });
+})();
+</script>
 </body></html>
