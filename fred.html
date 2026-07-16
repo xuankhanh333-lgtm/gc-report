@@ -31,23 +31,23 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 10:01:51 16/7/2026 · 42 series (32→37→42, nhóm F = USD độc lập từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 10:17:56 16/7/2026 · 44 series (32→37→44, nhóm F = USD độc lập từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div class="kpis">
   <div class="kpi"><div class="lbl">GOLD BIAS (tổng 35 chỉ số active)</div><div class="val">-1</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="n" style="width:4%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>10 lần chạy · min -5 · max -1</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>11 lần chạy · min -5 · max -1</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 13.4,22.2 23.9,22.2 34.3,19.8 44.8,22.2 55.2,22.2 65.7,27.0 76.1,27.0 86.6,27.0 97.0,17.4"/>
-    <circle cx="97.0" cy="17.4" r="3" class="n"/></svg><div class="lbl">history 10 lần chạy</div></div>
-  <div class="kpi"><div class="lbl">USD BIAS (tổng 37 chỉ số active)</div><div class="val">+3</div>
+    <polyline points="3.0,22.2 12.4,22.2 21.8,22.2 31.2,19.8 40.6,22.2 50.0,22.2 59.4,27.0 68.8,27.0 78.2,27.0 87.6,17.4 97.0,17.4"/>
+    <circle cx="97.0" cy="17.4" r="3" class="n"/></svg><div class="lbl">history 11 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">USD BIAS (tổng 39 chỉ số active)</div><div class="val">+3</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="" style="width:12%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>10 lần chạy · min 3 · max 5</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>11 lần chạy · min 3 · max 5</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 13.4,7.8 23.9,7.8 34.3,5.4 44.8,7.8 55.2,7.8 65.7,3.0 76.1,3.0 86.6,3.0 97.0,7.8"/>
-    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 10 lần chạy</div></div>
-  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">42/42</div>
+    <polyline points="3.0,7.8 12.4,7.8 21.8,7.8 31.2,5.4 40.6,7.8 50.0,7.8 59.4,3.0 68.8,3.0 78.2,3.0 87.6,7.8 97.0,7.8"/>
+    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 11 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">44/44</div>
     <div class="word neu">0 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
 <div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest.</div>
@@ -294,6 +294,15 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
+        <td class="name">Swap thanh khoản Fed (khan USD)<span class="sid">SWPT · USD+ khi >5000tr (stress thật); routine 16-250tr = noise không chấm; 2020 đạt ~450k tr</span>
+          
+          </td>
+        <td><b>170 tr $</b><span class="sid">2026-07-08</span></td>
+        <td class="neu">— +142</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min 16.00 · max 250.00</title><polyline points="2.0,14.0 5.8,18.1 9.7,22.5 13.5,23.4 17.4,23.2 21.2,20.1 25.0,20.3 28.9,22.7 32.7,23.9 36.6,23.8 40.4,22.9 44.2,8.6 48.1,15.6 51.9,15.5 55.8,16.0 59.6,23.6 63.4,6.1 67.3,21.6 71.1,24.0 75.0,20.8 78.8,14.6 82.6,22.9 86.5,20.9 90.3,22.2 94.2,2.0 98.0,9.5"/></svg></td>
+        <td><span class="chip neu">ctx</span></td>
+        <td><span class="chip neu">— 0</span></td>
+      </tr><tr>
         <td class="name">Cung tiền M2<span class="sid">M2SL</span>
           
           </td>
@@ -462,6 +471,15 @@ tr:hover td{background:var(--card)}
         <td><b>0.91 đpt</b><span class="sid">2026-05-01</span></td>
         <td class="neu">— -0.008</td>
         <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 0.68 · max 1.42</title><polyline points="2.0,15.4 6.2,24.0 10.3,19.3 14.5,18.5 18.7,11.7 22.9,17.4 27.0,2.0 31.2,5.8 35.4,9.0 39.6,7.9 43.7,12.7 47.9,8.9 52.1,16.7 56.3,17.8 60.4,20.2 64.6,16.4 68.8,15.0 73.0,19.1 77.1,20.7 81.3,18.7 85.5,24.0 89.7,20.5 93.8,17.0 98.0,17.2"/></svg></td>
+        <td><span class="chip neu">ctx</span></td>
+        <td><span class="chip neu">— 0</span></td>
+      </tr><tr>
+        <td class="name">Chênh lệch LS chính sách Fed−ECB<span class="sid">US_EU_POL · carry ngắn hạn EUR — daily, sạch hơn 10Y (không term premium); song song US_DE_10Y</span>
+          
+          </td>
+        <td><b>1.38 đpt</b><span class="sid">2026-07-14</span></td>
+        <td class="neu">— +0.01</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 1.37 · max 1.63</title><polyline points="2.0,2.0 5.3,2.0 8.6,23.2 11.9,23.2 15.2,23.2 18.6,23.2 21.9,23.2 25.2,23.2 28.5,23.2 31.8,23.2 35.1,23.2 38.4,23.2 41.7,23.2 45.0,23.2 48.3,23.2 51.7,23.2 55.0,23.2 58.3,23.2 61.6,23.2 64.9,23.2 68.2,23.2 71.5,23.2 74.8,23.2 78.1,24.0 81.4,24.0 84.8,24.0 88.1,24.0 91.4,24.0 94.7,24.0 98.0,23.2"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr>
