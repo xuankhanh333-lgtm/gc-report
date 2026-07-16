@@ -31,22 +31,26 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 10:17:56 16/7/2026 · 44 series (32→37→44, nhóm F = USD độc lập từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 10:59:22 16/7/2026 · 44 series (32→37→44, nhóm F = USD độc lập từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div class="kpis">
   <div class="kpi"><div class="lbl">GOLD BIAS (tổng 35 chỉ số active)</div><div class="val">-1</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="n" style="width:4%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>11 lần chạy · min -5 · max -1</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>12 lần chạy · min -5 · max -1</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 12.4,22.2 21.8,22.2 31.2,19.8 40.6,22.2 50.0,22.2 59.4,27.0 68.8,27.0 78.2,27.0 87.6,17.4 97.0,17.4"/>
-    <circle cx="97.0" cy="17.4" r="3" class="n"/></svg><div class="lbl">history 11 lần chạy</div></div>
+    <polyline points="3.0,22.2 11.5,22.2 20.1,22.2 28.6,19.8 37.2,22.2 45.7,22.2 54.3,27.0 62.8,27.0 71.4,27.0 79.9,17.4 88.5,17.4 97.0,17.4"/>
+    <circle cx="97.0" cy="17.4" r="3" class="n"/></svg><div class="lbl">history 12 lần chạy</div></div>
   <div class="kpi"><div class="lbl">USD BIAS (tổng 39 chỉ số active)</div><div class="val">+3</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="" style="width:12%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>11 lần chạy · min 3 · max 5</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>12 lần chạy · min 3 · max 5</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 12.4,7.8 21.8,7.8 31.2,5.4 40.6,7.8 50.0,7.8 59.4,3.0 68.8,3.0 78.2,3.0 87.6,7.8 97.0,7.8"/>
-    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 11 lần chạy</div></div>
+    <polyline points="3.0,7.8 11.5,7.8 20.1,7.8 28.6,5.4 37.2,7.8 45.7,7.8 54.3,3.0 62.8,3.0 71.4,3.0 79.9,7.8 88.5,7.8 97.0,7.8"/>
+    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 12 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng)</div>
+    <div class="val">2.33%</div>
+    <div class="word neg">▲ +0.40 /3 tháng · cản vàng</div>
+    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>63 obs · min 1.89 · max 2.36</title><polyline points="2.0,24.0 3.5,23.5 5.1,22.1 6.6,23.5 8.2,23.1 9.7,22.6 11.3,22.6 12.8,22.6 14.4,24.0 15.9,23.1 17.5,22.6 19.0,20.7 20.6,21.7 22.1,23.1 23.7,21.2 25.2,20.7 26.8,21.7 28.3,20.7 29.9,22.1 31.4,21.2 33.0,19.3 34.5,19.3 36.1,18.9 37.6,14.2 39.2,12.8 40.7,10.4 42.3,12.8 43.8,10.4 45.4,11.4 46.9,14.2 48.5,14.6 50.0,16.0 51.5,15.6 53.1,15.6 54.6,15.6 56.2,13.7 57.7,13.7 59.3,10.0 60.8,9.0 62.4,9.5 63.9,9.0 65.5,11.4 67.0,10.9 68.6,11.8 70.1,12.3 71.7,8.1 73.2,9.0 74.8,5.7 76.3,5.3 77.9,8.1 79.4,10.0 81.0,10.4 82.5,11.4 84.1,9.5 85.6,7.1 87.2,6.7 88.7,7.6 90.3,4.8 91.8,4.3 93.4,4.3 94.9,3.9 96.5,2.0 98.0,3.4"/></svg><div class="lbl">94% biên độ 3 tháng (1.89–2.36) · ↑ real yield ⇒ vàng ↓</div></div>
   <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">44/44</div>
     <div class="word neu">0 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
@@ -123,9 +127,9 @@ tr:hover td{background:var(--card)}
         <td class="name">Chỉ số giá vàng (QGLDI)<span class="sid">NASDAQQGLDI · target — proxy giá vàng</span>
           
           </td>
-        <td><b>2,535</b><span class="sid">2026-07-14</span></td>
-        <td class="neg">▼ -55.1</td>
-        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 2503.69 · max 2887.15</title><polyline points="2.0,3.3 5.6,2.0 9.1,7.6 12.7,7.1 16.2,9.5 19.8,15.4 23.3,11.3 26.9,16.8 30.4,13.7 34.0,13.2 37.6,16.0 41.1,16.2 44.7,16.8 48.2,19.4 51.8,23.7 55.3,22.3 58.9,20.7 62.4,22.6 66.0,22.6 69.6,21.8 73.1,18.8 76.7,17.3 80.2,19.1 83.8,20.2 87.3,18.8 90.9,19.1 94.4,24.0 98.0,22.2"/></svg></td>
+        <td><b>2,537</b><span class="sid">2026-07-15</span></td>
+        <td class="neu">— -32.99</td>
+        <td><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 2503.69 · max 2887.15</title><polyline points="2.0,2.0 5.6,7.6 9.1,7.1 12.7,9.5 16.2,15.4 19.8,11.3 23.3,16.8 26.9,13.7 30.4,13.2 34.0,16.0 37.6,16.2 41.1,16.8 44.7,19.4 48.2,23.7 51.8,22.3 55.3,20.7 58.9,22.6 62.4,22.6 66.0,21.8 69.6,18.8 73.1,17.3 76.7,19.1 80.2,20.2 83.8,18.8 87.3,19.1 90.9,24.0 94.4,22.2 98.0,22.1"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr>
