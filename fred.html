@@ -31,22 +31,22 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 10:59:22 16/7/2026 · 44 series (32→37→44, nhóm F = USD độc lập từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 11:11:44 16/7/2026 · 44 series (32→37→44, nhóm F = USD độc lập từ 15/07/2026 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div class="kpis">
   <div class="kpi"><div class="lbl">GOLD BIAS (tổng 35 chỉ số active)</div><div class="val">-1</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="n" style="width:4%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>12 lần chạy · min -5 · max -1</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>13 lần chạy · min -5 · max -1</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 11.5,22.2 20.1,22.2 28.6,19.8 37.2,22.2 45.7,22.2 54.3,27.0 62.8,27.0 71.4,27.0 79.9,17.4 88.5,17.4 97.0,17.4"/>
-    <circle cx="97.0" cy="17.4" r="3" class="n"/></svg><div class="lbl">history 12 lần chạy</div></div>
+    <polyline points="3.0,22.2 10.8,22.2 18.7,22.2 26.5,19.8 34.3,22.2 42.2,22.2 50.0,27.0 57.8,27.0 65.7,27.0 73.5,17.4 81.3,17.4 89.2,17.4 97.0,17.4"/>
+    <circle cx="97.0" cy="17.4" r="3" class="n"/></svg><div class="lbl">history 13 lần chạy</div></div>
   <div class="kpi"><div class="lbl">USD BIAS (tổng 39 chỉ số active)</div><div class="val">+3</div>
     <div class="word neu">TRUNG TÍNH</div>
     <div class="bar"><i class="" style="width:12%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>12 lần chạy · min 3 · max 5</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>13 lần chạy · min 3 · max 5</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 11.5,7.8 20.1,7.8 28.6,5.4 37.2,7.8 45.7,7.8 54.3,3.0 62.8,3.0 71.4,3.0 79.9,7.8 88.5,7.8 97.0,7.8"/>
-    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 12 lần chạy</div></div>
+    <polyline points="3.0,7.8 10.8,7.8 18.7,7.8 26.5,5.4 34.3,7.8 42.2,7.8 50.0,3.0 57.8,3.0 65.7,3.0 73.5,7.8 81.3,7.8 89.2,7.8 97.0,7.8"/>
+    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 13 lần chạy</div></div>
   <div class="kpi"><div class="lbl">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng)</div>
     <div class="val">2.33%</div>
     <div class="word neg">▲ +0.40 /3 tháng · cản vàng</div>
@@ -63,6 +63,7 @@ tr:hover td{background:var(--card)}
   <tr>
         <td class="name">Lợi suất thực 10Y (TIPS)<span class="sid">DFII10</span>
           
+          
           </td>
         <td><b>2.33 %</b><span class="sid">2026-07-14</span></td>
         <td class="neu">— +0.03</td>
@@ -72,6 +73,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Lợi suất thực 5Y<span class="sid">DFII5</span>
           
+          <span class="warn" style="background:color-mix(in srgb,var(--neg) 22%,transparent);color:var(--neg);font-weight:600">🔺 sát đỉnh — cản vàng · đỉnh 28 phiên</span>
           </td>
         <td><b>2.03 %</b><span class="sid">2026-07-14</span></td>
         <td class="neu">— +0.04</td>
@@ -80,6 +82,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Breakeven 10Y<span class="sid">T10YIE</span>
+          
           
           </td>
         <td><b>2.23 %</b><span class="sid">2026-07-15</span></td>
@@ -90,6 +93,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">5y5y forward breakeven<span class="sid">T5YIFR</span>
           
+          
           </td>
         <td><b>2.21 %</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— +0.02</td>
@@ -98,6 +102,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Fed Funds (effective)<span class="sid">DFF</span>
+          
           
           </td>
         <td><b>3.63 %</b><span class="sid">2026-07-14</span></td>
@@ -108,6 +113,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">RORO nhánh Gold+USD (KC Fed)<span class="sid">KCROROG</span>
           
+          
           </td>
         <td><b>-0.635</b><span class="sid">2026-07-14</span></td>
         <td class="neu">— -1.391</td>
@@ -117,6 +123,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Gold VIX (GVZ)<span class="sid">GVZCLS · context — vol ẩn của vàng</span>
           
+          
           </td>
         <td><b>25.02</b><span class="sid">2026-07-14</span></td>
         <td class="neu">— -1.19</td>
@@ -125,6 +132,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
         <td class="name">Chỉ số giá vàng (QGLDI)<span class="sid">NASDAQQGLDI · target — proxy giá vàng</span>
+          
           
           </td>
         <td><b>2,537</b><span class="sid">2026-07-15</span></td>
@@ -141,6 +149,7 @@ tr:hover td{background:var(--card)}
   <tr>
         <td class="name">CPI YoY<span class="sid">CPIAUCSL</span>
           
+          
           </td>
         <td><b>3.46 %</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -0.703</td>
@@ -149,6 +158,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
         <td class="name">Core PCE YoY (thước Fed)<span class="sid">PCEPILFE</span>
+          
           
           </td>
         <td><b>3.41 %</b><span class="sid">2026-05-01</span></td>
@@ -159,6 +169,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Core PPI YoY (final demand)<span class="sid">PPIFES</span>
           
+          
           </td>
         <td><b>4.68 %</b><span class="sid">2026-06-01</span></td>
         <td class="neu">— +0.089</td>
@@ -167,6 +178,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Median CPI (Cleveland)<span class="sid">MEDCPIM158SFRBCLE</span>
+          
           
           </td>
         <td><b>2.11 %</b><span class="sid">2026-06-01</span></td>
@@ -177,6 +189,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Kỳ vọng lạm phát 1Y (Cleveland)<span class="sid">EXPINF1YR</span>
           
+          
           </td>
         <td><b>2.387 %</b><span class="sid">2026-07-01</span></td>
         <td class="neg">▼ -0.652</td>
@@ -185,6 +198,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
         <td class="name">Thất nghiệp<span class="sid">UNRATE</span>
+          
           
           </td>
         <td><b>4.2 %</b><span class="sid">2026-06-01</span></td>
@@ -195,6 +209,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Đơn trợ cấp thất nghiệp (tuần)<span class="sid">ICSA</span>
           
+          
           </td>
         <td><b>215,000</b><span class="sid">2026-07-04</span></td>
         <td class="neg">▼ -15,000</td>
@@ -203,6 +218,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
         <td class="name">Việc làm ADP<span class="sid">ADPMNUSNERSA · bản weekly ADPWNUSNERSA đứng từ 16/05/2026</span>
+          
           
           </td>
         <td><b>132.7 triệu người</b><span class="sid">2026-06-01</span></td>
@@ -213,6 +229,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Empire State (NY Fed)<span class="sid">GACDISA066MSFRBNY</span>
           
+          
           </td>
         <td><b>15.6</b><span class="sid">2026-07-01</span></td>
         <td class="pos">▲ +9.9</td>
@@ -221,6 +238,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
         <td class="name">Philly Fed activity<span class="sid">GACDFSA066MSFRBPHI</span>
+          
           
           </td>
         <td><b>10.3</b><span class="sid">2026-06-01</span></td>
@@ -237,6 +255,7 @@ tr:hover td{background:var(--card)}
   <tr>
         <td class="name">VIX<span class="sid">VIXCLS</span>
           
+          
           </td>
         <td><b>16.5</b><span class="sid">2026-07-14</span></td>
         <td class="neu">— +0.37</td>
@@ -245,6 +264,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">HY credit spread<span class="sid">BAMLH0A0HYM2 · ⚠ FRED cắt còn 3 năm từ 04/2026</span>
+          
           
           </td>
         <td><b>2.72 %</b><span class="sid">2026-07-14</span></td>
@@ -255,6 +275,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Điều kiện tài chính (NFCI)<span class="sid">NFCI</span>
           
+          
           </td>
         <td><b>-0.538</b><span class="sid">2026-07-10</span></td>
         <td class="neg">▼ -0.043</td>
@@ -263,6 +284,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
         <td class="name">Bảng cân đối Fed<span class="sid">WALCL</span>
+          
           
           </td>
         <td><b>6.74 nghìn tỷ $</b><span class="sid">2026-07-08</span></td>
@@ -273,6 +295,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Reverse Repo (RRP)<span class="sid">RRPONTSYD</span>
           
+          
           </td>
         <td><b>0.151 tỷ $</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— -3.2</td>
@@ -281,6 +304,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">TGA (két Kho bạc)<span class="sid">WTREGEN</span>
+          
           
           </td>
         <td><b>774.06 tỷ $</b><span class="sid">2026-07-08</span></td>
@@ -291,6 +315,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Bất định chính sách (EPU)<span class="sid">USEPUINDXD</span>
           
+          
           </td>
         <td><b>362.99</b><span class="sid">2026-07-14</span></td>
         <td class="neu">— +78.3</td>
@@ -300,6 +325,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Swap thanh khoản Fed (khan USD)<span class="sid">SWPT · USD+ khi >5000tr (stress thật); routine 16-250tr = noise không chấm; 2020 đạt ~450k tr</span>
           
+          
           </td>
         <td><b>170 tr $</b><span class="sid">2026-07-08</span></td>
         <td class="neu">— +142</td>
@@ -308,6 +334,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Cung tiền M2<span class="sid">M2SL</span>
+          
           
           </td>
         <td><b>23.05 nghìn tỷ $</b><span class="sid">2026-05-01</span></td>
@@ -324,6 +351,7 @@ tr:hover td{background:var(--card)}
   <tr>
         <td class="name">Real rate 10Y (model-based)<span class="sid">REAINTRATREARAT10Y</span>
           
+          
           </td>
         <td><b>2.077 %</b><span class="sid">2026-07-01</span></td>
         <td class="pos">▲ +0.162</td>
@@ -332,6 +360,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
         <td class="name">Term premium 10Y (Kim-Wright)<span class="sid">THREEFYTP10 · trễ 1-2 tuần — regime only</span>
+          
           
           </td>
         <td><b>0.779 %</b><span class="sid">2026-07-10</span></td>
@@ -342,6 +371,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Custody Treasuries NHTW ngoại<span class="sid">WMTSECL1 · giảm = de-dollarization → gold +</span>
           
+          <span class="warn" style="background:color-mix(in srgb,var(--pos) 22%,transparent);color:var(--pos);font-weight:600">🔻 de-dollarization mạnh · đáy 26 tuần</span>
           </td>
         <td><b>2.597 nghìn tỷ $</b><span class="sid">2026-07-08</span></td>
         <td class="neg">▼ -0.036</td>
@@ -351,6 +381,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Cân đối ngân sách LB<span class="sid">MTSDS133FMS · Δ so cùng kỳ 12 tháng — seasonality mạnh</span>
           
+          
           </td>
         <td><b>-120.3 tỷ $</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -147.32</td>
@@ -359,6 +390,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
         <td class="name">Michigan sentiment<span class="sid">UMCSENT · trễ 1 tháng</span>
+          
           
           </td>
         <td><b>44.8</b><span class="sid">2026-05-01</span></td>
@@ -375,6 +407,7 @@ tr:hover td{background:var(--card)}
   <tr>
         <td class="name">Lợi suất 2Y (kỳ vọng Fed)<span class="sid">DGS2</span>
           
+          
           </td>
         <td><b>4.18 %</b><span class="sid">2026-07-14</span></td>
         <td class="neu">— -0.01</td>
@@ -383,6 +416,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Lợi suất 10Y<span class="sid">DGS10</span>
+          
           
           </td>
         <td><b>4.58 %</b><span class="sid">2026-07-14</span></td>
@@ -393,6 +427,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Đường cong 10Y−2Y<span class="sid">T10Y2Y</span>
           
+          
           </td>
         <td><b>0.42 %</b><span class="sid">2026-07-15</span></td>
         <td class="pos">▲ +0.07</td>
@@ -401,6 +436,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
         <td class="name">EURUSD<span class="sid">DEXUSEU</span>
+          
           
           </td>
         <td><b>1.144</b><span class="sid">2026-07-10</span></td>
@@ -411,6 +447,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">USDJPY<span class="sid">DEXJPUS</span>
           
+          
           </td>
         <td><b>161.31</b><span class="sid">2026-07-10</span></td>
         <td class="neu">— +0.41</td>
@@ -419,6 +456,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Broad Dollar Index<span class="sid">DTWEXBGS · target phía USD</span>
+          
           
           </td>
         <td><b>120.5</b><span class="sid">2026-07-10</span></td>
@@ -435,6 +473,7 @@ tr:hover td{background:var(--card)}
   <tr>
         <td class="name">Chênh lệch 10Y Mỹ−Đức<span class="sid">US_DE_10Y · EUR ~58% rổ DXY (Bund = benchmark euro)</span>
           
+          
           </td>
         <td><b>1.4 đpt</b><span class="sid">2026-05-01</span></td>
         <td class="neu">— +0.004</td>
@@ -443,6 +482,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Chênh lệch 10Y Mỹ−Nhật<span class="sid">US_JP_10Y · carry yen ~14% rổ</span>
+          
           
           </td>
         <td><b>1.8 đpt</b><span class="sid">2026-05-01</span></td>
@@ -453,6 +493,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Chênh lệch 10Y Mỹ−Anh<span class="sid">US_GB_10Y · GBP ~12% rổ</span>
           
+          
           </td>
         <td><b>-0.49 đpt</b><span class="sid">2026-05-01</span></td>
         <td class="neu">— -0.071</td>
@@ -461,6 +502,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Chênh lệch 10Y Mỹ−Thụy Sĩ<span class="sid">US_CH_10Y · CHF ~4% rổ</span>
+          
           
           </td>
         <td><b>4.01 đpt</b><span class="sid">2026-05-01</span></td>
@@ -471,6 +513,7 @@ tr:hover td{background:var(--card)}
       </tr><tr>
         <td class="name">Chênh lệch 10Y Mỹ−Canada<span class="sid">US_CA_10Y · CAD ~9% rổ</span>
           
+          
           </td>
         <td><b>0.91 đpt</b><span class="sid">2026-05-01</span></td>
         <td class="neu">— -0.008</td>
@@ -479,6 +522,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
         <td class="name">Chênh lệch LS chính sách Fed−ECB<span class="sid">US_EU_POL · carry ngắn hạn EUR — daily, sạch hơn 10Y (không term premium); song song US_DE_10Y</span>
+          
           
           </td>
         <td><b>1.38 đpt</b><span class="sid">2026-07-14</span></td>
