@@ -97,7 +97,7 @@ tbody tr:hover{background:var(--wash-long)}
     <div class="prow"><div class="plabel"><span class="dot" style="background:var(--price)"></span><b>Giá</b><span>close H4 · marker vàng = pierce pool</span></div>
       <svg id="p1" viewBox="0 0 1040 190"></svg></div>
     <hr class="hr">
-    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--pooldir)"></span><b>P_follow</b><span>quy hướng long · &gt;0.5 nghiêng long · ▲▼ hướng lệnh verdict</span></div>
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--pooldir)"></span><b>P_follow</b><span>quy hướng long · &gt;0.5 nghiêng long · ▲▼ hướng lệnh verdict · ○ disp không lệnh (<span style="color:var(--long);font-weight:600">xanh UP</span>/<span style="color:var(--short);font-weight:600">đỏ DOWN</span>)</span></div>
       <svg id="p2" viewBox="0 0 1040 200"></svg></div>
     <hr class="hr">
     <div class="prow"><div class="plabel"><span class="dot" style="background:var(--net)"></span><b>p_up net-dir</b><span>0.5 trung tính · dải tô = CONFIRM ≥0.70 / ≤0.30</span></div>
@@ -237,7 +237,9 @@ const PANELS=[];
       const yr=Y(pfRep[bi].v);
       if(Math.abs(y-yr)>6) marks+=`<line x1="${x}" y1="${y}" x2="${x}" y2="${yr}" stroke="var(--pooldir)" stroke-width="1" stroke-dasharray="2 2" opacity="0.3"/>`;
       const up=e.tr==='LONG';
-      const shape= e.tr==='-' ? `<circle cx="${x}" cy="${y}" r="3.4" fill="none" stroke="var(--pooldir)" stroke-width="1.4"/>`
+      // ○ no-trade: to mau theo CHIEU DISPLACEMENT (user 2026-07-17) — xanh = disp UP, do = disp DOWN
+      // (khac tam giac ▲▼ = chieu LENH; khac vong LIVE r=5 van mau pooldir trung tinh)
+      const shape= e.tr==='-' ? `<circle cx="${x}" cy="${y}" r="3.4" fill="none" stroke="var(--${e.side==='L'?'long':'short'})" stroke-width="1.7"/>`
         : `<polygon points="${up?`${x},${y-4.4} ${x-4},${y+3.5} ${x+4},${y+3.5}`:`${x},${y+4.4} ${x-4},${y-3.5} ${x+4},${y-3.5}`}" fill="var(--pooldir)" stroke="var(--surface)" stroke-width="1.1"/>`;
       marks+=shape.replace('/>',` data-tt="<div class='h'>pooldir · ${fdt(e.t)} ET</div><div class='row'><span>close</span><b>${bars[+bi][1]}</b></div><div class='row'><span>${e.typ} disp ${e.side==='L'?'LONG':'SHORT'} · P_follow gốc</span><b>${e.pf.toFixed(3)}</b></div><div class='row'><span>no-ATR gốc</span><span>${e.pfn.toFixed(3)}</span></div><div class='row'><span>vẽ tại (quy hướng long)</span><span>${dirP(e).toFixed(3)}</span></div><div class='m'>★${e.v} → lệnh <b>${e.tr}</b></div>"/>`);
     }); }
