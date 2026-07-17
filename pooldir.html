@@ -64,7 +64,8 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     if (h.ry) parts.push('RY10Y ' + h.ry.v.toFixed(2) + dz(h.ry.d3m));
     if (h.carry) parts.push('Carry ' + h.carry.v.toFixed(2) + dz(h.carry.d3m));
     parts.push('<span style="color:var(--text-muted)">' + pad(t.getHours()) + ':' + pad(t.getMinutes()) + ' ' + pad(t.getDate()) + '/' + pad(t.getMonth() + 1) + '</span>');
-    var el = document.getElementById('fredbias');
+    var el = document.getElementById('fredslot') || document.getElementById('fredbias');
+    if (!el) return;
     el.innerHTML = parts.join(' · ');
     el.style.display = 'block';
   }).catch(function () {});
@@ -312,6 +313,7 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     }
     H.push('<div style="font-size:12px;color:' + vtx + ';margin-top:2px;font-weight:500;">' + concl + '</div>');
     H.push('<div style="font-size:10px;color:var(--text-muted);margin-top:6px;">*FADE ch\u1ec9 khi correlate (same&gt;0) \u00b7 v\u1ea1ch \u0111en = gi\u00e1 tr\u1ecb hi\u1ec7n t\u1ea1i</div>');
+    H.push('<div id="fredslot" style="display:none;font-size:11.5px;color:var(--text-secondary);margin-top:10px;padding-top:9px;border-top:0.5px solid var(--border);line-height:1.7;font-variant-numeric:tabular-nums;" title="Bias v\u0129 m\u00f4 t\u1eeb FRED scorecard (\u0111i\u1ec3m = \u03a3 dir\u00d7sign) \u00b7 RY = l\u1ee3i su\u1ea5t th\u1ef1c 10Y DFII10 \u00b7 Carry = DFF\u2212ECBDFR \u00b7 m\u0169i t\u00ean \u03943 th\u00e1ng t\u00f4 theo t\u00e1c \u0111\u1ed9ng l\u00ean V\u00c0NG (\u25b2 \u0111\u1ecf = c\u1ea3n v\u00e0ng)"></div>');
     H.push('</div></div>');
 
     // signal status: displacement age + "chua co displacement moi"
