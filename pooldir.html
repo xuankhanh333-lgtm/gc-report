@@ -35,8 +35,45 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
 </head>
 <body>
 <h2 class="sr-only">Pooldir GC1 H4 forecast dashboard</h2>
+<div id="fredbias" style="display:none;font-size:12px;color:var(--text-secondary);margin:0 0 10px;line-height:1.7;font-variant-numeric:tabular-nums" title="Bias vĩ mô từ FRED scorecard (điểm = Σ dir×sign) · RY = lợi suất thực 10Y DFII10 · Carry = DFF−ECBDFR · mũi tên Δ3 tháng tô theo tác động lên VÀNG (▲ đỏ = cản vàng)"></div>
+<script>
+/* Chip FRED bias — đọc fred-history.jsonl CÙNG ORIGIN trên gc-report Pages, decouple hoàn toàn
+   với pipeline pooldir (không đụng Python). Fail (file://, 404, parse) → chip ẩn im lặng.
+   ry/carry chỉ hiện khi record có field (scorecard.mjs ≥ 17/07/2026). */
+(function () {
+  if (location.protocol === 'file:') return;
+  fetch('fred-history.jsonl', { headers: { 'Range': 'bytes=-8192' }, cache: 'no-store' }).then(function (r) {
+    if (!r.ok) throw 0; return r.text();
+  }).then(function (tx) {
+    var L = tx.trim().split('\n'), h = null;
+    for (var i = L.length - 1; i >= 0 && !h; i--) { try { h = JSON.parse(L[i]); } catch (e) {} }
+    if (!h || typeof h.gold !== 'number') return;
+    function sc(v, n) {
+      var c = v > 0 ? 'var(--text-success)' : v < 0 ? 'var(--text-danger)' : 'var(--text-muted)';
+      return '<b style="color:' + c + '">' + (v > 0 ? '+' : '') + v + '</b><span style="color:var(--text-muted)">/' + n + '</span>';
+    }
+    function dz(d) {
+      if (d == null) return '';
+      var up = d > 0.05, dn = d < -0.05;
+      var c = up ? 'var(--text-danger)' : dn ? 'var(--text-success)' : 'var(--text-muted)';
+      return ' <span style="color:' + c + '">' + (up ? '▲' : dn ? '▼' : '→') + (d > 0 ? '+' : '') + d.toFixed(2) + '/3m</span>';
+    }
+    var t = new Date(h.t), pad = function (x) { return (x < 10 ? '0' : '') + x; };
+    var parts = ['🏦 <a href="fred.html" style="color:var(--text-accent);text-decoration:none">FRED</a>',
+      'GOLD ' + sc(h.gold, h.goldN), 'USD ' + sc(h.usd, h.usdN)];
+    if (h.ry) parts.push('RY10Y ' + h.ry.v.toFixed(2) + dz(h.ry.d3m));
+    if (h.carry) parts.push('Carry ' + h.carry.v.toFixed(2) + dz(h.carry.d3m));
+    parts.push('<span style="color:var(--text-muted)">' + pad(t.getHours()) + ':' + pad(t.getMinutes()) + ' ' + pad(t.getDate()) + '/' + pad(t.getMonth() + 1) + '</span>');
+    // ưu tiên #fredslot trong card quyết định (dashboard.js đặt sẵn); fallback div đầu trang
+    var el = document.getElementById('fredslot') || document.getElementById('fredbias');
+    if (!el) return;
+    el.innerHTML = parts.join(' · ');
+    el.style.display = 'block';
+  }).catch(function () {});
+})();
+</script>
 <div id="pooldir-root"></div>
-<script>window.GC_DATA = {"asof": "2026-07-17 06:00 ET", "age_txt": "H4 toi nen dong 06:00 ET · nen ke dang chay", "close": 4001.8, "atr": 31.5, "verdict": "FADE", "side": "LONG", "side_dir": 1, "chain": {"cdir": -1, "cn": 1, "cdist": 0.1, "cfirst": -1}, "disp": {"type": "RB", "dir": -1, "bars_ago": 1, "date": "17/07 02:00", "is_new": true}, "cands": [{"type": "RB", "dir": -1, "bars_ago": 1, "date": "17/07 02:00", "pf": 0.101, "take": false, "fade": true}, {"type": "N", "dir": -1, "bars_ago": 3, "date": "16/07 17:00", "pf": 0.104, "take": false, "fade": true}, {"type": "N", "dir": -1, "bars_ago": 5, "date": "16/07 10:00", "pf": 0.103, "take": false, "fade": true}, {"type": "BRK", "dir": -1, "bars_ago": 5, "date": "16/07 10:00", "pf": 0.102, "take": false, "fade": true}, {"type": "N", "dir": -1, "bars_ago": 5, "date": "16/07 10:00", "pf": 0.098, "take": false, "fade": true}, {"type": "FVG", "dir": -1, "bars_ago": 5, "date": "16/07 10:00", "pf": 0.085, "take": false, "fade": true}, {"type": "OB", "dir": -1, "bars_ago": 5, "date": "16/07 10:00", "pf": 0.085, "take": false, "fade": true}, {"type": "FVG", "dir": -1, "bars_ago": 8, "date": "15/07 22:00", "pf": 0.58, "take": true, "fade": false}, {"type": "OB", "dir": -1, "bars_ago": 8, "date": "15/07 22:00", "pf": 0.58, "take": true, "fade": false}, {"type": "RB", "dir": -1, "bars_ago": 9, "date": "15/07 17:00", "pf": 0.586, "take": true, "fade": false}], "context": {"kind": "CORRELATE", "base_win": 0.1197}, "dr": {"ssl": 3973.0, "bsl": 4112.5, "atr": 31.5, "dbsl_atr": 3.5, "dssl_atr": 0.9, "price_pct": 0.206, "tp_pct": 0.658, "sl_pct": -0.019}, "pfollow": {"primary": 0.101, "noatr": 0.095, "take": 0.4, "fade_gate": 0.2}, "fade_strength": "thuong", "ev": 0.48, "ev_bins": [{"lo": 0, "hi": 0.3, "ev": -0.69}, {"lo": 0.3, "hi": 0.4, "ev": 0.0}, {"lo": 0.4, "hi": 0.5, "ev": 0.57}, {"lo": 0.5, "hi": 0.6, "ev": 0.87}, {"lo": 0.6, "hi": 0.7, "ev": 1.21}, {"lo": 0.7, "hi": 1.0, "ev": 2.0}], "plan": {"entry": 4001.8, "tp": 4064.8, "sl": 3970.3, "rr": "2:1"}, "stats": {"wf_auc": 0.7441, "take_mean": 0.73, "take_wr": 0.57, "gate": 0.4}, "intrabar": {"blocked": false, "reason": "nen H4 cuoi chua dong that (M30 con chay)", "now": 4001.8, "death": 3974.1, "sl": 3970.3, "dead": false, "sl_hit": false, "forming": true}, "netdir": {"asof": "2026-07-17 06:00 ET", "side": "LONG", "conf": 0.84, "p_up": 0.843, "target_kind": "BSL", "target": 4112.5, "dist_atr": 3.5}, "chain_stage": {"asof": "2026-07-17 06:00 ET", "run_at": "2026-07-17 10:23 UTC", "close": 4001.8, "atr": 31.5, "stage1": {"side": "LONG", "conf": 0.84, "p_up": 0.843, "target_kind": "BSL", "target": 4112.5, "dist_atr": 3.5}, "stage2": {"active": false, "bars_ago": 5, "sweep_dir": "DOWN", "p_cascade": 0.493, "zone": "MID", "verdict": null, "open": true, "sweep_at": "16/07 10:00"}, "scan": {"up": [[4114.2, 4112.5, 0.635], [4129.1, 4112.5, 0.656], [4142.3, 4112.5, 0.798]], "dn": [[3922.3, 3973.4, 0.875], [3905.7, 3973.4, 0.886], [3889.2, 3973.4, 0.884]], "note_up": "P>0.85 (vao manh) khi close >= ~4152", "note_dn": "khong cat nguong trong range scan"}}, "news": {"asof": "2026-07-17 10:22 UTC", "source": "faireconomy (Forex Factory) · USD high/med", "events": [{"ts": 1784250000000, "when": "16/07 21:00 ET", "title": "President Trump Speaks", "impact": "Medium", "forecast": null, "previous": null, "actual": null}, {"ts": 1784296800000, "when": "17/07 10:00 ET", "title": "Prelim UoM Consumer Sentiment", "impact": "Medium", "forecast": "51.0", "previous": "48.9", "actual": null}, {"ts": 1784296800000, "when": "17/07 10:00 ET", "title": "Prelim UoM Inflation Expectations", "impact": "Medium", "forecast": null, "previous": "4.6%", "actual": null}]}};</script>
+<script>window.GC_DATA = {"asof": "2026-07-17 10:00 ET", "age_txt": "H4 toi nen dong 10:00 ET · chay 21:22 17/07 VN", "run_at_ms": 1784298141076, "close": 4001.4, "atr": 33.2, "verdict": "SKIP", "side": "LONG", "side_dir": 1, "chain": {"cdir": -1, "cn": 3, "cdist": 0.3, "cfirst": 1}, "disp": {"type": "MIT", "dir": -1, "bars_ago": 0, "date": "17/07 10:00", "is_new": true}, "cands": [{"type": "MIT", "dir": -1, "bars_ago": 0, "date": "17/07 10:00", "px": 4001.4, "pf": 0.08, "take": false, "fade": true}, {"type": "N", "dir": -1, "bars_ago": 0, "date": "17/07 10:00", "px": 4001.4, "pf": 0.079, "take": false, "fade": true}, {"type": "RB", "dir": -1, "bars_ago": 2, "date": "17/07 02:00", "px": 3988.6, "pf": 0.518, "take": true, "fade": false}, {"type": "N", "dir": -1, "bars_ago": 4, "date": "16/07 17:00", "px": 3979.9, "pf": 0.54, "take": true, "fade": false}, {"type": "N", "dir": -1, "bars_ago": 6, "date": "16/07 10:00", "px": 3994.0, "pf": 0.613, "take": true, "fade": false}, {"type": "N", "dir": -1, "bars_ago": 6, "date": "16/07 10:00", "px": 3994.0, "pf": 0.57, "take": true, "fade": false}, {"type": "BRK", "dir": -1, "bars_ago": 6, "date": "16/07 10:00", "px": 3994.0, "pf": 0.567, "take": true, "fade": false}, {"type": "FVG", "dir": -1, "bars_ago": 6, "date": "16/07 10:00", "px": 3994.0, "pf": 0.559, "take": true, "fade": false}, {"type": "OB", "dir": -1, "bars_ago": 6, "date": "16/07 10:00", "px": 3994.0, "pf": 0.559, "take": true, "fade": false}, {"type": "FVG", "dir": -1, "bars_ago": 9, "date": "15/07 22:00", "px": 4044.2, "pf": 0.58, "take": true, "fade": false}, {"type": "OB", "dir": -1, "bars_ago": 9, "date": "15/07 22:00", "px": 4044.2, "pf": 0.58, "take": true, "fade": false}, {"type": "RB", "dir": -1, "bars_ago": 10, "date": "15/07 17:00", "px": 4066.9, "pf": 0.586, "take": true, "fade": false}], "context": {"kind": "CORRELATE", "base_win": 0.1197}, "dr": {"ssl": 3973.4, "bsl": 4012.2, "atr": 33.2, "dbsl_atr": 0.3, "dssl_atr": 0.8, "price_pct": 0.722, "tp_pct": 2.435, "sl_pct": -0.135}, "pfollow": {"primary": 0.08, "noatr": 0.081, "take": 0.4, "fade_gate": 0.2}, "fade_strength": "manh", "ev": 0.77, "ev_bins": [{"lo": 0, "hi": 0.3, "ev": -0.69}, {"lo": 0.3, "hi": 0.4, "ev": 0.0}, {"lo": 0.4, "hi": 0.5, "ev": 0.57}, {"lo": 0.5, "hi": 0.6, "ev": 0.87}, {"lo": 0.6, "hi": 0.7, "ev": 1.21}, {"lo": 0.7, "hi": 1.0, "ev": 2.0}], "plan": {"entry": 4001.4, "tp": 4067.9, "sl": 3968.2, "rr": "2:1"}, "stats": {"wf_auc": 0.7441, "take_mean": 0.73, "take_wr": 0.57, "gate": 0.4}, "intrabar": {"blocked": true, "reason": "gia da cham/vuot SL", "now": 4001.4, "death": 3963.0, "sl": 3968.2, "dead": false, "sl_hit": true, "forming": true}, "netdir": {"asof": "2026-07-17 10:00 ET", "side": "LONG", "conf": 0.61, "p_up": 0.605, "target_kind": "BSL", "target": 4012.2, "dist_atr": 0.3}, "chain_stage": {"asof": "2026-07-17 10:00 ET", "run_at": "2026-07-17 14:23 UTC", "close": 4001.4, "atr": 33.2, "stage1": {"side": "LONG", "conf": 0.61, "p_up": 0.605, "target_kind": "BSL", "target": 4012.2, "dist_atr": 0.3}, "stage2": {"active": true, "bars_ago": 0, "sweep_dir": "DOWN", "p_cascade": 0.249, "zone": "REJECT", "verdict": "GRAB", "open": true, "sweep_at": "17/07 10:00"}, "scan": {"up": [], "dn": [[4013.9, 3973.4, 0.198], [4029.2, 3973.4, 0.184], [4042.8, 3973.4, 0.153]], "note_up": "khong cat nguong trong range scan", "note_dn": "khong cat nguong trong range scan"}}, "news": {"asof": "2026-07-17 14:22 UTC", "source": "faireconomy (Forex Factory) · USD high/med", "events": [{"ts": 1784250000000, "when": "16/07 21:00 ET", "title": "President Trump Speaks", "impact": "Medium", "forecast": null, "previous": null, "actual": null}, {"ts": 1784296800000, "when": "17/07 10:00 ET", "title": "Prelim UoM Consumer Sentiment", "impact": "Medium", "forecast": "51.0", "previous": "48.9", "actual": null}, {"ts": 1784296800000, "when": "17/07 10:00 ET", "title": "Prelim UoM Inflation Expectations", "impact": "Medium", "forecast": null, "previous": "4.6%", "actual": null}]}};</script>
 <script>/* pooldir dashboard renderer — doc window.GC_DATA, render vao #pooldir-root.
    Standalone/offline: dung CSS var (dinh nghia trong template) + glyph Unicode (khong CDN icon). */
 (function () {
@@ -124,7 +161,14 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     H.push('<div><div style="font-size:16px;font-weight:500;color:var(--text-primary);">Pooldir \u2014 GC1! H4</div>');
     H.push('<div style="font-size:12px;color:var(--text-muted);margin-top:2px;font-variant-numeric:tabular-nums;">close ' + f(d.close, 1) + ' \u00b7 ATR ' + f(d.atr, 1) + '</div></div>');
     H.push('<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">');
-    H.push('<div style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-1);color:var(--text-secondary);font-size:11px;padding:4px 9px;border-radius:999px;font-variant-numeric:tabular-nums;">' + (d.age_txt || d.asof || '') + '</div>');
+    // stale live: nen dang forming thi age_txt chi co gio chay -> tinh "~Xh truoc" tu run_at_ms
+    // moi lan MO TRANG (khong bake cung luc build); nen da dong thi age_txt tu co "~Xh truoc" roi.
+    var _stale = '';
+    if (d.run_at_ms && d.intrabar && d.intrabar.forming) {
+      var _rh = (Date.now() - d.run_at_ms) / 36e5;
+      if (_rh >= 0) _stale = ' · ' + (_rh < 1 ? 'vừa chạy' : '~' + (_rh < 10 ? _rh.toFixed(1) : String(Math.round(_rh))) + 'h trước');
+    }
+    H.push('<div style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-1);color:var(--text-secondary);font-size:11px;padding:4px 9px;border-radius:999px;font-variant-numeric:tabular-nums;">' + (d.age_txt || d.asof || '') + _stale + '</div>');
     H.push('<a href="pooldir-structure.html" onclick="this.href=\'pooldir-structure.html?v=\'+Date.now()" style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-1);color:var(--text-secondary);font-size:11px;padding:4px 9px;border-radius:999px;text-decoration:none;">⇄ Cấu trúc</a>');
     H.push('<a href="intermarket.html" onclick="if(location.protocol===\'file:\')this.href=\'../../../skills/news-thucchien/out/intermarket.html\'" title="Bàn cờ liên thị trường Mỹ → VN — cập nhật 4h/lần" style="display:inline-flex;align-items:center;gap:5px;background:var(--surface-1);color:var(--text-secondary);font-size:11px;padding:4px 9px;border-radius:999px;text-decoration:none;">🌐 Liên TT</a>');
     H.push('</div>');
@@ -198,6 +242,9 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     H.push('<div style="display:flex;align-items:center;gap:9px;"><span style="font-size:18px;color:' + vtx + ';">' + glyph + '</span><span style="font-size:17px;font-weight:500;color:' + vtx + ';">' + vlabel + '</span></div>');
     H.push('<div style="text-align:right;line-height:1.1;"><div style="font-size:11px;color:' + vtx + ';">h\u01b0\u1edbng' + (take ? '' : ' (n\u1ebfu v\u00e0o)') + '</div><div style="font-size:22px;font-weight:500;color:' + sColor + ';">' + arrow(sd) + ' ' + sName + '</div></div>');
     H.push('</div>');
+    // slot chip FRED bias — nam TRONG dai mau header verdict, hang 2 duoi dong verdict
+    // (user 2026-07-17 "cho vao ben trong"); script template.html fetch fred-history.jsonl roi render vao
+    H.push('<div id="fredslot" style="display:none;background:' + vbg + ';padding:0 16px 12px;font-size:11.5px;color:var(--text-secondary);line-height:1.7;font-variant-numeric:tabular-nums;" title="Bias vĩ mô từ FRED scorecard (điểm = Σ dir×sign) · RY = lợi suất thực 10Y DFII10 · Carry = DFF−ECBDFR · mũi tên Δ3 tháng tô theo tác động lên VÀNG (▲ đỏ = cản vàng)"></div>');
     H.push('<div style="padding:12px 16px 13px;">');
 
     // dong boi canh: chuoi + displacement -> diverge/correlate
@@ -330,7 +377,10 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     var cands = d.cands || [];
     if (cands.length) {
       H.push('<div style="margin-top:14px;padding-top:10px;border-top:0.5px solid var(--border);">');
-      H.push('<div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Tổng hợp ' + cands.length + ' displacement gần đây (mới nhất trước) · ★ = P_follow ≥ ' + f(gate, 2) + '</div>');
+      // cot gia = close nen displacement (c.px, predict_dir ghi tu 17/07/2026);
+      // JSON cu chua co px -> an ca cot, khong de o trong
+      var hasPx = cands.some(function (c) { return c.px != null; });
+      H.push('<div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Tổng hợp ' + cands.length + ' displacement gần đây (mới nhất trước) · ★ = P_follow ≥ ' + f(gate, 2) + (hasPx ? ' · giá = close nến disp' : '') + '</div>');
       cands.forEach(function (c) {
         var isTake = c.take;
         var pfCol = isTake ? 'var(--text-success)' : 'var(--text-muted)';
@@ -340,6 +390,7 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
         H.push('<span style="width:74px;color:var(--text-muted);font-size:11px;font-variant-numeric:tabular-nums;">' + (c.date || '') + '</span>');
         H.push('<span style="width:36px;font-weight:600;">' + c.type + '</span>');
         H.push('<span style="width:14px;color:' + dirColor(c.dir) + ';">' + arrow(c.dir) + '</span>');
+        if (hasPx) H.push('<span style="width:52px;text-align:right;color:var(--text-secondary);font-variant-numeric:tabular-nums;">' + (c.px != null ? f(c.px, 1) : '') + '</span>');
         H.push('<div style="flex:1;height:6px;background:var(--surface-1);border-radius:3px;overflow:hidden;"><div style="width:' + w + '%;height:100%;background:' + pfCol + ';"></div></div>');
         H.push('<span style="width:42px;text-align:right;font-variant-numeric:tabular-nums;color:' + pfCol + ';">' + f(c.pf, 3) + '</span>');
         H.push('<span style="width:16px;color:var(--text-success);">' + (isTake ? '★' : '') + '</span>');
