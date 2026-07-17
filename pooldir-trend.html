@@ -100,10 +100,10 @@ tbody tr:hover{background:var(--wash-long)}
     <div class="prow"><div class="plabel"><span class="dot" style="background:var(--pooldir)"></span><b>P_follow</b><span>quy hướng long · &gt;0.5 nghiêng long · ▲▼ hướng LỆNH · màu = chiều DISP (<span style="color:var(--long);font-weight:600">xanh UP</span>/<span style="color:var(--short);font-weight:600">đỏ DOWN</span>) — lệch nhau tức là kèo FADE · ○ = disp không lệnh</span></div>
       <svg id="p2" viewBox="0 0 1040 200"></svg></div>
     <hr class="hr">
-    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--net)"></span><b>p_up net-dir</b><span>0.5 trung tính · dải tô = CONFIRM ≥0.70 / ≤0.30</span></div>
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--net)"></span><b>p_up net-dir</b><span>0.5 trung tính · dải tô = CONFIRM ≥0.70 / ≤0.30 · màu chấm = chiều DISP tại bar (<span style="color:var(--long);font-weight:600">xanh UP</span>/<span style="color:var(--short);font-weight:600">đỏ DOWN</span>)</span></div>
       <svg id="p3" viewBox="0 0 1040 170"></svg></div>
     <hr class="hr">
-    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--htf)"></span><b>P_cascade</b><span>chỉ tại pierce · ngưỡng 0.85 / 0.42 · nhãn kết cục thật</span></div>
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--htf)"></span><b>P_cascade</b><span>chỉ tại pierce · ngưỡng 0.85 / 0.42 · nhãn kết cục thật · màu chấm = chiều pierce (<span style="color:var(--long);font-weight:600">xanh BSL↑</span>/<span style="color:var(--short);font-weight:600">đỏ SSL↓</span>)</span></div>
       <svg id="p4" viewBox="0 0 1040 200"></svg></div>
   </div>
 
@@ -271,8 +271,11 @@ const PANELS=[];
   let marks='';
   Object.keys(upRep).map(Number).sort((a,b)=>a-b).forEach(bi=>{
     const arr=upByBar[bi], n=arr.length, mn=Math.min(...arr), mx=Math.max(...arr);
-    marks+=`<circle cx="${X(bi)}" cy="${Y(upRep[bi])}" r="3.2" fill="var(--net)" stroke="var(--surface)" stroke-width="1"
-      data-tt="<div class='h'>net-dir · ${fdt(bars[bi][0])} ET</div><div class='row'><span>close</span><b>${bars[bi][1]}</b></div><div class='row'><span>p_up</span><b>${upRep[bi].toFixed(3)}</b></div><div class='row'><span>hướng · conf</span><span><b>${upRep[bi]>=0.5?'LONG':'SHORT'}</b> · ${Math.max(upRep[bi],1-upRep[bi]).toFixed(2)}</span></div>${n>1?`<div class='m'>TB của ${n} event · gốc ${mn.toFixed(3)}–${mx.toFixed(3)}</div>`:''}"/>`; });
+    // mau cham = chieu DISPLACEMENT dai dien cua bar (cung event rep voi panel P_follow) — user 2026-07-17
+    const sd=pfRep[bi]?pfRep[bi].e.side:null;
+    const c3=sd?`var(--${sd==='L'?'long':'short'})`:'var(--net)';
+    marks+=`<circle cx="${X(bi)}" cy="${Y(upRep[bi])}" r="3.2" fill="${c3}" stroke="var(--surface)" stroke-width="1"
+      data-tt="<div class='h'>net-dir · ${fdt(bars[bi][0])} ET</div><div class='row'><span>close</span><b>${bars[bi][1]}</b></div><div class='row'><span>p_up</span><b>${upRep[bi].toFixed(3)}</b></div><div class='row'><span>hướng · conf</span><span><b>${upRep[bi]>=0.5?'LONG':'SHORT'}</b> · ${Math.max(upRep[bi],1-upRep[bi]).toFixed(2)}</span></div>${sd?`<div class='row'><span>disp tại bar</span><b>${sd==='L'?'UP':'DOWN'}</b></div>`:''}${n>1?`<div class='m'>TB của ${n} event · gốc ${mn.toFixed(3)}–${mx.toFixed(3)}</div>`:''}"/>`; });
   const svg=document.getElementById('p3'); svg.innerHTML=s+marks; PANELS.push({svg,H,padT,padB});
 })();
 // ===== P4: P_cascade =====
@@ -287,8 +290,10 @@ const PANELS=[];
   s+=segLine(D.pc.map(e=>[nearIdx(e.t),Y(e.p)]),'var(--htf)',1.2,'3 4');
   let marks='';
   D.pc.forEach(e=>{ const x=X(nearIdx(e.t)), y=Y(e.p);
+    // mau cham = chieu PIERCE (user 2026-07-17): xanh = BSL len, do = SSL xuong; line/nguong giu mau htf
+    const pcol=e.dir==='U'?'var(--long)':'var(--short)';
     if(e.src==='live') marks+=`<circle cx="${x}" cy="${y}" r="9" fill="none" stroke="var(--htf)" stroke-width="1.4" opacity="0.85"/>`;
-    marks+=`<circle cx="${x}" cy="${y}" r="5" fill="var(--htf)" stroke="var(--surface)" stroke-width="1.3"
+    marks+=`<circle cx="${x}" cy="${y}" r="5" fill="${pcol}" stroke="var(--surface)" stroke-width="1.3"
       data-tt="<div class='h'>htf-liq3 · ${fdt(e.t)} ET</div><div>pierce ${e.dir==='U'?'BSL (lên)':'SSL (xuống)'} · P <b>${e.p.toFixed(3)}</b> · ${e.zone}</div><div class='m'>kết cục thật: ${e.out}${e.src?' · '+e.src:''}</div>"/>`;
     marks+=`<text x="${x}" y="${y-9}" text-anchor="middle" fill="var(--ink2)" font-weight="600" style="font-variant-numeric:tabular-nums">${e.p.toFixed(2)}</text>`;
     marks+=`<text x="${x}" y="${y+18}" text-anchor="middle" style="font-size:9px">${e.dir==='U'?'▲':'▼'}${e.out==='COLLAPSE'?'đi tiếp':(e.out==='SWEEP'?'bật lại':'đang mở')}</text>`; });
