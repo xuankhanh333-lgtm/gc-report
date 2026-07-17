@@ -191,21 +191,6 @@ function hideTT(){ tt.style.opacity=0; }
 function hookTT(svg){ svg.querySelectorAll('[data-tt]').forEach(el=>{
   el.addEventListener('mousemove',e=>{e.stopPropagation();showTT(el.dataset.tt,e.clientX,e.clientY);});
   el.addEventListener('mouseleave',hideTT); }); }
-// toggle LINE/NEN tren panel Gia (user 2026-07-18) — 2 lop <g> ve san, chi flip display
-(function(){
-  const btn=document.getElementById('viewbtn');
-  const gl=document.getElementById('tv-line'), gc=document.getElementById('tv-candle');
-  if(!btn||!gc){ if(btn) btn.style.display='none'; return; }
-  function setView(m){
-    gl.style.display=m==='line'?'':'none';
-    gc.style.display=m==='candle'?'':'none';
-    btn.textContent=m==='candle'?'📈 Line':'🕯 Nến';
-    try{ localStorage.setItem('pooldir_trend_view',m); }catch(err){}
-  }
-  let m='line'; try{ m=localStorage.getItem('pooldir_trend_view')||'line'; }catch(err){}
-  setView(m);
-  btn.addEventListener('click',()=>setView(gl.style.display==='none'?'line':'candle'));
-})();
 // tooltip giai thich chi so tren tieu de panel (data-tt nam ngoai svg nen hook rieng; wide = 360px)
 document.querySelectorAll('.plabel [data-tt]').forEach(el=>{
   el.addEventListener('mousemove',e=>{e.stopPropagation();tt.classList.add('wide');showTT(el.dataset.tt,e.clientX,e.clientY);});
@@ -341,6 +326,22 @@ const PANELS=[];
   const svg=document.getElementById('p4'); svg.innerHTML=s+marks; PANELS.push({svg,H,padT,padB});
 })();
 
+// toggle LINE/NEN tren panel Gia (user 2026-07-18) — PHAI dat SAU khi P1 dung xong (tv-candle moi ton tai);
+// 2 lop <g> ve san, chi flip display, nho lua chon qua localStorage
+(function(){
+  const btn=document.getElementById('viewbtn');
+  const gl=document.getElementById('tv-line'), gc=document.getElementById('tv-candle');
+  if(!btn||!gc){ if(btn) btn.style.display='none'; return; }
+  function setView(m){
+    gl.style.display=m==='line'?'':'none';
+    gc.style.display=m==='candle'?'':'none';
+    btn.textContent=m==='candle'?'📈 Line':'🕯 Nến';
+    try{ localStorage.setItem('pooldir_trend_view',m); }catch(err){}
+  }
+  let m='line'; try{ m=localStorage.getItem('pooldir_trend_view')||'line'; }catch(err){}
+  setView(m);
+  btn.addEventListener('click',()=>setView(gl.style.display==='none'?'line':'candle'));
+})();
 // ===== crosshair dong bo 4 panel =====
 const liveByBar={};
 LIVE.forEach(r=>{ liveByBar[nearIdx(r.t)]=r; });
