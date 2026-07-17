@@ -95,7 +95,7 @@ tbody tr:hover{background:var(--wash-long)}
   </div>
 
   <div class="stack" id="stack">
-    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--price)"></span><b>Giá</b><span>close H4 · marker vàng = pierce pool</span><button id="viewbtn" type="button" style="margin-left:auto;font:inherit;font-size:11px;padding:1px 9px;border-radius:6px;cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--border)">🕯 Nến</button></div>
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--price)"></span><b>Giá</b><span>close H4 · marker vàng = pierce pool · kéo = pan · Ctrl+lăn = zoom · 2 click = reset</span><button id="viewbtn" type="button" style="margin-left:auto;font:inherit;font-size:11px;padding:1px 9px;border-radius:6px;cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--border)">🕯 Nến</button></div>
       <svg id="p1" viewBox="0 0 1040 190"></svg></div>
     <hr class="hr">
     <div class="prow"><div class="plabel"><span class="dot" style="background:var(--pooldir)"></span><b data-tt="<div class='h'>P_FOLLOW — CÒ SÚNG</div><div class='m'>model pooldir V4.1 · XGBoost 35 feature · WF-AUC 0.744</div><div class='p'>Trả lời: <b>kèo THEO displacement này chất lượng ra sao?</b></div><div class='p'>= P(lệnh 2:1 theo hướng displacement THẮNG) — entry tại close nến phát hiện (displacement+1), TP +2ATR · SL −1ATR · hạn 12 nến H4.</div><div class='p'>• KHÔNG cho hướng — hướng do displacement quyết định.<br>• Verdict: TAKE khi pf ≥ 0.40 · FADE (đánh ngược) khi CORRELATE và pf &lt; 0.20 · còn lại SKIP.<br>• Trục vẽ quy hướng long: long = P · short = 1−P.</div><div class='p m'>Bin thật: diverge (disp đảo chuỗi) win ~0.52 · correlate (cùng chuỗi) ~0.12 — vì thế mới có luật FADE.</div>" style="cursor:help;border-bottom:1px dotted var(--ink2)">P_follow ⓘ</b><span>quy hướng long · &gt;0.5 nghiêng long · ▲▼ hướng LỆNH · màu = chiều DISP (<span style="color:var(--long);font-weight:600">xanh UP</span>/<span style="color:var(--short);font-weight:600">đỏ DOWN</span>) — lệch nhau tức là kèo FADE · ○ = disp không lệnh</span></div>
@@ -342,6 +342,33 @@ const PANELS=[];
   setView(m);
   btn.addEventListener('click',()=>setView(gl.style.display==='none'?'line':'candle'));
 })();
+// pan/zoom panel Gia (user 2026-07-18): keo chuot = pan 2 chieu, Ctrl+lan = zoom quanh con tro,
+// double-click = reset. Doi viewBox nen crosshair (getScreenCTM) tu dung; vung bat chuot (__cap)
+// duoc keo theo viewBox moi lan apply.
+(function(){
+  const svg=document.getElementById('p1');
+  const vb0=svg.getAttribute('viewBox').split(' ').map(Number);
+  let vb=vb0.slice();
+  const apply=()=>{ svg.setAttribute('viewBox',vb.join(' '));
+    const cr=svg.__cap; if(cr){ cr.setAttribute('x',vb[0]);cr.setAttribute('y',vb[1]);cr.setAttribute('width',vb[2]);cr.setAttribute('height',vb[3]); } };
+  let drag=null;
+  svg.addEventListener('mousedown',e=>{ drag={x:e.clientX,y:e.clientY,vb:vb.slice()}; svg.style.cursor='grabbing'; e.preventDefault(); });
+  window.addEventListener('mousemove',e=>{ if(!drag) return;
+    const r=svg.getBoundingClientRect();
+    vb[0]=drag.vb[0]-(e.clientX-drag.x)*vb[2]/r.width;
+    vb[1]=drag.vb[1]-(e.clientY-drag.y)*vb[3]/r.height;
+    apply(); });
+  window.addEventListener('mouseup',()=>{ drag=null; svg.style.cursor='grab'; });
+  svg.addEventListener('wheel',e=>{ if(!e.ctrlKey) return; e.preventDefault();
+    const r=svg.getBoundingClientRect();
+    const mx=vb[0]+(e.clientX-r.left)*vb[2]/r.width, my=vb[1]+(e.clientY-r.top)*vb[3]/r.height;
+    const k=e.deltaY>0?1.15:1/1.15;
+    const nw=Math.min(4000,Math.max(120,vb[2]*k)), nh=Math.min(1500,Math.max(40,vb[3]*k));
+    vb[0]=mx-(mx-vb[0])*(nw/vb[2]); vb[1]=my-(my-vb[1])*(nh/vb[3]); vb[2]=nw; vb[3]=nh;
+    apply(); },{passive:false});
+  svg.addEventListener('dblclick',()=>{ vb=vb0.slice(); apply(); });
+  svg.style.cursor='grab';
+})();
 // ===== crosshair dong bo 4 panel =====
 const liveByBar={};
 LIVE.forEach(r=>{ liveByBar[nearIdx(r.t)]=r; });
@@ -349,7 +376,7 @@ PANELS.forEach(P=>{
   const r=document.createElementNS('http://www.w3.org/2000/svg','rect');
   r.setAttribute('x',PADL);r.setAttribute('y',P.padT);
   r.setAttribute('width',W-PADL-PADR);r.setAttribute('height',P.H-P.padT-P.padB);
-  r.setAttribute('fill','transparent'); P.svg.appendChild(r);
+  r.setAttribute('fill','transparent'); P.svg.appendChild(r); P.svg.__cap=r;
   r.addEventListener('mousemove',e=>{
     const pt=P.svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
     const sp=pt.matrixTransform(P.svg.getScreenCTM().inverse());
