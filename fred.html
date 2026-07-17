@@ -31,47 +31,47 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 13:04:24 17/7/2026 · 60 series (32→37→44→56→60: +carry AU/NZ/BoE + VN trade 17/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 20:45:55 17/7/2026 · 60 series (32→37→44→56→60: +carry AU/NZ/BoE + VN trade 17/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div id="dcpline"></div>
 <div class="kpis">
-  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên VÀNG rồi cộng cả 44 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 13:04:24 17/7/2026 VN." tabindex="0">GOLD BIAS (tổng 44 chỉ số active) ⓘ</span></div><div class="val">-4</div>
+  <div class="kpi"><div class="lbl">GOLD BIAS (tổng 44 chỉ số active)</div><div class="val">-4</div>
     <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="GOLD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (11):</span> CPI YoY · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · P(lạm phát >2.5%) 12T · TGA (két Kho bạc) · Cung tiền M2 · Term premium 10Y (Kim-Wright) · Custody Treasuries NHTW ngoại · Cân đối ngân sách LB · Michigan sentiment · Lợi suất 2Y (kỳ vọng Fed)<br><br><span class=&quot;neg&quot;>▼ Bất lợi (15):</span> Fed Funds (effective) · Bạc (QSLVO) · Core PCE YoY (thước Fed) · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Dầu WTI (tháng) · Điều kiện tài chính (NFCI) · EPU toàn cầu (tháng) · Real rate 10Y (model-based) · USDCNY · Real Broad Dollar (tháng)" tabindex="0">▲11 · ▼15 · 18 im — soi phiếu ⓘ</span></div>
     <div class="bar"><i class="n" style="width:14%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>39 lần chạy · min -5 · max -1</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>40 lần chạy · min -5 · max -1</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 5.5,22.2 7.9,22.2 10.4,19.8 12.9,22.2 15.4,22.2 17.8,27.0 20.3,27.0 22.8,27.0 25.3,17.4 27.7,17.4 30.2,17.4 32.7,17.4 35.2,17.4 37.6,17.4 40.1,17.4 42.6,17.4 45.1,19.8 47.5,19.8 50.0,19.8 52.5,22.2 54.9,24.6 57.4,24.6 59.9,24.6 62.4,22.2 64.8,24.6 67.3,24.6 69.8,24.6 72.3,24.6 74.7,24.6 77.2,24.6 79.7,24.6 82.2,24.6 84.6,24.6 87.1,24.6 89.6,22.2 92.1,24.6 94.5,24.6 97.0,24.6"/>
-    <circle cx="97.0" cy="24.6" r="3" class="n"/></svg><div class="lbl">history 39 lần chạy</div></div>
-  <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="USD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên USD rồi cộng cả 49 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 13:04:24 17/7/2026 VN." tabindex="0">USD BIAS (tổng 49 chỉ số active) ⓘ</span></div><div class="val">+2</div>
-    <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="USD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (14):</span> Fed Funds (effective) · Core PCE YoY (thước Fed) · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Real rate 10Y (model-based) · Chênh lệch 10Y Mỹ−Anh · Chênh lệch 10Y Mỹ−Thụy Sĩ · Chênh lệch 10Y Mỹ−Canada · Chênh lệch 10Y Mỹ−Úc · Chênh lệch 10Y Mỹ−NZ<br><br><span class=&quot;neg&quot;>▼ Bất lợi (12):</span> CPI YoY · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · P(lạm phát >2.5%) 12T · Điều kiện tài chính (NFCI) · TGA (két Kho bạc) · Cung tiền M2 · EPU toàn cầu (tháng) · Custody Treasuries NHTW ngoại · Cân đối ngân sách LB · Lợi suất 2Y (kỳ vọng Fed) · USDCNY" tabindex="0">▲14 · ▼12 · 23 im — soi phiếu ⓘ</span></div>
-    <div class="bar"><i class="" style="width:6%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>39 lần chạy · min -2 · max 5</title>
+    <polyline points="3.0,22.2 5.4,22.2 7.8,22.2 10.2,19.8 12.6,22.2 15.1,22.2 17.5,27.0 19.9,27.0 22.3,27.0 24.7,17.4 27.1,17.4 29.5,17.4 31.9,17.4 34.3,17.4 36.7,17.4 39.2,17.4 41.6,17.4 44.0,19.8 46.4,19.8 48.8,19.8 51.2,22.2 53.6,24.6 56.0,24.6 58.4,24.6 60.8,22.2 63.3,24.6 65.7,24.6 68.1,24.6 70.5,24.6 72.9,24.6 75.3,24.6 77.7,24.6 80.1,24.6 82.5,24.6 84.9,24.6 87.4,22.2 89.8,24.6 92.2,24.6 94.6,24.6 97.0,24.6"/>
+    <circle cx="97.0" cy="24.6" r="3" class="n"/></svg><div class="lbl">history 40 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">USD BIAS (tổng 49 chỉ số active)</div><div class="val">+3</div>
+    <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="USD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (15):</span> Fed Funds (effective) · Core PCE YoY (thước Fed) · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Real rate 10Y (model-based) · Chênh lệch 10Y Mỹ−Anh · Chênh lệch 10Y Mỹ−Thụy Sĩ · Chênh lệch 10Y Mỹ−Canada · Chênh lệch LS chính sách Fed−BoE · Chênh lệch 10Y Mỹ−Úc · Chênh lệch 10Y Mỹ−NZ<br><br><span class=&quot;neg&quot;>▼ Bất lợi (12):</span> CPI YoY · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · P(lạm phát >2.5%) 12T · Điều kiện tài chính (NFCI) · TGA (két Kho bạc) · Cung tiền M2 · EPU toàn cầu (tháng) · Custody Treasuries NHTW ngoại · Cân đối ngân sách LB · Lợi suất 2Y (kỳ vọng Fed) · USDCNY" tabindex="0">▲15 · ▼12 · 22 im — soi phiếu ⓘ</span></div>
+    <div class="bar"><i class="" style="width:9%;transform:translateX(0%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>40 lần chạy · min -2 · max 5</title>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 5.5,7.8 7.9,7.8 10.4,5.4 12.9,7.8 15.4,7.8 17.8,3.0 20.3,3.0 22.8,3.0 25.3,7.8 27.7,7.8 30.2,7.8 32.7,7.8 35.2,7.8 37.6,7.8 40.1,7.8 42.6,7.8 45.1,10.2 47.5,10.2 50.0,10.2 52.5,12.6 54.9,19.8 57.4,19.8 59.9,19.8 62.4,19.8 64.8,19.8 67.3,19.8 69.8,19.8 72.3,19.8 74.7,19.8 77.2,19.8 79.7,19.8 82.2,19.8 84.6,19.8 87.1,19.8 89.6,10.2 92.1,10.2 94.5,10.2 97.0,10.2"/>
-    <circle cx="97.0" cy="10.2" r="3" class="p"/></svg><div class="lbl">history 39 lần chạy</div></div>
-  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="LỢI SUẤT THỰC 10Y — chi tiết" data-tip="DFII10 — lợi suất TIPS 10Y, tức lãi suất THỰC sau lạm phát kỳ vọng. Vàng không trả lãi nên real yield là CHI PHÍ CƠ HỘI của việc ôm vàng: tăng → vàng chịu áp lực xuống, rơi → vàng bay. Δ3 tháng so với obs ~60 phiên trước; %biên độ = vị trí giá trị hiện tại trong min–max 3 tháng.<br><br>Data mới nhất: 2.32% ngày 2026-07-15 (63 phiên · FRED cập nhật trễ ~1 ngày làm việc so thị trường)." tabindex="0">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng) ⓘ</span></div>
+    <polyline points="3.0,7.8 5.4,7.8 7.8,7.8 10.2,5.4 12.6,7.8 15.1,7.8 17.5,3.0 19.9,3.0 22.3,3.0 24.7,7.8 27.1,7.8 29.5,7.8 31.9,7.8 34.3,7.8 36.7,7.8 39.2,7.8 41.6,7.8 44.0,10.2 46.4,10.2 48.8,10.2 51.2,12.6 53.6,19.8 56.0,19.8 58.4,19.8 60.8,19.8 63.3,19.8 65.7,19.8 68.1,19.8 70.5,19.8 72.9,19.8 75.3,19.8 77.7,19.8 80.1,19.8 82.5,19.8 84.9,19.8 87.4,10.2 89.8,10.2 92.2,10.2 94.6,10.2 97.0,7.8"/>
+    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 40 lần chạy</div></div>
+  <div class="kpi"><div class="lbl">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng)</div>
     <div class="val">2.32%</div>
     <div class="word neg">▲ +0.42 /3 tháng · cản vàng</div>
     <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>63 obs · min 1.89 · max 2.36</title><polyline points="2.0,23.5 3.5,22.1 5.1,23.5 6.6,23.1 8.2,22.6 9.7,22.6 11.3,22.6 12.8,24.0 14.4,23.1 15.9,22.6 17.5,20.7 19.0,21.7 20.6,23.1 22.1,21.2 23.7,20.7 25.2,21.7 26.8,20.7 28.3,22.1 29.9,21.2 31.4,19.3 33.0,19.3 34.5,18.9 36.1,14.2 37.6,12.8 39.2,10.4 40.7,12.8 42.3,10.4 43.8,11.4 45.4,14.2 46.9,14.6 48.5,16.0 50.0,15.6 51.5,15.6 53.1,15.6 54.6,13.7 56.2,13.7 57.7,10.0 59.3,9.0 60.8,9.5 62.4,9.0 63.9,11.4 65.5,10.9 67.0,11.8 68.6,12.3 70.1,8.1 71.7,9.0 73.2,5.7 74.8,5.3 76.3,8.1 77.9,10.0 79.4,10.4 81.0,11.4 82.5,9.5 84.1,7.1 85.6,6.7 87.2,7.6 88.7,4.8 90.3,4.3 91.8,4.3 93.4,3.9 94.9,2.0 96.5,3.4 98.0,3.9"/></svg><div class="lbl">91% biên độ 3 tháng (1.89–2.36) · ↑ real yield ⇒ vàng ↓</div></div>
-  <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="CARRY Fed−ECB — chi tiết" data-tip="DFF (lãi Fed hiệu dụng) − ECBDFR (deposit rate ECB) = chênh lệch lãi CHÍNH SÁCH Mỹ−Eurozone, driver #1 của USD: carry rộng → vốn chảy về tài sản USD, EUR (~58% rổ DXY) yếu đi. Chuỗi bậc thang — chỉ nhảy khi 1 trong 2 NHTW đổi lãi — nên đọc theo Δ3 tháng, KHÔNG đọc %biên độ kiểu percentile.<br><br>Màu chữ tô theo tác động LÊN VÀNG (đồng bộ toàn trang): carry nới → USD mạnh → đỏ (cản vàng); carry hẹp → xanh (đỡ vàng).<br><br>Data mới nhất: 1.38 đpt ngày 2026-07-15 (66 phiên căn ngày trùng 2 chuỗi daily)." tabindex="0">CARRY Fed−ECB (chính sách · driver #1 của USD) ⓘ</span></div>
+  <div class="kpi"><div class="lbl">CARRY Fed−ECB (chính sách · driver #1 của USD)</div>
     <div class="val">1.38 đpt</div>
-    <div class="word pos">▼ -0.25 /3 tháng · carry thu hẹp — cản USD → đỡ vàng</div>
+    <div class="word neg">▼ -0.25 /3 tháng · carry thu hẹp — cản USD</div>
     <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>66 obs · min 1.37 · max 1.63</title><polyline points="2.0,2.0 3.5,2.0 5.0,2.0 6.4,2.0 7.9,2.0 9.4,2.0 10.9,2.0 12.3,2.0 13.8,2.8 15.3,2.8 16.8,2.8 18.2,2.8 19.7,2.8 21.2,2.8 22.7,2.8 24.2,2.8 25.6,2.8 27.1,2.8 28.6,2.8 30.1,2.8 31.5,2.8 33.0,2.8 34.5,2.8 36.0,2.8 37.4,2.8 38.9,2.8 40.4,2.8 41.9,2.8 43.4,2.8 44.8,2.8 46.3,2.8 47.8,2.8 49.3,2.8 50.7,2.8 52.2,2.8 53.7,2.0 55.2,2.0 56.6,23.2 58.1,23.2 59.6,23.2 61.1,23.2 62.6,23.2 64.0,23.2 65.5,23.2 67.0,23.2 68.5,23.2 69.9,23.2 71.4,23.2 72.9,23.2 74.4,23.2 75.8,23.2 77.3,23.2 78.8,23.2 80.3,23.2 81.8,23.2 83.2,23.2 84.7,23.2 86.2,23.2 87.7,24.0 89.1,24.0 90.6,24.0 92.1,24.0 93.6,24.0 95.0,24.0 96.5,23.2 98.0,23.2"/></svg><div class="lbl">DFF − ECBDFR (deposit rate) · carry ⇒ USD</div></div>
-  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD/SILVER RATIO — chi tiết" data-tip="Index vàng (QGLDI) chia index bạc (QSLVO) — 2 index có base khác nhau nên MỨC tuyệt đối vô nghĩa, chỉ đọc trend + vị trí trong biên độ 3 tháng. Ratio tăng = bạc tụt lại sau vàng → rally thiên phòng thủ/fear (bid trú ẩn thuần); ratio giảm = bạc dẫn sóng → rally kim loại quý khỏe, breadth tốt. Ngưỡng đọc trend: ±1.5%/3 tháng.<br><br>Data mới nhất: 2026-07-16 (63 phiên khớp ngày cả 2 chuỗi)." tabindex="0">GOLD/SILVER RATIO (bạc confirm vàng) ⓘ</span></div>
+  <div class="kpi"><div class="lbl">GOLD/SILVER RATIO (bạc confirm vàng)</div>
     <div class="val">100%<span style="font-size:13px;font-weight:400"> biên độ 3T</span></div>
     <div class="word neg">▲ +20.3% /3 tháng · bạc tụt lại — rally phòng thủ/fear</div>
     <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>63 obs · min 2.17 · max 2.70</title><polyline points="2.0,20.8 3.5,21.4 5.1,21.4 6.6,20.3 8.2,21.1 9.7,20.5 11.3,20.6 12.8,20.9 14.4,20.7 15.9,20.3 17.5,21.1 19.0,22.6 20.6,22.2 22.1,21.6 23.7,22.8 25.2,23.2 26.8,24.0 28.3,22.7 29.9,22.9 31.4,23.3 33.0,22.9 34.5,20.8 36.1,21.2 37.6,20.6 39.2,21.0 40.7,21.7 42.3,21.7 43.8,22.8 45.4,22.4 46.9,22.4 48.5,21.8 50.0,22.5 51.5,22.7 53.1,22.1 54.6,22.3 56.2,19.4 57.7,19.1 59.3,17.1 60.8,18.9 62.4,20.1 63.9,15.4 65.5,16.1 67.0,15.9 68.6,14.4 70.1,13.7 71.7,13.6 73.2,10.5 74.8,6.3 76.3,6.4 77.9,7.0 79.4,7.3 81.0,8.9 82.5,8.5 84.1,9.1 85.6,10.0 87.2,8.3 88.7,6.1 90.3,7.5 91.8,7.6 93.4,4.8 94.9,5.3 96.5,3.6 98.0,2.0"/></svg><div class="lbl">QGLDI/QSLVO · ratio tăng = bạc yếu hơn vàng</div></div>
-  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD × REAL YIELD — chi tiết" data-tip="Pearson corr giữa %Δ ngày của index vàng (QGLDI) và Δ ngày của real yield 10Y (DFII10), cửa sổ ~3 tháng. Chuẩn lịch sử ÂM: real yield tăng → vàng giảm. Corr ≥ +0.2 kéo dài mà CẢ HAI cùng tăng = PHÂN KỲ REGIME — vàng đang chạy bằng driver phi lãi suất (bid NHTW, de-dollarization, hậu-2022) → các tín hiệu dựa real yield giảm trọng lượng.<br><br>Data: 61 cặp Δ ngày khớp · obs cuối QGLDI 2026-07-16 · DFII10 2026-07-15." tabindex="0">GOLD × REAL YIELD (corr Δ ngày ~3 tháng) ⓘ</span></div>
+  <div class="kpi"><div class="lbl">GOLD × REAL YIELD (corr Δ ngày ~3 tháng)</div>
     <div class="val">-0.42</div>
     <div class="word neu">nghịch chuẩn — vàng vẫn giao dịch theo real yield</div>
     <div class="lbl" style="margin-top:8px">chuẩn lịch sử ÂM · dương kéo dài = vàng đổi driver (regime hậu-2022)</div></div>
-  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="COPPER/GOLD — chi tiết" data-tip="Giá đồng (PCOPPUSDM, IMF — chỉ có THEO THÁNG, trễ ~1-2 tháng) chia index vàng quy về tháng. Thước growth-vs-fear kinh điển, thường DẪN HƯỚNG lợi suất 10Y: ratio tăng = kinh tế thật hút kim loại công nghiệp → yields dễ lên, cản vàng; ratio giảm = fear lấn growth → yields dễ xuống, đỡ vàng. Ngưỡng đọc: ±3%/6 tháng. Base 2 chỉ số khác nhau → chỉ đọc trend.<br><br>Data mới nhất: tháng 2026-06 (23 tháng khớp)." tabindex="0">COPPER/GOLD (growth vs fear · dẫn 10Y) ⓘ</span></div>
+  <div class="kpi"><div class="lbl">COPPER/GOLD (growth vs fear · dẫn 10Y)</div>
     <div class="val">+42.0%<span style="font-size:13px;font-weight:400"> /6T</span></div>
     <div class="word neg">▲ +42.0% /6 tháng · growth impulse — yields dễ lên, cản vàng</div>
     <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>23 obs · min 3.14 · max 5.36</title><polyline points="2.0,22.6 6.4,22.0 10.7,21.7 15.1,22.6 19.5,22.9 23.8,23.7 28.2,21.5 32.5,21.8 36.9,24.0 41.3,22.1 45.6,21.0 50.0,20.7 54.4,22.3 58.7,22.5 63.1,19.9 67.5,20.6 71.8,17.7 76.2,14.6 80.5,15.9 84.9,13.7 89.3,12.0 93.6,9.1 98.0,2.0"/></svg><div class="lbl">PCOPPUSDM / QGLDI theo tháng (23 obs)</div></div>
-  <div class="kpi"><div class="lbl"><span class="tipname" data-tipid="DỮ LIỆU — chi tiết" data-tip="Sức khỏe lần fetch này: ok = số series lấy thành công trên tổng 60. stale = data trễ bất thường so với cadence của series (vẫn chấm điểm theo obs cuối, có cờ ⚠ ở bảng dưới). bị cắt lịch sử = observation_start dịch chuyển (nguồn cắt data cũ — gate cảnh báo riêng). lỗi = fetch/parse fail, loại khỏi tally.<br><br>Lần chạy này: 13:04:24 17/7/2026 VN. Ngày obs cuối TỪNG series: cột ngày ở bảng dưới." tabindex="0">DỮ LIỆU ⓘ</span></div><div class="val">60/60</div>
+  <div class="kpi"><div class="lbl">DỮ LIỆU</div><div class="val">60/60</div>
     <div class="word neu">4 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
-<div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng. · Nền tile: <span style="background:rgba(212,166,66,.22);padding:0 6px;border-radius:4px">ánh vàng</span> = nhóm chuyện VÀNG · <span style="background:rgba(72,132,220,.22);padding:0 6px;border-radius:4px">ánh xanh</span> = nhóm chuyện USD; chữ đỏ/xanh trên tile quy về tác động cho VÀNG (riêng card USD BIAS mô tả chính USD). <button id="obsbtn" type="button">📈 Hiện chart</button> <span style="font-size:11px">(sparkline trên cards + cột 30 obs)</span></div>
+<div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng. <button id="obsbtn" type="button">📈 Hiện chart</button> <span style="font-size:11px">(sparkline trên cards + cột 30 obs)</span></div>
 
   <h2>A. Gold — trực tiếp</h2>
   <div class="tblwrap"><table>
@@ -142,9 +142,9 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>24.88</b><span class="sid">2026-07-15</span></td>
-        <td class="neg">▼ -2.72</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 23.87 · max 32.18</title><polyline points="2.0,24.0 5.6,10.7 9.1,15.3 12.7,13.0 16.2,2.0 19.8,12.2 23.3,16.1 26.9,17.1 30.4,20.5 34.0,11.9 37.6,13.3 41.1,18.0 44.7,14.6 48.2,3.5 51.8,8.9 55.3,15.2 58.9,13.9 62.4,15.2 66.0,15.4 69.6,18.4 73.1,20.1 76.7,17.8 80.2,14.1 83.8,20.1 87.3,23.8 90.9,15.9 94.4,21.0 98.0,21.3"/></svg></td>
+        <td><b>26.65</b><span class="sid">2026-07-16</span></td>
+        <td class="neu">— +1.32</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 23.95 · max 32.18</title><polyline points="2.0,10.8 5.6,15.4 9.1,13.1 12.7,2.0 16.2,12.3 19.8,16.2 23.3,17.3 26.9,20.7 30.4,12.0 34.0,13.4 37.6,18.1 41.1,14.8 44.7,3.6 48.2,9.0 51.8,15.4 55.3,14.0 58.9,15.3 62.4,15.5 66.0,18.5 69.6,20.3 73.1,18.0 76.7,14.2 80.2,20.3 83.8,24.0 87.3,16.0 90.9,21.1 94.4,21.5 98.0,16.8"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -324,9 +324,9 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>15.67</b><span class="sid">2026-07-15</span></td>
-        <td class="neu">— -1.23</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 15.03 · max 22.22</title><polyline points="2.0,22.9 5.3,4.2 8.6,12.1 11.9,9.2 15.2,2.0 18.6,10.5 21.9,15.9 25.2,20.4 28.5,19.8 31.8,13.6 35.1,19.8 38.4,18.6 41.7,17.1 45.0,10.4 48.3,13.0 51.7,12.2 55.0,13.7 58.3,16.0 61.6,19.7 64.9,19.2 68.2,20.6 71.5,21.6 74.8,22.3 78.1,20.6 81.4,18.3 84.8,21.5 88.1,24.0 91.4,17.5 94.7,19.5 98.0,22.0"/></svg></td>
+        <td><b>16.73</b><span class="sid">2026-07-16</span></td>
+        <td class="neu">— +0.89</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 15.03 · max 22.22</title><polyline points="2.0,4.2 5.3,12.1 8.6,9.2 11.9,2.0 15.2,10.5 18.6,15.9 21.9,20.4 25.2,19.8 28.5,13.6 31.8,19.8 35.1,18.6 38.4,17.1 41.7,10.4 45.0,13.0 48.3,12.2 51.7,13.7 55.0,16.0 58.3,19.7 61.6,19.2 64.9,20.6 68.2,21.6 71.5,22.3 74.8,20.6 78.1,18.3 81.4,21.5 84.8,24.0 88.1,17.5 91.4,19.5 94.7,22.0 98.0,18.8"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -384,9 +384,9 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>385.13</b><span class="sid">2026-07-15</span></td>
-        <td class="neu">— +156.82</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 166.79 · max 956.29</title><polyline points="2.0,15.0 5.3,19.4 8.6,16.9 11.9,13.1 15.2,18.3 18.6,14.5 21.9,18.3 25.2,17.5 28.5,15.7 31.8,21.0 35.1,21.6 38.4,20.6 41.7,2.0 45.0,22.9 48.3,19.3 51.7,22.8 55.0,23.9 58.3,24.0 61.6,20.2 64.9,20.4 68.2,21.8 71.5,21.5 74.8,23.3 78.1,20.8 81.4,22.3 84.8,21.3 88.1,19.4 91.4,22.3 94.7,20.0 98.0,17.9"/></svg></td>
+        <td><b>427.49</b><span class="sid">2026-07-16</span></td>
+        <td class="neu">— +164.38</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 166.69 · max 956.17</title><polyline points="2.0,19.3 5.3,16.9 8.6,13.1 11.9,18.3 15.2,14.5 18.6,18.3 21.9,17.5 25.2,15.7 28.5,21.0 31.8,21.6 35.1,20.6 38.4,2.0 41.7,22.9 45.0,19.3 48.3,22.8 51.7,23.9 55.0,24.0 58.3,20.2 61.6,20.4 64.9,21.8 68.2,21.5 71.5,23.3 74.8,20.7 78.1,22.2 81.4,21.3 84.8,19.5 88.1,22.3 91.4,20.1 94.7,20.1 98.0,16.7"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -454,9 +454,9 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.01 đpt</b><span class="sid">2026-07-15</span></td>
-        <td class="neu">— +0.06</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min -0.12 · max 0.04</title><polyline points="2.0,11.6 5.6,10.3 9.1,10.3 12.7,14.4 16.2,15.8 19.8,14.4 23.3,7.5 26.9,2.0 30.4,10.3 34.0,10.3 37.6,11.6 41.1,13.0 44.7,11.6 48.2,11.6 51.8,8.9 55.3,11.6 58.9,11.6 62.4,3.4 66.0,6.1 69.6,8.9 73.1,10.3 76.7,11.6 80.2,17.1 83.8,24.0 87.3,21.3 90.9,14.4 94.4,10.3 98.0,8.9"/></svg></td>
+        <td><b>-0.03 đpt</b><span class="sid">2026-07-16</span></td>
+        <td class="neu">— +0.09</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min -0.12 · max 0.04</title><polyline points="2.0,10.3 5.6,10.3 9.1,14.4 12.7,15.8 16.2,14.4 19.8,7.5 23.3,2.0 26.9,10.3 30.4,10.3 34.0,11.6 37.6,13.0 41.1,11.6 44.7,11.6 48.2,8.9 51.8,11.6 55.3,11.6 58.9,3.4 62.4,6.1 66.0,8.9 69.6,10.3 73.1,11.6 76.7,17.1 80.2,24.0 83.8,21.3 87.3,14.4 90.9,10.3 94.4,8.9 98.0,11.6"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr>
@@ -672,11 +672,11 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.1 đpt</b><span class="sid">2026-07-14</span></td>
-        <td class="neu">— -0.001</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>21 obs · min -0.11 · max -0.10</title><polyline points="2.0,5.0 6.8,4.8 11.6,4.3 16.4,3.2 21.2,2.9 26.0,3.4 30.8,2.5 35.6,2.0 40.4,2.5 45.2,2.9 50.0,7.5 54.8,5.9 59.6,5.2 64.4,4.7 69.2,3.8 74.0,3.8 78.8,22.6 83.6,24.0 88.4,23.8 93.2,23.5 98.0,6.3"/></svg></td>
+        <td><b>-0.1 đpt</b><span class="sid">2026-07-15</span></td>
+        <td class="pos">▲ +0.01</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>22 obs · min -0.11 · max -0.10</title><polyline points="2.0,5.0 6.6,4.8 11.1,4.3 15.7,3.2 20.3,2.9 24.9,3.4 29.4,2.5 34.0,2.0 38.6,2.5 43.1,2.9 47.7,7.5 52.3,5.9 56.9,5.2 61.4,4.7 66.0,3.8 70.6,3.8 75.1,22.6 79.7,24.0 84.3,23.8 88.9,23.5 93.4,6.3 98.0,5.7"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
-        <td><span class="chip neu">— 0</span></td>
+        <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
         <td class="name"><span class="tipname" data-tip="Chênh lệch 10Y Mỹ−Úc — carry so với AUD, đồng high-beta hàng hóa (quặng sắt, than, TQ). AUD không nằm trong rổ DXY nhưng có trong broad dollar; carry hẹp + hàng hóa khỏe = AUD mạnh." data-tipid="US_AU_10Y" tabindex="0">Chênh lệch 10Y Mỹ−Úc</span><span class="sid">US_AU_10Y · AUD high-beta hàng hóa — ngoài rổ DXY, có trong broad dollar</span>
           
@@ -715,7 +715,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
       </tr>
   </tbody></table></div>
-<h2 id="lientt">🌐 Liên thị trường (12 leg · snap 4h · tự refresh khi mở trang) <button id="obsbtn2" type="button">📈 Hiện chart</button></h2>
+<h2>🌐 Liên thị trường (12 leg · snap 4h · tự refresh khi mở trang)</h2>
 <div id="imsec"><div class="legend">Đang tải data liên thị trường…</div></div>
 <style>
 .tipname{cursor:help;border-bottom:1px dotted var(--ink2)}
@@ -723,17 +723,13 @@ tr:hover td{background:var(--card)}
   background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 28px rgba(0,0,0,.30);
   font-size:12.5px;line-height:1.55;white-space:normal;pointer-events:none}
 #tipfx b{display:block;font-size:11px;color:var(--ink2);letter-spacing:.04em;margin-bottom:3px}
-/* Nhóm nền tile theo phe liên quan (user 2026-07-17): ánh vàng = chuyện VÀNG, ánh xanh = chuyện USD.
-   Overlay bằng background-image để giữ nguyên background-color gốc của .kpi (sống cả light/dark). */
-.kpi.side-gold{background-image:linear-gradient(rgba(212,166,66,.10),rgba(212,166,66,.10))}
-.kpi.side-usd{background-image:linear-gradient(rgba(72,132,220,.11),rgba(72,132,220,.11))}
 .obscol{display:none}
 body.showobs .obscol{display:table-cell}
 .kpi svg{display:none}
 body.showobs .kpi svg{display:initial}
-#obsbtn,#obsbtn2{margin-left:8px;font:inherit;font-size:12px;font-weight:400;padding:2px 10px;border-radius:6px;cursor:pointer;
-  background:var(--neu);color:var(--ink);border:1px solid var(--line);vertical-align:middle}
-#obsbtn:hover,#obsbtn2:hover{background:var(--card)}
+#obsbtn{margin-left:8px;font:inherit;font-size:12px;padding:2px 10px;border-radius:6px;cursor:pointer;
+  background:var(--neu);color:var(--ink);border:1px solid var(--line)}
+#obsbtn:hover{background:var(--card)}
 </style>
 <div id="tipfx"></div>
 <script>
@@ -758,16 +754,12 @@ body.showobs .kpi svg{display:initial}
   });
   document.addEventListener("click", function(){ tf.style.display = "none"; open = null; });
   var ob = document.getElementById("obsbtn");
-  var ob2 = document.getElementById("obsbtn2"); // nút thứ 2 ngay header section Liên thị trường — cùng 1 công tắc
   function setObs(on){
     document.body.classList.toggle("showobs", on);
     ob.textContent = on ? "📈 Ẩn chart" : "📈 Hiện chart";
-    if (ob2) ob2.textContent = ob.textContent;
     try { localStorage.setItem("fredObsCol", on ? "1" : "0"); } catch (e) {}
   }
-  var flip = function(e){ e.stopPropagation(); setObs(!document.body.classList.contains("showobs")); };
-  ob.addEventListener("click", flip);
-  if (ob2) ob2.addEventListener("click", flip);
+  ob.addEventListener("click", function(e){ e.stopPropagation(); setObs(!document.body.classList.contains("showobs")); });
   var saved = "0"; try { saved = localStorage.getItem("fredObsCol") || "0"; } catch (e) {}
   setObs(saved === "1");
   // ---- Liên thị trường: live-refresh — fetch 2 JSON (cùng origin trên Pages) và render lại section
