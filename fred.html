@@ -31,35 +31,35 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 22:02:44 17/7/2026 · 60 series (32→37→44→56→60: +carry AU/NZ/BoE + VN trade 17/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 22:16:42 17/7/2026 · 60 series (32→37→44→56→60: +carry AU/NZ/BoE + VN trade 17/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div id="dcpline"></div>
 <div class="kpis">
-  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên VÀNG rồi cộng cả 44 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 22:02:44 17/7/2026 VN." tabindex="0">GOLD BIAS (tổng 44 chỉ số active) ⓘ</span></div><div class="val">-4</div>
+  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên VÀNG rồi cộng cả 44 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 22:16:42 17/7/2026 VN." tabindex="0">GOLD BIAS (tổng 44 chỉ số active) ⓘ</span></div><div class="val">-4</div>
     <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="GOLD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (11):</span> CPI YoY · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · P(lạm phát >2.5%) 12T · TGA (két Kho bạc) · Cung tiền M2 · Term premium 10Y (Kim-Wright) · Custody Treasuries NHTW ngoại · Cân đối ngân sách LB · Michigan sentiment · Lợi suất 2Y (kỳ vọng Fed)<br><br><span class=&quot;neg&quot;>▼ Bất lợi (15):</span> Fed Funds (effective) · Bạc (QSLVO) · Core PCE YoY (thước Fed) · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Dầu WTI (tháng) · Điều kiện tài chính (NFCI) · EPU toàn cầu (tháng) · Real rate 10Y (model-based) · USDCNY · Real Broad Dollar (tháng)" tabindex="0"><b class="pos">▲11</b> · <b class="neg">▼15</b> · 18 im — soi phiếu ⓘ</span></div>
     <div class="bar"><i class="n" style="width:14%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>41 lần chạy · min -5 · max -1</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none" data-t="GOLD BIAS · từng lần chạy" data-l='["15/7 05:02: -3","15/7 05:17: -3","15/7 05:30: -3","15/7 06:30: -2","15/7 11:07: -3","15/7 11:43: -3","15/7 20:13: -5","15/7 20:29: -5","15/7 20:45: -5","16/7 10:01: -1","16/7 10:17: -1","16/7 10:59: -1","16/7 11:11: -1","16/7 12:54: -1","16/7 13:03: -1","16/7 16:56: -1","16/7 20:45: -1","16/7 22:36: -2","16/7 22:56: -2","16/7 23:04: -2","16/7 23:16: -3","16/7 23:23: -4","16/7 23:33: -4","16/7 23:42: -4","16/7 23:51: -3","16/7 23:52: -4","17/7 00:15: -4","17/7 00:20: -4","17/7 00:22: -4","17/7 00:30: -4","17/7 00:31: -4","17/7 01:03: -4","17/7 01:13: -4","17/7 01:24: -4","17/7 01:27: -4","17/7 06:30: -3","17/7 11:17: -4","17/7 12:01: -4","17/7 13:04: -4","17/7 20:45: -4","17/7 22:02: -4","17/7 22:16: -4"]'>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,22.2 5.3,22.2 7.7,22.2 10.1,19.8 12.4,22.2 14.8,22.2 17.1,27.0 19.4,27.0 21.8,27.0 24.1,17.4 26.5,17.4 28.9,17.4 31.2,17.4 33.5,17.4 35.9,17.4 38.3,17.4 40.6,17.4 43.0,19.8 45.3,19.8 47.6,19.8 50.0,22.2 52.4,24.6 54.7,24.6 57.0,24.6 59.4,22.2 61.8,24.6 64.1,24.6 66.5,24.6 68.8,24.6 71.2,24.6 73.5,24.6 75.8,24.6 78.2,24.6 80.5,24.6 82.9,24.6 85.3,22.2 87.6,24.6 90.0,24.6 92.3,24.6 94.7,24.6 97.0,24.6"/>
-    <circle cx="97.0" cy="24.6" r="3" class="n"/></svg><div class="lbl">history 41 lần chạy</div></div>
-  <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="USD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên USD rồi cộng cả 49 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 22:02:44 17/7/2026 VN." tabindex="0">USD BIAS (tổng 49 chỉ số active) ⓘ</span></div><div class="val">+3</div>
+    <polyline points="3.0,22.2 5.3,22.2 7.6,22.2 9.9,19.8 12.2,22.2 14.5,22.2 16.8,27.0 19.0,27.0 21.3,27.0 23.6,17.4 25.9,17.4 28.2,17.4 30.5,17.4 32.8,17.4 35.1,17.4 37.4,17.4 39.7,17.4 42.0,19.8 44.3,19.8 46.6,19.8 48.9,22.2 51.1,24.6 53.4,24.6 55.7,24.6 58.0,22.2 60.3,24.6 62.6,24.6 64.9,24.6 67.2,24.6 69.5,24.6 71.8,24.6 74.1,24.6 76.4,24.6 78.7,24.6 81.0,24.6 83.2,22.2 85.5,24.6 87.8,24.6 90.1,24.6 92.4,24.6 94.7,24.6 97.0,24.6"/>
+    <circle cx="97.0" cy="24.6" r="3" class="n"/></svg><div class="lbl">history 42 lần chạy</div></div>
+  <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="USD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên USD rồi cộng cả 49 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 22:16:42 17/7/2026 VN." tabindex="0">USD BIAS (tổng 49 chỉ số active) ⓘ</span></div><div class="val">+3</div>
     <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="USD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (15):</span> Fed Funds (effective) · Core PCE YoY (thước Fed) · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Real rate 10Y (model-based) · Chênh lệch 10Y Mỹ−Anh · Chênh lệch 10Y Mỹ−Thụy Sĩ · Chênh lệch 10Y Mỹ−Canada · Chênh lệch LS chính sách Fed−BoE · Chênh lệch 10Y Mỹ−Úc · Chênh lệch 10Y Mỹ−NZ<br><br><span class=&quot;neg&quot;>▼ Bất lợi (12):</span> CPI YoY · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · P(lạm phát >2.5%) 12T · Điều kiện tài chính (NFCI) · TGA (két Kho bạc) · Cung tiền M2 · EPU toàn cầu (tháng) · Custody Treasuries NHTW ngoại · Cân đối ngân sách LB · Lợi suất 2Y (kỳ vọng Fed) · USDCNY" tabindex="0"><b class="pos">▲15</b> · <b class="neg">▼12</b> · 22 im — soi phiếu ⓘ</span></div>
     <div class="bar"><i class="" style="width:9%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none"><title>41 lần chạy · min -2 · max 5</title>
+    <svg class="bspark" viewBox="0 0 100 30" preserveAspectRatio="none" data-t="USD BIAS · từng lần chạy" data-l='["15/7 05:02: +3","15/7 05:17: +3","15/7 05:30: +3","15/7 06:30: +4","15/7 11:07: +3","15/7 11:43: +3","15/7 20:13: +5","15/7 20:29: +5","15/7 20:45: +5","16/7 10:01: +3","16/7 10:17: +3","16/7 10:59: +3","16/7 11:11: +3","16/7 12:54: +3","16/7 13:03: +3","16/7 16:56: +3","16/7 20:45: +3","16/7 22:36: +2","16/7 22:56: +2","16/7 23:04: +2","16/7 23:16: +1","16/7 23:23: -2","16/7 23:33: -2","16/7 23:42: -2","16/7 23:51: -2","16/7 23:52: -2","17/7 00:15: -2","17/7 00:20: -2","17/7 00:22: -2","17/7 00:30: -2","17/7 00:31: -2","17/7 01:03: -2","17/7 01:13: -2","17/7 01:24: -2","17/7 01:27: -2","17/7 06:30: +2","17/7 11:17: +2","17/7 12:01: +2","17/7 13:04: +2","17/7 20:45: +3","17/7 22:02: +3","17/7 22:16: +3"]'>
     <line x1="0" y1="15" x2="100" y2="15"/>
-    <polyline points="3.0,7.8 5.3,7.8 7.7,7.8 10.1,5.4 12.4,7.8 14.8,7.8 17.1,3.0 19.4,3.0 21.8,3.0 24.1,7.8 26.5,7.8 28.9,7.8 31.2,7.8 33.5,7.8 35.9,7.8 38.3,7.8 40.6,7.8 43.0,10.2 45.3,10.2 47.6,10.2 50.0,12.6 52.4,19.8 54.7,19.8 57.0,19.8 59.4,19.8 61.8,19.8 64.1,19.8 66.5,19.8 68.8,19.8 71.2,19.8 73.5,19.8 75.8,19.8 78.2,19.8 80.5,19.8 82.9,19.8 85.3,10.2 87.6,10.2 90.0,10.2 92.3,10.2 94.7,7.8 97.0,7.8"/>
-    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 41 lần chạy</div></div>
+    <polyline points="3.0,7.8 5.3,7.8 7.6,7.8 9.9,5.4 12.2,7.8 14.5,7.8 16.8,3.0 19.0,3.0 21.3,3.0 23.6,7.8 25.9,7.8 28.2,7.8 30.5,7.8 32.8,7.8 35.1,7.8 37.4,7.8 39.7,7.8 42.0,10.2 44.3,10.2 46.6,10.2 48.9,12.6 51.1,19.8 53.4,19.8 55.7,19.8 58.0,19.8 60.3,19.8 62.6,19.8 64.9,19.8 67.2,19.8 69.5,19.8 71.8,19.8 74.1,19.8 76.4,19.8 78.7,19.8 81.0,19.8 83.2,10.2 85.5,10.2 87.8,10.2 90.1,10.2 92.4,7.8 94.7,7.8 97.0,7.8"/>
+    <circle cx="97.0" cy="7.8" r="3" class="p"/></svg><div class="lbl">history 42 lần chạy</div></div>
   <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="LỢI SUẤT THỰC 10Y — chi tiết" data-tip="DFII10 — lợi suất TIPS 10Y, tức lãi suất THỰC sau lạm phát kỳ vọng. Vàng không trả lãi nên real yield là CHI PHÍ CƠ HỘI của việc ôm vàng: tăng → vàng chịu áp lực xuống, rơi → vàng bay. Δ3 tháng so với obs ~60 phiên trước; %biên độ = vị trí giá trị hiện tại trong min–max 3 tháng.<br><br>Data mới nhất: 2.32% ngày 2026-07-15 (63 phiên · FRED cập nhật trễ ~1 ngày làm việc so thị trường)." tabindex="0">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng) ⓘ</span></div>
     <div class="val">2.32%</div>
     <div class="word neg">▲ +0.42 /3 tháng · cản vàng</div>
-    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>63 obs · min 1.89 · max 2.36</title><polyline points="2.0,23.5 3.5,22.1 5.1,23.5 6.6,23.1 8.2,22.6 9.7,22.6 11.3,22.6 12.8,24.0 14.4,23.1 15.9,22.6 17.5,20.7 19.0,21.7 20.6,23.1 22.1,21.2 23.7,20.7 25.2,21.7 26.8,20.7 28.3,22.1 29.9,21.2 31.4,19.3 33.0,19.3 34.5,18.9 36.1,14.2 37.6,12.8 39.2,10.4 40.7,12.8 42.3,10.4 43.8,11.4 45.4,14.2 46.9,14.6 48.5,16.0 50.0,15.6 51.5,15.6 53.1,15.6 54.6,13.7 56.2,13.7 57.7,10.0 59.3,9.0 60.8,9.5 62.4,9.0 63.9,11.4 65.5,10.9 67.0,11.8 68.6,12.3 70.1,8.1 71.7,9.0 73.2,5.7 74.8,5.3 76.3,8.1 77.9,10.0 79.4,10.4 81.0,11.4 82.5,9.5 84.1,7.1 85.6,6.7 87.2,7.6 88.7,4.8 90.3,4.3 91.8,4.3 93.4,3.9 94.9,2.0 96.5,3.4 98.0,3.9"/></svg><div class="lbl">91% biên độ 3 tháng (1.89–2.36) · ↑ real yield ⇒ vàng ↓</div></div>
+    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFII10" data-l='["04-15: 1.90 %","04-16: 1.93 %","04-17: 1.90 %","04-20: 1.91 %","04-21: 1.92 %","04-22: 1.92 %","04-23: 1.92 %","04-24: 1.89 %","04-27: 1.91 %","04-28: 1.92 %","04-29: 1.96 %","04-30: 1.94 %","05-01: 1.91 %","05-04: 1.95 %","05-05: 1.96 %","05-06: 1.94 %","05-07: 1.96 %","05-08: 1.93 %","05-11: 1.95 %","05-12: 1.99 %","05-13: 1.99 %","05-14: 2.00 %","05-15: 2.10 %","05-18: 2.13 %","05-19: 2.18 %","05-20: 2.13 %","05-21: 2.18 %","05-22: 2.16 %","05-26: 2.10 %","05-27: 2.09 %","05-28: 2.06 %","05-29: 2.07 %","06-01: 2.07 %","06-02: 2.07 %","06-03: 2.11 %","06-04: 2.11 %","06-05: 2.19 %","06-08: 2.21 %","06-09: 2.20 %","06-10: 2.21 %","06-11: 2.16 %","06-12: 2.17 %","06-15: 2.15 %","06-16: 2.14 %","06-17: 2.23 %","06-18: 2.21 %","06-22: 2.28 %","06-23: 2.29 %","06-24: 2.23 %","06-25: 2.19 %","06-26: 2.18 %","06-29: 2.16 %","06-30: 2.20 %","07-01: 2.25 %","07-02: 2.26 %","07-06: 2.24 %","07-07: 2.30 %","07-08: 2.31 %","07-09: 2.31 %","07-10: 2.32 %","07-13: 2.36 %","07-14: 2.33 %","07-15: 2.32 %"]'><polyline points="2.0,23.5 3.5,22.1 5.1,23.5 6.6,23.1 8.2,22.6 9.7,22.6 11.3,22.6 12.8,24.0 14.4,23.1 15.9,22.6 17.5,20.7 19.0,21.7 20.6,23.1 22.1,21.2 23.7,20.7 25.2,21.7 26.8,20.7 28.3,22.1 29.9,21.2 31.4,19.3 33.0,19.3 34.5,18.9 36.1,14.2 37.6,12.8 39.2,10.4 40.7,12.8 42.3,10.4 43.8,11.4 45.4,14.2 46.9,14.6 48.5,16.0 50.0,15.6 51.5,15.6 53.1,15.6 54.6,13.7 56.2,13.7 57.7,10.0 59.3,9.0 60.8,9.5 62.4,9.0 63.9,11.4 65.5,10.9 67.0,11.8 68.6,12.3 70.1,8.1 71.7,9.0 73.2,5.7 74.8,5.3 76.3,8.1 77.9,10.0 79.4,10.4 81.0,11.4 82.5,9.5 84.1,7.1 85.6,6.7 87.2,7.6 88.7,4.8 90.3,4.3 91.8,4.3 93.4,3.9 94.9,2.0 96.5,3.4 98.0,3.9"/></svg><div class="lbl">91% biên độ 3 tháng (1.89–2.36) · ↑ real yield ⇒ vàng ↓</div></div>
   <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="CARRY Fed−ECB — chi tiết" data-tip="DFF (lãi Fed hiệu dụng) − ECBDFR (deposit rate ECB) = chênh lệch lãi CHÍNH SÁCH Mỹ−Eurozone, driver #1 của USD: carry rộng → vốn chảy về tài sản USD, EUR (~58% rổ DXY) yếu đi. Chuỗi bậc thang — chỉ nhảy khi 1 trong 2 NHTW đổi lãi — nên đọc theo Δ3 tháng, KHÔNG đọc %biên độ kiểu percentile.<br><br>Màu chữ tô theo tác động LÊN VÀNG (đồng bộ toàn trang): carry nới → USD mạnh → đỏ (cản vàng); carry hẹp → xanh (đỡ vàng).<br><br>Data mới nhất: 1.38 đpt ngày 2026-07-15 (66 phiên căn ngày trùng 2 chuỗi daily)." tabindex="0">CARRY Fed−ECB (chính sách · driver #1 của USD) ⓘ</span></div>
     <div class="val">1.38 đpt</div>
     <div class="word pos">▼ -0.25 /3 tháng · carry thu hẹp — cản USD → đỡ vàng</div>
-    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>66 obs · min 1.37 · max 1.63</title><polyline points="2.0,2.0 3.5,2.0 5.0,2.0 6.4,2.0 7.9,2.0 9.4,2.0 10.9,2.0 12.3,2.0 13.8,2.8 15.3,2.8 16.8,2.8 18.2,2.8 19.7,2.8 21.2,2.8 22.7,2.8 24.2,2.8 25.6,2.8 27.1,2.8 28.6,2.8 30.1,2.8 31.5,2.8 33.0,2.8 34.5,2.8 36.0,2.8 37.4,2.8 38.9,2.8 40.4,2.8 41.9,2.8 43.4,2.8 44.8,2.8 46.3,2.8 47.8,2.8 49.3,2.8 50.7,2.8 52.2,2.8 53.7,2.0 55.2,2.0 56.6,23.2 58.1,23.2 59.6,23.2 61.1,23.2 62.6,23.2 64.0,23.2 65.5,23.2 67.0,23.2 68.5,23.2 69.9,23.2 71.4,23.2 72.9,23.2 74.4,23.2 75.8,23.2 77.3,23.2 78.8,23.2 80.3,23.2 81.8,23.2 83.2,23.2 84.7,23.2 86.2,23.2 87.7,24.0 89.1,24.0 90.6,24.0 92.1,24.0 93.6,24.0 95.0,24.0 96.5,23.2 98.0,23.2"/></svg><div class="lbl">DFF − ECBDFR (deposit rate) · carry ⇒ USD</div></div>
+    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFF − ECBDFR" data-l='["05-11: 1.63 đpt","05-12: 1.63 đpt","05-13: 1.63 đpt","05-14: 1.63 đpt","05-15: 1.63 đpt","05-16: 1.63 đpt","05-17: 1.63 đpt","05-18: 1.63 đpt","05-19: 1.62 đpt","05-20: 1.62 đpt","05-21: 1.62 đpt","05-22: 1.62 đpt","05-23: 1.62 đpt","05-24: 1.62 đpt","05-25: 1.62 đpt","05-26: 1.62 đpt","05-27: 1.62 đpt","05-28: 1.62 đpt","05-29: 1.62 đpt","05-30: 1.62 đpt","05-31: 1.62 đpt","06-01: 1.62 đpt","06-02: 1.62 đpt","06-03: 1.62 đpt","06-04: 1.62 đpt","06-05: 1.62 đpt","06-06: 1.62 đpt","06-07: 1.62 đpt","06-08: 1.62 đpt","06-09: 1.62 đpt","06-10: 1.62 đpt","06-11: 1.62 đpt","06-12: 1.62 đpt","06-13: 1.62 đpt","06-14: 1.62 đpt","06-15: 1.63 đpt","06-16: 1.63 đpt","06-17: 1.38 đpt","06-18: 1.38 đpt","06-19: 1.38 đpt","06-20: 1.38 đpt","06-21: 1.38 đpt","06-22: 1.38 đpt","06-23: 1.38 đpt","06-24: 1.38 đpt","06-25: 1.38 đpt","06-26: 1.38 đpt","06-27: 1.38 đpt","06-28: 1.38 đpt","06-29: 1.38 đpt","06-30: 1.38 đpt","07-01: 1.38 đpt","07-02: 1.38 đpt","07-03: 1.38 đpt","07-04: 1.38 đpt","07-05: 1.38 đpt","07-06: 1.38 đpt","07-07: 1.38 đpt","07-08: 1.37 đpt","07-09: 1.37 đpt","07-10: 1.37 đpt","07-11: 1.37 đpt","07-12: 1.37 đpt","07-13: 1.37 đpt","07-14: 1.38 đpt","07-15: 1.38 đpt"]'><polyline points="2.0,2.0 3.5,2.0 5.0,2.0 6.4,2.0 7.9,2.0 9.4,2.0 10.9,2.0 12.3,2.0 13.8,2.8 15.3,2.8 16.8,2.8 18.2,2.8 19.7,2.8 21.2,2.8 22.7,2.8 24.2,2.8 25.6,2.8 27.1,2.8 28.6,2.8 30.1,2.8 31.5,2.8 33.0,2.8 34.5,2.8 36.0,2.8 37.4,2.8 38.9,2.8 40.4,2.8 41.9,2.8 43.4,2.8 44.8,2.8 46.3,2.8 47.8,2.8 49.3,2.8 50.7,2.8 52.2,2.8 53.7,2.0 55.2,2.0 56.6,23.2 58.1,23.2 59.6,23.2 61.1,23.2 62.6,23.2 64.0,23.2 65.5,23.2 67.0,23.2 68.5,23.2 69.9,23.2 71.4,23.2 72.9,23.2 74.4,23.2 75.8,23.2 77.3,23.2 78.8,23.2 80.3,23.2 81.8,23.2 83.2,23.2 84.7,23.2 86.2,23.2 87.7,24.0 89.1,24.0 90.6,24.0 92.1,24.0 93.6,24.0 95.0,24.0 96.5,23.2 98.0,23.2"/></svg><div class="lbl">DFF − ECBDFR (deposit rate) · carry ⇒ USD</div></div>
   <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD/SILVER RATIO — chi tiết" data-tip="Index vàng (QGLDI) chia index bạc (QSLVO) — 2 index có base khác nhau nên MỨC tuyệt đối vô nghĩa, chỉ đọc trend + vị trí trong biên độ 3 tháng. Ratio tăng = bạc tụt lại sau vàng → rally thiên phòng thủ/fear (bid trú ẩn thuần); ratio giảm = bạc dẫn sóng → rally kim loại quý khỏe, breadth tốt. Ngưỡng đọc trend: ±1.5%/3 tháng.<br><br>Data mới nhất: 2026-07-16 (63 phiên khớp ngày cả 2 chuỗi)." tabindex="0">GOLD/SILVER RATIO (bạc confirm vàng) ⓘ</span></div>
     <div class="val">100%<span style="font-size:13px;font-weight:400"> biên độ 3T</span></div>
     <div class="word neg">▲ +20.3% /3 tháng · bạc tụt lại — rally phòng thủ/fear</div>
-    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>63 obs · min 2.17 · max 2.70</title><polyline points="2.0,20.8 3.5,21.4 5.1,21.4 6.6,20.3 8.2,21.1 9.7,20.5 11.3,20.6 12.8,20.9 14.4,20.7 15.9,20.3 17.5,21.1 19.0,22.6 20.6,22.2 22.1,21.6 23.7,22.8 25.2,23.2 26.8,24.0 28.3,22.7 29.9,22.9 31.4,23.3 33.0,22.9 34.5,20.8 36.1,21.2 37.6,20.6 39.2,21.0 40.7,21.7 42.3,21.7 43.8,22.8 45.4,22.4 46.9,22.4 48.5,21.8 50.0,22.5 51.5,22.7 53.1,22.1 54.6,22.3 56.2,19.4 57.7,19.1 59.3,17.1 60.8,18.9 62.4,20.1 63.9,15.4 65.5,16.1 67.0,15.9 68.6,14.4 70.1,13.7 71.7,13.6 73.2,10.5 74.8,6.3 76.3,6.4 77.9,7.0 79.4,7.3 81.0,8.9 82.5,8.5 84.1,9.1 85.6,10.0 87.2,8.3 88.7,6.1 90.3,7.5 91.8,7.6 93.4,4.8 94.9,5.3 96.5,3.6 98.0,2.0"/></svg><div class="lbl">QGLDI/QSLVO · ratio tăng = bạc yếu hơn vàng</div></div>
+    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="QGLDI/QSLVO" data-l='["04-16: 2.245","04-17: 2.229","04-20: 2.231","04-21: 2.257","04-22: 2.236","04-23: 2.252","04-24: 2.250","04-27: 2.241","04-28: 2.247","04-29: 2.256","04-30: 2.237","05-01: 2.200","05-04: 2.210","05-05: 2.224","05-06: 2.195","05-07: 2.186","05-08: 2.167","05-11: 2.198","05-12: 2.193","05-13: 2.185","05-14: 2.192","05-15: 2.244","05-18: 2.234","05-19: 2.249","05-20: 2.239","05-21: 2.223","05-22: 2.223","05-26: 2.195","05-27: 2.205","05-28: 2.205","05-29: 2.219","06-01: 2.203","06-02: 2.199","06-03: 2.213","06-04: 2.207","06-05: 2.279","06-08: 2.285","06-09: 2.335","06-10: 2.290","06-11: 2.262","06-12: 2.376","06-15: 2.358","06-16: 2.362","06-17: 2.400","06-18: 2.417","06-22: 2.418","06-23: 2.494","06-24: 2.595","06-25: 2.593","06-26: 2.579","06-29: 2.571","06-30: 2.533","07-01: 2.543","07-02: 2.529","07-06: 2.507","07-07: 2.548","07-08: 2.601","07-09: 2.566","07-10: 2.565","07-13: 2.632","07-14: 2.621","07-15: 2.661","07-16: 2.700"]'><polyline points="2.0,20.8 3.5,21.4 5.1,21.4 6.6,20.3 8.2,21.1 9.7,20.5 11.3,20.6 12.8,20.9 14.4,20.7 15.9,20.3 17.5,21.1 19.0,22.6 20.6,22.2 22.1,21.6 23.7,22.8 25.2,23.2 26.8,24.0 28.3,22.7 29.9,22.9 31.4,23.3 33.0,22.9 34.5,20.8 36.1,21.2 37.6,20.6 39.2,21.0 40.7,21.7 42.3,21.7 43.8,22.8 45.4,22.4 46.9,22.4 48.5,21.8 50.0,22.5 51.5,22.7 53.1,22.1 54.6,22.3 56.2,19.4 57.7,19.1 59.3,17.1 60.8,18.9 62.4,20.1 63.9,15.4 65.5,16.1 67.0,15.9 68.6,14.4 70.1,13.7 71.7,13.6 73.2,10.5 74.8,6.3 76.3,6.4 77.9,7.0 79.4,7.3 81.0,8.9 82.5,8.5 84.1,9.1 85.6,10.0 87.2,8.3 88.7,6.1 90.3,7.5 91.8,7.6 93.4,4.8 94.9,5.3 96.5,3.6 98.0,2.0"/></svg><div class="lbl">QGLDI/QSLVO · ratio tăng = bạc yếu hơn vàng</div></div>
   <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD × REAL YIELD — chi tiết" data-tip="Pearson corr giữa %Δ ngày của index vàng (QGLDI) và Δ ngày của real yield 10Y (DFII10), cửa sổ ~3 tháng. Chuẩn lịch sử ÂM: real yield tăng → vàng giảm. Corr ≥ +0.2 kéo dài mà CẢ HAI cùng tăng = PHÂN KỲ REGIME — vàng đang chạy bằng driver phi lãi suất (bid NHTW, de-dollarization, hậu-2022) → các tín hiệu dựa real yield giảm trọng lượng.<br><br>Data: 61 cặp Δ ngày khớp · obs cuối QGLDI 2026-07-16 · DFII10 2026-07-15." tabindex="0">GOLD × REAL YIELD (corr Δ ngày ~3 tháng) ⓘ</span></div>
     <div class="val">-0.42</div>
     <div class="word neu">nghịch chuẩn — vàng vẫn giao dịch theo real yield</div>
@@ -67,8 +67,8 @@ tr:hover td{background:var(--card)}
   <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="COPPER/GOLD — chi tiết" data-tip="Giá đồng (PCOPPUSDM, IMF — chỉ có THEO THÁNG, trễ ~1-2 tháng) chia index vàng quy về tháng. Thước growth-vs-fear kinh điển, thường DẪN HƯỚNG lợi suất 10Y: ratio tăng = kinh tế thật hút kim loại công nghiệp → yields dễ lên, cản vàng; ratio giảm = fear lấn growth → yields dễ xuống, đỡ vàng. Ngưỡng đọc: ±3%/6 tháng. Base 2 chỉ số khác nhau → chỉ đọc trend.<br><br>Data mới nhất: tháng 2026-06 (23 tháng khớp)." tabindex="0">COPPER/GOLD (growth vs fear · dẫn 10Y) ⓘ</span></div>
     <div class="val">+42.0%<span style="font-size:13px;font-weight:400"> /6T</span></div>
     <div class="word neg">▲ +42.0% /6 tháng · growth impulse — yields dễ lên, cản vàng</div>
-    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>23 obs · min 3.14 · max 5.36</title><polyline points="2.0,22.6 6.4,22.0 10.7,21.7 15.1,22.6 19.5,22.9 23.8,23.7 28.2,21.5 32.5,21.8 36.9,24.0 41.3,22.1 45.6,21.0 50.0,20.7 54.4,22.3 58.7,22.5 63.1,19.9 67.5,20.6 71.8,17.7 76.2,14.6 80.5,15.9 84.9,13.7 89.3,12.0 93.6,9.1 98.0,2.0"/></svg><div class="lbl">PCOPPUSDM / QGLDI theo tháng (23 obs)</div></div>
-  <div class="kpi"><div class="lbl"><span class="tipname" data-tipid="DỮ LIỆU — chi tiết" data-tip="Sức khỏe lần fetch này: ok = số series lấy thành công trên tổng 60. stale = data trễ bất thường so với cadence của series (vẫn chấm điểm theo obs cuối, có cờ ⚠ ở bảng dưới). bị cắt lịch sử = observation_start dịch chuyển (nguồn cắt data cũ — gate cảnh báo riêng). lỗi = fetch/parse fail, loại khỏi tally.<br><br>Lần chạy này: 22:02:44 17/7/2026 VN. Ngày obs cuối TỪNG series: cột ngày ở bảng dưới." tabindex="0">DỮ LIỆU ⓘ</span></div><div class="val">60/60</div>
+    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="Cu/Au theo tháng" data-l='["2024-08: 3.2876","2024-09: 3.3407","2024-10: 3.3758","2024-11: 3.2850","2024-12: 3.2541","2025-01: 3.1778","2025-02: 3.3910","2025-03: 3.3616","2025-04: 3.1426","2025-05: 3.3353","2025-06: 3.4456","2025-07: 3.4750","2025-08: 3.3177","2025-09: 3.2951","2025-10: 3.5571","2025-11: 3.4858","2025-12: 3.7759","2026-01: 4.0906","2026-02: 3.9563","2026-03: 4.1798","2026-04: 4.3572","2026-05: 4.6461","2026-06: 5.3617"]'><polyline points="2.0,22.6 6.4,22.0 10.7,21.7 15.1,22.6 19.5,22.9 23.8,23.7 28.2,21.5 32.5,21.8 36.9,24.0 41.3,22.1 45.6,21.0 50.0,20.7 54.4,22.3 58.7,22.5 63.1,19.9 67.5,20.6 71.8,17.7 76.2,14.6 80.5,15.9 84.9,13.7 89.3,12.0 93.6,9.1 98.0,2.0"/></svg><div class="lbl">PCOPPUSDM / QGLDI theo tháng (23 obs)</div></div>
+  <div class="kpi"><div class="lbl"><span class="tipname" data-tipid="DỮ LIỆU — chi tiết" data-tip="Sức khỏe lần fetch này: ok = số series lấy thành công trên tổng 60. stale = data trễ bất thường so với cadence của series (vẫn chấm điểm theo obs cuối, có cờ ⚠ ở bảng dưới). bị cắt lịch sử = observation_start dịch chuyển (nguồn cắt data cũ — gate cảnh báo riêng). lỗi = fetch/parse fail, loại khỏi tally.<br><br>Lần chạy này: 22:16:42 17/7/2026 VN. Ngày obs cuối TỪNG series: cột ngày ở bảng dưới." tabindex="0">DỮ LIỆU ⓘ</span></div><div class="val">60/60</div>
     <div class="word neu">4 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
 <div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng. · Nền tile: <span style="background:rgba(212,166,66,.22);padding:0 6px;border-radius:4px">ánh vàng</span> = nhóm chuyện VÀNG · <span style="background:rgba(72,132,220,.22);padding:0 6px;border-radius:4px">ánh xanh</span> = nhóm chuyện USD; chữ đỏ/xanh trên tile quy về tác động cho VÀNG (riêng card USD BIAS mô tả chính USD). <button id="obsbtn" type="button">📈 Hiện chart</button> <span style="font-size:11px">(sparkline trên cards + cột 30 obs)</span></div>
@@ -84,7 +84,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.32 %</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— +0.01</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 2.11 · max 2.36</title><polyline points="2.0,24.0 5.6,17.0 9.1,15.2 12.7,16.1 16.2,15.2 19.8,19.6 23.3,18.7 26.9,20.5 30.4,21.4 34.0,13.4 37.6,15.2 41.1,9.0 44.7,8.2 48.2,13.4 51.8,17.0 55.3,17.8 58.9,19.6 62.4,16.1 66.0,11.7 69.6,10.8 73.1,12.6 76.7,7.3 80.2,6.4 83.8,6.4 87.3,5.5 90.9,2.0 94.4,4.6 98.0,5.5"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFII10" data-l='["06-04: 2.11 %","06-05: 2.19 %","06-08: 2.21 %","06-09: 2.2 %","06-10: 2.21 %","06-11: 2.16 %","06-12: 2.17 %","06-15: 2.15 %","06-16: 2.14 %","06-17: 2.23 %","06-18: 2.21 %","06-22: 2.28 %","06-23: 2.29 %","06-24: 2.23 %","06-25: 2.19 %","06-26: 2.18 %","06-29: 2.16 %","06-30: 2.2 %","07-01: 2.25 %","07-02: 2.26 %","07-06: 2.24 %","07-07: 2.3 %","07-08: 2.31 %","07-09: 2.31 %","07-10: 2.32 %","07-13: 2.36 %","07-14: 2.33 %","07-15: 2.32 %"]'><polyline points="2.0,24.0 5.6,17.0 9.1,15.2 12.7,16.1 16.2,15.2 19.8,19.6 23.3,18.7 26.9,20.5 30.4,21.4 34.0,13.4 37.6,15.2 41.1,9.0 44.7,8.2 48.2,13.4 51.8,17.0 55.3,17.8 58.9,19.6 62.4,16.1 66.0,11.7 69.6,10.8 73.1,12.6 76.7,7.3 80.2,6.4 83.8,6.4 87.3,5.5 90.9,2.0 94.4,4.6 98.0,5.5"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -94,7 +94,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.01 %</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— +0.01</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 1.70 · max 2.06</title><polyline points="2.0,24.0 5.6,17.3 9.1,16.7 12.7,16.7 16.2,16.1 19.8,19.1 23.3,16.7 26.9,19.1 30.4,17.9 34.0,8.1 37.6,8.1 41.1,5.1 44.7,3.8 48.2,6.9 51.8,10.6 55.3,11.2 58.9,11.8 62.4,9.9 66.0,6.9 69.6,6.3 73.1,9.3 76.7,6.3 80.2,5.7 83.8,6.3 87.3,4.4 90.9,2.0 94.4,3.8 98.0,5.1"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFII5" data-l='["06-04: 1.7 %","06-05: 1.81 %","06-08: 1.82 %","06-09: 1.82 %","06-10: 1.83 %","06-11: 1.78 %","06-12: 1.82 %","06-15: 1.78 %","06-16: 1.8 %","06-17: 1.96 %","06-18: 1.96 %","06-22: 2.01 %","06-23: 2.03 %","06-24: 1.98 %","06-25: 1.92 %","06-26: 1.91 %","06-29: 1.9 %","06-30: 1.93 %","07-01: 1.98 %","07-02: 1.99 %","07-06: 1.94 %","07-07: 1.99 %","07-08: 2 %","07-09: 1.99 %","07-10: 2.02 %","07-13: 2.06 %","07-14: 2.03 %","07-15: 2.01 %"]'><polyline points="2.0,24.0 5.6,17.3 9.1,16.7 12.7,16.7 16.2,16.1 19.8,19.1 23.3,16.7 26.9,19.1 30.4,17.9 34.0,8.1 37.6,8.1 41.1,5.1 44.7,3.8 48.2,6.9 51.8,10.6 55.3,11.2 58.9,11.8 62.4,9.9 66.0,6.9 69.6,6.3 73.1,9.3 76.7,6.3 80.2,5.7 83.8,6.3 87.3,4.4 90.9,2.0 94.4,3.8 98.0,5.1"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -104,7 +104,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.22 %</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— -0.01</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 2.18 · max 2.36</title><polyline points="2.0,2.0 5.6,3.2 9.1,5.7 12.7,4.4 16.2,10.6 19.8,8.1 23.3,6.9 26.9,10.6 30.4,14.2 34.0,15.4 37.6,17.9 41.1,20.3 44.7,24.0 48.2,20.3 51.8,21.6 55.3,19.1 58.9,16.7 62.4,17.9 66.0,17.9 69.6,16.7 73.1,15.4 76.7,15.4 80.2,17.9 83.8,16.7 87.3,14.2 90.9,15.4 94.4,17.9 98.0,19.1"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="T10YIE" data-l='["06-05: 2.36 %","06-08: 2.35 %","06-09: 2.33 %","06-10: 2.34 %","06-11: 2.29 %","06-12: 2.31 %","06-15: 2.32 %","06-16: 2.29 %","06-17: 2.26 %","06-18: 2.25 %","06-22: 2.23 %","06-23: 2.21 %","06-24: 2.18 %","06-25: 2.21 %","06-26: 2.2 %","06-29: 2.22 %","06-30: 2.24 %","07-01: 2.23 %","07-02: 2.23 %","07-06: 2.24 %","07-07: 2.25 %","07-08: 2.25 %","07-09: 2.23 %","07-10: 2.24 %","07-13: 2.26 %","07-14: 2.25 %","07-15: 2.23 %","07-16: 2.22 %"]'><polyline points="2.0,2.0 5.6,3.2 9.1,5.7 12.7,4.4 16.2,10.6 19.8,8.1 23.3,6.9 26.9,10.6 30.4,14.2 34.0,15.4 37.6,17.9 41.1,20.3 44.7,24.0 48.2,20.3 51.8,21.6 55.3,19.1 58.9,16.7 62.4,17.9 66.0,17.9 69.6,16.7 73.1,15.4 76.7,15.4 80.2,17.9 83.8,16.7 87.3,14.2 90.9,15.4 94.4,17.9 98.0,19.1"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -114,7 +114,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.2 %</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— +0.02</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 2.17 · max 2.24</title><polyline points="2.0,2.0 5.6,5.1 9.1,8.3 12.7,2.0 16.2,20.9 19.8,5.1 23.3,2.0 26.9,8.3 30.4,11.4 34.0,5.1 37.6,20.9 41.1,20.9 44.7,24.0 48.2,17.7 51.8,17.7 55.3,14.6 58.9,8.3 62.4,14.6 66.0,8.3 69.6,11.4 73.1,8.3 76.7,17.7 80.2,20.9 83.8,14.6 87.3,11.4 90.9,8.3 94.4,11.4 98.0,14.6"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="T5YIFR" data-l='["06-05: 2.24 %","06-08: 2.23 %","06-09: 2.22 %","06-10: 2.24 %","06-11: 2.18 %","06-12: 2.23 %","06-15: 2.24 %","06-16: 2.22 %","06-17: 2.21 %","06-18: 2.23 %","06-22: 2.18 %","06-23: 2.18 %","06-24: 2.17 %","06-25: 2.19 %","06-26: 2.19 %","06-29: 2.2 %","06-30: 2.22 %","07-01: 2.2 %","07-02: 2.22 %","07-06: 2.21 %","07-07: 2.22 %","07-08: 2.19 %","07-09: 2.18 %","07-10: 2.2 %","07-13: 2.21 %","07-14: 2.22 %","07-15: 2.21 %","07-16: 2.2 %"]'><polyline points="2.0,2.0 5.6,5.1 9.1,8.3 12.7,2.0 16.2,20.9 19.8,5.1 23.3,2.0 26.9,8.3 30.4,11.4 34.0,5.1 37.6,20.9 41.1,20.9 44.7,24.0 48.2,17.7 51.8,17.7 55.3,14.6 58.9,8.3 62.4,14.6 66.0,8.3 69.6,11.4 73.1,8.3 76.7,17.7 80.2,20.9 83.8,14.6 87.3,11.4 90.9,8.3 94.4,11.4 98.0,14.6"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -124,7 +124,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>3.63 %</b><span class="sid">2026-07-15</span></td>
         <td class="pos">▲ +0.01</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 3.62 · max 3.63</title><polyline points="2.0,2.0 5.3,2.0 8.6,2.0 11.9,2.0 15.2,2.0 18.6,2.0 21.9,2.0 25.2,2.0 28.5,2.0 31.8,2.0 35.1,2.0 38.4,2.0 41.7,2.0 45.0,2.0 48.3,2.0 51.7,2.0 55.0,2.0 58.3,2.0 61.6,2.0 64.9,2.0 68.2,2.0 71.5,2.0 74.8,24.0 78.1,24.0 81.4,24.0 84.8,24.0 88.1,24.0 91.4,24.0 94.7,2.0 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFF" data-l='["06-16: 3.63 %","06-17: 3.63 %","06-18: 3.63 %","06-19: 3.63 %","06-20: 3.63 %","06-21: 3.63 %","06-22: 3.63 %","06-23: 3.63 %","06-24: 3.63 %","06-25: 3.63 %","06-26: 3.63 %","06-27: 3.63 %","06-28: 3.63 %","06-29: 3.63 %","06-30: 3.63 %","07-01: 3.63 %","07-02: 3.63 %","07-03: 3.63 %","07-04: 3.63 %","07-05: 3.63 %","07-06: 3.63 %","07-07: 3.63 %","07-08: 3.62 %","07-09: 3.62 %","07-10: 3.62 %","07-11: 3.62 %","07-12: 3.62 %","07-13: 3.62 %","07-14: 3.63 %","07-15: 3.63 %"]'><polyline points="2.0,2.0 5.3,2.0 8.6,2.0 11.9,2.0 15.2,2.0 18.6,2.0 21.9,2.0 25.2,2.0 28.5,2.0 31.8,2.0 35.1,2.0 38.4,2.0 41.7,2.0 45.0,2.0 48.3,2.0 51.7,2.0 55.0,2.0 58.3,2.0 61.6,2.0 64.9,2.0 68.2,2.0 71.5,2.0 74.8,24.0 78.1,24.0 81.4,24.0 84.8,24.0 88.1,24.0 91.4,24.0 94.7,2.0 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -134,7 +134,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-0.091</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— -0.781</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min -1.96 · max 2.71</title><polyline points="2.0,17.8 5.3,2.0 8.6,14.8 11.9,10.7 15.2,3.1 18.6,21.3 21.9,17.9 25.2,21.2 28.5,16.3 31.8,8.9 35.1,5.1 38.4,11.3 41.7,15.3 45.0,7.9 48.3,5.3 51.7,18.5 55.0,19.3 58.3,10.2 61.6,13.8 64.9,15.4 68.2,24.0 71.5,18.1 74.8,12.3 78.1,11.2 81.4,11.5 84.8,19.8 88.1,15.3 91.4,7.2 94.7,17.9 98.0,15.2"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="KCROROG" data-l='["06-04: -0.648","06-05: 2.712","06-08: 0.002","06-09: 0.861","06-10: 2.48","06-11: -1.388","06-12: -0.668","06-15: -1.367","06-16: -0.324","06-17: 1.255","06-18: 2.053","06-19: 0.74","06-22: -0.111","06-23: 1.468","06-24: 2.011","06-25: -0.802","06-26: -0.962","06-29: 0.972","06-30: 0.199","07-01: -0.144","07-02: -1.964","07-03: -0.713","07-06: 0.531","07-07: 0.755","07-08: 0.69","07-09: -1.068","07-10: -0.115","07-13: 1.611","07-14: -0.678","07-15: -0.091"]'><polyline points="2.0,17.8 5.3,2.0 8.6,14.8 11.9,10.7 15.2,3.1 18.6,21.3 21.9,17.9 25.2,21.2 28.5,16.3 31.8,8.9 35.1,5.1 38.4,11.3 41.7,15.3 45.0,7.9 48.3,5.3 51.7,18.5 55.0,19.3 58.3,10.2 61.6,13.8 64.9,15.4 68.2,24.0 71.5,18.1 74.8,12.3 78.1,11.2 81.4,11.5 84.8,19.8 88.1,15.3 91.4,7.2 94.7,17.9 98.0,15.2"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -144,7 +144,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>26.65</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— +1.32</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 23.95 · max 32.18</title><polyline points="2.0,10.8 5.6,15.4 9.1,13.1 12.7,2.0 16.2,12.3 19.8,16.2 23.3,17.3 26.9,20.7 30.4,12.0 34.0,13.4 37.6,18.1 41.1,14.8 44.7,3.6 48.2,9.0 51.8,15.4 55.3,14.0 58.9,15.3 62.4,15.5 66.0,18.5 69.6,20.3 73.1,18.0 76.7,14.2 80.2,20.3 83.8,24.0 87.3,16.0 90.9,21.1 94.4,21.5 98.0,16.8"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GVZCLS" data-l='["06-05: 28.89","06-08: 27.17","06-09: 28.04","06-10: 32.18","06-11: 28.33","06-12: 26.85","06-15: 26.47","06-16: 25.18","06-17: 28.45","06-18: 27.9","06-22: 26.15","06-23: 27.41","06-24: 31.6","06-25: 29.58","06-26: 27.18","06-29: 27.7","06-30: 27.2","07-01: 27.12","07-02: 26","07-06: 25.33","07-07: 26.21","07-08: 27.6","07-09: 25.33","07-10: 23.95","07-13: 26.93","07-14: 25.02","07-15: 24.88","07-16: 26.65"]'><polyline points="2.0,10.8 5.6,15.4 9.1,13.1 12.7,2.0 16.2,12.3 19.8,16.2 23.3,17.3 26.9,20.7 30.4,12.0 34.0,13.4 37.6,18.1 41.1,14.8 44.7,3.6 48.2,9.0 51.8,15.4 55.3,14.0 58.9,15.3 62.4,15.5 66.0,18.5 69.6,20.3 73.1,18.0 76.7,14.2 80.2,20.3 83.8,24.0 87.3,16.0 90.9,21.1 94.4,21.5 98.0,16.8"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -154,7 +154,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2,495</b><span class="sid">2026-07-16</span></td>
         <td class="neg">▼ -98.75</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 2494.80 · max 2797.56</title><polyline points="2.0,2.5 5.6,2.0 9.1,5.0 12.7,12.5 16.2,7.3 19.8,14.2 23.3,10.3 26.9,9.7 30.4,13.3 34.0,13.5 37.6,14.3 41.1,17.5 44.7,23.0 48.2,21.3 51.8,19.1 55.3,21.5 58.9,21.6 62.4,20.5 66.0,16.8 69.6,14.8 73.1,17.1 76.7,18.5 80.2,16.8 83.8,17.2 87.3,23.4 90.9,21.1 94.4,20.9 98.0,24.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="NASDAQQGLDI" data-l='["06-05: 2,790","06-08: 2,798","06-09: 2,757","06-10: 2,653","06-11: 2,725","06-12: 2,630","06-15: 2,683","06-16: 2,692","06-17: 2,642","06-18: 2,639","06-22: 2,629","06-23: 2,584","06-24: 2,509","06-25: 2,533","06-26: 2,562","06-29: 2,529","06-30: 2,528","07-01: 2,543","07-02: 2,594","07-06: 2,621","07-07: 2,590","07-08: 2,570","07-09: 2,594","07-10: 2,589","07-13: 2,504","07-14: 2,535","07-15: 2,537","07-16: 2,495"]'><polyline points="2.0,2.5 5.6,2.0 9.1,5.0 12.7,12.5 16.2,7.3 19.8,14.2 23.3,10.3 26.9,9.7 30.4,13.3 34.0,13.5 37.6,14.3 41.1,17.5 44.7,23.0 48.2,21.3 51.8,19.1 55.3,21.5 58.9,21.6 62.4,20.5 66.0,16.8 69.6,14.8 73.1,17.1 76.7,18.5 80.2,16.8 83.8,17.2 87.3,23.4 90.9,21.1 94.4,20.9 98.0,24.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -164,7 +164,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>924.1</b><span class="sid">2026-07-16</span></td>
         <td class="neg">▼ -86.67</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 924.10 · max 1224.12</title><polyline points="2.0,2.0 5.6,2.0 9.1,5.2 12.7,6.8 16.2,3.4 19.8,10.6 23.3,8.3 26.9,8.2 30.4,11.0 34.0,11.7 37.6,12.0 41.1,15.8 44.7,20.9 48.2,20.1 51.8,18.9 55.3,19.6 58.9,18.6 62.4,18.4 66.0,16.6 69.6,15.1 73.1,17.2 76.7,19.3 80.2,17.6 83.8,17.8 87.3,22.0 90.9,20.8 94.4,21.9 98.0,24.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="NASDAQQSLVO" data-l='["06-05: 1,224","06-08: 1,224","06-09: 1,181","06-10: 1,158","06-11: 1,205","06-12: 1,107","06-15: 1,138","06-16: 1,140","06-17: 1,101","06-18: 1,092","06-22: 1,087","06-23: 1,036","06-24: 966.77","06-25: 976.74","06-26: 993.41","06-29: 983.53","06-30: 997.95","07-01: 999.85","07-02: 1,026","07-06: 1,046","07-07: 1,016","07-08: 988.22","07-09: 1,011","07-10: 1,009","07-13: 951.17","07-14: 967.1","07-15: 953.25","07-16: 924.1"]'><polyline points="2.0,2.0 5.6,2.0 9.1,5.2 12.7,6.8 16.2,3.4 19.8,10.6 23.3,8.3 26.9,8.2 30.4,11.0 34.0,11.7 37.6,12.0 41.1,15.8 44.7,20.9 48.2,20.1 51.8,18.9 55.3,19.6 58.9,18.6 62.4,18.4 66.0,16.6 69.6,15.1 73.1,17.2 76.7,19.3 80.2,17.6 83.8,17.8 87.3,22.0 90.9,20.8 94.4,21.9 98.0,24.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr>
@@ -180,7 +180,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>3.46 %</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -0.703</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>23 obs · min 2.33 · max 4.17</title><polyline points="2.0,16.6 6.4,20.6 10.7,22.8 15.1,21.0 19.5,19.3 23.8,17.5 28.2,16.0 32.5,18.3 36.9,23.3 41.3,24.0 45.6,23.4 50.0,19.8 54.4,19.0 58.7,16.7 63.1,15.7 67.5,19.6 71.8,20.1 76.2,23.2 80.5,22.7 84.9,12.5 89.3,6.6 93.6,2.0 98.0,10.4"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CPIAUCSL" data-l='["07-01: 2.94 %","08-01: 2.61 %","09-01: 2.43 %","10-01: 2.58 %","11-01: 2.72 %","12-01: 2.87 %","01-01: 2.99 %","02-01: 2.8 %","03-01: 2.38 %","04-01: 2.33 %","05-01: 2.38 %","06-01: 2.68 %","07-01: 2.74 %","08-01: 2.94 %","09-01: 3.02 %","11-01: 2.7 %","12-01: 2.65 %","01-01: 2.39 %","02-01: 2.43 %","03-01: 3.29 %","04-01: 3.78 %","05-01: 4.17 %","06-01: 3.46 %"]'><polyline points="2.0,16.6 6.4,20.6 10.7,22.8 15.1,21.0 19.5,19.3 23.8,17.5 28.2,16.0 32.5,18.3 36.9,23.3 41.3,24.0 45.6,23.4 50.0,19.8 54.4,19.0 58.7,16.7 63.1,15.7 67.5,19.6 71.8,20.1 76.2,23.2 80.5,22.7 84.9,12.5 89.3,6.6 93.6,2.0 98.0,10.4"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -190,7 +190,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>3.41 %</b><span class="sid">2026-05-01</span></td>
         <td class="pos">▲ +0.093</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 2.61 · max 3.41</title><polyline points="2.0,20.2 6.2,18.7 10.3,16.9 14.5,17.8 18.7,13.7 22.9,13.9 27.0,13.7 31.2,19.4 35.4,14.2 39.6,22.5 43.7,24.0 47.9,19.3 52.1,18.7 56.3,17.1 60.4,15.8 64.6,18.2 68.8,20.1 73.0,18.1 77.1,14.2 81.3,10.5 85.5,12.0 89.7,6.4 93.8,4.6 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="PCEPILFE" data-l='["06-01: 2.75 %","07-01: 2.81 %","08-01: 2.87 %","09-01: 2.84 %","10-01: 2.99 %","11-01: 2.98 %","12-01: 2.99 %","01-01: 2.78 %","02-01: 2.97 %","03-01: 2.67 %","04-01: 2.61 %","05-01: 2.78 %","06-01: 2.81 %","07-01: 2.86 %","08-01: 2.91 %","09-01: 2.83 %","10-01: 2.75 %","11-01: 2.83 %","12-01: 2.97 %","01-01: 3.1 %","02-01: 3.05 %","03-01: 3.25 %","04-01: 3.32 %","05-01: 3.41 %"]'><polyline points="2.0,20.2 6.2,18.7 10.3,16.9 14.5,17.8 18.7,13.7 22.9,13.9 27.0,13.7 31.2,19.4 35.4,14.2 39.6,22.5 43.7,24.0 47.9,19.3 52.1,18.7 56.3,17.1 60.4,15.8 64.6,18.2 68.8,20.1 73.0,18.1 77.1,14.2 81.3,10.5 85.5,12.0 89.7,6.4 93.8,4.6 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -200,7 +200,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>4.68 %</b><span class="sid">2026-06-01</span></td>
         <td class="neu">— +0.089</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 2.60 · max 4.90</title><polyline points="2.0,24.0 6.2,21.7 10.3,17.2 14.5,14.5 18.7,16.6 22.9,13.1 27.0,11.4 31.2,13.3 35.4,12.7 39.6,19.6 43.7,18.4 47.9,23.1 52.1,14.8 56.3,21.0 60.4,20.2 64.6,20.4 68.8,17.9 73.0,16.1 77.1,13.4 81.3,12.2 85.5,11.1 89.7,2.0 93.8,5.0 98.0,4.1"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="PPIFES" data-l='["07-01: 2.6 %","08-01: 2.84 %","09-01: 3.31 %","10-01: 3.6 %","11-01: 3.37 %","12-01: 3.73 %","01-01: 3.91 %","02-01: 3.72 %","03-01: 3.78 %","04-01: 3.06 %","05-01: 3.19 %","06-01: 2.69 %","07-01: 3.56 %","08-01: 2.91 %","09-01: 2.99 %","10-01: 2.97 %","11-01: 3.23 %","12-01: 3.43 %","01-01: 3.71 %","02-01: 3.83 %","03-01: 3.95 %","04-01: 4.9 %","05-01: 4.59 %","06-01: 4.68 %"]'><polyline points="2.0,24.0 6.2,21.7 10.3,17.2 14.5,14.5 18.7,16.6 22.9,13.1 27.0,11.4 31.2,13.3 35.4,12.7 39.6,19.6 43.7,18.4 47.9,23.1 52.1,14.8 56.3,21.0 60.4,20.2 64.6,20.4 68.8,17.9 73.0,16.1 77.1,13.4 81.3,12.2 85.5,11.1 89.7,2.0 93.8,5.0 98.0,4.1"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -210,7 +210,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.11 %</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -1.555</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 1.40 · max 4.93</title><polyline points="2.0,17.0 6.2,9.7 10.3,6.9 14.5,8.0 18.7,11.0 22.9,13.0 27.0,8.2 31.2,10.9 35.4,8.6 39.6,8.7 43.7,13.6 47.9,9.2 52.1,11.7 56.3,11.1 60.4,17.6 64.6,24.0 68.8,24.0 73.0,13.2 77.1,18.1 81.3,19.9 85.5,18.4 89.7,2.0 93.8,9.9 98.0,19.6"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="MEDCPIM158SFRBCLE" data-l='["07-01: 2.53 %","08-01: 3.7 %","09-01: 4.15 %","10-01: 3.97 %","11-01: 3.49 %","12-01: 3.17 %","01-01: 3.93 %","02-01: 3.5 %","03-01: 3.88 %","04-01: 3.85 %","05-01: 3.07 %","06-01: 3.77 %","07-01: 3.37 %","08-01: 3.48 %","09-01: 2.44 %","10-01: 1.4 %","11-01: 1.4 %","12-01: 3.13 %","01-01: 2.35 %","02-01: 2.06 %","03-01: 2.31 %","04-01: 4.93 %","05-01: 3.66 %","06-01: 2.11 %"]'><polyline points="2.0,17.0 6.2,9.7 10.3,6.9 14.5,8.0 18.7,11.0 22.9,13.0 27.0,8.2 31.2,10.9 35.4,8.6 39.6,8.7 43.7,13.6 47.9,9.2 52.1,11.7 56.3,11.1 60.4,17.6 64.6,24.0 68.8,24.0 73.0,13.2 77.1,18.1 81.3,19.9 85.5,18.4 89.7,2.0 93.8,9.9 98.0,19.6"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -220,7 +220,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.387 %</b><span class="sid">2026-07-01</span></td>
         <td class="neg">▼ -0.652</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 2.18 · max 3.54</title><polyline points="2.0,21.3 6.2,23.1 10.3,22.8 14.5,20.0 18.7,16.4 22.9,16.8 27.0,15.1 31.2,24.0 35.4,12.6 39.6,15.7 43.7,20.8 47.9,14.1 52.1,15.8 56.3,13.9 60.4,15.1 64.6,15.5 68.8,7.6 73.0,17.4 77.1,17.5 81.3,22.2 85.5,6.2 89.7,2.0 93.8,10.1 98.0,20.7"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="EXPINF1YR" data-l='["08-01: 2.347 %","09-01: 2.236 %","10-01: 2.256 %","11-01: 2.432 %","12-01: 2.65 %","01-01: 2.627 %","02-01: 2.728 %","03-01: 2.184 %","04-01: 2.887 %","05-01: 2.691 %","06-01: 2.381 %","07-01: 2.789 %","08-01: 2.689 %","09-01: 2.804 %","10-01: 2.728 %","11-01: 2.704 %","12-01: 3.193 %","01-01: 2.586 %","02-01: 2.586 %","03-01: 2.295 %","04-01: 3.276 %","05-01: 3.535 %","06-01: 3.039 %","07-01: 2.387 %"]'><polyline points="2.0,21.3 6.2,23.1 10.3,22.8 14.5,20.0 18.7,16.4 22.9,16.8 27.0,15.1 31.2,24.0 35.4,12.6 39.6,15.7 43.7,20.8 47.9,14.1 52.1,15.8 56.3,13.9 60.4,15.1 64.6,15.5 68.8,7.6 73.0,17.4 77.1,17.5 81.3,22.2 85.5,6.2 89.7,2.0 93.8,10.1 98.0,20.7"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -230,7 +230,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>4.2 %</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -0.1</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>23 obs · min 4.00 · max 4.50</title><polyline points="2.0,15.2 6.4,15.2 10.7,19.6 15.1,19.6 19.5,15.2 23.8,19.6 28.2,24.0 32.5,15.2 36.9,15.2 41.3,15.2 45.6,10.8 50.0,19.6 54.4,10.8 58.7,10.8 63.1,6.4 67.5,2.0 71.8,6.4 76.2,10.8 80.5,6.4 84.9,10.8 89.3,10.8 93.6,10.8 98.0,15.2"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="UNRATE" data-l='["07-01: 4.2 %","08-01: 4.2 %","09-01: 4.1 %","10-01: 4.1 %","11-01: 4.2 %","12-01: 4.1 %","01-01: 4 %","02-01: 4.2 %","03-01: 4.2 %","04-01: 4.2 %","05-01: 4.3 %","06-01: 4.1 %","07-01: 4.3 %","08-01: 4.3 %","09-01: 4.4 %","11-01: 4.5 %","12-01: 4.4 %","01-01: 4.3 %","02-01: 4.4 %","03-01: 4.3 %","04-01: 4.3 %","05-01: 4.3 %","06-01: 4.2 %"]'><polyline points="2.0,15.2 6.4,15.2 10.7,19.6 15.1,19.6 19.5,15.2 23.8,19.6 28.2,24.0 32.5,15.2 36.9,15.2 41.3,15.2 45.6,10.8 50.0,19.6 54.4,10.8 58.7,10.8 63.1,6.4 67.5,2.0 71.8,6.4 76.2,10.8 80.5,6.4 84.9,10.8 89.3,10.8 93.6,10.8 98.0,15.2"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -240,7 +240,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>208,000</b><span class="sid">2026-07-11</span></td>
         <td class="neg">▼ -19,000</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min 190000.00 · max 230000.00</title><polyline points="2.0,13.0 5.8,12.4 9.7,2.0 13.5,2.0 17.4,14.1 21.2,12.4 25.0,10.8 28.9,11.4 32.7,15.8 36.6,12.4 40.4,16.9 44.2,8.6 48.1,14.1 51.9,10.3 55.8,24.0 59.6,19.1 63.4,11.9 67.3,13.0 71.1,11.9 75.0,4.8 78.8,2.0 82.6,3.6 86.5,9.7 90.3,9.1 94.2,9.7 98.0,14.1"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="ICSA" data-l='["01-17: 210,000","01-24: 211,000","01-31: 230,000","02-07: 230,000","02-14: 208,000","02-21: 211,000","02-28: 214,000","03-07: 213,000","03-14: 205,000","03-21: 211,000","03-28: 203,000","04-04: 218,000","04-11: 208,000","04-18: 215,000","04-25: 190,000","05-02: 199,000","05-09: 212,000","05-16: 210,000","05-23: 212,000","05-30: 225,000","06-06: 230,000","06-13: 227,000","06-20: 216,000","06-27: 217,000","07-04: 216,000","07-11: 208,000"]'><polyline points="2.0,13.0 5.8,12.4 9.7,2.0 13.5,2.0 17.4,14.1 21.2,12.4 25.0,10.8 28.9,11.4 32.7,15.8 36.6,12.4 40.4,16.9 44.2,8.6 48.1,14.1 51.9,10.3 55.8,24.0 59.6,19.1 63.4,11.9 67.3,13.0 71.1,11.9 75.0,4.8 78.8,2.0 82.6,3.6 86.5,9.7 90.3,9.1 94.2,9.7 98.0,14.1"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -250,7 +250,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>132.7 triệu người</b><span class="sid">2026-06-01</span></td>
         <td class="pos">▲ +0.098</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 131.59 · max 132.72</title><polyline points="2.0,24.0 6.2,23.1 10.3,23.5 14.5,23.7 18.7,21.8 22.9,18.7 27.0,16.0 31.2,15.7 35.4,16.8 39.6,17.2 43.7,17.7 47.9,17.7 52.1,16.2 56.3,15.2 60.4,13.5 64.6,13.1 68.8,11.7 73.0,11.0 77.1,10.8 81.3,9.5 85.5,8.3 89.7,6.3 93.8,3.9 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="ADPMNUSNERSA" data-l='["07-01: 131.6 triệu người","08-01: 131.6 triệu người","09-01: 131.6 triệu người","10-01: 131.6 triệu người","11-01: 131.7 triệu người","12-01: 131.9 triệu người","01-01: 132 triệu người","02-01: 132 triệu người","03-01: 132 triệu người","04-01: 131.9 triệu người","05-01: 131.9 triệu người","06-01: 131.9 triệu người","07-01: 132 triệu người","08-01: 132 triệu người","09-01: 132.1 triệu người","10-01: 132.1 triệu người","11-01: 132.2 triệu người","12-01: 132.3 triệu người","01-01: 132.3 triệu người","02-01: 132.3 triệu người","03-01: 132.4 triệu người","04-01: 132.5 triệu người","05-01: 132.6 triệu người","06-01: 132.7 triệu người"]'><polyline points="2.0,24.0 6.2,23.1 10.3,23.5 14.5,23.7 18.7,21.8 22.9,18.7 27.0,16.0 31.2,15.7 35.4,16.8 39.6,17.2 43.7,17.7 47.9,17.7 52.1,16.2 56.3,15.2 60.4,13.5 64.6,13.1 68.8,11.7 73.0,11.0 77.1,10.8 81.3,9.5 85.5,8.3 89.7,6.3 93.8,3.9 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -260,7 +260,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>15.6</b><span class="sid">2026-07-01</span></td>
         <td class="pos">▲ +9.9</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -15.70 · max 19.60</title><polyline points="2.0,14.2 6.2,11.8 10.3,22.9 14.5,3.7 18.7,12.8 22.9,18.8 27.0,11.5 31.2,24.0 35.4,19.6 39.6,18.5 43.7,23.5 47.9,12.3 52.1,8.5 56.3,18.6 60.4,9.4 64.6,5.8 68.8,16.5 73.0,9.4 77.1,9.8 81.3,14.3 85.5,7.4 89.7,2.0 93.8,10.7 98.0,4.5"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GACDISA066MSFRBNY" data-l='["08-01: 0.1","09-01: 3.8","10-01: -14","11-01: 16.8","12-01: 2.2","01-01: -7.4","02-01: 4.3","03-01: -15.7","04-01: -8.6","05-01: -6.9","06-01: -14.9","07-01: 3.1","08-01: 9.1","09-01: -7","10-01: 7.8","11-01: 13.5","12-01: -3.7","01-01: 7.7","02-01: 7.1","03-01: -0.2","04-01: 11","05-01: 19.6","06-01: 5.7","07-01: 15.6"]'><polyline points="2.0,14.2 6.2,11.8 10.3,22.9 14.5,3.7 18.7,12.8 22.9,18.8 27.0,11.5 31.2,24.0 35.4,19.6 39.6,18.5 43.7,23.5 47.9,12.3 52.1,8.5 56.3,18.6 60.4,9.4 64.6,5.8 68.8,16.5 73.0,9.4 77.1,9.8 81.3,14.3 85.5,7.4 89.7,2.0 93.8,10.7 98.0,4.5"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -270,7 +270,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>41.4</b><span class="sid">2026-07-01</span></td>
         <td class="pos">▲ +31.1</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -12.90 · max 41.40</title><polyline points="2.0,20.0 6.2,19.4 10.3,15.7 14.5,19.4 18.7,22.7 22.9,5.4 27.0,13.3 31.2,14.6 35.4,24.0 39.6,19.1 43.7,19.3 47.9,14.2 52.1,18.5 56.3,10.9 60.4,22.9 64.6,18.5 68.8,22.3 73.0,13.7 77.1,12.2 81.3,11.4 85.5,8.0 89.7,18.9 93.8,14.6 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GACDFSA066MSFRBPHI" data-l='["08-01: -3","09-01: -1.6","10-01: 7.6","11-01: -1.5","12-01: -9.6","01-01: 32.9","02-01: 13.4","03-01: 10.2","04-01: -12.9","05-01: -0.7","06-01: -1.4","07-01: 11.4","08-01: 0.7","09-01: 19.5","10-01: -10.1","11-01: 0.6","12-01: -8.8","01-01: 12.6","02-01: 16.3","03-01: 18.1","04-01: 26.7","05-01: -0.4","06-01: 10.3","07-01: 41.4"]'><polyline points="2.0,20.0 6.2,19.4 10.3,15.7 14.5,19.4 18.7,22.7 22.9,5.4 27.0,13.3 31.2,14.6 35.4,24.0 39.6,19.1 43.7,19.3 47.9,14.2 52.1,18.5 56.3,10.9 60.4,22.9 64.6,18.5 68.8,22.3 73.0,13.7 77.1,12.2 81.3,11.4 85.5,8.0 89.7,18.9 93.8,14.6 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -280,7 +280,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>84.8 $/thùng</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -17.32</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 57.97 · max 102.13</title><polyline points="2.0,12.1 6.2,14.7 10.3,17.9 14.5,17.0 18.7,18.0 22.9,17.9 27.0,15.1 31.2,17.2 35.4,18.9 39.6,21.2 43.7,21.9 47.9,18.9 52.1,18.8 56.3,20.6 60.4,21.0 64.6,22.5 68.8,23.0 73.0,24.0 77.1,23.0 81.3,20.7 85.5,7.4 89.7,2.9 93.8,2.0 98.0,10.6"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="WTISPLC" data-l='["07-01: 81.8 $/thùng","08-01: 76.7 $/thùng","09-01: 70.2 $/thùng","10-01: 72 $/thùng","11-01: 70 $/thùng","12-01: 70.1 $/thùng","01-01: 75.7 $/thùng","02-01: 71.5 $/thùng","03-01: 68.2 $/thùng","04-01: 63.5 $/thùng","05-01: 62.2 $/thùng","06-01: 68.2 $/thùng","07-01: 68.4 $/thùng","08-01: 64.9 $/thùng","09-01: 64 $/thùng","10-01: 60.9 $/thùng","11-01: 60.1 $/thùng","12-01: 58 $/thùng","01-01: 60 $/thùng","02-01: 64.5 $/thùng","03-01: 91.4 $/thùng","04-01: 100.3 $/thùng","05-01: 102.1 $/thùng","06-01: 84.8 $/thùng"]'><polyline points="2.0,12.1 6.2,14.7 10.3,17.9 14.5,17.0 18.7,18.0 22.9,17.9 27.0,15.1 31.2,17.2 35.4,18.9 39.6,21.2 43.7,21.9 47.9,18.9 52.1,18.8 56.3,20.6 60.4,21.0 64.6,22.5 68.8,23.0 73.0,24.0 77.1,23.0 81.3,20.7 85.5,7.4 89.7,2.9 93.8,2.0 98.0,10.6"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -290,7 +290,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>13.55 k$/tấn</b><span class="sid">2026-06-01</span></td>
         <td class="neu">— +0.04</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 8.91 · max 13.55</title><polyline points="2.0,21.7 6.2,23.7 10.3,22.3 14.5,21.0 18.7,23.2 22.9,24.0 27.0,23.7 31.2,22.0 35.4,20.1 39.6,22.8 43.7,21.1 47.9,19.6 52.1,19.9 56.3,20.4 60.4,18.9 64.6,15.3 68.8,15.0 73.0,10.3 77.1,4.7 81.3,4.8 85.5,6.8 89.7,5.1 93.8,2.2 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="PCOPPUSDM" data-l='["07-01: 9.39 k$/tấn","08-01: 8.98 k$/tấn","09-01: 9.26 k$/tấn","10-01: 9.53 k$/tấn","11-01: 9.08 k$/tấn","12-01: 8.91 k$/tấn","01-01: 8.98 k$/tấn","02-01: 9.33 k$/tấn","03-01: 9.74 k$/tấn","04-01: 9.17 k$/tấn","05-01: 9.53 k$/tấn","06-01: 9.84 k$/tấn","07-01: 9.77 k$/tấn","08-01: 9.67 k$/tấn","09-01: 9.99 k$/tấn","10-01: 10.74 k$/tấn","11-01: 10.81 k$/tấn","12-01: 11.79 k$/tấn","01-01: 12.99 k$/tấn","02-01: 12.95 k$/tấn","03-01: 12.53 k$/tấn","04-01: 12.89 k$/tấn","05-01: 13.51 k$/tấn","06-01: 13.55 k$/tấn"]'><polyline points="2.0,21.7 6.2,23.7 10.3,22.3 14.5,21.0 18.7,23.2 22.9,24.0 27.0,23.7 31.2,22.0 35.4,20.1 39.6,22.8 43.7,21.1 47.9,19.6 52.1,19.9 56.3,20.4 60.4,18.9 64.6,15.3 68.8,15.0 73.0,10.3 77.1,4.7 81.3,4.8 85.5,6.8 89.7,5.1 93.8,2.2 98.0,2.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -300,7 +300,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.81</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -0.284</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 2.81 · max 4.18</title><polyline points="2.0,2.0 6.2,3.1 10.3,4.7 14.5,5.3 18.7,6.7 22.9,8.9 27.0,10.9 31.2,12.6 35.4,16.7 39.6,18.1 43.7,18.2 47.9,16.1 52.1,14.1 56.3,14.0 60.4,15.8 64.6,19.7 68.8,21.6 73.0,20.8 77.1,21.2 81.3,22.4 85.5,22.0 89.7,20.3 93.8,19.5 98.0,24.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CORESTICKM159SFRBATL" data-l='["07-01: 4.18","08-01: 4.11","09-01: 4.01","10-01: 3.98","11-01: 3.89","12-01: 3.75","01-01: 3.62","02-01: 3.52","03-01: 3.27","04-01: 3.18","05-01: 3.17","06-01: 3.3","07-01: 3.43","08-01: 3.43","09-01: 3.32","10-01: 3.08","11-01: 2.95","12-01: 3.01","01-01: 2.98","02-01: 2.9","03-01: 2.93","04-01: 3.04","05-01: 3.09","06-01: 2.81"]'><polyline points="2.0,2.0 6.2,3.1 10.3,4.7 14.5,5.3 18.7,6.7 22.9,8.9 27.0,10.9 31.2,12.6 35.4,16.7 39.6,18.1 43.7,18.2 47.9,16.1 52.1,14.1 56.3,14.0 60.4,15.8 64.6,19.7 68.8,21.6 73.0,20.8 77.1,21.2 81.3,22.4 85.5,22.0 89.7,20.3 93.8,19.5 98.0,24.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -310,7 +310,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>1</b><span class="sid">2026-06-01</span></td>
         <td class="pos">▲ +0.187</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 0.12 · max 1.00</title><polyline points="2.0,19.2 6.2,19.6 10.3,22.5 14.5,23.3 18.7,18.6 22.9,20.4 27.0,15.0 31.2,12.7 35.4,11.6 39.6,22.5 43.7,24.0 47.9,20.3 52.1,16.3 56.3,15.5 60.4,18.2 64.6,17.5 68.8,20.2 73.0,17.0 77.1,15.0 81.3,11.9 85.5,11.9 89.7,7.6 93.8,6.7 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="STLPPM" data-l='["07-01: 0.31","08-01: 0.29","09-01: 0.18","10-01: 0.15","11-01: 0.34","12-01: 0.26","01-01: 0.48","02-01: 0.57","03-01: 0.61","04-01: 0.18","05-01: 0.12","06-01: 0.27","07-01: 0.43","08-01: 0.46","09-01: 0.35","10-01: 0.38","11-01: 0.27","12-01: 0.4","01-01: 0.48","02-01: 0.6","03-01: 0.6","04-01: 0.77","05-01: 0.81","06-01: 1"]'><polyline points="2.0,19.2 6.2,19.6 10.3,22.5 14.5,23.3 18.7,18.6 22.9,20.4 27.0,15.0 31.2,12.7 35.4,11.6 39.6,22.5 43.7,24.0 47.9,20.3 52.1,16.3 56.3,15.5 60.4,18.2 64.6,17.5 68.8,20.2 73.0,17.0 77.1,15.0 81.3,11.9 85.5,11.9 89.7,7.6 93.8,6.7 98.0,2.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr>
@@ -326,7 +326,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>16.73</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— +0.89</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 15.03 · max 22.22</title><polyline points="2.0,4.2 5.3,12.1 8.6,9.2 11.9,2.0 15.2,10.5 18.6,15.9 21.9,20.4 25.2,19.8 28.5,13.6 31.8,19.8 35.1,18.6 38.4,17.1 41.7,10.4 45.0,13.0 48.3,12.2 51.7,13.7 55.0,16.0 58.3,19.7 61.6,19.2 64.9,20.6 68.2,21.6 71.5,22.3 74.8,20.6 78.1,18.3 81.4,21.5 84.8,24.0 88.1,17.5 91.4,19.5 94.7,22.0 98.0,18.8"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="VIXCLS" data-l='["06-05: 21.51","06-08: 18.92","06-09: 19.87","06-10: 22.22","06-11: 19.44","06-12: 17.68","06-15: 16.2","06-16: 16.41","06-17: 18.44","06-18: 16.4","06-19: 16.78","06-22: 17.28","06-23: 19.49","06-24: 18.63","06-25: 18.89","06-26: 18.41","06-29: 17.65","06-30: 16.45","07-01: 16.59","07-02: 16.15","07-03: 15.81","07-06: 15.57","07-07: 16.13","07-08: 16.9","07-09: 15.84","07-10: 15.03","07-13: 17.16","07-14: 16.5","07-15: 15.67","07-16: 16.73"]'><polyline points="2.0,4.2 5.3,12.1 8.6,9.2 11.9,2.0 15.2,10.5 18.6,15.9 21.9,20.4 25.2,19.8 28.5,13.6 31.8,19.8 35.1,18.6 38.4,17.1 41.7,10.4 45.0,13.0 48.3,12.2 51.7,13.7 55.0,16.0 58.3,19.7 61.6,19.2 64.9,20.6 68.2,21.6 71.5,22.3 74.8,20.6 78.1,18.3 81.4,21.5 84.8,24.0 88.1,17.5 91.4,19.5 94.7,22.0 98.0,18.8"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -336,7 +336,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.71 %</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— +0.01</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 2.63 · max 2.83</title><polyline points="2.0,11.9 5.3,9.7 8.6,10.8 11.9,7.5 15.2,5.3 18.6,7.5 21.9,15.2 25.2,20.7 28.5,15.2 31.8,24.0 35.1,20.7 38.4,20.7 41.7,21.8 45.0,15.2 48.3,9.7 51.7,7.5 55.0,2.0 58.3,5.3 61.6,10.8 64.9,11.9 68.2,10.8 71.5,11.9 74.8,14.1 78.1,19.6 81.4,16.3 84.8,16.3 88.1,17.4 91.4,17.4 94.7,14.1 98.0,15.2"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="BAMLH0A0HYM2" data-l='["06-04: 2.74 %","06-05: 2.76 %","06-08: 2.75 %","06-09: 2.78 %","06-10: 2.8 %","06-11: 2.78 %","06-12: 2.71 %","06-15: 2.66 %","06-16: 2.71 %","06-17: 2.63 %","06-18: 2.66 %","06-19: 2.66 %","06-22: 2.65 %","06-23: 2.71 %","06-24: 2.76 %","06-25: 2.78 %","06-26: 2.83 %","06-29: 2.8 %","06-30: 2.75 %","07-01: 2.74 %","07-02: 2.75 %","07-03: 2.74 %","07-06: 2.72 %","07-07: 2.67 %","07-08: 2.7 %","07-09: 2.7 %","07-10: 2.69 %","07-13: 2.69 %","07-14: 2.72 %","07-15: 2.71 %"]'><polyline points="2.0,11.9 5.3,9.7 8.6,10.8 11.9,7.5 15.2,5.3 18.6,7.5 21.9,15.2 25.2,20.7 28.5,15.2 31.8,24.0 35.1,20.7 38.4,20.7 41.7,21.8 45.0,15.2 48.3,9.7 51.7,7.5 55.0,2.0 58.3,5.3 61.6,10.8 64.9,11.9 68.2,10.8 71.5,11.9 74.8,14.1 78.1,19.6 81.4,16.3 84.8,16.3 88.1,17.4 91.4,17.4 94.7,14.1 98.0,15.2"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -346,7 +346,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-0.538</b><span class="sid">2026-07-10</span></td>
         <td class="neg">▼ -0.043</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min -0.56 · max -0.45</title><polyline points="2.0,23.6 5.8,24.0 9.7,23.2 13.5,21.6 17.4,19.0 21.2,15.6 25.0,11.8 28.9,8.0 32.7,4.8 36.6,2.8 40.4,2.0 44.2,3.0 48.1,5.0 51.9,7.2 55.8,9.2 59.6,10.6 63.4,11.2 67.3,11.0 71.1,10.6 75.0,10.2 78.8,10.0 82.6,10.2 86.5,11.4 90.3,13.2 94.2,16.0 98.0,18.8"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="NFCI" data-l='["01-16: -0.562","01-23: -0.564","01-30: -0.56","02-06: -0.552","02-13: -0.539","02-20: -0.522","02-27: -0.503","03-06: -0.484","03-13: -0.468","03-20: -0.458","03-27: -0.454","04-03: -0.459","04-10: -0.469","04-17: -0.48","04-24: -0.49","05-01: -0.497","05-08: -0.5","05-15: -0.499","05-22: -0.497","05-29: -0.495","06-05: -0.494","06-12: -0.495","06-19: -0.501","06-26: -0.51","07-03: -0.524","07-10: -0.538"]'><polyline points="2.0,23.6 5.8,24.0 9.7,23.2 13.5,21.6 17.4,19.0 21.2,15.6 25.0,11.8 28.9,8.0 32.7,4.8 36.6,2.8 40.4,2.0 44.2,3.0 48.1,5.0 51.9,7.2 55.8,9.2 59.6,10.6 63.4,11.2 67.3,11.0 71.1,10.6 75.0,10.2 78.8,10.0 82.6,10.2 86.5,11.4 90.3,13.2 94.2,16.0 98.0,18.8"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -356,7 +356,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>6.74 nghìn tỷ $</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— +0.007</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min 6.58 · max 6.74</title><polyline points="2.0,24.0 5.8,23.6 9.7,21.0 13.5,18.8 17.4,20.0 21.2,19.9 25.0,17.8 28.9,15.4 32.7,14.1 36.6,13.9 40.4,11.4 44.2,8.8 48.1,7.2 51.9,6.9 55.8,8.0 59.6,6.7 63.4,4.0 67.3,6.1 71.1,7.4 75.0,6.4 78.8,4.4 82.6,2.9 86.5,3.0 90.3,4.6 94.2,3.0 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="WALCL" data-l='["01-21: 6.58 nghìn tỷ $","01-28: 6.59 nghìn tỷ $","02-04: 6.61 nghìn tỷ $","02-11: 6.62 nghìn tỷ $","02-18: 6.61 nghìn tỷ $","02-25: 6.61 nghìn tỷ $","03-04: 6.63 nghìn tỷ $","03-11: 6.65 nghìn tỷ $","03-18: 6.66 nghìn tỷ $","03-25: 6.66 nghìn tỷ $","04-01: 6.68 nghìn tỷ $","04-08: 6.69 nghìn tỷ $","04-15: 6.71 nghìn tỷ $","04-22: 6.71 nghìn tỷ $","04-29: 6.7 nghìn tỷ $","05-06: 6.71 nghìn tỷ $","05-13: 6.73 nghìn tỷ $","05-20: 6.71 nghìn tỷ $","05-27: 6.7 nghìn tỷ $","06-03: 6.71 nghìn tỷ $","06-10: 6.73 nghìn tỷ $","06-17: 6.74 nghìn tỷ $","06-24: 6.74 nghìn tỷ $","07-01: 6.72 nghìn tỷ $","07-08: 6.74 nghìn tỷ $","07-15: 6.74 nghìn tỷ $"]'><polyline points="2.0,24.0 5.8,23.6 9.7,21.0 13.5,18.8 17.4,20.0 21.2,19.9 25.0,17.8 28.9,15.4 32.7,14.1 36.6,13.9 40.4,11.4 44.2,8.8 48.1,7.2 51.9,6.9 55.8,8.0 59.6,6.7 63.4,4.0 67.3,6.1 71.1,7.4 75.0,6.4 78.8,4.4 82.6,2.9 86.5,3.0 90.3,4.6 94.2,3.0 98.0,2.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -366,7 +366,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>0.125 tỷ $</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— -5.65</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 0.13 · max 26.90</title><polyline points="2.0,23.5 5.6,22.6 9.1,23.6 12.7,23.8 16.2,23.7 19.8,23.7 23.3,23.6 26.9,15.3 30.4,18.5 34.0,23.9 37.6,20.9 41.1,18.8 44.7,20.4 48.2,19.4 51.8,18.8 55.3,21.2 58.9,2.0 62.4,23.3 66.0,22.3 69.6,21.9 73.1,20.4 76.7,21.4 80.2,19.4 83.8,23.7 87.3,23.4 90.9,23.9 94.4,24.0 98.0,24.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="RRPONTSYD" data-l='["06-05: 0.761 tỷ $","06-08: 1.832 tỷ $","06-09: 0.577 tỷ $","06-10: 0.387 tỷ $","06-11: 0.46 tỷ $","06-12: 0.454 tỷ $","06-15: 0.581 tỷ $","06-16: 10.72 tỷ $","06-17: 6.828 tỷ $","06-18: 0.251 tỷ $","06-22: 3.925 tỷ $","06-23: 6.484 tỷ $","06-24: 4.534 tỷ $","06-25: 5.718 tỷ $","06-26: 6.426 tỷ $","06-29: 3.546 tỷ $","06-30: 26.9 tỷ $","07-01: 1.001 tỷ $","07-02: 2.175 tỷ $","07-06: 2.719 tỷ $","07-07: 4.484 tỷ $","07-08: 3.347 tỷ $","07-09: 5.772 tỷ $","07-10: 0.545 tỷ $","07-13: 0.795 tỷ $","07-14: 0.278 tỷ $","07-15: 0.151 tỷ $","07-16: 0.125 tỷ $"]'><polyline points="2.0,23.5 5.6,22.6 9.1,23.6 12.7,23.8 16.2,23.7 19.8,23.7 23.3,23.6 26.9,15.3 30.4,18.5 34.0,23.9 37.6,20.9 41.1,18.8 44.7,20.4 48.2,19.4 51.8,18.8 55.3,21.2 58.9,2.0 62.4,23.3 66.0,22.3 69.6,21.9 73.1,20.4 76.7,21.4 80.2,19.4 83.8,23.7 87.3,23.4 90.9,23.9 94.4,24.0 98.0,24.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -376,7 +376,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>756.22 tỷ $</b><span class="sid">2026-07-15</span></td>
         <td class="neg">▼ -124.5</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min 748.38 · max 1005.97</title><polyline points="2.0,13.7 5.8,9.1 9.7,10.3 13.5,9.7 17.4,10.0 21.2,12.1 25.0,16.9 28.9,16.3 32.7,15.1 36.6,13.3 40.4,15.5 44.2,24.0 48.1,23.7 51.9,2.0 55.8,4.1 59.6,12.9 63.4,16.3 67.3,21.2 71.1,17.0 75.0,13.1 78.8,17.2 82.6,12.7 86.5,9.5 90.3,12.7 94.2,21.8 98.0,23.3"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="WTREGEN" data-l='["01-21: 869.26 tỷ $","01-28: 923.04 tỷ $","02-04: 908.77 tỷ $","02-11: 915.31 tỷ $","02-18: 912.73 tỷ $","02-25: 887.61 tỷ $","03-04: 832.05 tỷ $","03-11: 838.19 tỷ $","03-18: 853.05 tỷ $","03-25: 874.08 tỷ $","04-01: 847.72 tỷ $","04-08: 748.38 tỷ $","04-15: 751.35 tỷ $","04-22: 1,006 tỷ $","04-29: 981.93 tỷ $","05-06: 877.76 tỷ $","05-13: 838.58 tỷ $","05-20: 781.29 tỷ $","05-27: 830.3 tỷ $","06-03: 875.71 tỷ $","06-10: 828.12 tỷ $","06-17: 880.71 tỷ $","06-24: 918.7 tỷ $","07-01: 880.24 tỷ $","07-08: 774.06 tỷ $","07-15: 756.22 tỷ $"]'><polyline points="2.0,13.7 5.8,9.1 9.7,10.3 13.5,9.7 17.4,10.0 21.2,12.1 25.0,16.9 28.9,16.3 32.7,15.1 36.6,13.3 40.4,15.5 44.2,24.0 48.1,23.7 51.9,2.0 55.8,4.1 59.6,12.9 63.4,16.3 67.3,21.2 71.1,17.0 75.0,13.1 78.8,17.2 82.6,12.7 86.5,9.5 90.3,12.7 94.2,21.8 98.0,23.3"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -386,7 +386,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>427.49</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— +164.38</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 166.69 · max 956.17</title><polyline points="2.0,19.3 5.3,16.9 8.6,13.1 11.9,18.3 15.2,14.5 18.6,18.3 21.9,17.5 25.2,15.7 28.5,21.0 31.8,21.6 35.1,20.6 38.4,2.0 41.7,22.9 45.0,19.3 48.3,22.8 51.7,23.9 55.0,24.0 58.3,20.2 61.6,20.4 64.9,21.8 68.2,21.5 71.5,23.3 74.8,20.7 78.1,22.2 81.4,21.3 84.8,19.5 88.1,22.3 91.4,20.1 94.7,20.1 98.0,16.7"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="USEPUINDXD" data-l='["06-17: 333.6","06-18: 421.32","06-19: 558.4","06-20: 372.65","06-21: 507.66","06-22: 372.4","06-23: 400.29","06-24: 464.36","06-25: 274.23","06-26: 253.02","06-27: 287.77","06-28: 956.17","06-29: 207.09","06-30: 334.13","07-01: 208.87","07-02: 170.73","07-03: 166.69","07-04: 304.56","07-05: 294.7","07-06: 244.62","07-07: 256","07-08: 191.71","07-09: 285.78","07-10: 232.28","07-11: 263.11","07-12: 329.57","07-13: 226.64","07-14: 305.92","07-15: 305.82","07-16: 427.49"]'><polyline points="2.0,19.3 5.3,16.9 8.6,13.1 11.9,18.3 15.2,14.5 18.6,18.3 21.9,17.5 25.2,15.7 28.5,21.0 31.8,21.6 35.1,20.6 38.4,2.0 41.7,22.9 45.0,19.3 48.3,22.8 51.7,23.9 55.0,24.0 58.3,20.2 61.6,20.4 64.9,21.8 68.2,21.5 71.5,23.3 74.8,20.7 78.1,22.2 81.4,21.3 84.8,19.5 88.1,22.3 91.4,20.1 94.7,20.1 98.0,16.7"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -396,7 +396,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>135 tr $</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— +86</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min 16.00 · max 250.00</title><polyline points="2.0,18.1 5.8,22.5 9.7,23.4 13.5,23.2 17.4,20.1 21.2,20.3 25.0,22.7 28.9,23.9 32.7,23.8 36.6,22.9 40.4,8.6 44.2,15.6 48.1,15.5 51.9,16.0 55.8,23.6 59.6,6.1 63.4,21.6 67.3,24.0 71.1,20.8 75.0,14.6 78.8,22.9 82.6,20.9 86.5,22.2 90.3,2.0 94.2,9.5 98.0,12.8"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="SWPT" data-l='["01-21: 79 tr $","01-28: 32 tr $","02-04: 22 tr $","02-11: 24 tr $","02-18: 58 tr $","02-25: 55 tr $","03-04: 30 tr $","03-11: 17 tr $","03-18: 18 tr $","03-25: 28 tr $","04-01: 180 tr $","04-08: 105 tr $","04-15: 106 tr $","04-22: 101 tr $","04-29: 20 tr $","05-06: 206 tr $","05-13: 42 tr $","05-20: 16 tr $","05-27: 50 tr $","06-03: 116 tr $","06-10: 28 tr $","06-17: 49 tr $","06-24: 35 tr $","07-01: 250 tr $","07-08: 170 tr $","07-15: 135 tr $"]'><polyline points="2.0,18.1 5.8,22.5 9.7,23.4 13.5,23.2 17.4,20.1 21.2,20.3 25.0,22.7 28.9,23.9 32.7,23.8 36.6,22.9 40.4,8.6 44.2,15.6 48.1,15.5 51.9,16.0 55.8,23.6 59.6,6.1 63.4,21.6 67.3,24.0 71.1,20.8 75.0,14.6 78.8,22.9 82.6,20.9 86.5,22.2 90.3,2.0 94.2,9.5 98.0,12.8"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -406,7 +406,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>23.05 nghìn tỷ $</b><span class="sid">2026-05-01</span></td>
         <td class="pos">▲ +0.248</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 21.07 · max 23.05</title><polyline points="2.0,24.0 6.2,23.7 10.3,22.7 14.5,21.8 18.7,21.1 22.9,19.7 27.0,19.4 31.2,18.7 35.4,18.0 39.6,17.1 43.7,16.2 47.9,15.5 52.1,14.3 56.3,13.4 60.4,12.7 64.6,11.8 68.8,11.0 73.0,10.6 77.1,9.8 81.3,8.9 85.5,6.7 89.7,6.1 93.8,4.7 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="M2SL" data-l='["06-01: 21.07 nghìn tỷ $","07-01: 21.1 nghìn tỷ $","08-01: 21.19 nghìn tỷ $","09-01: 21.27 nghìn tỷ $","10-01: 21.33 nghìn tỷ $","11-01: 21.45 nghìn tỷ $","12-01: 21.49 nghìn tỷ $","01-01: 21.55 nghìn tỷ $","02-01: 21.61 nghìn tỷ $","03-01: 21.69 nghìn tỷ $","04-01: 21.78 nghìn tỷ $","05-01: 21.83 nghìn tỷ $","06-01: 21.94 nghìn tỷ $","07-01: 22.02 nghìn tỷ $","08-01: 22.09 nghìn tỷ $","09-01: 22.17 nghìn tỷ $","10-01: 22.25 nghìn tỷ $","11-01: 22.28 nghìn tỷ $","12-01: 22.35 nghìn tỷ $","01-01: 22.43 nghìn tỷ $","02-01: 22.63 nghìn tỷ $","03-01: 22.69 nghìn tỷ $","04-01: 22.8 nghìn tỷ $","05-01: 23.05 nghìn tỷ $"]'><polyline points="2.0,24.0 6.2,23.7 10.3,22.7 14.5,21.8 18.7,21.1 22.9,19.7 27.0,19.4 31.2,18.7 35.4,18.0 39.6,17.1 43.7,16.2 47.9,15.5 52.1,14.3 56.3,13.4 60.4,12.7 64.6,11.8 68.8,11.0 73.0,10.6 77.1,9.8 81.3,8.9 85.5,6.7 89.7,6.1 93.8,4.7 98.0,2.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -416,7 +416,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>63,747</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— -84.25</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 58585.96 · max 64967.74</title><polyline points="2.0,3.5 5.3,9.3 8.6,7.0 11.9,4.7 15.2,7.7 18.6,5.6 21.9,9.9 25.2,15.9 28.5,19.9 31.8,19.1 35.1,19.2 38.4,21.3 41.7,18.7 45.0,24.0 48.3,19.5 51.7,14.2 55.0,10.4 58.3,8.7 61.6,6.8 64.9,5.4 68.2,7.5 71.5,11.7 74.8,8.2 78.1,5.1 81.4,5.9 84.8,6.0 88.1,11.4 91.4,2.0 94.7,2.7 98.0,6.2"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CBBTCUSD" data-l='["06-17: 64,530","06-18: 62,853","06-19: 63,523","06-20: 64,180","06-21: 63,321","06-22: 63,933","06-23: 62,690","06-24: 60,950","06-25: 59,779","06-26: 59,996","06-27: 59,965","06-28: 59,367","06-29: 60,128","06-30: 58,586","07-01: 59,882","07-02: 61,422","07-03: 62,538","07-04: 63,027","07-05: 63,577","07-06: 63,980","07-07: 63,368","07-08: 62,168","07-09: 63,156","07-10: 64,057","07-11: 63,831","07-12: 63,809","07-13: 62,233","07-14: 64,968","07-15: 64,756","07-16: 63,747"]'><polyline points="2.0,3.5 5.3,9.3 8.6,7.0 11.9,4.7 15.2,7.7 18.6,5.6 21.9,9.9 25.2,15.9 28.5,19.9 31.8,19.1 35.1,19.2 38.4,21.3 41.7,18.7 45.0,24.0 48.3,19.5 51.7,14.2 55.0,10.4 58.3,8.7 61.6,6.8 64.9,5.4 68.2,7.5 71.5,11.7 74.8,8.2 78.1,5.1 81.4,5.9 84.8,6.0 88.1,11.4 91.4,2.0 94.7,2.7 98.0,6.2"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -426,7 +426,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-0.88</b><span class="sid">2026-07-10</span></td>
         <td class="neu">— -0.114</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min -0.96 · max -0.18</title><polyline points="2.0,15.2 5.8,17.0 9.7,16.0 13.5,15.4 17.4,14.3 21.2,10.6 25.0,9.3 28.9,9.0 32.7,5.3 36.6,7.2 40.4,2.0 44.2,3.6 48.1,15.1 51.9,18.3 55.8,16.0 59.6,15.9 63.4,18.4 67.3,17.8 71.1,18.4 75.0,16.3 78.8,21.5 82.6,18.7 86.5,24.0 90.3,15.2 94.2,17.5 98.0,21.9"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="STLFSI4" data-l='["01-16: -0.65","01-23: -0.71","01-30: -0.67","02-06: -0.65","02-13: -0.61","02-20: -0.48","02-27: -0.44","03-06: -0.43","03-13: -0.3","03-20: -0.36","03-27: -0.18","04-03: -0.23","04-10: -0.64","04-17: -0.75","04-24: -0.67","05-01: -0.67","05-08: -0.76","05-15: -0.74","05-22: -0.76","05-29: -0.68","06-05: -0.87","06-12: -0.77","06-19: -0.96","06-26: -0.65","07-03: -0.72","07-10: -0.88"]'><polyline points="2.0,15.2 5.8,17.0 9.7,16.0 13.5,15.4 17.4,14.3 21.2,10.6 25.0,9.3 28.9,9.0 32.7,5.3 36.6,7.2 40.4,2.0 44.2,3.6 48.1,15.1 51.9,18.3 55.8,16.0 59.6,15.9 63.4,18.4 67.3,17.8 71.1,18.4 75.0,16.3 78.8,21.5 82.6,18.7 86.5,24.0 90.3,15.2 94.2,17.5 98.0,21.9"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -436,7 +436,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>278.23</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -43.08</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 189.06 · max 621.41</title><polyline points="2.0,22.2 6.2,24.0 10.3,23.4 14.5,23.3 18.7,19.4 22.9,17.2 27.0,18.0 31.2,16.9 35.4,9.7 39.6,2.0 43.7,7.9 47.9,15.0 52.1,13.2 56.3,16.4 60.4,18.1 64.6,13.4 68.8,15.0 73.0,16.7 77.1,14.5 81.3,15.8 85.5,10.9 89.7,16.2 93.8,17.3 98.0,19.5"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GEPUCURRENT" data-l='["07-01: 223.91","08-01: 189.06","09-01: 199.99","10-01: 202.37","11-01: 279.14","12-01: 323.01","01-01: 306.74","02-01: 329.09","03-01: 469.97","04-01: 621.41","05-01: 506.03","06-01: 365.76","07-01: 401.54","08-01: 338.63","09-01: 305.07","10-01: 397.85","11-01: 365.23","12-01: 332.58","01-01: 375.7","02-01: 350.96","03-01: 446.04","04-01: 342.22","05-01: 321.31","06-01: 278.23"]'><polyline points="2.0,22.2 6.2,24.0 10.3,23.4 14.5,23.3 18.7,19.4 22.9,17.2 27.0,18.0 31.2,16.9 35.4,9.7 39.6,2.0 43.7,7.9 47.9,15.0 52.1,13.2 56.3,16.4 60.4,18.1 64.6,13.4 68.8,15.0 73.0,16.7 77.1,14.5 81.3,15.8 85.5,10.9 89.7,16.2 93.8,17.3 98.0,19.5"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -446,7 +446,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>231.45</b><span class="sid">2026-06-01</span></td>
         <td class="neu">— -35.78</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 207.98 · max 570.77</title><polyline points="2.0,19.7 6.2,24.0 10.3,23.0 14.5,22.8 18.7,22.4 22.9,14.5 27.0,21.0 31.2,22.0 35.4,10.7 39.6,4.8 43.7,6.6 47.9,15.8 52.1,15.7 56.3,18.3 60.4,23.2 64.6,4.9 68.8,9.1 73.0,11.1 77.1,13.8 81.3,16.1 85.5,2.0 89.7,16.6 93.8,20.4 98.0,22.6"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CHNMAINLANDEPU" data-l='["07-01: 278.56","08-01: 207.98","09-01: 223.66","10-01: 228.08","11-01: 233.83","12-01: 364.41","01-01: 256.9","02-01: 241.6","03-01: 426.84","04-01: 524.84","05-01: 494.11","06-01: 342.74","07-01: 345.48","08-01: 301.27","09-01: 221.76","10-01: 522.43","11-01: 454.24","12-01: 420.05","01-01: 375.82","02-01: 337.59","03-01: 570.77","04-01: 330.64","05-01: 267.23","06-01: 231.45"]'><polyline points="2.0,19.7 6.2,24.0 10.3,23.0 14.5,22.8 18.7,22.4 22.9,14.5 27.0,21.0 31.2,22.0 35.4,10.7 39.6,4.8 43.7,6.6 47.9,15.8 52.1,15.7 56.3,18.3 60.4,23.2 64.6,4.9 68.8,9.1 73.0,11.1 77.1,13.8 81.3,16.1 85.5,2.0 89.7,16.6 93.8,20.4 98.0,22.6"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -456,7 +456,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-0.03 đpt</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— +0.09</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min -0.12 · max 0.04</title><polyline points="2.0,10.3 5.6,10.3 9.1,14.4 12.7,15.8 16.2,14.4 19.8,7.5 23.3,2.0 26.9,10.3 30.4,10.3 34.0,11.6 37.6,13.0 41.1,11.6 44.7,11.6 48.2,8.9 51.8,11.6 55.3,11.6 58.9,3.4 62.4,6.1 66.0,8.9 69.6,10.3 73.1,11.6 76.7,17.1 80.2,24.0 83.8,21.3 87.3,14.4 90.9,10.3 94.4,8.9 98.0,11.6"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="SOFR_IORB" data-l='["06-05: -0.02 đpt","06-08: -0.02 đpt","06-09: -0.05 đpt","06-10: -0.06 đpt","06-11: -0.05 đpt","06-12: 0 đpt","06-15: 0.04 đpt","06-16: -0.02 đpt","06-17: -0.02 đpt","06-18: -0.03 đpt","06-22: -0.04 đpt","06-23: -0.03 đpt","06-24: -0.03 đpt","06-25: -0.01 đpt","06-26: -0.03 đpt","06-29: -0.03 đpt","06-30: 0.03 đpt","07-01: 0.01 đpt","07-02: -0.01 đpt","07-06: -0.02 đpt","07-07: -0.03 đpt","07-08: -0.07 đpt","07-09: -0.12 đpt","07-10: -0.1 đpt","07-13: -0.05 đpt","07-14: -0.02 đpt","07-15: -0.01 đpt","07-16: -0.03 đpt"]'><polyline points="2.0,10.3 5.6,10.3 9.1,14.4 12.7,15.8 16.2,14.4 19.8,7.5 23.3,2.0 26.9,10.3 30.4,10.3 34.0,11.6 37.6,13.0 41.1,11.6 44.7,11.6 48.2,8.9 51.8,11.6 55.3,11.6 58.9,3.4 62.4,6.1 66.0,8.9 69.6,10.3 73.1,11.6 76.7,17.1 80.2,24.0 83.8,21.3 87.3,14.4 90.9,10.3 94.4,8.9 98.0,11.6"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr>
@@ -472,7 +472,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.077 %</b><span class="sid">2026-07-01</span></td>
         <td class="pos">▲ +0.162</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 1.46 · max 2.08</title><polyline points="2.0,16.7 6.2,19.6 10.3,23.2 14.5,6.2 18.7,11.0 22.9,2.8 27.0,3.7 31.2,9.7 35.4,16.4 39.6,16.6 43.7,9.4 47.9,16.8 52.1,20.1 56.3,20.2 60.4,20.6 64.6,18.6 68.8,24.0 73.0,16.6 77.1,13.7 81.3,23.4 85.5,19.2 89.7,17.9 93.8,7.7 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="REAINTRATREARAT10Y" data-l='["08-01: 1.664 %","09-01: 1.582 %","10-01: 1.48 %","11-01: 1.958 %","12-01: 1.824 %","01-01: 2.056 %","02-01: 2.028 %","03-01: 1.859 %","04-01: 1.67 %","05-01: 1.666 %","06-01: 1.869 %","07-01: 1.66 %","08-01: 1.566 %","09-01: 1.565 %","10-01: 1.554 %","11-01: 1.608 %","12-01: 1.457 %","01-01: 1.666 %","02-01: 1.748 %","03-01: 1.475 %","04-01: 1.594 %","05-01: 1.628 %","06-01: 1.915 %","07-01: 2.077 %"]'><polyline points="2.0,16.7 6.2,19.6 10.3,23.2 14.5,6.2 18.7,11.0 22.9,2.8 27.0,3.7 31.2,9.7 35.4,16.4 39.6,16.6 43.7,9.4 47.9,16.8 52.1,20.1 56.3,20.2 60.4,20.6 64.6,18.6 68.8,24.0 73.0,16.6 77.1,13.7 81.3,23.4 85.5,19.2 89.7,17.9 93.8,7.7 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -482,7 +482,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>0.779 %</b><span class="sid">2026-07-10</span></td>
         <td class="pos">▲ +0.047</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 0.68 · max 0.81</title><polyline points="2.0,9.7 5.6,10.5 9.1,7.9 12.7,9.2 16.2,3.1 19.8,2.0 23.3,3.8 26.9,3.2 30.4,9.6 34.0,8.9 37.6,10.6 41.1,13.7 44.7,9.0 48.2,11.5 51.8,9.4 55.3,10.7 58.9,17.3 62.4,20.5 66.0,22.9 69.6,24.0 73.1,20.9 76.7,16.6 80.2,14.9 83.8,15.9 87.3,11.3 90.9,8.3 94.4,8.9 98.0,7.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="THREEFYTP10" data-l='["06-01: 0.763 %","06-02: 0.758 %","06-03: 0.773 %","06-04: 0.765 %","06-05: 0.802 %","06-08: 0.808 %","06-09: 0.798 %","06-10: 0.801 %","06-11: 0.763 %","06-12: 0.767 %","06-15: 0.757 %","06-16: 0.739 %","06-17: 0.767 %","06-18: 0.752 %","06-22: 0.765 %","06-23: 0.757 %","06-24: 0.718 %","06-25: 0.699 %","06-26: 0.685 %","06-29: 0.678 %","06-30: 0.697 %","07-01: 0.722 %","07-02: 0.732 %","07-06: 0.726 %","07-07: 0.753 %","07-08: 0.771 %","07-09: 0.767 %","07-10: 0.779 %"]'><polyline points="2.0,9.7 5.6,10.5 9.1,7.9 12.7,9.2 16.2,3.1 19.8,2.0 23.3,3.8 26.9,3.2 30.4,9.6 34.0,8.9 37.6,10.6 41.1,13.7 44.7,9.0 48.2,11.5 51.8,9.4 55.3,10.7 58.9,17.3 62.4,20.5 66.0,22.9 69.6,24.0 73.1,20.9 76.7,16.6 80.2,14.9 83.8,15.9 87.3,11.3 90.9,8.3 94.4,8.9 98.0,7.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -492,7 +492,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>2.598 nghìn tỷ $</b><span class="sid">2026-07-15</span></td>
         <td class="neg">▼ -0.033</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>26 obs · min 2.60 · max 2.80</title><polyline points="2.0,5.3 5.8,3.1 9.7,3.5 13.5,2.0 17.4,3.1 21.2,4.7 25.0,5.7 28.9,10.0 32.7,11.0 36.6,13.5 40.4,9.4 44.2,13.6 48.1,12.3 51.9,9.8 55.8,9.1 59.6,10.0 63.4,14.3 67.3,16.5 71.1,15.1 75.0,18.6 78.8,20.1 82.6,20.3 86.5,19.7 90.3,20.9 94.2,24.0 98.0,23.9"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="WMTSECL1" data-l='["01-21: 2.771 nghìn tỷ $","01-28: 2.791 nghìn tỷ $","02-04: 2.787 nghìn tỷ $","02-11: 2.801 nghìn tỷ $","02-18: 2.791 nghìn tỷ $","02-25: 2.776 nghìn tỷ $","03-04: 2.766 nghìn tỷ $","03-11: 2.726 nghìn tỷ $","03-18: 2.717 nghìn tỷ $","03-25: 2.694 nghìn tỷ $","04-01: 2.732 nghìn tỷ $","04-08: 2.693 nghìn tỷ $","04-15: 2.705 nghìn tỷ $","04-22: 2.728 nghìn tỷ $","04-29: 2.735 nghìn tỷ $","05-06: 2.726 nghìn tỷ $","05-13: 2.687 nghìn tỷ $","05-20: 2.667 nghìn tỷ $","05-27: 2.68 nghìn tỷ $","06-03: 2.647 nghìn tỷ $","06-10: 2.633 nghìn tỷ $","06-17: 2.631 nghìn tỷ $","06-24: 2.637 nghìn tỷ $","07-01: 2.626 nghìn tỷ $","07-08: 2.597 nghìn tỷ $","07-15: 2.598 nghìn tỷ $"]'><polyline points="2.0,5.3 5.8,3.1 9.7,3.5 13.5,2.0 17.4,3.1 21.2,4.7 25.0,5.7 28.9,10.0 32.7,11.0 36.6,13.5 40.4,9.4 44.2,13.6 48.1,12.3 51.9,9.8 55.8,9.1 59.6,10.0 63.4,14.3 67.3,16.5 71.1,15.1 75.0,18.6 78.8,20.1 82.6,20.3 86.5,19.7 90.3,20.9 94.2,24.0 98.0,23.9"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -502,7 +502,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-120.3 tỷ $</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -147.32</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -380.08 · max 258.40</title><polyline points="2.0,19.3 6.2,24.0 10.3,8.7 14.5,19.8 18.7,23.5 22.9,13.9 27.0,15.3 31.2,21.5 35.4,16.4 39.6,2.0 43.7,21.8 47.9,10.0 52.1,20.9 56.3,22.8 60.4,4.1 64.6,20.7 68.8,16.9 73.0,15.9 77.1,14.2 81.3,21.5 85.5,16.6 89.7,3.5 93.8,21.0 98.0,15.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="MTSDS133FMS" data-l='["07-01: -243.7 tỷ $","08-01: -380.1 tỷ $","09-01: 64.3 tỷ $","10-01: -257.5 tỷ $","11-01: -366.8 tỷ $","12-01: -86.7 tỷ $","01-01: -128.6 tỷ $","02-01: -307 tỷ $","03-01: -160.5 tỷ $","04-01: 258.4 tỷ $","05-01: -316 tỷ $","06-01: 27 tỷ $","07-01: -291.1 tỷ $","08-01: -344.8 tỷ $","09-01: 197.9 tỷ $","10-01: -284.4 tỷ $","11-01: -173.3 tỷ $","12-01: -144.7 tỷ $","01-01: -94.6 tỷ $","02-01: -307.5 tỷ $","03-01: -164.1 tỷ $","04-01: 215 tỷ $","05-01: -292.6 tỷ $","06-01: -120.3 tỷ $"]'><polyline points="2.0,19.3 6.2,24.0 10.3,8.7 14.5,19.8 18.7,23.5 22.9,13.9 27.0,15.3 31.2,21.5 35.4,16.4 39.6,2.0 43.7,21.8 47.9,10.0 52.1,20.9 56.3,22.8 60.4,4.1 64.6,20.7 68.8,16.9 73.0,15.9 77.1,14.2 81.3,21.5 85.5,16.6 89.7,3.5 93.8,21.0 98.0,15.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -512,7 +512,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>44.8</b><span class="sid">2026-05-01</span></td>
         <td class="neg">▼ -5</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 44.80 · max 74.00</title><polyline points="2.0,6.4 6.2,7.7 10.3,6.6 14.5,4.9 18.7,4.6 22.9,3.7 27.0,2.0 31.2,3.7 35.4,9.0 39.6,14.8 43.7,18.4 47.9,18.4 52.1,12.0 56.3,11.3 60.4,13.9 64.6,16.2 68.8,17.4 73.0,19.3 77.1,17.9 81.3,15.3 85.5,15.1 89.7,17.6 93.8,20.2 98.0,24.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="UMCSENT" data-l='["06-01: 68.2","07-01: 66.4","08-01: 67.9","09-01: 70.1","10-01: 70.5","11-01: 71.8","12-01: 74","01-01: 71.7","02-01: 64.7","03-01: 57","04-01: 52.2","05-01: 52.2","06-01: 60.7","07-01: 61.7","08-01: 58.2","09-01: 55.1","10-01: 53.6","11-01: 51","12-01: 52.9","01-01: 56.4","02-01: 56.6","03-01: 53.3","04-01: 49.8","05-01: 44.8"]'><polyline points="2.0,6.4 6.2,7.7 10.3,6.6 14.5,4.9 18.7,4.6 22.9,3.7 27.0,2.0 31.2,3.7 35.4,9.0 39.6,14.8 43.7,18.4 47.9,18.4 52.1,12.0 56.3,11.3 60.4,13.9 64.6,16.2 68.8,17.4 73.0,19.3 77.1,17.9 81.3,15.3 85.5,15.1 89.7,17.6 93.8,20.2 98.0,24.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr>
@@ -528,7 +528,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>4.13 %</b><span class="sid">2026-07-15</span></td>
         <td class="neg">▼ -0.08</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 4.05 · max 4.26</title><polyline points="2.0,24.0 5.6,11.4 9.1,13.5 12.7,15.6 16.2,15.6 19.8,24.0 23.3,19.8 26.9,21.9 30.4,24.0 34.0,8.3 37.6,9.3 41.1,4.1 44.7,12.5 48.2,17.7 51.8,19.8 55.3,21.9 58.9,18.8 62.4,14.6 66.0,11.4 69.6,14.6 73.1,15.6 76.7,9.3 80.2,7.2 83.8,12.5 87.3,7.2 90.9,2.0 94.4,10.4 98.0,15.6"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DGS2" data-l='["06-04: 4.05 %","06-05: 4.17 %","06-08: 4.15 %","06-09: 4.13 %","06-10: 4.13 %","06-11: 4.05 %","06-12: 4.09 %","06-15: 4.07 %","06-16: 4.05 %","06-17: 4.2 %","06-18: 4.19 %","06-22: 4.24 %","06-23: 4.16 %","06-24: 4.11 %","06-25: 4.09 %","06-26: 4.07 %","06-29: 4.1 %","06-30: 4.14 %","07-01: 4.17 %","07-02: 4.14 %","07-06: 4.13 %","07-07: 4.19 %","07-08: 4.21 %","07-09: 4.16 %","07-10: 4.21 %","07-13: 4.26 %","07-14: 4.18 %","07-15: 4.13 %"]'><polyline points="2.0,24.0 5.6,11.4 9.1,13.5 12.7,15.6 16.2,15.6 19.8,24.0 23.3,19.8 26.9,21.9 30.4,24.0 34.0,8.3 37.6,9.3 41.1,4.1 44.7,12.5 48.2,17.7 51.8,19.8 55.3,21.9 58.9,18.8 62.4,14.6 66.0,11.4 69.6,14.6 73.1,15.6 76.7,9.3 80.2,7.2 83.8,12.5 87.3,7.2 90.9,2.0 94.4,10.4 98.0,15.6"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -538,7 +538,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>4.55 %</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— -0.01</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 4.38 · max 4.62</title><polyline points="2.0,15.8 5.6,8.4 9.1,7.5 12.7,10.2 16.2,8.4 19.8,17.6 23.3,14.8 26.9,15.8 30.4,19.4 34.0,13.9 37.6,16.7 41.1,12.1 44.7,13.0 48.2,21.2 51.8,22.2 55.3,24.0 58.9,24.0 62.4,18.5 66.0,14.8 69.6,13.9 73.1,14.8 76.7,8.4 80.2,7.5 83.8,9.3 87.3,7.5 90.9,2.0 94.4,5.7 98.0,8.4"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DGS10" data-l='["06-04: 4.47 %","06-05: 4.55 %","06-08: 4.56 %","06-09: 4.53 %","06-10: 4.55 %","06-11: 4.45 %","06-12: 4.48 %","06-15: 4.47 %","06-16: 4.43 %","06-17: 4.49 %","06-18: 4.46 %","06-22: 4.51 %","06-23: 4.5 %","06-24: 4.41 %","06-25: 4.4 %","06-26: 4.38 %","06-29: 4.38 %","06-30: 4.44 %","07-01: 4.48 %","07-02: 4.49 %","07-06: 4.48 %","07-07: 4.55 %","07-08: 4.56 %","07-09: 4.54 %","07-10: 4.56 %","07-13: 4.62 %","07-14: 4.58 %","07-15: 4.55 %"]'><polyline points="2.0,15.8 5.6,8.4 9.1,7.5 12.7,10.2 16.2,8.4 19.8,17.6 23.3,14.8 26.9,15.8 30.4,19.4 34.0,13.9 37.6,16.7 41.1,12.1 44.7,13.0 48.2,21.2 51.8,22.2 55.3,24.0 58.9,24.0 62.4,18.5 66.0,14.8 69.6,13.9 73.1,14.8 76.7,8.4 80.2,7.5 83.8,9.3 87.3,7.5 90.9,2.0 94.4,5.7 98.0,8.4"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -548,7 +548,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>0.41 %</b><span class="sid">2026-07-16</span></td>
         <td class="neu">— +0.03</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 0.27 · max 0.42</title><polyline points="2.0,7.9 5.6,3.5 9.1,4.9 12.7,2.0 16.2,4.9 19.8,6.4 23.3,4.9 26.9,7.9 30.4,21.1 34.0,24.0 37.6,24.0 41.1,13.7 44.7,19.6 48.2,18.1 51.8,18.1 55.3,22.5 58.9,19.6 62.4,18.1 66.0,12.3 69.6,12.3 73.1,10.8 76.7,12.3 80.2,7.9 83.8,12.3 87.3,10.8 90.9,4.9 94.4,2.0 98.0,3.5"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="T10Y2Y" data-l='["06-05: 0.38 %","06-08: 0.41 %","06-09: 0.4 %","06-10: 0.42 %","06-11: 0.4 %","06-12: 0.39 %","06-15: 0.4 %","06-16: 0.38 %","06-17: 0.29 %","06-18: 0.27 %","06-22: 0.27 %","06-23: 0.34 %","06-24: 0.3 %","06-25: 0.31 %","06-26: 0.31 %","06-29: 0.28 %","06-30: 0.3 %","07-01: 0.31 %","07-02: 0.35 %","07-06: 0.35 %","07-07: 0.36 %","07-08: 0.35 %","07-09: 0.38 %","07-10: 0.35 %","07-13: 0.36 %","07-14: 0.4 %","07-15: 0.42 %","07-16: 0.41 %"]'><polyline points="2.0,7.9 5.6,3.5 9.1,4.9 12.7,2.0 16.2,4.9 19.8,6.4 23.3,4.9 26.9,7.9 30.4,21.1 34.0,24.0 37.6,24.0 41.1,13.7 44.7,19.6 48.2,18.1 51.8,18.1 55.3,22.5 58.9,19.6 62.4,18.1 66.0,12.3 69.6,12.3 73.1,10.8 76.7,12.3 80.2,7.9 83.8,12.3 87.3,10.8 90.9,4.9 94.4,2.0 98.0,3.5"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -558,7 +558,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>1.144</b><span class="sid">2026-07-10</span></td>
         <td class="neu">— -0.001</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 1.13 · max 1.16</title><polyline points="2.0,3.3 5.6,2.0 9.1,4.8 12.7,3.0 16.2,10.2 19.8,9.3 23.3,8.4 26.9,8.9 30.4,11.5 34.0,7.2 37.6,5.2 41.1,4.0 44.7,5.7 48.2,14.9 51.8,17.7 55.3,21.4 58.9,24.0 62.4,21.2 66.0,19.9 69.6,18.2 73.1,18.8 76.7,21.3 80.2,16.5 83.8,18.2 87.3,18.4 90.9,20.4 94.4,17.2 98.0,17.3"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DEXUSEU" data-l='["06-01: 1.162","06-02: 1.164","06-03: 1.161","06-04: 1.163","06-05: 1.153","06-08: 1.155","06-09: 1.156","06-10: 1.155","06-11: 1.152","06-12: 1.157","06-15: 1.16","06-16: 1.162","06-17: 1.159","06-18: 1.147","06-22: 1.143","06-23: 1.138","06-24: 1.135","06-25: 1.139","06-26: 1.14","06-29: 1.143","06-30: 1.142","07-01: 1.138","07-02: 1.145","07-06: 1.143","07-07: 1.142","07-08: 1.14","07-09: 1.144","07-10: 1.144"]'><polyline points="2.0,3.3 5.6,2.0 9.1,4.8 12.7,3.0 16.2,10.2 19.8,9.3 23.3,8.4 26.9,8.9 30.4,11.5 34.0,7.2 37.6,5.2 41.1,4.0 44.7,5.7 48.2,14.9 51.8,17.7 55.3,21.4 58.9,24.0 62.4,21.2 66.0,19.9 69.6,18.2 73.1,18.8 76.7,21.3 80.2,16.5 83.8,18.2 87.3,18.4 90.9,20.4 94.4,17.2 98.0,17.3"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -568,7 +568,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>161.31</b><span class="sid">2026-07-10</span></td>
         <td class="neu">— +0.41</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 159.66 · max 162.67</title><polyline points="2.0,24.0 5.6,22.5 9.1,21.7 12.7,21.7 16.2,19.6 19.8,20.6 23.3,19.8 26.9,18.1 30.4,17.8 34.0,19.8 37.6,20.1 41.1,18.7 44.7,19.9 48.2,11.5 51.8,10.5 55.3,10.2 58.9,8.7 62.4,9.3 66.0,9.3 69.6,7.4 73.1,2.4 76.7,3.9 80.2,14.9 83.8,4.9 87.3,7.6 90.9,2.0 94.4,4.8 98.0,11.9"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DEXJPUS" data-l='["06-01: 159.66","06-02: 159.86","06-03: 159.97","06-04: 159.97","06-05: 160.26","06-08: 160.12","06-09: 160.23","06-10: 160.47","06-11: 160.51","06-12: 160.24","06-15: 160.2","06-16: 160.39","06-17: 160.22","06-18: 161.37","06-22: 161.51","06-23: 161.55","06-24: 161.76","06-25: 161.67","06-26: 161.67","06-29: 161.93","06-30: 162.61","07-01: 162.41","07-02: 160.9","07-06: 162.28","07-07: 161.91","07-08: 162.67","07-09: 162.29","07-10: 161.31"]'><polyline points="2.0,24.0 5.6,22.5 9.1,21.7 12.7,21.7 16.2,19.6 19.8,20.6 23.3,19.8 26.9,18.1 30.4,17.8 34.0,19.8 37.6,20.1 41.1,18.7 44.7,19.9 48.2,11.5 51.8,10.5 55.3,10.2 58.9,8.7 62.4,9.3 66.0,9.3 69.6,7.4 73.1,2.4 76.7,3.9 80.2,14.9 83.8,4.9 87.3,7.6 90.9,2.0 94.4,4.8 98.0,11.9"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -578,7 +578,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>6.777</b><span class="sid">2026-07-10</span></td>
         <td class="neg">▼ -0.012</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 6.76 · max 6.81</title><polyline points="2.0,20.4 5.6,21.6 9.1,18.7 12.7,17.0 16.2,20.2 19.8,13.1 23.3,17.5 26.9,16.6 30.4,16.2 34.0,21.4 37.6,23.7 41.1,24.0 44.7,23.4 48.2,19.0 51.8,16.6 55.3,10.3 58.9,2.0 62.4,7.3 66.0,7.1 69.6,8.9 73.1,12.3 76.7,8.6 80.2,10.9 83.8,8.0 87.3,9.0 90.9,5.3 94.4,9.5 98.0,15.7"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DEXCHUS" data-l='["06-01: 6.765","06-02: 6.762","06-03: 6.769","06-04: 6.774","06-05: 6.766","06-08: 6.783","06-09: 6.772","06-10: 6.775","06-11: 6.776","06-12: 6.763","06-15: 6.757","06-16: 6.756","06-17: 6.758","06-18: 6.769","06-22: 6.775","06-23: 6.79","06-24: 6.811","06-25: 6.798","06-26: 6.798","06-29: 6.794","06-30: 6.785","07-01: 6.794","07-02: 6.789","07-06: 6.796","07-07: 6.793","07-08: 6.803","07-09: 6.792","07-10: 6.777"]'><polyline points="2.0,20.4 5.6,21.6 9.1,18.7 12.7,17.0 16.2,20.2 19.8,13.1 23.3,17.5 26.9,16.6 30.4,16.2 34.0,21.4 37.6,23.7 41.1,24.0 44.7,23.4 48.2,19.0 51.8,16.6 55.3,10.3 58.9,2.0 62.4,7.3 66.0,7.1 69.6,8.9 73.1,12.3 76.7,8.6 80.2,10.9 83.8,8.0 87.3,9.0 90.9,5.3 94.4,9.5 98.0,15.7"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -588,7 +588,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>120.5</b><span class="sid">2026-07-10</span></td>
         <td class="neu">— -0.186</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>28 obs · min 119.04 · max 121.41</title><polyline points="2.0,22.8 5.6,24.0 9.1,20.8 12.7,21.0 16.2,14.3 19.8,14.8 23.3,15.4 26.9,15.9 30.4,14.0 34.0,19.6 37.6,21.4 41.1,22.0 44.7,20.7 48.2,11.4 51.8,10.0 55.3,5.3 58.9,2.0 62.4,5.3 66.0,6.9 69.6,6.3 73.1,6.5 76.7,4.5 80.2,8.7 83.8,7.3 87.3,7.5 90.9,4.6 94.4,8.1 98.0,10.4"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DTWEXBGS" data-l='["06-01: 119.17","06-02: 119.04","06-03: 119.38","06-04: 119.36","06-05: 120.08","06-08: 120.03","06-09: 119.96","06-10: 119.91","06-11: 120.12","06-12: 119.51","06-15: 119.32","06-16: 119.26","06-17: 119.39","06-18: 120.4","06-22: 120.55","06-23: 121.06","06-24: 121.41","06-25: 121.06","06-26: 120.89","06-29: 120.95","06-30: 120.92","07-01: 121.15","07-02: 120.69","07-06: 120.84","07-07: 120.81","07-08: 121.13","07-09: 120.75","07-10: 120.5"]'><polyline points="2.0,22.8 5.6,24.0 9.1,20.8 12.7,21.0 16.2,14.3 19.8,14.8 23.3,15.4 26.9,15.9 30.4,14.0 34.0,19.6 37.6,21.4 41.1,22.0 44.7,20.7 48.2,11.4 51.8,10.0 55.3,5.3 58.9,2.0 62.4,5.3 66.0,6.9 69.6,6.3 73.1,6.5 76.7,4.5 80.2,8.7 83.8,7.3 87.3,7.5 90.9,4.6 94.4,8.1 98.0,10.4"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -598,7 +598,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>115.4</b><span class="sid">2026-06-01</span></td>
         <td class="pos">▲ +1.311</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 112.48 · max 122.41</title><polyline points="2.0,15.0 6.2,16.5 10.3,17.5 14.5,13.9 18.7,8.0 22.9,5.1 27.0,2.0 31.2,3.8 35.4,7.5 39.6,12.1 43.7,16.0 47.9,19.5 52.1,20.4 56.3,18.8 60.4,19.8 64.6,18.6 68.8,17.3 73.0,19.6 77.1,21.3 81.3,24.0 85.5,19.1 89.7,20.4 93.8,20.5 98.0,17.6"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="RTWEXBGS" data-l='["07-01: 116.5","08-01: 115.9","09-01: 115.4","10-01: 117","11-01: 119.7","12-01: 121","01-01: 122.4","02-01: 121.6","03-01: 119.9","04-01: 117.9","05-01: 116.1","06-01: 114.5","07-01: 114.1","08-01: 114.8","09-01: 114.4","10-01: 114.9","11-01: 115.5","12-01: 114.5","01-01: 113.7","02-01: 112.5","03-01: 114.7","04-01: 114.1","05-01: 114.1","06-01: 115.4"]'><polyline points="2.0,15.0 6.2,16.5 10.3,17.5 14.5,13.9 18.7,8.0 22.9,5.1 27.0,2.0 31.2,3.8 35.4,7.5 39.6,12.1 43.7,16.0 47.9,19.5 52.1,20.4 56.3,18.8 60.4,19.8 64.6,18.6 68.8,17.3 73.0,19.6 77.1,21.3 81.3,24.0 85.5,19.1 89.7,20.4 93.8,20.5 98.0,17.6"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr>
@@ -614,7 +614,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>1.47 đpt</b><span class="sid">2026-06-01</span></td>
         <td class="neu">— +0.067</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 1.23 · max 2.40</title><polyline points="2.0,16.4 6.2,15.1 10.3,16.2 14.5,8.6 18.7,11.9 22.9,2.0 27.0,7.7 31.2,12.6 35.4,19.1 39.6,15.9 43.7,12.4 47.9,14.7 52.1,14.4 56.3,17.8 60.4,19.5 64.6,19.0 68.8,21.4 73.0,21.4 77.1,19.7 81.3,24.0 85.5,20.9 89.7,20.7 93.8,20.7 98.0,19.4"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_DE_10Y" data-l='["07-01: 1.63 đpt","08-01: 1.7 đpt","09-01: 1.64 đpt","10-01: 2.05 đpt","11-01: 1.87 đpt","12-01: 2.4 đpt","01-01: 2.1 đpt","02-01: 1.83 đpt","03-01: 1.49 đpt","04-01: 1.66 đpt","05-01: 1.85 đpt","06-01: 1.72 đpt","07-01: 1.74 đpt","08-01: 1.56 đpt","09-01: 1.47 đpt","10-01: 1.49 đpt","11-01: 1.36 đpt","12-01: 1.37 đpt","01-01: 1.45 đpt","02-01: 1.23 đpt","03-01: 1.39 đpt","04-01: 1.4 đpt","05-01: 1.4 đpt","06-01: 1.47 đpt"]'><polyline points="2.0,16.4 6.2,15.1 10.3,16.2 14.5,8.6 18.7,11.9 22.9,2.0 27.0,7.7 31.2,12.6 35.4,19.1 39.6,15.9 43.7,12.4 47.9,14.7 52.1,14.4 56.3,17.8 60.4,19.5 64.6,19.0 68.8,21.4 73.0,21.4 77.1,19.7 81.3,24.0 85.5,20.9 89.7,20.7 93.8,20.7 98.0,19.4"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -624,7 +624,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>1.77 đpt</b><span class="sid">2026-06-01</span></td>
         <td class="neu">— -0.03</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 1.77 · max 3.49</title><polyline points="2.0,7.7 6.2,8.0 10.3,8.8 14.5,3.9 18.7,6.6 22.9,2.0 27.0,4.0 31.2,9.9 35.4,11.5 39.6,10.1 43.7,9.4 47.9,10.6 52.1,10.5 56.3,13.0 60.4,14.5 64.6,15.2 68.8,18.3 73.0,19.5 77.1,20.8 81.3,22.8 85.5,21.6 89.7,22.5 93.8,23.6 98.0,24.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_JP_10Y" data-l='["07-01: 3.05 đpt","08-01: 3.02 đpt","09-01: 2.96 đpt","10-01: 3.35 đpt","11-01: 3.13 đpt","12-01: 3.49 đpt","01-01: 3.34 đpt","02-01: 2.87 đpt","03-01: 2.75 đpt","04-01: 2.86 đpt","05-01: 2.91 đpt","06-01: 2.82 đpt","07-01: 2.83 đpt","08-01: 2.63 đpt","09-01: 2.52 đpt","10-01: 2.46 đpt","11-01: 2.22 đpt","12-01: 2.12 đpt","01-01: 2.02 đpt","02-01: 1.86 đpt","03-01: 1.95 đpt","04-01: 1.89 đpt","05-01: 1.8 đpt","06-01: 1.77 đpt"]'><polyline points="2.0,7.7 6.2,8.0 10.3,8.8 14.5,3.9 18.7,6.6 22.9,2.0 27.0,4.0 31.2,9.9 35.4,11.5 39.6,10.1 43.7,9.4 47.9,10.6 52.1,10.5 56.3,13.0 60.4,14.5 64.6,15.2 68.8,18.3 73.0,19.5 77.1,20.8 81.3,22.8 85.5,21.6 89.7,22.5 93.8,23.6 98.0,24.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -634,7 +634,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-0.36 đpt</b><span class="sid">2026-06-01</span></td>
         <td class="pos">▲ +0.136</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -0.53 · max 0.15</title><polyline points="2.0,8.3 6.2,7.9 10.3,9.9 14.5,4.1 18.7,14.5 22.9,2.0 27.0,9.4 31.2,15.4 35.4,20.3 39.6,20.0 43.7,13.0 47.9,16.0 52.1,14.0 56.3,20.0 60.4,24.0 64.6,21.8 68.8,22.4 73.0,16.6 77.1,13.0 81.3,21.8 85.5,19.8 89.7,20.5 93.8,22.8 98.0,18.4"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_GB_10Y" data-l='["07-01: -0.05 đpt","08-01: -0.03 đpt","09-01: -0.1 đpt","10-01: 0.08 đpt","11-01: -0.24 đpt","12-01: 0.15 đpt","01-01: -0.08 đpt","02-01: -0.27 đpt","03-01: -0.41 đpt","04-01: -0.41 đpt","05-01: -0.19 đpt","06-01: -0.28 đpt","07-01: -0.22 đpt","08-01: -0.41 đpt","09-01: -0.53 đpt","10-01: -0.46 đpt","11-01: -0.48 đpt","12-01: -0.3 đpt","01-01: -0.19 đpt","02-01: -0.46 đpt","03-01: -0.4 đpt","04-01: -0.42 đpt","05-01: -0.49 đpt","06-01: -0.36 đpt"]'><polyline points="2.0,8.3 6.2,7.9 10.3,9.9 14.5,4.1 18.7,14.5 22.9,2.0 27.0,9.4 31.2,15.4 35.4,20.3 39.6,20.0 43.7,13.0 47.9,16.0 52.1,14.0 56.3,20.0 60.4,24.0 64.6,21.8 68.8,22.4 73.0,16.6 77.1,13.0 81.3,21.8 85.5,19.8 89.7,20.5 93.8,22.8 98.0,18.4"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -644,7 +644,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>4.13 đpt</b><span class="sid">2026-06-01</span></td>
         <td class="pos">▲ +0.12</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 3.40 · max 4.26</title><polyline points="2.0,17.9 6.2,22.5 10.3,24.0 14.5,13.1 18.7,11.5 22.9,2.0 27.0,3.7 31.2,12.7 35.4,15.9 39.6,12.7 43.7,4.9 47.9,13.0 52.1,8.9 56.3,11.0 60.4,9.7 64.6,10.5 68.8,13.0 73.0,12.5 77.1,9.0 81.3,15.8 85.5,11.3 89.7,10.0 93.8,8.4 98.0,5.4"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_CH_10Y" data-l='["07-01: 3.64 đpt","08-01: 3.46 đpt","09-01: 3.4 đpt","10-01: 3.83 đpt","11-01: 3.89 đpt","12-01: 4.26 đpt","01-01: 4.2 đpt","02-01: 3.84 đpt","03-01: 3.72 đpt","04-01: 3.84 đpt","05-01: 4.15 đpt","06-01: 3.83 đpt","07-01: 3.99 đpt","08-01: 3.91 đpt","09-01: 3.96 đpt","10-01: 3.93 đpt","11-01: 3.83 đpt","12-01: 3.85 đpt","01-01: 3.99 đpt","02-01: 3.72 đpt","03-01: 3.9 đpt","04-01: 3.95 đpt","05-01: 4.01 đpt","06-01: 4.13 đpt"]'><polyline points="2.0,17.9 6.2,22.5 10.3,24.0 14.5,13.1 18.7,11.5 22.9,2.0 27.0,3.7 31.2,12.7 35.4,15.9 39.6,12.7 43.7,4.9 47.9,13.0 52.1,8.9 56.3,11.0 60.4,9.7 64.6,10.5 68.8,13.0 73.0,12.5 77.1,9.0 81.3,15.8 85.5,11.3 89.7,10.0 93.8,8.4 98.0,5.4"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -654,7 +654,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>1.02 đpt</b><span class="sid">2026-06-01</span></td>
         <td class="pos">▲ +0.112</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 0.68 · max 1.42</title><polyline points="2.0,24.0 6.2,19.3 10.3,18.5 14.5,11.7 18.7,17.4 22.9,2.0 27.0,5.8 31.2,9.0 35.4,7.9 39.6,12.7 43.7,8.9 47.9,16.7 52.1,17.8 56.3,20.2 60.4,16.4 64.6,15.0 68.8,19.1 73.0,20.7 77.1,18.7 81.3,24.0 85.5,18.7 89.7,18.0 93.8,17.2 98.0,13.9"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_CA_10Y" data-l='["07-01: 0.68 đpt","08-01: 0.84 đpt","09-01: 0.87 đpt","10-01: 1.09 đpt","11-01: 0.9 đpt","12-01: 1.42 đpt","01-01: 1.29 đpt","02-01: 1.18 đpt","03-01: 1.22 đpt","04-01: 1.06 đpt","05-01: 1.19 đpt","06-01: 0.93 đpt","07-01: 0.89 đpt","08-01: 0.81 đpt","09-01: 0.94 đpt","10-01: 0.98 đpt","11-01: 0.85 đpt","12-01: 0.79 đpt","01-01: 0.86 đpt","02-01: 0.68 đpt","03-01: 0.86 đpt","04-01: 0.88 đpt","05-01: 0.91 đpt","06-01: 1.02 đpt"]'><polyline points="2.0,24.0 6.2,19.3 10.3,18.5 14.5,11.7 18.7,17.4 22.9,2.0 27.0,5.8 31.2,9.0 35.4,7.9 39.6,12.7 43.7,8.9 47.9,16.7 52.1,17.8 56.3,20.2 60.4,16.4 64.6,15.0 68.8,19.1 73.0,20.7 77.1,18.7 81.3,24.0 85.5,18.7 89.7,18.0 93.8,17.2 98.0,13.9"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -664,7 +664,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>1.38 đpt</b><span class="sid">2026-07-15</span></td>
         <td class="neu">— +0.01</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>30 obs · min 1.37 · max 1.63</title><polyline points="2.0,2.0 5.3,23.2 8.6,23.2 11.9,23.2 15.2,23.2 18.6,23.2 21.9,23.2 25.2,23.2 28.5,23.2 31.8,23.2 35.1,23.2 38.4,23.2 41.7,23.2 45.0,23.2 48.3,23.2 51.7,23.2 55.0,23.2 58.3,23.2 61.6,23.2 64.9,23.2 68.2,23.2 71.5,23.2 74.8,24.0 78.1,24.0 81.4,24.0 84.8,24.0 88.1,24.0 91.4,24.0 94.7,23.2 98.0,23.2"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_EU_POL" data-l='["06-16: 1.63 đpt","06-17: 1.38 đpt","06-18: 1.38 đpt","06-19: 1.38 đpt","06-20: 1.38 đpt","06-21: 1.38 đpt","06-22: 1.38 đpt","06-23: 1.38 đpt","06-24: 1.38 đpt","06-25: 1.38 đpt","06-26: 1.38 đpt","06-27: 1.38 đpt","06-28: 1.38 đpt","06-29: 1.38 đpt","06-30: 1.38 đpt","07-01: 1.38 đpt","07-02: 1.38 đpt","07-03: 1.38 đpt","07-04: 1.38 đpt","07-05: 1.38 đpt","07-06: 1.38 đpt","07-07: 1.38 đpt","07-08: 1.37 đpt","07-09: 1.37 đpt","07-10: 1.37 đpt","07-11: 1.37 đpt","07-12: 1.37 đpt","07-13: 1.37 đpt","07-14: 1.38 đpt","07-15: 1.38 đpt"]'><polyline points="2.0,2.0 5.3,23.2 8.6,23.2 11.9,23.2 15.2,23.2 18.6,23.2 21.9,23.2 25.2,23.2 28.5,23.2 31.8,23.2 35.1,23.2 38.4,23.2 41.7,23.2 45.0,23.2 48.3,23.2 51.7,23.2 55.0,23.2 58.3,23.2 61.6,23.2 64.9,23.2 68.2,23.2 71.5,23.2 74.8,24.0 78.1,24.0 81.4,24.0 84.8,24.0 88.1,24.0 91.4,24.0 94.7,23.2 98.0,23.2"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
@@ -674,7 +674,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-0.1 đpt</b><span class="sid">2026-07-15</span></td>
         <td class="pos">▲ +0.01</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>22 obs · min -0.11 · max -0.10</title><polyline points="2.0,5.0 6.6,4.8 11.1,4.3 15.7,3.2 20.3,2.9 24.9,3.4 29.4,2.5 34.0,2.0 38.6,2.5 43.1,2.9 47.7,7.5 52.3,5.9 56.9,5.2 61.4,4.7 66.0,3.8 70.6,3.8 75.1,22.6 79.7,24.0 84.3,23.8 88.9,23.5 93.4,6.3 98.0,5.7"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_GB_POL" data-l='["06-16: -0.1 đpt","06-17: -0.1 đpt","06-18: -0.1 đpt","06-19: -0.1 đpt","06-22: -0.1 đpt","06-23: -0.1 đpt","06-24: -0.1 đpt","06-25: -0.1 đpt","06-26: -0.1 đpt","06-29: -0.1 đpt","06-30: -0.1 đpt","07-01: -0.1 đpt","07-02: -0.1 đpt","07-03: -0.1 đpt","07-06: -0.1 đpt","07-07: -0.1 đpt","07-08: -0.11 đpt","07-09: -0.11 đpt","07-10: -0.11 đpt","07-13: -0.11 đpt","07-14: -0.1 đpt","07-15: -0.1 đpt"]'><polyline points="2.0,5.0 6.6,4.8 11.1,4.3 15.7,3.2 20.3,2.9 24.9,3.4 29.4,2.5 34.0,2.0 38.6,2.5 43.1,2.9 47.7,7.5 52.3,5.9 56.9,5.2 61.4,4.7 66.0,3.8 70.6,3.8 75.1,22.6 79.7,24.0 84.3,23.8 88.9,23.5 93.4,6.3 98.0,5.7"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -684,7 +684,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-0.39 đpt</b><span class="sid">2026-06-01</span></td>
         <td class="pos">▲ +0.141</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -0.79 · max 0.27</title><polyline points="2.0,12.5 6.2,8.9 10.3,9.9 14.5,7.3 18.7,15.2 22.9,2.0 27.0,5.5 31.2,11.4 35.4,11.6 39.6,9.6 43.7,6.3 47.9,6.9 52.1,5.9 56.3,8.5 60.4,10.4 64.6,10.2 68.8,15.8 73.0,18.8 77.1,17.8 81.3,24.0 85.5,20.6 89.7,19.4 93.8,18.7 98.0,15.7"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_AU_10Y" data-l='["07-01: -0.24 đpt","08-01: -0.07 đpt","09-01: -0.11 đpt","10-01: 0.01 đpt","11-01: -0.36 đpt","12-01: 0.27 đpt","01-01: 0.1 đpt","02-01: -0.18 đpt","03-01: -0.19 đpt","04-01: -0.1 đpt","05-01: 0.06 đpt","06-01: 0.03 đpt","07-01: 0.08 đpt","08-01: -0.04 đpt","09-01: -0.14 đpt","10-01: -0.12 đpt","11-01: -0.4 đpt","12-01: -0.54 đpt","01-01: -0.49 đpt","02-01: -0.79 đpt","03-01: -0.63 đpt","04-01: -0.57 đpt","05-01: -0.53 đpt","06-01: -0.39 đpt"]'><polyline points="2.0,12.5 6.2,8.9 10.3,9.9 14.5,7.3 18.7,15.2 22.9,2.0 27.0,5.5 31.2,11.4 35.4,11.6 39.6,9.6 43.7,6.3 47.9,6.9 52.1,5.9 56.3,8.5 60.4,10.4 64.6,10.2 68.8,15.8 73.0,18.8 77.1,17.8 81.3,24.0 85.5,20.6 89.7,19.4 93.8,18.7 98.0,15.7"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
@@ -694,7 +694,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>-0.02 đpt</b><span class="sid">2026-06-01</span></td>
         <td class="pos">▲ +0.21</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min -0.48 · max 0.09</title><polyline points="2.0,21.3 6.2,17.4 10.3,20.1 14.5,9.3 18.7,22.8 22.9,2.0 27.0,8.2 31.2,19.8 35.4,20.9 39.6,20.1 43.7,12.4 47.9,18.6 52.1,12.4 56.3,12.4 60.4,10.5 64.6,4.3 68.8,12.8 73.0,18.6 77.1,15.1 81.3,24.0 85.5,18.6 89.7,16.3 93.8,14.4 98.0,6.2"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_NZ_10Y" data-l='["07-01: -0.41 đpt","08-01: -0.31 đpt","09-01: -0.38 đpt","10-01: -0.1 đpt","11-01: -0.45 đpt","12-01: 0.09 đpt","01-01: -0.07 đpt","02-01: -0.37 đpt","03-01: -0.4 đpt","04-01: -0.38 đpt","05-01: -0.18 đpt","06-01: -0.34 đpt","07-01: -0.18 đpt","08-01: -0.18 đpt","09-01: -0.13 đpt","10-01: 0.03 đpt","11-01: -0.19 đpt","12-01: -0.34 đpt","01-01: -0.25 đpt","02-01: -0.48 đpt","03-01: -0.34 đpt","04-01: -0.28 đpt","05-01: -0.23 đpt","06-01: -0.02 đpt"]'><polyline points="2.0,21.3 6.2,17.4 10.3,20.1 14.5,9.3 18.7,22.8 22.9,2.0 27.0,8.2 31.2,19.8 35.4,20.9 39.6,20.1 43.7,12.4 47.9,18.6 52.1,12.4 56.3,12.4 60.4,10.5 64.6,4.3 68.8,12.8 73.0,18.6 77.1,15.1 81.3,24.0 85.5,18.6 89.7,16.3 93.8,14.4 98.0,6.2"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr>
@@ -710,7 +710,7 @@ tr:hover td{background:var(--card)}
           </td>
         <td><b>20.3 tỷ $</b><span class="sid">2026-05-01</span></td>
         <td class="pos">▲ +1.918</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><title>24 obs · min 9.98 · max 20.32</title><polyline points="2.0,23.0 6.2,24.0 10.3,22.0 14.5,17.8 18.7,20.5 22.9,22.0 27.0,23.2 31.2,19.6 35.4,22.0 39.6,16.4 43.7,16.3 47.9,13.9 52.1,10.0 56.3,9.8 60.4,13.2 64.6,9.7 68.8,10.7 73.0,12.5 77.1,9.2 81.3,6.4 85.5,14.5 89.7,4.9 93.8,6.1 98.0,2.0"/></svg></td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="VN_US_TRADE" data-l='["06-01: 10.4 tỷ $","07-01: 10 tỷ $","08-01: 10.9 tỷ $","09-01: 12.9 tỷ $","10-01: 11.6 tỷ $","11-01: 10.9 tỷ $","12-01: 10.4 tỷ $","01-01: 12 tỷ $","02-01: 10.9 tỷ $","03-01: 13.6 tỷ $","04-01: 13.6 tỷ $","05-01: 14.7 tỷ $","06-01: 16.6 tỷ $","07-01: 16.6 tỷ $","08-01: 15 tỷ $","09-01: 16.7 tỷ $","10-01: 16.2 tỷ $","11-01: 15.4 tỷ $","12-01: 16.9 tỷ $","01-01: 18.3 tỷ $","02-01: 14.4 tỷ $","03-01: 19 tỷ $","04-01: 18.4 tỷ $","05-01: 20.3 tỷ $"]'><polyline points="2.0,23.0 6.2,24.0 10.3,22.0 14.5,17.8 18.7,20.5 22.9,22.0 27.0,23.2 31.2,19.6 35.4,22.0 39.6,16.4 43.7,16.3 47.9,13.9 52.1,10.0 56.3,9.8 60.4,13.2 64.6,9.7 68.8,10.7 73.0,12.5 77.1,9.2 81.3,6.4 85.5,14.5 89.7,4.9 93.8,6.1 98.0,2.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr>
@@ -757,6 +757,23 @@ body.showobs .kpi svg{display:initial}
     });
   });
   document.addEventListener("click", function(){ tf.style.display = "none"; open = null; });
+  // hover sparkline → đọc giá trị từng obs. Delegation trên document nên svg do imBuild
+  // chèn sau (section liên TT) cũng ăn, không cần bind lại.
+  var sparkOn = false;
+  document.addEventListener("mousemove", function(e){
+    var sv = e.target && e.target.closest ? e.target.closest("svg[data-l]") : null;
+    if (!sv) {
+      if (sparkOn) { sparkOn = false; if (!(e.target.closest && e.target.closest(".tipname"))) { tf.style.display = "none"; } }
+      return;
+    }
+    var L; try { L = JSON.parse(sv.dataset.l); } catch (err) { return; }
+    if (!L.length) return;
+    var r = sv.getBoundingClientRect();
+    var i = Math.max(0, Math.min(L.length - 1, Math.round((e.clientX - r.left) / r.width * (L.length - 1))));
+    tf.innerHTML = "<b>" + (sv.dataset.t || "obs") + " · " + (i + 1) + "/" + L.length + "</b>" + L[i];
+    tf.style.display = "block"; move(e.clientX, e.clientY);
+    sparkOn = true;
+  });
   var ob = document.getElementById("obsbtn");
   var ob2 = document.getElementById("obsbtn2"); // nút thứ 2 ngay header section Liên thị trường — cùng 1 công tắc
   function setObs(on){
@@ -777,10 +794,16 @@ body.showobs .kpi svg{display:initial}
     ro: ["🔻 RISK-OFF (trú ẩn)", "neg"], rn: ["🟢 RISK-ON (rời trú ẩn)", "pos"], mix: ["◽ HỖN HỢP / TRUNG TÍNH", "neu"] };
   function imNum(x, dp) { return x.toLocaleString("en-US", { maximumFractionDigits: dp }); }
   function imDelta(x) { return (x >= 0 ? "+" : "-") + imNum(Math.abs(x), Math.abs(x) >= 2 ? 2 : 3); }
-  function imSpark(vs) {
+  function imSpark(vs, ls, t) {
     var n = vs.length, mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs), rg = mx - mn || 1, pts = [];
     for (var i = 0; i < n; i++) pts.push((2 + i * 96 / (n - 1)).toFixed(1) + "," + (2 + (1 - (vs[i] - mn) / rg) * 22).toFixed(1));
-    return '<svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"><polyline points="' + pts.join(" ") + '"/></svg>';
+    // ls: nhãn từng bar cho hover (data-l — cùng delegation với spark server-side)
+    var hov = ls ? " data-t="" + (t || "") + "" data-l='" + JSON.stringify(ls).replace(/'/g, "&#39;") + "'" : "";
+    return '<svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none"' + hov + '><polyline points="' + pts.join(" ") + '"/></svg>';
+  }
+  function imBarLab(t, v, dp) {
+    var d = new Date((t + 7 * 3600) * 1000);
+    return ("0" + d.getUTCDate()).slice(-2) + "/" + (d.getUTCMonth() + 1) + " " + ("0" + d.getUTCHours()).slice(-2) + "h: " + imNum(v, dp);
   }
   // rule "vàng–đô tách cặp" — dòng trạng thái hiện Ở ĐẦU TRANG (#dcpline), data từ entry history mới nhất
   function dcLine(H) {
@@ -811,7 +834,11 @@ body.showobs .kpi svg{display:initial}
       var cl = function (d) { return d > 0 ? "pos" : d < 0 ? "neg" : "neu"; };
       rows += '<tr><td class="name">' + leg.name + '<span class="sid">' + leg.symbol + '</span></td><td><b>' +
         imNum(c, Math.abs(c) >= 100 ? 1 : 3) + '</b></td><td class="' + cl(d4) + '">' + f(d4) + '</td><td class="' + cl(d24) + '">' + f(d24) +
-        '</td><td class="obscol">' + imSpark(bars.slice(-30).map(function (b) { return b[1]; })) + '</td></tr>';
+        '</td><td class="obscol">' + (function () {
+          var b30 = bars.slice(-30), dp = Math.abs(c) >= 100 ? 1 : 3;
+          return imSpark(b30.map(function (b) { return b[1]; }),
+            b30.map(function (b) { return imBarLab(b[0], b[1], dp); }), leg.name);
+        })() + '</td></tr>';
     });
     ["vn30f", "vnindex"].forEach(function (k) {
       var c = hL.last && hL.last[k];
@@ -819,12 +846,14 @@ body.showobs .kpi svg{display:initial}
       var eP = H[H.length - 2], e24 = null;
       for (var i = H.length - 1; i >= 0; i--) { if (hL.t - H[i].t >= 22 * 3600) { e24 = H[i]; break; } }
       var dP = eP && eP.last[k] ? (c / eP.last[k] - 1) * 100 : null, d24 = e24 && e24.last[k] ? (c / e24.last[k] - 1) * 100 : null;
-      var hs = H.map(function (e) { return e.last && e.last[k]; }).filter(Boolean);
+      var hsp = H.filter(function (e2) { return e2.last && e2.last[k]; });
+      var hs = hsp.map(function (e2) { return e2.last[k]; });
+      var hsl = hsp.map(function (e2) { return imBarLab(e2.t, e2.last[k], 1); });
       var cl = function (d) { return d === null ? "neu" : d > 0 ? "pos" : d < 0 ? "neg" : "neu"; };
       var f = function (d) { return d === null ? "—" : (d >= 0 ? "+" : "") + d.toFixed(2) + "%"; };
       rows += '<tr><td class="name">' + (k === "vn30f" ? "VN30 Futures" : "VNINDEX") + '<span class="sid">' +
         (k === "vn30f" ? "VN301! (vnpool)" : "HOSE (vnpool)") + '</span></td><td><b>' + imNum(c, 1) + '</b></td><td class="' +
-        cl(dP) + '">' + f(dP) + '</td><td class="' + cl(d24) + '">' + f(d24) + '</td><td class="obscol">' + (hs.length >= 3 ? imSpark(hs) : "") + '</td></tr>';
+        cl(dP) + '">' + f(dP) + '</td><td class="' + cl(d24) + '">' + f(d24) + '</td><td class="obscol">' + (hs.length >= 3 ? imSpark(hs, hsl, k === "vn30f" ? "VN30F theo kỳ snap" : "VNINDEX theo kỳ snap") : "") + '</td></tr>';
     });
     return '<div class="legend"><b class="' + rg[1] + '" style="font-size:14px">' + rg[0] + '</b> · snap ' + asof + ' VN' +
       (age > 8 ? ' · <span class="warn">⚠ data cũ ' + age.toFixed(0) + 'h — kỳ 4h chưa chạy?</span>' : '') +
