@@ -95,7 +95,7 @@ tbody tr:hover{background:var(--wash-long)}
   </div>
 
   <div class="stack" id="stack">
-    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--price)"></span><b>Giá</b><span>close H4 · marker vàng = pierce pool · kéo = pan · Ctrl+lăn = zoom · 2 click = reset</span><button id="viewbtn" type="button" style="margin-left:auto;font:inherit;font-size:11px;padding:1px 9px;border-radius:6px;cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--border)">🕯 Nến</button></div>
+    <div class="prow"><div class="plabel"><span class="dot" style="background:var(--price)"></span><b>Giá</b><span>close H4 · marker vàng = pierce pool · kéo/Ctrl+lăn = pan/zoom (ngang chạy CẢ 4 panel, dọc riêng Giá) · 2 click = reset</span><button id="viewbtn" type="button" style="margin-left:auto;font:inherit;font-size:11px;padding:1px 9px;border-radius:6px;cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--border)">🕯 Nến</button></div>
       <svg id="p1" viewBox="0 0 1040 190"></svg></div>
     <hr class="hr">
     <div class="prow"><div class="plabel"><span class="dot" style="background:var(--pooldir)"></span><b data-tt="<div class='h'>P_FOLLOW — CÒ SÚNG</div><div class='m'>model pooldir V4.1 · XGBoost 35 feature · WF-AUC 0.744</div><div class='p'>Trả lời: <b>kèo THEO displacement này chất lượng ra sao?</b></div><div class='p'>= P(lệnh 2:1 theo hướng displacement THẮNG) — entry tại close nến phát hiện (displacement+1), TP +2ATR · SL −1ATR · hạn 12 nến H4.</div><div class='p'>• KHÔNG cho hướng — hướng do displacement quyết định.<br>• Verdict: TAKE khi pf ≥ 0.40 · FADE (đánh ngược) khi CORRELATE và pf &lt; 0.20 · còn lại SKIP.<br>• Trục vẽ quy hướng long: long = P · short = 1−P.</div><div class='p m'>Bin thật: diverge (disp đảo chuỗi) win ~0.52 · correlate (cùng chuỗi) ~0.12 — vì thế mới có luật FADE.</div>" style="cursor:help;border-bottom:1px dotted var(--ink2)">P_follow ⓘ</b><span>quy hướng long · &gt;0.5 nghiêng long · ▲▼ hướng LỆNH · màu = chiều DISP (<span style="color:var(--long);font-weight:600">xanh UP</span>/<span style="color:var(--short);font-weight:600">đỏ DOWN</span>) — lệch nhau tức là kèo FADE · ○ = disp không lệnh</span></div>
@@ -342,32 +342,44 @@ const PANELS=[];
   setView(m);
   btn.addEventListener('click',()=>setView(gl.style.display==='none'?'line':'candle'));
 })();
-// pan/zoom panel Gia (user 2026-07-18): keo chuot = pan 2 chieu, Ctrl+lan = zoom quanh con tro,
-// double-click = reset. Doi viewBox nen crosshair (getScreenCTM) tu dung; vung bat chuot (__cap)
-// duoc keo theo viewBox moi lan apply.
+// pan/zoom DONG BO truc X ca 4 panel (user 2026-07-19: "chart P khac phai chay theo"):
+// keo ngang / Ctrl+lan = truc X chung ca trang (bar luon thang hang doc); keo doc + zoom doc
+// CHI ap dung panel Gia (3 panel P truc 0-1 co dinh). dblclick bat ky = reset tat ca.
+// Doi viewBox nen crosshair (getScreenCTM) tu dung; vung bat chuot (__cap) keo theo moi lan apply.
 (function(){
-  const svg=document.getElementById('p1');
-  const vb0=svg.getAttribute('viewBox').split(' ').map(Number);
-  let vb=vb0.slice();
-  const apply=()=>{ svg.setAttribute('viewBox',vb.join(' '));
-    const cr=svg.__cap; if(cr){ cr.setAttribute('x',vb[0]);cr.setAttribute('y',vb[1]);cr.setAttribute('width',vb[2]);cr.setAttribute('height',vb[3]); } };
+  const p1=document.getElementById('p1');
+  const base=PANELS.map(P=>({svg:P.svg, vb0:P.svg.getAttribute('viewBox').split(' ').map(Number)}));
+  const b1=base.find(b=>b.svg===p1);
+  let xv={x:b1.vb0[0],w:b1.vb0[2]}, yv={y:b1.vb0[1],h:b1.vb0[3]};
+  function apply(){
+    base.forEach(b=>{
+      const y=b.svg===p1?yv.y:b.vb0[1], h=b.svg===p1?yv.h:b.vb0[3];
+      b.svg.setAttribute('viewBox',xv.x+' '+y+' '+xv.w+' '+h);
+      const cr=b.svg.__cap; if(cr){ cr.setAttribute('x',xv.x);cr.setAttribute('y',y);cr.setAttribute('width',xv.w);cr.setAttribute('height',h); }
+    });
+  }
   let drag=null;
-  svg.addEventListener('mousedown',e=>{ drag={x:e.clientX,y:e.clientY,vb:vb.slice()}; svg.style.cursor='grabbing'; e.preventDefault(); });
+  base.forEach(b=>{
+    b.svg.style.cursor='grab';
+    b.svg.addEventListener('mousedown',e=>{ drag={x:e.clientX,y:e.clientY,xv:{...xv},yv:{...yv},svg:b.svg}; b.svg.style.cursor='grabbing'; e.preventDefault(); });
+    b.svg.addEventListener('wheel',e=>{ if(!e.ctrlKey) return; e.preventDefault();
+      const r=b.svg.getBoundingClientRect();
+      const mx=xv.x+(e.clientX-r.left)*xv.w/r.width;
+      const k=e.deltaY>0?1.15:1/1.15;
+      const nw=Math.min(4000,Math.max(120,xv.w*k));
+      xv.x=mx-(mx-xv.x)*(nw/xv.w); xv.w=nw;
+      if(b.svg===p1){ const my=yv.y+(e.clientY-r.top)*yv.h/r.height;
+        const nh=Math.min(1500,Math.max(40,yv.h*k));
+        yv.y=my-(my-yv.y)*(nh/yv.h); yv.h=nh; }
+      apply(); },{passive:false});
+    b.svg.addEventListener('dblclick',()=>{ xv={x:b1.vb0[0],w:b1.vb0[2]}; yv={y:b1.vb0[1],h:b1.vb0[3]}; apply(); });
+  });
   window.addEventListener('mousemove',e=>{ if(!drag) return;
-    const r=svg.getBoundingClientRect();
-    vb[0]=drag.vb[0]-(e.clientX-drag.x)*vb[2]/r.width;
-    vb[1]=drag.vb[1]-(e.clientY-drag.y)*vb[3]/r.height;
+    const r=drag.svg.getBoundingClientRect();
+    xv.x=drag.xv.x-(e.clientX-drag.x)*xv.w/r.width;
+    if(drag.svg===p1) yv.y=drag.yv.y-(e.clientY-drag.y)*yv.h/r.height;
     apply(); });
-  window.addEventListener('mouseup',()=>{ drag=null; svg.style.cursor='grab'; });
-  svg.addEventListener('wheel',e=>{ if(!e.ctrlKey) return; e.preventDefault();
-    const r=svg.getBoundingClientRect();
-    const mx=vb[0]+(e.clientX-r.left)*vb[2]/r.width, my=vb[1]+(e.clientY-r.top)*vb[3]/r.height;
-    const k=e.deltaY>0?1.15:1/1.15;
-    const nw=Math.min(4000,Math.max(120,vb[2]*k)), nh=Math.min(1500,Math.max(40,vb[3]*k));
-    vb[0]=mx-(mx-vb[0])*(nw/vb[2]); vb[1]=my-(my-vb[1])*(nh/vb[3]); vb[2]=nw; vb[3]=nh;
-    apply(); },{passive:false});
-  svg.addEventListener('dblclick',()=>{ vb=vb0.slice(); apply(); });
-  svg.style.cursor='grab';
+  window.addEventListener('mouseup',()=>{ drag=null; base.forEach(b=>b.svg.style.cursor='grab'); });
 })();
 // ===== crosshair dong bo 4 panel =====
 const liveByBar={};
