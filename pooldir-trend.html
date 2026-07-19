@@ -397,6 +397,15 @@ PANELS.forEach(P=>{
     const sp=pt.matrixTransform(P.svg.getScreenCTM().inverse());
     let bi=Math.round((sp.x-PADL)/step); bi=Math.max(0,Math.min(N-1,bi));
     PANELS.forEach(Q=>{ Q.svg.querySelectorAll('.xh').forEach(l=>{ l.setAttribute('x1',X(bi)); l.setAttribute('x2',X(bi)); }); });
+    // marker nam DUOI lop rect nay nen hover truc tiep khong toi duoc (user 2026-07-19: "tooltip chi
+    // cho not cuoi" — not cuoi lo nua cham ra ngoai mep rect). Hit-test tay: cursor gan marker nao
+    // thi uu tien tooltip chi tiet cua marker do thay vi bar readout. gBCR = toa do song voi pan/zoom.
+    const tts=P.svg.__tts||(P.svg.__tts=[...P.svg.querySelectorAll('[data-tt]')]);
+    let hit=null,hd=1e9;
+    tts.forEach(el=>{ const b=el.getBoundingClientRect();
+      const d=Math.hypot(e.clientX-(b.left+b.right)/2, e.clientY-(b.top+b.bottom)/2);
+      if(d<=Math.max(12,Math.max(b.width,b.height)/2+4)&&d<hd){ hd=d; hit=el; } });
+    if(hit){ showTT(hit.dataset.tt,e.clientX,e.clientY); return; }
     const rep=pfRep[bi], up=upRep[bi], pc=pcByBar[bi];
     let html=`<div class="h">${fdt(bars[bi][0])} ET · regime ${regime[bi]==='L'?'<span style="color:var(--long)">LONG</span>':'<span style="color:var(--short)">SHORT</span>'}</div>`;
     html+=`<div class="row"><span>close</span><b>${bars[bi][1]}</b></div>`;
