@@ -90,7 +90,9 @@ tbody tr:hover{background:var(--wash-long)}
     <span class="it"><span class="sw" style="background:var(--htf)"></span>P_cascade tại pierce</span>
     <span class="it"><span class="bx" style="background:var(--wash-long)"></span>regime long</span>
     <span class="it"><span class="bx" style="background:var(--wash-short)"></span>regime short</span>
-    <span class="it"><span style="width:9px;height:9px;border:1.4px solid var(--ink2);border-radius:50%;display:inline-block"></span>vòng = snapshot LIVE (tích lũy mỗi lần chạy, nối bằng đường chấm mờ)</span>
+    <span class="it"><span style="width:9px;height:9px;border:1.4px solid var(--ink2);border-radius:50%;display:inline-block;flex:none"></span>vòng = snapshot LIVE — số đóng băng đúng lúc chạy, không vẽ lại (chống repaint); chấm model là ở đây</span>
+    <span class="it"><span style="width:9px;height:9px;background:var(--ink2);border-radius:50%;display:inline-block;flex:none"></span>marker trơn (không vòng) = hồi tố — tính lại bằng data dài hơn, có thể lệch bản live (tooltip ghi nguồn)</span>
+    <span class="it"><b>“đang mở”</b> = kết cục chưa chín — chờ tối đa 40 nến H4 rồi tự chốt “đi tiếp / bật lại”</span>
     <span class="it" style="color:var(--muted)">┆ = nghỉ cuối tuần/lễ</span>
   </div>
 
