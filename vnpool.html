@@ -223,8 +223,6 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
 
 <section id="movers" aria-label="Biến động vs phiên trước"></section>
 
-<section id="newsbox" aria-label="Tin đáng chú ý" class="mvcol" style="margin:10px 0 2px;display:none"></section>
-
 <section id="rankbox" aria-label="Xếp hạng cơ bản × kỹ thuật" style="margin:14px 0"></section>
 
 <div class="controls" id="chips">
@@ -247,6 +245,9 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
 <thead id="thead"></thead>
 <tbody id="tb"></tbody>
 </table></div>
+
+<section id="newsbox" aria-label="Tin đáng chú ý" class="mvcol" style="margin:14px 0 4px;display:none"></section>
+
 <footer>vnpool = pooldir V4.1 (teacher GC, zero-shot — VN validate AUC .70–.76) + htf-liq3 collapse_clean ·
 data TradingView (delayed 15&#8217;) · EV bins tham chiếu GC, đọc như thứ tự ưu tiên · bấm dòng để xem pool/chi tiết</footer>
 </div>
@@ -922,11 +923,11 @@ document.getElementById('x-tbl').addEventListener('click', ()=>{
   const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
   const age = ts => { if(ts==null) return ''; const h=(Date.now()/1000-ts)/3600;
     return h<1?Math.max(1,Math.round(h*60))+'p':h<24?Math.round(h)+'h':Math.round(h/24)+'ng'; };
-  const chips = items.slice(0,14).map(n=>
+  const chips = items.map(n=>
     `<a class="mv up" style="text-decoration:none" href="${esc(n.u)}" target="_blank" rel="noopener" title="mở bài gốc · bấm MÃ để lọc bảng">`
     + n.tks.slice(0,3).map(tk=>`<b class="nwtk" data-t="${tk}" title="lọc ${tk} trong bảng">${tk}</b>`).join(' ')
     + ` <span class="why">${esc(n.t)}</span> <span class="mvmore">${esc(n.src)}${n.ts?' · '+age(n.ts):''}</span></a>`).join('');
-  box.innerHTML = `<h3>📰 Tin đáng chú ý <span style="font-weight:400;text-transform:none;letter-spacing:0">— RSS CafeF + VnExpress lọc mã trong rổ · snapshot lúc quét</span><button class="xbtn" id="x-news" title="Xuất danh sách tin ra CSV — Excel mở trực tiếp">⬇ Excel</button></h3><div class="mvchips">${chips}${items.length>14?`<span class="mvmore">+${items.length-14} tin nữa (đủ trong file Excel)</span>`:''}</div>`;
+  box.innerHTML = `<h3>📰 Tin đáng chú ý <span style="font-weight:400;text-transform:none;letter-spacing:0">(${items.length})</span> <span style="font-weight:400;text-transform:none;letter-spacing:0">— RSS 5 nguồn lọc mã trong rổ · snapshot lúc quét · đủ danh sách, cuộn để xem</span><button class="xbtn" id="x-news" title="Xuất danh sách tin ra CSV — Excel mở trực tiếp">⬇ Excel</button></h3><div style="max-height:330px;overflow-y:auto;scrollbar-width:thin"><div class="mvchips">${chips}</div></div>`;
   box.style.display='';
   box.addEventListener('click', e=>{
     const b = e.target.closest('.nwtk');
