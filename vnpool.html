@@ -915,7 +915,8 @@ document.getElementById('x-tbl').addEventListener('click', ()=>{
     document.querySelector('.tblwrap')?.scrollIntoView({behavior:'smooth', block:'start'});
   });
 })();
-// ===== 📰 tin dang chu y (user 2026-07-20): RSS CafeF + VnExpress, loc ma trong ro, snapshot theo ky quet =====
+// ===== 📰 tin dang chu y (user 2026-07-20): RSS 5 nguon, loc ma trong ro, snapshot theo ky quet.
+// Dang BANG cot sort duoc (ma / nguon / thoi gian — user "hien dang cot va sort them ma + thoi gian")
 (function(){
   const N = D.news||{}, box = document.getElementById('newsbox');
   const items = N.items||[];
@@ -923,20 +924,52 @@ document.getElementById('x-tbl').addEventListener('click', ()=>{
   const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
   const age = ts => { if(ts==null) return ''; const h=(Date.now()/1000-ts)/3600;
     return h<1?Math.max(1,Math.round(h*60))+'p':h<24?Math.round(h)+'h':Math.round(h/24)+'ng'; };
-  const chips = items.map(n=>
-    `<a class="mv up" style="text-decoration:none" href="${esc(n.u)}" target="_blank" rel="noopener" title="mở bài gốc · bấm MÃ để lọc bảng">`
-    + n.tks.slice(0,3).map(tk=>`<b class="nwtk" data-t="${tk}" title="lọc ${tk} trong bảng">${tk}</b>`).join(' ')
-    + ` <span class="why">${esc(n.t)}</span> <span class="mvmore">${esc(n.src)}${n.ts?' · '+age(n.ts):''}</span></a>`).join('');
-  box.innerHTML = `<h3>📰 Tin đáng chú ý <span style="font-weight:400;text-transform:none;letter-spacing:0">(${items.length})</span> <span style="font-weight:400;text-transform:none;letter-spacing:0">— RSS 5 nguồn lọc mã trong rổ · snapshot lúc quét · đủ danh sách, cuộn để xem</span><button class="xbtn" id="x-news" title="Xuất danh sách tin ra CSV — Excel mở trực tiếp">⬇ Excel</button></h3><div style="max-height:330px;overflow-y:auto;scrollbar-width:thin"><div class="mvchips">${chips}</div></div>`;
+  const full = ts => ts==null?'':new Date(ts*1000).toLocaleString('vi-VN');
+  const CMP = {
+    tk:  (a,b)=> (a.tks[0]||'~').localeCompare(b.tks[0]||'~') || (b.ts||0)-(a.ts||0),
+    src: (a,b)=> a.src.localeCompare(b.src) || (b.ts||0)-(a.ts||0),
+    ts:  (a,b)=> (b.ts||0)-(a.ts||0),
+  };
+  let sk='ts', sd=1;   // mac dinh: thoi gian, moi nhat truoc
+  const sorted = ()=> items.slice().sort((x,y)=>CMP[sk](x,y)*sd);
+  function paint(){
+    const arr = sorted();
+    document.getElementById('nwtb').innerHTML = arr.map(n=>
+      `<tr><td style="white-space:nowrap">${n.tks.map(tk=>`<b class="nwtk" data-t="${tk}" title="lọc ${tk} trong bảng">${tk}</b>`).join(' ')}</td>`
+      + `<td><a href="${esc(n.u)}" target="_blank" rel="noopener" title="mở bài gốc">${esc(n.t)}</a></td>`
+      + `<td class="meta">${esc(n.src)}</td>`
+      + `<td class="meta" title="${full(n.ts)}">${n.ts?age(n.ts):'·'}</td></tr>`).join('');
+    box.querySelectorAll('.nwt th[data-k]').forEach(th=>{
+      th.querySelector('.ar').textContent = th.dataset.k===sk ? (sd>0?'▼':'▲') : '⇅'; });
+  }
+  box.innerHTML = `<style>
+#newsbox .nwt{border-collapse:collapse;width:100%;font-size:12px}
+#newsbox .nwt th{position:sticky;top:0;background:var(--surface);color:var(--ink3);font-size:9px;text-transform:uppercase;letter-spacing:.5px;text-align:left;padding:0 10px 4px 4px;border-bottom:1px solid var(--line);z-index:1}
+#newsbox .nwt th[data-k]{cursor:pointer}
+#newsbox .nwt td{padding:4px 10px 4px 4px;border-top:1px solid var(--line);vertical-align:top}
+#newsbox .nwt tr:hover td{background:rgba(125,125,125,.08)}
+#newsbox .nwt a{color:var(--ink);text-decoration:none}
+#newsbox .nwt a:hover{text-decoration:underline}
+#newsbox .nwt .meta{color:var(--ink3);font-size:11px;white-space:nowrap}
+</style><h3>📰 Tin đáng chú ý <span style="font-weight:400;text-transform:none;letter-spacing:0">(${items.length})</span> <span style="font-weight:400;text-transform:none;letter-spacing:0">— RSS 5 nguồn lọc mã trong rổ · snapshot lúc quét · bấm tiêu đề cột để sort</span><button class="xbtn" id="x-news" title="Xuất danh sách tin (theo sort hiện tại) ra CSV — Excel mở trực tiếp">⬇ Excel</button></h3>`
+    + `<div style="max-height:330px;overflow-y:auto;scrollbar-width:thin"><table class="nwt"><thead><tr>`
+    + `<th data-k="tk" style="width:92px" title="sort theo mã">mã <span class="ar">⇅</span></th>`
+    + `<th>headline</th>`
+    + `<th data-k="src" style="width:92px" title="sort theo nguồn">nguồn <span class="ar">⇅</span></th>`
+    + `<th data-k="ts" style="width:64px" title="sort theo thời gian">lúc <span class="ar">⇅</span></th>`
+    + `</tr></thead><tbody id="nwtb"></tbody></table></div>`;
   box.style.display='';
+  paint();
   box.addEventListener('click', e=>{
+    const th = e.target.closest('.nwt th[data-k]');
+    if(th){ const k=th.dataset.k; sd = (sk===k)?-sd:1; sk=k; paint(); return; }
     const b = e.target.closest('.nwtk');
     if(b){ e.preventDefault(); e.stopPropagation();
       const inp = document.getElementById('q'); inp.value = b.dataset.t; q = b.dataset.t.toLowerCase(); render();
       document.querySelector('.tblwrap')?.scrollIntoView({behavior:'smooth', block:'start'}); return; }
     if(e.target.closest('#x-news')){ e.preventDefault(); e.stopPropagation();
       dlCSV('vnpool_tintuc', [['Mã','Headline','Nguồn','Lúc','Link'],
-        ...items.map(n=>[n.tks.join(' '), n.t, n.src, n.ts?new Date(n.ts*1000).toLocaleString('vi-VN'):'', n.u])]); }
+        ...sorted().map(n=>[n.tks.join(' '), n.t, n.src, full(n.ts), n.u])]); }
   });
 })();
 
