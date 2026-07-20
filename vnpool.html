@@ -49,6 +49,10 @@ header h1 em{font-style:normal;color:var(--accent)}
 .tile .take .v{color:var(--up)} .tile .fade .v{color:var(--warn)} .tile .ev .v{color:var(--accent-ink)}
 .tile .v.v30{font-size:12px;font-weight:600;line-height:1.35;max-width:240px;white-space:normal;margin-top:4px}
 .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px}
+.xbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:7px;
+  font:inherit;font-size:10px;padding:1px 8px;cursor:pointer;margin-left:8px;vertical-align:2px;
+  text-transform:none;letter-spacing:0}
+.xbtn:hover{color:var(--ink);border-color:var(--ink3)}
 .chip{border:1px solid var(--line);background:var(--surface);color:var(--ink2);
   border-radius:999px;padding:5px 14px;font-size:13px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
@@ -211,7 +215,7 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
 <div id="pulse" style="display:none"></div>
 
 <section id="top10" aria-label="Top 10 tín hiệu mạnh nhất">
-  <h2 title="score = EV bin (GC ref) + 0.25 verdict pool đồng thuận − 0.25 lịch sử mỏng + dòng tiền (cap 0.25): %KL ≥+30/+100/+300% → +0.05/0.10/0.15 · KL trend 10p ≥+30/+100% → +0.10/0.15">Top 10 tín hiệu mạnh nhất <span style="font-weight:400;text-transform:none;letter-spacing:0">(EV + verdict pool + dòng tiền)</span></h2>
+  <h2 title="score = EV bin (GC ref) + 0.25 verdict pool đồng thuận − 0.25 lịch sử mỏng + dòng tiền (cap 0.25): %KL ≥+30/+100/+300% → +0.05/0.10/0.15 · KL trend 10p ≥+30/+100% → +0.10/0.15">Top 10 tín hiệu mạnh nhất <span style="font-weight:400;text-transform:none;letter-spacing:0">(EV + verdict pool + dòng tiền)</span><button class="xbtn" id="x-top10" title="Xuất Top 10 ra CSV — Excel mở trực tiếp">⬇ Excel</button></h2>
   <div class="cards" id="cards"></div>
 </section>
 
@@ -231,6 +235,7 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
   <a class="chip" href="vnpool-structure.html" style="text-decoration:none" title="Trang bản đồ thanh khoản" onclick="this.href='vnpool-structure.html?v='+Date.now()">⇄ Cấu trúc</a>
   <a class="chip" href="vocab.html" style="text-decoration:none" title="Học từ vựng tiếng Anh — flashcard + ôn tập ngắt quãng" onclick="if(location.protocol==='file:')this.href='../../../envocab/vocab.html'">📖 Từ mới</a>
   <a class="chip" href="intermarket.html" style="text-decoration:none" title="Bàn cờ liên thị trường Mỹ → VN — regime + 12 leg, cập nhật 4h/lần" onclick="if(location.protocol==='file:')this.href='../../../news-thucchien/out/intermarket.html'">🌐 Liên TT</a>
+  <button class="xbtn" id="x-tbl" style="margin-left:0;padding:4px 11px;font-size:12px;border-radius:999px" title="Xuất bảng ĐANG LỌC (đúng filter/tìm kiếm hiện tại) ra CSV — Excel mở trực tiếp">⬇ Excel</button>
   <input id="q" type="search" placeholder="Tìm mã…" aria-label="Tìm mã">
 </div>
 
@@ -324,7 +329,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     +'#rankbox .rt tr.rr:hover{background:rgba(125,125,125,.09)}'
     +'#rankbox .fb{display:inline-block;border:1px solid var(--warn);color:var(--warn);border-radius:8px;padding:0 5px;font-size:9px;line-height:14px}'
     +'</style>';
-  html += '<h2 title="dip = kỹ thuật LONG/FADE + dự phóng LN dương + momentum thực dương + không cờ bẫy · short = kỹ thuật SHORT + dự phóng giảm · bẫy = ROE ảo / nền thấp / đỉnh LN / bẫy giá trị · chờ kèo = cơ bản robust nhưng chưa có kèo (canh đổi verdict)">Xếp hạng cơ bản × kỹ thuật <span style="font-weight:400;text-transform:none;letter-spacing:0">(dự phóng LN + định giá + tín hiệu)</span></h2>';
+  html += '<h2 title="dip = kỹ thuật LONG/FADE + dự phóng LN dương + momentum thực dương + không cờ bẫy · short = kỹ thuật SHORT + dự phóng giảm · bẫy = ROE ảo / nền thấp / đỉnh LN / bẫy giá trị · chờ kèo = cơ bản robust nhưng chưa có kèo (canh đổi verdict)">Xếp hạng cơ bản × kỹ thuật <span style="font-weight:400;text-transform:none;letter-spacing:0">(dự phóng LN + định giá + tín hiệu)</span><button class="xbtn" id="x-rank" title="Xuất cả 4 nhóm ra CSV — Excel mở trực tiếp">⬇ Excel</button></h2>';
   html += '<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">★ = trùng TOP 10 tín hiệu · rê từng dòng xem lý do xếp hạng + số kích hoạt · rê tiêu đề cột xem định nghĩa</div>';
   html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:12px;align-items:start">';
   html += tbl('🟢 Gom đáy','var(--up)', D.rank.dip||[], 'dip');
@@ -333,6 +338,16 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
   html += tbl('⚠️ Bẫy (loại)','var(--warn)', D.rank.trap||[], 'trap');
   html += '</div>';
   box.innerHTML = html;
+  // xuat CSV ca 4 nhom (user 2026-07-20)
+  document.getElementById('x-rank').addEventListener('click', ()=>{
+    const G = {dip:'Gom đáy', wait:'Chờ kèo', short:'Short', trap:'Bẫy (loại)'};
+    const out = [['Nhóm','#','Mã','Giá','Δ% hôm nay','Từ đỉnh %','LN dự phóng %','ROE','Beta','Upside %','rk_score','Cờ']];
+    Object.keys(G).forEach(k=>(D.rank[k]||[]).forEach((tk,i)=>{ const r=byTk[tk]; if(!r) return; const f=r.fund||{};
+      out.push([G[k], i+1, tk, r.close, r.dpx??'', r._dd!=null?r._dd.toFixed(1):'', r.g_fwd!=null?r.g_fwd.toFixed(0):'',
+                f.roe??'', f.beta??'', r.up!=null?r.up.toFixed(0):'', r.rk_score!=null?r.rk_score.toFixed(2):'', (r.flags||[]).join(' ')]);
+    }));
+    dlCSV('vnpool_xephang', out);
+  });
 })();
 // gia tri + chip trend vs ban chot ngay truoc (tooltip = chuoi cac ban chot gan nhat)
 function cntChip(cur, key){
@@ -820,6 +835,32 @@ top10.forEach((r,i)=>{
 });
 if (!top10.length) document.getElementById('top10').style.display='none';
 
+// ===== xuat CSV per section (user 2026-07-20): BOM UTF-8 + dong 'sep=,' de Excel moi locale tach cot dung =====
+function dlCSV(name, rows){
+  const esc = v => { v = v==null?'':String(v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; };
+  const txt = String.fromCharCode(0xFEFF) + 'sep=,\n' + rows.map(r=>r.map(esc).join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([txt], {type:'text/csv;charset=utf-8'}));
+  a.download = name + '_' + (D.stamp||'').replace(/[: ]/g,'-') + '.csv';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
+}
+document.getElementById('x-top10').addEventListener('click', ()=>{
+  dlCSV('vnpool_top10', [['#','Mã','Ngành','Giá','Δ% hôm nay','Verdict','Hướng','pf','%KL vs TB5','KL trend 10p','Score'],
+    ...top10.map((r,i)=>[i+1, r.ticker, r.nganh, r.close, r.dpx??'', r.verdict, r.trade_dir||'', r.pf??'',
+                         r.vol_pct??'', r.vol_trend??'', r.score>-5?r.score.toFixed(2):''])]);
+});
+// bang chinh: xuat DUNG view dang loc (filter cot + chip + tim kiem + sort hien tai)
+document.getElementById('x-tbl').addEventListener('click', ()=>{
+  const vis = sortRows(D.rows.filter(r=>!r.leader&&match(r)&&colMatch(r)));
+  const all = [...D.rows.filter(x=>x.leader), ...vis];
+  dlCSV('vnpool_bang', [['Mã','Ngành','Sàn','Giá','Δ% hôm nay','SL','TP','KL hôm nay','%KL vs TB5','DR zone','Verdict','Hướng','pf','net h12','net conf','P_cascade','Vốn hóa (tỷ)','Score','Trụ ×','LN dự phóng %','PE','ROE','Beta','Upside %','Cờ'],
+    ...all.map(r=>{ const f=r.fund||{}; return [r.ticker, r.nganh, r.exch, r.close, r.dpx??'', r.sl??'', r.tp??'',
+      r.vol_today??'', r.vol_pct??'', r.dr_zone??'', r.verdict, r.trade_dir||'', r.pf??'', r.net_side||'', r.net_conf??'',
+      r.cc_p??'', r.cap_ty??'', r.score>-5?r.score.toFixed(2):'', r.streak||'', r.g_fwd??'', f.pe??'', f.roe??'',
+      f.beta??'', r.up??'', (r.flags||[]).join(' ')]; })]);
+});
+
 // banner Nhip phien da giai the (user 2026-07-09): dien giai chia het len 4 card dau trang
 
 // Bien dong vs phien truoc — noi len / sut xuong, bam chip de loc ma trong bang
@@ -846,8 +887,14 @@ if (!top10.length) document.getElementById('top10').style.display='none';
     + (arr.length>CAP?`<span class="mvmore">+${arr.length-CAP} mã nữa</span>`:'')
     || '<span class="mvmore">không có</span>';
   sec.innerHTML = `
-    <div class="mvcol"><h3><span style="color:var(--up)">▲ Nổi lên</span> <span style="font-weight:400">— so bản cuối ${pd}</span></h3><div class="mvchips">${col(M.up,'up')}</div></div>
-    <div class="mvcol"><h3><span style="color:var(--down)">▼ Sụt xuống</span> <span style="font-weight:400">— tắt kèo / pf giảm / vắng rổ</span></h3><div class="mvchips">${col(M.down,'dn')}</div></div>`;
+    <div class="mvcol"><h3><span style="color:var(--up)">▲ Nổi lên</span> <span style="font-weight:400">— so bản cuối ${pd}</span><button class="xbtn" id="x-mvup" title="Xuất cột này ra CSV — Excel mở trực tiếp">⬇ Excel</button></h3><div class="mvchips">${col(M.up,'up')}</div></div>
+    <div class="mvcol"><h3><span style="color:var(--down)">▼ Sụt xuống</span> <span style="font-weight:400">— tắt kèo / pf giảm / vắng rổ</span><button class="xbtn" id="x-mvdn" title="Xuất cột này ra CSV — Excel mở trực tiếp">⬇ Excel</button></h3><div class="mvchips">${col(M.down,'dn')}</div></div>`;
+  // xuat CSV movers (user 2026-07-20)
+  const mvRows = arr => (arr||[]).map(m=>[m.t, m.why, m.v0||'', m.v1||'', m.pf0??'', m.pf1??'', m.px??'', m.dpx??'',
+    m.n0>1?('trụ ×'+m.n0):(m.q>1?('im '+m.q+' phiên'):'')]);
+  const MVH = ['Mã','Lý do','Verdict trước','Verdict nay','pf trước','pf nay','Giá','Δ% hôm nay','Ngữ cảnh'];
+  document.getElementById('x-mvup').addEventListener('click', e=>{e.stopPropagation(); dlCSV('vnpool_noilen', [MVH, ...mvRows(M.up)]);});
+  document.getElementById('x-mvdn').addEventListener('click', e=>{e.stopPropagation(); dlCSV('vnpool_sutxuong', [MVH, ...mvRows(M.down)]);});
   sec.addEventListener('click', e=>{
     const c = e.target.closest('.mv'); if(!c) return;
     const inp = document.getElementById('q');
