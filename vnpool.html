@@ -203,8 +203,8 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
     <div class="fade"><div class="k">Fade</div><div class="v" id="t-fade"></div></div>
     <div class="ev" title="Số mã có verdict tại pool: giá đang chạm pool thanh khoản H4 và P_cascade đã ngã ngũ — >0.85 vào mạnh (pool vỡ, quét tiếp) / <0.42 đánh ngược (pool giữ, bật lại). Chạm pool mà P lơ lửng giữa = giằng co, không đếm."><div class="k">Pool</div><div class="v" id="t-ev"></div></div>
   </div></div>
-  <div class="tile" id="t-vnx-wrap" style="display:none"><div class="k">VNINDEX</div><div class="v" id="t-vnx"></div></div>
-  <div class="tile" id="t-vn30-wrap" style="display:none"><div class="k">VN30F</div><div class="v" id="t-vn30"></div></div>
+  <div class="tile" id="t-vnx-wrap" style="display:none"><div class="k" id="t-vnx-k">VNINDEX</div><div class="v" id="t-vnx"></div></div>
+  <div class="tile" id="t-vn30-wrap" style="display:none"><div class="k" id="t-vn30-k">VN30F</div><div class="v" id="t-vn30"></div></div>
   <div class="tile" id="t-sect-wrap" style="display:none;flex:1 1 0;min-width:280px"><div class="k">Ngành</div><div class="v v30" id="t-sect" style="max-width:none"></div></div>
 </div>
 
@@ -407,10 +407,10 @@ document.getElementById('t-ev').innerHTML = D.n_ev + cntChip(D.n_ev,'ev');
   const r1 = [(D.pulse||{}).read1, (D.pulse||{}).read].filter(Boolean).join(' · ');
   if (!r1 && !f1) return;
   const el = document.getElementById('t-vnx'), w = document.getElementById('t-vnx-wrap');
-  // gia + chip % truoc dien giai (user 2026-07-20)
+  // gia + chip % nam CUNG DONG tieu de (user 2026-07-20 "bo len cung dong voi tieu de")
   const px1=(D.pulse||{}).vnx_px, dd1=(D.pulse||{}).vnx_d;
-  const head1 = px1==null?'':`<b style="font-family:ui-monospace,Consolas,monospace;font-size:13px">${px1.toLocaleString('vi-VN',{maximumFractionDigits:2})}</b>${dd1==null?'':` <span class="pxchip ${dd1>0?'up':dd1<0?'dn':'fl'}" title="so close phiên trước">${dd1>0?'+':''}${dd1.toFixed(2)}%</span>`} · `;
-  el.innerHTML = head1 + (r1 ? ('💓 ' + r1) : '—');
+  if(px1!=null) document.getElementById('t-vnx-k').innerHTML = `VNINDEX <b style="font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink);letter-spacing:0;margin-left:4px">${px1.toLocaleString('vi-VN',{maximumFractionDigits:2})}</b>${dd1==null?'':` <span class="pxchip ${dd1>0?'up':dd1<0?'dn':'fl'}" title="so close phiên trước">${dd1>0?'+':''}${dd1.toFixed(2)}%</span>`}`;
+  el.innerHTML = r1 ? ('💓 ' + r1) : '—';
   el.classList.add('v30');
   w.title = [f1, r1].filter(Boolean).join('\n');
   w.style.display = '';
@@ -420,10 +420,10 @@ document.getElementById('t-ev').innerHTML = D.n_ev + cntChip(D.n_ev,'ev');
   const r30 = (D.pulse||{}).read30||'';
   if (!r30 && !f2) return;
   const el = document.getElementById('t-vn30'), w = document.getElementById('t-vn30-wrap');
-  // gia + chip % truoc dien giai (user 2026-07-20)
+  // gia + chip % nam CUNG DONG tieu de (user 2026-07-20 "bo len cung dong voi tieu de")
   const px3=(D.pulse||{}).v30_px, dd3=(D.pulse||{}).v30_d;
-  const head3 = px3==null?'':`<b style="font-family:ui-monospace,Consolas,monospace;font-size:13px">${px3.toLocaleString('vi-VN',{maximumFractionDigits:2})}</b>${dd3==null?'':` <span class="pxchip ${dd3>0?'up':dd3<0?'dn':'fl'}" title="so close phiên trước">${dd3>0?'+':''}${dd3.toFixed(2)}%</span>`} · `;
-  el.innerHTML = head3 + (r30 || '—');
+  if(px3!=null) document.getElementById('t-vn30-k').innerHTML = `VN30F <b style="font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink);letter-spacing:0;margin-left:4px">${px3.toLocaleString('vi-VN',{maximumFractionDigits:2})}</b>${dd3==null?'':` <span class="pxchip ${dd3>0?'up':dd3<0?'dn':'fl'}" title="so close phiên trước">${dd3>0?'+':''}${dd3.toFixed(2)}%</span>`}`;
+  el.innerHTML = r30 || '—';
   el.classList.add('v30');
   // "tru" trong dien giai = ro VN30 do qua VN301! (Δgia + KL phai sinh) — khong phai tung ma.
   // tooltip liet ke CP TRU that: ma VN30 von hoa lon nhat trong ro quet + %gia/%KL hom nay.
