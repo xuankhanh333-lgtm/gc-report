@@ -265,7 +265,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
       L.push('• '+keo+' — phía mua (LONG/FADE)');
       L.push(`• robust: dự phóng LN ${pct(r.g_fwd,1)} dương + momentum thực dương (LN yoy ${f.lnst_yoy!=null?(f.lnst_yoy>0?'+':'')+f.lnst_yoy.toFixed(0)+'%':'·'} / DT yoy ${f.dt_yoy!=null?(f.dt_yoy>0?'+':'')+f.dt_yoy.toFixed(0)+'%':'·'}) + không cờ bẫy`);
       L.push(`• thứ hạng theo rk_score ${r.rk_score!=null?r.rk_score.toFixed(2):'·'} = 0.28·dự-phóng + 0.22·upside + 0.22·ROE + 0.18·net-cash − 0.10·D/E (z-score toàn rổ, có cap)`);
-      L.push(`số nền: net-cash ${pct(r.netcash,1)} vốn hoá · D/E ${f.de!=null?f.de:'·'} · giảm từ đỉnh pool ${pct(r._dd)}`);
+      L.push(`số nền: net-cash ${pct(r.netcash,1)} vốn hoá · D/E ${f.de!=null?f.de:'·'} · beta ${f.beta!=null?f.beta:'·'} · giảm từ đỉnh pool ${pct(r._dd)}`);
     } else if(kind==='short'){
       L.push('SHORT/TRÁNH — đủ 2 điều kiện:');
       L.push('• '+keo);
@@ -299,7 +299,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     h += `<div style="display:flex;align-items:baseline;gap:8px;margin:0 0 6px"><span style="font-size:12.5px;font-weight:700;color:${tint}">${title}</span><span style="background:${tint};color:var(--surface);border-radius:9px;padding:0 7px;font-size:10px;line-height:15px;font-weight:700">${tks.length}</span><span style="margin-left:auto;color:var(--ink3);font-size:10px">${SUBT[kind]||''}</span></div>`;
     h += '<div style="max-height:420px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin">';
     h += '<table class="rt">';
-    h += `<tr class="hd"><td></td><td style="text-align:left">mã</td><td title="giá đóng cửa · % so close phiên trước">giá · Δ</td><td title="giảm từ đỉnh pool gần nhất">từ đỉnh</td><td title="tăng trưởng LN dự phóng FY tới so với 4 quý gần nhất (consensus)">LN dựph</td><td title="ROE (%)">roe</td><td title="upside tới price target consensus">upside</td>${hasFlags?'<td style="text-align:left" title="cờ cảnh báo cơ bản — rê dòng xem giải thích">cờ</td>':''}</tr>`;
+    h += `<tr class="hd"><td></td><td style="text-align:left">mã</td><td title="giá đóng cửa · % so close phiên trước">giá · Δ</td><td title="giảm từ đỉnh pool gần nhất">từ đỉnh</td><td title="tăng trưởng LN dự phóng FY tới so với 4 quý gần nhất (consensus)">LN dựph</td><td title="ROE (%)">roe</td><td title="beta 1 năm vs VNINDEX — >1 dao động mạnh hơn chỉ số">β</td><td title="upside tới price target consensus">upside</td>${hasFlags?'<td style="text-align:left" title="cờ cảnh báo cơ bản — rê dòng xem giải thích">cờ</td>':''}</tr>`;
     tks.forEach((tk,i)=>{ const r=byTk[tk]; if(!r) return; const f=r.fund||{};
       const px = `${fmt(r.close)}${r.dpx==null?'':` <span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="so close phiên trước">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}`;
       h += `<tr class="rr" style="cursor:help" title="${rsn(kind,r,f)}">`
@@ -309,6 +309,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
         + td(pct(r._dd), col(r._dd))
         + td(pct(r.g_fwd,1), col(r.g_fwd))
         + td(f.roe==null?'·':f.roe.toFixed(0))
+        + td(f.beta==null?'·':f.beta.toFixed(2))
         + td(pct(r.up,1), col(r.up))
         + (hasFlags?td((r.flags||[]).map(fl=>`<span class="fb">${FLAGVN[fl]||fl}</span>`).join(' '),'text-align:left'):'');
       h += '</tr>';
@@ -493,6 +494,7 @@ const COLS = [
   {k:'lndp', t:'LN dp',     type:'num', get:r=>r.g_fwd, ph:'dự phóng % vd >20'},
   {k:'pe',   t:'PE',        type:'num', get:r=>(r.fund||{}).pe, ph:'vd <10'},
   {k:'roe',  t:'ROE',       type:'num', get:r=>(r.fund||{}).roe, ph:'vd >15'},
+  {k:'beta', t:'β',         type:'num', get:r=>(r.fund||{}).beta, ph:'vd <1'},
   {k:'upt',  t:'Upside',    type:'num', get:r=>r.up, ph:'target % vd >20'},
   {k:'flag', t:'Cờ',        type:'str', get:r=>(r.flags||[]).join(' '), ph:'bẫy'},
 ];
@@ -668,6 +670,7 @@ function fundTip(r){
   const f=r.fund; if(!f) return '';
   const p=[];
   if(f.pe!=null)p.push('P/E '+f.pe); if(f.pb!=null)p.push('P/B '+f.pb);
+  if(f.beta!=null)p.push('Beta '+f.beta);
   if(f.roe!=null)p.push('ROE '+f.roe+'%');
   if(f.de!=null)p.push('D/E '+f.de);
   if(f.roa!=null)p.push('ROA '+f.roa+'%');
@@ -724,6 +727,7 @@ function makeRow(r, rk){
     <td class="num" style="${r.g_fwd==null?'':r.g_fwd>0?'color:var(--up)':'color:var(--down)'}" title="LN dự phóng cả năm / LN TTM − 1">${r.g_fwd==null?'':(r.g_fwd>0?'+':'')+r.g_fwd.toFixed(0)+'%'}</td>
     <td class="num" title="P/E">${(r.fund&&r.fund.pe!=null)?r.fund.pe:''}</td>
     <td class="num" title="ROE %">${(r.fund&&r.fund.roe!=null)?r.fund.roe.toFixed(0):''}</td>
+    <td class="num" title="beta 1 năm vs VNINDEX — >1 dao động mạnh hơn chỉ số, <0 ngược chỉ số">${(r.fund&&r.fund.beta!=null)?r.fund.beta.toFixed(2):''}</td>
     <td class="num" style="${r.up==null?'':r.up>0?'color:var(--up)':'color:var(--down)'}" title="upside tới giá mục tiêu analyst">${r.up==null?'':(r.up>0?'+':'')+r.up.toFixed(0)+'%'}</td>
     <td style="color:var(--warn);font-size:10px" title="cờ bẫy: ROE-ảo / nền-thấp / đỉnh-LN / bẫy-giá-trị">${(r.flags||[]).join(' ')}</td>`;
   tr.addEventListener('click', ()=>toggleDetail(tr, r));
