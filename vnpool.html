@@ -468,6 +468,92 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
   });
 })();
+// ===== BANK BOX (user 2026-07-21) — section RIENG cho ngan hang, thuoc do dac thu nganh
+// (bank bi loai khoi Top tien & no vi don bay la ban chat): tin dung/huy dong yoy, LDR, CIR,
+// ganh du phong DP/PPOP, dem von VCSH/TS, LNST ttm yoy. Minh bach khong model.
+(function(){
+  const prev = document.getElementById('cashbox') || document.getElementById('rankbox');
+  if(!prev || !D.bctc) return;
+  const byTk3 = {}; D.rows.forEach(r=>byTk3[r.ticker]=r);
+  const L = [];
+  D.rows.forEach(r=>{
+    const B=(D.bctc||{})[r.ticker]; if(!B||!(B.q||[]).length||B.form!=='bank') return;
+    const S=B.q.map(x=>x.v||{}); const n=S.length; const f=r.fund||{};
+    const g=(i,c)=>{const v=(S[i]||{})[c]; return (v==null||!isFinite(v))?null:v;};
+    const sumR=(c,a,b)=>{let s=0,k=0;for(let i=a;i<b;i++){if(i<0)continue;const v=g(i,c);if(v!=null){s+=v;k++;}}return k===b-a?s:null;};
+    const lnst=sumR('23000',n-4,n), lnstP=sumR('23000',n-8,n-4);
+    const tnhd=sumR('421701',n-4,n), cphd=sumR('22200',n-4,n);
+    const ppop=sumR('88888',n-4,n), dp=sumR('422900',n-4,n);
+    const cv0=g(n-1,'412100'), cv4=g(n-5,'412100');
+    const tg0=g(n-1,'413300'), tg4=g(n-5,'413300');
+    const ts=g(n-1,'12700'), vc=g(n-1,'14000');
+    L.push({tk:r.ticker,
+      lnst, lnstY:(lnst!=null&&lnstP!=null&&lnstP>0)?100*(lnst/lnstP-1):null,
+      cvY:(cv0!=null&&cv4!=null&&cv4>0)?100*(cv0/cv4-1):null,
+      tgY:(tg0!=null&&tg4!=null&&tg4>0)?100*(tg0/tg4-1):null,
+      ldr:(cv0!=null&&tg0!=null&&tg0>0)?100*cv0/tg0:null,
+      cir:(tnhd!=null&&cphd!=null&&Math.abs(tnhd)>1e-6)?100*Math.abs(cphd)/Math.abs(tnhd):null,
+      dpr:(ppop!=null&&dp!=null&&Math.abs(ppop)>1e-6)?100*Math.abs(dp)/Math.abs(ppop):null,
+      lev:(ts!=null&&vc!=null&&ts>0)?100*vc/ts:null,
+      roe:(f.roe!=null&&isFinite(+f.roe)?+f.roe:null)});
+  });
+  if(!L.length) return;
+  L.sort((a,b)=>(b.lnstY==null?-1e9:b.lnstY)-(a.lnstY==null?-1e9:a.lnstY));
+  const pc3=(v,d)=>v==null?'·':((v>0?'+':'')+v.toFixed(d==null?0:d)+'%');
+  const nn3=(v,d)=>v==null?'·':v.toFixed(d==null?0:d)+'%';
+  const td3=(s,st)=>`<td style="padding:3px 9px 3px 5px;${st||''}">${s}</td>`;
+  const cUp='color:var(--up)', cDn='color:var(--down)';
+  let hB='';
+  L.forEach((x,i)=>{
+    hB+=`<tr class="rr" style="cursor:pointer" title="LNST ttm ${x.lnst!=null?Math.round(x.lnst).toLocaleString('vi-VN'):'·'} tỷ · tín dụng ${pc3(x.cvY)} · huy động ${pc3(x.tgY)} · LDR ${nn3(x.ldr)} · CIR ${nn3(x.cir)} · dự phòng ăn ${nn3(x.dpr)} LN trước DP · VCSH/TS ${nn3(x.lev,1)}">`
+      +td3(i+1,'color:var(--ink3);text-align:left;font-size:10px')
+      +td3(`<b>${x.tk}</b>`,'text-align:left;font-size:12.5px')
+      +td3(pc3(x.lnstY), x.lnstY==null?'':x.lnstY>=20?cUp:x.lnstY<0?cDn:'')
+      +td3(pc3(x.cvY), x.cvY==null?'':x.cvY>=15?cUp:x.cvY<0?cDn:'')
+      +td3(pc3(x.tgY),'')
+      +td3(nn3(x.ldr), x.ldr!=null&&x.ldr>105?cDn:'')
+      +td3(nn3(x.cir), x.cir==null?'':x.cir<=35?cUp:x.cir>=50?cDn:'')
+      +td3(nn3(x.dpr), x.dpr==null?'':x.dpr<=20?cUp:x.dpr>=50?cDn:'')
+      +td3(nn3(x.lev,1), x.lev==null?'':x.lev>=9?cUp:x.lev<7?cDn:'')
+      +td3(x.roe==null?'·':x.roe.toFixed(0),'')
+      +'</tr>';
+  });
+  const HD='<tr class="hd"><td></td><td style="text-align:left">mã</td>'
+    +'<td title="LNST mẹ cộng 4 quý so 4 quý liền trước — bảng xếp theo cột này">LNST ttm yoy</td>'
+    +'<td title="Cho vay khách hàng cuối quý so cùng kỳ — tăng trưởng tín dụng; ≥15% xanh, âm đỏ">tín dụng</td>'
+    +'<td title="Tiền gửi khách hàng cuối quý so cùng kỳ — tăng trưởng huy động">huy động</td>'
+    +'<td title="Cho vay / Tiền gửi KH — >105% = cho vay vượt huy động, căng thanh khoản (đỏ)">LDR</td>'
+    +'<td title="CP hoạt động / Tổng TN hoạt động (ttm) — ≤35% hiệu quả (xanh), ≥50% cồng kềnh (đỏ)">CIR</td>'
+    +'<td title="CP dự phòng RRTD / LN trước dự phòng (ttm) — nợ xấu ăn bao nhiêu phần lợi nhuận; ≤20% xanh, ≥50% đỏ">DP/PPOP</td>'
+    +'<td title="VCSH / Tổng TS — đệm vốn thô (proxy CAR); ≥9% dày (xanh), <7% mỏng (đỏ)">VCSH/TS</td>'
+    +'<td title="ROE (%) từ fundamentals">roe</td></tr>';
+  const sec3 = document.createElement('section');
+  sec3.id='bankbox'; sec3.setAttribute('aria-label','Ngân hàng'); sec3.style.margin='14px 0';
+  sec3.innerHTML = '<style>'
+    +'#bankbox .rt{border-collapse:collapse;width:100%;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:0}'
+    +'#bankbox .rt tr{text-align:right}'
+    +'#bankbox .rt tr.hd td{position:sticky;top:0;background:var(--surface);color:var(--ink3);font-size:9px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--line);padding:0 9px 4px 5px;z-index:1}'
+    +'#bankbox .rt tr.rr{border-top:1px solid var(--line)}'
+    +'#bankbox .rt tr.rr:hover{background:rgba(125,125,125,.09)}'
+    +'</style>'
+    +'<h2 title="bank bị loại khỏi Top tiền & nợ vì đòn bẩy là bản chất ngành — section này chấm bank bằng thước riêng từ BCTC quý: tăng trưởng tín dụng/huy động, LDR, CIR, gánh dự phòng, đệm vốn. Tham khảo cơ bản, KHÔNG vào model kỹ thuật">🏦 Ngân hàng — sức khỏe &amp; tăng trưởng <span style="font-weight:400;text-transform:none;letter-spacing:0">(thước đo riêng ngành · xếp theo LNST ttm yoy)</span></h2>'
+    +'<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">rê tiêu đề cột xem định nghĩa + ngưỡng màu · rê dòng xem số chi tiết · bấm dòng mở panel chi tiết mã</div>'
+    +`<div style="min-width:0;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:9px 12px 5px"><div style="max-height:460px;overflow-y:auto;overflow-x:auto;scrollbar-width:thin"><table class="rt">${HD}${hB}</table></div></div>`;
+  prev.after(sec3);
+  sec3.addEventListener('click', e=>{
+    const tr=e.target.closest('#bankbox tr.rr'); if(!tr) return;
+    const b=tr.querySelector('b'); if(!b) return;
+    const tk=b.textContent.trim(), r=byTk3[tk]; if(!r) return;
+    mode='list'; filter='all';
+    document.querySelectorAll('.chip.mode').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.m==='list')));
+    document.querySelectorAll('.chip:not(.mode)').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.f==='all')));
+    q=''; const qi=document.getElementById('q'); if(qi) qi.value='';
+    Object.keys(colFil).forEach(k=>colFil[k]=''); document.querySelectorAll('#thead input').forEach(i=>i.value='');
+    render();
+    const target=[...tb.querySelectorAll('tr.r')].find(x=>x.querySelector('.tk')?.textContent.includes(tk));
+    if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
+  });
+})();
 // gia tri + chip trend vs ban chot ngay truoc (tooltip = chuoi cac ban chot gan nhat)
 function cntChip(cur, key){
   const h = D.cnt_hist||[];
