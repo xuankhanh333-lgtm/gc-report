@@ -467,13 +467,19 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     +'#cashbox .rt tr.rr:hover{background:rgba(125,125,125,.09)}'
     +'#cashbox .fb{display:inline-block;border:1px solid var(--warn);color:var(--warn);border-radius:8px;padding:0 5px;font-size:9px;line-height:14px}'
     +'</style>'
-    +'<h2 title="tính từ BCTC quý (VNDirect) + fundamentals — tham khảo cơ bản, KHÔNG vào model kỹ thuật. Loại bank vì đòn bẩy/cấu trúc tiền là bản chất ngành, so D/E vô nghĩa">Top tiền &amp; nợ <span style="font-weight:400;text-transform:none;letter-spacing:0">(từ BCTC quý · loại bank)</span></h2>'
+    +'<h2 title="tính từ BCTC quý (VNDirect) + fundamentals — tham khảo cơ bản, KHÔNG vào model kỹ thuật. Loại bank vì đòn bẩy/cấu trúc tiền là bản chất ngành, so D/E vô nghĩa">Top tiền &amp; nợ <span style="font-weight:400;text-transform:none;letter-spacing:0">(từ BCTC quý · loại bank)</span><button class="xbtn" id="x-cash" title="Xuất cả 2 bảng (khỏe tiền + nợ cao) ra CSV — Excel mở trực tiếp">⬇ Excel</button></h2>'
     +'<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">rê dòng xem số kích hoạt · bấm dòng mở panel chi tiết mã</div>'
     +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:12px;align-items:start">'
     +box2('💰 Top 10 khỏe tiền','var(--up)','CFO ttm dương · xếp theo net-cash %vốn hóa',HD1,hCash,cashTop.length)
     +box2('⚠️ Top 10 nợ cao / bất ổn','var(--down)','điểm = D/E + phạt: CFO âm · vay NH phình · beta cao · cờ bẫy',HD2,hRisk,risky.length)
     +'</div>';
   rb.after(sec2);
+  document.getElementById('x-cash').addEventListener('click', e=>{ e.stopPropagation();
+    const out=[['Nhóm','#','Mã','CFO ttm (tỷ)','Tiền & TĐT (tỷ)','Net-cash %VH','Nợ (tỷ)','D/E','VayNH yoy %','Beta','Điểm rủi ro','Cờ']];
+    cashTop.forEach((x,i)=>out.push(['Khỏe tiền',i+1,x.tk,x.cfo!=null?Math.round(x.cfo):'',x.cash!=null?Math.round(x.cash):'',x.nc!=null?x.nc.toFixed(1):'','',x.de!=null?x.de.toFixed(1):'','','','',(x.flags||[]).join(' ')]));
+    risky.forEach((x,i)=>out.push(['Nợ cao/bất ổn',i+1,x.tk,x.cfo!=null?Math.round(x.cfo):'','','',x.debt!=null?Math.round(x.debt):'',x.de!=null?x.de.toFixed(1):'',x.vnhY!=null?Math.round(x.vnhY):'',x.beta!=null?x.beta.toFixed(2):'',x.risk.toFixed(1),(x.flags||[]).join(' ')]));
+    dlCSV('vnpool_tien_no', out);
+  });
   sec2.addEventListener('click', e=>{
     const tr=e.target.closest('#cashbox tr.rr'); if(!tr) return;
     const b=tr.querySelector('b'); if(!b) return;
@@ -556,10 +562,15 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     +'#bankbox .rt tr.rr{border-top:1px solid var(--line)}'
     +'#bankbox .rt tr.rr:hover{background:rgba(125,125,125,.09)}'
     +'</style>'
-    +'<h2 title="bank bị loại khỏi Top tiền & nợ vì đòn bẩy là bản chất ngành — section này chấm bank bằng thước riêng từ BCTC quý: tăng trưởng tín dụng/huy động, LDR, CIR, gánh dự phòng, đệm vốn. Tham khảo cơ bản, KHÔNG vào model kỹ thuật">🏦 Ngân hàng — sức khỏe &amp; tăng trưởng <span style="font-weight:400;text-transform:none;letter-spacing:0">(thước đo riêng ngành · xếp theo LNST ttm yoy)</span></h2>'
+    +'<h2 title="bank bị loại khỏi Top tiền & nợ vì đòn bẩy là bản chất ngành — section này chấm bank bằng thước riêng từ BCTC quý: tăng trưởng tín dụng/huy động, LDR, CIR, gánh dự phòng, đệm vốn. Tham khảo cơ bản, KHÔNG vào model kỹ thuật">🏦 Ngân hàng — sức khỏe &amp; tăng trưởng <span style="font-weight:400;text-transform:none;letter-spacing:0">(thước đo riêng ngành · xếp theo LNST ttm yoy)</span><button class="xbtn" id="x-bank" title="Xuất bảng ngân hàng ra CSV — Excel mở trực tiếp">⬇ Excel</button></h2>'
     +'<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">rê tiêu đề cột xem định nghĩa + ngưỡng màu · rê dòng xem số chi tiết · bấm dòng mở panel chi tiết mã</div>'
     +`<div style="min-width:0;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:9px 12px 5px"><div style="max-height:460px;overflow-y:auto;overflow-x:auto;scrollbar-width:thin"><table class="rt">${HD}${hB}</table></div></div>`;
   prev.after(sec3);
+  document.getElementById('x-bank').addEventListener('click', e=>{ e.stopPropagation();
+    const out=[['#','Mã','LNST ttm (tỷ)','LNST ttm yoy %','Tín dụng yoy %','Huy động yoy %','LDR %','CIR %','DP/PPOP %','VCSH/TS %','ROE %']];
+    L.forEach((x,i)=>out.push([i+1,x.tk,x.lnst!=null?Math.round(x.lnst):'',x.lnstY!=null?Math.round(x.lnstY):'',x.cvY!=null?Math.round(x.cvY):'',x.tgY!=null?Math.round(x.tgY):'',x.ldr!=null?Math.round(x.ldr):'',x.cir!=null?Math.round(x.cir):'',x.dpr!=null?Math.round(x.dpr):'',x.lev!=null?x.lev.toFixed(1):'',x.roe!=null?x.roe:'']));
+    dlCSV('vnpool_nganhang', out);
+  });
   sec3.addEventListener('click', e=>{
     const tr=e.target.closest('#bankbox tr.rr'); if(!tr) return;
     const b=tr.querySelector('b'); if(!b) return;
@@ -642,10 +653,15 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     +'#secbox .rt tr.rr{border-top:1px solid var(--line)}'
     +'#secbox .rt tr.rr:hover{background:rgba(125,125,125,.09)}'
     +'</style>'
-    +'<h2 title="CTCK sống bằng tự doanh + cho vay margin — thước riêng từ BCTC quý: đà LN/DT, quy mô & tốc độ phình danh mục, đòn bẩy, gánh chi phí vốn. Tham khảo cơ bản, KHÔNG vào model kỹ thuật">📈 Chứng khoán — tự doanh &amp; đòn bẩy <span style="font-weight:400;text-transform:none;letter-spacing:0">(thước đo riêng ngành · xếp theo LNST ttm yoy)</span></h2>'
+    +'<h2 title="CTCK sống bằng tự doanh + cho vay margin — thước riêng từ BCTC quý: đà LN/DT, quy mô & tốc độ phình danh mục, đòn bẩy, gánh chi phí vốn. Tham khảo cơ bản, KHÔNG vào model kỹ thuật">📈 Chứng khoán — tự doanh &amp; đòn bẩy <span style="font-weight:400;text-transform:none;letter-spacing:0">(thước đo riêng ngành · xếp theo LNST ttm yoy)</span><button class="xbtn" id="x-sec" title="Xuất bảng chứng khoán ra CSV — Excel mở trực tiếp">⬇ Excel</button></h2>'
     +'<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">rê tiêu đề cột xem định nghĩa + ngưỡng màu · rê dòng xem số chi tiết · bấm dòng mở panel chi tiết mã</div>'
     +`<div style="min-width:0;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:9px 12px 5px"><div style="max-height:460px;overflow-y:auto;overflow-x:auto;scrollbar-width:thin"><table class="rt">${HD}${hS}</table></div></div>`;
   prev.after(sec4);
+  document.getElementById('x-sec').addEventListener('click', e=>{ e.stopPropagation();
+    const out=[['#','Mã','LNST ttm yoy %','DT yoy %','Danh mục ĐT TC (tỷ)','Book yoy %','Book/TS %','Đòn bẩy TS/VCSH ×','CPTC/DT %','CFO ttm (tỷ)','ROE %']];
+    L.forEach((x,i)=>out.push([i+1,x.tk,x.lnstY!=null?Math.round(x.lnstY):'',x.dtY!=null?Math.round(x.dtY):'',x.bk!=null?Math.round(x.bk):'',x.bkY!=null?Math.round(x.bkY):'',x.bkTs!=null?Math.round(x.bkTs):'',x.lev!=null?x.lev.toFixed(1):'',x.cpDt!=null?Math.round(x.cpDt):'',x.cfo!=null?Math.round(x.cfo):'',x.roe!=null?x.roe:'']));
+    dlCSV('vnpool_chungkhoan', out);
+  });
   sec4.addEventListener('click', e=>{
     const tr=e.target.closest('#secbox tr.rr'); if(!tr) return;
     const b=tr.querySelector('b'); if(!b) return;
