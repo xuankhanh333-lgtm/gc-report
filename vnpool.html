@@ -379,6 +379,95 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
   });
 })();
+// ===== TOP TIEN / NO (user 2026-07-21) — 2 bang tu BCTC quy + fund, minh bach khong model.
+// Loai BANK khoi ca 2 bang (don bay & cau truc tien la ban chat nganh — D/E/net-cash vo nghia).
+(function(){
+  const rb = document.getElementById('rankbox');
+  if(!rb || !D.bctc) return;
+  const byTk2 = {}; D.rows.forEach(r=>byTk2[r.ticker]=r);
+  const L = [];
+  D.rows.forEach(r=>{
+    const B=(D.bctc||{})[r.ticker]; if(!B||!(B.q||[]).length||B.form==='bank') return;
+    const S=B.q.map(x=>x.v||{}); const n=S.length; const f=r.fund||{};
+    const g=(i,c)=>{const v=(S[i]||{})[c]; return (v==null||!isFinite(v))?null:v;};
+    const sum4=c=>{let s=0,k=0;for(let i=Math.max(0,n-4);i<n;i++){const v=g(i,c);if(v!=null){s+=v;k++;}}return k?s:null;};
+    const vnh0=g(n-1,'13110'), vnh4=g(n-5,'13110');
+    L.push({tk:r.ticker, cfo:sum4('32000'), cash:g(n-1,'11100'), debt:g(n-1,'13000'),
+      vnhY:(vnh0!=null&&vnh4!=null&&vnh4>0)?100*(vnh0/vnh4-1):null,
+      de:(f.de!=null&&isFinite(+f.de)?+f.de:null), beta:(f.beta!=null&&isFinite(+f.beta)?+f.beta:null),
+      nc:(r.netcash!=null?r.netcash:null), flags:r.flags||[]});
+  });
+  if(!L.length) return;
+  const cashTop = L.filter(x=>x.cfo!=null&&x.cfo>0&&x.nc!=null).sort((a,b)=>b.nc-a.nc).slice(0,10);
+  const risky = L.filter(x=>x.de!=null).map(x=>Object.assign({}, x,
+      {risk:x.de+(x.cfo!=null&&x.cfo<0?1:0)+(x.vnhY!=null&&x.vnhY>25?1:0)+(x.beta!=null&&x.beta>1.3?0.5:0)+(x.flags.length?1:0)}))
+    .sort((a,b)=>b.risk-a.risk).slice(0,10);
+  const fb2=v=>v==null?'·':Math.round(v).toLocaleString('vi-VN');
+  const pc2=(v,pl)=>v==null?'·':((pl&&v>0?'+':'')+v.toFixed(0)+'%');
+  const td2=(s,st)=>`<td style="padding:3px 9px 3px 5px;${st||''}">${s}</td>`;
+  const FLAGVN2={'ROE-ao':'ROE ảo','nen-thap':'nền thấp','dinh-LN':'đỉnh LN','bay-gia-tri':'bẫy giá trị'};
+  function box2(title,tint,sub,head,rowsHtml,cnt){
+    return `<div style="min-width:0;background:var(--surface);border:1px solid var(--line);border-left:3px solid ${tint};border-radius:10px;padding:9px 12px 5px">`
+      +`<div style="display:flex;align-items:baseline;gap:8px;margin:0 0 6px"><span style="font-size:12.5px;font-weight:700;color:${tint}">${title}</span><span style="background:${tint};color:var(--surface);border-radius:9px;padding:0 7px;font-size:10px;line-height:15px;font-weight:700">${cnt}</span><span style="margin-left:auto;color:var(--ink3);font-size:10px">${sub}</span></div>`
+      +`<div style="max-height:420px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin"><table class="rt">${head}${rowsHtml}</table></div></div>`;
+  }
+  let hCash='';
+  cashTop.forEach((x,i)=>{
+    hCash+=`<tr class="rr" style="cursor:pointer" title="CFO cộng 4 quý ${fb2(x.cfo)} tỷ · tiền & TĐT ${fb2(x.cash)} tỷ · net-cash ${pc2(x.nc,1)} vốn hóa">`
+      +td2(i+1,'color:var(--ink3);text-align:left;font-size:10px')
+      +td2(`<b>${x.tk}</b>`,'text-align:left;font-size:12.5px')
+      +td2(fb2(x.cfo),'color:var(--up)')
+      +td2(fb2(x.cash))
+      +td2(pc2(x.nc,1),'color:var(--up)')
+      +td2(x.de==null?'·':x.de.toFixed(1))
+      +'</tr>';
+  });
+  let hRisk='';
+  risky.forEach((x,i)=>{
+    hRisk+=`<tr class="rr" style="cursor:pointer" title="điểm rủi ro ${x.risk.toFixed(1)} = D/E ${x.de.toFixed(1)}${x.cfo!=null&&x.cfo<0?' + CFO ttm ÂM':''}${x.vnhY!=null&&x.vnhY>25?' + vay NH +'+Math.round(x.vnhY)+'% yoy':''}${x.beta!=null&&x.beta>1.3?' + beta '+x.beta.toFixed(2):''}${x.flags.length?' + cờ bẫy':''}">`
+      +td2(i+1,'color:var(--ink3);text-align:left;font-size:10px')
+      +td2(`<b>${x.tk}</b>`,'text-align:left;font-size:12.5px')
+      +td2(fb2(x.debt))
+      +td2(x.de.toFixed(1),'color:var(--down)')
+      +td2(pc2(x.vnhY,1), x.vnhY!=null&&x.vnhY>25?'color:var(--down)':'')
+      +td2(fb2(x.cfo), x.cfo!=null&&x.cfo<0?'color:var(--down)':'')
+      +td2(x.beta==null?'·':x.beta.toFixed(2))
+      +td2((x.flags||[]).map(fl=>`<span class="fb">${FLAGVN2[fl]||fl}</span>`).join(' '),'text-align:left')
+      +'</tr>';
+  });
+  const HD1='<tr class="hd"><td></td><td style="text-align:left">mã</td><td title="lưu chuyển tiền HĐKD cộng 4 quý gần nhất (tỷ đồng)">CFO ttm</td><td title="Tiền & tương đương cuối quý (tỷ đồng)">tiền</td><td title="tiền ròng (tiền − nợ vay) so vốn hóa — cùng số dùng ở bảng xếp hạng">net-cash</td><td title="nợ phải trả / VCSH">D/E</td></tr>';
+  const HD2='<tr class="hd"><td></td><td style="text-align:left">mã</td><td title="tổng nợ phải trả cuối quý (tỷ đồng)">nợ</td><td title="nợ phải trả / VCSH">D/E</td><td title="vay ngắn hạn so cùng kỳ năm trước">vayNH yoy</td><td title="lưu chuyển tiền HĐKD cộng 4 quý (âm = đốt tiền)">CFO ttm</td><td title="beta 1 năm vs VNINDEX">β</td><td style="text-align:left">cờ</td></tr>';
+  const sec2 = document.createElement('section');
+  sec2.id='cashbox'; sec2.setAttribute('aria-label','Top tiền / nợ'); sec2.style.margin='14px 0';
+  sec2.innerHTML = '<style>'
+    +'#cashbox .rt{border-collapse:collapse;width:100%;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:0}'
+    +'#cashbox .rt tr{text-align:right}'
+    +'#cashbox .rt tr.hd td{position:sticky;top:0;background:var(--surface);color:var(--ink3);font-size:9px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--line);padding:0 9px 4px 5px;z-index:1}'
+    +'#cashbox .rt tr.rr{border-top:1px solid var(--line)}'
+    +'#cashbox .rt tr.rr:hover{background:rgba(125,125,125,.09)}'
+    +'#cashbox .fb{display:inline-block;border:1px solid var(--warn);color:var(--warn);border-radius:8px;padding:0 5px;font-size:9px;line-height:14px}'
+    +'</style>'
+    +'<h2 title="tính từ BCTC quý (VNDirect) + fundamentals — tham khảo cơ bản, KHÔNG vào model kỹ thuật. Loại bank vì đòn bẩy/cấu trúc tiền là bản chất ngành, so D/E vô nghĩa">Top tiền &amp; nợ <span style="font-weight:400;text-transform:none;letter-spacing:0">(từ BCTC quý · loại bank)</span></h2>'
+    +'<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">rê dòng xem số kích hoạt · bấm dòng mở panel chi tiết mã</div>'
+    +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:12px;align-items:start">'
+    +box2('💰 Top 10 khỏe tiền','var(--up)','CFO ttm dương · xếp theo net-cash %vốn hóa',HD1,hCash,cashTop.length)
+    +box2('⚠️ Top 10 nợ cao / bất ổn','var(--down)','điểm = D/E + phạt: CFO âm · vay NH phình · beta cao · cờ bẫy',HD2,hRisk,risky.length)
+    +'</div>';
+  rb.after(sec2);
+  sec2.addEventListener('click', e=>{
+    const tr=e.target.closest('#cashbox tr.rr'); if(!tr) return;
+    const b=tr.querySelector('b'); if(!b) return;
+    const tk=b.textContent.trim(), r=byTk2[tk]; if(!r) return;
+    mode='list'; filter='all';
+    document.querySelectorAll('.chip.mode').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.m==='list')));
+    document.querySelectorAll('.chip:not(.mode)').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.f==='all')));
+    q=''; const qi=document.getElementById('q'); if(qi) qi.value='';
+    Object.keys(colFil).forEach(k=>colFil[k]=''); document.querySelectorAll('#thead input').forEach(i=>i.value='');
+    render();
+    const target=[...tb.querySelectorAll('tr.r')].find(x=>x.querySelector('.tk')?.textContent.includes(tk));
+    if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
+  });
+})();
 // gia tri + chip trend vs ban chot ngay truoc (tooltip = chuoi cac ban chot gan nhat)
 function cntChip(cur, key){
   const h = D.cnt_hist||[];
