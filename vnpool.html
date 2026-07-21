@@ -554,6 +554,92 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
   });
 })();
+// ===== SEC BOX (user 2026-07-21) — section RIENG cho chung khoan (CTCK): tu doanh & don bay.
+// CFO am la BAN CHAT nganh khi mo rong margin/tu doanh -> khong to do nhu corp; doc kem don bay.
+(function(){
+  const prev = document.getElementById('bankbox') || document.getElementById('cashbox') || document.getElementById('rankbox');
+  if(!prev || !D.bctc) return;
+  const byTk4 = {}; D.rows.forEach(r=>byTk4[r.ticker]=r);
+  const L = [];
+  D.rows.forEach(r=>{
+    const B=(D.bctc||{})[r.ticker]; if(!B||!(B.q||[]).length||B.form!=='sec') return;
+    const S=B.q.map(x=>x.v||{}); const n=S.length; const f=r.fund||{};
+    const g=(i,c)=>{const v=(S[i]||{})[c]; return (v==null||!isFinite(v))?null:v;};
+    const sumR=(c,a,b)=>{let s=0,k=0;for(let i=a;i<b;i++){if(i<0)continue;const v=g(i,c);if(v!=null){s+=v;k++;}}return k===b-a?s:null;};
+    const lnst=sumR('23000',n-4,n), lnstP=sumR('23000',n-8,n-4);
+    const dt=sumR('21001',n-4,n), dtP=sumR('21001',n-8,n-4);
+    const cptc=sumR('22500',n-4,n), cfo=sumR('32000',n-4,n);
+    const bk0=g(n-1,'11200'), bk4=g(n-5,'11200');
+    const ts=g(n-1,'12700'), vc=g(n-1,'14000');
+    L.push({tk:r.ticker,
+      lnst, lnstY:(lnst!=null&&lnstP!=null&&lnstP>0)?100*(lnst/lnstP-1):null,
+      dtY:(dt!=null&&dtP!=null&&dtP>0)?100*(dt/dtP-1):null,
+      bk:bk0, bkY:(bk0!=null&&bk4!=null&&bk4>0)?100*(bk0/bk4-1):null,
+      bkTs:(bk0!=null&&ts!=null&&ts>0)?100*bk0/ts:null,
+      lev:(ts!=null&&vc!=null&&vc>0)?ts/vc:null,
+      cpDt:(cptc!=null&&dt!=null&&Math.abs(dt)>1e-6)?100*Math.abs(cptc)/Math.abs(dt):null,
+      cfo, roe:(f.roe!=null&&isFinite(+f.roe)?+f.roe:null)});
+  });
+  if(!L.length) return;
+  L.sort((a,b)=>(b.lnstY==null?-1e9:b.lnstY)-(a.lnstY==null?-1e9:a.lnstY));
+  const pc4=(v,d)=>v==null?'·':((v>0?'+':'')+v.toFixed(d==null?0:d)+'%');
+  const nn4=(v,d)=>v==null?'·':v.toFixed(d==null?0:d)+'%';
+  const fb4=v=>v==null?'·':Math.round(v).toLocaleString('vi-VN');
+  const td4=(s,st)=>`<td style="padding:3px 9px 3px 5px;${st||''}">${s}</td>`;
+  const cUp='color:var(--up)', cDn='color:var(--down)';
+  let hS='';
+  L.forEach((x,i)=>{
+    hS+=`<tr class="rr" style="cursor:pointer" title="LNST ttm ${fb4(x.lnst)} tỷ · DT HĐ ttm yoy ${pc4(x.dtY)} · danh mục ĐT TC ${fb4(x.bk)} tỷ (${pc4(x.bkY)} yoy · ${nn4(x.bkTs)} tổng TS) · đòn bẩy TS/VCSH ${x.lev==null?'·':x.lev.toFixed(1)}× · CP tài chính ăn ${nn4(x.cpDt)} DT · CFO ttm ${fb4(x.cfo)} tỷ (âm thường do mở rộng margin/tự doanh — bản chất ngành)">`
+      +td4(i+1,'color:var(--ink3);text-align:left;font-size:10px')
+      +td4(`<b>${x.tk}</b>`,'text-align:left;font-size:12.5px')
+      +td4(pc4(x.lnstY), x.lnstY==null?'':x.lnstY>=20?cUp:x.lnstY<0?cDn:'')
+      +td4(pc4(x.dtY), x.dtY==null?'':x.dtY>=20?cUp:x.dtY<0?cDn:'')
+      +td4(fb4(x.bk),'')
+      +td4(pc4(x.bkY),'')
+      +td4(nn4(x.bkTs),'')
+      +td4(x.lev==null?'·':x.lev.toFixed(1)+'×', x.lev==null?'':x.lev>=3.5?cDn:x.lev<=2?cUp:'')
+      +td4(nn4(x.cpDt), x.cpDt==null?'':x.cpDt>=30?cDn:x.cpDt<=10?cUp:'')
+      +td4(fb4(x.cfo),'')
+      +td4(x.roe==null?'·':x.roe.toFixed(0),'')
+      +'</tr>';
+  });
+  const HD='<tr class="hd"><td></td><td style="text-align:left">mã</td>'
+    +'<td title="LNST mẹ cộng 4 quý so 4 quý liền trước — bảng xếp theo cột này">LNST ttm yoy</td>'
+    +'<td title="DT hoạt động cộng 4 quý so 4 quý liền trước">DT yoy</td>'
+    +'<td title="Danh mục đầu tư tài chính cuối quý (tỷ đồng) — tự doanh + book">danh mục</td>'
+    +'<td title="danh mục so cùng kỳ — book phình = risk-on/mở capacity, đọc kèm đòn bẩy">book yoy</td>'
+    +'<td title="danh mục / tổng tài sản — tỷ trọng book trong bảng cân đối">book/TS</td>'
+    +'<td title="Tổng TS / VCSH — đòn bẩy; ≥3.5× đỏ (căng), ≤2× xanh">đòn bẩy</td>'
+    +'<td title="CP tài chính / DT hoạt động (ttm) — lãi vay ăn doanh thu; ≥30% đỏ, ≤10% xanh">CPTC/DT</td>'
+    +'<td title="CFO cộng 4 quý (tỷ) — CTCK CFO âm thường do mở rộng margin/tự doanh (bản chất ngành), KHÔNG tô đỏ">CFO ttm</td>'
+    +'<td title="ROE (%) từ fundamentals">roe</td></tr>';
+  const sec4 = document.createElement('section');
+  sec4.id='secbox'; sec4.setAttribute('aria-label','Chứng khoán'); sec4.style.margin='14px 0';
+  sec4.innerHTML = '<style>'
+    +'#secbox .rt{border-collapse:collapse;width:100%;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:0}'
+    +'#secbox .rt tr{text-align:right}'
+    +'#secbox .rt tr.hd td{position:sticky;top:0;background:var(--surface);color:var(--ink3);font-size:9px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--line);padding:0 9px 4px 5px;z-index:1}'
+    +'#secbox .rt tr.rr{border-top:1px solid var(--line)}'
+    +'#secbox .rt tr.rr:hover{background:rgba(125,125,125,.09)}'
+    +'</style>'
+    +'<h2 title="CTCK sống bằng tự doanh + cho vay margin — thước riêng từ BCTC quý: đà LN/DT, quy mô & tốc độ phình danh mục, đòn bẩy, gánh chi phí vốn. Tham khảo cơ bản, KHÔNG vào model kỹ thuật">📈 Chứng khoán — tự doanh &amp; đòn bẩy <span style="font-weight:400;text-transform:none;letter-spacing:0">(thước đo riêng ngành · xếp theo LNST ttm yoy)</span></h2>'
+    +'<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">rê tiêu đề cột xem định nghĩa + ngưỡng màu · rê dòng xem số chi tiết · bấm dòng mở panel chi tiết mã</div>'
+    +`<div style="min-width:0;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:9px 12px 5px"><div style="max-height:460px;overflow-y:auto;overflow-x:auto;scrollbar-width:thin"><table class="rt">${HD}${hS}</table></div></div>`;
+  prev.after(sec4);
+  sec4.addEventListener('click', e=>{
+    const tr=e.target.closest('#secbox tr.rr'); if(!tr) return;
+    const b=tr.querySelector('b'); if(!b) return;
+    const tk=b.textContent.trim(), r=byTk4[tk]; if(!r) return;
+    mode='list'; filter='all';
+    document.querySelectorAll('.chip.mode').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.m==='list')));
+    document.querySelectorAll('.chip:not(.mode)').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.f==='all')));
+    q=''; const qi=document.getElementById('q'); if(qi) qi.value='';
+    Object.keys(colFil).forEach(k=>colFil[k]=''); document.querySelectorAll('#thead input').forEach(i=>i.value='');
+    render();
+    const target=[...tb.querySelectorAll('tr.r')].find(x=>x.querySelector('.tk')?.textContent.includes(tk));
+    if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
+  });
+})();
 // gia tri + chip trend vs ban chot ngay truoc (tooltip = chuoi cac ban chot gan nhat)
 function cntChip(cur, key){
   const h = D.cnt_hist||[];
