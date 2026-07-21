@@ -1165,12 +1165,12 @@ function bctcTable(r){
       }
       if(f.includes('y')&&i>=4){const py=(B.q[i-4].v||{})[code];
         if(py!=null&&py>0&&v!=null){const g=100*(v/py-1); const bad=f.includes('b'); const good=(g>=0)!==bad;
-          cell+=`<span class="yy" style="color:${good?'var(--up)':'var(--down)'}">${g>0?'+':''}${Math.round(g)}%</span>`;
+          cell+=`<span class="yy" title="${g>0?'+':''}${Math.round(g)}% so cùng kỳ năm trước — ${ql[i-4]}: ${Math.round(py).toLocaleString('vi-VN')} tỷ" style="color:${good?'var(--up)':'var(--down)'}">${g>0?'+':''}${Math.round(g)}%</span>`;
           if(Math.abs(g)>=50){ fl.push((g>0?'+':'')+Math.round(g)+'% so cùng kỳ năm trước'+(bad&&g>0?' — chiều XẤU (chi phí/nợ phình)':'')); cls=cls||(good?'hl-up':'hl-dn'); }}}
       return `<td${cls?' class="'+cls+'"':''}${fl.length?' title="'+fl.join(' · ').replace(/"/g,'&quot;')+'"':''}>${cell}</td>`;
     }).join('')+'</tr>';
   });
-  return `<div style="grid-column:1/-1;overflow-x:auto"><h4 style="display:flex;align-items:center;gap:10px">BCTC quý${B.form==='bank'?' — ngân hàng':B.form==='sec'?' — CTCK':''} <span style="font-weight:400">(tỷ đồng · nguồn VNDirect · %yoy = so cùng kỳ · ô tô màu = nổi bật/bất thường, rê xem giải thích)</span><button class="xbtn" onclick="event.stopPropagation();bctcFull('${r.ticker}','${B.form}',this)" title="Kéo NGUYÊN VĂN 3 bảng (CĐKT ~142 dòng, KQKD, LCTT) 8 quý từ VNDirect ngay trong trình duyệt rồi xuất CSV — Excel mở trực tiếp">⬇ BCTC đầy đủ (Excel)</button></h4>${h}</table></div>`;
+  return `<div style="grid-column:1/-1;overflow-x:auto"><h4 style="display:flex;align-items:center;gap:10px">BCTC quý${B.form==='bank'?' — ngân hàng':B.form==='sec'?' — CTCK':''} <span style="font-weight:400">(tỷ đồng · nguồn VNDirect · % nhỏ cạnh số = so CÙNG KỲ năm trước, rê vào % xem quý gốc · ô tô màu = nổi bật/bất thường, rê ô xem lý do)</span><button class="xbtn" onclick="event.stopPropagation();bctcFull('${r.ticker}','${B.form}',this)" title="Kéo NGUYÊN VĂN 3 bảng (CĐKT ~142 dòng, KQKD, LCTT) 8 quý từ VNDirect ngay trong trình duyệt rồi xuất CSV — Excel mở trực tiếp">⬇ BCTC đầy đủ (Excel)</button></h4>${h}</table></div>`;
 }
 // keo NGUYEN VAN 3 bang tu VNDirect (CORS mo) -> CSV; ten dong da giai ma thi ghi kem (user 2026-07-21)
 const BCTC_NAMES={
