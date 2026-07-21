@@ -345,16 +345,36 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     +'#rankbox .rt tr.rr{border-top:1px solid var(--line)}'
     +'#rankbox .rt tr.rr:hover{background:rgba(125,125,125,.09)}'
     +'#rankbox .fb{display:inline-block;border:1px solid var(--warn);color:var(--warn);border-radius:8px;padding:0 5px;font-size:9px;line-height:14px}'
+    +'#rankbox .ftab{font:inherit;font-size:12px;font-weight:600;padding:4px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);cursor:pointer;margin-right:6px}'
+    +'#rankbox .ftab[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent)}'
     +'</style>';
   html += '<h2 title="dip = kỹ thuật LONG/FADE + dự phóng LN dương + momentum thực dương + không cờ bẫy · short = kỹ thuật SHORT + dự phóng giảm · bẫy = ROE ảo / nền thấp / đỉnh LN / bẫy giá trị · chờ kèo = cơ bản robust nhưng chưa có kèo (canh đổi verdict)">Xếp hạng cơ bản × kỹ thuật <span style="font-weight:400;text-transform:none;letter-spacing:0">(dự phóng LN + định giá + tín hiệu)</span><button class="xbtn" id="x-rank" title="Xuất cả 4 nhóm ra CSV — Excel mở trực tiếp">⬇ Excel</button></h2>';
   html += '<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">★ = trùng TOP 10 tín hiệu · rê từng dòng xem lý do xếp hạng + số kích hoạt · rê tiêu đề cột xem định nghĩa · bấm dòng để mở panel chi tiết mã</div>';
-  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:12px;align-items:start">';
-  html += tbl('🟢 Gom đáy','var(--up)', D.rank.dip||[], 'dip');
-  html += tbl('⏳ Chờ kèo','var(--ink2)', D.rank.wait||[], 'wait');
-  html += tbl('🔴 Short','var(--down)', D.rank.short||[], 'short');
-  html += tbl('⚠️ Bẫy (loại)','var(--warn)', D.rank.trap||[], 'trap');
+  html += '<div id="rtabs" style="margin:2px 0 8px"></div>';
+  html += `<div class="rpane" data-p="dip" style="display:none">${tbl('🟢 Gom đáy','var(--up)', D.rank.dip||[], 'dip')}</div>`;
+  html += `<div class="rpane" data-p="wait" style="display:none">${tbl('⏳ Chờ kèo','var(--ink2)', D.rank.wait||[], 'wait')}</div>`;
+  html += `<div class="rpane" data-p="short" style="display:none">${tbl('🔴 Short','var(--down)', D.rank.short||[], 'short')}</div>`;
+  html += `<div class="rpane" data-p="trap" style="display:none">${tbl('⚠️ Bẫy (loại)','var(--warn)', D.rank.trap||[], 'trap')}</div>`;
   html += '</div>';
   box.innerHTML = html;
+  const rtabs=document.getElementById('rtabs');
+  const RP=[['dip','🟢 Gom đáy'],['wait','⏳ Chờ kèo'],['short','🔴 Short'],['trap','⚠️ Bẫy']];
+  let curP=null; try{curP=localStorage.getItem('vnRankTab');}catch(e){}
+  if(!RP.some(p=>p[0]===curP)) curP='dip';
+  function showP(k){
+    curP=k;
+    box.querySelectorAll('.rpane').forEach(d=>{ d.style.display = d.dataset.p===k?'':'none'; });
+    rtabs.querySelectorAll('.ftab').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.p===k)));
+    try{localStorage.setItem('vnRankTab',k);}catch(e){}
+  }
+  RP.forEach(p=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='ftab'; b.dataset.p=p[0];
+    b.innerHTML=p[1]+' <span style="opacity:.7">'+((D.rank[p[0]]||[]).length)+'</span>';
+    b.addEventListener('click', ()=>showP(p[0]));
+    rtabs.appendChild(b);
+  });
+  showP(curP);
   // xuat CSV ca 4 nhom (user 2026-07-20)
   document.getElementById('x-rank').addEventListener('click', ()=>{
     const G = {dip:'Gom đáy', wait:'Chờ kèo', short:'Short', trap:'Bẫy (loại)'};
@@ -645,7 +665,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
 // KHONG dung class .chip (cac handler khac reset aria-pressed cua .chip -> loan trang thai).
 // Nut trong h2 (vd ⬇ Excel cua rankbox) duoc doi xuong dong hint truoc khi an h2 — khong mat chuc nang.
 (function(){
-  const ids=[['rankbox','🏆 Xếp hạng'],['cashbox','💰 Tiền & nợ'],['bankbox','🏦 Ngân hàng'],['secbox','📈 Chứng khoán']];
+  const ids=[['cashbox','💰 Tiền & nợ'],['bankbox','🏦 Ngân hàng'],['secbox','📈 Chứng khoán']];
   const secs=ids.map(x=>({id:x[0],lab:x[1],el:document.getElementById(x[0])})).filter(x=>x.el&&x.el.style.display!=='none');
   if(secs.length<2) return;
   const bar=document.createElement('section');
@@ -654,7 +674,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     +'#finbox .ftab{font:inherit;font-size:12px;font-weight:600;padding:4px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);cursor:pointer;margin-right:6px}'
     +'#finbox .ftab[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent)}'
     +'</style>'
-    +'<h2 title="xếp hạng cơ bản × kỹ thuật + tài chính cơ bản từ BCTC quý (VNDirect) — tham khảo, KHÔNG vào model kỹ thuật. Bấm tab để xem; tab đang chọn được nhớ cho lần mở sau">Xếp hạng &amp; tài chính cơ bản <span style="font-weight:400;text-transform:none;letter-spacing:0">(bấm tab để xem)</span></h2>'
+    +'<h2 title="xếp hạng cơ bản × kỹ thuật + tài chính cơ bản từ BCTC quý (VNDirect) — tham khảo, KHÔNG vào model kỹ thuật. Bấm tab để xem; tab đang chọn được nhớ cho lần mở sau">Tài chính cơ bản <span style="font-weight:400;text-transform:none;letter-spacing:0">(BCTC quý · bấm tab để xem)</span></h2>'
     +'<div id="ftabs" style="margin:6px 0 2px"></div>';
   secs[0].el.before(bar);
   const holder=document.getElementById('ftabs');
