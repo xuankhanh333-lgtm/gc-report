@@ -177,7 +177,8 @@ footer{color:var(--ink3);font-size:12px;margin-top:14px}
 .nwtk{cursor:pointer;color:var(--accent-ink);font-weight:700}
 .nwtk:hover{text-decoration:underline}
 .bctct{border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap;width:auto;min-width:0;margin-top:5px}
-.bctct td,.bctct th{padding:4px 26px 4px 0;text-align:right;border-top:1px solid var(--line)}
+.bctct td,.bctct th{padding:4px 28px 4px 0;text-align:right;border-top:1px solid var(--line)}
+tr.detail .bctct td,tr.detail .bctct th{padding:4px 28px 4px 0;white-space:nowrap;font-size:12.5px}
 .bctct td:first-child{min-width:120px}
 .bctct th{color:var(--ink3);font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-top:0;padding-bottom:3px}
 .bctct td:first-child,.bctct th:first-child{text-align:left;color:var(--ink2)}
@@ -323,7 +324,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     h += `<tr class="hd"><td></td><td style="text-align:left">mã</td><td title="giá đóng cửa · % so close phiên trước">giá · Δ</td><td title="giảm từ đỉnh pool gần nhất">từ đỉnh</td><td title="tăng trưởng LN dự phóng FY tới so với 4 quý gần nhất (consensus)">LN dựph</td><td title="ROE (%)">roe</td><td title="beta 1 năm vs VNINDEX — >1 dao động mạnh hơn chỉ số">β</td><td title="upside tới price target consensus">upside</td>${hasFlags?'<td style="text-align:left" title="cờ cảnh báo cơ bản — rê dòng xem giải thích">cờ</td>':''}</tr>`;
     tks.forEach((tk,i)=>{ const r=byTk[tk]; if(!r) return; const f=r.fund||{};
       const px = `${fmt(r.close)}${r.dpx==null?'':` <span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="so close phiên trước">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}`;
-      h += `<tr class="rr" style="cursor:help" title="${rsn(kind,r,f)}">`
+      h += `<tr class="rr" style="cursor:pointer" title="${rsn(kind,r,f)}">`
         + td(i+1,'color:var(--ink3);text-align:left;font-size:10px')
         + td(`<b>${tk}</b>${T10.has(tk)?' <span class="best" title="mã này đang đồng thời nằm TOP 10 tín hiệu mạnh nhất — hai bảng đồng thuận">★</span>':''}`,'text-align:left;font-size:12.5px')
         + td(px,'font-family:ui-monospace,Consolas,monospace')
@@ -346,7 +347,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     +'#rankbox .fb{display:inline-block;border:1px solid var(--warn);color:var(--warn);border-radius:8px;padding:0 5px;font-size:9px;line-height:14px}'
     +'</style>';
   html += '<h2 title="dip = kỹ thuật LONG/FADE + dự phóng LN dương + momentum thực dương + không cờ bẫy · short = kỹ thuật SHORT + dự phóng giảm · bẫy = ROE ảo / nền thấp / đỉnh LN / bẫy giá trị · chờ kèo = cơ bản robust nhưng chưa có kèo (canh đổi verdict)">Xếp hạng cơ bản × kỹ thuật <span style="font-weight:400;text-transform:none;letter-spacing:0">(dự phóng LN + định giá + tín hiệu)</span><button class="xbtn" id="x-rank" title="Xuất cả 4 nhóm ra CSV — Excel mở trực tiếp">⬇ Excel</button></h2>';
-  html += '<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">★ = trùng TOP 10 tín hiệu · rê từng dòng xem lý do xếp hạng + số kích hoạt · rê tiêu đề cột xem định nghĩa</div>';
+  html += '<div style="color:var(--ink3);font-size:10.5px;margin:2px 0 9px">★ = trùng TOP 10 tín hiệu · rê từng dòng xem lý do xếp hạng + số kích hoạt · rê tiêu đề cột xem định nghĩa · bấm dòng để mở panel chi tiết mã</div>';
   html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:12px;align-items:start">';
   html += tbl('🟢 Gom đáy','var(--up)', D.rank.dip||[], 'dip');
   html += tbl('⏳ Chờ kèo','var(--ink2)', D.rank.wait||[], 'wait');
@@ -363,6 +364,19 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
                 f.roe??'', f.beta??'', r.up!=null?r.up.toFixed(0):'', r.rk_score!=null?r.rk_score.toFixed(2):'', (r.flags||[]).join(' ')]);
     }));
     dlCSV('vnpool_xephang', out);
+  });
+  box.addEventListener('click', e=>{
+    if(e.target.closest('button,a')) return;
+    const tr=e.target.closest('#rankbox tr.rr'); if(!tr) return;
+    const b=tr.querySelector('b'); if(!b) return;
+    const tk=b.textContent.trim(), r=byTk[tk]; if(!r) return;
+    mode='list'; filter='all';
+    document.querySelectorAll('.chip.mode').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.m==='list')));
+    document.querySelectorAll('.chip:not(.mode)').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.f==='all')));
+    q=''; const qi=document.getElementById('q'); if(qi) qi.value='';
+    render();
+    const target=[...tb.querySelectorAll('tr.r')].find(x=>x.querySelector('.tk')?.textContent.includes(tk));
+    if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
   });
 })();
 // gia tri + chip trend vs ban chot ngay truoc (tooltip = chuoi cac ban chot gan nhat)
