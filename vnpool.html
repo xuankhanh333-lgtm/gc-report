@@ -183,6 +183,10 @@ footer{color:var(--ink3);font-size:12px;margin-top:14px}
 .bctct td:first-child,.bctct th:first-child{text-align:left;color:var(--ink2)}
 .bctct .neg{color:var(--down)}
 .bctct .yy{font-size:9.5px;margin-left:4px}
+.bctct td.hl-up{background:rgba(60,165,92,.15);border-radius:5px}
+.bctct td.hl-dn{background:rgba(224,70,70,.15);border-radius:5px}
+.bctct td.hl-warn{background:rgba(232,160,38,.18);border-radius:5px}
+.bctct td[title]{cursor:help}
 .b30{font-size:9px;font-weight:700;border:1px solid var(--accent);color:var(--accent-ink);
   border-radius:4px;padding:0 3px;margin-left:5px;vertical-align:2px;letter-spacing:.02em}
 .bchip{font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-left:6px;
@@ -802,28 +806,57 @@ function render(){
 // bang BCTC 8 quy trong panel chi tiet (fetch_bctc.py — VNDirect finfo, user 2026-07-21)
 function bctcTable(r){
   const B=(D.bctc||{})[r.ticker]; if(!B||!(B.q||[]).length) return '';
+  // tuple: [nhan, itemCode, flags] — flags: y=%yoy · f=dong chay (xet dinh/day 8 quy, nguong QoQ 30%)
+  // b=tang la XAU (chi phi/no/ton kho, nguong 25%) — highlight + tooltip bat thuong (user 2026-07-21)
   const ROWS={
-    corp:[['DT thuần','21001',1],['LN gộp','23100',0],['CP tài chính','22500',0],['· lãi vay','22510',0],['LNTT','23800',0],['LNST mẹ','23000',1],
-          ['Tổng TS','12700',0],['Tồn kho','11400',0],['Phải thu NH','11300',0],['Đầu tư TC NH','11200',0],['Tiền & TĐT','11100',0],
-          ['Vay ngắn hạn','13110',0],['Vay dài hạn','13340',0],['Nợ phải trả','13000',0],['VCSH','14000',0],
-          ['CFO','32000',0],['CFI','33000',0],['CFF','34000',0]],
-    bank:[['TN lãi thuần','421900',1],['Tổng TN HĐ','421701',0],['CP hoạt động','22200',0],['LN trước DP','88888',0],['CP dự phòng','422900',0],
-          ['LNTT','23800',0],['LNST mẹ','23000',1],['Tổng TS','12700',0],['Cho vay KH','412100',0],['Tiền gửi KH','413300',0],['VCSH','14000',0],['CFO','32000',0]],
-    sec:[['DT hoạt động','21001',1],['LN thuần HĐ','23110',0],['CP tài chính','22500',0],['LNTT','23800',0],['LNST mẹ','23000',1],
-         ['Tổng TS','12700',0],['Đầu tư TC','11200',0],['Vay ngắn hạn','13110',0],['Nợ phải trả','13000',0],['VCSH','14000',0],['CFO','32000',0]]};
+    corp:[['DT thuần','21001','yf'],['LN gộp','23100','f'],['CP tài chính','22500','bf'],['· lãi vay','22510','bf'],['LNTT','23800','f'],['LNST mẹ','23000','yf'],
+          ['Tổng TS','12700',''],['Tồn kho','11400','b'],['Phải thu NH','11300','b'],['Đầu tư TC NH','11200',''],['Tiền & TĐT','11100',''],
+          ['Vay ngắn hạn','13110','b'],['Vay dài hạn','13340','b'],['Nợ phải trả','13000','b'],['VCSH','14000',''],
+          ['CFO','32000','f'],['CFI','33000',''],['CFF','34000','']],
+    bank:[['TN lãi thuần','421900','yf'],['Tổng TN HĐ','421701','f'],['CP hoạt động','22200','bf'],['LN trước DP','88888','f'],['CP dự phòng','422900','bf'],
+          ['LNTT','23800','f'],['LNST mẹ','23000','yf'],['Tổng TS','12700',''],['Cho vay KH','412100',''],['Tiền gửi KH','413300',''],['VCSH','14000',''],['CFO','32000','f']],
+    sec:[['DT hoạt động','21001','yf'],['LN thuần HĐ','23110','f'],['CP tài chính','22500','bf'],['LNTT','23800','f'],['LNST mẹ','23000','yf'],
+         ['Tổng TS','12700',''],['Đầu tư TC','11200',''],['Vay ngắn hạn','13110','b'],['Nợ phải trả','13000','b'],['VCSH','14000',''],['CFO','32000','f']]};
   const rows=ROWS[B.form]||ROWS.corp;
   const ql=B.q.map(x=>{const p=x.d.split('-');return 'Q'+Math.ceil(+p[1]/3)+'/'+p[0].slice(2);});
   const fv=v=>v==null?'·':`<span${v<0?' class="neg"':''}>${Math.round(v).toLocaleString('vi-VN')}</span>`;
+  const S=B.q.map(x=>x.v||{});
   let h='<table class="bctct"><tr><th>tỷ đồng</th>'+ql.map(x=>`<th>${x}</th>`).join('')+'</tr>';
   rows.forEach(rw=>{
+    const code=rw[1], f=rw[2]||'';
+    const arr=B.q.map(x=>(x.v||{})[code]);
+    const nn=arr.filter(v=>v!=null&&isFinite(v));
+    const mx=nn.length?Math.max.apply(null,nn):null, mn=nn.length?Math.min.apply(null,nn):null;
     h+=`<tr><td>${rw[0]}</td>`+B.q.map((x,i)=>{
-      const v=x.v[rw[1]]; let cell=fv(v);
-      if(rw[2]&&i>=4){const p=(B.q[i-4].v||{})[rw[1]];
-        if(p&&v!=null){const g=100*(v/p-1);
-          cell+=`<span class="yy" style="color:${g>=0?'var(--up)':'var(--down)'}">${g>0?'+':''}${Math.round(g)}%</span>`;}}
-      return `<td>${cell}</td>`;}).join('')+'</tr>';
+      const v=arr[i]; let cell=fv(v); const fl=[]; let cls='';
+      if(v!=null){
+        const p=arr[i-1];
+        const qoq=(p!=null&&Math.abs(p)>1e-6)?100*(v/p-1):null;
+        const isBad=f.includes('b');
+        if(qoq!=null&&Math.abs(qoq)>=(isBad?25:30)&&(f.includes('f')||isBad)){
+          fl.push((qoq>0?'tăng +':'giảm ')+Math.round(Math.abs(qoq))*(qoq>0?1:-1)+'% so quý trước'+(isBad&&qoq>0?' — chiều XẤU (chi phí/nợ phình)':''));
+          cls=(isBad&&qoq>0)?'hl-warn':qoq>0?'hl-up':'hl-dn';
+        }
+        if(i>0&&p!=null&&p>0&&v<0){ fl.push('ĐẢO DẤU sang âm (quý trước còn dương)'); cls='hl-dn'; }
+        if(f.includes('f')&&nn.length>=6){
+          if(v===mx&&v>0){ fl.push('CAO NHẤT 8 quý'); cls=cls||'hl-up'; }
+          else if(v===mn&&mx>0&&v<mx*0.6){ fl.push('THẤP NHẤT 8 quý'); cls=cls||'hl-dn'; }
+        }
+        if(code==='32000'&&v<0&&(S[i]['23000']||0)>0){
+          fl.push('CFO ÂM dù LNST dương — lãi trên giấy, tiền chưa về (soi phải thu/tồn kho)'); cls='hl-warn'; }
+        if((code==='11400'||code==='11300')&&qoq!=null&&qoq>=20){
+          const r0=S[i]['21001'], r1=S[i-1]['21001'];
+          const rq=(r0!=null&&r1)?100*(r0/r1-1):null;
+          if(rq!=null&&rq<5){ fl.push((code==='11400'?'Tồn kho':'Phải thu')+' phình +'+Math.round(qoq)+'% trong khi DT chỉ '+(rq>0?'+':'')+Math.round(rq)+'% — cảnh giác ứ đọng/chất lượng doanh thu'); cls='hl-warn'; }}
+      }
+      if(f.includes('y')&&i>=4){const py=(B.q[i-4].v||{})[code];
+        if(py&&v!=null){const g=100*(v/py-1);
+          cell+=`<span class="yy" style="color:${g>=0?'var(--up)':'var(--down)'}">${g>0?'+':''}${Math.round(g)}%</span>`;
+          if(Math.abs(g)>=50){ fl.push((g>0?'+':'')+Math.round(g)+'% so cùng kỳ năm trước'); cls=cls||(g>0?'hl-up':'hl-dn'); }}}
+      return `<td${cls?' class="'+cls+'"':''}${fl.length?' title="'+fl.join(' · ').replace(/"/g,'&quot;')+'"':''}>${cell}</td>`;
+    }).join('')+'</tr>';
   });
-  return `<div style="grid-column:1/-1;overflow-x:auto"><h4 style="display:flex;align-items:center;gap:10px">BCTC quý${B.form==='bank'?' — ngân hàng':B.form==='sec'?' — CTCK':''} <span style="font-weight:400">(tỷ đồng · nguồn VNDirect · %yoy = so cùng kỳ năm trước)</span><button class="xbtn" onclick="event.stopPropagation();bctcFull('${r.ticker}','${B.form}',this)" title="Kéo NGUYÊN VĂN 3 bảng (CĐKT ~142 dòng, KQKD, LCTT) 8 quý từ VNDirect ngay trong trình duyệt rồi xuất CSV — Excel mở trực tiếp">⬇ BCTC đầy đủ (Excel)</button></h4>${h}</table></div>`;
+  return `<div style="grid-column:1/-1;overflow-x:auto"><h4 style="display:flex;align-items:center;gap:10px">BCTC quý${B.form==='bank'?' — ngân hàng':B.form==='sec'?' — CTCK':''} <span style="font-weight:400">(tỷ đồng · nguồn VNDirect · %yoy = so cùng kỳ · ô tô màu = nổi bật/bất thường, rê xem giải thích)</span><button class="xbtn" onclick="event.stopPropagation();bctcFull('${r.ticker}','${B.form}',this)" title="Kéo NGUYÊN VĂN 3 bảng (CĐKT ~142 dòng, KQKD, LCTT) 8 quý từ VNDirect ngay trong trình duyệt rồi xuất CSV — Excel mở trực tiếp">⬇ BCTC đầy đủ (Excel)</button></h4>${h}</table></div>`;
 }
 // keo NGUYEN VAN 3 bang tu VNDirect (CORS mo) -> CSV; ten dong da giai ma thi ghi kem (user 2026-07-21)
 const BCTC_NAMES={
