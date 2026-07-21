@@ -660,47 +660,8 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
   });
 })();
-// ===== FIN TABS (user 2026-07-21 "thiet ke dang tab cho gon, can thi click") — gom rankbox/
-// cashbox/bankbox/secbox thanh 1 khoi tab, chi hien tab dang chon, nho lua chon (localStorage).
-// KHONG dung class .chip (cac handler khac reset aria-pressed cua .chip -> loan trang thai).
-// Nut trong h2 (vd ⬇ Excel cua rankbox) duoc doi xuong dong hint truoc khi an h2 — khong mat chuc nang.
-(function(){
-  const ids=[['cashbox','💰 Tiền & nợ'],['bankbox','🏦 Ngân hàng'],['secbox','📈 Chứng khoán']];
-  const secs=ids.map(x=>({id:x[0],lab:x[1],el:document.getElementById(x[0])})).filter(x=>x.el&&x.el.style.display!=='none');
-  if(secs.length<2) return;
-  const bar=document.createElement('section');
-  bar.id='finbox'; bar.style.margin='14px 0 4px';
-  bar.innerHTML='<style>'
-    +'#finbox .ftab{font:inherit;font-size:12px;font-weight:600;padding:4px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);cursor:pointer;margin-right:6px}'
-    +'#finbox .ftab[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent)}'
-    +'</style>'
-    +'<h2 title="xếp hạng cơ bản × kỹ thuật + tài chính cơ bản từ BCTC quý (VNDirect) — tham khảo, KHÔNG vào model kỹ thuật. Bấm tab để xem; tab đang chọn được nhớ cho lần mở sau">Tài chính cơ bản <span style="font-weight:400;text-transform:none;letter-spacing:0">(BCTC quý · bấm tab để xem)</span></h2>'
-    +'<div id="ftabs" style="margin:6px 0 2px"></div>';
-  secs[0].el.before(bar);
-  const holder=document.getElementById('ftabs');
-  let cur=null; try{cur=localStorage.getItem('vnFinTab');}catch(e){}
-  if(!secs.some(x=>x.id===cur)) cur=secs[0].id;
-  function show(id){
-    cur=id;
-    secs.forEach(x=>{ x.el.style.display = x.id===id?'':'none'; });
-    holder.querySelectorAll('.ftab').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.id===id)));
-    try{localStorage.setItem('vnFinTab', id);}catch(e){}
-  }
-  secs.forEach(x=>{
-    const b=document.createElement('button');
-    b.type='button'; b.className='ftab'; b.dataset.id=x.id; b.textContent=x.lab;
-    b.addEventListener('click', ()=>show(x.id));
-    holder.appendChild(b);
-    const h=x.el.querySelector('h2');
-    if(h){
-      const hint=h.nextElementSibling;
-      h.querySelectorAll('button').forEach(btn=>{ if(hint){ btn.style.marginLeft='8px'; hint.appendChild(btn); } });
-      h.style.display='none'; // tab thay vai tro tieu de
-    }
-    x.el.style.margin='6px 0 14px';
-  });
-  show(cur);
-})();
+// (FIN TABS rieng da bo 21/07 — gop vao SIG TABS)
+
 // gia tri + chip trend vs ban chot ngay truoc (tooltip = chuoi cac ban chot gan nhat)
 function cntChip(cur, key){
   const h = D.cnt_hist||[];
@@ -1358,7 +1319,7 @@ document.getElementById('x-tbl').addEventListener('click', ()=>{
 // ===== SIG TABS (user 2026-07-21) — gom Top 10 tin hieu + Troi/Sut thanh 1 khoi tab cho gon.
 // Excel cua top10 doi len thanh tab (chi hien khi dung tab); movers giu 2 cot h3 + Excel ben trong.
 (function(){
-  const ids=[['top10','⭐ Top 10 tín hiệu'],['movers','↕ Trồi sụt vs phiên trước']];
+  const ids=[['top10','⭐ Top 10 tín hiệu'],['movers','↕ Trồi sụt vs phiên trước'],['cashbox','💰 Tiền & nợ'],['bankbox','🏦 Ngân hàng'],['secbox','📈 Chứng khoán']];
   const secs=ids.map(x=>({id:x[0],lab:x[1],el:document.getElementById(x[0])})).filter(x=>x.el&&x.el.style.display!=='none');
   if(secs.length<2) return;
   const bar=document.createElement('div');
@@ -1368,6 +1329,7 @@ document.getElementById('x-tbl').addEventListener('click', ()=>{
     +'#sigtabs .ftab[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent)}'
     +'</style>';
   secs[0].el.before(bar);
+  let ord=bar; secs.forEach(x=>{ ord.after(x.el); ord=x.el; });
   let cur=null; try{cur=localStorage.getItem('vnSigTab');}catch(e){}
   if(!secs.some(x=>x.id===cur)) cur=secs[0].id;
   function show(id){
