@@ -188,6 +188,11 @@ tr.detail .bctct td,tr.detail .bctct th{padding:4px 28px 4px 0;white-space:nowra
 .bctct td.hl-dn{background:rgba(224,70,70,.15);border-radius:5px}
 .bctct td.hl-warn{background:rgba(232,160,38,.18);border-radius:5px}
 .bctct td[title]{cursor:help}
+.bctct tr.g-pl td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.bctct tr.g-bs td:first-child{box-shadow:inset 3px 0 0 var(--ink3)}
+.bctct tr.g-cf td:first-child{box-shadow:inset 3px 0 0 var(--warn)}
+.bctct tr.g-cash td:not(.hl-up):not(.hl-dn):not(.hl-warn){background:var(--accent-soft)}
+.bctct tr.g-cash td:first-child{font-weight:700;color:var(--accent-ink);box-shadow:inset 3px 0 0 var(--accent-ink)}
 .b30{font-size:9px;font-weight:700;border:1px solid var(--accent);color:var(--accent-ink);
   border-radius:4px;padding:0 3px;margin-left:5px;vertical-align:2px;letter-spacing:.02em}
 .bchip{font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-left:6px;
@@ -1135,13 +1140,16 @@ function bctcTable(r){
   const ql=B.q.map(x=>{const p=x.d.split('-');return 'Q'+Math.ceil(+p[1]/3)+'/'+p[0].slice(2);});
   const fv=v=>v==null?'·':`<span${v<0?' class="neg"':''}>${Math.round(v).toLocaleString('vi-VN')}</span>`;
   const S=B.q.map(x=>x.v||{});
+  const GRP=c=>['32000','33000','34000'].includes(c)?'cf':['21001','23100','22500','22510','23800','23000','23110','421900','421701','22200','88888','422900'].includes(c)?'pl':'bs';
+  const CASH=['11100','411100','411200'];
   let h='<table class="bctct"><tr><th>tỷ đồng</th>'+ql.map(x=>`<th>${x}</th>`).join('')+'</tr>';
   rows.forEach(rw=>{
     const code=rw[1], f=rw[2]||'';
     const arr=B.q.map(x=>(x.v||{})[code]);
     const nn=arr.filter(v=>v!=null&&isFinite(v));
     const mx=nn.length?Math.max.apply(null,nn):null, mn=nn.length?Math.min.apply(null,nn):null;
-    h+=`<tr><td>${rw[0]}</td>`+B.q.map((x,i)=>{
+    const grp=GRP(code), isCash=CASH.includes(code);
+    h+=`<tr class="g-${grp}${isCash?' g-cash':''}"><td>${isCash?'💰 ':''}${rw[0]}</td>`+B.q.map((x,i)=>{
       const v=arr[i]; let cell=fv(v); const fl=[]; let cls='';
       if(v!=null){
         const p=arr[i-1];
@@ -1170,7 +1178,7 @@ function bctcTable(r){
       return `<td${cls?' class="'+cls+'"':''}${fl.length?' title="'+fl.join(' · ').replace(/"/g,'&quot;')+'"':''}>${cell}</td>`;
     }).join('')+'</tr>';
   });
-  return `<div style="grid-column:1/-1;overflow-x:auto"><h4 style="display:flex;align-items:center;gap:10px">BCTC quý${B.form==='bank'?' — ngân hàng':B.form==='sec'?' — CTCK':''} <span style="font-weight:400">(tỷ đồng · nguồn VNDirect · % nhỏ cạnh số = so CÙNG KỲ năm trước, rê vào % xem quý gốc · ô tô màu = nổi bật/bất thường, rê ô xem lý do)</span><button class="xbtn" onclick="event.stopPropagation();bctcFull('${r.ticker}','${B.form}',this)" title="Kéo NGUYÊN VĂN 3 bảng (CĐKT ~142 dòng, KQKD, LCTT) 8 quý từ VNDirect ngay trong trình duyệt rồi xuất CSV — Excel mở trực tiếp">⬇ BCTC đầy đủ (Excel)</button></h4>${h}</table></div>`;
+  return `<div style="grid-column:1/-1;overflow-x:auto"><h4 style="display:flex;align-items:center;gap:10px">BCTC quý${B.form==='bank'?' — ngân hàng':B.form==='sec'?' — CTCK':''} <span style="font-weight:400">(tỷ đồng · nguồn VNDirect · % nhỏ cạnh số = so CÙNG KỲ năm trước, rê vào % xem quý gốc · ô tô màu = nổi bật/bất thường, rê ô xem lý do · viền trái nhãn: xanh dương = LÃI LỖ, xám = CÂN ĐỐI, cam = DÒNG TIỀN · 💰 nền xanh = tiền &amp; tương đương)</span><button class="xbtn" onclick="event.stopPropagation();bctcFull('${r.ticker}','${B.form}',this)" title="Kéo NGUYÊN VĂN 3 bảng (CĐKT ~142 dòng, KQKD, LCTT) 8 quý từ VNDirect ngay trong trình duyệt rồi xuất CSV — Excel mở trực tiếp">⬇ BCTC đầy đủ (Excel)</button></h4>${h}</table></div>`;
 }
 // keo NGUYEN VAN 3 bang tu VNDirect (CORS mo) -> CSV; ten dong da giai ma thi ghi kem (user 2026-07-21)
 const BCTC_NAMES={
