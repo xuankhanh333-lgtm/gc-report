@@ -823,15 +823,15 @@ function bctcTable(r){
   // tuple: [nhan, itemCode, flags] — flags: y=%yoy · f=dong chay (xet dinh/day 8 quy, nguong QoQ 30%)
   // b=tang la XAU (chi phi/no/ton kho, nguong 25%) — highlight + tooltip bat thuong (user 2026-07-21)
   const ROWS={
-    corp:[['DT thuần','21001','yf'],['LN gộp','23100','f'],['CP tài chính','22500','bf'],['· lãi vay','22510','bf'],['LNTT','23800','f'],['LNST mẹ','23000','yf'],
-          ['Tổng TS','12700',''],['Tồn kho','11400','b'],['Phải thu NH','11300','b'],['Đầu tư TC NH','11200',''],['Tiền & TĐT','11100',''],
-          ['Vay ngắn hạn','13110','b'],['Vay dài hạn','13340','b'],['Nợ phải trả','13000','b'],['VCSH','14000',''],
-          ['CFO','32000','f'],['CFI','33000',''],['CFF','34000','']],
-    bank:[['TN lãi thuần','421900','yf'],['Tổng TN HĐ','421701','f'],['CP hoạt động','22200','bf'],['LN trước DP','88888','f'],['CP dự phòng','422900','bf'],
-          ['LNTT','23800','f'],['LNST mẹ','23000','yf'],['Tổng TS','12700',''],['Tiền mặt & đá quý','411100',''],['Tiền gửi NHNN','411200',''],
-          ['Cho vay KH','412100',''],['Tiền gửi KH','413300',''],['VCSH','14000',''],['CFO','32000','f']],
-    sec:[['DT hoạt động','21001','yf'],['LN thuần HĐ','23110','f'],['CP tài chính','22500','bf'],['LNTT','23800','f'],['LNST mẹ','23000','yf'],
-         ['Tổng TS','12700',''],['Tiền & TĐT','11100',''],['Đầu tư TC','11200',''],['Vay ngắn hạn','13110','b'],['Nợ phải trả','13000','b'],['VCSH','14000',''],['CFO','32000','f']]};
+    corp:[['DT thuần','21001','yf'],['LN gộp','23100','yf'],['CP tài chính','22500','ybf'],['· lãi vay','22510','ybf'],['LNTT','23800','yf'],['LNST mẹ','23000','yf'],
+          ['Tổng TS','12700',''],['Tồn kho','11400','yb'],['Phải thu NH','11300','yb'],['Đầu tư TC NH','11200',''],['Tiền & TĐT','11100',''],
+          ['Vay ngắn hạn','13110','yb'],['Vay dài hạn','13340','yb'],['Nợ phải trả','13000','yb'],['VCSH','14000',''],
+          ['CFO','32000','yf'],['CFI','33000',''],['CFF','34000','']],
+    bank:[['TN lãi thuần','421900','yf'],['Tổng TN HĐ','421701','yf'],['CP hoạt động','22200','ybf'],['LN trước DP','88888','yf'],['CP dự phòng','422900','ybf'],
+          ['LNTT','23800','yf'],['LNST mẹ','23000','yf'],['Tổng TS','12700',''],['Tiền mặt & đá quý','411100',''],['Tiền gửi NHNN','411200',''],
+          ['Cho vay KH','412100',''],['Tiền gửi KH','413300',''],['VCSH','14000',''],['CFO','32000','yf']],
+    sec:[['DT hoạt động','21001','yf'],['LN thuần HĐ','23110','yf'],['CP tài chính','22500','ybf'],['LNTT','23800','yf'],['LNST mẹ','23000','yf'],
+         ['Tổng TS','12700',''],['Tiền & TĐT','11100',''],['Đầu tư TC','11200',''],['Vay ngắn hạn','13110','yb'],['Nợ phải trả','13000','yb'],['VCSH','14000',''],['CFO','32000','yf']]};
   const rows=ROWS[B.form]||ROWS.corp;
   const ql=B.q.map(x=>{const p=x.d.split('-');return 'Q'+Math.ceil(+p[1]/3)+'/'+p[0].slice(2);});
   const fv=v=>v==null?'·':`<span${v<0?' class="neg"':''}>${Math.round(v).toLocaleString('vi-VN')}</span>`;
@@ -865,9 +865,9 @@ function bctcTable(r){
           if(rq!=null&&rq<5){ fl.push((code==='11400'?'Tồn kho':'Phải thu')+' phình +'+Math.round(qoq)+'% trong khi DT chỉ '+(rq>0?'+':'')+Math.round(rq)+'% — cảnh giác ứ đọng/chất lượng doanh thu'); cls='hl-warn'; }}
       }
       if(f.includes('y')&&i>=4){const py=(B.q[i-4].v||{})[code];
-        if(py&&v!=null){const g=100*(v/py-1);
-          cell+=`<span class="yy" style="color:${g>=0?'var(--up)':'var(--down)'}">${g>0?'+':''}${Math.round(g)}%</span>`;
-          if(Math.abs(g)>=50){ fl.push((g>0?'+':'')+Math.round(g)+'% so cùng kỳ năm trước'); cls=cls||(g>0?'hl-up':'hl-dn'); }}}
+        if(py!=null&&py>0&&v!=null){const g=100*(v/py-1); const bad=f.includes('b'); const good=(g>=0)!==bad;
+          cell+=`<span class="yy" style="color:${good?'var(--up)':'var(--down)'}">${g>0?'+':''}${Math.round(g)}%</span>`;
+          if(Math.abs(g)>=50){ fl.push((g>0?'+':'')+Math.round(g)+'% so cùng kỳ năm trước'+(bad&&g>0?' — chiều XẤU (chi phí/nợ phình)':'')); cls=cls||(good?'hl-up':'hl-dn'); }}}
       return `<td${cls?' class="'+cls+'"':''}${fl.length?' title="'+fl.join(' · ').replace(/"/g,'&quot;')+'"':''}>${cell}</td>`;
     }).join('')+'</tr>';
   });
