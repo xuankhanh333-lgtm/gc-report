@@ -913,14 +913,14 @@ function bctcTable(r){
   // b=tang la XAU (chi phi/no/ton kho, nguong 25%) — highlight + tooltip bat thuong (user 2026-07-21)
   const ROWS={
     corp:[['DT thuần','21001','yf'],['LN gộp','23100','yf'],['CP tài chính','22500','ybf'],['· lãi vay','22510','ybf'],['LNTT','23800','yf'],['LNST mẹ','23000','yf'],
-          ['Tổng TS','12700',''],['Tồn kho','11400','yb'],['Phải thu NH','11300','yb'],['Đầu tư TC NH','11200',''],['Tiền & TĐT','11100',''],
-          ['Vay ngắn hạn','13110','yb'],['Vay dài hạn','13340','yb'],['Nợ phải trả','13000','yb'],['VCSH','14000',''],
-          ['CFO','32000','yf'],['CFI','33000',''],['CFF','34000','']],
+          ['Tổng TS','12700','y'],['Tồn kho','11400','yb'],['Phải thu NH','11300','yb'],['Đầu tư TC NH','11200','y'],['Tiền & TĐT','11100','y'],
+          ['Vay ngắn hạn','13110','yb'],['Vay dài hạn','13340','yb'],['Nợ phải trả','13000','yb'],['VCSH','14000','y'],
+          ['CFO','32000','yf'],['CFI','33000','y'],['CFF','34000','y']],
     bank:[['TN lãi thuần','421900','yf'],['Tổng TN HĐ','421701','yf'],['CP hoạt động','22200','ybf'],['LN trước DP','88888','yf'],['CP dự phòng','422900','ybf'],
-          ['LNTT','23800','yf'],['LNST mẹ','23000','yf'],['Tổng TS','12700',''],['Tiền mặt & đá quý','411100',''],['Tiền gửi NHNN','411200',''],
-          ['Cho vay KH','412100',''],['Tiền gửi KH','413300',''],['VCSH','14000',''],['CFO','32000','yf']],
+          ['LNTT','23800','yf'],['LNST mẹ','23000','yf'],['Tổng TS','12700','y'],['Tiền mặt & đá quý','411100','y'],['Tiền gửi NHNN','411200','y'],
+          ['Cho vay KH','412100','y'],['Tiền gửi KH','413300','y'],['VCSH','14000','y'],['CFO','32000','yf']],
     sec:[['DT hoạt động','21001','yf'],['LN thuần HĐ','23110','yf'],['CP tài chính','22500','ybf'],['LNTT','23800','yf'],['LNST mẹ','23000','yf'],
-         ['Tổng TS','12700',''],['Tiền & TĐT','11100',''],['Đầu tư TC','11200',''],['Vay ngắn hạn','13110','yb'],['Nợ phải trả','13000','yb'],['VCSH','14000',''],['CFO','32000','yf']]};
+         ['Tổng TS','12700','y'],['Tiền & TĐT','11100','y'],['Đầu tư TC','11200','y'],['Vay ngắn hạn','13110','yb'],['Nợ phải trả','13000','yb'],['VCSH','14000','y'],['CFO','32000','yf']]};
   const rows=ROWS[B.form]||ROWS.corp;
   const ql=B.q.map(x=>{const p=x.d.split('-');return 'Q'+Math.ceil(+p[1]/3)+'/'+p[0].slice(2);});
   const fv=v=>v==null?'·':`<span${v<0?' class="neg"':''}>${Math.round(v).toLocaleString('vi-VN')}</span>`;
