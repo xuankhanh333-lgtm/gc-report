@@ -373,7 +373,7 @@ sub.textContent = `${D.n} mã (vốn hóa > ${fmt(D.cap_min_ty)} tỷ, KLTB ${D.
     mode='list'; filter='all';
     document.querySelectorAll('.chip.mode').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.m==='list')));
     document.querySelectorAll('.chip:not(.mode)').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.f==='all')));
-    q=''; const qi=document.getElementById('q'); if(qi) qi.value='';
+    q=''; const qi=document.getElementById('q'); if(qi) qi.value=''; Object.keys(colFil).forEach(k=>colFil[k]=''); document.querySelectorAll('#thead input').forEach(i=>i.value='');
     render();
     const target=[...tb.querySelectorAll('tr.r')].find(x=>x.querySelector('.tk')?.textContent.includes(tk));
     if(target){ target.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(target, r); }
@@ -954,7 +954,7 @@ top10.forEach((r,i)=>{
     mode='list'; filter='all';
     document.querySelectorAll('.chip.mode').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.m==='list')));
     document.querySelectorAll('.chip:not(.mode)').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.f==='all')));
-    q=''; document.getElementById('q').value='';
+    q=''; document.getElementById('q').value=''; Object.keys(colFil).forEach(k=>colFil[k]=''); document.querySelectorAll('#thead input').forEach(i=>i.value='');
     render();
     const rows=[...tb.querySelectorAll('tr.r')];
     const target=rows.find(x=>x.querySelector('.tk')?.textContent.includes(r.ticker));
