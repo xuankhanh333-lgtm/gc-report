@@ -1355,6 +1355,41 @@ document.getElementById('x-tbl').addEventListener('click', ()=>{
     document.querySelector('.tblwrap')?.scrollIntoView({behavior:'smooth', block:'start'});
   });
 })();
+// ===== SIG TABS (user 2026-07-21) — gom Top 10 tin hieu + Troi/Sut thanh 1 khoi tab cho gon.
+// Excel cua top10 doi len thanh tab (chi hien khi dung tab); movers giu 2 cot h3 + Excel ben trong.
+(function(){
+  const ids=[['top10','⭐ Top 10 tín hiệu'],['movers','↕ Trồi sụt vs phiên trước']];
+  const secs=ids.map(x=>({id:x[0],lab:x[1],el:document.getElementById(x[0])})).filter(x=>x.el&&x.el.style.display!=='none');
+  if(secs.length<2) return;
+  const bar=document.createElement('div');
+  bar.id='sigtabs'; bar.style.margin='14px 0 8px';
+  bar.innerHTML='<style>'
+    +'#sigtabs .ftab{font:inherit;font-size:12px;font-weight:600;padding:4px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);cursor:pointer;margin-right:6px}'
+    +'#sigtabs .ftab[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent)}'
+    +'</style>';
+  secs[0].el.before(bar);
+  let cur=null; try{cur=localStorage.getItem('vnSigTab');}catch(e){}
+  if(!secs.some(x=>x.id===cur)) cur=secs[0].id;
+  function show(id){
+    cur=id;
+    secs.forEach(x=>{ x.el.style.display = x.id===id?'':'none'; });
+    bar.querySelectorAll('.ftab').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.id===id)));
+    bar.querySelectorAll('button.xmv').forEach(b=>{ b.style.display = b.dataset.owner===id?'':'none'; });
+    try{localStorage.setItem('vnSigTab', id);}catch(e){}
+  }
+  secs.forEach(x=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='ftab'; b.dataset.id=x.id; b.textContent=x.lab;
+    b.addEventListener('click', ()=>show(x.id));
+    bar.appendChild(b);
+    const h=x.el.querySelector('h2');
+    if(h){
+      h.querySelectorAll('button').forEach(btn=>{ btn.classList.add('xmv'); btn.dataset.owner=x.id; btn.style.marginLeft='8px'; bar.appendChild(btn); });
+      h.style.display='none'; // tab thay vai tro tieu de
+    }
+  });
+  show(cur);
+})();
 // ===== 📰 tin dang chu y (user 2026-07-20): RSS 5 nguon, loc ma trong ro, snapshot theo ky quet.
 // Dang BANG cot sort duoc (ma / nguon / thoi gian — user "hien dang cot va sort them ma + thoi gian")
 (function(){
