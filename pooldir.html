@@ -304,6 +304,21 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     H.push('<div id="fredslot" style="display:none;background:' + vbg + ';padding:0 16px 12px;font-size:11.5px;color:var(--text-secondary);line-height:1.7;font-variant-numeric:tabular-nums;" title="Bias vĩ mô từ FRED scorecard (điểm = Σ dir×sign) · RY = lợi suất thực 10Y DFII10 · Carry = DFF−ECBDFR · mũi tên Δ3 tháng tô theo tác động lên VÀNG (▲ đỏ = cản vàng)"></div>');
     H.push('<div style="padding:12px 16px 13px;">');
 
+    // ===== SPLIT huong vs keo (user 2026-07-22 "tach"): conf net-dir = chac HUONG; P_follow = thang KEO 2:1.
+    //   Header "Take/SHORT" gop 2 truc -> de doc nham "keo manh". Banner tach ro + canh bao khi chac huong ma keo yeu. =====
+    var _hconf = s1 ? s1.conf : null;
+    var _htm = (st && st.take_mean != null) ? st.take_mean : 0.73;
+    var _hweak = (pp != null && pp < _htm);
+    var _hwarn = (_hconf != null && _hconf >= 0.70 && _hweak);
+    H.push('<div style="display:flex;flex-wrap:wrap;align-items:center;gap:7px 13px;margin-bottom:12px;padding:9px 12px;border-radius:9px;background:var(--surface-1);border:0.5px solid var(--border);font-size:12.5px;line-height:1.4;">');
+    H.push('<span>Hướng <b style="color:' + sColor + ';">' + arrow(sd) + ' ' + sName + '</b>'
+      + (_hconf != null ? ' · chắc <b style="font-variant-numeric:tabular-nums;color:' + (_hconf >= 0.7 ? 'var(--text-success)' : 'var(--text-muted)') + ';">' + Math.round(_hconf * 100) + '%</b>' : '') + '</span>');
+    H.push('<span style="color:var(--border-strong);">│</span>');
+    H.push('<span>Kèo 2:1 <b style="font-variant-numeric:tabular-nums;color:' + (pp != null && pp >= gate ? 'var(--text-success)' : 'var(--text-warning)') + ';">P_follow ' + (pp != null ? f(pp, 2) : '—') + '</b>'
+      + (pp != null ? ' <span style="color:var(--text-muted);">' + (_hweak ? 'yếu · dưới TB ' + f(_htm, 2) : '≥ TB ' + f(_htm, 2)) + '</span>' : '') + '</span>');
+    if (_hwarn) H.push('<span style="flex-basis:100%;margin-top:2px;color:var(--text-warning);font-weight:500;">⚠ chắc hướng nhưng kèo yếu — P_follow ' + f(pp, 2) + ' dưới TB ' + f(_htm, 2) + ': đọc là coin-flip, size nhỏ hoặc bỏ (đừng để chữ “Take” đánh lừa)</span>');
+    H.push('</div>');
+
     // dong boi canh: chuoi + displacement -> diverge/correlate
     H.push('<div style="font-size:13px;color:var(--text-primary);margin-bottom:12px;">');
     H.push('chu\u1ed7i <span style="color:' + dirColor(ch.cdir) + ';">' + arrow(ch.cdir) + '</span> <span style="font-weight:500;font-variant-numeric:tabular-nums;">\u00d7' + ch.cn + '</span> + displacement <span style="color:' + dirColor(disp.dir) + ';">' + arrow(disp.dir) + '</span> \u2192 <span style="color:' + ctxColor + ';font-weight:500;">' + ctxName + '</span> (' + ctxKind + (basePct != null ? ' \u00b7 base ~' + basePct + '%' : '') + ')');
