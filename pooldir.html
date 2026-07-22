@@ -80,14 +80,19 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
         return '<polyline points="' + p + '" fill="none" stroke="' + col + '" stroke-width="1.5" vector-effect="non-scaling-stroke"/>' +
           '<circle cx="' + xv(n - 1).toFixed(1) + '" cy="' + yv(arr[n - 1]) + '" r="2.2" fill="' + col + '"/>';
       };
-      var GOLD = '#d4a642', USD = '#4884dc', gl = '', prev = null;
-      for (var j = 0; j < n; j++) { var dd = new Date(R[j].t), dk = dd.getFullYear() + '-' + dd.getMonth() + '-' + dd.getDate(); if (dk !== prev) { if (prev !== null) { var x = xv(j).toFixed(1); gl += '<line x1="' + x + '" y1="2" x2="' + x + '" y2="' + (H - 2) + '" stroke="var(--text-muted)" stroke-opacity=".16" vector-effect="non-scaling-stroke"/>'; } prev = dk; } }
-      var md = function (s) { var d = new Date(s); return d.getDate() + '/' + (d.getMonth() + 1); };
+      var GOLD = '#d4a642', USD = '#4884dc', gl = '', prev = null, days = [];
+      for (var j = 0; j < n; j++) { var dd = new Date(R[j].t), dk = dd.getFullYear() + '-' + dd.getMonth() + '-' + dd.getDate(); if (dk !== prev) { if (prev !== null) { var x = xv(j).toFixed(1); gl += '<line x1="' + x + '" y1="2" x2="' + x + '" y2="' + (H - 2) + '" stroke="var(--text-muted)" stroke-opacity=".16" vector-effect="non-scaling-stroke"/>'; } days.push({ x: xv(j), lab: dd.getDate() + '/' + (dd.getMonth() + 1) }); prev = dk; } }
+      // trục thời gian dưới chart: nhãn ngày, chống chồng (cách ≥12%, luôn giữ ngày cuối)
+      var ticks = [], lastX = -99;
+      for (var m = 0; m < days.length; m++) { if (days[m].x - lastX >= 12) { ticks.push(days[m]); lastX = days[m].x; } }
+      if (ticks.length && ticks[ticks.length - 1].lab !== days[days.length - 1].lab) { if (days[days.length - 1].x - ticks[ticks.length - 1].x < 12) ticks.pop(); ticks.push(days[days.length - 1]); }
+      var axis = ticks.map(function (d) { return '<span style="position:absolute;left:' + Math.max(3, Math.min(97, d.x)).toFixed(1) + '%;transform:translateX(-50%)">' + d.lab + '</span>'; }).join('');
       return '<div style="margin-top:7px">' +
         '<svg viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="width:100%;height:42px;display:block" title="Bias GOLD/USD chuẩn hoá %/N · từng lần chạy scorecard">' +
         '<line x1="0" y1="' + mid + '" x2="100" y2="' + mid + '" stroke="var(--text-muted)" stroke-opacity=".35" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>' +
         gl + seg(g, GOLD) + seg(u, USD) + '</svg>' +
-        '<div style="font-size:10px;color:var(--text-muted);margin-top:1px"><b style="color:' + GOLD + '">— GOLD</b> · <b style="color:' + USD + '">— USD</b> · bias %/N · ' + md(R[0].t) + '→' + md(R[n - 1].t) + ' (' + n + ' lần)</div></div>';
+        '<div style="position:relative;height:12px;font-size:9px;color:var(--text-muted);line-height:12px;margin-top:1px">' + axis + '</div>' +
+        '<div style="font-size:10px;color:var(--text-muted);margin-top:1px"><b style="color:' + GOLD + '">— GOLD</b> · <b style="color:' + USD + '">— USD</b> · bias %/N · ' + n + ' lần</div></div>';
     }
     // ưu tiên #fredslot trong card quyết định (dashboard.js đặt sẵn); fallback div đầu trang
     var el = document.getElementById('fredslot') || document.getElementById('fredbias');
