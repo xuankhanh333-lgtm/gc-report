@@ -42,7 +42,7 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
    ry/carry chỉ hiện khi record có field (scorecard.mjs ≥ 17/07/2026). */
 (function () {
   if (location.protocol === 'file:') return;
-  fetch('fred-history.jsonl', { cache: 'no-store' }).then(function (r) {
+  fetch('fred-history.jsonl', { headers: { 'Range': 'bytes=-8192' }, cache: 'no-store' }).then(function (r) {
     if (!r.ok) throw 0; return r.text();
   }).then(function (tx) {
     var L = tx.trim().split('\n'), h = null;
@@ -64,73 +64,16 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     if (h.ry) parts.push('RY10Y ' + h.ry.v.toFixed(2) + dz(h.ry.d3m));
     if (h.carry) parts.push('Carry ' + h.carry.v.toFixed(2) + dz(h.carry.d3m));
     parts.push('<span style="color:var(--text-muted)">' + pad(t.getHours()) + ':' + pad(t.getMinutes()) + ' ' + pad(t.getDate()) + '/' + pad(t.getMonth() + 1) + '</span>');
-    // Overlay TREND gold+usd bias (chuẩn hoá bias×150/N như fred.html) — dùng lại chính data vừa fetch.
-    function biasTrend(lines) {
-      var R = [];
-      for (var k = 0; k < lines.length; k++) { try { var o = JSON.parse(lines[k]); if (typeof o.gold === 'number' && typeof o.usd === 'number' && o.goldN && o.usdN && o.t) R.push(o); } catch (e) {} }
-      if (R.length < 2) return null;
-      var H = 46, mid = 22, pad = 3, n = R.length;
-      var g = R.map(function (o) { return o.gold * 150 / o.goldN; }), u = R.map(function (o) { return o.usd * 150 / o.usdN; });
-      var dom = Math.max(40, Math.max.apply(null, g.concat(u).map(Math.abs)));
-      var scl = (mid - pad) / dom;
-      var xv = function (i) { return n === 1 ? 97 : 3 + i * 94 / (n - 1); };
-      var yv = function (v) { return +(mid - v * scl).toFixed(1); };
-      var seg = function (arr, col) {
-        var p = arr.map(function (v, i) { return xv(i).toFixed(1) + ',' + yv(v); }).join(' ');
-        return '<polyline points="' + p + '" fill="none" stroke="' + col + '" stroke-width="1.5" vector-effect="non-scaling-stroke"/>' +
-          '<circle cx="' + xv(n - 1).toFixed(1) + '" cy="' + yv(arr[n - 1]) + '" r="2.2" fill="' + col + '"/>';
-      };
-      var GOLD = '#d4a642', USD = '#4884dc', gl = '', prev = null, days = [];
-      for (var j = 0; j < n; j++) { var dd = new Date(R[j].t), dk = dd.getFullYear() + '-' + dd.getMonth() + '-' + dd.getDate(); if (dk !== prev) { if (prev !== null) { var x = xv(j).toFixed(1); gl += '<line x1="' + x + '" y1="2" x2="' + x + '" y2="' + (H - 2) + '" stroke="var(--text-muted)" stroke-opacity=".16" vector-effect="non-scaling-stroke"/>'; } days.push({ x: xv(j), lab: dd.getDate() + '/' + (dd.getMonth() + 1) }); prev = dk; } }
-      // trục thời gian dưới chart: nhãn ngày, chống chồng (cách ≥12%, luôn giữ ngày cuối)
-      var ticks = [], lastX = -99;
-      for (var m = 0; m < days.length; m++) { if (days[m].x - lastX >= 12) { ticks.push(days[m]); lastX = days[m].x; } }
-      if (ticks.length && ticks[ticks.length - 1].lab !== days[days.length - 1].lab) { if (days[days.length - 1].x - ticks[ticks.length - 1].x < 12) ticks.pop(); ticks.push(days[days.length - 1]); }
-      var axis = ticks.map(function (d) { return '<span style="position:absolute;left:' + Math.max(3, Math.min(97, d.x)).toFixed(1) + '%;transform:translateX(-50%)">' + d.lab + '</span>'; }).join('');
-      var html = '<div style="margin-top:7px">' +
-        '<svg data-trend="1" viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="width:100%;height:42px;display:block;cursor:crosshair">' +
-        '<rect x="0" y="0" width="100" height="' + H + '" fill="none" pointer-events="all"/>' +
-        '<line x1="0" y1="' + mid + '" x2="100" y2="' + mid + '" stroke="var(--text-muted)" stroke-opacity=".35" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>' +
-        gl + seg(g, GOLD) + seg(u, USD) + '</svg>' +
-        '<div style="position:relative;height:12px;font-size:9px;color:var(--text-muted);line-height:12px;margin-top:1px">' + axis + '</div>' +
-        '<div style="font-size:10px;color:var(--text-muted);margin-top:1px"><b style="color:' + GOLD + '">— GOLD</b> · <b style="color:' + USD + '">— USD</b> · bias %/N · ' + n + ' lần · rê chuột xem từng lần</div></div>';
-      return { html: html, R: R, g: g, u: u, n: n, mid: mid, scl: scl };
-    }
-    // Tooltip hover trên trend — đọc thời gian + bias raw/N + % chuẩn hoá tại điểm gần con trỏ (crosshair + 2 dot).
-    function hookHover(box, TR) {
-      var sv = box.querySelector('svg[data-trend]'); if (!sv) return;
-      var tip = document.getElementById('fredTrendTip');
-      if (!tip) { tip = document.createElement('div'); tip.id = 'fredTrendTip'; tip.style.cssText = 'display:none;position:fixed;z-index:99;pointer-events:none;padding:6px 9px;border-radius:8px;font-size:11px;line-height:1.5;background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border-strong);box-shadow:0 8px 22px rgba(0,0,0,.28);white-space:nowrap;font-variant-numeric:tabular-nums'; document.body.appendChild(tip); }
-      var NS = 'http://www.w3.org/2000/svg', cross = null, dg = null, du = null, p2 = function (x) { return (x < 10 ? '0' : '') + x; };
-      function mk(tag, at) { var e = document.createElementNS(NS, tag); for (var a in at) e.setAttribute(a, at[a]); sv.appendChild(e); return e; }
-      sv.addEventListener('mousemove', function (e) {
-        var r = sv.getBoundingClientRect(), n = TR.n;
-        var i = Math.max(0, Math.min(n - 1, Math.round((e.clientX - r.left) / r.width * (n - 1))));
-        var o = TR.R[i], gp = TR.g[i], up = TR.u[i], d = new Date(o.t);
-        tip.innerHTML = '<b>' + p2(d.getDate()) + '/' + (d.getMonth() + 1) + ' ' + p2(d.getHours()) + ':' + p2(d.getMinutes()) + '</b><br>' +
-          '<span style="color:#d4a642">GOLD ' + (o.gold >= 0 ? '+' : '') + o.gold + '/' + o.goldN + ' · ' + (gp >= 0 ? '+' : '') + Math.round(gp) + '%</span><br>' +
-          '<span style="color:#4884dc">USD ' + (o.usd >= 0 ? '+' : '') + o.usd + '/' + o.usdN + ' · ' + (up >= 0 ? '+' : '') + Math.round(up) + '%</span>';
-        tip.style.display = 'block'; tip.style.left = (e.clientX + 13) + 'px'; tip.style.top = (e.clientY + 13) + 'px';
-        var x = n === 1 ? 97 : 3 + i * 94 / (n - 1), yg = +(TR.mid - gp * TR.scl).toFixed(1), yu = +(TR.mid - up * TR.scl).toFixed(1);
-        if (!cross) { cross = mk('line', { 'stroke': 'var(--text-muted)', 'stroke-width': '1', 'stroke-dasharray': '2 2', 'vector-effect': 'non-scaling-stroke' }); dg = mk('circle', { 'r': '2.8', 'fill': '#d4a642', 'stroke': 'var(--surface-2)', 'stroke-width': '0.8' }); du = mk('circle', { 'r': '2.8', 'fill': '#4884dc', 'stroke': 'var(--surface-2)', 'stroke-width': '0.8' }); }
-        cross.setAttribute('x1', x); cross.setAttribute('y1', 2); cross.setAttribute('x2', x); cross.setAttribute('y2', 44); cross.style.display = '';
-        dg.setAttribute('cx', x); dg.setAttribute('cy', yg); dg.style.display = '';
-        du.setAttribute('cx', x); du.setAttribute('cy', yu); du.style.display = '';
-      });
-      sv.addEventListener('mouseleave', function () { tip.style.display = 'none'; if (cross) cross.style.display = 'none'; if (dg) dg.style.display = 'none'; if (du) du.style.display = 'none'; });
-    }
     // ưu tiên #fredslot trong card quyết định (dashboard.js đặt sẵn); fallback div đầu trang
     var el = document.getElementById('fredslot') || document.getElementById('fredbias');
     if (!el) return;
-    var TR = biasTrend(L);
-    el.innerHTML = parts.join(' · ') + (TR ? TR.html : '');
+    el.innerHTML = parts.join(' · ');
     el.style.display = 'block';
-    if (TR) hookHover(el, TR);
   }).catch(function () {});
 })();
 </script>
 <div id="pooldir-root"></div>
-<script>window.GC_DATA = {"asof": "2026-07-21 22:00 ET", "age_txt": "H4 toi nen dong 22:00 ET · chay 09:22 22/07 VN", "run_at_ms": 1784686941438, "close": 4126.0, "atr": 30.2, "verdict": "TAKE", "side": "LONG", "side_dir": 1, "chain": {"cdir": -1, "cn": 3, "cdist": 3.1, "cfirst": 1}, "disp": {"type": "MIT", "dir": 1, "bars_ago": 1, "date": "21/07 17:00", "is_new": true}, "cands": [{"type": "MIT", "dir": 1, "bars_ago": 1, "date": "21/07 17:00", "px": 4082.2, "pf": 0.521, "take": true, "fade": false}, {"type": "N", "dir": 1, "bars_ago": 1, "date": "21/07 17:00", "px": 4082.2, "pf": 0.51, "take": true, "fade": false}, {"type": "RB", "dir": -1, "bars_ago": 4, "date": "21/07 06:00", "px": 4070.2, "pf": 0.089, "take": false, "fade": true}, {"type": "N", "dir": 1, "bars_ago": 5, "date": "21/07 02:00", "px": 4066.0, "pf": 0.538, "take": true, "fade": false}, {"type": "MIT", "dir": 1, "bars_ago": 5, "date": "21/07 02:00", "px": 4066.0, "pf": 0.536, "take": true, "fade": false}, {"type": "FVG", "dir": 1, "bars_ago": 5, "date": "21/07 02:00", "px": 4066.0, "pf": 0.533, "take": true, "fade": false}, {"type": "OB", "dir": 1, "bars_ago": 5, "date": "21/07 02:00", "px": 4066.0, "pf": 0.529, "take": true, "fade": false}, {"type": "FVG", "dir": 1, "bars_ago": 6, "date": "20/07 22:00", "px": 4027.6, "pf": 0.535, "take": true, "fade": false}, {"type": "OB", "dir": 1, "bars_ago": 6, "date": "20/07 22:00", "px": 4027.6, "pf": 0.535, "take": true, "fade": false}, {"type": "RB", "dir": 1, "bars_ago": 8, "date": "20/07 14:00", "px": 4009.2, "pf": 0.524, "take": true, "fade": false}, {"type": "RB", "dir": -1, "bars_ago": 9, "date": "20/07 10:00", "px": 4009.5, "pf": 0.09, "take": false, "fade": true}], "context": {"kind": "DIVERGE", "base_win": 0.5239}, "dr": {"ssl": 4048.4, "bsl": 4088.4, "atr": 30.2, "dbsl_atr": -1.2, "dssl_atr": 2.6, "price_pct": 1.94, "tp_pct": 3.449, "sl_pct": 1.186}, "pfollow": {"primary": 0.521, "noatr": 0.507, "take": 0.4, "fade_gate": 0.2}, "fade_strength": null, "ev": 0.87, "ev_bins": [{"lo": 0, "hi": 0.3, "ev": -0.69}, {"lo": 0.3, "hi": 0.4, "ev": 0.0}, {"lo": 0.4, "hi": 0.5, "ev": 0.57}, {"lo": 0.5, "hi": 0.6, "ev": 0.87}, {"lo": 0.6, "hi": 0.7, "ev": 1.21}, {"lo": 0.7, "hi": 1.0, "ev": 2.0}], "plan": {"entry": 4126.0, "tp": 4186.3, "sl": 4095.8, "rr": "2:1"}, "stats": {"wf_auc": 0.7441, "take_mean": 0.73, "take_wr": 0.57, "gate": 0.4}, "intrabar": {"blocked": false, "reason": "nen H4 cuoi chua dong that (M30 con chay)", "now": 4126.0, "death": 4071.9, "sl": 4095.8, "dead": false, "sl_hit": false, "forming": true}, "netdir": {"asof": "2026-07-21 22:00 ET", "side": "LONG", "conf": 0.7, "p_up": 0.699, "target_kind": "BSL", "target": 4088.4, "dist_atr": -1.2}, "chain_stage": {"asof": "2026-07-21 22:00 ET", "run_at": "2026-07-22 02:23 UTC", "close": 4126.0, "atr": 30.2, "stage1": {"side": "LONG", "conf": 0.7, "p_up": 0.699, "target_kind": "BSL", "target": 4088.4, "dist_atr": -1.2}, "stage2": {"active": true, "bars_ago": 0, "sweep_dir": "UP", "p_cascade": 0.645, "zone": "MID", "verdict": "BREAK", "open": true, "sweep_at": "21/07 22:00"}, "scan": {"up": [[4194.0, 4112.5, 0.884], [4208.4, 4112.5, 0.884], [4221.2, 4112.5, 0.886]], "dn": [], "note_up": "khong cat nguong trong range scan", "note_dn": "khong cat nguong trong range scan"}}, "news": {"asof": "2026-07-22 02:22 UTC", "source": "faireconomy (Forex Factory) · USD high/med", "events": [{"ts": 1784809800000, "when": "23/07 08:30 ET", "title": "Unemployment Claims", "impact": "Medium", "forecast": "211K", "previous": "208K", "actual": null}]}};</script>
+<script>window.GC_DATA = {"asof": "2026-07-22 02:00 ET", "age_txt": "H4 toi nen dong 02:00 ET · chay 13:22 22/07 VN", "run_at_ms": 1784701341142, "close": 4135.5, "atr": 30.6, "verdict": "SKIP", "side": "SHORT", "side_dir": -1, "chain": {"cdir": 1, "cn": 5, "cdist": 3.8, "cfirst": 1}, "disp": {"type": "FVG", "dir": 1, "bars_ago": 1, "date": "21/07 22:00", "is_new": true}, "cands": [{"type": "FVG", "dir": 1, "bars_ago": 1, "date": "21/07 22:00", "px": 4126.0, "pf": 0.092, "take": false, "fade": true}, {"type": "OB", "dir": 1, "bars_ago": 1, "date": "21/07 22:00", "px": 4126.0, "pf": 0.079, "take": false, "fade": true}, {"type": "MIT", "dir": 1, "bars_ago": 2, "date": "21/07 17:00", "px": 4082.2, "pf": 0.521, "take": true, "fade": false}, {"type": "N", "dir": 1, "bars_ago": 2, "date": "21/07 17:00", "px": 4082.2, "pf": 0.51, "take": true, "fade": false}, {"type": "RB", "dir": -1, "bars_ago": 5, "date": "21/07 06:00", "px": 4070.2, "pf": 0.089, "take": false, "fade": true}, {"type": "N", "dir": 1, "bars_ago": 6, "date": "21/07 02:00", "px": 4066.0, "pf": 0.538, "take": true, "fade": false}, {"type": "MIT", "dir": 1, "bars_ago": 6, "date": "21/07 02:00", "px": 4066.0, "pf": 0.536, "take": true, "fade": false}, {"type": "FVG", "dir": 1, "bars_ago": 6, "date": "21/07 02:00", "px": 4066.0, "pf": 0.533, "take": true, "fade": false}, {"type": "OB", "dir": 1, "bars_ago": 6, "date": "21/07 02:00", "px": 4066.0, "pf": 0.529, "take": true, "fade": false}, {"type": "FVG", "dir": 1, "bars_ago": 7, "date": "20/07 22:00", "px": 4027.6, "pf": 0.535, "take": true, "fade": false}, {"type": "OB", "dir": 1, "bars_ago": 7, "date": "20/07 22:00", "px": 4027.6, "pf": 0.535, "take": true, "fade": false}, {"type": "RB", "dir": 1, "bars_ago": 9, "date": "20/07 14:00", "px": 4009.2, "pf": 0.524, "take": true, "fade": false}, {"type": "RB", "dir": -1, "bars_ago": 10, "date": "20/07 10:00", "px": 4009.5, "pf": 0.09, "take": false, "fade": true}], "context": {"kind": "CORRELATE", "base_win": 0.1197}, "dr": {"ssl": 4048.4, "bsl": 4192.4, "atr": 30.6, "dbsl_atr": 1.9, "dssl_atr": 2.8, "price_pct": 0.605, "tp_pct": 0.179, "sl_pct": 0.818}, "pfollow": {"primary": 0.092, "noatr": 0.091, "take": 0.4, "fade_gate": 0.2}, "fade_strength": "manh", "ev": 0.77, "ev_bins": [{"lo": 0, "hi": 0.3, "ev": -0.69}, {"lo": 0.3, "hi": 0.4, "ev": 0.0}, {"lo": 0.4, "hi": 0.5, "ev": 0.57}, {"lo": 0.5, "hi": 0.6, "ev": 0.87}, {"lo": 0.6, "hi": 0.7, "ev": 1.21}, {"lo": 0.7, "hi": 1.0, "ev": 2.0}], "plan": {"entry": 4135.5, "tp": 4074.2, "sl": 4166.1, "rr": "2:1"}, "stats": {"wf_auc": 0.7441, "take_mean": 0.73, "take_wr": 0.57, "gate": 0.4}, "intrabar": {"blocked": true, "reason": "displacement bi pha extreme (RB chet)", "now": 4135.5, "death": 4128.4, "sl": 4166.1, "dead": true, "sl_hit": false, "forming": true}, "netdir": {"asof": "2026-07-22 02:00 ET", "side": "SHORT", "conf": 0.83, "p_up": 0.172, "target_kind": "SSL", "target": 4048.4, "dist_atr": -2.8}, "chain_stage": {"asof": "2026-07-22 02:00 ET", "run_at": "2026-07-22 06:23 UTC", "close": 4135.5, "atr": 30.6, "stage1": {"side": "SHORT", "conf": 0.83, "p_up": 0.172, "target_kind": "SSL", "target": 4048.4, "dist_atr": -2.8}, "stage2": {"active": true, "bars_ago": 1, "sweep_dir": "UP", "p_cascade": 0.645, "zone": "MID", "verdict": "BREAK", "open": false, "sweep_at": "21/07 22:00"}, "scan": {"up": [[4194.0, 4192.4, 0.362], [4208.1, 4192.4, 0.513], [4220.6, 4192.4, 0.672]], "dn": [[4044.6, 4048.4, 0.512], [4028.9, 4048.4, 0.652], [4010.1, 4048.4, 0.835]], "note_up": "P<0.42 (danh nguoc) khi close ~4199", "note_dn": "P>0.85 (vao manh) khi close <= ~4005"}}, "news": {"asof": "2026-07-22 06:22 UTC", "source": "faireconomy (Forex Factory) · USD high/med", "events": [{"ts": 1784746800000, "when": "22/07 15:00 ET", "title": "President Trump Speaks", "impact": "Medium", "forecast": null, "previous": null, "actual": null}, {"ts": 1784809800000, "when": "23/07 08:30 ET", "title": "Unemployment Claims", "impact": "Medium", "forecast": "211K", "previous": "208K", "actual": null}]}};</script>
 <script>/* pooldir dashboard renderer — doc window.GC_DATA, render vao #pooldir-root.
    Standalone/offline: dung CSS var (dinh nghia trong template) + glyph Unicode (khong CDN icon). */
 (function () {
