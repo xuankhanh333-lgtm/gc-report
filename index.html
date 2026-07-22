@@ -40,10 +40,6 @@
       <button class="tab" id="btn-rt" onclick="show('rt')">RT &middot; M15</button>
       <button class="tab" id="btn-h4" onclick="show('h4')">H4-closed</button>
       <button class="tab" id="btn-ict" onclick="show('ict')">ICT-ML</button>
-      <button class="tab" id="btn-im" onclick="show('im')" title="Liên thị trường 12 leg + regime + checklist, cập nhật mỗi 4h">🌐 Liên TT</button>
-      <button class="tab" id="btn-fred" onclick="show('fred')" title="Scorecard 32 chỉ số FRED → bias Gold & USD — snapshot, refresh bằng node scorecard.mjs --push">🏦 FRED</button>
-      <button class="tab" id="btn-voc" onclick="show('voc')" title="Học từ vựng tiếng Anh — flashcard + trắc nghiệm + phiên âm">📖 Từ mới</button>
-      <button class="tab" id="btn-hoc" onclick="show('hoc')" title="Sổ AI thực chiến + sổ tin tức — mục lục các bài đã dạy trong chat">📒 Sổ học</button>
       <button class="refresh" id="btn-refresh" onclick="refreshNow()">&#x21bb; Làm mới</button>
     </div>
     <div class="tabs" id="pool-subtabs" style="display:none">
@@ -57,6 +53,7 @@
       <button class="tab sub" id="btn-vn-st" onclick="show('vst')" title="Bản đồ thanh khoản toàn bracket — kệ ERL sống/chết 45 ngày + kèo">Cấu trúc</button>
       <button class="tab sub" id="btn-vn-sc" onclick="show('vsc')">Scorecard</button>
       <button class="tab sub" id="btn-vn-d1" onclick="show('vd1')" title="Nhánh D1 chạy song song (thử nghiệm) — sổ điểm riêng, so với bản H4 vài tuần rồi quyết">Scorecard D1</button>
+      <button class="tab sub" id="btn-vn-tk" onclick="show('vtk')" title="Top Cơ Bản Khoẻ — gộp phi tài chính + ngân hàng + chứng khoán, xếp theo chất cơ bản (đã loại verdict fade leak)">Tiền khoẻ</button>
     </div>
     <div class="cds">
       <span class="cd-chip m" id="chip-m15" title="Thời gian tới khi nến M15 đóng (mốc :00/:15/:30/:45)">Nến M15 đóng sau <b id="cd-m15">--:--</b></span>
@@ -96,16 +93,12 @@
     }
     function load(k, isAuto){
       cur = k;
-      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : (k === 'pool') ? 'pooldir.html' : (k === '3p') ? 'pooldir-trend.html' : (k === 'pst') ? 'pooldir-structure.html' : (k === 'sc') ? 'pooldir-scorecard.html' : (k === 'vn') ? 'vnpool.html' : (k === 'vst') ? 'vnpool-structure.html' : (k === 'vsc') ? 'vnpool-scorecard.html' : (k === 'vd1') ? 'vnpool-scorecard-d1.html' : (k === 'im') ? 'intermarket.html' : (k === 'fred') ? 'fred.html' : (k === 'voc') ? 'vocab.html' : (k === 'hoc') ? 'hoc.html' : 'rt.html';
+      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : (k === 'pool') ? 'pooldir.html' : (k === '3p') ? 'pooldir-trend.html' : (k === 'pst') ? 'pooldir-structure.html' : (k === 'sc') ? 'pooldir-scorecard.html' : (k === 'vn') ? 'vnpool.html' : (k === 'vst') ? 'vnpool-structure.html' : (k === 'vsc') ? 'vnpool-scorecard.html' : (k === 'vd1') ? 'vnpool-scorecard-d1.html' : (k === 'vtk') ? 'vnpool-tienkhoe.html' : 'rt.html';
       document.getElementById('frame').src = base + '?embed=1&t=' + Date.now();
       lastLoadAt = Date.now();
       document.getElementById('btn-rt').classList.toggle('active', k === 'rt');
       document.getElementById('btn-h4').classList.toggle('active', k === 'h4');
       document.getElementById('btn-ict').classList.toggle('active', k === 'ict');
-      document.getElementById('btn-im').classList.toggle('active', k === 'im');
-      document.getElementById('btn-fred').classList.toggle('active', k === 'fred');
-      document.getElementById('btn-voc').classList.toggle('active', k === 'voc');
-      document.getElementById('btn-hoc').classList.toggle('active', k === 'hoc');
       var poolGrp = (k === 'pool' || k === '3p' || k === 'pst' || k === 'sc');
       document.getElementById('btn-pool').classList.toggle('active', poolGrp);
       document.getElementById('pool-subtabs').style.display = poolGrp ? 'flex' : 'none';
@@ -113,22 +106,22 @@
       document.getElementById('btn-pool-3p').classList.toggle('active', k === '3p');
       document.getElementById('btn-pool-st').classList.toggle('active', k === 'pst');
       document.getElementById('btn-pool-sc').classList.toggle('active', k === 'sc');
-      var vnGrp = (k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1');
+      var vnGrp = (k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk');
       document.getElementById('btn-vn').classList.toggle('active', vnGrp);
       document.getElementById('vn-subtabs').style.display = vnGrp ? 'flex' : 'none';
       document.getElementById('btn-vn-dash').classList.toggle('active', k === 'vn');
       document.getElementById('btn-vn-st').classList.toggle('active', k === 'vst');
       document.getElementById('btn-vn-sc').classList.toggle('active', k === 'vsc');
       document.getElementById('btn-vn-d1').classList.toggle('active', k === 'vd1');
+      document.getElementById('btn-vn-tk').classList.toggle('active', k === 'vtk');
       // M15/H4 close chips chi hop le cho RT/H4 (GC). ICT-ML theo H1; VN theo phien HOSE.
-      var gc = (k !== 'ict' && k !== 'vn' && k !== 'vst' && k !== 'vsc' && k !== 'vd1' && k !== 'im' && k !== 'fred' && k !== 'voc' && k !== 'hoc');
+      var gc = (k !== 'ict' && k !== 'vn' && k !== 'vst' && k !== 'vsc' && k !== 'vd1' && k !== 'vtk');
       var cm = document.getElementById('chip-m15'); if (cm) cm.style.display = gc ? 'flex' : 'none';
       var ch = document.getElementById('chip-h4');  if (ch) ch.style.display = gc ? 'flex' : 'none';
-      // voc: app hoc tu co trang thai (dang lam quiz) — khong duoc auto-reload thuong xuyen
-      refreshMs = (k === 'voc') ? 3600000 : (k === 'h4' || k === 'pool' || k === '3p' || k === 'pst' || k === 'sc' || k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'im' || k === 'fred' || k === 'hoc') ? 900000 : 300000;
+      refreshMs = (k === 'h4' || k === 'pool' || k === '3p' || k === 'pst' || k === 'sc' || k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk') ? 900000 : 300000;
       nextAt = Date.now() + refreshMs;
-      var mins = (k === 'voc') ? '60' : (k === 'h4' || k === 'pool' || k === '3p' || k === 'pst' || k === 'sc' || k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'im' || k === 'fred' || k === 'hoc') ? '15' : '5';
-      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · Dashboard (3 model)' : (k === '3p') ? 'Pooldir · 3P Trend · 15 ngày' : (k === 'pst') ? 'Pooldir · Cấu trúc thanh khoản · 14 ngày' : (k === 'sc') ? 'Pooldir · Forward Scorecard' : (k === 'vn') ? 'Vnpool · Dashboard (quét EOD)' : (k === 'vst') ? 'Vnpool · Cấu trúc thanh khoản bracket · 45 ngày' : (k === 'vsc') ? 'Vnpool · Forward Scorecard' : (k === 'vd1') ? 'Vnpool · Scorecard D1 (thử nghiệm song song)' : (k === 'im') ? 'Liên thị trường · 12 leg + regime + checklist (4h/lần)' : (k === 'fred') ? 'FRED Scorecard · 32 chỉ số → bias Gold & USD (snapshot)' : (k === 'voc') ? 'Từ mới · flashcard + trắc nghiệm + phiên âm' : (k === 'hoc') ? 'Sổ học · AI thực chiến + tin tức đã dạy' : 'RT · M15';
+      var mins = (k === 'h4' || k === 'pool' || k === '3p' || k === 'pst' || k === 'sc' || k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk') ? '15' : '5';
+      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · Dashboard (3 model)' : (k === '3p') ? 'Pooldir · 3P Trend · 15 ngày' : (k === 'pst') ? 'Pooldir · Cấu trúc thanh khoản · 14 ngày' : (k === 'sc') ? 'Pooldir · Forward Scorecard' : (k === 'vn') ? 'Vnpool · Dashboard (quét EOD)' : (k === 'vst') ? 'Vnpool · Cấu trúc thanh khoản bracket · 45 ngày' : (k === 'vsc') ? 'Vnpool · Forward Scorecard' : (k === 'vd1') ? 'Vnpool · Scorecard D1 (thử nghiệm song song)' : (k === 'vtk') ? 'Vnpool · Top Cơ Bản Khoẻ' : 'RT · M15';
       document.getElementById('hint').textContent =
         'Đang xem: ' + labl + ' · trang tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
       tick();
