@@ -68,7 +68,7 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     function biasTrend(lines) {
       var R = [];
       for (var k = 0; k < lines.length; k++) { try { var o = JSON.parse(lines[k]); if (typeof o.gold === 'number' && typeof o.usd === 'number' && o.goldN && o.usdN && o.t) R.push(o); } catch (e) {} }
-      if (R.length < 2) return '';
+      if (R.length < 2) return null;
       var H = 46, mid = 22, pad = 3, n = R.length;
       var g = R.map(function (o) { return o.gold * 150 / o.goldN; }), u = R.map(function (o) { return o.usd * 150 / o.usdN; });
       var dom = Math.max(40, Math.max.apply(null, g.concat(u).map(Math.abs)));
@@ -87,18 +87,45 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
       for (var m = 0; m < days.length; m++) { if (days[m].x - lastX >= 12) { ticks.push(days[m]); lastX = days[m].x; } }
       if (ticks.length && ticks[ticks.length - 1].lab !== days[days.length - 1].lab) { if (days[days.length - 1].x - ticks[ticks.length - 1].x < 12) ticks.pop(); ticks.push(days[days.length - 1]); }
       var axis = ticks.map(function (d) { return '<span style="position:absolute;left:' + Math.max(3, Math.min(97, d.x)).toFixed(1) + '%;transform:translateX(-50%)">' + d.lab + '</span>'; }).join('');
-      return '<div style="margin-top:7px">' +
-        '<svg viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="width:100%;height:42px;display:block" title="Bias GOLD/USD chuẩn hoá %/N · từng lần chạy scorecard">' +
+      var html = '<div style="margin-top:7px">' +
+        '<svg data-trend="1" viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="width:100%;height:42px;display:block;cursor:crosshair">' +
+        '<rect x="0" y="0" width="100" height="' + H + '" fill="none" pointer-events="all"/>' +
         '<line x1="0" y1="' + mid + '" x2="100" y2="' + mid + '" stroke="var(--text-muted)" stroke-opacity=".35" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>' +
         gl + seg(g, GOLD) + seg(u, USD) + '</svg>' +
         '<div style="position:relative;height:12px;font-size:9px;color:var(--text-muted);line-height:12px;margin-top:1px">' + axis + '</div>' +
-        '<div style="font-size:10px;color:var(--text-muted);margin-top:1px"><b style="color:' + GOLD + '">— GOLD</b> · <b style="color:' + USD + '">— USD</b> · bias %/N · ' + n + ' lần</div></div>';
+        '<div style="font-size:10px;color:var(--text-muted);margin-top:1px"><b style="color:' + GOLD + '">— GOLD</b> · <b style="color:' + USD + '">— USD</b> · bias %/N · ' + n + ' lần · rê chuột xem từng lần</div></div>';
+      return { html: html, R: R, g: g, u: u, n: n, mid: mid, scl: scl };
+    }
+    // Tooltip hover trên trend — đọc thời gian + bias raw/N + % chuẩn hoá tại điểm gần con trỏ (crosshair + 2 dot).
+    function hookHover(box, TR) {
+      var sv = box.querySelector('svg[data-trend]'); if (!sv) return;
+      var tip = document.getElementById('fredTrendTip');
+      if (!tip) { tip = document.createElement('div'); tip.id = 'fredTrendTip'; tip.style.cssText = 'display:none;position:fixed;z-index:99;pointer-events:none;padding:6px 9px;border-radius:8px;font-size:11px;line-height:1.5;background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border-strong);box-shadow:0 8px 22px rgba(0,0,0,.28);white-space:nowrap;font-variant-numeric:tabular-nums'; document.body.appendChild(tip); }
+      var NS = 'http://www.w3.org/2000/svg', cross = null, dg = null, du = null, p2 = function (x) { return (x < 10 ? '0' : '') + x; };
+      function mk(tag, at) { var e = document.createElementNS(NS, tag); for (var a in at) e.setAttribute(a, at[a]); sv.appendChild(e); return e; }
+      sv.addEventListener('mousemove', function (e) {
+        var r = sv.getBoundingClientRect(), n = TR.n;
+        var i = Math.max(0, Math.min(n - 1, Math.round((e.clientX - r.left) / r.width * (n - 1))));
+        var o = TR.R[i], gp = TR.g[i], up = TR.u[i], d = new Date(o.t);
+        tip.innerHTML = '<b>' + p2(d.getDate()) + '/' + (d.getMonth() + 1) + ' ' + p2(d.getHours()) + ':' + p2(d.getMinutes()) + '</b><br>' +
+          '<span style="color:#d4a642">GOLD ' + (o.gold >= 0 ? '+' : '') + o.gold + '/' + o.goldN + ' · ' + (gp >= 0 ? '+' : '') + Math.round(gp) + '%</span><br>' +
+          '<span style="color:#4884dc">USD ' + (o.usd >= 0 ? '+' : '') + o.usd + '/' + o.usdN + ' · ' + (up >= 0 ? '+' : '') + Math.round(up) + '%</span>';
+        tip.style.display = 'block'; tip.style.left = (e.clientX + 13) + 'px'; tip.style.top = (e.clientY + 13) + 'px';
+        var x = n === 1 ? 97 : 3 + i * 94 / (n - 1), yg = +(TR.mid - gp * TR.scl).toFixed(1), yu = +(TR.mid - up * TR.scl).toFixed(1);
+        if (!cross) { cross = mk('line', { 'stroke': 'var(--text-muted)', 'stroke-width': '1', 'stroke-dasharray': '2 2', 'vector-effect': 'non-scaling-stroke' }); dg = mk('circle', { 'r': '2.8', 'fill': '#d4a642', 'stroke': 'var(--surface-2)', 'stroke-width': '0.8' }); du = mk('circle', { 'r': '2.8', 'fill': '#4884dc', 'stroke': 'var(--surface-2)', 'stroke-width': '0.8' }); }
+        cross.setAttribute('x1', x); cross.setAttribute('y1', 2); cross.setAttribute('x2', x); cross.setAttribute('y2', 44); cross.style.display = '';
+        dg.setAttribute('cx', x); dg.setAttribute('cy', yg); dg.style.display = '';
+        du.setAttribute('cx', x); du.setAttribute('cy', yu); du.style.display = '';
+      });
+      sv.addEventListener('mouseleave', function () { tip.style.display = 'none'; if (cross) cross.style.display = 'none'; if (dg) dg.style.display = 'none'; if (du) du.style.display = 'none'; });
     }
     // ưu tiên #fredslot trong card quyết định (dashboard.js đặt sẵn); fallback div đầu trang
     var el = document.getElementById('fredslot') || document.getElementById('fredbias');
     if (!el) return;
-    el.innerHTML = parts.join(' · ') + biasTrend(L);
+    var TR = biasTrend(L);
+    el.innerHTML = parts.join(' · ') + (TR ? TR.html : '');
     el.style.display = 'block';
+    if (TR) hookHover(el, TR);
   }).catch(function () {});
 })();
 </script>
