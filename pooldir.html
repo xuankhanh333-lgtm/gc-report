@@ -42,7 +42,7 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
    ry/carry chỉ hiện khi record có field (scorecard.mjs ≥ 17/07/2026). */
 (function () {
   if (location.protocol === 'file:') return;
-  fetch('fred-history.jsonl', { headers: { 'Range': 'bytes=-262144' }, cache: 'no-store' }).then(function (r) {
+  fetch('fred-history.jsonl', { cache: 'no-store' }).then(function (r) {
     if (!r.ok) throw 0; return r.text();
   }).then(function (tx) {
     var L = tx.trim().split('\n'), h = null;
