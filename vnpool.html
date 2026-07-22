@@ -198,6 +198,10 @@ tr.detail .bctct td,tr.detail .bctct th{padding:4px 28px 4px 0;white-space:nowra
 .bctct td.hl-dn{background:rgba(224,70,70,.15);border-radius:5px}
 .bctct td.hl-warn{background:rgba(232,160,38,.18);border-radius:5px}
 .bctct td[title]{cursor:help}
+/* cursor:help cho MOI phan tu co tooltip (user 2026-07-22 "sao co o re duoc o ko") — bao phu card +
+   tbody bang chinh; :not(a) de link 🗺 giu con tro click; movers .mv KHONG dinh (chip bam duoc) */
+.card [title]:not(a){cursor:help}
+#tbl tbody [title]:not(a){cursor:help}
 /* phan nhom dong theo khoi bao cao (user 2026-07-21): vien trai nhan — xanh duong = LAI LO,
    xam = CAN DOI, cam = DONG TIEN; rieng tien & tuong duong noi bat hon (nen + dam + 💰) */
 .bctct tr.g-pl td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
@@ -813,8 +817,12 @@ document.getElementById('t-ev').innerHTML = D.n_ev + cntChip(D.n_ev,'ev');
 })();
 
 const pillCls = v => v==='TAKE'?'pill p-take':v==='FADE'?'pill p-fade':v==='SKIP'?'pill p-skip':v==='ERR'?'pill p-err':'p-none';
+const verdictTip = v => v==='TAKE'?'TAKE = kèo thuận hướng; pf ≥ 0.40 là tín hiệu vào thật'
+  :v==='FADE'?'FADE = fade ngược displacement; pf thấp (~0.1) đã chứng minh là leak — đọc như cơ bản-đẹp-chờ-kèo, KHÔNG phải lệnh mua'
+  :v==='SKIP'?'SKIP = chưa đủ điều kiện cho tín hiệu rõ'
+  :v==='ERR'?'ERR = lỗi tính toán mã này':'không có tín hiệu';
 const dirHtml = d => d ? `<span class="${d==='LONG'?'long':'short'}">${d==='LONG'?'▲ LONG':'▼ SHORT'}</span>` : '';
-const dirArrow = d => d ? `<span class="${d==='LONG'?'long':'short'}" title="${d}">${d==='LONG'?'▲':'▼'}</span>` : '';
+const dirArrow = d => d ? `<span class="${d==='LONG'?'long':'short'}" title="hướng ${d==='LONG'?'LONG (mua / kỳ vọng lên)':'SHORT (bán / kỳ vọng xuống — CP long-only = né/thoát)'}">${d==='LONG'?'▲':'▼'}</span>` : '';
 
 function meterPf(r){
   if (r.pf==null) return '';
@@ -1087,7 +1095,7 @@ function makeRow(r, rk){
   tr.setAttribute('aria-expanded','false');
   // gop EV vao duoi pill verdict (user 2026-07-09) — cot EV rieng da bo
   const _vpill = r.err ? `<span class="pill p-err" title="${r.err}">ERR</span>`
-    : `<span class="${pillCls(r.verdict)}">${r.verdict==='-'?'không tín hiệu':r.verdict}</span>`;
+    : `<span class="${pillCls(r.verdict)}" title="${verdictTip(r.verdict)}">${r.verdict==='-'?'không tín hiệu':r.verdict}</span>`;
   const _ev = evHtml(r);
   const verdictHtml = `<span class="drwrap">${_vpill}${_ev?`<span class="zone dim" title="EV tham chiếu bin GC">${_ev}</span>`:''}</span>`;
   tr.innerHTML = `
@@ -1290,8 +1298,8 @@ top10.forEach((r,i)=>{
   c.className='card'+(r.buy?' buy':r.exit?' exit':r.hold?' hold':'')+_bg; c.tabIndex=0; c.setAttribute('role','button');
   const hlNote = r.buy?' · FLIP SHORT→LONG hôm nay — điểm vào thật (CP long-only)':r.exit?' · FLIP LONG→SHORT — tín hiệu THOÁT nếu đang giữ':r.hold?' · trụ hạng LONG — kèo LONG giữ từ phiên trước':'';
   c.innerHTML = `
-    <div class="l1"><span class="t${r.buy?' tkhl b':r.exit?' tkhl x':r.hold?' tkhl h':''}" title="${r.name}${hlNote}${fundTip(r)}">${r.ticker}</span><a class="stlink" href="vnpool-structure.html#${r.ticker}" title="Mở bản đồ cấu trúc ${r.ticker}" onclick="event.stopPropagation();this.href='vnpool-structure.html?v='+Date.now()+'#${r.ticker}'">🗺</a>${r.vn30?'<span class="b30" title="thành viên rổ VN30">30</span>':''}${r.best?`<span class="best${r.best>1?' b23':''}" title="kèo tốt #${r.best} phiên này (theo score)">★</span>`:''}<span class="num px">${fmt(r.close)}</span>${r.dpx==null?'':`<span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="${r.dpxd>0?'+':''}${fmt(r.dpxd)}đ so close phiên trước (${fmt(r.pxprev)} → ${fmt(r.close)})">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}<span class="ng">${r.nganh}</span></div>
-    <div class="l2"><span class="${pillCls(r.verdict)}">${r.verdict}</span>${dirArrow(r.trade_dir)}<span class="num" title="${r.ev_gc==null?'':`EV tham chiếu bin GC: ${r.ev_gc>0?'+':''}${r.ev_gc.toFixed(2)}R`}">${r.pf?.toFixed(3)??''}</span>${r.vol_pct!=null?` <span class="num ${r.vol_pct>=0?'long':'short'}" title="%KL — KL hôm nay so KLTB 5 phiên đã đóng">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`:''}${r.vol_trend!=null?` <span class="num ${r.vol_trend>=0?'long':'short'}" title="KL trend 10 phiên — TB 3 phiên cuối so TB 10 phiên">${r.vol_trend>0?'+':''}${r.vol_trend}%</span>`:''}</div>`;
+    <div class="l1"><span class="t${r.buy?' tkhl b':r.exit?' tkhl x':r.hold?' tkhl h':''}" title="${r.name}${hlNote}${fundTip(r)}">${r.ticker}</span><a class="stlink" href="vnpool-structure.html#${r.ticker}" title="Mở bản đồ cấu trúc ${r.ticker}" onclick="event.stopPropagation();this.href='vnpool-structure.html?v='+Date.now()+'#${r.ticker}'">🗺</a>${r.vn30?'<span class="b30" title="thành viên rổ VN30">30</span>':''}${r.best?`<span class="best${r.best>1?' b23':''}" title="kèo tốt #${r.best} phiên này (theo score)">★</span>`:''}<span class="num px" title="Giá đóng cửa phiên gần nhất — đã điều chỉnh cổ tức (thấp hơn giá khớp broker ~10%), dùng so tương đối">${fmt(r.close)}</span>${r.dpx==null?'':`<span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="${r.dpxd>0?'+':''}${fmt(r.dpxd)}đ so close phiên trước (${fmt(r.pxprev)} → ${fmt(r.close)})">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}<span class="ng" title="Ngành: ${r.nganh}">${r.nganh}</span></div>
+    <div class="l2"><span class="${pillCls(r.verdict)}" title="${verdictTip(r.verdict)}">${r.verdict}</span>${dirArrow(r.trade_dir)}<span class="num" title="pf = P(lệnh 2:1 thắng) do model chấm${r.ev_gc==null?'':` · EV tham chiếu bin GC: ${r.ev_gc>0?'+':''}${r.ev_gc.toFixed(2)}R`}">${r.pf?.toFixed(3)??''}</span>${r.vol_pct!=null?` <span class="num ${r.vol_pct>=0?'long':'short'}" title="%KL — KL hôm nay so KLTB 5 phiên đã đóng">${r.vol_pct>0?'+':''}${r.vol_pct}%</span>`:''}${r.vol_trend!=null?` <span class="num ${r.vol_trend>=0?'long':'short'}" title="KL trend 10 phiên — TB 3 phiên cuối so TB 10 phiên">${r.vol_trend>0?'+':''}${r.vol_trend}%</span>`:''}</div>`;
   const go = ()=>{
     mode='list'; filter='all';
     document.querySelectorAll('.chip.mode').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.m==='list')));
