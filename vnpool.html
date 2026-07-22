@@ -168,6 +168,14 @@ footer{color:var(--ink3);font-size:12px;margin-top:14px}
 .card.buy{border-color:color-mix(in srgb, var(--up) 55%, var(--line))}
 .card.exit{border-color:color-mix(in srgb, var(--down) 55%, var(--line))}
 .card.hold{border-color:color-mix(in srgb, var(--hold) 45%, var(--line))}
+/* nen theo huong lenh + do manh (user 2026-07-22): long=xanh short=do; TAKE dam (keo that), FADE nhat (leak).
+   selector chung (sau .card{background} nen thang o do uu tien) -> dung ca cho card lan swatch legend */
+.vlong{background:var(--up-soft)}
+.vshort{background:var(--down-soft)}
+.flong{background:color-mix(in srgb, var(--up-soft) 45%, var(--surface))}
+.fshort{background:color-mix(in srgb, var(--down-soft) 45%, var(--surface))}
+.cardleg{font-size:10.5px;color:var(--ink3);margin:-2px 0 9px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.cardleg .sw{padding:1px 6px;border-radius:4px;color:var(--ink2)}
 /* highlight thang vao ticker (user 10/07: khong badge ton cho): b=vao x=thoat h=tru LONG */
 .tkhl{color:#fff !important;border-radius:4px;padding:0 4px}
 .tkhl.b{background:var(--up)} .tkhl.x{background:var(--down)} .tkhl.h{background:var(--hold)}
@@ -239,6 +247,12 @@ tr.sect .scount{color:var(--ink3);font-size:11px;margin-left:4px}
 
 <section id="top10" aria-label="Top 10 tín hiệu mạnh nhất">
   <h2 title="score = EV bin (GC ref) + 0.25 verdict pool đồng thuận − 0.25 lịch sử mỏng + dòng tiền (cap 0.25): %KL ≥+30/+100/+300% → +0.05/0.10/0.15 · KL trend 10p ≥+30/+100% → +0.10/0.15">Top 10 tín hiệu mạnh nhất <span style="font-weight:400;text-transform:none;letter-spacing:0">(EV + verdict pool + dòng tiền)</span><button class="xbtn" id="x-top10" title="Xuất Top 10 ra CSV — Excel mở trực tiếp">⬇ Excel</button></h2>
+  <div class="cardleg">nền:
+    <span class="sw vlong">TAKE long</span>
+    <span class="sw vshort">TAKE short · né</span>
+    <span class="sw flong">fade long</span>
+    <span class="sw fshort">fade short</span>
+    <span>· đậm = kèo thật · nhạt = fade (leak, cân nhắc vì cơ bản)</span></div>
   <div class="cards" id="cards"></div>
 </section>
 
@@ -1270,7 +1284,10 @@ const cards = document.getElementById('cards');
 const top10 = D.rows.filter(r=>r.verdict==='TAKE'||r.verdict==='FADE').slice(0,10);
 top10.forEach((r,i)=>{
   const c = document.createElement('div');
-  c.className='card'+(r.buy?' buy':r.exit?' exit':r.hold?' hold':''); c.tabIndex=0; c.setAttribute('role','button');
+  const _dir=(r.trade_dir||'')[0];   // 'L' | 'S'
+  const _bg = r.verdict==='TAKE' ? (_dir==='S'?' vshort':' vlong')
+            : r.verdict==='FADE' ? (_dir==='S'?' fshort':' flong') : '';
+  c.className='card'+(r.buy?' buy':r.exit?' exit':r.hold?' hold':'')+_bg; c.tabIndex=0; c.setAttribute('role','button');
   const hlNote = r.buy?' · FLIP SHORT→LONG hôm nay — điểm vào thật (CP long-only)':r.exit?' · FLIP LONG→SHORT — tín hiệu THOÁT nếu đang giữ':r.hold?' · trụ hạng LONG — kèo LONG giữ từ phiên trước':'';
   c.innerHTML = `
     <div class="l1"><span class="t${r.buy?' tkhl b':r.exit?' tkhl x':r.hold?' tkhl h':''}" title="${r.name}${hlNote}${fundTip(r)}">${r.ticker}</span><a class="stlink" href="vnpool-structure.html#${r.ticker}" title="Mở bản đồ cấu trúc ${r.ticker}" onclick="event.stopPropagation();this.href='vnpool-structure.html?v='+Date.now()+'#${r.ticker}'">🗺</a>${r.vn30?'<span class="b30" title="thành viên rổ VN30">30</span>':''}${r.best?`<span class="best${r.best>1?' b23':''}" title="kèo tốt #${r.best} phiên này (theo score)">★</span>`:''}<span class="num px">${fmt(r.close)}</span>${r.dpx==null?'':`<span class="pxchip ${r.dpx>0?'up':r.dpx<0?'dn':'fl'}" title="${r.dpxd>0?'+':''}${fmt(r.dpxd)}đ so close phiên trước (${fmt(r.pxprev)} → ${fmt(r.close)})">${r.dpx>0?'+':''}${r.dpx.toFixed(1)}%</span>`}<span class="ng">${r.nganh}</span></div>
