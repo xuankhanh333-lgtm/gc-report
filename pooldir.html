@@ -42,7 +42,7 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
    ry/carry chỉ hiện khi record có field (scorecard.mjs ≥ 17/07/2026). */
 (function () {
   if (location.protocol === 'file:') return;
-  fetch('fred-history.jsonl', { headers: { 'Range': 'bytes=-8192' }, cache: 'no-store' }).then(function (r) {
+  fetch('fred-history.jsonl', { headers: { 'Range': 'bytes=-262144' }, cache: 'no-store' }).then(function (r) {
     if (!r.ok) throw 0; return r.text();
   }).then(function (tx) {
     var L = tx.trim().split('\n'), h = null;
@@ -64,10 +64,35 @@ body{max-width:680px;margin:0 auto;padding:12px 16px}
     if (h.ry) parts.push('RY10Y ' + h.ry.v.toFixed(2) + dz(h.ry.d3m));
     if (h.carry) parts.push('Carry ' + h.carry.v.toFixed(2) + dz(h.carry.d3m));
     parts.push('<span style="color:var(--text-muted)">' + pad(t.getHours()) + ':' + pad(t.getMinutes()) + ' ' + pad(t.getDate()) + '/' + pad(t.getMonth() + 1) + '</span>');
+    // Overlay TREND gold+usd bias (chuẩn hoá bias×150/N như fred.html) — dùng lại chính data vừa fetch.
+    function biasTrend(lines) {
+      var R = [];
+      for (var k = 0; k < lines.length; k++) { try { var o = JSON.parse(lines[k]); if (typeof o.gold === 'number' && typeof o.usd === 'number' && o.goldN && o.usdN && o.t) R.push(o); } catch (e) {} }
+      if (R.length < 2) return '';
+      var H = 46, mid = 22, pad = 3, n = R.length;
+      var g = R.map(function (o) { return o.gold * 150 / o.goldN; }), u = R.map(function (o) { return o.usd * 150 / o.usdN; });
+      var dom = Math.max(40, Math.max.apply(null, g.concat(u).map(Math.abs)));
+      var scl = (mid - pad) / dom;
+      var xv = function (i) { return n === 1 ? 97 : 3 + i * 94 / (n - 1); };
+      var yv = function (v) { return +(mid - v * scl).toFixed(1); };
+      var seg = function (arr, col) {
+        var p = arr.map(function (v, i) { return xv(i).toFixed(1) + ',' + yv(v); }).join(' ');
+        return '<polyline points="' + p + '" fill="none" stroke="' + col + '" stroke-width="1.5" vector-effect="non-scaling-stroke"/>' +
+          '<circle cx="' + xv(n - 1).toFixed(1) + '" cy="' + yv(arr[n - 1]) + '" r="2.2" fill="' + col + '"/>';
+      };
+      var GOLD = '#d4a642', USD = '#4884dc', gl = '', prev = null;
+      for (var j = 0; j < n; j++) { var dd = new Date(R[j].t), dk = dd.getFullYear() + '-' + dd.getMonth() + '-' + dd.getDate(); if (dk !== prev) { if (prev !== null) { var x = xv(j).toFixed(1); gl += '<line x1="' + x + '" y1="2" x2="' + x + '" y2="' + (H - 2) + '" stroke="var(--text-muted)" stroke-opacity=".16" vector-effect="non-scaling-stroke"/>'; } prev = dk; } }
+      var md = function (s) { var d = new Date(s); return d.getDate() + '/' + (d.getMonth() + 1); };
+      return '<div style="margin-top:7px">' +
+        '<svg viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="width:100%;height:42px;display:block" title="Bias GOLD/USD chuẩn hoá %/N · từng lần chạy scorecard">' +
+        '<line x1="0" y1="' + mid + '" x2="100" y2="' + mid + '" stroke="var(--text-muted)" stroke-opacity=".35" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>' +
+        gl + seg(g, GOLD) + seg(u, USD) + '</svg>' +
+        '<div style="font-size:10px;color:var(--text-muted);margin-top:1px"><b style="color:' + GOLD + '">— GOLD</b> · <b style="color:' + USD + '">— USD</b> · bias %/N · ' + md(R[0].t) + '→' + md(R[n - 1].t) + ' (' + n + ' lần)</div></div>';
+    }
     // ưu tiên #fredslot trong card quyết định (dashboard.js đặt sẵn); fallback div đầu trang
     var el = document.getElementById('fredslot') || document.getElementById('fredbias');
     if (!el) return;
-    el.innerHTML = parts.join(' · ');
+    el.innerHTML = parts.join(' · ') + biasTrend(L);
     el.style.display = 'block';
   }).catch(function () {});
 })();
