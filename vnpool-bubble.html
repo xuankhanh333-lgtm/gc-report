@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VN Bubble — do khoe co phieu</title>
-<!-- Static page: tu fetch ./vnpool.html (const D) runtime -> luon tuoi theo lan scan moi nhat.
-     Tab "Bubble" duoi nhom Vnpool cua gc-report. 2 che do: SWOT (ma tran Co ban x Ky thuat) / Noi (1 truc).
-     Nguon LLM: skills/vnpool/site/vnpool-bubble.html -->
+<!-- Static page: tu fetch ./vnpool.html (const D) runtime. 3 che do: SWOT (ma tran X-Y chon truc) /
+     Noi (1 truc) / Nganh (cluster theo nganh). Loc theo nganh. Nguon LLM: skills/vnpool/site/vnpool-bubble.html -->
 <style>
 :root{
   --bg:#faf9f5; --panel:#ffffff; --ink:#1a1a18; --muted:#6b6a64; --line:#e7e5dd;
@@ -19,17 +18,18 @@
 html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
   font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
 .wrap{display:flex;flex-direction:column;height:100vh}
-header{padding:9px 14px;border-bottom:1px solid var(--line);display:flex;
-  align-items:center;gap:13px;flex-wrap:wrap;background:var(--panel)}
+header{padding:8px 14px;border-bottom:1px solid var(--line);display:flex;
+  align-items:center;gap:12px;flex-wrap:wrap;background:var(--panel)}
 h1{font-size:14px;margin:0;font-weight:650}
-.sub{font-size:11.5px;color:var(--muted)}
+.sub{font-size:11px;color:var(--muted)}
 .ctrl{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.seg button{border:0;background:transparent;color:var(--muted);padding:5px 11px;
+.seg button{border:0;background:transparent;color:var(--muted);padding:5px 10px;
   font-size:12px;cursor:pointer;font-weight:600}
 .seg button.on{background:var(--accent);color:#fff}
-#metricWrap{transition:opacity .15s}
-.legend{display:flex;gap:13px;font-size:12px;margin-left:auto;flex-wrap:wrap;align-items:center}
+select{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;
+  padding:4px 7px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer}
+.legend{display:flex;gap:12px;font-size:12px;margin-left:auto;flex-wrap:wrap;align-items:center}
 .lg{display:inline-flex;align-items:center;gap:5px;color:var(--muted)}
 .dot{width:11px;height:11px;border-radius:50%;display:inline-block}
 main{flex:1;position:relative;overflow:hidden}
@@ -52,16 +52,14 @@ canvas{display:block;width:100%;height:100%}
     <div class="seg" id="mode">
       <button data-x="swot" class="on">⊞ SWOT</button>
       <button data-x="float">◍ Nổi</button>
+      <button data-x="sector">▦ Ngành</button>
     </div>
   </div>
-  <div class="ctrl" id="metricWrap">Trục nổi:
-    <div class="seg" id="metric">
-      <button data-m="score" class="on">Kỹ thuật</button>
-      <button data-m="rk">Cơ bản</button>
-      <button data-m="netcash">Tiền</button>
-      <button data-m="pf">P_follow</button>
-    </div>
+  <div class="ctrl" id="axWrap"><span id="axLbl">Trục</span>
+    <select id="axSel"></select><span id="axX">×</span>
+    <select id="aySel"></select>
   </div>
+  <div class="ctrl">Ngành: <select id="secSel"></select></div>
   <div class="legend">
     <span class="lg"><span class="dot" style="background:var(--long)"></span>▲ LONG</span>
     <span class="lg"><span class="dot" style="background:var(--short)"></span>▼ SHORT</span>
@@ -81,8 +79,9 @@ canvas{display:block;width:100%;height:100%}
 const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
 const tip = document.getElementById('tip'), msg = document.getElementById('msg');
 let W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
-let mode='swot', metric='score', DATA=[], started=false;
+let mode='swot', ax='rk', ay='score', filterSec='', DATA=[], VIS=[], SECTORS=[], started=false;
 const PADT=48,PADB=40,PADL=54,PADR=16;
+const MET={score:'Kỹ thuật',rk:'Cơ bản',netcash:'Tiền',pf:'P_follow',cap:'Vốn hoá'};
 
 const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
 const colFor = d => d==='LONG'?css('--long'):d==='SHORT'?css('--short'):css('--none');
@@ -113,8 +112,8 @@ async function loadData(){
       `${DATA.length} mã · scan ${D.scanned_at||'?'} · size = vốn hoá · màu = hướng`;
     msg.style.display='none';
     DATA.forEach(d=>{ d.x=0; d.y=0; d.vx=0; d.vy=0; d.init=false; });
-    sizes(); pct('rk','_rk'); pct('score','_sc');
-    setMode('swot');
+    sizes(); precompute(); buildUI();
+    applyFilter(); setMode('swot');
     if(!started){ loop(); started=true; }
   }catch(e){ msg.textContent = 'Lỗi tải dữ liệu: ' + e.message; }
 }
@@ -122,69 +121,92 @@ async function loadData(){
 function sizes(){
   const caps=DATA.map(d=>d.cap); const mn=Math.min(...caps), mx=Math.max(...caps);
   const smn=Math.sqrt(mn), smx=Math.sqrt(mx)||1;
-  DATA.forEach(d=>{ const s=(Math.sqrt(d.cap)-smn)/((smx-smn)||1); d.r = 10 + s*36; });
+  DATA.forEach(d=>{ const s=(Math.sqrt(d.cap)-smn)/((smx-smn)||1); d.r = 10 + s*34; });
 }
-// percentile theo THU HANG -> [0.04..0.96]; null -> -0.04 (ngoai bien)
-function pct(key,store){
-  const valid = DATA.filter(d=>d[key]!==null && !isNaN(d[key])).sort((a,b)=>a[key]-b[key]);
-  const nn=valid.length;
-  valid.forEach((d,i)=>{ d[store] = nn>1 ? 0.04 + 0.92*(i/(nn-1)) : 0.5; });
-  DATA.filter(d=>d[key]===null||isNaN(d[key])).forEach(d=>{ d[store] = -0.04; });
+// percentile [0.04..0.96] cho MOI metric -> d.pct[key]; null -> -0.04
+function precompute(){
+  DATA.forEach(d=>d.pct={});
+  for(const k of Object.keys(MET)){
+    const valid = DATA.filter(d=>d[k]!==null && !isNaN(d[k])).sort((a,b)=>a[k]-b[k]);
+    const nn=valid.length;
+    valid.forEach((d,i)=>{ d.pct[k] = nn>1 ? 0.04 + 0.92*(i/(nn-1)) : 0.5; });
+    DATA.filter(d=>d[k]===null||isNaN(d[k])).forEach(d=>{ d.pct[k] = -0.04; });
+  }
+  SECTORS=[...new Set(DATA.map(d=>d.nganh))].sort((a,b)=>a.localeCompare(b,'vi'));
+}
+function buildUI(){
+  const opt=(v,t,sel)=>`<option value="${v}"${sel?' selected':''}>${t}</option>`;
+  document.getElementById('axSel').innerHTML = Object.entries(MET).map(([v,t])=>opt(v,t,v===ax)).join('');
+  document.getElementById('aySel').innerHTML = Object.entries(MET).map(([v,t])=>opt(v,t,v===ay)).join('');
+  document.getElementById('secSel').innerHTML = opt('','Tất cả',true)+SECTORS.map(s=>opt(s,s,false)).join('');
+}
+function applyFilter(){
+  VIS = filterSec ? DATA.filter(d=>d.nganh===filterSec) : DATA;
+  DATA.forEach(d=>d.init=false); layout();
 }
 
+// tam cluster theo nganh (mode sector)
+function sectorCenters(){
+  const list = filterSec ? [filterSec] : SECTORS;
+  const n=list.length||1;
+  const cols=Math.max(1,Math.min(6,Math.ceil(Math.sqrt(n*Math.max(W,1)/Math.max(H,1)))));
+  const rows=Math.ceil(n/cols);
+  const cw=(W-PADL-PADR)/cols, ch=(H-PADT-PADB)/rows;
+  const cen={};
+  list.forEach((s,i)=>{ const c=i%cols, r=Math.floor(i/cols);
+    cen[s]={x:PADL+(c+0.5)*cw, y:PADT+(r+0.5)*ch+10, top:PADT+r*ch+4}; });
+  return cen;
+}
+let SECCEN={};
 function layout(){
   const rect = cv.getBoundingClientRect(); W=rect.width; H=rect.height;
   cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
   const pw=W-PADL-PADR, ph=H-PADT-PADB;
-  DATA.forEach(d=>{
-    if(mode==='swot'){
-      d.tx = PADL + Math.max(0,d._rk)*pw;      // X = Co ban (rk)
-      d.ty = PADT + (1-d._sc)*ph;              // Y = Ky thuat (score), cao = tren
-    } else {
-      d.ty = PADT + (1-Math.max(0,d._m))*ph;   // Y = metric chon
-      d.tx = null;
-    }
+  if(mode==='sector') SECCEN=sectorCenters();
+  VIS.forEach(d=>{
+    if(mode==='swot'){ d.tx=PADL+Math.max(0,d.pct[ax])*pw; d.ty=PADT+(1-Math.max(0,d.pct[ay]))*ph; }
+    else if(mode==='float'){ d.ty=PADT+(1-Math.max(0,d.pct[ay]))*ph; d.tx=null; }
+    else { const c=SECCEN[d.nganh]||{x:W/2,y:H/2}; d.tx=c.x; d.ty=c.y; }
     if(!d.init){
-      d.x = mode==='swot' ? (d.tx + (Math.random()-.5)*30) : (W*0.05 + Math.random()*W*0.9);
-      d.y = (mode==='swot'?d.ty:PADT+(1-Math.max(0,d._m))*ph) + (Math.random()-.5)*30;
-      d.init=true;
+      d.x = (d.tx!=null? d.tx : W*0.05+Math.random()*W*0.9) + (Math.random()-.5)*30;
+      d.y = d.ty + (Math.random()-.5)*30; d.init=true;
     }
   });
 }
 function step(){
-  for(const d of DATA){
+  for(const d of VIS){
     d.vy += (d.ty - d.y)*0.03;
     if(d.tx!==null) d.vx += (d.tx - d.x)*0.03;
-    d.vy*=0.82; d.vx*=0.80;
-    d.x+=d.vx; d.y+=d.vy;
+    d.vy*=0.82; d.vx*=0.80; d.x+=d.vx; d.y+=d.vy;
   }
   for(let it=0;it<3;it++){
-    for(let i=0;i<DATA.length;i++)for(let j=i+1;j<DATA.length;j++){
-      const a=DATA[i],b=DATA[j];
+    for(let i=0;i<VIS.length;i++)for(let j=i+1;j<VIS.length;j++){
+      const a=VIS[i],b=VIS[j];
       let dx=b.x-a.x, dy=b.y-a.y, dist=Math.hypot(dx,dy)||.01;
       const min=a.r+b.r+2;
       if(dist<min){ const push=(min-dist)/2/dist; dx*=push; dy*=push;
         a.x-=dx; a.y-=dy; b.x+=dx; b.y+=dy; }
     }
   }
-  for(const d of DATA){ d.x=Math.max(d.r,Math.min(W-d.r,d.x)); d.y=Math.max(PADT-14,Math.min(H-6,d.y)); }
+  for(const d of VIS){ d.x=Math.max(d.r,Math.min(W-d.r,d.x)); d.y=Math.max(PADT-14,Math.min(H-6,d.y)); }
 }
 function drawQuadrants(){
   const cx=PADL+(W-PADL-PADR)/2, cy=PADT+(H-PADT-PADB)/2;
+  const dflt = (ax==='rk'&&ay==='score');
+  const arch = dflt ? {TR:'⭐ DẪN DẮT',TL:'🚀 ĐẦU CƠ',BR:'💎 TÍCH LUỸ',BL:'⚠ TRÁNH'}
+                    : {TR:`${MET[ax]}↑ ${MET[ay]}↑`,TL:`${MET[ax]}↓ ${MET[ay]}↑`,BR:`${MET[ax]}↑ ${MET[ay]}↓`,BL:`${MET[ax]}↓ ${MET[ay]}↓`};
   const zones=[
-    {x:cx,y:PADT,w:W-PADR-cx,h:cy-PADT,c:css('--qS'),tag:'⭐ DẪN DẮT',sub:'cơ bản khoẻ · kỹ thuật khoẻ (S)'},
-    {x:PADL,y:PADT,w:cx-PADL,h:cy-PADT,c:css('--qT'),tag:'🚀 ĐẦU CƠ',sub:'kỹ thuật khoẻ · cơ bản yếu (T)'},
-    {x:cx,y:cy,w:W-PADR-cx,h:H-PADB-cy,c:css('--qO'),tag:'💎 TÍCH LUỸ',sub:'cơ bản khoẻ · kỹ thuật yếu (O)'},
-    {x:PADL,y:cy,w:cx-PADL,h:H-PADB-cy,c:css('--qW'),tag:'⚠ TRÁNH',sub:'yếu cả hai (W)'},
+    {k:'TR',x:cx,y:PADT,w:W-PADR-cx,c:css('--qS')},
+    {k:'TL',x:PADL,y:PADT,w:cx-PADL,c:css('--qT')},
+    {k:'BR',x:cx,y:cy,w:W-PADR-cx,c:css('--qO')},
+    {k:'BL',x:PADL,y:cy,w:cx-PADL,c:css('--qW')},
   ];
   for(const z of zones){
     ctx.fillStyle=hexA(z.c,0.9); ctx.textBaseline='top';
-    ctx.textAlign = (z.x<cx)?'left':'right';
-    const tx = (z.x<cx)? z.x+10 : z.x+z.w-10;
-    ctx.font='800 13px "Segoe UI",sans-serif'; ctx.fillText(z.tag, tx, z.y+8);
-    ctx.font='600 10.5px "Segoe UI",sans-serif'; ctx.fillStyle=css('--muted'); ctx.fillText(z.sub, tx, z.y+26);
+    ctx.textAlign=(z.x<cx)?'left':'right';
+    const tx=(z.x<cx)?z.x+10:z.x+z.w-10;
+    ctx.font='800 13px "Segoe UI",sans-serif'; ctx.fillText(arch[z.k], tx, z.y+8);
   }
-  // duong chia
   ctx.strokeStyle=css('--line'); ctx.lineWidth=1.2; ctx.setLineDash([5,5]);
   ctx.beginPath(); ctx.moveTo(cx,PADT); ctx.lineTo(cx,H-PADB); ctx.moveTo(PADL,cy); ctx.lineTo(W-PADR,cy); ctx.stroke();
   ctx.setLineDash([]);
@@ -192,8 +214,11 @@ function drawQuadrants(){
 function draw(){
   ctx.clearRect(0,0,W,H);
   if(mode==='swot') drawQuadrants();
+  if(mode==='sector'){ ctx.fillStyle=css('--muted'); ctx.font='800 11.5px "Segoe UI",sans-serif';
+    ctx.textAlign='center'; ctx.textBaseline='top';
+    for(const s in SECCEN){ ctx.fillText(s, SECCEN[s].x, SECCEN[s].top); } }
   const ink=css('--ink');
-  for(const d of DATA){
+  for(const d of VIS){
     const c=colFor(d.dir);
     ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,7);
     ctx.globalAlpha = d.conf!==null ? (0.45+0.5*d.conf) : 0.55;
@@ -208,45 +233,32 @@ function draw(){
 }
 function loop(){ step(); draw(); requestAnimationFrame(loop); }
 
-function applyMetric(){ DATA.forEach(d=>{ d._m = d[metric]; }); pctInto('_m'); }
-function pctInto(store){
-  const valid = DATA.filter(d=>d[store]!==null && !isNaN(d[store])).sort((a,b)=>a[store]-b[store]);
-  const nn=valid.length;
-  valid.forEach((d,i)=>{ d[store+'p'] = nn>1 ? 0.04 + 0.92*(i/(nn-1)) : 0.5; });
-  DATA.filter(d=>d[store]===null||isNaN(d[store])).forEach(d=>{ d[store+'p'] = -0.04; });
-  DATA.forEach(d=>{ d._m = d[store+'p']; });
-}
 function setMode(x){
   mode=x;
   document.querySelectorAll('#mode button').forEach(b=>b.classList.toggle('on',b.dataset.x===x));
-  document.getElementById('metricWrap').style.opacity = (x==='float')?'1':'0.35';
-  document.getElementById('metricWrap').style.pointerEvents = (x==='float')?'auto':'none';
-  DATA.forEach(d=>d.init=false);
-  if(x==='float') setMetric(metric,true);
-  updateAxLabels(); layout();
-}
-function setMetric(m,quiet){
-  metric=m; applyMetric();
-  document.querySelectorAll('#metric button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
-  if(!quiet){ DATA.forEach(d=>d.init=false); }
-  updateAxLabels(); layout();
+  const aw=document.getElementById('axWrap');
+  document.getElementById('axSel').style.display = (x==='swot')?'':'none';
+  document.getElementById('axX').style.display = (x==='swot')?'':'none';
+  document.getElementById('aySel').style.display = (x==='sector')?'none':'';
+  document.getElementById('axLbl').textContent = (x==='swot')?'Trục':(x==='float')?'Trục nổi':'';
+  aw.style.opacity = (x==='sector')?'0.35':'1';
+  DATA.forEach(d=>d.init=false); updateAxLabels(); layout();
 }
 function updateAxLabels(){
-  const at=document.getElementById('axtop'),ab=document.getElementById('axbot'),ax=document.getElementById('axx');
-  if(mode==='swot'){
-    at.textContent='▲ Kỹ thuật khoẻ'; ab.textContent='▼ Kỹ thuật yếu'; ax.textContent='Cơ bản (rk) →  khoẻ';
-  } else {
-    const labs={score:'Kỹ thuật (score)',rk:'Cơ bản (rk_score)',netcash:'Tiền (net-cash)',pf:'P_follow'};
-    at.textContent='▲ Khoẻ — '+labs[metric]; ab.textContent='▼ Yếu'; ax.textContent='';
-  }
+  const at=document.getElementById('axtop'),ab=document.getElementById('axbot'),axl=document.getElementById('axx');
+  if(mode==='sector'){ at.textContent=''; ab.textContent=''; axl.textContent='gom theo ngành'; return; }
+  at.textContent='▲ '+MET[ay]+' khoẻ'; ab.textContent='▼ '+MET[ay]+' yếu';
+  axl.textContent = (mode==='swot')? (MET[ax]+' (X) →  khoẻ') : '';
 }
 document.querySelectorAll('#mode button').forEach(b=>b.onclick=()=>setMode(b.dataset.x));
-document.querySelectorAll('#metric button').forEach(b=>b.onclick=()=>{ if(mode==='float') setMetric(b.dataset.m); });
+document.getElementById('axSel').onchange=e=>{ ax=e.target.value; DATA.forEach(d=>d.init=false); updateAxLabels(); layout(); };
+document.getElementById('aySel').onchange=e=>{ ay=e.target.value; DATA.forEach(d=>d.init=false); updateAxLabels(); layout(); };
+document.getElementById('secSel').onchange=e=>{ filterSec=e.target.value; applyFilter(); };
 
 cv.addEventListener('mousemove',e=>{
   const rect=cv.getBoundingClientRect(); const mx=e.clientX-rect.left, my=e.clientY-rect.top;
   let hit=null;
-  for(const d of DATA){ if(Math.hypot(d.x-mx,d.y-my)<=d.r){ hit=d; break; } }
+  for(const d of VIS){ if(Math.hypot(d.x-mx,d.y-my)<=d.r){ hit=d; break; } }
   if(hit){
     const dc=hit.dir==='LONG'?'pos':hit.dir==='SHORT'?'neg':'tk';
     const f=(v,dg=2)=>v===null?'—':(+v).toFixed(dg);
