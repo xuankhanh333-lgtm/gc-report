@@ -178,7 +178,6 @@ function drawQuadrants(){
     {x:PADL,y:cy,w:cx-PADL,h:H-PADB-cy,c:css('--qW'),tag:'⚠ TRÁNH',sub:'yếu cả hai (W)'},
   ];
   for(const z of zones){
-    ctx.fillStyle=hexA(z.c,0.07); ctx.fillRect(z.x,z.y,z.w,z.h);
     ctx.fillStyle=hexA(z.c,0.9); ctx.textBaseline='top';
     ctx.textAlign = (z.x<cx)?'left':'right';
     const tx = (z.x<cx)? z.x+10 : z.x+z.w-10;
