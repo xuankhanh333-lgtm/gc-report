@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VN Bubble — do khoe co phieu</title>
+<!-- Static page: tu fetch ./vnpool.html (const D) runtime -> luon tuoi theo lan scan moi nhat.
+     Tab "🫧 Bubble" duoi nhom Vnpool cua gc-report. Nguon LLM: skills/vnpool/site/vnpool-bubble.html -->
+<style>
+:root{
+  --bg:#faf9f5; --panel:#ffffff; --ink:#1a1a18; --muted:#6b6a64; --line:#e7e5dd;
+  --long:#16a34a; --short:#e11d48; --none:#94a3b8; --accent:#BA7517;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#12140f; --panel:#1b1d16; --ink:#e9e7dd; --muted:#9a988c; --line:#2a2c22;
+    --long:#4ade80; --short:#fb7185; --none:#6b7280; }
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{display:flex;flex-direction:column;height:100vh}
+header{padding:9px 14px;border-bottom:1px solid var(--line);display:flex;
+  align-items:center;gap:14px;flex-wrap:wrap;background:var(--panel)}
+h1{font-size:14px;margin:0;font-weight:650}
+.sub{font-size:11.5px;color:var(--muted)}
+.ctrl{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--muted);padding:5px 11px;
+  font-size:12px;cursor:pointer;font-weight:600}
+.seg button.on{background:var(--accent);color:#fff}
+.legend{display:flex;gap:13px;font-size:12px;margin-left:auto;flex-wrap:wrap;align-items:center}
+.lg{display:inline-flex;align-items:center;gap:5px;color:var(--muted)}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+main{flex:1;position:relative;overflow:hidden}
+canvas{display:block;width:100%;height:100%}
+.axlab{position:absolute;left:10px;font-size:11px;color:var(--muted);pointer-events:none;font-weight:600}
+#msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+#tip{position:fixed;pointer-events:none;background:var(--panel);border:1px solid var(--line);
+  border-radius:9px;padding:9px 11px;font-size:12px;box-shadow:0 6px 22px #0004;opacity:0;
+  transition:opacity .08s;max-width:250px;z-index:9;line-height:1.5}
+#tip b{font-size:13px}
+.trow{display:flex;justify-content:space-between;gap:14px}
+.tk{color:var(--muted)} .pos{color:var(--long)} .neg{color:var(--short)}
+</style></head>
+<body data-palette="#16a34a,#e11d48,#94a3b8">
+<div class="wrap">
+<header>
+  <div><h1>VN Bubble — độ khoẻ cổ phiếu</h1>
+  <div class="sub" id="sub">Đang tải…</div></div>
+  <div class="ctrl">Trục khoẻ:
+    <div class="seg" id="metric">
+      <button data-m="score" class="on">Kỹ thuật</button>
+      <button data-m="rk">Cơ bản</button>
+      <button data-m="netcash">Tiền</button>
+      <button data-m="pf">P_follow</button>
+    </div>
+  </div>
+  <div class="legend">
+    <span class="lg"><span class="dot" style="background:var(--long)"></span>▲ LONG</span>
+    <span class="lg"><span class="dot" style="background:var(--short)"></span>▼ SHORT</span>
+    <span class="lg"><span class="dot" style="background:var(--none)"></span>• trung tính</span>
+  </div>
+</header>
+<main>
+  <canvas id="cv"></canvas>
+  <div class="axlab" id="axtop" style="top:8px">▲ Khoẻ</div>
+  <div class="axlab" id="axbot" style="bottom:8px">▼ Yếu</div>
+  <div id="msg">Đang tải dữ liệu vnpool…</div>
+  <div id="tip"></div>
+</main>
+</div>
+<script>
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const tip = document.getElementById('tip'), msg = document.getElementById('msg');
+let W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+let metric='score', DATA=[], started=false;
+
+const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+const colFor = d => d==='LONG'?css('--long'):d==='SHORT'?css('--short'):css('--none');
+const glyph  = d => d==='LONG'?'▲':d==='SHORT'?'▼':'•';
+const num = x => { const v = parseFloat(x); return isNaN(v) ? null : v; };
+
+async function loadData(){
+  try{
+    const res = await fetch('./vnpool.html?cb=' + Date.now());
+    const html = await res.text();
+    const m = html.match(/const D\s*=\s*(\{[\s\S]*?\});\s*\n/);
+    if(!m) throw new Error('khong tim thay const D');
+    const D = JSON.parse(m[1]);
+    const rows = D.rows || [];
+    DATA = [];
+    for(const r of rows){
+      const t = r.ticker; if(!t || t==='GC') continue;
+      const cap = num(r.cap_ty); if(!cap || cap<=0) continue;
+      const dd = (r.net_side || r.trade_dir || '').toUpperCase();
+      const dir = dd==='LONG'?'LONG':(dd==='SHORT'?'SHORT':'NONE');
+      DATA.push({ t, name:r.name||t, nganh:r.nganh||'?', cap,
+        score:num(r.score), rk:num(r.rk_score), netcash:num(r.netcash),
+        pf:num(r.pf), conf:num(r.net_conf), dir, verdict:r.verdict||'', zone:r.dr_zone||'' });
+    }
+    document.getElementById('sub').textContent =
+      `${DATA.length} mã · scan ${D.scanned_at||'?'} · khoẻ nổi lên trên, yếu chìm xuống · size = vốn hoá`;
+    msg.style.display='none';
+    DATA.forEach(d=>{ d.x=0; d.y=0; d.vx=0; d.vy=0; d.init=false; });
+    sizes(); setMetric('score');
+    if(!started){ loop(); started=true; }
+  }catch(e){ msg.textContent = 'Lỗi tải dữ liệu: ' + e.message; }
+}
+
+function sizes(){
+  const caps=DATA.map(d=>d.cap); const mn=Math.min(...caps), mx=Math.max(...caps);
+  const smn=Math.sqrt(mn), smx=Math.sqrt(mx)||1;
+  DATA.forEach(d=>{ const s=(Math.sqrt(d.cap)-smn)/((smx-smn)||1); d.r = 11 + s*40; });
+}
+// truc Y theo THU HANG (percentile) -> trai deu chieu cao. null -> chim day.
+function norm(key){
+  const valid = DATA.filter(d=>d[key]!==null && !isNaN(d[key])).sort((a,b)=>a[key]-b[key]);
+  const nn=valid.length;
+  valid.forEach((d,i)=>{ d._n = nn>1 ? 0.04 + 0.92*(i/(nn-1)) : 0.5; });
+  DATA.filter(d=>d[key]===null||isNaN(d[key])).forEach(d=>{ d._n = -0.03; });
+}
+function layout(){
+  const rect = cv.getBoundingClientRect(); W=rect.width; H=rect.height;
+  cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+  const padTop=42, padBot=34;
+  DATA.forEach(d=>{
+    d.ty = padTop + (1-d._n)*(H-padTop-padBot);
+    if(!d.init){ d.x = W*0.05 + Math.random()*W*0.9; d.y = d.ty + (Math.random()-.5)*40; d.init=true; }
+  });
+}
+function step(){
+  for(const d of DATA){
+    d.vy += (d.ty - d.y)*0.03;
+    d.vy*=0.82; d.vx*=0.80;
+    d.x+=d.vx; d.y+=d.vy;
+  }
+  for(let it=0;it<3;it++){
+    for(let i=0;i<DATA.length;i++)for(let j=i+1;j<DATA.length;j++){
+      const a=DATA[i],b=DATA[j];
+      let dx=b.x-a.x, dy=b.y-a.y, dist=Math.hypot(dx,dy)||.01;
+      const min=a.r+b.r+2;
+      if(dist<min){ const push=(min-dist)/2/dist; dx*=push; dy*=push;
+        a.x-=dx; a.y-=dy; b.x+=dx; b.y+=dy; }
+    }
+  }
+  for(const d of DATA){ d.x=Math.max(d.r,Math.min(W-d.r,d.x)); d.y=Math.max(30,Math.min(H-6,d.y)); }
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  const ink=css('--ink');
+  for(const d of DATA){
+    const c=colFor(d.dir);
+    ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,7);
+    ctx.globalAlpha = d.conf!==null ? (0.42+0.5*d.conf) : 0.5;
+    ctx.fillStyle=c; ctx.fill();
+    ctx.globalAlpha=1; ctx.lineWidth=1.5; ctx.strokeStyle=c; ctx.stroke();
+    ctx.fillStyle=ink; ctx.textAlign='center'; ctx.textBaseline='middle';
+    const fs=Math.max(9,Math.min(14,d.r*0.62));
+    ctx.font=`700 ${fs}px 'Segoe UI',sans-serif`;
+    if(d.r>13){ ctx.fillText(d.t, d.x, d.y-1); ctx.font=`${fs*0.8}px sans-serif`; ctx.fillText(glyph(d.dir), d.x, d.y+fs*0.85); }
+    else { ctx.fillText(glyph(d.dir), d.x, d.y); }
+  }
+}
+function loop(){ step(); draw(); requestAnimationFrame(loop); }
+
+function setMetric(m){
+  metric=m; norm(m); layout();
+  document.querySelectorAll('#metric button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
+  const labs={score:'Kỹ thuật (score)',rk:'Cơ bản (rk_score)',netcash:'Tiền (net-cash)',pf:'P_follow'};
+  document.getElementById('axtop').textContent='▲ Khoẻ — '+labs[m];
+}
+document.querySelectorAll('#metric button').forEach(b=>b.onclick=()=>setMetric(b.dataset.m));
+
+cv.addEventListener('mousemove',e=>{
+  const rect=cv.getBoundingClientRect(); const mx=e.clientX-rect.left, my=e.clientY-rect.top;
+  let hit=null;
+  for(const d of DATA){ if(Math.hypot(d.x-mx,d.y-my)<=d.r){ hit=d; break; } }
+  if(hit){
+    const dc=hit.dir==='LONG'?'pos':hit.dir==='SHORT'?'neg':'tk';
+    const f=(v,dg=2)=>v===null?'—':(+v).toFixed(dg);
+    tip.innerHTML=`<b>${hit.t}</b> <span class="tk">${hit.name}</span><br>`+
+      `<span class="tk">${hit.nganh}</span> · vốn hoá <b>${Math.round(hit.cap).toLocaleString()}</b> tỷ<br>`+
+      `<div class="trow"><span class="tk">Hướng</span><span class="${dc}">${glyph(hit.dir)} ${hit.dir} ${hit.conf!==null?'· conf '+f(hit.conf):''}</span></div>`+
+      `<div class="trow"><span class="tk">Kỹ thuật</span><span>${f(hit.score)}</span></div>`+
+      `<div class="trow"><span class="tk">Cơ bản (rk)</span><span>${f(hit.rk)}</span></div>`+
+      `<div class="trow"><span class="tk">Net-cash</span><span>${f(hit.netcash,0)}</span></div>`+
+      `<div class="trow"><span class="tk">P_follow</span><span>${f(hit.pf)}</span></div>`+
+      (hit.verdict?`<div class="trow"><span class="tk">Verdict</span><span>${hit.verdict} ${hit.zone}</span></div>`:'');
+    tip.style.opacity=1; tip.style.left=Math.min(e.clientX+14,innerWidth-260)+'px'; tip.style.top=(e.clientY+14)+'px';
+    cv.style.cursor='pointer';
+  } else { tip.style.opacity=0; cv.style.cursor='default'; }
+});
+cv.addEventListener('mouseleave',()=>tip.style.opacity=0);
+addEventListener('resize',()=>{ if(DATA.length) layout(); });
+loadData();
+</script></body></html>
