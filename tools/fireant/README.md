@@ -14,8 +14,20 @@ pip install -r requirements.txt
 
 ## Token (bắt buộc)
 
-API FireAnt xác thực bằng `Authorization: Bearer <JWT>`. **Không hard-code** —
-đặt qua biến môi trường:
+API FireAnt xác thực bằng `Authorization: Bearer <JWT>`. **Không hard-code**.
+Có 2 cách lưu token, chọn 1:
+
+**Cách 1 — file `.env` (khuyến nghị, tiện lưu).** File `.env` đã được
+`.gitignore` nên KHÔNG bao giờ bị commit/push:
+
+```bash
+cp .env.example .env
+# mở .env, dán token vào dòng FIREANT_TOKEN=...
+```
+
+Connector tự động nạp `tools/fireant/.env` nếu chưa có biến môi trường.
+
+**Cách 2 — biến môi trường:**
 
 ```bash
 export FIREANT_TOKEN="eyJ...jwt..."

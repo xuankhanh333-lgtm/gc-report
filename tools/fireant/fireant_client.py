@@ -24,6 +24,31 @@ import logging
 from datetime import date, datetime, timedelta
 from typing import Any, Dict, List, Optional, Iterable
 
+
+def _load_dotenv(path: Optional[str] = None) -> None:
+    """Nạp biến từ file .env (KHÔNG ghi đè biến môi trường đã có).
+
+    Không cần thư viện ngoài. Bỏ qua dòng trống / bắt đầu bằng '#'.
+    Mặc định tìm .env cùng thư mục với file này.
+    """
+    if path is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if not os.path.isfile(path):
+        return
+    try:
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, _, val = line.partition("=")
+                key = key.strip()
+                val = val.strip().strip('"').strip("'")
+                if key and key not in os.environ:
+                    os.environ[key] = val
+    except OSError:
+        pass
+
 try:
     import requests
 except ImportError as exc:  # pragma: no cover
@@ -80,10 +105,13 @@ class FireAntClient:
         max_retries: int = 4,
         session: Optional["requests.Session"] = None,
     ):
+        if not token and not os.environ.get("FIREANT_TOKEN"):
+            _load_dotenv()  # thử nạp token từ tools/fireant/.env (git-ignored)
         self.token = token or os.environ.get("FIREANT_TOKEN", "").strip()
         if not self.token:
             raise FireAntError(
-                "Chưa có token. Đặt biến môi trường FIREANT_TOKEN hoặc truyền token=..."
+                "Chưa có token. Đặt FIREANT_TOKEN (env), tạo file .env từ "
+                ".env.example, hoặc truyền token=..."
             )
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
