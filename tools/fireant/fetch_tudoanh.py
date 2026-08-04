@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import os
 import sys
+import time
 import json
 import argparse
 import logging
@@ -112,6 +113,7 @@ def main(argv=None) -> int:
 
     result = {
         "stamp": datetime.utcnow().strftime("%Y%m%d_%H%M"),
+        "generated_at": int(time.time()),  # epoch giây (UTC) để dashboard tính độ cũ
         "range": {"start": start, "end": end},
         "symbols": {},
         "errors": {},
