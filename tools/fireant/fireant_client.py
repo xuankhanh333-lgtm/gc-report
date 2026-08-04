@@ -66,8 +66,6 @@ BASE_URL = "https://restv2.fireant.vn"
 ENDPOINTS = {
     # Giá lịch sử — bản ghi đã kèm khối lượng/giá trị MUA-BÁN của khối NGOẠI.
     "historical_quotes": "/symbols/{symbol}/historical-quotes",
-    # Tự doanh theo mã. Nếu route khác, chỉ cần sửa dòng này.
-    "proprietary_trading": "/symbols/{symbol}/proprietary-trading",
     # Tự doanh toàn thị trường (net theo phiên), nếu FireAnt cung cấp.
     "proprietary_trading_market": "/markets/proprietary-trading",
     # Hồ sơ & cơ bản (dùng để enrich báo cáo).
@@ -76,6 +74,20 @@ ENDPOINTS = {
     # Tin tức / bài viết theo mã.
     "posts": "/posts",
 }
+
+# Route TỰ DOANH theo mã chưa được公开 tài liệu rõ. Client sẽ thử lần lượt
+# các ứng viên dưới đây và dùng route đầu tiên trả 200 (bỏ qua 404). Nếu bạn
+# đã biết route đúng, đặt nó lên đầu danh sách để đỡ phải dò.
+PROPRIETARY_CANDIDATES = [
+    "/symbols/{symbol}/proprietary-trading",
+    "/symbols/{symbol}/proprietary-trades",
+    "/symbols/{symbol}/proprietary",
+    "/symbols/{symbol}/prop-trading",
+    "/symbols/{symbol}/self-trading",
+    "/symbols/{symbol}/proprietary-quotes",
+    "/symbols/{symbol}/dealer",
+    "/symbols/{symbol}/net-trading",
+]
 
 
 class FireAntError(RuntimeError):
@@ -130,11 +142,16 @@ class FireAntClient:
 
     # ------------------------------------------------------------------ core
     def request(
-        self, path: str, params: Optional[Dict[str, Any]] = None
+        self,
+        path: str,
+        params: Optional[Dict[str, Any]] = None,
+        allow_404: bool = False,
     ) -> Any:
         """Gọi GET tới ``path`` (tương đối so với base_url) và trả JSON.
 
         Có retry với backoff luỹ thừa cho lỗi mạng và HTTP 429/5xx.
+        Nếu ``allow_404`` = True thì trả ``None`` khi gặp 404 thay vì raise
+        (dùng cho việc dò endpoint).
         """
         url = path if path.startswith("http") else f"{self.base_url}{path}"
         attempt = 0
@@ -168,6 +185,8 @@ class FireAntClient:
                 )
 
             if resp.status_code == 404:
+                if allow_404:
+                    return None
                 raise FireAntError(
                     f"Không tìm thấy endpoint (404): {url}. "
                     f"Kiểm tra lại path trong ENDPOINTS.",
@@ -235,26 +254,52 @@ class FireAntClient:
                 break
         return out[:limit] if limit else out
 
+    # route tự doanh đã dò được (cache trong 1 phiên client để khỏi thử lại)
+    _proprietary_path: Optional[str] = None
+
     def proprietary_trading(
         self,
         symbol: str,
         start: Optional[Any] = None,
         end: Optional[Any] = None,
     ) -> Any:
-        """Dữ liệu TỰ DOANH theo mã.
+        """Dữ liệu TỰ DOANH theo mã, TỰ DÒ route đúng.
 
-        Trả nguyên payload FireAnt. Nếu route trả 404, sửa
-        ``ENDPOINTS['proprietary_trading']`` cho khớp API thật (xác minh bằng
-        token trong môi trường có mạng tới restv2.fireant.vn).
+        Thử lần lượt ``PROPRIETARY_CANDIDATES`` và dùng route đầu tiên trả 200.
+        Ném lỗi nếu không route nào chạy (kèm danh sách đã thử) — khi đó nhiều
+        khả năng FireAnt không cung cấp route tự doanh theo mã qua restv2.
         """
         symbol = symbol.upper()
-        path = ENDPOINTS["proprietary_trading"].format(symbol=symbol)
         params: Dict[str, Any] = {}
         if start:
             params["startDate"] = _iso(start)
         if end:
             params["endDate"] = _iso(end)
-        return self.request(path, params=params or None)
+        params = params or None
+
+        # Đã dò ra route ở lần gọi trước -> dùng lại luôn.
+        if self._proprietary_path:
+            return self.request(
+                self._proprietary_path.format(symbol=symbol), params=params
+            )
+
+        tried = []
+        for tmpl in PROPRIETARY_CANDIDATES:
+            path = tmpl.format(symbol=symbol)
+            tried.append(tmpl)
+            data = self.request(path, params=params, allow_404=True)
+            if data is not None:
+                self._proprietary_path = tmpl  # nhớ để lần sau
+                log.info("Route tự doanh: %s", tmpl)
+                return data
+        raise FireAntError(
+            "Không route tự doanh nào chạy (đều 404). Đã thử: "
+            + ", ".join(tried)
+            + ". Có thể FireAnt không có route tự doanh theo mã qua restv2 — "
+            "chạy workflow 'FireAnt dò endpoint' để xem historical-quotes có "
+            "sẵn field tự doanh không.",
+            404,
+        )
 
     def proprietary_trading_market(
         self, start: Optional[Any] = None, end: Optional[Any] = None
