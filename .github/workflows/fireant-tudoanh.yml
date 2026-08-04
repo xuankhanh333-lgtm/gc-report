@@ -40,13 +40,20 @@ jobs:
           fi
           echo "Đã có token (dài ${#FIREANT_TOKEN} ký tự)."
 
-      - name: Kéo tự doanh
+      - name: Kéo tự doanh (mã lấy ĐỘNG từ vnpool.html)
         env:
           FIREANT_TOKEN: ${{ secrets.FIREANT_TOKEN }}
         run: |
           cd tools/fireant
+          # Trích danh sách mã từ dashboard hiện tại; lỗi/rỗng thì fallback watchlist.txt
+          python extract_symbols.py ../../vnpool.html > _symbols.txt || true
+          if [ ! -s _symbols.txt ]; then
+            echo "Không trích được mã động -> dùng watchlist.txt"
+            cp watchlist.txt _symbols.txt
+          fi
+          echo "Số mã sẽ kéo: $(grep -cvE '^[[:space:]]*(#|$)' _symbols.txt)"
           python fetch_tudoanh.py \
-            --symbols-file watchlist.txt \
+            --symbols-file _symbols.txt \
             --days 30 \
             --with-foreign \
             --out ../../tudoanh.json
