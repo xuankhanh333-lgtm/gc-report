@@ -1429,7 +1429,7 @@ document.getElementById('x-tbl').addEventListener('click', ()=>{
 // LUU Y QUAN TRONG: cot 5p/20p la ban SACH — da bo phien nghi DEAL KHOI (thoa thuan >=50% GTGD
 // va |ngoai rong| >= 50% thoa thuan). Vi FireAnt gop thoa thuan vao buy/sellForeignValue nen ban
 // tho bi 1 lo sang tay nhan chim (VHM 28/07/2026: tho -3453 ty vs sach -509 ty). Hover xem ban tho.
-(function(){
+window.__renderFlow = function(){
   const F = D.flow||{}, box = document.getElementById('flowbox');
   const tks = Object.keys(F); if(!box || !tks.length) return;
   const nf = (v,nd=0)=> Number(v).toLocaleString('vi-VN',{minimumFractionDigits:nd,maximumFractionDigits:nd});
@@ -1489,6 +1489,33 @@ document.getElementById('x-tbl').addEventListener('click', ()=>{
       dlCSV('vnpool_dongtien', [['Mã','Ngoại 1p (tỷ)','Ngoại 5p sạch (tỷ)','Ngoại 5p thô (tỷ)','Ngoại 20p sạch (tỷ)','Tự doanh 5p (tỷ)','Áp lực lệnh 5p','Room còn (CP)','Số phiên deal khối'],
         ...sorted().map(r=>[r.tk,r.fnet1,r.fnet5c,r.fnet5,r.fnet20c,r.prop5,r.imbq5,r.room,r.nblk||0])]); }
   });
+};
+window.__renderFlow();   // vẽ ngay bằng D.flow pipeline (nếu có)
+// Cập nhật dòng tiền theo mỗi lần workflow FireAnt chạy: overlay số liệu mới nhất
+// từ tudoanh.json lên các mã tương ứng, giữ nguyên mã ngoài watchlist + room/áp lực
+// lệnh từ pipeline. tudoanh.json = ngoại ròng THÔ (chưa lọc deal khối) + tự doanh 5p.
+(function(){
+  fetch('tudoanh.json?t=' + Date.now()).then(r=>r.ok?r.json():null).then(j=>{
+    if(!j || !j.symbols) return;
+    const sum=(a,f,n)=>a.slice(-n).reduce((s,x)=>s+(Number(x[f])||0),0);
+    const base = D.flow || {};
+    let n=0;
+    for(const [tk,v] of Object.entries(j.symbols)){
+      const prop=v.proprietary||[], fn=v.foreignNet||[];
+      if(!prop.length && !fn.length) continue;
+      const cur = base[tk] || {};
+      const f5 = fn.length ? sum(fn,'foreignNetValue',5)/1e9 : (cur.fnet5 ?? null);
+      base[tk] = Object.assign({}, cur, {
+        fnet1:  fn.length ? (Number(fn[fn.length-1].foreignNetValue)||0)/1e9 : (cur.fnet1 ?? null),
+        fnet5:  f5, fnet5c: f5,
+        fnet20c:fn.length ? sum(fn,'foreignNetValue',20)/1e9 : (cur.fnet20c ?? null),
+        prop5:  prop.length ? sum(prop,'propTradingNetValue',5)/1e9 : (cur.prop5 ?? null),
+        imbq5: cur.imbq5 ?? null, room: cur.room ?? null, nblk: cur.nblk ?? 0
+      });
+      n++;
+    }
+    if(n){ D.flow = base; window.__renderFlow(); }
+  }).catch(()=>{});
 })();
 // ===== 📰 tin dang chu y (user 2026-07-20): RSS 5 nguon, loc ma trong ro, snapshot theo ky quet.
 // Dang BANG cot sort duoc (ma / nguon / thoi gian — user "hien dang cot va sort them ma + thoi gian")
