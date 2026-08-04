@@ -60,15 +60,16 @@ raw = c.request("/symbols/VNM/fundamental")   # gọi endpoint bất kỳ
 
 ## Ghi chú endpoint
 
-- Các route giá lịch sử / cơ bản / tin tức là những path ổn định, dùng rộng rãi.
-- Route **tự doanh** ít tài liệu công khai hơn nên `proprietary_trading()` **tự
-  dò**: thử lần lượt `PROPRIETARY_CANDIDATES` (đầu `fireant_client.py`) và dùng
-  route đầu tiên trả 200. Biết route đúng thì đặt nó lên đầu danh sách.
-- Nếu không route nào chạy, dùng workflow **"FireAnt dò endpoint"**
-  (`fireant-probe.yml`) để in cấu trúc dữ liệu FireAnt trả về — biết đâu số liệu
-  tự doanh nằm sẵn trong `historical-quotes`.
-- Việc dò cần môi trường có mạng tới `restv2.fireant.vn` (GitHub Actions dùng
-  được; sandbox tạo báo cáo bị network policy chặn host này).
+- **Tự doanh KHÔNG có endpoint riêng.** FireAnt nhúng sẵn số liệu tự doanh
+  trong mỗi bản ghi `historical-quotes` (đã xác minh bằng token thật):
+  - `propTradingNetValue` — tổng ròng tự doanh (VND)
+  - `propTradingNetDealValue` — ròng tự doanh khớp lệnh
+  - `propTradingNetPTValue` — ròng tự doanh thoả thuận
+
+  `proprietary_trading()` đọc historical-quotes rồi trích các field này ra chuỗi
+  theo ngày. Bản ghi cũng có sẵn dữ liệu khối ngoại (`buy/sellForeign*`).
+- `probe_endpoints.py` + workflow **"FireAnt dò endpoint"** là công cụ chẩn đoán
+  (in toàn bộ field FireAnt trả về) nếu sau này cần kiểm tra thêm.
 
 ## Xử lý lỗi
 
