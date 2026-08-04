@@ -1515,6 +1515,23 @@ window.__renderFlow();   // vẽ ngay bằng D.flow pipeline (nếu có)
       n++;
     }
     if(n){ D.flow = base; window.__renderFlow(); }
+    // Badge: thời điểm tudoanh.json được sinh + cảnh báo nếu quá cũ (nghi token hết hạn).
+    try{
+      const ts = j.generated_at || (s=>{ const m=/(\d{4})(\d\d)(\d\d)_(\d\d)(\d\d)/.exec(s||''); return m?Date.UTC(+m[1],+m[2]-1,+m[3],+m[4],+m[5])/1000:0; })(j.stamp);
+      const h3 = document.querySelector('#flowbox h3');
+      if(h3 && ts){
+        const ageM = Math.max(0, Math.floor(Date.now()/1000 - ts) / 60 | 0);
+        const vn = new Date(ts*1000).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+        const ageT = ageM<60 ? ageM+' phút' : ageM<1440 ? Math.round(ageM/60)+' giờ' : Math.round(ageM/1440)+' ngày';
+        const stale = ageM > 4320;   // > 3 ngày => nhiều khả năng WF hỏng / token FireAnt hết hạn
+        let b = h3.querySelector('.fw-upd');
+        if(!b){ b=document.createElement('span'); b.className='fw-upd'; h3.appendChild(b); }
+        b.title = 'tudoanh.json sinh lúc này (giờ VN). WF chạy mỗi giờ 9–15h T2–T6; nếu quá cũ, kiểm tra token FireAnt trong repo Secrets.';
+        b.style.cssText = 'font-weight:600;font-size:11px;margin-left:8px;padding:2px 7px;border-radius:6px;white-space:nowrap;'
+          + (stale ? 'color:var(--warn);background:rgba(180,60,40,.13)' : 'color:var(--ink3);background:rgba(125,125,125,.12)');
+        b.textContent = (stale?'⚠ ':'⟳ ') + 'tự doanh ' + vn + ' · ' + ageT + ' trước';
+      }
+    }catch(e){}
   }).catch(()=>{});
 })();
 // ===== 📰 tin dang chu y (user 2026-07-20): RSS 5 nguon, loc ma trong ro, snapshot theo ky quet.
