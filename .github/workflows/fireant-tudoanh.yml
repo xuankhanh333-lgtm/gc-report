@@ -59,7 +59,17 @@ jobs:
           # git diff --cached bắt cả file mới (untracked) lẫn file đã đổi.
           if git diff --cached --quiet; then
             echo "Không có thay đổi, bỏ qua commit."
-          else
-            git commit -m "auto: FireAnt tự doanh $(date -u +%Y%m%d_%H%M)"
-            git push
+            exit 0
           fi
+          git commit -m "auto: FireAnt tự doanh $(date -u +%Y%m%d_%H%M)"
+          # Repo có automation khác push liên tục -> rebase + thử lại nhiều lần.
+          for i in 1 2 3 4 5; do
+            if git pull --rebase origin main && git push; then
+              echo "Đã push (lần $i)."
+              exit 0
+            fi
+            echo "Push lần $i thất bại, chờ rồi thử lại..."
+            sleep $((i * 3))
+          done
+          echo "::error::Không push được sau 5 lần."
+          exit 1

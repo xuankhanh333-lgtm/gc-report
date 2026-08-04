@@ -61,32 +61,25 @@ log = logging.getLogger("fireant")
 
 BASE_URL = "https://restv2.fireant.vn"
 
-# Tập trung path ở một chỗ để dễ chỉnh khi xác minh với token thật.
-# {symbol} sẽ được format bằng mã cổ phiếu (VNM, HPG, ...).
+# Tập trung path ở một chỗ. {symbol} = mã cổ phiếu (VNM, HPG, ...).
 ENDPOINTS = {
-    # Giá lịch sử — bản ghi đã kèm khối lượng/giá trị MUA-BÁN của khối NGOẠI.
+    # Giá lịch sử. QUAN TRỌNG: mỗi bản ghi đã kèm SẴN dữ liệu TỰ DOANH
+    # (propTradingNet*) lẫn khối NGOẠI (buy/sellForeign*). Không có endpoint
+    # tự doanh riêng — số liệu tự doanh lấy từ chính route này.
     "historical_quotes": "/symbols/{symbol}/historical-quotes",
-    # Tự doanh toàn thị trường (net theo phiên), nếu FireAnt cung cấp.
-    "proprietary_trading_market": "/markets/proprietary-trading",
-    # Hồ sơ & cơ bản (dùng để enrich báo cáo).
     "fundamental": "/symbols/{symbol}/fundamental",
     "profile": "/symbols/{symbol}/profile",
-    # Tin tức / bài viết theo mã.
     "posts": "/posts",
 }
 
-# Route TỰ DOANH theo mã chưa được公开 tài liệu rõ. Client sẽ thử lần lượt
-# các ứng viên dưới đây và dùng route đầu tiên trả 200 (bỏ qua 404). Nếu bạn
-# đã biết route đúng, đặt nó lên đầu danh sách để đỡ phải dò.
-PROPRIETARY_CANDIDATES = [
-    "/symbols/{symbol}/proprietary-trading",
-    "/symbols/{symbol}/proprietary-trades",
-    "/symbols/{symbol}/proprietary",
-    "/symbols/{symbol}/prop-trading",
-    "/symbols/{symbol}/self-trading",
-    "/symbols/{symbol}/proprietary-quotes",
-    "/symbols/{symbol}/dealer",
-    "/symbols/{symbol}/net-trading",
+# Các field TỰ DOANH có trong bản ghi historical-quotes (đơn vị: VND, ròng).
+#   propTradingNetValue     = tổng ròng tự doanh (khớp lệnh + thoả thuận)
+#   propTradingNetDealValue = ròng tự doanh khớp lệnh (deal)
+#   propTradingNetPTValue   = ròng tự doanh thoả thuận (put-through)
+PROPRIETARY_FIELDS = [
+    "propTradingNetValue",
+    "propTradingNetDealValue",
+    "propTradingNetPTValue",
 ]
 
 
@@ -254,52 +247,33 @@ class FireAntClient:
                 break
         return out[:limit] if limit else out
 
-    # route tự doanh đã dò được (cache trong 1 phiên client để khỏi thử lại)
-    _proprietary_path: Optional[str] = None
-
     def proprietary_trading(
         self,
         symbol: str,
-        start: Optional[Any] = None,
-        end: Optional[Any] = None,
-    ) -> Any:
-        """Dữ liệu TỰ DOANH theo mã, TỰ DÒ route đúng.
+        start: Any,
+        end: Any,
+        limit: int = 1000,
+    ) -> List[Dict[str, Any]]:
+        """Chuỗi TỰ DOANH ròng theo ngày, rút từ historical-quotes.
 
-        Thử lần lượt ``PROPRIETARY_CANDIDATES`` và dùng route đầu tiên trả 200.
-        Ném lỗi nếu không route nào chạy (kèm danh sách đã thử) — khi đó nhiều
-        khả năng FireAnt không cung cấp route tự doanh theo mã qua restv2.
+        FireAnt nhúng sẵn số liệu tự doanh (``propTradingNet*``) trong mỗi bản
+        ghi giá ngày, nên chỉ cần đọc historical-quotes rồi trích ra. Trả list
+        sắp theo ngày tăng dần:
+            {date, close, propTradingNetValue, propTradingNetDealValue,
+             propTradingNetPTValue}
         """
-        symbol = symbol.upper()
-        params: Dict[str, Any] = {}
-        if start:
-            params["startDate"] = _iso(start)
-        if end:
-            params["endDate"] = _iso(end)
-        params = params or None
-
-        # Đã dò ra route ở lần gọi trước -> dùng lại luôn.
-        if self._proprietary_path:
-            return self.request(
-                self._proprietary_path.format(symbol=symbol), params=params
-            )
-
-        tried = []
-        for tmpl in PROPRIETARY_CANDIDATES:
-            path = tmpl.format(symbol=symbol)
-            tried.append(tmpl)
-            data = self.request(path, params=params, allow_404=True)
-            if data is not None:
-                self._proprietary_path = tmpl  # nhớ để lần sau
-                log.info("Route tự doanh: %s", tmpl)
-                return data
-        raise FireAntError(
-            "Không route tự doanh nào chạy (đều 404). Đã thử: "
-            + ", ".join(tried)
-            + ". Có thể FireAnt không có route tự doanh theo mã qua restv2 — "
-            "chạy workflow 'FireAnt dò endpoint' để xem historical-quotes có "
-            "sẵn field tự doanh không.",
-            404,
-        )
+        rows = self.historical_quotes(symbol, start, end, limit=limit)
+        series: List[Dict[str, Any]] = []
+        for r in rows:
+            item = {
+                "date": (r.get("date") or "")[:10],
+                "close": r.get("priceClose"),
+            }
+            for f in PROPRIETARY_FIELDS:
+                item[f] = r.get(f)
+            series.append(item)
+        series.sort(key=lambda x: x["date"])
+        return series
 
     def proprietary_trading_market(
         self, start: Optional[Any] = None, end: Optional[Any] = None
