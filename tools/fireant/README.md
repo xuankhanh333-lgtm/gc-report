@@ -61,12 +61,14 @@ raw = c.request("/symbols/VNM/fundamental")   # gọi endpoint bất kỳ
 ## Ghi chú endpoint
 
 - Các route giá lịch sử / cơ bản / tin tức là những path ổn định, dùng rộng rãi.
-- Route **tự doanh** ít tài liệu công khai hơn nên được gom trong biến
-  `ENDPOINTS` ở đầu `fireant_client.py`. Nếu gọi trả **404**, chỉ cần sửa một
-  dòng `ENDPOINTS["proprietary_trading"]` cho khớp API thật.
-- Xác minh endpoint cần chạy ở môi trường có mạng tới `restv2.fireant.vn` với
-  token thật (sandbox tạo báo cáo này bị chặn host đó qua network policy, nên
-  không dò trực tiếp được từ đây).
+- Route **tự doanh** ít tài liệu công khai hơn nên `proprietary_trading()` **tự
+  dò**: thử lần lượt `PROPRIETARY_CANDIDATES` (đầu `fireant_client.py`) và dùng
+  route đầu tiên trả 200. Biết route đúng thì đặt nó lên đầu danh sách.
+- Nếu không route nào chạy, dùng workflow **"FireAnt dò endpoint"**
+  (`fireant-probe.yml`) để in cấu trúc dữ liệu FireAnt trả về — biết đâu số liệu
+  tự doanh nằm sẵn trong `historical-quotes`.
+- Việc dò cần môi trường có mạng tới `restv2.fireant.vn` (GitHub Actions dùng
+  được; sandbox tạo báo cáo bị network policy chặn host này).
 
 ## Xử lý lỗi
 

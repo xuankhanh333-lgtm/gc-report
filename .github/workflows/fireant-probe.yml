@@ -1,0 +1,28 @@
+name: FireAnt dò endpoint
+
+# Chạy tay để tìm đúng route dữ liệu tự doanh. Xem kết quả trong log.
+on:
+  workflow_dispatch:
+    inputs:
+      symbol:
+        description: "Mã để thử (mặc định VNM)"
+        required: false
+        default: "VNM"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r tools/fireant/requirements.txt
+      - name: Dò endpoint
+        env:
+          FIREANT_TOKEN: ${{ secrets.FIREANT_TOKEN }}
+          PROBE_SYMBOL: ${{ github.event.inputs.symbol }}
+        run: python tools/fireant/probe_endpoints.py
