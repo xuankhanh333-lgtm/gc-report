@@ -6,8 +6,10 @@ name: FireAnt tự doanh
 on:
   workflow_dispatch:        # chạy tay từ tab Actions
   schedule:
-    # Mỗi giờ trong phiên giao dịch: 02:00–08:00 UTC = 09:00–15:00 giờ VN, T2-T6.
-    - cron: "0 2-8 * * 1-5"
+    # Mỗi giờ trong phiên giao dịch: 02:07–08:07 UTC = 09:07–15:07 giờ VN, T2-T6.
+    # Phút 7 (không phải phút 0): GitHub scheduler quá tải ở phút 0 nên hay trễ/bỏ slot;
+    # đồng thời push lại file này để scheduler đăng ký lại lịch (sáng 04/08 cron chưa hề nổ).
+    - cron: "7 2-8 * * 1-5"
 
 permissions:
   contents: write           # để commit file JSON trở lại repo
