@@ -1,0 +1,209 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MBB — Phân tích dòng tiền</title><style>
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#faf9f5;color:#3a3933;margin:0;padding:18px;line-height:1.5}
+h1{font-size:19px;margin:0 0 4px}
+h2{font-size:15px;margin:22px 0 8px;color:#2a2925}
+b.acc{color:#BA7517}
+.sub{font-size:12.5px;color:#6b6960;margin-bottom:6px}
+.stamp{font-size:11.5px;color:#9b9a93}
+.wrap{max-width:960px}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 11px;border-radius:999px;vertical-align:middle}
+.badge.bull{background:#e6f4ec;color:#1f7a4d;border:1px solid #bfe3cf}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.chip{background:#fff;border:1px solid #e2e0d8;border-radius:9px;padding:8px 12px;min-width:120px}
+.chip .k{font-size:11px;color:#8a8779;margin-bottom:2px}
+.chip .v{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
+.chip .v.g{color:#1f7a4d}.chip .v.r{color:#c0392b}
+.card{background:#fff;border:1px solid #e2e0d8;border-radius:10px;padding:14px 16px;margin:12px 0}
+.card p{margin:0 0 8px}.card p:last-child{margin:0}
+.lead{font-size:13.5px}
+svg{display:block;width:100%;height:auto;background:#fff;border:1px solid #e2e0d8;border-radius:10px}
+.legend{font-size:11.5px;color:#6b6960;margin:6px 2px 0;display:flex;gap:16px;flex-wrap:wrap}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+table{border-collapse:collapse;background:#fff;border:1px solid #e2e0d8;border-radius:8px;font-size:12.5px;overflow:hidden;width:100%;margin-top:6px}
+th,td{padding:6px 10px;border-bottom:1px solid #eeece5;text-align:left;white-space:nowrap}
+th{background:#f4f2ec;font-size:11.5px;color:#6b6960;position:sticky;top:0}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.g{color:#1f7a4d}.r{color:#c0392b}
+.tablewrap{max-height:360px;overflow:auto;border-radius:8px}
+.cav{font-size:11.5px;color:#8a8779;line-height:1.55;margin-top:14px}
+ul{margin:6px 0;padding-left:20px}li{margin:3px 0;font-size:13px}
+</style></head><body><div class="wrap">
+
+<h1>MBB — Phân tích dòng tiền <b class="acc">Tự doanh · Khối ngoại</b></h1>
+<div class="sub" id="sub"></div>
+<div class="stamp" id="stamp"></div>
+
+<div class="card" style="border-color:#bfe3cf;background:#f4fbf7">
+  <p class="lead"><span class="badge bull">TÍN HIỆU TÍCH LŨY ĐÁY</span></p>
+  <p class="lead"><b>Bước ngoặt 03/08:</b> sau gần một tháng bị cả tự doanh lẫn khối ngoại phân phối
+  (giá rơi từ 26.0 về đáy 21.65, −16.7%), phiên 03/08 đảo chiều mạnh — tự doanh mua ròng
+  <b class="g">+104.6 tỷ</b> (mức lớn nhất chuỗi 30 ngày, gấp ~3.4 lần phiên mua mạnh thứ nhì)
+  cùng khối ngoại <b class="g">+89.2 tỷ</b>, đẩy giá <b class="g">+6.7%</b> lên 24.0.
+  Dòng tiền lớn quay lại đúng vùng đáy là dấu hiệu <b>gom hàng</b>, cộng hưởng tin
+  MBB sắp trả <b>cổ tức 15%</b>.</p>
+  <p class="lead"><b>Lưu ý:</b> đây mới là <b>1 phiên</b> đảo chiều. Lũy kế 30 ngày khối ngoại vẫn
+  âm <b class="r">−125 tỷ</b> — cần xác nhận thêm ở các phiên kế tiếp trước khi coi là xu hướng.</p>
+</div>
+
+<div class="chips" id="chips"></div>
+
+<h2>Giá &amp; dòng tiền ròng theo phiên</h2>
+<svg id="chart1" viewBox="0 0 960 340" preserveAspectRatio="xMidYMid meet"></svg>
+<div class="legend">
+  <span><i style="background:#BA7517"></i>Giá đóng cửa (nghìn đ)</span>
+  <span><i style="background:#1f7a4d"></i>Tự doanh ròng (+mua)</span>
+  <span><i style="background:#c0392b"></i>Tự doanh ròng (−bán)</span>
+  <span><i style="background:#7fb3d5"></i>Khối ngoại ròng</span>
+</div>
+
+<h2>Lũy kế dòng tiền 30 ngày (tỷ đồng)</h2>
+<svg id="chart2" viewBox="0 0 960 260" preserveAspectRatio="xMidYMid meet"></svg>
+<div class="legend">
+  <span><i style="background:#1f7a4d"></i>Lũy kế tự doanh</span>
+  <span><i style="background:#7fb3d5"></i>Lũy kế khối ngoại</span>
+  <span><i style="background:#BA7517"></i>Giá</span>
+</div>
+
+<h2>Đọc nhanh</h2>
+<div class="card"><ul>
+  <li><b>Giai đoạn phân phối (06/07 → 24/07):</b> khối ngoại xả ròng lũy kế xuống đáy
+  <b class="r">−277 tỷ</b> (đỉnh xả 23/07: −153 tỷ), tự doanh cũng nghiêng bán ròng;
+  giá mất dần từ 26.0 về 21.9.</li>
+  <li><b>Tạo đáy (24/07 → 31/07):</b> giá đi ngang 21.65–22.5, lực bán ngoại chậm lại,
+  tự doanh gần như trung tính — dấu hiệu cạn cung.</li>
+  <li><b>Bùng nổ (03/08):</b> tự doanh +104.6 tỷ &amp; ngoại +89.2 tỷ trong cùng một phiên,
+  giá nhảy +6.7% — cầu lớn chủ động.</li>
+  <li><b>Bối cảnh cơ bản:</b> MBB sắp trả cổ tức 15%; lịch sử tín hiệu vnpool gần nhất
+  (09/07 FADE LONG) đã <b class="g">WIN</b>.</li>
+</ul></div>
+
+<h2>Kịch bản &amp; mốc theo dõi</h2>
+<div class="card"><ul>
+  <li><b>Kịch bản tích cực:</b> giữ trên <b>22.5</b> (vùng đáy tháng 7) và tự doanh/ngoại
+  tiếp tục mua ròng ⇒ xác nhận đảo chiều, mục tiêu lấp lại vùng <b>24.5–26.0</b>.</li>
+  <li><b>Vô hiệu hoá:</b> mất lại <b>22.5</b> kèm tự doanh quay đầu bán ⇒ phiên 03/08
+  chỉ là hồi kỹ thuật, rủi ro về đáy 21.65.</li>
+  <li><b>Cần theo dõi:</b> khối ngoại có nối tiếp mua sau phiên 03/08 không (lũy kế vẫn −125 tỷ),
+  và ngày chốt quyền cổ tức 15%.</li>
+</ul></div>
+
+<h2>Số liệu chi tiết</h2>
+<div class="tablewrap"><table id="tbl"><thead><tr>
+  <th>Ngày</th><th class="num">Đóng cửa</th><th class="num">Tự doanh (tỷ)</th>
+  <th class="num">Khối ngoại (tỷ)</th><th class="num">Lũy kế TD</th><th class="num">Lũy kế NN</th>
+</tr></thead><tbody></tbody></table></div>
+
+<div class="cav">
+Nguồn: <code>tudoanh.json</code> (FireAnt <code>historical-quotes</code>) — tự doanh ròng =
+<code>propTradingNetValue</code>, khối ngoại ròng = <code>foreignNetValue</code>, đơn vị tỷ VND.
+Phiên gần nhất có số liệu hoàn chỉnh: <b id="lastday"></b> (phiên 04/08 chưa chốt số tự doanh nên bỏ khỏi lũy kế).
+Đây là phân tích <b>dòng tiền</b>, không phải khuyến nghị mua/bán; không bao gồm định giá cơ bản chi tiết (P/B, NIM, nợ xấu).
+</div>
+
+</div>
+<script>
+const D = {"rows": [{"date": "2026-07-06", "close": 25.3, "prop": -11.67, "frn": -16.52, "cumP": -11.7, "cumF": -16.5}, {"date": "2026-07-07", "close": 25.75, "prop": -8.31, "frn": 7.45, "cumP": -20.0, "cumF": -9.1}, {"date": "2026-07-08", "close": 26.0, "prop": -3.87, "frn": 100.51, "cumP": -23.9, "cumF": 91.4}, {"date": "2026-07-09", "close": 24.6, "prop": -1.95, "frn": -36.31, "cumP": -25.8, "cumF": 55.1}, {"date": "2026-07-10", "close": 24.65, "prop": 6.04, "frn": 66.2, "cumP": -19.8, "cumF": 121.3}, {"date": "2026-07-13", "close": 24.45, "prop": 14.6, "frn": 81.74, "cumP": -5.2, "cumF": 203.1}, {"date": "2026-07-14", "close": 24.55, "prop": 30.92, "frn": -10.05, "cumP": 25.8, "cumF": 193.0}, {"date": "2026-07-15", "close": 23.95, "prop": -21.08, "frn": -42.36, "cumP": 4.7, "cumF": 150.7}, {"date": "2026-07-16", "close": 24.15, "prop": 12.04, "frn": -75.39, "cumP": 16.7, "cumF": 75.3}, {"date": "2026-07-17", "close": 23.75, "prop": -19.06, "frn": -71.45, "cumP": -2.3, "cumF": 3.8}, {"date": "2026-07-20", "close": 22.8, "prop": -30.43, "frn": -42.67, "cumP": -32.8, "cumF": -38.8}, {"date": "2026-07-21", "close": 22.7, "prop": 6.24, "frn": -49.42, "cumP": -26.5, "cumF": -88.3}, {"date": "2026-07-22", "close": 22.35, "prop": 5.54, "frn": 21.0, "cumP": -21.0, "cumF": -67.3}, {"date": "2026-07-23", "close": 22.05, "prop": -1.37, "frn": -153.35, "cumP": -22.4, "cumF": -220.6}, {"date": "2026-07-24", "close": 21.9, "prop": -18.76, "frn": -56.57, "cumP": -41.1, "cumF": -277.2}, {"date": "2026-07-27", "close": 21.65, "prop": -7.41, "frn": 56.4, "cumP": -48.5, "cumF": -220.8}, {"date": "2026-07-28", "close": 22.15, "prop": 0.31, "frn": 29.65, "cumP": -48.2, "cumF": -191.1}, {"date": "2026-07-29", "close": 22.1, "prop": -0.87, "frn": -9.02, "cumP": -49.1, "cumF": -200.2}, {"date": "2026-07-30", "close": 22.5, "prop": 3.29, "frn": -13.35, "cumP": -45.8, "cumF": -213.5}, {"date": "2026-07-31", "close": 22.5, "prop": -6.21, "frn": -1.0, "cumP": -52.0, "cumF": -214.5}, {"date": "2026-08-03", "close": 24.0, "prop": 104.58, "frn": 89.15, "cumP": 52.6, "cumF": -125.4}, {"date": "2026-08-04", "close": 24.0, "prop": null, "frn": 0.0, "cumP": 52.6, "cumF": -125.4}], "stats": {"stamp": "20260804_0155", "range": {"start": "2026-07-05", "end": "2026-08-04"}, "cur": 24.0, "first": 25.3, "lo": 21.65, "hi": 26.0, "lo_dt": "2026-07-27", "hi_dt": "2026-07-08", "cumP": 52.6, "cumF": -125.4, "lastDay": "2026-08-03", "lastProp": 104.58, "rebound": 10.9, "fromHigh": -7.7}};
+
+const S=D.stats, R=D.rows;
+const dmy=s=>s.slice(8,10)+'/'+s.slice(5,7);
+const st=S.stamp, ds=st.slice(0,4)+'-'+st.slice(4,6)+'-'+st.slice(6,8)+' '+st.slice(9,11)+':'+st.slice(11,13);
+document.getElementById('sub').innerHTML='Ngân hàng TMCP Quân đội (HOSE) · cửa sổ '+dmy(S.range.start)+' → '+dmy(S.range.end)+' · đơn vị dòng tiền: tỷ VND';
+document.getElementById('stamp').textContent='Dữ liệu cập nhật '+ds+' (GMT+7)';
+document.getElementById('lastday').textContent=dmy(S.lastDay);
+
+const sign=(v,d=1)=>(v>0?'+':'')+v.toFixed(d);
+const chips=[
+ ['Giá hiện tại',S.cur.toFixed(2),''],
+ ['So với đỉnh '+dmy(S.hi_dt),sign(S.fromHigh)+'%',S.fromHigh<0?'r':'g'],
+ ['Hồi từ đáy '+dmy(S.lo_dt),sign(S.rebound)+'%','g'],
+ ['Tự doanh 03/08',sign(S.lastProp)+' tỷ','g'],
+ ['Lũy kế tự doanh 30N',sign(S.cumP)+' tỷ',S.cumP>0?'g':'r'],
+ ['Lũy kế khối ngoại 30N',sign(S.cumF)+' tỷ',S.cumF>0?'g':'r'],
+];
+document.getElementById('chips').innerHTML=chips.map(c=>
+ `<div class="chip"><div class="k">${c[0]}</div><div class="v ${c[2]}">${c[1]}</div></div>`).join('');
+
+// table
+document.querySelector('#tbl tbody').innerHTML=R.map(r=>{
+ const pc=r.prop==null?'':(r.prop>=0?'g':'r'), fc=r.frn>=0?'g':'r';
+ const pv=r.prop==null?'—':sign(r.prop,2), fv=(r.frn===0&&r.prop==null)?'—':sign(r.frn,2);
+ return `<tr><td>${dmy(r.date)}</td><td class="num">${r.close.toFixed(2)}</td>`+
+  `<td class="num ${pc}">${pv}</td><td class="num ${fc}">${fv}</td>`+
+  `<td class="num ${r.cumP>=0?'g':'r'}">${sign(r.cumP)}</td>`+
+  `<td class="num ${r.cumF>=0?'g':'r'}">${sign(r.cumF)}</td></tr>`;
+}).join('');
+
+const NS='http://www.w3.org/2000/svg';
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function txt(x,y,s,a){const t=el('text',{x,y,'font-size':a.fs||11,fill:a.fill||'#6b6960','text-anchor':a.anchor||'start','font-weight':a.fw||400,'font-family':'system-ui'});t.textContent=s;return t;}
+
+// ---- Chart 1: price line + daily net bars (dual axis) ----
+(function(){
+ const svg=document.getElementById('chart1'), W=960,H=340, L=44,Rm=44,T=16,B=42;
+ const iw=W-L-Rm, ih=H-T-B;
+ const rows=R; const n=rows.length;
+ const closes=rows.map(r=>r.close);
+ let pmin=Math.min(...closes),pmax=Math.max(...closes); const pad=(pmax-pmin)*0.15||1; pmin-=pad;pmax+=pad;
+ const flows=[]; rows.forEach(r=>{if(r.prop!=null)flows.push(r.prop);flows.push(r.frn);});
+ let fmax=Math.max(...flows.map(Math.abs)); fmax=Math.ceil(fmax/20)*20;
+ const x=i=>L+iw*(n<=1?0.5:i/(n-1));
+ const bw=Math.min(16, iw/n*0.34);
+ const yP=v=>T+ih*(1-(v-pmin)/(pmax-pmin));
+ const yF=v=>T+ih/2*(1-v/fmax);
+ const zero=T+ih/2;
+ // zero line
+ svg.appendChild(el('line',{x1:L,y1:zero,x2:L+iw,y2:zero,stroke:'#e2e0d8'}));
+ // right axis flow ticks
+ [-fmax,0,fmax].forEach(v=>{const y=yF(v);svg.appendChild(txt(L+iw+6,y+3,(v>0?'+':'')+v,{anchor:'start',fill:'#a8a599',fs:10}));});
+ // left axis price ticks
+ [pmin,(pmin+pmax)/2,pmax].forEach(v=>{const y=yP(v);svg.appendChild(txt(L-6,y+3,v.toFixed(1),{anchor:'end',fill:'#BA7517',fs:10}));});
+ // bars
+ rows.forEach((r,i)=>{
+  const cx=x(i);
+  if(r.prop!=null){const h=Math.abs(yF(r.prop)-zero);const y=r.prop>=0?zero-h:zero;
+   svg.appendChild(el('rect',{x:cx-bw-1,y,width:bw,height:h,fill:r.prop>=0?'#1f7a4d':'#c0392b',opacity:.9}));}
+  const h2=Math.abs(yF(r.frn)-zero);const y2=r.frn>=0?zero-h2:zero;
+  svg.appendChild(el('rect',{x:cx+1,y:y2,width:bw,height:h2,fill:'#7fb3d5',opacity:.85}));
+ });
+ // price line
+ let dd=''; rows.forEach((r,i)=>{dd+=(i?'L':'M')+x(i).toFixed(1)+' '+yP(r.close).toFixed(1)+' ';});
+ svg.appendChild(el('path',{d:dd,fill:'none',stroke:'#BA7517','stroke-width':2.2}));
+ rows.forEach((r,i)=>svg.appendChild(el('circle',{cx:x(i),cy:yP(r.close),r:2.4,fill:'#BA7517'})));
+ // annotate low & the 03/08 spike
+ const li=rows.findIndex(r=>r.close===S.lo);
+ svg.appendChild(txt(x(li),yP(S.lo)+15,'đáy '+S.lo,{anchor:'middle',fill:'#c0392b',fs:10,fw:700}));
+ const si=rows.findIndex(r=>r.date===S.lastDay);
+ svg.appendChild(txt(x(si),yP(rows[si].close)-9,'▲ TD +105 tỷ',{anchor:'end',fill:'#1f7a4d',fs:10,fw:700}));
+ // x labels (every other)
+ rows.forEach((r,i)=>{if(i%2===0||i===n-1)svg.appendChild(txt(x(i),H-14,dmy(r.date),{anchor:'middle',fs:9,fill:'#a8a599'}));});
+})();
+
+// ---- Chart 2: cumulative lines ----
+(function(){
+ const svg=document.getElementById('chart2'), W=960,H=260,L=48,Rm=44,T=16,B=42;
+ const iw=W-L-Rm, ih=H-T-B, n=R.length;
+ const cp=R.map(r=>r.cumP), cf=R.map(r=>r.cumF);
+ let mn=Math.min(0,...cp,...cf), mx=Math.max(0,...cp,...cf); const pd=(mx-mn)*0.08; mn-=pd;mx+=pd;
+ const x=i=>L+iw*(n<=1?0.5:i/(n-1));
+ const y=v=>T+ih*(1-(v-mn)/(mx-mn));
+ const closes=R.map(r=>r.close); let pmin=Math.min(...closes),pmax=Math.max(...closes);
+ const yPrice=v=>T+ih*(1-(v-pmin)/(pmax-pmin));
+ svg.appendChild(el('line',{x1:L,y1:y(0),x2:L+iw,y2:y(0),stroke:'#e2e0d8','stroke-dasharray':'3 3'}));
+ [mn,0,mx].forEach(v=>{const yy=y(v);svg.appendChild(txt(L-6,yy+3,Math.round(v)+'',{anchor:'end',fs:10,fill:'#a8a599'}));});
+ // price faint
+ let dp=''; R.forEach((r,i)=>{dp+=(i?'L':'M')+x(i).toFixed(1)+' '+yPrice(r.close).toFixed(1)+' ';});
+ svg.appendChild(el('path',{d:dp,fill:'none',stroke:'#BA7517','stroke-width':1.4,opacity:.45,'stroke-dasharray':'4 3'}));
+ function line(arr,col){let d='';arr.forEach((v,i)=>{d+=(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)+' ';});
+  svg.appendChild(el('path',{d,fill:'none',stroke:col,'stroke-width':2.2}));
+  arr.forEach((v,i)=>svg.appendChild(el('circle',{cx:x(i),cy:y(v),r:2,fill:col})));}
+ line(cf,'#7fb3d5'); line(cp,'#1f7a4d');
+ R.forEach((r,i)=>{if(i%2===0||i===n-1)svg.appendChild(txt(x(i),H-14,dmy(r.date),{anchor:'middle',fs:9,fill:'#a8a599'}));});
+ // end labels
+ svg.appendChild(txt(x(n-1)-4,y(cp[n-1])-6,'TD '+sign(cp[n-1]),{anchor:'end',fs:10,fw:700,fill:'#1f7a4d'}));
+ svg.appendChild(txt(x(n-1)-4,y(cf[n-1])+14,'NN '+sign(cf[n-1]),{anchor:'end',fs:10,fw:700,fill:'#4a7fa5'}));
+})();
+</script>
+</body></html>
