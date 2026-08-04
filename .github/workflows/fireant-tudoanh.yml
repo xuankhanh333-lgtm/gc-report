@@ -55,10 +55,11 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- tudoanh.json; then
+          git add tudoanh.json
+          # git diff --cached bắt cả file mới (untracked) lẫn file đã đổi.
+          if git diff --cached --quiet; then
             echo "Không có thay đổi, bỏ qua commit."
           else
-            git add tudoanh.json
             git commit -m "auto: FireAnt tự doanh $(date -u +%Y%m%d_%H%M)"
             git push
           fi
