@@ -1,0 +1,64 @@
+name: FireAnt tự doanh
+
+# Kéo dữ liệu tự doanh từ FireAnt và commit JSON vào repo.
+# Token đọc từ repo Secret FIREANT_TOKEN (Settings -> Secrets -> Actions).
+
+on:
+  workflow_dispatch:        # chạy tay từ tab Actions
+  schedule:
+    - cron: "0 9 * * 1-5"   # 09:00 UTC = 16:00 giờ VN, T2-T6 (sau khi đóng cửa)
+
+permissions:
+  contents: write           # để commit file JSON trở lại repo
+
+concurrency:
+  group: fireant-tudoanh
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cài phụ thuộc
+        run: pip install -r tools/fireant/requirements.txt
+
+      - name: Kiểm tra có token chưa
+        env:
+          FIREANT_TOKEN: ${{ secrets.FIREANT_TOKEN }}
+        run: |
+          if [ -z "$FIREANT_TOKEN" ]; then
+            echo "::error::Chưa có Secret FIREANT_TOKEN. Vào Settings -> Secrets and variables -> Actions -> New repository secret."
+            exit 1
+          fi
+          echo "Đã có token (dài ${#FIREANT_TOKEN} ký tự)."
+
+      - name: Kéo tự doanh
+        env:
+          FIREANT_TOKEN: ${{ secrets.FIREANT_TOKEN }}
+        run: |
+          cd tools/fireant
+          python fetch_tudoanh.py \
+            --symbols-file watchlist.txt \
+            --days 30 \
+            --with-foreign \
+            --out ../../tudoanh.json
+
+      - name: Commit kết quả (nếu có thay đổi)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- tudoanh.json; then
+            echo "Không có thay đổi, bỏ qua commit."
+          else
+            git add tudoanh.json
+            git commit -m "auto: FireAnt tự doanh $(date -u +%Y%m%d_%H%M)"
+            git push
+          fi
