@@ -55,6 +55,7 @@
       <button class="tab sub" id="btn-vn-d1" onclick="show('vd1')" title="Nhánh D1 chạy song song (thử nghiệm) — sổ điểm riêng, so với bản H4 vài tuần rồi quyết">Scorecard D1</button>
       <button class="tab sub" id="btn-vn-tk" onclick="show('vtk')" title="Top Cơ Bản Khoẻ — gộp phi tài chính + ngân hàng + chứng khoán, xếp theo chất cơ bản (đã loại verdict fade leak)">Tiền khoẻ</button>
       <button class="tab sub" id="btn-vn-bubble" onclick="show('vbub')" title="Bong bóng độ khoẻ — mã nổi lên theo score/cơ bản/tiền/P_follow, size = vốn hoá, màu = hướng LONG/SHORT">◍ Bubble</button>
+      <button class="tab sub" id="btn-vn-portfolio" onclick="show('vpf')" title="Danh mục cá nhân + lãi/lỗ (từ positions.json + giá EOD FireAnt)">💼 Danh mục</button>
     </div>
     <div class="cds">
       <span class="cd-chip m" id="chip-m15" title="Thời gian tới khi nến M15 đóng (mốc :00/:15/:30/:45)">Nến M15 đóng sau <b id="cd-m15">--:--</b></span>
@@ -94,7 +95,7 @@
     }
     function load(k, isAuto){
       cur = k;
-      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : (k === 'pool') ? 'pooldir.html' : (k === '3p') ? 'pooldir-trend.html' : (k === 'pst') ? 'pooldir-structure.html' : (k === 'sc') ? 'pooldir-scorecard.html' : (k === 'vn') ? 'vnpool.html' : (k === 'vst') ? 'vnpool-structure.html' : (k === 'vsc') ? 'vnpool-scorecard.html' : (k === 'vd1') ? 'vnpool-scorecard-d1.html' : (k === 'vtk') ? 'vnpool-tienkhoe.html' : (k === 'vbub') ? 'vnpool-bubble.html' : 'rt.html';
+      var base = (k === 'h4') ? 'h4.html' : (k === 'ict') ? 'ictml.html' : (k === 'pool') ? 'pooldir.html' : (k === '3p') ? 'pooldir-trend.html' : (k === 'pst') ? 'pooldir-structure.html' : (k === 'sc') ? 'pooldir-scorecard.html' : (k === 'vn') ? 'vnpool.html' : (k === 'vst') ? 'vnpool-structure.html' : (k === 'vsc') ? 'vnpool-scorecard.html' : (k === 'vd1') ? 'vnpool-scorecard-d1.html' : (k === 'vtk') ? 'vnpool-tienkhoe.html' : (k === 'vbub') ? 'vnpool-bubble.html' : (k === 'vpf') ? 'vnpool-portfolio.html' : 'rt.html';
       document.getElementById('frame').src = base + '?embed=1&t=' + Date.now();
       lastLoadAt = Date.now();
       document.getElementById('btn-rt').classList.toggle('active', k === 'rt');
@@ -107,7 +108,7 @@
       document.getElementById('btn-pool-3p').classList.toggle('active', k === '3p');
       document.getElementById('btn-pool-st').classList.toggle('active', k === 'pst');
       document.getElementById('btn-pool-sc').classList.toggle('active', k === 'sc');
-      var vnGrp = (k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk' || k === 'vbub');
+      var vnGrp = (k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk' || k === 'vbub' || k === 'vpf');
       document.getElementById('btn-vn').classList.toggle('active', vnGrp);
       document.getElementById('vn-subtabs').style.display = vnGrp ? 'flex' : 'none';
       document.getElementById('btn-vn-dash').classList.toggle('active', k === 'vn');
@@ -116,14 +117,15 @@
       document.getElementById('btn-vn-d1').classList.toggle('active', k === 'vd1');
       document.getElementById('btn-vn-tk').classList.toggle('active', k === 'vtk');
       document.getElementById('btn-vn-bubble').classList.toggle('active', k === 'vbub');
+      document.getElementById('btn-vn-portfolio').classList.toggle('active', k === 'vpf');
       // M15/H4 close chips chi hop le cho RT/H4 (GC). ICT-ML theo H1; VN theo phien HOSE.
-      var gc = (k !== 'ict' && k !== 'vn' && k !== 'vst' && k !== 'vsc' && k !== 'vd1' && k !== 'vtk' && k !== 'vbub');
+      var gc = (k !== 'ict' && k !== 'vn' && k !== 'vst' && k !== 'vsc' && k !== 'vd1' && k !== 'vtk' && k !== 'vbub' && k !== 'vpf');
       var cm = document.getElementById('chip-m15'); if (cm) cm.style.display = gc ? 'flex' : 'none';
       var ch = document.getElementById('chip-h4');  if (ch) ch.style.display = gc ? 'flex' : 'none';
-      refreshMs = (k === 'h4' || k === 'pool' || k === '3p' || k === 'pst' || k === 'sc' || k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk' || k === 'vbub') ? 900000 : 300000;
+      refreshMs = (k === 'h4' || k === 'pool' || k === '3p' || k === 'pst' || k === 'sc' || k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk' || k === 'vbub' || k === 'vpf') ? 900000 : 300000;
       nextAt = Date.now() + refreshMs;
-      var mins = (k === 'h4' || k === 'pool' || k === '3p' || k === 'pst' || k === 'sc' || k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk' || k === 'vbub') ? '15' : '5';
-      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · Dashboard (3 model)' : (k === '3p') ? 'Pooldir · 3P Trend · 15 ngày' : (k === 'pst') ? 'Pooldir · Cấu trúc thanh khoản · 14 ngày' : (k === 'sc') ? 'Pooldir · Forward Scorecard' : (k === 'vn') ? 'Vnpool · Dashboard (quét EOD)' : (k === 'vst') ? 'Vnpool · Cấu trúc thanh khoản bracket · 45 ngày' : (k === 'vsc') ? 'Vnpool · Forward Scorecard' : (k === 'vd1') ? 'Vnpool · Scorecard D1 (thử nghiệm song song)' : (k === 'vtk') ? 'Vnpool · Top Cơ Bản Khoẻ' : (k === 'vbub') ? 'Vnpool · Bubble độ khoẻ (score/cơ bản/tiền/P_follow)' : 'RT · M15';
+      var mins = (k === 'h4' || k === 'pool' || k === '3p' || k === 'pst' || k === 'sc' || k === 'vn' || k === 'vst' || k === 'vsc' || k === 'vd1' || k === 'vtk' || k === 'vbub' || k === 'vpf') ? '15' : '5';
+      var labl = (k === 'h4') ? 'H4-closed' : (k === 'ict') ? 'ICT-ML (4 model)' : (k === 'pool') ? 'Pooldir · Dashboard (3 model)' : (k === '3p') ? 'Pooldir · 3P Trend · 15 ngày' : (k === 'pst') ? 'Pooldir · Cấu trúc thanh khoản · 14 ngày' : (k === 'sc') ? 'Pooldir · Forward Scorecard' : (k === 'vn') ? 'Vnpool · Dashboard (quét EOD)' : (k === 'vst') ? 'Vnpool · Cấu trúc thanh khoản bracket · 45 ngày' : (k === 'vsc') ? 'Vnpool · Forward Scorecard' : (k === 'vd1') ? 'Vnpool · Scorecard D1 (thử nghiệm song song)' : (k === 'vtk') ? 'Vnpool · Top Cơ Bản Khoẻ' : (k === 'vbub') ? 'Vnpool · Bubble độ khoẻ (score/cơ bản/tiền/P_follow)' : (k === 'vpf') ? 'Vnpool · Danh mục cá nhân (lãi/lỗ)' : 'RT · M15';
       document.getElementById('hint').textContent =
         'Đang xem: ' + labl + ' · trang tự làm mới mỗi ' + mins + ' phút · lần cuối ' + fmtTime();
       tick();
