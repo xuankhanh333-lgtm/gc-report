@@ -31,23 +31,23 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 19:59:16 6/8/2026 · 60 series (32→37→44→56→60: +carry AU/NZ/BoE + VN trade 17/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 21:08:09 6/8/2026 · 60 series (32→37→44→56→60: +carry AU/NZ/BoE + VN trade 17/07 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div id="dcpline"></div>
 <div class="kpis">
-  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên VÀNG rồi cộng cả 44 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 19:59:16 6/8/2026 VN." tabindex="0">GOLD BIAS (tổng 44 chỉ số active) ⓘ</span></div><div class="val">+0</div>
-    <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="GOLD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (16):</span> Lợi suất thực 5Y · Bạc (QSLVO) · CPI YoY · Core PCE YoY (thước Fed) · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · Bảng cân đối Fed · Bất định chính sách (EPU) · Cung tiền M2 · Financial Stress (St. Louis) · Term premium 10Y (Kim-Wright) · Cân đối ngân sách LB · Lợi suất 2Y (kỳ vọng Fed) · EURUSD · USDJPY · Broad Dollar Index<br><br><span class=&quot;neg&quot;>▼ Bất lợi (16):</span> Breakeven 10Y · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Dầu WTI (tháng) · VIX · HY credit spread · Điều kiện tài chính (NFCI) · EPU toàn cầu (tháng) · Real rate 10Y (model-based) · Custody Treasuries NHTW ngoại · Michigan sentiment · USDCNY" tabindex="0"><b class="pos">▲16</b> · <b class="neg">▼16</b> · 12 im — soi phiếu ⓘ</span></div>
-    <div class="bar"><i class="" style="width:0%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 60" preserveAspectRatio="none" data-t="GOLD BIAS · % chuẩn hoá theo N · từng lần chạy" data-l='["16/7 22:36: -2 (-9%)","16/7 22:56: -2 (-9%)","16/7 23:04: -2 (-9%)","16/7 23:16: -3 (-12%)","16/7 23:23: -4 (-14%)","16/7 23:33: -4 (-14%)","16/7 23:42: -4 (-14%)","16/7 23:51: -3 (-10%)","16/7 23:52: -4 (-14%)","17/7 00:15: -4 (-14%)","17/7 00:20: -4 (-14%)","17/7 00:22: -4 (-14%)","17/7 00:30: -4 (-14%)","17/7 00:31: -4 (-14%)","17/7 01:03: -4 (-14%)","17/7 01:13: -4 (-14%)","17/7 01:24: -4 (-14%)","17/7 01:27: -4 (-14%)","17/7 06:30: -3 (-10%)","17/7 11:17: -4 (-14%)","17/7 12:01: -4 (-14%)","17/7 13:04: -4 (-14%)","17/7 20:45: -4 (-14%)","17/7 22:02: -4 (-14%)","17/7 22:16: -4 (-14%)","17/7 22:20: -4 (-14%)","17/7 22:41: -4 (-14%)","18/7 06:30: -5 (-17%)","20/7 06:30: -5 (-17%)","20/7 20:45: -4 (-14%)","21/7 06:30: -4 (-14%)","21/7 20:45: -3 (-10%)","22/7 06:31: -3 (-10%)","22/7 10:16: -3 (-10%)","22/7 20:45: -3 (-10%)","23/7 06:31: -4 (-14%)","23/7 20:46: -5 (-17%)","24/7 06:31: -6 (-20%)","24/7 20:45: -6 (-20%)","25/7 06:30: -5 (-17%)","27/7 06:31: -4 (-14%)","27/7 20:45: -4 (-14%)","28/7 06:31: -8 (-27%)","28/7 20:45: -8 (-27%)","29/7 06:31: -6 (-20%)","29/7 20:45: -7 (-24%)","30/7 06:31: -5 (-17%)","30/7 20:46: -5 (-17%)","31/7 06:31: -2 (-7%)","31/7 20:45: -2 (-7%)","01/8 06:30: -6 (-20%)","02/8 22:32: -6 (-20%)","03/8 06:31: -6 (-20%)","03/8 20:46: -5 (-17%)","04/8 06:31: -1 (-3%)","04/8 20:45: -1 (-3%)","05/8 06:31: +0 (+0%)","05/8 20:45: +2 (+7%)","06/8 06:31: +0 (+0%)","06/8 19:59: +0 (+0%)"]'>
-    <line class="th" x1="0" y1="6.9" x2="100" y2="6.9"/><line class="th" x1="0" y1="53.1" x2="100" y2="53.1"/><line class="zero" x1="0" y1="30" x2="100" y2="30"/><line class="day" x1="17.3" y1="2" x2="17.3" y2="58"/><line class="day" x1="46.0" y1="2" x2="46.0" y2="58"/><line class="day" x1="47.6" y1="2" x2="47.6" y2="58"/><line class="day" x1="50.8" y1="2" x2="50.8" y2="58"/><line class="day" x1="54.0" y1="2" x2="54.0" y2="58"/><line class="day" x1="58.8" y1="2" x2="58.8" y2="58"/><line class="day" x1="61.9" y1="2" x2="61.9" y2="58"/><line class="day" x1="65.1" y1="2" x2="65.1" y2="58"/><line class="day" x1="66.7" y1="2" x2="66.7" y2="58"/><line class="day" x1="69.9" y1="2" x2="69.9" y2="58"/><line class="day" x1="73.1" y1="2" x2="73.1" y2="58"/><line class="day" x1="76.3" y1="2" x2="76.3" y2="58"/><line class="day" x1="79.5" y1="2" x2="79.5" y2="58"/><line class="day" x1="82.7" y1="2" x2="82.7" y2="58"/><line class="day" x1="84.3" y1="2" x2="84.3" y2="58"/><line class="day" x1="85.8" y1="2" x2="85.8" y2="58"/><line class="day" x1="89.0" y1="2" x2="89.0" y2="58"/><line class="day" x1="92.2" y1="2" x2="92.2" y2="58"/><line class="day" x1="95.4" y1="2" x2="95.4" y2="58"/>
-    <polyline points="3.0,35 4.6,35 6.2,35 7.8,37 9.4,37.9 11.0,37.9 12.6,37.9 14.2,36 15.7,37.9 17.3,37.9 18.9,37.9 20.5,37.9 22.1,37.9 23.7,37.9 25.3,37.9 26.9,37.9 28.5,37.9 30.1,37.9 31.7,35.9 33.3,37.9 34.9,37.9 36.5,37.9 38.1,37.9 39.6,37.9 41.2,37.9 42.8,37.9 44.4,37.9 46.0,39.8 47.6,39.8 49.2,37.9 50.8,37.9 52.4,35.9 54.0,35.9 55.6,35.9 57.2,35.9 58.8,37.9 60.4,39.8 61.9,41.8 63.5,41.8 65.1,39.8 66.7,37.9 68.3,37.9 69.9,45.8 71.5,45.8 73.1,41.8 74.7,43.8 76.3,39.8 77.9,39.8 79.5,33.9 81.1,33.9 82.7,41.8 84.3,41.8 85.8,41.8 87.4,39.8 89.0,32 90.6,32 92.2,30 93.8,26.1 95.4,30 97.0,30"/>
-    <circle cx="97.0" cy="30" r="3" class="z"/></svg><div class="baxis"><span style="left:4.0%">16/7</span><span style="left:17.3%">17/7</span><span style="left:46.0%">18/7</span><span style="left:61.9%">24/7</span><span style="left:76.3%">30/7</span><span style="left:95.4%">6/8</span></div><div class="lbl">history 60 lần chạy</div></div>
-  <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="USD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên USD rồi cộng cả 49 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 19:59:16 6/8/2026 VN." tabindex="0">USD BIAS (tổng 49 chỉ số active) ⓘ</span></div><div class="val">+0</div>
-    <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="USD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (16):</span> Breakeven 10Y · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Bất định chính sách (EPU) · Financial Stress (St. Louis) · Real rate 10Y (model-based) · Custody Treasuries NHTW ngoại · Chênh lệch 10Y Mỹ−Anh · Chênh lệch 10Y Mỹ−Thụy Sĩ · Chênh lệch 10Y Mỹ−Canada · Chênh lệch 10Y Mỹ−Úc · Chênh lệch 10Y Mỹ−NZ<br><br><span class=&quot;neg&quot;>▼ Bất lợi (16):</span> Lợi suất thực 5Y · CPI YoY · Core PCE YoY (thước Fed) · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · VIX · HY credit spread · Điều kiện tài chính (NFCI) · Bảng cân đối Fed · Cung tiền M2 · EPU toàn cầu (tháng) · Cân đối ngân sách LB · Lợi suất 2Y (kỳ vọng Fed) · EURUSD · USDJPY · USDCNY" tabindex="0"><b class="pos">▲16</b> · <b class="neg">▼16</b> · 17 im — soi phiếu ⓘ</span></div>
-    <div class="bar"><i class="" style="width:0%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 60" preserveAspectRatio="none" data-t="USD BIAS · % chuẩn hoá theo N · từng lần chạy" data-l='["16/7 22:36: +2 (+8%)","16/7 22:56: +2 (+8%)","16/7 23:04: +2 (+8%)","16/7 23:16: +1 (+4%)","16/7 23:23: -2 (-7%)","16/7 23:33: -2 (-7%)","16/7 23:42: -2 (-7%)","16/7 23:51: -2 (-7%)","16/7 23:52: -2 (-7%)","17/7 00:15: -2 (-6%)","17/7 00:20: -2 (-6%)","17/7 00:22: -2 (-6%)","17/7 00:30: -2 (-6%)","17/7 00:31: -2 (-6%)","17/7 01:03: -2 (-6%)","17/7 01:13: -2 (-6%)","17/7 01:24: -2 (-6%)","17/7 01:27: -2 (-6%)","17/7 06:30: +2 (+6%)","17/7 11:17: +2 (+6%)","17/7 12:01: +2 (+6%)","17/7 13:04: +2 (+6%)","17/7 20:45: +3 (+9%)","17/7 22:02: +3 (+9%)","17/7 22:16: +3 (+9%)","17/7 22:20: +3 (+9%)","17/7 22:41: +3 (+9%)","18/7 06:30: +5 (+15%)","20/7 06:30: +5 (+15%)","20/7 20:45: +6 (+18%)","21/7 06:30: +8 (+24%)","21/7 20:45: +8 (+24%)","22/7 06:31: +6 (+18%)","22/7 10:16: +6 (+18%)","22/7 20:45: +6 (+18%)","23/7 06:31: +9 (+28%)","23/7 20:46: +7 (+21%)","24/7 06:31: +8 (+24%)","24/7 20:45: +8 (+24%)","25/7 06:30: +9 (+28%)","27/7 06:31: +9 (+28%)","27/7 20:45: +9 (+28%)","28/7 06:31: +13 (+40%)","28/7 20:45: +13 (+40%)","29/7 06:31: +12 (+37%)","29/7 20:45: +12 (+37%)","30/7 06:31: +6 (+18%)","30/7 20:46: +6 (+18%)","31/7 06:31: +3 (+9%)","31/7 20:45: +3 (+9%)","01/8 06:30: +1 (+3%)","02/8 22:32: +1 (+3%)","03/8 06:31: +1 (+3%)","03/8 20:46: +2 (+6%)","04/8 06:31: -2 (-6%)","04/8 20:45: -2 (-6%)","05/8 06:31: -5 (-15%)","05/8 20:45: -4 (-12%)","06/8 06:31: +0 (+0%)","06/8 19:59: +0 (+0%)"]'>
-    <line class="th" x1="0" y1="6.9" x2="100" y2="6.9"/><line class="th" x1="0" y1="53.1" x2="100" y2="53.1"/><line class="zero" x1="0" y1="30" x2="100" y2="30"/><line class="day" x1="17.3" y1="2" x2="17.3" y2="58"/><line class="day" x1="46.0" y1="2" x2="46.0" y2="58"/><line class="day" x1="47.6" y1="2" x2="47.6" y2="58"/><line class="day" x1="50.8" y1="2" x2="50.8" y2="58"/><line class="day" x1="54.0" y1="2" x2="54.0" y2="58"/><line class="day" x1="58.8" y1="2" x2="58.8" y2="58"/><line class="day" x1="61.9" y1="2" x2="61.9" y2="58"/><line class="day" x1="65.1" y1="2" x2="65.1" y2="58"/><line class="day" x1="66.7" y1="2" x2="66.7" y2="58"/><line class="day" x1="69.9" y1="2" x2="69.9" y2="58"/><line class="day" x1="73.1" y1="2" x2="73.1" y2="58"/><line class="day" x1="76.3" y1="2" x2="76.3" y2="58"/><line class="day" x1="79.5" y1="2" x2="79.5" y2="58"/><line class="day" x1="82.7" y1="2" x2="82.7" y2="58"/><line class="day" x1="84.3" y1="2" x2="84.3" y2="58"/><line class="day" x1="85.8" y1="2" x2="85.8" y2="58"/><line class="day" x1="89.0" y1="2" x2="89.0" y2="58"/><line class="day" x1="92.2" y1="2" x2="92.2" y2="58"/><line class="day" x1="95.4" y1="2" x2="95.4" y2="58"/>
-    <polyline points="3.0,25.6 4.6,25.6 6.2,25.6 7.8,27.9 9.4,33.8 11.0,33.8 12.6,33.8 14.2,33.8 15.7,33.8 17.3,33.5 18.9,33.5 20.5,33.5 22.1,33.7 23.7,33.5 25.3,33.5 26.9,33.5 28.5,33.5 30.1,33.5 31.7,26.5 33.3,26.5 34.9,26.5 36.5,26.5 38.1,24.7 39.6,24.7 41.2,24.7 42.8,24.7 44.4,24.7 46.0,21.2 47.6,21.2 49.2,19.4 50.8,15.9 52.4,15.9 54.0,19.4 55.6,19.4 57.2,19.4 58.8,14.1 60.4,17.6 61.9,15.9 63.5,15.9 65.1,14.1 66.7,14.1 68.3,14.1 69.9,7 71.5,7 73.1,8.8 74.7,8.8 76.3,19.4 77.9,19.4 79.5,24.7 81.1,24.7 82.7,28.2 84.3,28.2 85.8,28.2 87.4,26.5 89.0,33.5 90.6,33.5 92.2,38.8 93.8,37.1 95.4,30 97.0,30"/>
-    <circle cx="97.0" cy="30" r="3" class="z"/></svg><div class="baxis"><span style="left:4.0%">16/7</span><span style="left:17.3%">17/7</span><span style="left:46.0%">18/7</span><span style="left:61.9%">24/7</span><span style="left:76.3%">30/7</span><span style="left:95.4%">6/8</span></div><div class="lbl">history 60 lần chạy</div></div>
+  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên VÀNG rồi cộng cả 44 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 21:08:09 6/8/2026 VN." tabindex="0">GOLD BIAS (tổng 44 chỉ số active) ⓘ</span></div><div class="val">-2</div>
+    <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="GOLD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (15):</span> Lợi suất thực 5Y · Bạc (QSLVO) · CPI YoY · Core PCE YoY (thước Fed) · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · Bảng cân đối Fed · Cung tiền M2 · Financial Stress (St. Louis) · Term premium 10Y (Kim-Wright) · Cân đối ngân sách LB · Lợi suất 2Y (kỳ vọng Fed) · EURUSD · USDJPY · Broad Dollar Index<br><br><span class=&quot;neg&quot;>▼ Bất lợi (17):</span> Breakeven 10Y · RORO nhánh Gold+USD (KC Fed) · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Dầu WTI (tháng) · VIX · HY credit spread · Điều kiện tài chính (NFCI) · EPU toàn cầu (tháng) · Real rate 10Y (model-based) · Custody Treasuries NHTW ngoại · Michigan sentiment · USDCNY" tabindex="0"><b class="pos">▲15</b> · <b class="neg">▼17</b> · 12 im — soi phiếu ⓘ</span></div>
+    <div class="bar"><i class="n" style="width:7%;transform:translateX(-100%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 60" preserveAspectRatio="none" data-t="GOLD BIAS · % chuẩn hoá theo N · từng lần chạy" data-l='["16/7 22:56: -2 (-9%)","16/7 23:04: -2 (-9%)","16/7 23:16: -3 (-12%)","16/7 23:23: -4 (-14%)","16/7 23:33: -4 (-14%)","16/7 23:42: -4 (-14%)","16/7 23:51: -3 (-10%)","16/7 23:52: -4 (-14%)","17/7 00:15: -4 (-14%)","17/7 00:20: -4 (-14%)","17/7 00:22: -4 (-14%)","17/7 00:30: -4 (-14%)","17/7 00:31: -4 (-14%)","17/7 01:03: -4 (-14%)","17/7 01:13: -4 (-14%)","17/7 01:24: -4 (-14%)","17/7 01:27: -4 (-14%)","17/7 06:30: -3 (-10%)","17/7 11:17: -4 (-14%)","17/7 12:01: -4 (-14%)","17/7 13:04: -4 (-14%)","17/7 20:45: -4 (-14%)","17/7 22:02: -4 (-14%)","17/7 22:16: -4 (-14%)","17/7 22:20: -4 (-14%)","17/7 22:41: -4 (-14%)","18/7 06:30: -5 (-17%)","20/7 06:30: -5 (-17%)","20/7 20:45: -4 (-14%)","21/7 06:30: -4 (-14%)","21/7 20:45: -3 (-10%)","22/7 06:31: -3 (-10%)","22/7 10:16: -3 (-10%)","22/7 20:45: -3 (-10%)","23/7 06:31: -4 (-14%)","23/7 20:46: -5 (-17%)","24/7 06:31: -6 (-20%)","24/7 20:45: -6 (-20%)","25/7 06:30: -5 (-17%)","27/7 06:31: -4 (-14%)","27/7 20:45: -4 (-14%)","28/7 06:31: -8 (-27%)","28/7 20:45: -8 (-27%)","29/7 06:31: -6 (-20%)","29/7 20:45: -7 (-24%)","30/7 06:31: -5 (-17%)","30/7 20:46: -5 (-17%)","31/7 06:31: -2 (-7%)","31/7 20:45: -2 (-7%)","01/8 06:30: -6 (-20%)","02/8 22:32: -6 (-20%)","03/8 06:31: -6 (-20%)","03/8 20:46: -5 (-17%)","04/8 06:31: -1 (-3%)","04/8 20:45: -1 (-3%)","05/8 06:31: +0 (+0%)","05/8 20:45: +2 (+7%)","06/8 06:31: +0 (+0%)","06/8 19:59: +0 (+0%)","06/8 21:08: -2 (-7%)"]'>
+    <line class="th" x1="0" y1="6.9" x2="100" y2="6.9"/><line class="th" x1="0" y1="53.1" x2="100" y2="53.1"/><line class="zero" x1="0" y1="30" x2="100" y2="30"/><line class="day" x1="15.7" y1="2" x2="15.7" y2="58"/><line class="day" x1="44.4" y1="2" x2="44.4" y2="58"/><line class="day" x1="46.0" y1="2" x2="46.0" y2="58"/><line class="day" x1="49.2" y1="2" x2="49.2" y2="58"/><line class="day" x1="52.4" y1="2" x2="52.4" y2="58"/><line class="day" x1="57.2" y1="2" x2="57.2" y2="58"/><line class="day" x1="60.4" y1="2" x2="60.4" y2="58"/><line class="day" x1="63.5" y1="2" x2="63.5" y2="58"/><line class="day" x1="65.1" y1="2" x2="65.1" y2="58"/><line class="day" x1="68.3" y1="2" x2="68.3" y2="58"/><line class="day" x1="71.5" y1="2" x2="71.5" y2="58"/><line class="day" x1="74.7" y1="2" x2="74.7" y2="58"/><line class="day" x1="77.9" y1="2" x2="77.9" y2="58"/><line class="day" x1="81.1" y1="2" x2="81.1" y2="58"/><line class="day" x1="82.7" y1="2" x2="82.7" y2="58"/><line class="day" x1="84.3" y1="2" x2="84.3" y2="58"/><line class="day" x1="87.4" y1="2" x2="87.4" y2="58"/><line class="day" x1="90.6" y1="2" x2="90.6" y2="58"/><line class="day" x1="93.8" y1="2" x2="93.8" y2="58"/>
+    <polyline points="3.0,35 4.6,35 6.2,37 7.8,37.9 9.4,37.9 11.0,37.9 12.6,36 14.2,37.9 15.7,37.9 17.3,37.9 18.9,37.9 20.5,37.9 22.1,37.9 23.7,37.9 25.3,37.9 26.9,37.9 28.5,37.9 30.1,35.9 31.7,37.9 33.3,37.9 34.9,37.9 36.5,37.9 38.1,37.9 39.6,37.9 41.2,37.9 42.8,37.9 44.4,39.8 46.0,39.8 47.6,37.9 49.2,37.9 50.8,35.9 52.4,35.9 54.0,35.9 55.6,35.9 57.2,37.9 58.8,39.8 60.4,41.8 61.9,41.8 63.5,39.8 65.1,37.9 66.7,37.9 68.3,45.8 69.9,45.8 71.5,41.8 73.1,43.8 74.7,39.8 76.3,39.8 77.9,33.9 79.5,33.9 81.1,41.8 82.7,41.8 84.3,41.8 85.8,39.8 87.4,32 89.0,32 90.6,30 92.2,26.1 93.8,30 95.4,30 97.0,33.9"/>
+    <circle cx="97.0" cy="33.9" r="3" class="n"/></svg><div class="baxis"><span style="left:4.0%">16/7</span><span style="left:44.4%">18/7</span><span style="left:60.4%">24/7</span><span style="left:74.7%">30/7</span><span style="left:93.8%">6/8</span></div><div class="lbl">history 60 lần chạy</div></div>
+  <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="USD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên USD rồi cộng cả 49 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 21:08:09 6/8/2026 VN." tabindex="0">USD BIAS (tổng 49 chỉ số active) ⓘ</span></div><div class="val">-2</div>
+    <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="USD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (15):</span> Breakeven 10Y · Kỳ vọng lạm phát 1Y (Cleveland) · Thất nghiệp · Đơn trợ cấp thất nghiệp (tuần) · Việc làm ADP · Empire State (NY Fed) · Philly Fed activity · Financial Stress (St. Louis) · Real rate 10Y (model-based) · Custody Treasuries NHTW ngoại · Chênh lệch 10Y Mỹ−Anh · Chênh lệch 10Y Mỹ−Thụy Sĩ · Chênh lệch 10Y Mỹ−Canada · Chênh lệch 10Y Mỹ−Úc · Chênh lệch 10Y Mỹ−NZ<br><br><span class=&quot;neg&quot;>▼ Bất lợi (17):</span> Lợi suất thực 5Y · RORO nhánh Gold+USD (KC Fed) · CPI YoY · Core PCE YoY (thước Fed) · Median CPI (Cleveland) · Sticky CPI lõi YoY (Atlanta) · VIX · HY credit spread · Điều kiện tài chính (NFCI) · Bảng cân đối Fed · Cung tiền M2 · EPU toàn cầu (tháng) · Cân đối ngân sách LB · Lợi suất 2Y (kỳ vọng Fed) · EURUSD · USDJPY · USDCNY" tabindex="0"><b class="pos">▲15</b> · <b class="neg">▼17</b> · 17 im — soi phiếu ⓘ</span></div>
+    <div class="bar"><i class="n" style="width:6%;transform:translateX(-100%)"></i></div>
+    <svg class="bspark" viewBox="0 0 100 60" preserveAspectRatio="none" data-t="USD BIAS · % chuẩn hoá theo N · từng lần chạy" data-l='["16/7 22:56: +2 (+8%)","16/7 23:04: +2 (+8%)","16/7 23:16: +1 (+4%)","16/7 23:23: -2 (-7%)","16/7 23:33: -2 (-7%)","16/7 23:42: -2 (-7%)","16/7 23:51: -2 (-7%)","16/7 23:52: -2 (-7%)","17/7 00:15: -2 (-6%)","17/7 00:20: -2 (-6%)","17/7 00:22: -2 (-6%)","17/7 00:30: -2 (-6%)","17/7 00:31: -2 (-6%)","17/7 01:03: -2 (-6%)","17/7 01:13: -2 (-6%)","17/7 01:24: -2 (-6%)","17/7 01:27: -2 (-6%)","17/7 06:30: +2 (+6%)","17/7 11:17: +2 (+6%)","17/7 12:01: +2 (+6%)","17/7 13:04: +2 (+6%)","17/7 20:45: +3 (+9%)","17/7 22:02: +3 (+9%)","17/7 22:16: +3 (+9%)","17/7 22:20: +3 (+9%)","17/7 22:41: +3 (+9%)","18/7 06:30: +5 (+15%)","20/7 06:30: +5 (+15%)","20/7 20:45: +6 (+18%)","21/7 06:30: +8 (+24%)","21/7 20:45: +8 (+24%)","22/7 06:31: +6 (+18%)","22/7 10:16: +6 (+18%)","22/7 20:45: +6 (+18%)","23/7 06:31: +9 (+28%)","23/7 20:46: +7 (+21%)","24/7 06:31: +8 (+24%)","24/7 20:45: +8 (+24%)","25/7 06:30: +9 (+28%)","27/7 06:31: +9 (+28%)","27/7 20:45: +9 (+28%)","28/7 06:31: +13 (+40%)","28/7 20:45: +13 (+40%)","29/7 06:31: +12 (+37%)","29/7 20:45: +12 (+37%)","30/7 06:31: +6 (+18%)","30/7 20:46: +6 (+18%)","31/7 06:31: +3 (+9%)","31/7 20:45: +3 (+9%)","01/8 06:30: +1 (+3%)","02/8 22:32: +1 (+3%)","03/8 06:31: +1 (+3%)","03/8 20:46: +2 (+6%)","04/8 06:31: -2 (-6%)","04/8 20:45: -2 (-6%)","05/8 06:31: -5 (-15%)","05/8 20:45: -4 (-12%)","06/8 06:31: +0 (+0%)","06/8 19:59: +0 (+0%)","06/8 21:08: -2 (-6%)"]'>
+    <line class="th" x1="0" y1="6.9" x2="100" y2="6.9"/><line class="th" x1="0" y1="53.1" x2="100" y2="53.1"/><line class="zero" x1="0" y1="30" x2="100" y2="30"/><line class="day" x1="15.7" y1="2" x2="15.7" y2="58"/><line class="day" x1="44.4" y1="2" x2="44.4" y2="58"/><line class="day" x1="46.0" y1="2" x2="46.0" y2="58"/><line class="day" x1="49.2" y1="2" x2="49.2" y2="58"/><line class="day" x1="52.4" y1="2" x2="52.4" y2="58"/><line class="day" x1="57.2" y1="2" x2="57.2" y2="58"/><line class="day" x1="60.4" y1="2" x2="60.4" y2="58"/><line class="day" x1="63.5" y1="2" x2="63.5" y2="58"/><line class="day" x1="65.1" y1="2" x2="65.1" y2="58"/><line class="day" x1="68.3" y1="2" x2="68.3" y2="58"/><line class="day" x1="71.5" y1="2" x2="71.5" y2="58"/><line class="day" x1="74.7" y1="2" x2="74.7" y2="58"/><line class="day" x1="77.9" y1="2" x2="77.9" y2="58"/><line class="day" x1="81.1" y1="2" x2="81.1" y2="58"/><line class="day" x1="82.7" y1="2" x2="82.7" y2="58"/><line class="day" x1="84.3" y1="2" x2="84.3" y2="58"/><line class="day" x1="87.4" y1="2" x2="87.4" y2="58"/><line class="day" x1="90.6" y1="2" x2="90.6" y2="58"/><line class="day" x1="93.8" y1="2" x2="93.8" y2="58"/>
+    <polyline points="3.0,25.6 4.6,25.6 6.2,27.9 7.8,33.8 9.4,33.8 11.0,33.8 12.6,33.8 14.2,33.8 15.7,33.5 17.3,33.5 18.9,33.5 20.5,33.7 22.1,33.5 23.7,33.5 25.3,33.5 26.9,33.5 28.5,33.5 30.1,26.5 31.7,26.5 33.3,26.5 34.9,26.5 36.5,24.7 38.1,24.7 39.6,24.7 41.2,24.7 42.8,24.7 44.4,21.2 46.0,21.2 47.6,19.4 49.2,15.9 50.8,15.9 52.4,19.4 54.0,19.4 55.6,19.4 57.2,14.1 58.8,17.6 60.4,15.9 61.9,15.9 63.5,14.1 65.1,14.1 66.7,14.1 68.3,7 69.9,7 71.5,8.8 73.1,8.8 74.7,19.4 76.3,19.4 77.9,24.7 79.5,24.7 81.1,28.2 82.7,28.2 84.3,28.2 85.8,26.5 87.4,33.5 89.0,33.5 90.6,38.8 92.2,37.1 93.8,30 95.4,30 97.0,33.5"/>
+    <circle cx="97.0" cy="33.5" r="3" class="n"/></svg><div class="baxis"><span style="left:4.0%">16/7</span><span style="left:44.4%">18/7</span><span style="left:60.4%">24/7</span><span style="left:74.7%">30/7</span><span style="left:93.8%">6/8</span></div><div class="lbl">history 60 lần chạy</div></div>
   <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="LỢI SUẤT THỰC 10Y — chi tiết" data-tip="DFII10 — lợi suất TIPS 10Y, tức lãi suất THỰC sau lạm phát kỳ vọng. Vàng không trả lãi nên real yield là CHI PHÍ CƠ HỘI của việc ôm vàng: tăng → vàng chịu áp lực xuống, rơi → vàng bay. Δ3 tháng so với obs ~60 phiên trước; %biên độ = vị trí giá trị hiện tại trong min–max 3 tháng.<br><br>Data mới nhất: 2.40% ngày 2026-08-04 (63 phiên · FRED cập nhật trễ ~1 ngày làm việc so thị trường)." tabindex="0">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng) ⓘ</span></div>
     <div class="val">2.40%</div>
     <div class="word neg">▲ +0.44 /3 tháng · cản vàng</div>
@@ -68,10 +68,10 @@ tr:hover td{background:var(--card)}
     <div class="val">+42.0%<span style="font-size:13px;font-weight:400"> /6T</span></div>
     <div class="word neg">▲ +42.0% /6 tháng · growth impulse — yields dễ lên, cản vàng</div>
     <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="Cu/Au theo tháng" data-l='["2024-09: 3.3407","2024-10: 3.3758","2024-11: 3.2850","2024-12: 3.2541","2025-01: 3.1778","2025-02: 3.3910","2025-03: 3.3616","2025-04: 3.1426","2025-05: 3.3353","2025-06: 3.4456","2025-07: 3.4750","2025-08: 3.3177","2025-09: 3.2951","2025-10: 3.5571","2025-11: 3.4858","2025-12: 3.7759","2026-01: 4.0906","2026-02: 3.9563","2026-03: 4.1798","2026-04: 4.3572","2026-05: 4.6461","2026-06: 5.3617"]'><polyline points="2.0,22.0 6.6,21.7 11.1,22.6 15.7,22.9 20.3,23.7 24.9,21.5 29.4,21.8 34.0,24.0 38.6,22.1 43.1,21.0 47.7,20.7 52.3,22.3 56.9,22.5 61.4,19.9 66.0,20.6 70.6,17.7 75.1,14.6 79.7,15.9 84.3,13.7 88.9,12.0 93.4,9.1 98.0,2.0"/></svg><div class="lbl">PCOPPUSDM / QGLDI theo tháng (22 obs)</div></div>
-  <div class="kpi"><div class="lbl"><span class="tipname" data-tipid="DỮ LIỆU — chi tiết" data-tip="Sức khỏe lần fetch này: ok = số series lấy thành công trên tổng 60. stale = data trễ bất thường so với cadence của series (vẫn chấm điểm theo obs cuối, có cờ ⚠ ở bảng dưới). bị cắt lịch sử = observation_start dịch chuyển (nguồn cắt data cũ — gate cảnh báo riêng). lỗi = fetch/parse fail, loại khỏi tally.<br><br>Lần chạy này: 19:59:16 6/8/2026 VN. Ngày obs cuối TỪNG series: cột ngày ở bảng dưới." tabindex="0">DỮ LIỆU ⓘ</span></div><div class="val">60/60</div>
+  <div class="kpi"><div class="lbl"><span class="tipname" data-tipid="DỮ LIỆU — chi tiết" data-tip="Sức khỏe lần fetch này: ok = số series lấy thành công trên tổng 60. stale = data trễ bất thường so với cadence của series (vẫn chấm điểm theo obs cuối, có cờ ⚠ ở bảng dưới). bị cắt lịch sử = observation_start dịch chuyển (nguồn cắt data cũ — gate cảnh báo riêng). lỗi = fetch/parse fail, loại khỏi tally.<br><br>Lần chạy này: 21:08:09 6/8/2026 VN. Ngày obs cuối TỪNG series: cột ngày ở bảng dưới." tabindex="0">DỮ LIỆU ⓘ</span></div><div class="val">60/60</div>
     <div class="word neu">0 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
-<div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng. · Nền tile: <span style="background:rgba(212,166,66,.22);padding:0 6px;border-radius:4px">ánh vàng</span> = nhóm chuyện VÀNG · <span style="background:rgba(72,132,220,.22);padding:0 6px;border-radius:4px">ánh xanh</span> = nhóm chuyện USD; chữ đỏ/xanh trên tile quy về tác động cho VÀNG (riêng card USD BIAS mô tả chính USD). <button id="obsbtn" type="button">📈 Hiện chart</button> <span style="font-size:11px">(sparkline trên cards + cột 30 obs)</span></div>
+<div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng. · Nền tile: <span style="background:rgba(212,166,66,.22);padding:0 6px;border-radius:4px">ánh vàng</span> = nhóm chuyện VÀNG · <span style="background:rgba(72,132,220,.22);padding:0 6px;border-radius:4px">ánh xanh</span> = nhóm chuyện USD; chữ đỏ/xanh trên tile quy về tác động cho VÀNG (riêng card USD BIAS mô tả chính USD). · <b style="color:var(--neg)">●</b> = tin NHẠY CẢM cao (vàng giật mạnh lúc ra) · <b style="color:#d4a642">●</b> = nhạy vừa · ⏰ = ngày release kỳ tới (FRED). <button id="obsbtn" type="button">📈 Hiện chart</button> <span style="font-size:11px">(sparkline trên cards + cột 30 obs)</span></div>
 
   <h2>A. Gold — trực tiếp</h2>
   <div class="tblwrap"><table>
@@ -132,19 +132,19 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.292</b><span class="sid">2026-08-04</span></td>
-        <td class="neu">— -0.738</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="KCROROG" data-l='["06-24: 2.011","06-25: -0.802","06-26: -0.961","06-29: 0.972","06-30: 0.199","07-01: -0.144","07-02: -1.964","07-03: -0.713","07-06: 0.531","07-07: 0.755","07-08: 0.69","07-09: -1.068","07-10: -0.115","07-13: 2.036","07-14: -1.076","07-15: -0.348","07-16: 1.131","07-17: -0.516","07-20: 0.5","07-21: -0.713","07-22: -0.75","07-23: 1.542","07-24: -0.18","07-27: -0.098","07-28: 0.446","07-29: -0.309","07-30: -2.229","07-31: 0.866","08-03: -0.089","08-04: -0.292"]'><polyline points="2.0,2.1 5.3,16.6 8.6,17.5 11.9,7.5 15.2,11.5 18.6,13.2 21.9,22.6 25.2,16.2 28.5,9.8 31.8,8.6 35.1,8.9 38.4,18.0 41.7,13.1 45.0,2.0 48.3,18.1 51.7,14.3 55.0,6.7 58.3,15.2 61.6,9.9 64.9,16.2 68.2,16.4 71.5,4.5 74.8,13.4 78.1,13.0 81.4,10.2 84.8,14.1 88.1,24.0 91.4,8.0 94.7,13.0 98.0,14.0"/></svg></td>
-        <td><span class="chip neu">— 0</span></td>
-        <td><span class="chip neu">— 0</span></td>
+        <td><b>-2.258</b><span class="sid">2026-08-05</span></td>
+        <td class="neg">▼ -1.95</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="KCROROG" data-l='["06-25: -0.801","06-26: -0.96","06-29: 0.971","06-30: 0.199","07-01: -0.143","07-02: -1.963","07-03: -0.712","07-06: 0.532","07-07: 0.755","07-08: 0.69","07-09: -1.067","07-10: -0.115","07-13: 2.035","07-14: -1.075","07-15: -0.347","07-16: 1.131","07-17: -0.515","07-20: 0.5","07-21: -0.711","07-22: -0.75","07-23: 1.542","07-24: -0.18","07-27: -0.097","07-28: 0.446","07-29: -0.308","07-30: -2.229","07-31: 0.866","08-03: -0.089","08-04: -0.301","08-05: -2.258"]'><polyline points="2.0,16.5 5.3,17.3 8.6,7.5 11.9,11.4 15.2,13.2 18.6,22.5 21.9,16.1 25.2,9.7 28.5,8.6 31.8,8.9 35.1,17.9 38.4,13.0 41.7,2.0 45.0,17.9 48.3,14.2 51.7,6.6 55.0,15.1 58.3,9.9 61.6,16.1 64.9,16.3 68.2,4.5 71.5,13.3 74.8,12.9 78.1,10.1 81.4,14.0 84.8,23.8 88.1,8.0 91.4,12.9 94.7,14.0 98.0,24.0"/></svg></td>
+        <td><span class="chip neg">▼ −1</span></td>
+        <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
         <td class="name"><span class="tipname" data-tip="VIX của vàng — biến động ngụ ý từ option GLD. Không chấm hướng (ctx): GVZ bùng = sắp có swing mạnh nhưng 2 chiều — dùng để chỉnh size/SL, không dùng đoán hướng." data-tipid="GVZCLS" tabindex="0">Gold VIX (GVZ)</span><span class="sid">GVZCLS · context — vol ẩn của vàng</span>
           
           
           </td>
-        <td><b>23.5</b><span class="sid">2026-08-04</span></td>
-        <td class="neu">— -1.12</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GVZCLS" data-l='["06-24: 31.6","06-25: 29.58","06-26: 27.18","06-29: 27.7","06-30: 27.2","07-01: 27.12","07-02: 26","07-06: 25.33","07-07: 26.21","07-08: 27.6","07-09: 25.33","07-10: 23.95","07-13: 26.93","07-14: 25.02","07-15: 24.88","07-16: 26.65","07-17: 25.6","07-20: 25.37","07-21: 23.94","07-22: 24.02","07-23: 25.14","07-24: 24.33","07-27: 24.13","07-28: 24.62","07-29: 24.64","07-30: 24.48","07-31: 23.31","08-03: 23.65","08-04: 23.5"]'><polyline points="2.0,2.0 5.4,7.4 8.9,13.7 12.3,12.3 15.7,13.7 19.1,13.9 22.6,16.9 26.0,18.6 29.4,16.3 32.9,12.6 36.3,18.6 39.7,22.3 43.1,14.4 46.6,19.5 50.0,19.8 53.4,15.1 56.9,17.9 60.3,18.5 63.7,22.3 67.1,22.1 70.6,19.1 74.0,21.3 77.4,21.8 80.9,20.5 84.3,20.5 87.7,20.9 91.1,24.0 94.6,23.1 98.0,23.5"/></svg></td>
+        <td><b>25.59</b><span class="sid">2026-08-05</span></td>
+        <td class="neu">— +0.95</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GVZCLS" data-l='["06-25: 29.58","06-26: 27.18","06-29: 27.7","06-30: 27.2","07-01: 27.12","07-02: 26","07-06: 25.33","07-07: 26.21","07-08: 27.6","07-09: 25.33","07-10: 23.95","07-13: 26.93","07-14: 25.02","07-15: 24.88","07-16: 26.65","07-17: 25.6","07-20: 25.37","07-21: 23.94","07-22: 24.02","07-23: 25.14","07-24: 24.33","07-27: 24.13","07-28: 24.62","07-29: 24.64","07-30: 24.48","07-31: 23.31","08-03: 23.65","08-04: 23.5","08-05: 25.59"]'><polyline points="2.0,2.0 5.4,10.4 8.9,8.6 12.3,10.4 15.7,10.6 19.1,14.6 22.6,16.9 26.0,13.8 29.4,8.9 32.9,16.9 36.3,21.8 39.7,11.3 43.1,18.0 46.6,18.5 50.0,12.3 53.4,16.0 56.9,16.8 60.3,21.8 63.7,21.5 67.1,17.6 70.6,20.4 74.0,21.1 77.4,19.4 80.9,19.3 84.3,19.9 87.7,24.0 91.1,22.8 94.6,23.3 98.0,16.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -174,7 +174,7 @@ tr:hover td{background:var(--card)}
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th class="obscol">30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
   <tr>
-        <td class="name"><span class="tipname" data-tip="Lạm phát tiêu dùng YoY — con số CPI nóng nhất mỗi tháng (công bố ~13-15 hàng tháng, 19:30 VN). Nóng = Fed phải rắn → cản vàng ngắn hạn, đỡ USD." data-tipid="CPIAUCSL" tabindex="0">CPI YoY</span><span class="sid">CPIAUCSL</span>
+        <td class="name"><b style="color:var(--neg)">●</b> <span class="tipname" data-tip="Lạm phát tiêu dùng YoY — con số CPI nóng nhất mỗi tháng (công bố ~13-15 hàng tháng, 19:30 VN). Nóng = Fed phải rắn → cản vàng ngắn hạn, đỡ USD.<br><br>🔴 Chỉ số NHẠY CẢM mức CAO — vàng thường giật MẠNH ngay lúc tin ra (canh chip ⏰ ngày ra kỳ tới, né vào lệnh sát giờ tin).<br><br>⏰ Lịch release FRED (Consumer Price Index): kỳ tới 12/08 · kỳ sau 11/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="CPIAUCSL" tabindex="0">CPI YoY</span><span class="sid">CPIAUCSL · ⏰ 12/08</span>
           
           
           </td>
@@ -184,7 +184,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Core PCE YoY — thước lạm phát Fed CHÍNH THỨC nhắm 2%. Còn xa 2% = Fed khó cắt lãi. Với chính sách, số này nặng ký hơn CPI." data-tipid="PCEPILFE" tabindex="0">Core PCE YoY (thước Fed)</span><span class="sid">PCEPILFE</span>
+        <td class="name"><b style="color:var(--neg)">●</b> <span class="tipname" data-tip="Core PCE YoY — thước lạm phát Fed CHÍNH THỨC nhắm 2%. Còn xa 2% = Fed khó cắt lãi. Với chính sách, số này nặng ký hơn CPI.<br><br>🔴 Chỉ số NHẠY CẢM mức CAO — vàng thường giật MẠNH ngay lúc tin ra (canh chip ⏰ ngày ra kỳ tới, né vào lệnh sát giờ tin).<br><br>⏰ Lịch release FRED (Personal Income and Outlays): kỳ tới 26/08 · kỳ sau 30/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="PCEPILFE" tabindex="0">Core PCE YoY (thước Fed)</span><span class="sid">PCEPILFE · ⏰ 26/08</span>
           
           
           </td>
@@ -194,7 +194,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Lạm phát giá sản xuất lõi — chi phí đầu vào của doanh nghiệp, thường dẫn trước CPI 1-2 tháng. Dùng làm chỉ báo sớm cho chiều CPI sắp tới." data-tipid="PPIFES" tabindex="0">Core PPI YoY (final demand)</span><span class="sid">PPIFES</span>
+        <td class="name"><b style="color:#d4a642">●</b> <span class="tipname" data-tip="Lạm phát giá sản xuất lõi — chi phí đầu vào của doanh nghiệp, thường dẫn trước CPI 1-2 tháng. Dùng làm chỉ báo sớm cho chiều CPI sắp tới.<br><br>🟠 Chỉ số nhạy cảm mức VỪA — tin ra có thể tạo nhịp, ít khi đảo trend.<br><br>⏰ Lịch release FRED (Producer Price Index): kỳ tới 13/08 · kỳ sau 10/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="PPIFES" tabindex="0">Core PPI YoY (final demand)</span><span class="sid">PPIFES · ⏰ 13/08</span>
           
           
           </td>
@@ -204,7 +204,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="CPI trung vị (Cleveland Fed) — lấy mặt hàng ở giữa phân phối, lọc sạch outlier. Đo lạm phát nền ít nhiễu nhất; xu hướng của nó bền hơn CPI headline." data-tipid="MEDCPIM158SFRBCLE" tabindex="0">Median CPI (Cleveland)</span><span class="sid">MEDCPIM158SFRBCLE</span>
+        <td class="name"><span class="tipname" data-tip="CPI trung vị (Cleveland Fed) — lấy mặt hàng ở giữa phân phối, lọc sạch outlier. Đo lạm phát nền ít nhiễu nhất; xu hướng của nó bền hơn CPI headline.<br><br>⏰ Lịch release FRED (Current Median CPI): kỳ tới 12/08 · kỳ sau 11/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="MEDCPIM158SFRBCLE" tabindex="0">Median CPI (Cleveland)</span><span class="sid">MEDCPIM158SFRBCLE · ⏰ 12/08</span>
           
           
           </td>
@@ -224,9 +224,9 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Tỷ lệ thất nghiệp. Tăng = kinh tế yếu → Fed cắt lãi → đỡ vàng, hại USD. Ra cùng báo cáo NFP thứ Sáu đầu tháng." data-tipid="UNRATE" tabindex="0">Thất nghiệp</span><span class="sid">UNRATE</span>
+        <td class="name"><b style="color:var(--neg)">●</b> <span class="tipname" data-tip="Tỷ lệ thất nghiệp. Tăng = kinh tế yếu → Fed cắt lãi → đỡ vàng, hại USD. Ra cùng báo cáo NFP thứ Sáu đầu tháng.<br><br>🔴 Chỉ số NHẠY CẢM mức CAO — vàng thường giật MẠNH ngay lúc tin ra (canh chip ⏰ ngày ra kỳ tới, né vào lệnh sát giờ tin).<br><br>⏰ Lịch release FRED (Employment Situation): kỳ tới 07/08 · kỳ sau 04/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="UNRATE" tabindex="0">Thất nghiệp</span><span class="sid">UNRATE · ⏰ 07/08</span>
           
-          
+          <span class="warn" style="background:color-mix(in srgb,var(--neg) 25%,transparent);color:var(--neg);font-weight:700">⏰ release NGÀY MAI (07/08) — TIN NHẠY, vàng hay giật</span>
           </td>
         <td><b>4.2 %</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -0.1</td>
@@ -234,9 +234,9 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Đơn xin trợ cấp thất nghiệp LẦN ĐẦU hàng tuần — chỉ báo lao động nhanh nhất hệ thống. Vọt lên = thị trường lao động nứt, thấy sớm hơn UNRATE cả tháng." data-tipid="ICSA" tabindex="0">Đơn trợ cấp thất nghiệp (tuần)</span><span class="sid">ICSA</span>
+        <td class="name"><b style="color:#d4a642">●</b> <span class="tipname" data-tip="Đơn xin trợ cấp thất nghiệp LẦN ĐẦU hàng tuần — chỉ báo lao động nhanh nhất hệ thống. Vọt lên = thị trường lao động nứt, thấy sớm hơn UNRATE cả tháng.<br><br>🟠 Chỉ số nhạy cảm mức VỪA — tin ra có thể tạo nhịp, ít khi đảo trend.<br><br>⏰ Lịch release FRED (Unemployment Insurance Weekly Claims Report): kỳ tới 06/08 · kỳ sau 13/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="ICSA" tabindex="0">Đơn trợ cấp thất nghiệp (tuần)</span><span class="sid">ICSA · ⏰ 06/08</span>
           
-          
+          <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (06/08) — vol lên lịch sẵn</span>
           </td>
         <td><b>199,000</b><span class="sid">2026-08-01</span></td>
         <td class="neg">▼ -18,000</td>
@@ -244,7 +244,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Việc làm khu vực tư nhân từ dữ liệu payroll thật của ADP. Bản đối chiếu độc lập với NFP chính thức — hai nguồn lệch nhau to là tín hiệu đáng ngờ." data-tipid="ADPMNUSNERSA" tabindex="0">Việc làm ADP</span><span class="sid">ADPMNUSNERSA · bản weekly ADPWNUSNERSA đứng từ 16/05/2026</span>
+        <td class="name"><b style="color:#d4a642">●</b> <span class="tipname" data-tip="Việc làm khu vực tư nhân từ dữ liệu payroll thật của ADP. Bản đối chiếu độc lập với NFP chính thức — hai nguồn lệch nhau to là tín hiệu đáng ngờ.<br><br>🟠 Chỉ số nhạy cảm mức VỪA — tin ra có thể tạo nhịp, ít khi đảo trend.<br><br>⏰ Lịch release FRED (ADP National Employment Report): kỳ tới 02/09 · kỳ sau 30/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="ADPMNUSNERSA" tabindex="0">Việc làm ADP</span><span class="sid">ADPMNUSNERSA · bản weekly ADPWNUSNERSA đứng từ 16/05/2026 · ⏰ 02/09</span>
           
           
           </td>
@@ -254,7 +254,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Khảo sát sản xuất bang New York — PMI khu vực ra SỚM nhất mỗi tháng. Dương = mở rộng, âm = co. Thay một phần vai trò ISM (FRED không có ISM)." data-tipid="GACDISA066MSFRBNY" tabindex="0">Empire State (NY Fed)</span><span class="sid">GACDISA066MSFRBNY</span>
+        <td class="name"><b style="color:#d4a642">●</b> <span class="tipname" data-tip="Khảo sát sản xuất bang New York — PMI khu vực ra SỚM nhất mỗi tháng. Dương = mở rộng, âm = co. Thay một phần vai trò ISM (FRED không có ISM).<br><br>🟠 Chỉ số nhạy cảm mức VỪA — tin ra có thể tạo nhịp, ít khi đảo trend.<br><br>⏰ Lịch release FRED (Empire State Manufacturing Survey): kỳ tới 17/08 · kỳ sau 15/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="GACDISA066MSFRBNY" tabindex="0">Empire State (NY Fed)</span><span class="sid">GACDISA066MSFRBNY · ⏰ 17/08</span>
           
           
           </td>
@@ -264,7 +264,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Khảo sát sản xuất Philadelphia Fed — đọc cặp với Empire State: hai cái cùng chiều thì tín hiệu sản xuất tháng đó đáng tin." data-tipid="GACDFSA066MSFRBPHI" tabindex="0">Philly Fed activity</span><span class="sid">GACDFSA066MSFRBPHI</span>
+        <td class="name"><b style="color:#d4a642">●</b> <span class="tipname" data-tip="Khảo sát sản xuất Philadelphia Fed — đọc cặp với Empire State: hai cái cùng chiều thì tín hiệu sản xuất tháng đó đáng tin.<br><br>🟠 Chỉ số nhạy cảm mức VỪA — tin ra có thể tạo nhịp, ít khi đảo trend.<br><br>⏰ Lịch release FRED (Manufacturing Business Outlook Survey): kỳ tới 20/08 · kỳ sau 17/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="GACDFSA066MSFRBPHI" tabindex="0">Philly Fed activity</span><span class="sid">GACDFSA066MSFRBPHI · ⏰ 20/08</span>
           
           
           </td>
@@ -294,7 +294,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Sticky CPI lõi (Atlanta Fed) — chỉ gồm nhóm hàng ĐỔI GIÁ CHẬM (thuê nhà, dịch vụ, bảo hiểm). Cao dai = lạm phát đã bám rễ vào hợp đồng/kỳ vọng, Fed khó xoay nhanh. Cặp đối chiếu với Median CPI." data-tipid="CORESTICKM159SFRBATL" tabindex="0">Sticky CPI lõi YoY (Atlanta)</span><span class="sid">CORESTICKM159SFRBATL · nhóm giá đổi chậm — lạm phát bám rễ</span>
+        <td class="name"><span class="tipname" data-tip="Sticky CPI lõi (Atlanta Fed) — chỉ gồm nhóm hàng ĐỔI GIÁ CHẬM (thuê nhà, dịch vụ, bảo hiểm). Cao dai = lạm phát đã bám rễ vào hợp đồng/kỳ vọng, Fed khó xoay nhanh. Cặp đối chiếu với Median CPI.<br><br>⏰ Lịch release FRED (Sticky Price CPI): kỳ tới 12/08 · kỳ sau 11/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="CORESTICKM159SFRBATL" tabindex="0">Sticky CPI lõi YoY (Atlanta)</span><span class="sid">CORESTICKM159SFRBATL · nhóm giá đổi chậm — lạm phát bám rễ · ⏰ 12/08</span>
           
           
           </td>
@@ -304,7 +304,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Xác suất lạm phát PCE 12 tháng tới vượt 2.5% (model St. Louis Fed, 0-1). Tăng = thị trường tin lạm phát quay lại → đỡ vàng, khó cho Fed. Rơi về 0 kèm STLPPMDEF tăng = lo giảm phát." data-tipid="STLPPM" tabindex="0">P(lạm phát >2.5%) 12T</span><span class="sid">STLPPM · St. Louis Fed — xác suất PCE 12 tháng tới vượt 2.5%</span>
+        <td class="name"><span class="tipname" data-tip="Xác suất lạm phát PCE 12 tháng tới vượt 2.5% (model St. Louis Fed, 0-1). Tăng = thị trường tin lạm phát quay lại → đỡ vàng, khó cho Fed. Rơi về 0 kèm STLPPMDEF tăng = lo giảm phát.<br><br>⏰ Lịch release FRED (St. Louis Fed Price Pressures Measures): kỳ tới 26/08 · kỳ sau 30/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="STLPPM" tabindex="0">P(lạm phát >2.5%) 12T</span><span class="sid">STLPPM · St. Louis Fed — xác suất PCE 12 tháng tới vượt 2.5% · ⏰ 26/08</span>
           
           
           </td>
@@ -324,9 +324,9 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>16.5</b><span class="sid">2026-08-04</span></td>
-        <td class="neg">▼ -1.71</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="VIXCLS" data-l='["06-24: 18.63","06-25: 18.89","06-26: 18.41","06-29: 17.65","06-30: 16.45","07-01: 16.59","07-02: 16.15","07-03: 15.81","07-06: 15.57","07-07: 16.13","07-08: 16.9","07-09: 15.84","07-10: 15.03","07-13: 17.16","07-14: 16.5","07-15: 15.67","07-16: 16.73","07-17: 18.77","07-20: 18.65","07-21: 17.05","07-22: 16.64","07-23: 18.7","07-24: 18.58","07-27: 18.67","07-28: 18.21","07-29: 20.66","07-30: 17.09","07-31: 15.99","08-03: 15.86","08-04: 16.5"]'><polyline points="2.0,9.9 5.3,8.9 8.6,10.8 11.9,13.8 15.2,18.5 18.6,17.9 21.9,19.6 25.2,21.0 28.5,21.9 31.8,19.7 35.1,16.7 38.4,20.8 41.7,24.0 45.0,15.7 48.3,18.3 51.7,21.5 55.0,17.4 58.3,9.4 61.6,9.9 64.9,16.1 68.2,17.7 71.5,9.7 74.8,10.1 78.1,9.8 81.4,11.6 84.8,2.0 88.1,16.0 91.4,20.2 94.7,20.8 98.0,18.3"/></svg></td>
+        <td><b>15.81</b><span class="sid">2026-08-05</span></td>
+        <td class="neg">▼ -4.85</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="VIXCLS" data-l='["06-25: 18.89","06-26: 18.41","06-29: 17.65","06-30: 16.45","07-01: 16.59","07-02: 16.15","07-03: 15.81","07-06: 15.57","07-07: 16.13","07-08: 16.9","07-09: 15.84","07-10: 15.03","07-13: 17.16","07-14: 16.5","07-15: 15.67","07-16: 16.73","07-17: 18.77","07-20: 18.65","07-21: 17.05","07-22: 16.64","07-23: 18.7","07-24: 18.58","07-27: 18.67","07-28: 18.21","07-29: 20.66","07-30: 17.09","07-31: 15.99","08-03: 15.86","08-04: 16.5","08-05: 15.81"]'><polyline points="2.0,8.9 5.3,10.8 8.6,13.8 11.9,18.5 15.2,17.9 18.6,19.6 21.9,21.0 25.2,21.9 28.5,19.7 31.8,16.7 35.1,20.8 38.4,24.0 41.7,15.7 45.0,18.3 48.3,21.5 51.7,17.4 55.0,9.4 58.3,9.9 61.6,16.1 64.9,17.7 68.2,9.7 71.5,10.1 74.8,9.8 78.1,11.6 81.4,2.0 84.8,16.0 88.1,20.2 91.4,20.8 94.7,18.3 98.0,21.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
@@ -340,7 +340,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Điều kiện tài chính tổng hợp Chicago Fed (âm = lỏng, dương = thắt). Thắt nhanh = stress hệ thống lan rộng → risk-off, trú ẩn bid." data-tipid="NFCI" tabindex="0">Điều kiện tài chính (NFCI)</span><span class="sid">NFCI</span>
+        <td class="name"><span class="tipname" data-tip="Điều kiện tài chính tổng hợp Chicago Fed (âm = lỏng, dương = thắt). Thắt nhanh = stress hệ thống lan rộng → risk-off, trú ẩn bid.<br><br>⏰ Lịch release FRED (Chicago Fed National Financial Conditions Index): kỳ tới 12/08 · kỳ sau 19/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="NFCI" tabindex="0">Điều kiện tài chính (NFCI)</span><span class="sid">NFCI · ⏰ 12/08</span>
           
           
           </td>
@@ -350,9 +350,9 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Tổng tài sản trên bảng cân đối Fed — QE làm phình, QT làm xẹp. Phình = bơm thanh khoản → đỡ vàng và tài sản rủi ro, pha loãng USD." data-tipid="WALCL" tabindex="0">Bảng cân đối Fed</span><span class="sid">WALCL</span>
+        <td class="name"><span class="tipname" data-tip="Tổng tài sản trên bảng cân đối Fed — QE làm phình, QT làm xẹp. Phình = bơm thanh khoản → đỡ vàng và tài sản rủi ro, pha loãng USD.<br><br>⏰ Lịch release FRED (H.4.1 Factors Affecting Reserve Balances): kỳ tới 06/08 · kỳ sau 13/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="WALCL" tabindex="0">Bảng cân đối Fed</span><span class="sid">WALCL · ⏰ 06/08</span>
           
-          
+          <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (06/08) — vol lên lịch sẵn</span>
           </td>
         <td><b>6.74 nghìn tỷ $</b><span class="sid">2026-07-29</span></td>
         <td class="pos">▲ +0.014</td>
@@ -370,9 +370,9 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">— 0</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Két tiền mặt của Kho bạc Mỹ tại Fed (TGA). Kho bạc xả két = bơm thanh khoản ra hệ thống; nạp két bằng phát hành nợ = hút thanh khoản về." data-tipid="WTREGEN" tabindex="0">TGA (két Kho bạc)</span><span class="sid">WTREGEN</span>
+        <td class="name"><span class="tipname" data-tip="Két tiền mặt của Kho bạc Mỹ tại Fed (TGA). Kho bạc xả két = bơm thanh khoản ra hệ thống; nạp két bằng phát hành nợ = hút thanh khoản về.<br><br>⏰ Lịch release FRED (H.4.1 Factors Affecting Reserve Balances): kỳ tới 06/08 · kỳ sau 13/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="WTREGEN" tabindex="0">TGA (két Kho bạc)</span><span class="sid">WTREGEN · ⏰ 06/08</span>
           
-          
+          <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (06/08) — vol lên lịch sẵn</span>
           </td>
         <td><b>910.78 tỷ $</b><span class="sid">2026-07-29</span></td>
         <td class="neu">— +30.54</td>
@@ -384,15 +384,15 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>537.87</b><span class="sid">2026-08-04</span></td>
-        <td class="pos">▲ +205.67</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="USEPUINDXD" data-l='["07-06: 243.91","07-07: 254.71","07-08: 190.29","07-09: 282.79","07-10: 230.3","07-11: 260.42","07-12: 327.49","07-13: 224.88","07-14: 301.04","07-15: 295.38","07-16: 284.72","07-17: 373.96","07-18: 489.2","07-19: 197.79","07-20: 381.15","07-21: 364.17","07-22: 152.48","07-23: 195.94","07-24: 734.03","07-25: 292.17","07-26: 244.35","07-27: 326.93","07-28: 267.59","07-29: 238.72","07-30: 332.2","07-31: 255.19","08-01: 220.13","08-02: 356.23","08-03: 186.21","08-04: 537.87"]'><polyline points="2.0,20.5 5.3,20.1 8.6,22.6 11.9,19.1 15.2,21.1 18.6,19.9 21.9,17.4 25.2,21.3 28.5,18.4 31.8,18.6 35.1,19.0 38.4,15.6 41.7,11.3 45.0,22.3 48.3,15.3 51.7,16.0 55.0,24.0 58.3,22.4 61.6,2.0 64.9,18.7 68.2,20.5 71.5,17.4 74.8,19.6 78.1,20.7 81.4,17.2 84.8,20.1 88.1,21.4 91.4,16.3 94.7,22.7 98.0,9.4"/></svg></td>
-        <td><span class="chip pos">▲ +1</span></td>
-        <td><span class="chip pos">▲ +1</span></td>
+        <td><b>436.38</b><span class="sid">2026-08-05</span></td>
+        <td class="neu">— +181.49</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="USEPUINDXD" data-l='["07-07: 254.48","07-08: 190.16","07-09: 282.74","07-10: 230.19","07-11: 260.37","07-12: 327.38","07-13: 224.82","07-14: 300.91","07-15: 295.02","07-16: 284.42","07-17: 373.5","07-18: 488.63","07-19: 197.5","07-20: 380.49","07-21: 363.77","07-22: 152.33","07-23: 195.58","07-24: 732.16","07-25: 291.77","07-26: 244.2","07-27: 326.63","07-28: 267.49","07-29: 237.6","07-30: 338.58","07-31: 254.89","08-01: 225.41","08-02: 353.65","08-03: 183.47","08-04: 404.95","08-05: 436.38"]'><polyline points="2.0,20.1 5.3,22.6 8.6,19.1 11.9,21.0 15.2,19.9 18.6,17.4 21.9,21.2 25.2,18.4 28.5,18.6 31.8,19.0 35.1,15.6 38.4,11.2 41.7,22.3 45.0,15.3 48.3,16.0 51.7,24.0 55.0,22.4 58.3,2.0 61.6,18.7 64.9,20.5 68.2,17.4 71.5,19.6 74.8,20.8 78.1,16.9 81.4,20.1 84.8,21.2 88.1,16.4 91.4,22.8 94.7,14.4 98.0,13.2"/></svg></td>
+        <td><span class="chip neu">— 0</span></td>
+        <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Fed cho NHTW nước ngoài vay USD qua swap line — nhiệt kế KHAN USD toàn cầu. Bình thường ~0-250 triệu (noise, không chấm); vượt 5 tỷ = stress đô la thật (2020: ~450 tỷ) → USD bid mạnh." data-tipid="SWPT" tabindex="0">Swap thanh khoản Fed (khan USD)</span><span class="sid">SWPT · USD+ khi >5000tr (stress thật); routine 16-250tr = noise không chấm; 2020 đạt ~450k tr</span>
+        <td class="name"><span class="tipname" data-tip="Fed cho NHTW nước ngoài vay USD qua swap line — nhiệt kế KHAN USD toàn cầu. Bình thường ~0-250 triệu (noise, không chấm); vượt 5 tỷ = stress đô la thật (2020: ~450 tỷ) → USD bid mạnh.<br><br>⏰ Lịch release FRED (H.4.1 Factors Affecting Reserve Balances): kỳ tới 06/08 · kỳ sau 13/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="SWPT" tabindex="0">Swap thanh khoản Fed (khan USD)</span><span class="sid">SWPT · USD+ khi >5000tr (stress thật); routine 16-250tr = noise không chấm; 2020 đạt ~450k tr · ⏰ 06/08</span>
           
-          
+          <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (06/08) — vol lên lịch sẵn</span>
           </td>
         <td><b>132 tr $</b><span class="sid">2026-07-29</span></td>
         <td class="neu">— -118</td>
@@ -400,7 +400,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">— 0</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Cung tiền M2. Tăng nhanh = pha loãng tiền giấy → nhiên liệu dài hạn của vàng (luận điểm định giá gold/M2). Tác động chậm, đọc theo quý chứ không theo tuần." data-tipid="M2SL" tabindex="0">Cung tiền M2</span><span class="sid">M2SL</span>
+        <td class="name"><span class="tipname" data-tip="Cung tiền M2. Tăng nhanh = pha loãng tiền giấy → nhiên liệu dài hạn của vàng (luận điểm định giá gold/M2). Tác động chậm, đọc theo quý chứ không theo tuần.<br><br>⏰ Lịch release FRED (H.6 Money Stock Measures): kỳ tới 25/08 · kỳ sau 22/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="M2SL" tabindex="0">Cung tiền M2</span><span class="sid">M2SL · ⏰ 25/08</span>
           
           
           </td>
@@ -420,7 +420,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Chỉ số stress tài chính tổng hợp St. Louis (18 biến: lãi suất, spread, vol). 0 = mức trung bình lịch sử, âm = thị trường lỏng/yên, dương vọt = stress lan hệ thống → risk-off, trú ẩn bid cả vàng lẫn USD." data-tipid="STLFSI4" tabindex="0">Financial Stress (St. Louis)</span><span class="sid">STLFSI4 · 0 = trung bình lịch sử; âm = lỏng</span>
+        <td class="name"><span class="tipname" data-tip="Chỉ số stress tài chính tổng hợp St. Louis (18 biến: lãi suất, spread, vol). 0 = mức trung bình lịch sử, âm = thị trường lỏng/yên, dương vọt = stress lan hệ thống → risk-off, trú ẩn bid cả vàng lẫn USD.<br><br>⏰ Lịch release FRED (St. Louis Fed Financial Stress Index): kỳ tới 12/08 · kỳ sau 19/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="STLFSI4" tabindex="0">Financial Stress (St. Louis)</span><span class="sid">STLFSI4 · 0 = trung bình lịch sử; âm = lỏng · ⏰ 12/08</span>
           
           
           </td>
@@ -430,9 +430,9 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Bất định chính sách kinh tế TOÀN CẦU (GDP-weighted 20 nước, tháng). Bản mở rộng của EPU Mỹ: bất định toàn cầu cao kéo dài = môi trường thuận cho vàng bất kể Fed." data-tipid="GEPUCURRENT" tabindex="0">EPU toàn cầu (tháng)</span><span class="sid">GEPUCURRENT</span>
+        <td class="name"><span class="tipname" data-tip="Bất định chính sách kinh tế TOÀN CẦU (GDP-weighted 20 nước, tháng). Bản mở rộng của EPU Mỹ: bất định toàn cầu cao kéo dài = môi trường thuận cho vàng bất kể Fed.<br><br>⏰ Lịch release FRED (Economic Policy Uncertainty): kỳ tới 06/08 · kỳ sau 07/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="GEPUCURRENT" tabindex="0">EPU toàn cầu (tháng)</span><span class="sid">GEPUCURRENT · ⏰ 06/08</span>
           
-          
+          <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (06/08) — vol lên lịch sẵn</span>
           </td>
         <td><b>278.23</b><span class="sid">2026-06-01</span></td>
         <td class="neg">▼ -43.08</td>
@@ -440,9 +440,9 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Bất định chính sách Trung Quốc (báo chí đại lục, tháng). TQ bất định → hộ gia đình TQ trú vào vàng (cầu vật chất số 1 thế giới) + dòng vốn tháo chạy → USD mạnh." data-tipid="CHNMAINLANDEPU" tabindex="0">EPU Trung Quốc (tháng)</span><span class="sid">CHNMAINLANDEPU · TQ bất định → dân TQ trú vàng</span>
+        <td class="name"><span class="tipname" data-tip="Bất định chính sách Trung Quốc (báo chí đại lục, tháng). TQ bất định → hộ gia đình TQ trú vào vàng (cầu vật chất số 1 thế giới) + dòng vốn tháo chạy → USD mạnh.<br><br>⏰ Lịch release FRED (Economic Policy Uncertainty): kỳ tới 06/08 · kỳ sau 07/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="CHNMAINLANDEPU" tabindex="0">EPU Trung Quốc (tháng)</span><span class="sid">CHNMAINLANDEPU · TQ bất định → dân TQ trú vàng · ⏰ 06/08</span>
           
-          
+          <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (06/08) — vol lên lịch sẵn</span>
           </td>
         <td><b>231.45</b><span class="sid">2026-06-01</span></td>
         <td class="neu">— -35.78</td>
@@ -486,9 +486,9 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Treasuries mà NHTW nước ngoài gửi Fed NY giữ hộ. GIẢM đều = họ đang bán/rút → de-dollarization → cực tốt cho vàng. Proxy duy nhất trên FRED cho câu chuyện này." data-tipid="WMTSECL1" tabindex="0">Custody Treasuries NHTW ngoại</span><span class="sid">WMTSECL1 · giảm = de-dollarization → gold +</span>
+        <td class="name"><span class="tipname" data-tip="Treasuries mà NHTW nước ngoài gửi Fed NY giữ hộ. GIẢM đều = họ đang bán/rút → de-dollarization → cực tốt cho vàng. Proxy duy nhất trên FRED cho câu chuyện này.<br><br>⏰ Lịch release FRED (H.4.1 Factors Affecting Reserve Balances): kỳ tới 06/08 · kỳ sau 13/08. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="WMTSECL1" tabindex="0">Custody Treasuries NHTW ngoại</span><span class="sid">WMTSECL1 · giảm = de-dollarization → gold + · ⏰ 06/08</span>
           
-          
+          <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (06/08) — vol lên lịch sẵn</span>
           </td>
         <td><b>2.657 nghìn tỷ $</b><span class="sid">2026-07-29</span></td>
         <td class="pos">▲ +0.031</td>
@@ -496,7 +496,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip neg">▼ −1</span></td>
         <td><span class="chip pos">▲ +1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Cân đối ngân sách liên bang theo tháng (âm = thâm hụt). So với CÙNG KỲ năm trước (seasonality nặng). Thâm hụt phình = phát hành nợ nhiều → luận điểm fiscal-hedge đỡ vàng dài hạn." data-tipid="MTSDS133FMS" tabindex="0">Cân đối ngân sách LB</span><span class="sid">MTSDS133FMS · Δ so cùng kỳ 12 tháng — seasonality mạnh</span>
+        <td class="name"><span class="tipname" data-tip="Cân đối ngân sách liên bang theo tháng (âm = thâm hụt). So với CÙNG KỲ năm trước (seasonality nặng). Thâm hụt phình = phát hành nợ nhiều → luận điểm fiscal-hedge đỡ vàng dài hạn.<br><br>⏰ Lịch release FRED (Monthly Treasury Statement): kỳ tới 12/08 · kỳ sau 11/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="MTSDS133FMS" tabindex="0">Cân đối ngân sách LB</span><span class="sid">MTSDS133FMS · Δ so cùng kỳ 12 tháng — seasonality mạnh · ⏰ 12/08</span>
           
           
           </td>
@@ -506,7 +506,7 @@ tr:hover td{background:var(--card)}
         <td><span class="chip pos">▲ +1</span></td>
         <td><span class="chip neg">▼ −1</span></td>
       </tr><tr>
-        <td class="name"><span class="tipname" data-tip="Niềm tin tiêu dùng Michigan. Vùng đáy lịch sử = recession fear → ép Fed dovish → đỡ vàng. Trễ 1 tháng — chỉ đọc khi ở cực trị, đừng đọc nhiễu giữa biên độ." data-tipid="UMCSENT" tabindex="0">Michigan sentiment</span><span class="sid">UMCSENT · trễ 1 tháng</span>
+        <td class="name"><b style="color:#d4a642">●</b> <span class="tipname" data-tip="Niềm tin tiêu dùng Michigan. Vùng đáy lịch sử = recession fear → ép Fed dovish → đỡ vàng. Trễ 1 tháng — chỉ đọc khi ở cực trị, đừng đọc nhiễu giữa biên độ.<br><br>🟠 Chỉ số nhạy cảm mức VỪA — tin ra có thể tạo nhịp, ít khi đảo trend.<br><br>⏰ Lịch release FRED (Surveys of Consumers): kỳ tới 28/08 · kỳ sau 25/09. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="UMCSENT" tabindex="0">Michigan sentiment</span><span class="sid">UMCSENT · trễ 1 tháng · ⏰ 28/08</span>
           
           
           </td>
@@ -704,7 +704,7 @@ tr:hover td{background:var(--card)}
   <thead><tr><th>Chỉ số</th><th>Mới nhất</th><th>Δ cửa sổ</th><th class="obscol">30 obs</th><th>→ Gold</th><th>→ USD</th></tr></thead>
   <tbody>
   <tr>
-        <td class="name"><span class="tipname" data-tip="Xuất siêu hàng hóa của Việt Nam sang Mỹ theo tháng (Census: IMP5520 − EXP5520, trễ ~6 tuần). Đang ~20 tỷ $/tháng — kỷ lục, và là con số nằm ngay tâm ngắm thuế quan. Tăng = cỗ máy XK khỏe (đỡ VNINDEX nhóm XK) nhưng rủi ro tariff phình theo; sụt gãy = đơn hàng Mỹ yếu hoặc thuế đã cắn." data-tipid="VN_US_TRADE" tabindex="0">Xuất siêu VN sang Mỹ (tháng)</span><span class="sid">VN_US_TRADE · Census: Mỹ nhập từ VN − Mỹ xuất sang VN; tâm ngắm tariff + sức khỏe cỗ máy XK</span>
+        <td class="name"><span class="tipname" data-tip="Xuất siêu hàng hóa của Việt Nam sang Mỹ theo tháng (Census: IMP5520 − EXP5520, trễ ~6 tuần). Đang ~20 tỷ $/tháng — kỷ lục, và là con số nằm ngay tâm ngắm thuế quan. Tăng = cỗ máy XK khỏe (đỡ VNINDEX nhóm XK) nhưng rủi ro tariff phình theo; sụt gãy = đơn hàng Mỹ yếu hoặc thuế đã cắn.<br><br>⏰ Lịch release FRED (U.S. International Trade in Goods and Services): kỳ tới 03/09 · kỳ sau 06/10. FRED chỉ cho ngày, không giờ — giờ công bố (ET) xem lịch tin tab Pooldir." data-tipid="VN_US_TRADE" tabindex="0">Xuất siêu VN sang Mỹ (tháng)</span><span class="sid">VN_US_TRADE · Census: Mỹ nhập từ VN − Mỹ xuất sang VN; tâm ngắm tariff + sức khỏe cỗ máy XK · ⏰ 03/09</span>
           
           
           </td>
