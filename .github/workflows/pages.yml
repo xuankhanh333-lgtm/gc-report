@@ -1,6 +1,8 @@
 # Deploy GitHub Pages qua Actions (build_type=workflow) — thay pipeline legacy bi ket 06/08/2026
 # (legacy builder loi "Page build failed" tu 17:35, build treo vo han sau khi reset).
-# Bot push ~15'/lan -> concurrency cancel-in-progress de chi giu lan moi nhat.
+# Bot push ~15'/lan, co khi cap cach 14s -> KHONG cancel-in-progress: huy giua buoc deploy-pages
+# de lai deployment ket "in progress" tren server (dung benh da lam Pages chet 17:35). Xep hang:
+# GitHub tu gop cac run cho trong cung group, chi giu ban moi nhat.
 name: Deploy Pages
 on:
   push:
@@ -8,7 +10,7 @@ on:
   workflow_dispatch:
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 permissions:
   contents: read
   pages: write
