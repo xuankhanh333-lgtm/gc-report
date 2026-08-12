@@ -1,0 +1,4 @@
+{
+  "_doc": "Override tay cho section NHTW mua vàng (fred.html) — số nước công bố SỚM trước khi IMF IRFCL nạp (~1 tháng). Key = mã nước IRFCL (CHN/POL/...), d = kỳ 'YYYY-Mmm', v = TROY OUNCE thô (cùng đơn vị IMF, vd 76.08M oz = 76080000), src = nguồn + ngày. Scorecard tự BỎ entry khi IMF đã có tháng đó trở đi (không cần dọn tay); lệch >20% so obs IMF cuối bị coi là gõ nhầm và bỏ qua. Cả 2 máy đều pull gc-report trước khi chạy nên sửa file này + push là đủ.",
+  "CHN": { "d": "2026-M07", "v": 76080000, "src": "SAFE 07/08" }
+}
