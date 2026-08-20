@@ -31,23 +31,23 @@ tr:hover td{background:var(--card)}
 .legend{font-size:12px;color:var(--ink2);margin:10px 0 0}
 </style></head><body>
 <h1>FRED Scorecard — Gold (GC) & USD</h1>
-<div class="sub">Sinh lúc 06:50:13 20/8/2026 · 69 series (32→37→44→56→60→61→62: +carry AU/NZ/BoE + VN trade 17/07, +ECBDFR 06/08, +dự trữ VN 12/08 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
+<div class="sub">Sinh lúc 07:22:04 20/8/2026 · 69 series (32→37→44→56→60→61→62: +carry AU/NZ/BoE + VN trade 17/07, +ECBDFR 06/08, +dự trữ VN 12/08 — bias trước/sau không so trực tiếp) · Δ cửa sổ: daily = 5 obs, weekly = 4, monthly = 1 (dead-zone 0.5σ√W) · điểm = hướng Δ × dấu tác động · refresh: <code>node scorecard.mjs</code></div>
 <div id="dcpline"></div>
 <div class="kpis">
-  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên VÀNG rồi cộng cả 46 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 06:50:13 20/8/2026 VN." tabindex="0">GOLD BIAS (tổng 46 chỉ số active) ⓘ</span></div><div class="val">-1</div>
+  <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="GOLD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên VÀNG rồi cộng cả 46 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 07:22:04 20/8/2026 VN." tabindex="0">GOLD BIAS (tổng 46 chỉ số active) ⓘ</span></div><div class="val">-1</div>
     <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="GOLD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (11):</span> Lợi suất thực 5Y · Breakeven 10Y · 5y5y forward breakeven · Core PCE YoY (thước Fed) · Core PPI YoY (final demand) · Sticky CPI lõi YoY (Atlanta) · Bảng cân đối Fed · Cung tiền M2 · EPU Trung Quốc (tháng) · Độ dốc đuôi 30Y−10Y · Cân đối ngân sách LB<br><br><span class=&quot;neg&quot;>▼ Bất lợi (12):</span> Bạc (QSLVO) · Median CPI (Cleveland) · Thất nghiệp · Việc làm ADP · Philly Fed activity · Dầu WTI (tháng) · Điều kiện tài chính (NFCI) · TGA (két Kho bạc) · EPU toàn cầu (tháng) · Real rate 10Y (model-based) · Michigan sentiment · USDJPY" tabindex="0"><b class="pos">▲11</b> · <b class="neg">▼12</b> · 23 im — soi phiếu ⓘ</span></div>
     <div class="bar"><i class="n" style="width:3%;transform:translateX(-100%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 60" preserveAspectRatio="none" data-t="GOLD BIAS · % chuẩn hoá theo N · từng lần chạy" data-l='["28/7 20:45: -8 (-27%)","29/7 06:31: -6 (-20%)","29/7 20:45: -7 (-24%)","30/7 06:31: -5 (-17%)","30/7 20:46: -5 (-17%)","31/7 06:31: -2 (-7%)","31/7 20:45: -2 (-7%)","01/8 06:30: -6 (-20%)","02/8 22:32: -6 (-20%)","03/8 06:31: -6 (-20%)","03/8 20:46: -5 (-17%)","04/8 06:31: -1 (-3%)","04/8 20:45: -1 (-3%)","05/8 06:31: +0 (+0%)","05/8 20:45: +2 (+7%)","06/8 06:31: +0 (+0%)","06/8 19:59: +0 (+0%)","06/8 21:08: -2 (-7%)","06/8 21:26: -2 (-7%)","06/8 21:43: -2 (-7%)","06/8 21:58: -2 (-7%)","06/8 22:04: -2 (-7%)","06/8 22:14: -2 (-7%)","06/8 22:16: -2 (-7%)","06/8 22:18: -2 (-7%)","06/8 22:28: -2 (-7%)","07/8 06:31: -4 (-14%)","07/8 20:46: -2 (-7%)","08/8 06:31: -3 (-10%)","10/8 06:31: -3 (-10%)","10/8 20:46: -4 (-14%)","11/8 06:31: +0 (+0%)","11/8 20:46: +1 (+3%)","12/8 06:31: -2 (-7%)","12/8 20:46: +0 (+0%)","12/8 21:14: +0 (+0%)","12/8 21:29: +0 (+0%)","12/8 21:53: +0 (+0%)","12/8 22:07: -2 (-7%)","12/8 22:32: -2 (-7%)","12/8 22:40: -2 (-7%)","13/8 06:31: -5 (-17%)","13/8 20:46: -4 (-14%)","14/8 06:31: -3 (-10%)","14/8 20:46: -4 (-14%)","15/8 06:30: +2 (+7%)","15/8 06:40: +2 (+7%)","15/8 06:44: +2 (+7%)","15/8 06:47: +2 (+7%)","17/8 06:31: +1 (+3%)","17/8 20:45: +2 (+7%)","18/8 06:31: -4 (-14%)","18/8 20:46: -4 (-14%)","19/8 06:31: -1 (-3%)","19/8 20:49: -2 (-7%)","19/8 22:36: -2 (-7%)","19/8 23:37: -2 (-7%)","20/8 06:31: -1 (-3%)","20/8 06:44: -1 (-3%)","20/8 06:50: -1 (-3%)"]'>
-    <line class="th" x1="0" y1="6.9" x2="100" y2="6.9"/><line class="th" x1="0" y1="53.1" x2="100" y2="53.1"/><line class="zero" x1="0" y1="30" x2="100" y2="30"/><line class="day" x1="4.6" y1="2" x2="4.6" y2="58"/><line class="day" x1="7.8" y1="2" x2="7.8" y2="58"/><line class="day" x1="11.0" y1="2" x2="11.0" y2="58"/><line class="day" x1="14.2" y1="2" x2="14.2" y2="58"/><line class="day" x1="15.7" y1="2" x2="15.7" y2="58"/><line class="day" x1="17.3" y1="2" x2="17.3" y2="58"/><line class="day" x1="20.5" y1="2" x2="20.5" y2="58"/><line class="day" x1="23.7" y1="2" x2="23.7" y2="58"/><line class="day" x1="26.9" y1="2" x2="26.9" y2="58"/><line class="day" x1="44.4" y1="2" x2="44.4" y2="58"/><line class="day" x1="47.6" y1="2" x2="47.6" y2="58"/><line class="day" x1="49.2" y1="2" x2="49.2" y2="58"/><line class="day" x1="52.4" y1="2" x2="52.4" y2="58"/><line class="day" x1="55.6" y1="2" x2="55.6" y2="58"/><line class="day" x1="68.3" y1="2" x2="68.3" y2="58"/><line class="day" x1="71.5" y1="2" x2="71.5" y2="58"/><line class="day" x1="74.7" y1="2" x2="74.7" y2="58"/><line class="day" x1="81.1" y1="2" x2="81.1" y2="58"/><line class="day" x1="84.3" y1="2" x2="84.3" y2="58"/><line class="day" x1="87.4" y1="2" x2="87.4" y2="58"/><line class="day" x1="93.8" y1="2" x2="93.8" y2="58"/>
-    <polyline points="3.0,45.8 4.6,41.8 6.2,43.8 7.8,39.8 9.4,39.8 11.0,33.9 12.6,33.9 14.2,41.8 15.7,41.8 17.3,41.8 18.9,39.8 20.5,32 22.1,32 23.7,30 25.3,26.1 26.9,30 28.5,30 30.1,33.9 31.7,33.9 33.3,33.9 34.9,33.9 36.5,33.9 38.1,33.9 39.6,33.9 41.2,33.9 42.8,33.9 44.4,37.9 46.0,33.9 47.6,35.9 49.2,35.9 50.8,37.9 52.4,30 54.0,28 55.6,33.9 57.2,30 58.8,30 60.4,30 61.9,30 63.5,33.9 65.1,33.9 66.7,33.9 68.3,39.8 69.9,37.9 71.5,35.9 73.1,37.9 74.7,26.1 76.3,26.1 77.9,26.1 79.5,26.1 81.1,28 82.7,26.1 84.3,37.9 85.8,37.9 87.4,32 89.0,33.9 90.6,33.9 92.2,33.8 93.8,31.9 95.4,31.9 97.0,31.9"/>
-    <circle cx="97.0" cy="31.9" r="3" class="n"/></svg><div class="baxis"><span style="left:4.0%">28/7</span><span style="left:17.3%">3/8</span><span style="left:44.4%">7/8</span><span style="left:68.3%">13/8</span><span style="left:93.8%">20/8</span></div><div class="lbl">history 60 lần chạy</div></div>
-  <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="USD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên USD rồi cộng cả 50 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 06:50:13 20/8/2026 VN." tabindex="0">USD BIAS (tổng 50 chỉ số active) ⓘ</span></div><div class="val">+2</div>
+    <svg class="bspark" viewBox="0 0 100 60" preserveAspectRatio="none" data-t="GOLD BIAS · % chuẩn hoá theo N · từng lần chạy" data-l='["29/7 06:31: -6 (-20%)","29/7 20:45: -7 (-24%)","30/7 06:31: -5 (-17%)","30/7 20:46: -5 (-17%)","31/7 06:31: -2 (-7%)","31/7 20:45: -2 (-7%)","01/8 06:30: -6 (-20%)","02/8 22:32: -6 (-20%)","03/8 06:31: -6 (-20%)","03/8 20:46: -5 (-17%)","04/8 06:31: -1 (-3%)","04/8 20:45: -1 (-3%)","05/8 06:31: +0 (+0%)","05/8 20:45: +2 (+7%)","06/8 06:31: +0 (+0%)","06/8 19:59: +0 (+0%)","06/8 21:08: -2 (-7%)","06/8 21:26: -2 (-7%)","06/8 21:43: -2 (-7%)","06/8 21:58: -2 (-7%)","06/8 22:04: -2 (-7%)","06/8 22:14: -2 (-7%)","06/8 22:16: -2 (-7%)","06/8 22:18: -2 (-7%)","06/8 22:28: -2 (-7%)","07/8 06:31: -4 (-14%)","07/8 20:46: -2 (-7%)","08/8 06:31: -3 (-10%)","10/8 06:31: -3 (-10%)","10/8 20:46: -4 (-14%)","11/8 06:31: +0 (+0%)","11/8 20:46: +1 (+3%)","12/8 06:31: -2 (-7%)","12/8 20:46: +0 (+0%)","12/8 21:14: +0 (+0%)","12/8 21:29: +0 (+0%)","12/8 21:53: +0 (+0%)","12/8 22:07: -2 (-7%)","12/8 22:32: -2 (-7%)","12/8 22:40: -2 (-7%)","13/8 06:31: -5 (-17%)","13/8 20:46: -4 (-14%)","14/8 06:31: -3 (-10%)","14/8 20:46: -4 (-14%)","15/8 06:30: +2 (+7%)","15/8 06:40: +2 (+7%)","15/8 06:44: +2 (+7%)","15/8 06:47: +2 (+7%)","17/8 06:31: +1 (+3%)","17/8 20:45: +2 (+7%)","18/8 06:31: -4 (-14%)","18/8 20:46: -4 (-14%)","19/8 06:31: -1 (-3%)","19/8 20:49: -2 (-7%)","19/8 22:36: -2 (-7%)","19/8 23:37: -2 (-7%)","20/8 06:31: -1 (-3%)","20/8 06:44: -1 (-3%)","20/8 06:50: -1 (-3%)","20/8 07:22: -1 (-3%)"]'>
+    <line class="th" x1="0" y1="6.9" x2="100" y2="6.9"/><line class="th" x1="0" y1="53.1" x2="100" y2="53.1"/><line class="zero" x1="0" y1="30" x2="100" y2="30"/><line class="day" x1="6.2" y1="2" x2="6.2" y2="58"/><line class="day" x1="9.4" y1="2" x2="9.4" y2="58"/><line class="day" x1="12.6" y1="2" x2="12.6" y2="58"/><line class="day" x1="14.2" y1="2" x2="14.2" y2="58"/><line class="day" x1="15.7" y1="2" x2="15.7" y2="58"/><line class="day" x1="18.9" y1="2" x2="18.9" y2="58"/><line class="day" x1="22.1" y1="2" x2="22.1" y2="58"/><line class="day" x1="25.3" y1="2" x2="25.3" y2="58"/><line class="day" x1="42.8" y1="2" x2="42.8" y2="58"/><line class="day" x1="46.0" y1="2" x2="46.0" y2="58"/><line class="day" x1="47.6" y1="2" x2="47.6" y2="58"/><line class="day" x1="50.8" y1="2" x2="50.8" y2="58"/><line class="day" x1="54.0" y1="2" x2="54.0" y2="58"/><line class="day" x1="66.7" y1="2" x2="66.7" y2="58"/><line class="day" x1="69.9" y1="2" x2="69.9" y2="58"/><line class="day" x1="73.1" y1="2" x2="73.1" y2="58"/><line class="day" x1="79.5" y1="2" x2="79.5" y2="58"/><line class="day" x1="82.7" y1="2" x2="82.7" y2="58"/><line class="day" x1="85.8" y1="2" x2="85.8" y2="58"/><line class="day" x1="92.2" y1="2" x2="92.2" y2="58"/>
+    <polyline points="3.0,41.8 4.6,43.8 6.2,39.8 7.8,39.8 9.4,33.9 11.0,33.9 12.6,41.8 14.2,41.8 15.7,41.8 17.3,39.8 18.9,32 20.5,32 22.1,30 23.7,26.1 25.3,30 26.9,30 28.5,33.9 30.1,33.9 31.7,33.9 33.3,33.9 34.9,33.9 36.5,33.9 38.1,33.9 39.6,33.9 41.2,33.9 42.8,37.9 44.4,33.9 46.0,35.9 47.6,35.9 49.2,37.9 50.8,30 52.4,28 54.0,33.9 55.6,30 57.2,30 58.8,30 60.4,30 61.9,33.9 63.5,33.9 65.1,33.9 66.7,39.8 68.3,37.9 69.9,35.9 71.5,37.9 73.1,26.1 74.7,26.1 76.3,26.1 77.9,26.1 79.5,28 81.1,26.1 82.7,37.9 84.3,37.9 85.8,32 87.4,33.9 89.0,33.9 90.6,33.8 92.2,31.9 93.8,31.9 95.4,31.9 97.0,31.9"/>
+    <circle cx="97.0" cy="31.9" r="3" class="n"/></svg><div class="baxis"><span style="left:4.0%">29/7</span><span style="left:18.9%">4/8</span><span style="left:42.8%">7/8</span><span style="left:66.7%">13/8</span><span style="left:92.2%">20/8</span></div><div class="lbl">history 60 lần chạy</div></div>
+  <div class="kpi side-usd"><div class="lbl"><span class="tipname" data-tipid="USD BIAS — cách chấm & data" data-tip="Tally thô: mỗi chỉ số chấm ▲+1 / ▼−1 / — 0 theo Δ của cửa sổ W obs gần nhất (dead-zone |Δ| ≤ 0.5σ√W — dao động nhỏ tính là im), nhân DẤU TÁC ĐỘNG lên USD rồi cộng cả 50 chỉ số active (ctx không tính). Không trọng số, không phải model.<br><br>Ngưỡng chữ theo |bias|×150/n: ≥40% MẠNH · ≥20% NGHIÊNG · còn lại TRUNG TÍNH.<br><br>Data: mỗi chỉ số theo lịch riêng (daily/weekly/monthly) — ngày obs cuối từng dòng xem ở bảng dưới. Lần chạy này: 07:22:04 20/8/2026 VN." tabindex="0">USD BIAS (tổng 50 chỉ số active) ⓘ</span></div><div class="val">+2</div>
     <div class="word neu">TRUNG TÍNH</div><div class="lbl" style="margin-top:3px"><span class="tipname" data-tipid="USD BIAS — ai bỏ phiếu" data-tip="<span class=&quot;pos&quot;>▲ Có lợi (13):</span> Median CPI (Cleveland) · Thất nghiệp · Việc làm ADP · Philly Fed activity · TGA (két Kho bạc) · EPU Trung Quốc (tháng) · Real rate 10Y (model-based) · USDJPY · Chênh lệch 10Y Mỹ−Anh · Chênh lệch 10Y Mỹ−Thụy Sĩ · Chênh lệch 10Y Mỹ−Canada · Chênh lệch 10Y Mỹ−Úc · Chênh lệch 10Y Mỹ−NZ<br><br><span class=&quot;neg&quot;>▼ Bất lợi (11):</span> Lợi suất thực 5Y · Breakeven 10Y · 5y5y forward breakeven · Core PCE YoY (thước Fed) · Core PPI YoY (final demand) · Sticky CPI lõi YoY (Atlanta) · Điều kiện tài chính (NFCI) · Bảng cân đối Fed · Cung tiền M2 · EPU toàn cầu (tháng) · Cân đối ngân sách LB" tabindex="0"><b class="pos">▲13</b> · <b class="neg">▼11</b> · 26 im — soi phiếu ⓘ</span></div>
     <div class="bar"><i class="" style="width:6%;transform:translateX(0%)"></i></div>
-    <svg class="bspark" viewBox="0 0 100 60" preserveAspectRatio="none" data-t="USD BIAS · % chuẩn hoá theo N · từng lần chạy" data-l='["28/7 20:45: +13 (+40%)","29/7 06:31: +12 (+37%)","29/7 20:45: +12 (+37%)","30/7 06:31: +6 (+18%)","30/7 20:46: +6 (+18%)","31/7 06:31: +3 (+9%)","31/7 20:45: +3 (+9%)","01/8 06:30: +1 (+3%)","02/8 22:32: +1 (+3%)","03/8 06:31: +1 (+3%)","03/8 20:46: +2 (+6%)","04/8 06:31: -2 (-6%)","04/8 20:45: -2 (-6%)","05/8 06:31: -5 (-15%)","05/8 20:45: -4 (-12%)","06/8 06:31: +0 (+0%)","06/8 19:59: +0 (+0%)","06/8 21:08: -2 (-6%)","06/8 21:26: -2 (-6%)","06/8 21:43: -2 (-6%)","06/8 21:58: -2 (-6%)","06/8 22:04: -2 (-6%)","06/8 22:14: -2 (-6%)","06/8 22:16: -2 (-6%)","06/8 22:18: -2 (-6%)","06/8 22:28: -2 (-6%)","07/8 06:31: +0 (+0%)","07/8 20:46: +2 (+6%)","08/8 06:31: +3 (+9%)","10/8 06:31: +3 (+9%)","10/8 20:46: +2 (+6%)","11/8 06:31: +0 (+0%)","11/8 20:46: +1 (+3%)","12/8 06:31: +2 (+6%)","12/8 20:46: +4 (+12%)","12/8 21:14: +6 (+18%)","12/8 21:29: +6 (+18%)","12/8 21:53: +6 (+18%)","12/8 22:07: +8 (+24%)","12/8 22:32: +8 (+24%)","12/8 22:40: +8 (+24%)","13/8 06:31: +9 (+28%)","13/8 20:46: +8 (+24%)","14/8 06:31: +5 (+15%)","14/8 20:46: +4 (+12%)","15/8 06:30: +0 (+0%)","15/8 06:40: +0 (+0%)","15/8 06:44: +0 (+0%)","15/8 06:47: +0 (+0%)","17/8 06:31: +0 (+0%)","17/8 20:45: +0 (+0%)","18/8 06:31: +5 (+15%)","18/8 20:46: +5 (+15%)","19/8 06:31: +3 (+9%)","19/8 20:49: +2 (+6%)","19/8 22:36: +2 (+6%)","19/8 23:37: +3 (+9%)","20/8 06:31: +2 (+6%)","20/8 06:44: +2 (+6%)","20/8 06:50: +2 (+6%)"]'>
-    <line class="th" x1="0" y1="6.9" x2="100" y2="6.9"/><line class="th" x1="0" y1="53.1" x2="100" y2="53.1"/><line class="zero" x1="0" y1="30" x2="100" y2="30"/><line class="day" x1="4.6" y1="2" x2="4.6" y2="58"/><line class="day" x1="7.8" y1="2" x2="7.8" y2="58"/><line class="day" x1="11.0" y1="2" x2="11.0" y2="58"/><line class="day" x1="14.2" y1="2" x2="14.2" y2="58"/><line class="day" x1="15.7" y1="2" x2="15.7" y2="58"/><line class="day" x1="17.3" y1="2" x2="17.3" y2="58"/><line class="day" x1="20.5" y1="2" x2="20.5" y2="58"/><line class="day" x1="23.7" y1="2" x2="23.7" y2="58"/><line class="day" x1="26.9" y1="2" x2="26.9" y2="58"/><line class="day" x1="44.4" y1="2" x2="44.4" y2="58"/><line class="day" x1="47.6" y1="2" x2="47.6" y2="58"/><line class="day" x1="49.2" y1="2" x2="49.2" y2="58"/><line class="day" x1="52.4" y1="2" x2="52.4" y2="58"/><line class="day" x1="55.6" y1="2" x2="55.6" y2="58"/><line class="day" x1="68.3" y1="2" x2="68.3" y2="58"/><line class="day" x1="71.5" y1="2" x2="71.5" y2="58"/><line class="day" x1="74.7" y1="2" x2="74.7" y2="58"/><line class="day" x1="81.1" y1="2" x2="81.1" y2="58"/><line class="day" x1="84.3" y1="2" x2="84.3" y2="58"/><line class="day" x1="87.4" y1="2" x2="87.4" y2="58"/><line class="day" x1="93.8" y1="2" x2="93.8" y2="58"/>
-    <polyline points="3.0,7 4.6,8.8 6.2,8.8 7.8,19.4 9.4,19.4 11.0,24.7 12.6,24.7 14.2,28.2 15.7,28.2 17.3,28.2 18.9,26.5 20.5,33.5 22.1,33.5 23.7,38.8 25.3,37.1 26.9,30 28.5,30 30.1,33.5 31.7,33.5 33.3,33.5 34.9,33.5 36.5,33.5 38.1,33.5 39.6,33.5 41.2,33.5 42.8,33.5 44.4,30 46.0,26.5 47.6,24.7 49.2,24.7 50.8,26.5 52.4,30 54.0,28.2 55.6,26.5 57.2,22.9 58.8,19.4 60.4,19.4 61.9,19.4 63.5,15.9 65.1,15.9 66.7,15.9 68.3,14.1 69.9,15.9 71.5,21.2 73.1,22.9 74.7,30 76.3,30 77.9,30 79.5,30 81.1,30 82.7,30 84.3,21.2 85.8,21.2 87.4,24.7 89.0,26.5 90.6,26.5 92.2,24.8 93.8,26.5 95.4,26.5 97.0,26.5"/>
-    <circle cx="97.0" cy="26.5" r="3" class="p"/></svg><div class="baxis"><span style="left:4.0%">28/7</span><span style="left:17.3%">3/8</span><span style="left:44.4%">7/8</span><span style="left:68.3%">13/8</span><span style="left:93.8%">20/8</span></div><div class="lbl">history 60 lần chạy</div></div>
+    <svg class="bspark" viewBox="0 0 100 60" preserveAspectRatio="none" data-t="USD BIAS · % chuẩn hoá theo N · từng lần chạy" data-l='["29/7 06:31: +12 (+37%)","29/7 20:45: +12 (+37%)","30/7 06:31: +6 (+18%)","30/7 20:46: +6 (+18%)","31/7 06:31: +3 (+9%)","31/7 20:45: +3 (+9%)","01/8 06:30: +1 (+3%)","02/8 22:32: +1 (+3%)","03/8 06:31: +1 (+3%)","03/8 20:46: +2 (+6%)","04/8 06:31: -2 (-6%)","04/8 20:45: -2 (-6%)","05/8 06:31: -5 (-15%)","05/8 20:45: -4 (-12%)","06/8 06:31: +0 (+0%)","06/8 19:59: +0 (+0%)","06/8 21:08: -2 (-6%)","06/8 21:26: -2 (-6%)","06/8 21:43: -2 (-6%)","06/8 21:58: -2 (-6%)","06/8 22:04: -2 (-6%)","06/8 22:14: -2 (-6%)","06/8 22:16: -2 (-6%)","06/8 22:18: -2 (-6%)","06/8 22:28: -2 (-6%)","07/8 06:31: +0 (+0%)","07/8 20:46: +2 (+6%)","08/8 06:31: +3 (+9%)","10/8 06:31: +3 (+9%)","10/8 20:46: +2 (+6%)","11/8 06:31: +0 (+0%)","11/8 20:46: +1 (+3%)","12/8 06:31: +2 (+6%)","12/8 20:46: +4 (+12%)","12/8 21:14: +6 (+18%)","12/8 21:29: +6 (+18%)","12/8 21:53: +6 (+18%)","12/8 22:07: +8 (+24%)","12/8 22:32: +8 (+24%)","12/8 22:40: +8 (+24%)","13/8 06:31: +9 (+28%)","13/8 20:46: +8 (+24%)","14/8 06:31: +5 (+15%)","14/8 20:46: +4 (+12%)","15/8 06:30: +0 (+0%)","15/8 06:40: +0 (+0%)","15/8 06:44: +0 (+0%)","15/8 06:47: +0 (+0%)","17/8 06:31: +0 (+0%)","17/8 20:45: +0 (+0%)","18/8 06:31: +5 (+15%)","18/8 20:46: +5 (+15%)","19/8 06:31: +3 (+9%)","19/8 20:49: +2 (+6%)","19/8 22:36: +2 (+6%)","19/8 23:37: +3 (+9%)","20/8 06:31: +2 (+6%)","20/8 06:44: +2 (+6%)","20/8 06:50: +2 (+6%)","20/8 07:22: +2 (+6%)"]'>
+    <line class="th" x1="0" y1="6.9" x2="100" y2="6.9"/><line class="th" x1="0" y1="53.1" x2="100" y2="53.1"/><line class="zero" x1="0" y1="30" x2="100" y2="30"/><line class="day" x1="6.2" y1="2" x2="6.2" y2="58"/><line class="day" x1="9.4" y1="2" x2="9.4" y2="58"/><line class="day" x1="12.6" y1="2" x2="12.6" y2="58"/><line class="day" x1="14.2" y1="2" x2="14.2" y2="58"/><line class="day" x1="15.7" y1="2" x2="15.7" y2="58"/><line class="day" x1="18.9" y1="2" x2="18.9" y2="58"/><line class="day" x1="22.1" y1="2" x2="22.1" y2="58"/><line class="day" x1="25.3" y1="2" x2="25.3" y2="58"/><line class="day" x1="42.8" y1="2" x2="42.8" y2="58"/><line class="day" x1="46.0" y1="2" x2="46.0" y2="58"/><line class="day" x1="47.6" y1="2" x2="47.6" y2="58"/><line class="day" x1="50.8" y1="2" x2="50.8" y2="58"/><line class="day" x1="54.0" y1="2" x2="54.0" y2="58"/><line class="day" x1="66.7" y1="2" x2="66.7" y2="58"/><line class="day" x1="69.9" y1="2" x2="69.9" y2="58"/><line class="day" x1="73.1" y1="2" x2="73.1" y2="58"/><line class="day" x1="79.5" y1="2" x2="79.5" y2="58"/><line class="day" x1="82.7" y1="2" x2="82.7" y2="58"/><line class="day" x1="85.8" y1="2" x2="85.8" y2="58"/><line class="day" x1="92.2" y1="2" x2="92.2" y2="58"/>
+    <polyline points="3.0,8.8 4.6,8.8 6.2,19.4 7.8,19.4 9.4,24.7 11.0,24.7 12.6,28.2 14.2,28.2 15.7,28.2 17.3,26.5 18.9,33.5 20.5,33.5 22.1,38.8 23.7,37.1 25.3,30 26.9,30 28.5,33.5 30.1,33.5 31.7,33.5 33.3,33.5 34.9,33.5 36.5,33.5 38.1,33.5 39.6,33.5 41.2,33.5 42.8,30 44.4,26.5 46.0,24.7 47.6,24.7 49.2,26.5 50.8,30 52.4,28.2 54.0,26.5 55.6,22.9 57.2,19.4 58.8,19.4 60.4,19.4 61.9,15.9 63.5,15.9 65.1,15.9 66.7,14.1 68.3,15.9 69.9,21.2 71.5,22.9 73.1,30 74.7,30 76.3,30 77.9,30 79.5,30 81.1,30 82.7,21.2 84.3,21.2 85.8,24.7 87.4,26.5 89.0,26.5 90.6,24.8 92.2,26.5 93.8,26.5 95.4,26.5 97.0,26.5"/>
+    <circle cx="97.0" cy="26.5" r="3" class="p"/></svg><div class="baxis"><span style="left:4.0%">29/7</span><span style="left:18.9%">4/8</span><span style="left:42.8%">7/8</span><span style="left:66.7%">13/8</span><span style="left:92.2%">20/8</span></div><div class="lbl">history 60 lần chạy</div></div>
   <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="LỢI SUẤT THỰC 10Y — chi tiết" data-tip="DFII10 — lợi suất TIPS 10Y, tức lãi suất THỰC sau lạm phát kỳ vọng. Vàng không trả lãi nên real yield là CHI PHÍ CƠ HỘI của việc ôm vàng: tăng → vàng chịu áp lực xuống, rơi → vàng bay. Δ3 tháng so với obs ~60 phiên trước; %biên độ = vị trí giá trị hiện tại trong min–max 3 tháng.<br><br>Data mới nhất: 2.41% ngày 2026-08-18 (63 phiên · FRED cập nhật trễ ~1 ngày làm việc so thị trường)." tabindex="0">LỢI SUẤT THỰC 10Y (TIPS · driver #1 của vàng) ⓘ</span></div>
     <div class="val">2.41%</div>
     <div class="word neg">▲ +0.23 /3 tháng · cản vàng</div>
@@ -75,11 +75,11 @@ tr:hover td{background:var(--card)}
   <div class="kpi side-gold"><div class="lbl"><span class="tipname" data-tipid="PREMIUM VÀNG VN — chi tiết" data-tip="Chênh giá vàng miếng SJC (giá BÁN tại BTMC) so với giá vàng thế giới QUY ĐỔI = XAU USD/oz × 1.205653 oz/lượng × tỷ giá USDVND bán Vietcombank. Đây là nhiệt kế CẦU TRÚ ẨN NỘI ĐỊA + kỳ vọng tỷ giá: premium nở = dân gom vàng/ngại VND mất giá (2024 trước cải cách độc quyền nhập khẩu từng +15-18 triệu/lượng); premium mỏng = kênh cung chính ngạch làm việc. Nhẫn trơn đắt hơn miếng SJC = cầu tích trữ dồn sang nhẫn (chữ ký hậu cải cách).<br><br>Giá thế giới dùng snapshot CỦA CHÍNH BTMC cùng thời điểm quote (tránh premium ảo khi thế giới chạy mà tiệm chưa reprice — số âm bất thường thường là vì vậy). Tỷ giá dùng bản CHÍNH THỨC VCB — theo tỷ giá tự do premium thực sẽ mỏng hơn số này. Ngưỡng đọc: &lt;1.5% mỏng · 1.5-4% bình thường · 4-8% nở · &gt;8% nóng.<br><br>Không chấm điểm vào bias (ctx — chuyện Việt Nam, không phải driver vàng thế giới). Nguồn: BTMC API (quote 19/08/2026 11:34) + VCB 2026-08-20." tabindex="0">🇻🇳 PREMIUM VÀNG VN (SJC vs thế giới quy đổi) ⓘ</span></div>
     <div class="val">+4.3 tr<span style="font-size:13px;font-weight:400"> (+3.1%)</span></div>
     <div class="word neu">— bình thường · cầu nội ổn định · <b>nhẫn +5.7 tr (4.1%) &gt; SJC — cầu dồn sang nhẫn</b></div>
-    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="Premium SJC (triệu/lượng)" data-l='["12/8 21:53: +4.6 tr","12/8 22:07: +4.6 tr","12/8 22:32: +4.6 tr","12/8 22:40: +4.6 tr","13/8 06:31: +4.6 tr","13/8 20:46: +5.9 tr","14/8 06:31: +5.9 tr","14/8 20:46: +5.5 tr","15/8 06:30: +5.5 tr","15/8 06:40: +5.5 tr","15/8 06:44: +5.5 tr","15/8 06:47: +5.5 tr","17/8 06:31: +5.5 tr","17/8 20:45: +4.8 tr","18/8 06:31: +4.8 tr","18/8 20:46: +4.5 tr","19/8 06:31: +4.5 tr","19/8 20:49: +4.3 tr","19/8 22:36: +4.3 tr","19/8 23:37: +4.3 tr","20/8 06:31: +4.3 tr","20/8 06:44: +4.3 tr","20/8 06:50: +4.3 tr"]'><polyline points="2.0,19.9 6.4,19.9 10.7,19.9 15.1,19.9 19.5,19.9 23.8,2.0 28.2,2.0 32.5,7.5 36.9,7.5 41.3,7.5 45.6,7.5 50.0,7.5 54.4,7.5 58.7,17.1 63.1,17.1 67.5,21.3 71.8,21.3 76.2,24.0 80.5,24.0 84.9,24.0 89.3,24.0 93.6,24.0 98.0,24.0"/></svg><div class="lbl">SJC bán 142.7 tr/lượng · TG quy đổi 138.4 tr (XAU 4354$ × VCB 26,370₫) · quote BTMC 19/08/2026 11:34</div></div>
-  <div class="kpi"><div class="lbl"><span class="tipname" data-tipid="DỮ LIỆU — chi tiết" data-tip="Sức khỏe lần fetch này: ok = số series lấy thành công trên tổng 69. stale = data trễ bất thường so với cadence của series (vẫn chấm điểm theo obs cuối, có cờ ⚠ ở bảng dưới). bị cắt lịch sử = observation_start dịch chuyển (nguồn cắt data cũ — gate cảnh báo riêng). lỗi = fetch/parse fail, loại khỏi tally.<br><br>Lần chạy này: 06:50:13 20/8/2026 VN. Ngày obs cuối TỪNG series: cột ngày ở bảng dưới." tabindex="0">DỮ LIỆU ⓘ</span></div><div class="val">69/69</div>
+    <svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="Premium SJC (triệu/lượng)" data-l='["12/8 21:53: +4.6 tr","12/8 22:07: +4.6 tr","12/8 22:32: +4.6 tr","12/8 22:40: +4.6 tr","13/8 06:31: +4.6 tr","13/8 20:46: +5.9 tr","14/8 06:31: +5.9 tr","14/8 20:46: +5.5 tr","15/8 06:30: +5.5 tr","15/8 06:40: +5.5 tr","15/8 06:44: +5.5 tr","15/8 06:47: +5.5 tr","17/8 06:31: +5.5 tr","17/8 20:45: +4.8 tr","18/8 06:31: +4.8 tr","18/8 20:46: +4.5 tr","19/8 06:31: +4.5 tr","19/8 20:49: +4.3 tr","19/8 22:36: +4.3 tr","19/8 23:37: +4.3 tr","20/8 06:31: +4.3 tr","20/8 06:44: +4.3 tr","20/8 06:50: +4.3 tr","20/8 07:22: +4.3 tr"]'><polyline points="2.0,19.9 6.2,19.9 10.3,19.9 14.5,19.9 18.7,19.9 22.9,2.0 27.0,2.0 31.2,7.5 35.4,7.5 39.6,7.5 43.7,7.5 47.9,7.5 52.1,7.5 56.3,17.1 60.4,17.1 64.6,21.3 68.8,21.3 73.0,24.0 77.1,24.0 81.3,24.0 85.5,24.0 89.7,24.0 93.8,24.0 98.0,24.0"/></svg><div class="lbl">SJC bán 142.7 tr/lượng · TG quy đổi 138.4 tr (XAU 4354$ × VCB 26,370₫) · quote BTMC 19/08/2026 11:34</div></div>
+  <div class="kpi"><div class="lbl"><span class="tipname" data-tipid="DỮ LIỆU — chi tiết" data-tip="Sức khỏe lần fetch này: ok = số series lấy thành công trên tổng 69. stale = data trễ bất thường so với cadence của series (vẫn chấm điểm theo obs cuối, có cờ ⚠ ở bảng dưới). bị cắt lịch sử = observation_start dịch chuyển (nguồn cắt data cũ — gate cảnh báo riêng). lỗi = fetch/parse fail, loại khỏi tally.<br><br>Lần chạy này: 07:22:04 20/8/2026 VN. Ngày obs cuối TỪNG series: cột ngày ở bảng dưới." tabindex="0">DỮ LIỆU ⓘ</span></div><div class="val">69/69</div>
     <div class="word neu">0 stale · 0 bị cắt lịch sử · 0 lỗi</div></div>
 </div>
-<div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng. · Nền tile: <span style="background:rgba(212,166,66,.22);padding:0 6px;border-radius:4px">ánh vàng</span> = nhóm chuyện VÀNG · <span style="background:rgba(72,132,220,.22);padding:0 6px;border-radius:4px">ánh xanh</span> = nhóm chuyện USD; chữ đỏ/xanh trên tile quy về tác động cho VÀNG (riêng card USD BIAS mô tả chính USD). · <b style="color:var(--neg)">●</b> = tin NHẠY CẢM cao (vàng giật mạnh lúc ra) · <b style="color:#d4a642">●</b> = nhạy vừa · ⏰ = ngày release kỳ tới (FRED). · Nền tên: <span style="background:rgba(72,132,220,.22);padding:0 5px;border-radius:4px">xanh</span> = cụm CARRY Fed−ECB · <span style="background:rgba(155,89,182,.22);padding:0 5px;border-radius:4px">tím</span> = cụm UNWIND yen-carry. · Cạnh ngày obs có nhãn <b>nhịp ngày/tuần/tháng</b> = nguồn cập nhật nhanh chậm cỡ nào (FX theo tuần, 10Y nước ngoài theo tháng — thấy ngày cũ đừng tưởng feed hỏng). <button id="obsbtn" type="button">📈 Hiện chart</button> <span style="font-size:11px">(sparkline trên cards + cột 30 obs)</span></div>
+<div class="legend">▲ +1 series tăng có lợi cho phe đó · ▼ −1 bất lợi · — 0 trong dead-zone · <b>ctx</b> = context/target, không tính điểm. Điểm là tally thô — KHÔNG phải model, không backtest. · <b>ⓘ</b> rê chuột (PC) hoặc chạm (mobile) vào tên chỉ số để xem nó là gì và cách dùng. · Nền tile: <span style="background:rgba(212,166,66,.22);padding:0 6px;border-radius:4px">ánh vàng</span> = nhóm chuyện VÀNG · <span style="background:rgba(72,132,220,.22);padding:0 6px;border-radius:4px">ánh xanh</span> = nhóm chuyện USD; chữ đỏ/xanh trên tile quy về tác động cho VÀNG (riêng card USD BIAS mô tả chính USD). · <b style="color:var(--neg)">●</b> = tin NHẠY CẢM cao (vàng giật mạnh lúc ra) · <b style="color:#d4a642">●</b> = nhạy vừa · ⏰ = ngày release kỳ tới (FRED). · Nền tên: <span style="background:rgba(72,132,220,.22);padding:0 5px;border-radius:4px">xanh</span> = cụm CARRY Fed−ECB · <span style="background:rgba(155,89,182,.22);padding:0 5px;border-radius:4px">tím</span> = cụm UNWIND yen-carry. · Cạnh ngày obs có nhãn <b>nhịp ngày/tuần/tháng</b> = nguồn cập nhật nhanh chậm cỡ nào (FX theo tuần, 10Y nước ngoài theo tháng — thấy ngày cũ đừng tưởng feed hỏng); ngay dưới là <b>thanh nhịp</b> — số ô = nhịp (ngày 7 ô mảnh · tuần 5 · tháng 3 · quý 2 ô to, ô càng to nguồn càng chậm), ô đã tô = tuổi số hiện tại so với ngưỡng của chính nhịp đó (hổ phách = quá 70% ngưỡng, đỏ = hết đát). <button id="obsbtn" type="button">📈 Hiện chart</button> <span style="font-size:11px">(sparkline trên cards + cột 30 obs)</span></div>
 <nav id="grpnav"><a href="#grpA">🥇 Gold</a><a href="#grpE">💵 USD</a><a href="#grpF">⚖ Carry</a><a href="#grpB">🏛 Fed</a><a href="#grpC">🌊 Risk</a><a href="#grpD">🔭 Kỳ vọng</a><a href="#grpH">🏛️ Nợ</a><a href="#grpG">🇻🇳 VN</a><a href="#cbgold">🏦 NHTW</a><a href="#lientt">🌐 Liên TT</a></nav>
   <h2 id="grpA">A. Gold — trực tiếp <span class="gcount">· 10 chỉ số</span></h2>
   <div class="tblwrap"><table>
@@ -90,7 +90,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>2.41 %</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>2.41 %</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— -0.02</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFII10" data-l='["07-08: 2.31 %","07-09: 2.31 %","07-10: 2.32 %","07-13: 2.36 %","07-14: 2.33 %","07-15: 2.32 %","07-16: 2.35 %","07-17: 2.31 %","07-20: 2.35 %","07-21: 2.37 %","07-22: 2.39 %","07-23: 2.43 %","07-24: 2.43 %","07-27: 2.44 %","07-28: 2.41 %","07-29: 2.41 %","07-30: 2.41 %","07-31: 2.47 %","08-03: 2.43 %","08-04: 2.4 %","08-05: 2.41 %","08-06: 2.43 %","08-07: 2.4 %","08-10: 2.43 %","08-11: 2.43 %","08-12: 2.42 %","08-13: 2.39 %","08-14: 2.41 %","08-17: 2.44 %","08-18: 2.41 %"]'><polyline points="2.0,24.0 5.3,24.0 8.6,22.6 11.9,17.1 15.2,21.3 18.6,22.6 21.9,18.5 25.2,24.0 28.5,18.5 31.8,15.8 35.1,13.0 38.4,7.5 41.7,7.5 45.0,6.1 48.3,10.3 51.7,10.3 55.0,10.3 58.3,2.0 61.6,7.5 64.9,11.6 68.2,10.3 71.5,7.5 74.8,11.6 78.1,7.5 81.4,7.5 84.8,8.9 88.1,13.0 91.4,10.3 94.7,6.1 98.0,10.3"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -100,7 +100,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>2.1 %</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>2.1 %</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neg">▼ -0.06</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFII5" data-l='["07-08: 2 %","07-09: 1.99 %","07-10: 2.02 %","07-13: 2.06 %","07-14: 2.03 %","07-15: 2.01 %","07-16: 2.04 %","07-17: 2.01 %","07-20: 2.05 %","07-21: 2.09 %","07-22: 2.11 %","07-23: 2.17 %","07-24: 2.19 %","07-27: 2.22 %","07-28: 2.19 %","07-29: 2.13 %","07-30: 2.14 %","07-31: 2.19 %","08-03: 2.17 %","08-04: 2.14 %","08-05: 2.15 %","08-06: 2.17 %","08-07: 2.13 %","08-10: 2.16 %","08-11: 2.16 %","08-12: 2.14 %","08-13: 2.11 %","08-14: 2.12 %","08-17: 2.13 %","08-18: 2.1 %"]'><polyline points="2.0,23.0 5.3,24.0 8.6,21.1 11.9,17.3 15.2,20.2 18.6,22.1 21.9,19.2 25.2,22.1 28.5,18.3 31.8,14.4 35.1,12.5 38.4,6.8 41.7,4.9 45.0,2.0 48.3,4.9 51.7,10.6 55.0,9.7 58.3,4.9 61.6,6.8 64.9,9.7 68.2,8.7 71.5,6.8 74.8,10.6 78.1,7.7 81.4,7.7 84.8,9.7 88.1,12.5 91.4,11.6 94.7,10.6 98.0,13.5"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -110,7 +110,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>3.03 %</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>3.03 %</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.03</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFII30" data-l='["07-08: 2.86 %","07-09: 2.86 %","07-10: 2.86 %","07-13: 2.89 %","07-14: 2.87 %","07-15: 2.88 %","07-16: 2.91 %","07-17: 2.87 %","07-20: 2.91 %","07-21: 2.91 %","07-22: 2.93 %","07-23: 2.95 %","07-24: 2.95 %","07-27: 2.95 %","07-28: 2.92 %","07-29: 2.98 %","07-30: 2.98 %","07-31: 3.03 %","08-03: 2.99 %","08-04: 2.96 %","08-05: 2.96 %","08-06: 2.98 %","08-07: 2.96 %","08-10: 3 %","08-11: 3 %","08-12: 2.99 %","08-13: 2.97 %","08-14: 3 %","08-17: 3.06 %","08-18: 3.03 %"]'><polyline points="2.0,24.0 5.3,24.0 8.6,24.0 11.9,20.7 15.2,22.9 18.6,21.8 21.9,18.5 25.2,22.9 28.5,18.5 31.8,18.5 35.1,16.3 38.4,14.1 41.7,14.1 45.0,14.1 48.3,17.4 51.7,10.8 55.0,10.8 58.3,5.3 61.6,9.7 64.9,13.0 68.2,13.0 71.5,10.8 74.8,13.0 78.1,8.6 81.4,8.6 84.8,9.7 88.1,11.9 91.4,8.6 94.7,2.0 98.0,5.3"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -120,7 +120,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:color-mix(in srgb,var(--pos) 22%,transparent);color:var(--pos);font-weight:600">🔥 kỳ vọng lạm phát bùng — đỡ vàng · đỉnh 30 phiên</span>
           </td>
-        <td><b>2.3 %</b><span class="sid">2026-08-19 · nhịp ngày</span></td>
+        <td><b>2.3 %</b><span class="sid">2026-08-19 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-19 (1 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="pos">▲ +0.04</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="T10YIE" data-l='["07-09: 2.23 %","07-10: 2.24 %","07-13: 2.26 %","07-14: 2.25 %","07-15: 2.23 %","07-16: 2.22 %","07-17: 2.24 %","07-20: 2.25 %","07-21: 2.26 %","07-22: 2.28 %","07-23: 2.28 %","07-24: 2.26 %","07-27: 2.21 %","07-28: 2.2 %","07-29: 2.26 %","07-30: 2.27 %","07-31: 2.28 %","08-03: 2.27 %","08-04: 2.23 %","08-05: 2.22 %","08-06: 2.26 %","08-07: 2.25 %","08-10: 2.29 %","08-11: 2.27 %","08-12: 2.26 %","08-13: 2.24 %","08-14: 2.27 %","08-17: 2.28 %","08-18: 2.3 %","08-19: 2.3 %"]'><polyline points="2.0,17.4 5.3,15.2 8.6,10.8 11.9,13.0 15.2,17.4 18.6,19.6 21.9,15.2 25.2,13.0 28.5,10.8 31.8,6.4 35.1,6.4 38.4,10.8 41.7,21.8 45.0,24.0 48.3,10.8 51.7,8.6 55.0,6.4 58.3,8.6 61.6,17.4 64.9,19.6 68.2,10.8 71.5,13.0 74.8,4.2 78.1,8.6 81.4,10.8 84.8,15.2 88.1,8.6 91.4,6.4 94.7,2.0 98.0,2.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -130,7 +130,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:color-mix(in srgb,var(--pos) 22%,transparent);color:var(--pos);font-weight:600">🔥 de-anchor dài hạn — đỡ vàng · đỉnh 30 phiên</span>
           </td>
-        <td><b>2.32 %</b><span class="sid">2026-08-19 · nhịp ngày</span></td>
+        <td><b>2.32 %</b><span class="sid">2026-08-19 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-19 (1 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="pos">▲ +0.04</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="T5YIFR" data-l='["07-09: 2.18 %","07-10: 2.2 %","07-13: 2.21 %","07-14: 2.22 %","07-15: 2.21 %","07-16: 2.2 %","07-17: 2.21 %","07-20: 2.22 %","07-21: 2.24 %","07-22: 2.26 %","07-23: 2.27 %","07-24: 2.28 %","07-27: 2.24 %","07-28: 2.24 %","07-29: 2.28 %","07-30: 2.3 %","07-31: 2.3 %","08-03: 2.31 %","08-04: 2.27 %","08-05: 2.26 %","08-06: 2.29 %","08-07: 2.28 %","08-10: 2.33 %","08-11: 2.31 %","08-12: 2.28 %","08-13: 2.27 %","08-14: 2.3 %","08-17: 2.31 %","08-18: 2.33 %","08-19: 2.32 %"]'><polyline points="2.0,24.0 5.3,21.1 8.6,19.6 11.9,18.1 15.2,19.6 18.6,21.1 21.9,19.6 25.2,18.1 28.5,15.2 31.8,12.3 35.1,10.8 38.4,9.3 41.7,15.2 45.0,15.2 48.3,9.3 51.7,6.4 55.0,6.4 58.3,4.9 61.6,10.8 64.9,12.3 68.2,7.9 71.5,9.3 74.8,2.0 78.1,4.9 81.4,9.3 84.8,10.8 88.1,6.4 91.4,4.9 94.7,2.0 98.0,3.5"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -140,7 +140,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>3.63 %</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>3.63 %</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DFF" data-l='["07-20: 3.63 %","07-21: 3.63 %","07-22: 3.63 %","07-23: 3.63 %","07-24: 3.63 %","07-25: 3.63 %","07-26: 3.63 %","07-27: 3.63 %","07-28: 3.63 %","07-29: 3.63 %","07-30: 3.63 %","07-31: 3.63 %","08-01: 3.63 %","08-02: 3.63 %","08-03: 3.63 %","08-04: 3.63 %","08-05: 3.63 %","08-06: 3.63 %","08-07: 3.63 %","08-08: 3.63 %","08-09: 3.63 %","08-10: 3.63 %","08-11: 3.63 %","08-12: 3.63 %","08-13: 3.63 %","08-14: 3.63 %","08-15: 3.63 %","08-16: 3.63 %","08-17: 3.63 %","08-18: 3.63 %"]'><polyline points="2.0,24.0 5.3,24.0 8.6,24.0 11.9,24.0 15.2,24.0 18.6,24.0 21.9,24.0 25.2,24.0 28.5,24.0 31.8,24.0 35.1,24.0 38.4,24.0 41.7,24.0 45.0,24.0 48.3,24.0 51.7,24.0 55.0,24.0 58.3,24.0 61.6,24.0 64.9,24.0 68.2,24.0 71.5,24.0 74.8,24.0 78.1,24.0 81.4,24.0 84.8,24.0 88.1,24.0 91.4,24.0 94.7,24.0 98.0,24.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -150,7 +150,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>1.082</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>1.082</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.685</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="KCROROG" data-l='["07-08: 0.691","07-09: -1.067","07-10: -0.115","07-13: 2.035","07-14: -1.074","07-15: -0.347","07-16: 1.131","07-17: -0.515","07-20: 0.501","07-21: -0.711","07-22: -0.749","07-23: 1.542","07-24: -0.18","07-27: -0.097","07-28: 0.446","07-29: -0.308","07-30: -2.229","07-31: 0.866","08-03: -0.13","08-04: -0.329","08-05: -2.538","08-06: 0.442","08-07: -1.975","08-10: -0.479","08-11: 0.397","08-12: -0.442","08-13: 0.89","08-14: -0.852","08-17: -0.479","08-18: 1.082"]'><polyline points="2.0,8.5 5.3,16.9 8.6,12.3 11.9,2.0 15.2,17.0 18.6,13.5 21.9,6.4 25.2,14.3 28.5,9.4 31.8,15.2 35.1,15.4 38.4,4.4 41.7,12.7 45.0,12.3 48.3,9.6 51.7,13.3 55.0,22.5 58.3,7.6 61.6,12.4 64.9,13.4 68.2,24.0 71.5,9.7 74.8,21.3 78.1,14.1 81.4,9.9 84.8,13.9 88.1,7.5 91.4,15.9 94.7,14.1 98.0,6.6"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -160,7 +160,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>23.98</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>23.98</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neg">▼ -2.01</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GVZCLS" data-l='["07-08: 27.6","07-09: 25.33","07-10: 23.95","07-13: 26.93","07-14: 25.02","07-15: 24.88","07-16: 26.65","07-17: 25.6","07-20: 25.37","07-21: 23.94","07-22: 24.02","07-23: 25.14","07-24: 24.33","07-27: 24.13","07-28: 24.62","07-29: 24.64","07-30: 24.48","07-31: 23.31","08-03: 23.65","08-04: 23.5","08-05: 25.59","08-06: 24.86","08-07: 25.64","08-10: 27.9","08-11: 25.99","08-12: 25.58","08-13: 23.87","08-14: 23.92","08-17: 25.12","08-18: 23.98"]'><polyline points="2.0,3.4 5.3,14.3 8.6,20.9 11.9,6.6 15.2,15.8 18.6,16.5 21.9,8.0 25.2,13.0 28.5,14.1 31.8,21.0 35.1,20.6 38.4,15.2 41.7,19.1 45.0,20.1 48.3,17.7 51.7,17.6 55.0,18.4 58.3,24.0 61.6,22.4 64.9,23.1 68.2,13.1 71.5,16.6 74.8,12.8 78.1,2.0 81.4,11.2 84.8,13.1 88.1,21.3 91.4,21.1 94.7,15.3 98.0,20.8"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -170,7 +170,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>2,647</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>2,647</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neg">▼ -34.62</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="NASDAQQGLDI" data-l='["07-08: 2,570","07-09: 2,594","07-10: 2,589","07-13: 2,504","07-14: 2,535","07-15: 2,537","07-16: 2,495","07-17: 2,517","07-20: 2,514","07-21: 2,556","07-22: 2,578","07-23: 2,539","07-24: 2,542","07-27: 2,560","07-28: 2,530","07-29: 2,539","07-30: 2,574","07-31: 2,546","08-03: 2,548","08-04: 2,562","08-05: 2,636","08-06: 2,641","08-07: 2,671","08-10: 2,679","08-11: 2,681","08-12: 2,695","08-13: 2,681","08-14: 2,692","08-17: 2,673","08-18: 2,647"]'><polyline points="2.0,15.8 5.3,13.2 8.6,13.7 11.9,23.0 15.2,19.6 18.6,19.4 21.9,24.0 25.2,21.6 28.5,21.9 31.8,17.3 35.1,14.9 38.4,19.2 41.7,18.8 45.0,16.8 48.3,20.2 51.7,19.1 55.0,15.3 58.3,18.4 61.6,18.1 64.9,16.6 68.2,8.5 71.5,7.9 74.8,4.7 78.1,3.8 81.4,3.5 84.8,2.0 88.1,3.6 91.4,2.4 94.7,4.5 98.0,7.3"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -180,7 +180,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>1,035</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>1,035</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neg">▼ -24.96</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="NASDAQQSLVO" data-l='["07-08: 988.22","07-09: 1,011","07-10: 1,009","07-13: 951.17","07-14: 967.1","07-15: 953.25","07-16: 924.1","07-17: 931.52","07-20: 935.6","07-21: 969.18","07-22: 979.95","07-23: 952.98","07-24: 962.66","07-27: 969.72","07-28: 950.17","07-29: 951.26","07-30: 979.59","07-31: 963.21","08-03: 965.74","08-04: 987.83","08-05: 1,021","08-06: 1,020","08-07: 1,043","08-10: 1,064","08-11: 1,060","08-12: 1,068","08-13: 1,061","08-14: 1,067","08-17: 1,060","08-18: 1,035"]'><polyline points="2.0,14.2 5.3,10.7 8.6,11.0 11.9,19.9 15.2,17.4 18.6,19.5 21.9,24.0 25.2,22.9 28.5,22.2 31.8,17.1 35.1,15.5 38.4,19.6 41.7,18.1 45.0,17.0 48.3,20.0 51.7,19.8 55.0,15.5 58.3,18.0 61.6,17.6 64.9,14.2 68.2,9.2 71.5,9.3 74.8,5.7 78.1,2.5 81.4,3.2 84.8,2.0 88.1,3.1 91.4,2.2 94.7,3.2 98.0,7.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -196,7 +196,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>4.19 %</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>4.19 %</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— -0.03</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DGS2" data-l='["07-08: 4.21 %","07-09: 4.16 %","07-10: 4.21 %","07-13: 4.26 %","07-14: 4.18 %","07-15: 4.13 %","07-16: 4.16 %","07-17: 4.18 %","07-20: 4.21 %","07-21: 4.26 %","07-22: 4.31 %","07-23: 4.37 %","07-24: 4.33 %","07-27: 4.31 %","07-28: 4.26 %","07-29: 4.22 %","07-30: 4.23 %","07-31: 4.28 %","08-03: 4.25 %","08-04: 4.2 %","08-05: 4.18 %","08-06: 4.25 %","08-07: 4.19 %","08-10: 4.25 %","08-11: 4.22 %","08-12: 4.2 %","08-13: 4.15 %","08-14: 4.17 %","08-17: 4.19 %","08-18: 4.19 %"]'><polyline points="2.0,16.7 5.3,21.2 8.6,16.7 11.9,12.1 15.2,19.4 18.6,24.0 21.9,21.2 25.2,19.4 28.5,16.7 31.8,12.1 35.1,7.5 38.4,2.0 41.7,5.7 45.0,7.5 48.3,12.1 51.7,15.8 55.0,14.8 58.3,10.2 61.6,13.0 64.9,17.6 68.2,19.4 71.5,13.0 74.8,18.5 78.1,13.0 81.4,15.8 84.8,17.6 88.1,22.2 91.4,20.3 94.7,18.5 98.0,18.5"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -206,7 +206,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>4.71 %</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>4.71 %</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.01</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DGS10" data-l='["07-08: 4.56 %","07-09: 4.54 %","07-10: 4.56 %","07-13: 4.62 %","07-14: 4.58 %","07-15: 4.55 %","07-16: 4.57 %","07-17: 4.55 %","07-20: 4.6 %","07-21: 4.63 %","07-22: 4.67 %","07-23: 4.71 %","07-24: 4.69 %","07-27: 4.65 %","07-28: 4.61 %","07-29: 4.67 %","07-30: 4.68 %","07-31: 4.75 %","08-03: 4.7 %","08-04: 4.63 %","08-05: 4.63 %","08-06: 4.69 %","08-07: 4.65 %","08-10: 4.72 %","08-11: 4.7 %","08-12: 4.68 %","08-13: 4.63 %","08-14: 4.68 %","08-17: 4.72 %","08-18: 4.71 %"]'><polyline points="2.0,21.9 5.3,24.0 8.6,21.9 11.9,15.6 15.2,19.8 18.6,23.0 21.9,20.9 25.2,23.0 28.5,17.7 31.8,14.6 35.1,10.4 38.4,6.2 41.7,8.3 45.0,12.5 48.3,16.7 51.7,10.4 55.0,9.3 58.3,2.0 61.6,7.2 64.9,14.6 68.2,14.6 71.5,8.3 74.8,12.5 78.1,5.1 81.4,7.2 84.8,9.3 88.1,14.6 91.4,9.3 94.7,5.1 98.0,6.2"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -216,7 +216,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>5.28 %</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>5.28 %</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.04</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DGS30" data-l='["07-08: 5.06 %","07-09: 5.05 %","07-10: 5.06 %","07-13: 5.1 %","07-14: 5.08 %","07-15: 5.08 %","07-16: 5.09 %","07-17: 5.06 %","07-20: 5.11 %","07-21: 5.13 %","07-22: 5.15 %","07-23: 5.17 %","07-24: 5.16 %","07-27: 5.12 %","07-28: 5.09 %","07-29: 5.2 %","07-30: 5.21 %","07-31: 5.27 %","08-03: 5.23 %","08-04: 5.18 %","08-05: 5.17 %","08-06: 5.22 %","08-07: 5.19 %","08-10: 5.25 %","08-11: 5.24 %","08-12: 5.24 %","08-13: 5.21 %","08-14: 5.25 %","08-17: 5.31 %","08-18: 5.28 %"]'><polyline points="2.0,23.2 5.3,24.0 8.6,23.2 11.9,19.8 15.2,21.5 18.6,21.5 21.9,20.6 25.2,23.2 28.5,18.9 31.8,17.2 35.1,15.5 38.4,13.8 41.7,14.7 45.0,18.1 48.3,20.6 51.7,11.3 55.0,10.5 58.3,5.4 61.6,8.8 64.9,13.0 68.2,13.8 71.5,9.6 74.8,12.2 78.1,7.1 81.4,7.9 84.8,7.9 88.1,10.5 91.4,7.1 94.7,2.0 98.0,4.5"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -226,7 +226,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>0.46 %</b><span class="sid">2026-08-19 · nhịp ngày</span></td>
+        <td><b>0.46 %</b><span class="sid">2026-08-19 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-19 (1 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— -0.02</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="T10Y2Y" data-l='["07-09: 0.38 %","07-10: 0.35 %","07-13: 0.36 %","07-14: 0.4 %","07-15: 0.42 %","07-16: 0.41 %","07-17: 0.37 %","07-20: 0.39 %","07-21: 0.37 %","07-22: 0.36 %","07-23: 0.34 %","07-24: 0.36 %","07-27: 0.34 %","07-28: 0.35 %","07-29: 0.45 %","07-30: 0.45 %","07-31: 0.47 %","08-03: 0.45 %","08-04: 0.43 %","08-05: 0.45 %","08-06: 0.44 %","08-07: 0.46 %","08-10: 0.47 %","08-11: 0.48 %","08-12: 0.48 %","08-13: 0.48 %","08-14: 0.51 %","08-17: 0.53 %","08-18: 0.52 %","08-19: 0.46 %"]'><polyline points="2.0,19.4 5.3,22.8 8.6,21.7 11.9,17.1 15.2,14.7 18.6,15.9 21.9,20.5 25.2,18.2 28.5,20.5 31.8,21.7 35.1,24.0 38.4,21.7 41.7,24.0 45.0,22.8 48.3,11.3 51.7,11.3 55.0,8.9 58.3,11.3 61.6,13.6 64.9,11.3 68.2,12.4 71.5,10.1 74.8,8.9 78.1,7.8 81.4,7.8 84.8,7.8 88.1,4.3 91.4,2.0 94.7,3.2 98.0,10.1"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -236,7 +236,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>1.158</b><span class="sid">2026-08-14 · nhịp ngày</span></td>
+        <td><b>1.158</b><span class="sid">2026-08-14 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-14 (6 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class=""></i></span></td>
         <td class="neu">— +0.002</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DEXUSEU" data-l='["07-06: 1.143","07-07: 1.142","07-08: 1.14","07-09: 1.144","07-10: 1.144","07-13: 1.14","07-14: 1.143","07-15: 1.144","07-16: 1.145","07-17: 1.144","07-20: 1.141","07-21: 1.141","07-22: 1.141","07-23: 1.137","07-24: 1.139","07-27: 1.138","07-28: 1.14","07-29: 1.138","07-30: 1.152","07-31: 1.152","08-03: 1.151","08-04: 1.153","08-05: 1.155","08-06: 1.152","08-07: 1.156","08-10: 1.155","08-11: 1.154","08-12: 1.154","08-13: 1.153","08-14: 1.158"]'><polyline points="2.0,18.4 5.3,18.7 8.6,21.6 11.9,17.0 15.2,17.1 18.6,20.9 21.9,18.2 25.2,17.3 28.5,16.2 31.8,16.9 35.1,20.0 38.4,20.3 41.7,19.7 45.0,24.0 48.3,22.7 51.7,23.7 55.0,21.0 58.3,22.8 61.6,8.2 64.9,8.6 68.2,9.6 71.5,7.7 74.8,5.6 78.1,8.3 81.4,4.3 84.8,5.1 88.1,6.0 91.4,6.3 94.7,7.3 98.0,2.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -246,7 +246,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>159.21</b><span class="sid">2026-08-14 · nhịp ngày</span></td>
+        <td><b>159.21</b><span class="sid">2026-08-14 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-14 (6 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class=""></i></span></td>
         <td class="pos">▲ +1.67</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DEXJPUS" data-l='["07-06: 162.28","07-07: 161.91","07-08: 162.67","07-09: 162.29","07-10: 161.31","07-13: 162.32","07-14: 162.14","07-15: 162.13","07-16: 162.42","07-17: 162.43","07-20: 162.59","07-21: 163.01","07-22: 163.08","07-23: 163.8","07-24: 163.71","07-27: 163.71","07-28: 163.65","07-29: 163.86","07-30: 159.47","07-31: 159.16","08-03: 156.96","08-04: 157.44","08-05: 157.63","08-06: 158.45","08-07: 157.54","08-10: 158.9","08-11: 159.25","08-12: 159.23","08-13: 159.35","08-14: 159.21"]'><polyline points="2.0,7.0 5.3,8.2 8.6,5.8 11.9,7.0 15.2,10.1 18.6,6.9 21.9,7.5 25.2,7.5 28.5,6.6 31.8,6.6 35.1,6.0 38.4,4.7 41.7,4.5 45.0,2.2 48.3,2.5 51.7,2.5 55.0,2.7 58.3,2.0 61.6,16.0 64.9,17.0 68.2,24.0 71.5,22.5 74.8,21.9 78.1,19.2 81.4,22.2 84.8,17.8 88.1,16.7 91.4,16.8 94.7,16.4 98.0,16.8"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -256,7 +256,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>6.741</b><span class="sid">2026-08-14 · nhịp ngày</span></td>
+        <td><b>6.741</b><span class="sid">2026-08-14 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-14 (6 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class=""></i></span></td>
         <td class="neu">— -0.006</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DEXCHUS" data-l='["07-06: 6.796","07-07: 6.793","07-08: 6.803","07-09: 6.792","07-10: 6.777","07-13: 6.78","07-14: 6.77","07-15: 6.768","07-16: 6.773","07-17: 6.776","07-20: 6.767","07-21: 6.766","07-22: 6.773","07-23: 6.77","07-24: 6.772","07-27: 6.766","07-28: 6.771","07-29: 6.766","07-30: 6.755","07-31: 6.751","08-03: 6.756","08-04: 6.753","08-05: 6.748","08-06: 6.749","08-07: 6.747","08-10: 6.745","08-11: 6.745","08-12: 6.743","08-13: 6.743","08-14: 6.741"]'><polyline points="2.0,4.4 5.3,5.3 8.6,2.0 11.9,5.7 15.2,11.3 18.6,10.3 21.9,13.7 25.2,14.3 28.5,12.7 31.8,11.5 35.1,14.8 38.4,15.2 41.7,12.8 45.0,13.6 48.3,13.0 51.7,15.2 55.0,13.3 58.3,15.1 61.6,19.0 64.9,20.5 68.2,18.6 71.5,19.7 74.8,21.5 78.1,21.3 81.4,21.8 84.8,22.6 88.1,22.6 91.4,23.2 94.7,23.4 98.0,24.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -266,7 +266,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>118.9</b><span class="sid">2026-08-14 · nhịp ngày</span></td>
+        <td><b>118.9</b><span class="sid">2026-08-14 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-14 (6 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class=""></i></span></td>
         <td class="neu">— -0.162</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="DTWEXBGS" data-l='["07-06: 120.84","07-07: 120.81","07-08: 121.13","07-09: 120.75","07-10: 120.5","07-13: 120.74","07-14: 120.47","07-15: 120.31","07-16: 120.33","07-17: 120.53","07-20: 120.54","07-21: 120.58","07-22: 120.57","07-23: 120.91","07-24: 120.71","07-27: 120.77","07-28: 120.62","07-29: 120.79","07-30: 119.68","07-31: 119.7","08-03: 119.7","08-04: 119.6","08-05: 119.39","08-06: 119.51","08-07: 119.06","08-10: 119.12","08-11: 119.18","08-12: 119.12","08-13: 119.18","08-14: 118.9"]'><polyline points="2.0,4.9 5.3,5.1 8.6,2.0 11.9,5.7 15.2,8.2 18.6,5.8 21.9,8.5 25.2,10.1 28.5,9.9 31.8,7.9 35.1,7.8 38.4,7.5 41.7,7.5 45.0,4.2 48.3,6.1 51.7,5.5 55.0,7.0 58.3,5.4 61.6,16.4 64.9,16.1 68.2,16.2 71.5,17.1 74.8,19.2 78.1,18.0 81.4,22.4 84.8,21.9 88.1,21.3 91.4,21.9 94.7,21.2 98.0,24.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -276,7 +276,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>115.4</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>115.4</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 03/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neu">— +0.577</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="RTWEXBGS" data-l='["08-01: 115.9","09-01: 115.4","10-01: 117","11-01: 119.7","12-01: 121","01-01: 122.4","02-01: 121.6","03-01: 119.9","04-01: 117.9","05-01: 116.1","06-01: 114.5","07-01: 114.1","08-01: 114.8","09-01: 114.4","10-01: 114.9","11-01: 115.5","12-01: 114.5","01-01: 113.7","02-01: 112.5","03-01: 114.7","04-01: 114.1","05-01: 114.1","06-01: 114.9","07-01: 115.4"]'><polyline points="2.0,16.5 6.2,17.5 10.3,13.9 14.5,8.0 18.7,5.1 22.9,2.0 27.0,3.8 31.2,7.5 35.4,12.1 39.6,16.0 43.7,19.5 47.9,20.4 52.1,18.8 56.3,19.8 60.4,18.6 64.6,17.3 68.8,19.6 73.0,21.3 77.1,24.0 81.3,19.1 85.5,20.4 89.7,20.4 93.8,18.7 98.0,17.4"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -292,7 +292,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>1.47 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>1.47 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 19/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="neu">— +0.067</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_DE_10Y" data-l='["07-01: 1.63 đpt","08-01: 1.7 đpt","09-01: 1.64 đpt","10-01: 2.05 đpt","11-01: 1.87 đpt","12-01: 2.4 đpt","01-01: 2.1 đpt","02-01: 1.83 đpt","03-01: 1.49 đpt","04-01: 1.66 đpt","05-01: 1.85 đpt","06-01: 1.72 đpt","07-01: 1.74 đpt","08-01: 1.56 đpt","09-01: 1.47 đpt","10-01: 1.49 đpt","11-01: 1.36 đpt","12-01: 1.37 đpt","01-01: 1.45 đpt","02-01: 1.23 đpt","03-01: 1.39 đpt","04-01: 1.4 đpt","05-01: 1.4 đpt","06-01: 1.47 đpt"]'><polyline points="2.0,16.4 6.2,15.1 10.3,16.2 14.5,8.6 18.7,11.9 22.9,2.0 27.0,7.7 31.2,12.6 35.4,19.1 39.6,15.9 43.7,12.4 47.9,14.7 52.1,14.4 56.3,17.8 60.4,19.5 64.6,19.0 68.8,21.4 73.0,21.4 77.1,19.7 81.3,24.0 85.5,20.9 89.7,20.7 93.8,20.7 98.0,19.4"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -302,7 +302,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>1.77 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>1.77 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 19/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="neu">— -0.03</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_JP_10Y" data-l='["07-01: 3.05 đpt","08-01: 3.02 đpt","09-01: 2.96 đpt","10-01: 3.35 đpt","11-01: 3.13 đpt","12-01: 3.49 đpt","01-01: 3.34 đpt","02-01: 2.87 đpt","03-01: 2.75 đpt","04-01: 2.86 đpt","05-01: 2.91 đpt","06-01: 2.82 đpt","07-01: 2.83 đpt","08-01: 2.63 đpt","09-01: 2.52 đpt","10-01: 2.46 đpt","11-01: 2.22 đpt","12-01: 2.12 đpt","01-01: 2.02 đpt","02-01: 1.86 đpt","03-01: 1.95 đpt","04-01: 1.89 đpt","05-01: 1.8 đpt","06-01: 1.77 đpt"]'><polyline points="2.0,7.7 6.2,8.0 10.3,8.8 14.5,3.9 18.7,6.6 22.9,2.0 27.0,4.0 31.2,9.9 35.4,11.5 39.6,10.1 43.7,9.4 47.9,10.6 52.1,10.5 56.3,13.0 60.4,14.5 64.6,15.2 68.8,18.3 73.0,19.5 77.1,20.8 81.3,22.8 85.5,21.6 89.7,22.5 93.8,23.6 98.0,24.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -312,7 +312,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.36 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>-0.36 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 19/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="pos">▲ +0.136</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_GB_10Y" data-l='["07-01: -0.05 đpt","08-01: -0.03 đpt","09-01: -0.1 đpt","10-01: 0.08 đpt","11-01: -0.24 đpt","12-01: 0.15 đpt","01-01: -0.08 đpt","02-01: -0.27 đpt","03-01: -0.41 đpt","04-01: -0.41 đpt","05-01: -0.19 đpt","06-01: -0.28 đpt","07-01: -0.22 đpt","08-01: -0.41 đpt","09-01: -0.53 đpt","10-01: -0.46 đpt","11-01: -0.48 đpt","12-01: -0.3 đpt","01-01: -0.19 đpt","02-01: -0.46 đpt","03-01: -0.4 đpt","04-01: -0.42 đpt","05-01: -0.49 đpt","06-01: -0.36 đpt"]'><polyline points="2.0,8.3 6.2,7.9 10.3,9.9 14.5,4.1 18.7,14.5 22.9,2.0 27.0,9.4 31.2,15.4 35.4,20.3 39.6,20.0 43.7,13.0 47.9,16.0 52.1,14.0 56.3,20.0 60.4,24.0 64.6,21.8 68.8,22.4 73.0,16.6 77.1,13.0 81.3,21.8 85.5,19.8 89.7,20.5 93.8,22.8 98.0,18.4"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -322,7 +322,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>4.13 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>4.13 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 19/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="pos">▲ +0.12</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_CH_10Y" data-l='["07-01: 3.64 đpt","08-01: 3.46 đpt","09-01: 3.4 đpt","10-01: 3.83 đpt","11-01: 3.89 đpt","12-01: 4.26 đpt","01-01: 4.2 đpt","02-01: 3.84 đpt","03-01: 3.72 đpt","04-01: 3.84 đpt","05-01: 4.15 đpt","06-01: 3.83 đpt","07-01: 3.99 đpt","08-01: 3.91 đpt","09-01: 3.96 đpt","10-01: 3.93 đpt","11-01: 3.83 đpt","12-01: 3.85 đpt","01-01: 3.99 đpt","02-01: 3.72 đpt","03-01: 3.9 đpt","04-01: 3.95 đpt","05-01: 4.01 đpt","06-01: 4.13 đpt"]'><polyline points="2.0,17.9 6.2,22.5 10.3,24.0 14.5,13.1 18.7,11.5 22.9,2.0 27.0,3.7 31.2,12.7 35.4,15.9 39.6,12.7 43.7,4.9 47.9,13.0 52.1,8.9 56.3,11.0 60.4,9.7 64.6,10.5 68.8,13.0 73.0,12.5 77.1,9.0 81.3,15.8 85.5,11.3 89.7,10.0 93.8,8.4 98.0,5.4"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -332,7 +332,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>1.02 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>1.02 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 19/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="pos">▲ +0.112</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_CA_10Y" data-l='["07-01: 0.68 đpt","08-01: 0.84 đpt","09-01: 0.87 đpt","10-01: 1.09 đpt","11-01: 0.9 đpt","12-01: 1.42 đpt","01-01: 1.29 đpt","02-01: 1.18 đpt","03-01: 1.22 đpt","04-01: 1.06 đpt","05-01: 1.19 đpt","06-01: 0.93 đpt","07-01: 0.89 đpt","08-01: 0.81 đpt","09-01: 0.94 đpt","10-01: 0.98 đpt","11-01: 0.85 đpt","12-01: 0.79 đpt","01-01: 0.86 đpt","02-01: 0.68 đpt","03-01: 0.86 đpt","04-01: 0.88 đpt","05-01: 0.91 đpt","06-01: 1.02 đpt"]'><polyline points="2.0,24.0 6.2,19.3 10.3,18.5 14.5,11.7 18.7,17.4 22.9,2.0 27.0,5.8 31.2,9.0 35.4,7.9 39.6,12.7 43.7,8.9 47.9,16.7 52.1,17.8 56.3,20.2 60.4,16.4 64.6,15.0 68.8,19.1 73.0,20.7 77.1,18.7 81.3,24.0 85.5,18.7 89.7,18.0 93.8,17.2 98.0,13.9"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -342,7 +342,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>1.38 đpt</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>1.38 đpt</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_EU_POL" data-l='["07-20: 1.38 đpt","07-21: 1.38 đpt","07-22: 1.38 đpt","07-23: 1.38 đpt","07-24: 1.38 đpt","07-25: 1.38 đpt","07-26: 1.38 đpt","07-27: 1.38 đpt","07-28: 1.38 đpt","07-29: 1.38 đpt","07-30: 1.38 đpt","07-31: 1.38 đpt","08-01: 1.38 đpt","08-02: 1.38 đpt","08-03: 1.38 đpt","08-04: 1.38 đpt","08-05: 1.38 đpt","08-06: 1.38 đpt","08-07: 1.38 đpt","08-08: 1.38 đpt","08-09: 1.38 đpt","08-10: 1.38 đpt","08-11: 1.38 đpt","08-12: 1.38 đpt","08-13: 1.38 đpt","08-14: 1.38 đpt","08-15: 1.38 đpt","08-16: 1.38 đpt","08-17: 1.38 đpt","08-18: 1.38 đpt"]'><polyline points="2.0,24.0 5.3,24.0 8.6,24.0 11.9,24.0 15.2,24.0 18.6,24.0 21.9,24.0 25.2,24.0 28.5,24.0 31.8,24.0 35.1,24.0 38.4,24.0 41.7,24.0 45.0,24.0 48.3,24.0 51.7,24.0 55.0,24.0 58.3,24.0 61.6,24.0 64.9,24.0 68.2,24.0 71.5,24.0 74.8,24.0 78.1,24.0 81.4,24.0 84.8,24.0 88.1,24.0 91.4,24.0 94.7,24.0 98.0,24.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -352,7 +352,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.1 đpt</b><span class="sid">2026-08-17 · nhịp ngày</span></td>
+        <td><b>-0.1 đpt</b><span class="sid">2026-08-17 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-17 (3 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_GB_POL" data-l='["07-20: -0.1 đpt","07-21: -0.1 đpt","07-22: -0.1 đpt","07-23: -0.1 đpt","07-24: -0.1 đpt","07-27: -0.1 đpt","07-28: -0.1 đpt","07-29: -0.1 đpt","07-30: -0.1 đpt","07-31: -0.1 đpt","08-03: -0.1 đpt","08-04: -0.1 đpt","08-05: -0.1 đpt","08-06: -0.1 đpt","08-07: -0.1 đpt","08-10: -0.1 đpt","08-11: -0.1 đpt","08-12: -0.1 đpt","08-13: -0.1 đpt","08-14: -0.1 đpt","08-17: -0.1 đpt"]'><polyline points="2.0,7.2 6.8,2.0 11.6,3.0 16.4,10.4 21.2,7.2 26.0,12.5 30.8,16.7 35.6,13.5 40.4,20.9 45.2,13.5 50.0,21.9 54.8,18.8 59.6,13.5 64.4,24.0 69.2,18.8 74.0,15.6 78.8,15.6 83.6,10.4 88.4,8.3 93.2,7.2 98.0,12.5"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -362,7 +362,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>2.25 %</b><span class="sid">2026-08-19 · nhịp ngày</span></td>
+        <td><b>2.25 %</b><span class="sid">2026-08-19 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-19 (1 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="ECBDFR" data-l='["07-21: 2.25 %","07-22: 2.25 %","07-23: 2.25 %","07-24: 2.25 %","07-25: 2.25 %","07-26: 2.25 %","07-27: 2.25 %","07-28: 2.25 %","07-29: 2.25 %","07-30: 2.25 %","07-31: 2.25 %","08-01: 2.25 %","08-02: 2.25 %","08-03: 2.25 %","08-04: 2.25 %","08-05: 2.25 %","08-06: 2.25 %","08-07: 2.25 %","08-08: 2.25 %","08-09: 2.25 %","08-10: 2.25 %","08-11: 2.25 %","08-12: 2.25 %","08-13: 2.25 %","08-14: 2.25 %","08-15: 2.25 %","08-16: 2.25 %","08-17: 2.25 %","08-18: 2.25 %","08-19: 2.25 %"]'><polyline points="2.0,24.0 5.3,24.0 8.6,24.0 11.9,24.0 15.2,24.0 18.6,24.0 21.9,24.0 25.2,24.0 28.5,24.0 31.8,24.0 35.1,24.0 38.4,24.0 41.7,24.0 45.0,24.0 48.3,24.0 51.7,24.0 55.0,24.0 58.3,24.0 61.6,24.0 64.9,24.0 68.2,24.0 71.5,24.0 74.8,24.0 78.1,24.0 81.4,24.0 84.8,24.0 88.1,24.0 91.4,24.0 94.7,24.0 98.0,24.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -372,7 +372,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.39 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>-0.39 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 19/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="pos">▲ +0.141</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_AU_10Y" data-l='["07-01: -0.24 đpt","08-01: -0.07 đpt","09-01: -0.11 đpt","10-01: 0.01 đpt","11-01: -0.36 đpt","12-01: 0.27 đpt","01-01: 0.1 đpt","02-01: -0.18 đpt","03-01: -0.19 đpt","04-01: -0.1 đpt","05-01: 0.06 đpt","06-01: 0.03 đpt","07-01: 0.08 đpt","08-01: -0.04 đpt","09-01: -0.14 đpt","10-01: -0.12 đpt","11-01: -0.4 đpt","12-01: -0.54 đpt","01-01: -0.49 đpt","02-01: -0.79 đpt","03-01: -0.63 đpt","04-01: -0.57 đpt","05-01: -0.53 đpt","06-01: -0.39 đpt"]'><polyline points="2.0,12.5 6.2,8.9 10.3,9.9 14.5,7.3 18.7,15.2 22.9,2.0 27.0,5.5 31.2,11.4 35.4,11.6 39.6,9.6 43.7,6.3 47.9,6.9 52.1,5.9 56.3,8.5 60.4,10.4 64.6,10.2 68.8,15.8 73.0,18.8 77.1,17.8 81.3,24.0 85.5,20.6 89.7,19.4 93.8,18.7 98.0,15.7"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -382,7 +382,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.02 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>-0.02 đpt</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 19/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="pos">▲ +0.21</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_NZ_10Y" data-l='["07-01: -0.41 đpt","08-01: -0.31 đpt","09-01: -0.38 đpt","10-01: -0.1 đpt","11-01: -0.45 đpt","12-01: 0.09 đpt","01-01: -0.07 đpt","02-01: -0.37 đpt","03-01: -0.4 đpt","04-01: -0.38 đpt","05-01: -0.18 đpt","06-01: -0.34 đpt","07-01: -0.18 đpt","08-01: -0.18 đpt","09-01: -0.13 đpt","10-01: 0.03 đpt","11-01: -0.19 đpt","12-01: -0.34 đpt","01-01: -0.25 đpt","02-01: -0.48 đpt","03-01: -0.34 đpt","04-01: -0.28 đpt","05-01: -0.23 đpt","06-01: -0.02 đpt"]'><polyline points="2.0,21.3 6.2,17.4 10.3,20.1 14.5,9.3 18.7,22.8 22.9,2.0 27.0,8.2 31.2,19.8 35.4,20.9 39.6,20.1 43.7,12.4 47.9,18.6 52.1,12.4 56.3,12.4 60.4,10.5 64.6,4.3 68.8,12.8 73.0,18.6 77.1,15.1 81.3,24.0 85.5,18.6 89.7,16.3 93.8,14.4 98.0,6.2"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -398,7 +398,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>3.3 %</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>3.3 %</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 11/09 · FRED cập nhật series 12/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neu">— -0.16</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CPIAUCSL" data-l='["08-01: 2.61 %","09-01: 2.43 %","10-01: 2.58 %","11-01: 2.72 %","12-01: 2.87 %","01-01: 2.99 %","02-01: 2.8 %","03-01: 2.38 %","04-01: 2.33 %","05-01: 2.38 %","06-01: 2.68 %","07-01: 2.74 %","08-01: 2.94 %","09-01: 3.02 %","11-01: 2.7 %","12-01: 2.65 %","01-01: 2.39 %","02-01: 2.43 %","03-01: 3.29 %","04-01: 3.78 %","05-01: 4.17 %","06-01: 3.46 %","07-01: 3.3 %"]'><polyline points="2.0,20.6 6.4,22.8 10.7,21.0 15.1,19.3 19.5,17.5 23.8,16.0 28.2,18.3 32.5,23.3 36.9,24.0 41.3,23.4 45.6,19.8 50.0,19.0 54.4,16.7 58.7,15.7 63.1,19.6 67.5,20.1 71.8,23.2 76.2,22.7 80.5,12.5 84.9,6.6 89.3,2.0 93.6,10.4 98.0,12.3"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -408,7 +408,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>3.29 %</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>3.29 %</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 26/08 · FRED cập nhật series 30/07"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="neg">▼ -0.135</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="PCEPILFE" data-l='["07-01: 2.81 %","08-01: 2.87 %","09-01: 2.84 %","10-01: 2.99 %","11-01: 2.98 %","12-01: 2.99 %","01-01: 2.78 %","02-01: 2.97 %","03-01: 2.67 %","04-01: 2.61 %","05-01: 2.78 %","06-01: 2.81 %","07-01: 2.86 %","08-01: 2.91 %","09-01: 2.83 %","10-01: 2.75 %","11-01: 2.83 %","12-01: 2.97 %","01-01: 3.1 %","02-01: 3.05 %","03-01: 3.25 %","04-01: 3.32 %","05-01: 3.42 %","06-01: 3.29 %"]'><polyline points="2.0,18.8 6.2,17.0 10.3,17.9 14.5,13.9 18.7,14.0 22.9,13.8 27.0,19.5 31.2,14.4 35.4,22.5 39.6,24.0 43.7,19.4 47.9,18.7 52.1,17.2 56.3,15.9 60.4,18.3 64.6,20.2 68.8,18.2 73.0,14.3 77.1,10.6 81.3,12.2 85.5,6.6 89.7,4.9 93.8,2.0 98.0,5.7"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -418,7 +418,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>4.16 %</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>4.16 %</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 10/09 · FRED cập nhật series 13/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neg">▼ -0.571</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="PPIFES" data-l='["08-01: 2.84 %","09-01: 3.31 %","10-01: 3.6 %","11-01: 3.37 %","12-01: 3.73 %","01-01: 3.91 %","02-01: 3.72 %","03-01: 3.78 %","04-01: 3.06 %","05-01: 3.19 %","06-01: 2.69 %","07-01: 3.56 %","08-01: 2.91 %","09-01: 2.99 %","10-01: 2.97 %","11-01: 3.23 %","12-01: 3.43 %","01-01: 3.71 %","02-01: 3.83 %","03-01: 3.94 %","04-01: 4.93 %","05-01: 4.44 %","06-01: 4.73 %","07-01: 4.16 %"]'><polyline points="2.0,22.5 6.2,18.0 10.3,15.1 14.5,17.3 18.7,13.8 22.9,12.0 27.0,13.9 31.2,13.3 35.4,20.4 39.6,19.1 43.7,24.0 47.9,15.5 52.1,21.8 56.3,21.0 60.4,21.2 64.6,18.7 68.8,16.8 73.0,14.0 77.1,12.9 81.3,11.7 85.5,2.0 89.7,6.8 93.8,4.0 98.0,9.6"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -428,7 +428,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>3.11 %</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>3.11 %</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 11/09 · FRED cập nhật series 12/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="pos">▲ +1.005</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="MEDCPIM158SFRBCLE" data-l='["08-01: 3.7 %","09-01: 4.15 %","10-01: 3.97 %","11-01: 3.49 %","12-01: 3.17 %","01-01: 3.93 %","02-01: 3.5 %","03-01: 3.88 %","04-01: 3.85 %","05-01: 3.07 %","06-01: 3.77 %","07-01: 3.37 %","08-01: 3.48 %","09-01: 2.44 %","10-01: 1.4 %","11-01: 1.4 %","12-01: 3.13 %","01-01: 2.35 %","02-01: 2.06 %","03-01: 2.31 %","04-01: 4.93 %","05-01: 3.66 %","06-01: 2.11 %","07-01: 3.11 %"]'><polyline points="2.0,9.7 6.2,6.9 10.3,8.0 14.5,11.0 18.7,13.0 22.9,8.2 27.0,10.9 31.2,8.6 35.4,8.7 39.6,13.6 43.7,9.2 47.9,11.7 52.1,11.1 56.3,17.6 60.4,24.0 64.6,24.0 68.8,13.2 73.0,18.1 77.1,19.9 81.3,18.4 85.5,2.0 89.7,9.9 93.8,19.6 98.0,13.3"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -438,7 +438,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>2.394 %</b><span class="sid">2026-08-01 · nhịp tháng</span></td>
+        <td><b>2.394 %</b><span class="sid">2026-08-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-08-01 (19 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 12/08"><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.008</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="EXPINF1YR" data-l='["09-01: 2.236 %","10-01: 2.256 %","11-01: 2.432 %","12-01: 2.65 %","01-01: 2.627 %","02-01: 2.728 %","03-01: 2.184 %","04-01: 2.887 %","05-01: 2.691 %","06-01: 2.381 %","07-01: 2.789 %","08-01: 2.689 %","09-01: 2.804 %","10-01: 2.728 %","11-01: 2.704 %","12-01: 3.193 %","01-01: 2.586 %","02-01: 2.586 %","03-01: 2.295 %","04-01: 3.276 %","05-01: 3.535 %","06-01: 3.039 %","07-01: 2.386 %","08-01: 2.394 %"]'><polyline points="2.0,23.1 6.2,22.8 10.3,20.0 14.5,16.4 18.7,16.8 22.9,15.1 27.0,24.0 31.2,12.6 35.4,15.7 39.6,20.8 43.7,14.1 47.9,15.8 52.1,13.9 56.3,15.1 60.4,15.5 64.6,7.6 68.8,17.4 73.0,17.5 77.1,22.2 81.3,6.2 85.5,2.0 89.7,10.1 93.8,20.7 98.0,20.6"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -448,7 +448,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>4.1 %</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>4.1 %</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 04/09 · FRED cập nhật series 07/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neg">▼ -0.1</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="UNRATE" data-l='["08-01: 4.2 %","09-01: 4.1 %","10-01: 4.1 %","11-01: 4.2 %","12-01: 4.1 %","01-01: 4 %","02-01: 4.2 %","03-01: 4.2 %","04-01: 4.2 %","05-01: 4.3 %","06-01: 4.1 %","07-01: 4.3 %","08-01: 4.3 %","09-01: 4.4 %","11-01: 4.5 %","12-01: 4.4 %","01-01: 4.3 %","02-01: 4.4 %","03-01: 4.3 %","04-01: 4.3 %","05-01: 4.3 %","06-01: 4.2 %","07-01: 4.1 %"]'><polyline points="2.0,15.2 6.4,19.6 10.7,19.6 15.1,15.2 19.5,19.6 23.8,24.0 28.2,15.2 32.5,15.2 36.9,15.2 41.3,10.8 45.6,19.6 50.0,10.8 54.4,10.8 58.7,6.4 63.1,2.0 67.5,6.4 71.8,10.8 76.2,6.4 80.5,10.8 84.9,10.8 89.3,10.8 93.6,15.2 98.0,19.6"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -458,7 +458,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (20/08) — cao hơn 209,000 ⇒ đỡ vàng · USD yếu; thấp hơn ⇒ ngược lại</span>
           </td>
-        <td><b>209,000</b><span class="sid">2026-08-08 · nhịp tuần</span></td>
+        <td><b>209,000</b><span class="sid">2026-08-08 · nhịp tuần</span><span class="cadbar" title="nhịp tuần · obs cuối 2026-08-08 (12 ngày trước) · ngưỡng stale 14 ngày · kỳ tới 20/08 · FRED cập nhật series 13/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="neu">— +0</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="ICSA" data-l='["02-14: 208,000","02-21: 211,000","02-28: 214,000","03-07: 213,000","03-14: 205,000","03-21: 211,000","03-28: 203,000","04-04: 218,000","04-11: 208,000","04-18: 215,000","04-25: 190,000","05-02: 199,000","05-09: 212,000","05-16: 210,000","05-23: 212,000","05-30: 225,000","06-06: 230,000","06-13: 227,000","06-20: 216,000","06-27: 217,000","07-04: 217,000","07-11: 209,000","07-18: 189,000","07-25: 198,000","08-01: 200,000","08-08: 209,000"]'><polyline points="2.0,13.8 5.8,12.2 9.7,10.6 13.5,11.1 17.4,15.4 21.2,12.2 25.0,16.5 28.9,8.4 32.7,13.8 36.6,10.0 40.4,23.5 44.2,18.6 48.1,11.7 51.9,12.7 55.8,11.7 59.6,4.7 63.4,2.0 67.3,3.6 71.1,9.5 75.0,9.0 78.8,9.0 82.6,13.3 86.5,24.0 90.3,19.2 94.2,18.1 98.0,13.3"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -468,7 +468,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>132.8 triệu người</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>132.8 triệu người</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 02/09 · FRED cập nhật series 05/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="pos">▲ +0.044</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="ADPMNUSNERSA" data-l='["08-01: 131.6 triệu người","09-01: 131.6 triệu người","10-01: 131.6 triệu người","11-01: 131.7 triệu người","12-01: 131.9 triệu người","01-01: 132 triệu người","02-01: 132 triệu người","03-01: 132 triệu người","04-01: 131.9 triệu người","05-01: 131.9 triệu người","06-01: 131.9 triệu người","07-01: 132 triệu người","08-01: 132 triệu người","09-01: 132.1 triệu người","10-01: 132.1 triệu người","11-01: 132.2 triệu người","12-01: 132.3 triệu người","01-01: 132.3 triệu người","02-01: 132.3 triệu người","03-01: 132.4 triệu người","04-01: 132.5 triệu người","05-01: 132.6 triệu người","06-01: 132.7 triệu người","07-01: 132.8 triệu người"]'><polyline points="2.0,23.4 6.2,23.8 10.3,24.0 14.5,22.1 18.7,19.1 22.9,16.4 27.0,16.2 31.2,17.2 35.4,17.6 39.6,18.1 43.7,18.1 47.9,16.6 52.1,15.7 56.3,14.0 60.4,13.7 64.6,12.3 68.8,11.6 73.0,11.3 77.1,10.1 81.3,8.9 85.5,6.9 89.7,4.6 93.8,2.8 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -478,7 +478,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>20.6</b><span class="sid">2026-08-01 · nhịp tháng</span></td>
+        <td><b>20.6</b><span class="sid">2026-08-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-08-01 (19 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 15/09 · FRED cập nhật series 17/08"><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +5</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GACDISA066MSFRBNY" data-l='["09-01: 3.8","10-01: -14","11-01: 16.8","12-01: 2.2","01-01: -7.4","02-01: 4.3","03-01: -15.7","04-01: -8.6","05-01: -6.9","06-01: -14.9","07-01: 3.1","08-01: 9.1","09-01: -7","10-01: 7.8","11-01: 13.5","12-01: -3.7","01-01: 7.7","02-01: 7.1","03-01: -0.2","04-01: 11","05-01: 19.6","06-01: 5.7","07-01: 15.6","08-01: 20.6"]'><polyline points="2.0,12.2 6.2,23.0 10.3,4.3 14.5,13.2 18.7,19.0 22.9,11.9 27.0,24.0 31.2,19.7 35.4,18.7 39.6,23.5 43.7,12.6 47.9,9.0 52.1,18.7 56.3,9.8 60.4,6.3 64.6,16.7 68.8,9.8 73.0,10.2 77.1,14.6 81.3,7.8 85.5,2.6 89.7,11.0 93.8,5.0 98.0,2.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -488,7 +488,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (20/08) — cao hơn 41.4 ⇒ ép vàng · USD mạnh; thấp hơn ⇒ ngược lại</span>
           </td>
-        <td><b>41.4</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>41.4</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 20/08 · FRED cập nhật series 16/07"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="pos">▲ +31.1</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GACDFSA066MSFRBPHI" data-l='["08-01: -3","09-01: -1.6","10-01: 7.6","11-01: -1.5","12-01: -9.6","01-01: 32.9","02-01: 13.4","03-01: 10.2","04-01: -12.9","05-01: -0.7","06-01: -1.4","07-01: 11.4","08-01: 0.7","09-01: 19.5","10-01: -10.1","11-01: 0.6","12-01: -8.8","01-01: 12.6","02-01: 16.3","03-01: 18.1","04-01: 26.7","05-01: -0.4","06-01: 10.3","07-01: 41.4"]'><polyline points="2.0,20.0 6.2,19.4 10.3,15.7 14.5,19.4 18.7,22.7 22.9,5.4 27.0,13.3 31.2,14.6 35.4,24.0 39.6,19.1 43.7,19.3 47.9,14.2 52.1,18.5 56.3,10.9 60.4,22.9 64.6,18.5 68.8,22.3 73.0,13.7 77.1,12.2 81.3,11.4 85.5,8.0 89.7,18.9 93.8,14.6 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -498,7 +498,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>80.5 $/thùng</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>80.5 $/thùng</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 05/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neg">▼ -4.35</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="WTISPLC" data-l='["08-01: 76.7 $/thùng","09-01: 70.2 $/thùng","10-01: 72 $/thùng","11-01: 70 $/thùng","12-01: 70.1 $/thùng","01-01: 75.7 $/thùng","02-01: 71.5 $/thùng","03-01: 68.2 $/thùng","04-01: 63.5 $/thùng","05-01: 62.2 $/thùng","06-01: 68.2 $/thùng","07-01: 68.4 $/thùng","08-01: 64.9 $/thùng","09-01: 64 $/thùng","10-01: 60.9 $/thùng","11-01: 60.1 $/thùng","12-01: 58 $/thùng","01-01: 60 $/thùng","02-01: 64.5 $/thùng","03-01: 91.4 $/thùng","04-01: 100.3 $/thùng","05-01: 102.1 $/thùng","06-01: 84.8 $/thùng","07-01: 80.5 $/thùng"]'><polyline points="2.0,14.7 6.2,17.9 10.3,17.0 14.5,18.0 18.7,17.9 22.9,15.1 27.0,17.2 31.2,18.9 35.4,21.2 39.6,21.9 43.7,18.9 47.9,18.8 52.1,20.6 56.3,21.0 60.4,22.5 64.6,23.0 68.8,24.0 73.0,23.0 77.1,20.7 81.3,7.4 85.5,2.9 89.7,2.0 93.8,10.6 98.0,12.8"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -508,7 +508,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>13.54 k$/tấn</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>13.54 k$/tấn</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 17/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neu">— -0.009</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="PCOPPUSDM" data-l='["08-01: 8.98 k$/tấn","09-01: 9.26 k$/tấn","10-01: 9.53 k$/tấn","11-01: 9.08 k$/tấn","12-01: 8.91 k$/tấn","01-01: 8.98 k$/tấn","02-01: 9.33 k$/tấn","03-01: 9.74 k$/tấn","04-01: 9.17 k$/tấn","05-01: 9.53 k$/tấn","06-01: 9.84 k$/tấn","07-01: 9.77 k$/tấn","08-01: 9.67 k$/tấn","09-01: 9.99 k$/tấn","10-01: 10.74 k$/tấn","11-01: 10.81 k$/tấn","12-01: 11.79 k$/tấn","01-01: 12.99 k$/tấn","02-01: 12.95 k$/tấn","03-01: 12.53 k$/tấn","04-01: 12.89 k$/tấn","05-01: 13.51 k$/tấn","06-01: 13.55 k$/tấn","07-01: 13.54 k$/tấn"]'><polyline points="2.0,23.7 6.2,22.3 10.3,21.0 14.5,23.2 18.7,24.0 22.9,23.7 27.0,22.0 31.2,20.1 35.4,22.8 39.6,21.1 43.7,19.6 47.9,19.9 52.1,20.4 56.3,18.9 60.4,15.3 64.6,15.0 68.8,10.3 73.0,4.7 77.1,4.8 81.3,6.8 85.5,5.1 89.7,2.2 93.8,2.0 98.0,2.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -518,7 +518,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>2.72</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>2.72</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 11/09 · FRED cập nhật series 12/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neg">▼ -0.091</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CORESTICKM159SFRBATL" data-l='["08-01: 4.11","09-01: 4.01","10-01: 3.98","11-01: 3.89","12-01: 3.75","01-01: 3.62","02-01: 3.52","03-01: 3.27","04-01: 3.18","05-01: 3.17","06-01: 3.3","07-01: 3.43","08-01: 3.43","09-01: 3.32","10-01: 3.08","11-01: 2.95","12-01: 3.01","01-01: 2.98","02-01: 2.9","03-01: 2.93","04-01: 3.04","05-01: 3.09","06-01: 2.81","07-01: 2.72"]'><polyline points="2.0,2.0 6.2,3.6 10.3,4.2 14.5,5.5 18.7,7.7 22.9,9.7 27.0,11.3 31.2,15.3 35.4,16.7 39.6,16.9 43.7,14.8 47.9,12.8 52.1,12.7 56.3,14.4 60.4,18.3 64.6,20.2 68.8,19.4 73.0,19.8 77.1,21.0 81.3,20.6 85.5,18.9 89.7,18.1 93.8,22.6 98.0,24.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -528,7 +528,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>0.99</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>0.99</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 26/08 · FRED cập nhật series 30/07"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neu">— -0.014</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="STLPPM" data-l='["08-01: 0.29","09-01: 0.18","10-01: 0.15","11-01: 0.34","12-01: 0.26","01-01: 0.48","02-01: 0.57","03-01: 0.61","04-01: 0.18","05-01: 0.12","06-01: 0.27","07-01: 0.43","08-01: 0.46","09-01: 0.35","10-01: 0.38","11-01: 0.27","12-01: 0.4","01-01: 0.48","02-01: 0.6","03-01: 0.6","04-01: 0.77","05-01: 0.81","06-01: 1","07-01: 0.99"]'><polyline points="2.0,19.6 6.2,22.5 10.3,23.3 14.5,18.6 18.7,20.4 22.9,15.0 27.0,12.7 31.2,11.6 35.4,22.5 39.6,24.0 43.7,20.3 47.9,16.3 52.1,15.5 56.3,18.2 60.4,17.5 64.6,20.2 68.8,17.0 73.0,15.0 77.1,11.9 81.3,11.9 85.5,7.6 89.7,6.7 93.8,2.0 98.0,2.4"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -544,7 +544,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>15.84</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>15.84</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.56</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="VIXCLS" data-l='["07-08: 16.9","07-09: 15.84","07-10: 15.03","07-13: 17.16","07-14: 16.5","07-15: 15.67","07-16: 16.73","07-17: 18.77","07-20: 18.65","07-21: 17.05","07-22: 16.64","07-23: 18.7","07-24: 18.58","07-27: 18.67","07-28: 18.21","07-29: 20.66","07-30: 17.09","07-31: 15.99","08-03: 15.86","08-04: 16.5","08-05: 15.81","08-06: 15.15","08-07: 14.9","08-10: 15.46","08-11: 15.28","08-12: 14.55","08-13: 14.63","08-14: 14.25","08-17: 15.19","08-18: 15.84"]'><polyline points="2.0,14.9 5.3,18.5 8.6,21.3 11.9,14.0 15.2,16.3 18.6,19.1 21.9,15.5 25.2,8.5 28.5,8.9 31.8,14.4 35.1,15.8 38.4,8.7 41.7,9.1 45.0,8.8 48.3,10.4 51.7,2.0 55.0,14.3 58.3,18.0 61.6,18.5 64.9,16.3 68.2,18.6 71.5,20.9 74.8,21.8 78.1,19.8 81.4,20.5 84.8,23.0 88.1,22.7 91.4,24.0 94.7,20.8 98.0,18.5"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -554,7 +554,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>2.75 %</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>2.75 %</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.03</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="BAMLH0A0HYM2" data-l='["07-08: 2.7 %","07-09: 2.7 %","07-10: 2.69 %","07-13: 2.69 %","07-14: 2.72 %","07-15: 2.71 %","07-16: 2.71 %","07-17: 2.73 %","07-20: 2.69 %","07-21: 2.69 %","07-22: 2.68 %","07-23: 2.77 %","07-24: 2.79 %","07-27: 2.81 %","07-28: 2.84 %","07-29: 2.87 %","07-30: 2.84 %","07-31: 2.85 %","08-03: 2.78 %","08-04: 2.73 %","08-05: 2.75 %","08-06: 2.71 %","08-07: 2.7 %","08-10: 2.7 %","08-11: 2.72 %","08-12: 2.71 %","08-13: 2.71 %","08-14: 2.67 %","08-17: 2.7 %","08-18: 2.75 %"]'><polyline points="2.0,20.7 5.3,20.7 8.6,21.8 11.9,21.8 15.2,18.5 18.6,19.6 21.9,19.6 25.2,17.4 28.5,21.8 31.8,21.8 35.1,22.9 38.4,13.0 41.7,10.8 45.0,8.6 48.3,5.3 51.7,2.0 55.0,5.3 58.3,4.2 61.6,11.9 64.9,17.4 68.2,15.2 71.5,19.6 74.8,20.7 78.1,20.7 81.4,18.5 84.8,19.6 88.1,19.6 91.4,24.0 94.7,20.7 98.0,15.2"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -564,7 +564,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.559</b><span class="sid">2026-08-14 · nhịp tuần</span></td>
+        <td><b>-0.559</b><span class="sid">2026-08-14 · nhịp tuần</span><span class="cadbar" title="nhịp tuần · obs cuối 2026-08-14 (6 ngày trước) · ngưỡng stale 14 ngày · kỳ tới 26/08 · FRED cập nhật series 19/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="neg">▼ -0.024</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="NFCI" data-l='["02-20: -0.528","02-27: -0.509","03-06: -0.49","03-13: -0.473","03-20: -0.464","03-27: -0.46","04-03: -0.465","04-10: -0.475","04-17: -0.487","04-24: -0.498","05-01: -0.505","05-08: -0.51","05-15: -0.511","05-22: -0.51","05-29: -0.509","06-05: -0.508","06-12: -0.508","06-19: -0.51","06-26: -0.514","07-03: -0.521","07-10: -0.528","07-17: -0.535","07-24: -0.543","07-31: -0.549","08-07: -0.555","08-14: -0.559"]'><polyline points="2.0,17.1 5.8,12.9 9.7,8.7 13.5,4.9 17.4,2.9 21.2,2.0 25.0,3.1 28.9,5.3 32.7,8.0 36.6,10.4 40.4,12.0 44.2,13.1 48.1,13.3 51.9,13.1 55.8,12.9 59.6,12.7 63.4,12.7 67.3,13.1 71.1,14.0 75.0,15.6 78.8,17.1 82.6,18.7 86.5,20.4 90.3,21.8 94.2,23.1 98.0,24.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -574,7 +574,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (20/08) — cao hơn 6.76 nghìn tỷ $ ⇒ đỡ vàng · USD yếu; thấp hơn ⇒ ngược lại</span>
           </td>
-        <td><b>6.76 nghìn tỷ $</b><span class="sid">2026-08-12 · nhịp tuần</span></td>
+        <td><b>6.76 nghìn tỷ $</b><span class="sid">2026-08-12 · nhịp tuần</span><span class="cadbar" title="nhịp tuần · obs cuối 2026-08-12 (8 ngày trước) · ngưỡng stale 14 ngày · kỳ tới 20/08 · FRED cập nhật series 13/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="pos">▲ +0.017</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="WALCL" data-l='["02-18: 6.61 nghìn tỷ $","02-25: 6.61 nghìn tỷ $","03-04: 6.63 nghìn tỷ $","03-11: 6.65 nghìn tỷ $","03-18: 6.66 nghìn tỷ $","03-25: 6.66 nghìn tỷ $","04-01: 6.68 nghìn tỷ $","04-08: 6.69 nghìn tỷ $","04-15: 6.71 nghìn tỷ $","04-22: 6.71 nghìn tỷ $","04-29: 6.7 nghìn tỷ $","05-06: 6.71 nghìn tỷ $","05-13: 6.73 nghìn tỷ $","05-20: 6.71 nghìn tỷ $","05-27: 6.7 nghìn tỷ $","06-03: 6.71 nghìn tỷ $","06-10: 6.73 nghìn tỷ $","06-17: 6.74 nghìn tỷ $","06-24: 6.74 nghìn tỷ $","07-01: 6.72 nghìn tỷ $","07-08: 6.74 nghìn tỷ $","07-15: 6.74 nghìn tỷ $","07-22: 6.75 nghìn tỷ $","07-29: 6.74 nghìn tỷ $","08-05: 6.75 nghìn tỷ $","08-12: 6.76 nghìn tỷ $"]'><polyline points="2.0,24.0 5.8,23.9 9.7,21.7 13.5,19.1 17.4,17.6 21.2,17.4 25.0,14.7 28.9,11.9 32.7,10.1 36.6,9.9 40.4,11.0 44.2,9.6 48.1,6.7 51.9,9.0 55.8,10.3 59.6,9.3 63.4,7.2 67.3,5.5 71.1,5.6 75.0,7.3 78.8,5.7 82.6,4.5 86.5,3.9 90.3,5.3 94.2,3.7 98.0,2.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -584,7 +584,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>0.317 tỷ $</b><span class="sid">2026-08-19 · nhịp ngày</span></td>
+        <td><b>0.317 tỷ $</b><span class="sid">2026-08-19 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-19 (1 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— -0.408</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="RRPONTSYD" data-l='["07-09: 5.772 tỷ $","07-10: 0.545 tỷ $","07-13: 0.795 tỷ $","07-14: 0.278 tỷ $","07-15: 0.151 tỷ $","07-16: 0.125 tỷ $","07-17: 0.1 tỷ $","07-20: 0.03 tỷ $","07-21: 0.275 tỷ $","07-22: 0.376 tỷ $","07-23: 0.904 tỷ $","07-24: 0.675 tỷ $","07-27: 1.38 tỷ $","07-28: 1.126 tỷ $","07-29: 2.576 tỷ $","07-30: 1.076 tỷ $","07-31: 2.151 tỷ $","08-03: 2.127 tỷ $","08-04: 2.251 tỷ $","08-05: 1.65 tỷ $","08-06: 1.429 tỷ $","08-07: 1.45 tỷ $","08-10: 0.975 tỷ $","08-11: 1.25 tỷ $","08-12: 0.725 tỷ $","08-13: 0.45 tỷ $","08-14: 0.25 tỷ $","08-17: 0.255 tỷ $","08-18: 0.155 tỷ $","08-19: 0.317 tỷ $"]'><polyline points="2.0,2.0 5.3,22.0 8.6,21.1 11.9,23.0 15.2,23.5 18.6,23.6 21.9,23.7 25.2,24.0 28.5,23.1 31.8,22.7 35.1,20.7 38.4,21.5 41.7,18.8 45.0,19.8 48.3,14.2 51.7,20.0 55.0,15.9 58.3,16.0 61.6,15.5 64.9,17.8 68.2,18.6 71.5,18.6 74.8,20.4 78.1,19.3 81.4,21.3 84.8,22.4 88.1,23.2 91.4,23.1 94.7,23.5 98.0,22.9"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -594,7 +594,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (20/08) — cao hơn 963.95 tỷ $ ⇒ ép vàng · USD mạnh; thấp hơn ⇒ ngược lại</span>
           </td>
-        <td><b>963.95 tỷ $</b><span class="sid">2026-08-12 · nhịp tuần</span></td>
+        <td><b>963.95 tỷ $</b><span class="sid">2026-08-12 · nhịp tuần</span><span class="cadbar" title="nhịp tuần · obs cuối 2026-08-12 (8 ngày trước) · ngưỡng stale 14 ngày · kỳ tới 20/08 · FRED cập nhật series 13/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="pos">▲ +207.73</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="WTREGEN" data-l='["02-18: 912.73 tỷ $","02-25: 887.61 tỷ $","03-04: 832.05 tỷ $","03-11: 838.19 tỷ $","03-18: 853.05 tỷ $","03-25: 874.08 tỷ $","04-01: 847.72 tỷ $","04-08: 748.38 tỷ $","04-15: 751.35 tỷ $","04-22: 1,006 tỷ $","04-29: 981.93 tỷ $","05-06: 877.76 tỷ $","05-13: 838.58 tỷ $","05-20: 781.29 tỷ $","05-27: 830.3 tỷ $","06-03: 875.71 tỷ $","06-10: 828.12 tỷ $","06-17: 880.71 tỷ $","06-24: 918.7 tỷ $","07-01: 880.24 tỷ $","07-08: 774.06 tỷ $","07-15: 756.22 tỷ $","07-22: 829.62 tỷ $","07-29: 910.78 tỷ $","08-05: 907.32 tỷ $","08-12: 963.95 tỷ $"]'><polyline points="2.0,10.0 5.8,12.1 9.7,16.9 13.5,16.3 17.4,15.1 21.2,13.3 25.0,15.5 28.9,24.0 32.7,23.7 36.6,2.0 40.4,4.1 44.2,12.9 48.1,16.3 51.9,21.2 55.8,17.0 59.6,13.1 63.4,17.2 67.3,12.7 71.1,9.5 75.0,12.7 78.8,21.8 82.6,23.3 86.5,17.1 90.3,10.1 94.2,10.4 98.0,5.6"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -604,7 +604,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>242.73</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>242.73</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +48.8</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="USEPUINDXD" data-l='["07-20: 379.81","07-21: 362.72","07-22: 155.25","07-23: 194.21","07-24: 727.48","07-25: 290.05","07-26: 243.36","07-27: 325.76","07-28: 270.36","07-29: 235.43","07-30: 338.58","07-31: 252.31","08-01: 219.89","08-02: 358.43","08-03: 187.1","08-04: 386.48","08-05: 309.58","08-06: 263.88","08-07: 335.12","08-08: 135.24","08-09: 327.83","08-10: 288.47","08-11: 215.34","08-12: 292.38","08-13: 193.93","08-14: 218.83","08-15: 170.09","08-16: 311.46","08-17: 160.27","08-18: 242.73"]'><polyline points="2.0,14.9 5.3,15.5 8.6,23.3 11.9,21.8 15.2,2.0 18.6,18.2 21.9,20.0 25.2,16.9 28.5,19.0 31.8,20.3 35.1,16.4 38.4,19.7 41.7,20.9 45.0,15.7 48.3,22.1 51.7,14.7 55.0,17.5 58.3,19.2 61.6,16.6 64.9,24.0 68.2,16.8 71.5,18.3 74.8,21.0 78.1,18.2 81.4,21.8 84.8,20.9 88.1,22.7 91.4,17.5 94.7,23.1 98.0,20.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -614,7 +614,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (20/08) — cao hơn 132 tr $ ⇒ USD mạnh; thấp hơn ⇒ ngược lại</span>
           </td>
-        <td><b>132 tr $</b><span class="sid">2026-08-12 · nhịp tuần</span></td>
+        <td><b>132 tr $</b><span class="sid">2026-08-12 · nhịp tuần</span><span class="cadbar" title="nhịp tuần · obs cuối 2026-08-12 (8 ngày trước) · ngưỡng stale 14 ngày · kỳ tới 20/08 · FRED cập nhật series 13/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— -3</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="SWPT" data-l='["02-18: 58 tr $","02-25: 55 tr $","03-04: 30 tr $","03-11: 17 tr $","03-18: 18 tr $","03-25: 28 tr $","04-01: 180 tr $","04-08: 105 tr $","04-15: 106 tr $","04-22: 101 tr $","04-29: 20 tr $","05-06: 206 tr $","05-13: 42 tr $","05-20: 16 tr $","05-27: 50 tr $","06-03: 116 tr $","06-10: 28 tr $","06-17: 49 tr $","06-24: 35 tr $","07-01: 250 tr $","07-08: 170 tr $","07-15: 135 tr $","07-22: 378 tr $","07-29: 132 tr $","08-05: 145 tr $","08-12: 132 tr $"]'><polyline points="2.0,21.4 5.8,21.6 9.7,23.1 13.5,23.9 17.4,23.9 21.2,23.3 25.0,14.0 28.9,18.6 32.7,18.5 36.6,18.8 40.4,23.8 44.2,12.5 48.1,22.4 51.9,24.0 55.8,21.9 59.6,17.9 63.4,23.3 67.3,22.0 71.1,22.8 75.0,9.8 78.8,14.6 82.6,16.8 86.5,2.0 90.3,17.0 94.2,16.2 98.0,17.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -624,7 +624,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>23.16 nghìn tỷ $</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>23.16 nghìn tỷ $</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 25/08 · FRED cập nhật series 28/07"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="pos">▲ +0.1</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="M2SL" data-l='["07-01: 21.1 nghìn tỷ $","08-01: 21.19 nghìn tỷ $","09-01: 21.28 nghìn tỷ $","10-01: 21.34 nghìn tỷ $","11-01: 21.45 nghìn tỷ $","12-01: 21.49 nghìn tỷ $","01-01: 21.54 nghìn tỷ $","02-01: 21.61 nghìn tỷ $","03-01: 21.68 nghìn tỷ $","04-01: 21.77 nghìn tỷ $","05-01: 21.84 nghìn tỷ $","06-01: 21.94 nghìn tỷ $","07-01: 22.03 nghìn tỷ $","08-01: 22.09 nghìn tỷ $","09-01: 22.18 nghìn tỷ $","10-01: 22.25 nghìn tỷ $","11-01: 22.28 nghìn tỷ $","12-01: 22.36 nghìn tỷ $","01-01: 22.42 nghìn tỷ $","02-01: 22.62 nghìn tỷ $","03-01: 22.68 nghìn tỷ $","04-01: 22.8 nghìn tỷ $","05-01: 23.06 nghìn tỷ $","06-01: 23.16 nghìn tỷ $"]'><polyline points="2.0,24.0 6.2,23.0 10.3,22.1 14.5,21.5 18.7,20.2 22.9,19.8 27.0,19.3 31.2,18.6 35.4,17.7 39.6,16.8 43.7,16.1 47.9,15.0 52.1,14.1 56.3,13.4 60.4,12.5 64.6,11.7 68.8,11.4 73.0,10.6 77.1,9.9 81.3,7.7 85.5,7.1 89.7,5.8 93.8,3.1 98.0,2.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -634,9 +634,9 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>64,625</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
-        <td class="pos">▲ +1,237.59</td>
-        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CBBTCUSD" data-l='["07-20: 65,151","07-21: 66,554","07-22: 66,064","07-23: 65,001","07-24: 64,108","07-25: 64,320","07-26: 65,243","07-27: 63,693","07-28: 63,946","07-29: 63,896","07-30: 64,818","07-31: 62,887","08-01: 62,835","08-02: 63,444","08-03: 63,503","08-04: 64,023","08-05: 64,555","08-06: 64,292","08-07: 64,877","08-08: 64,910","08-09: 64,856","08-10: 63,876","08-11: 63,528","08-12: 63,402","08-13: 63,388","08-14: 62,968","08-15: 62,999","08-16: 62,859","08-17: 64,424","08-18: 64,625"]'><polyline points="2.0,10.3 5.3,2.0 8.6,4.9 11.9,11.2 15.2,16.5 18.6,15.2 21.9,9.8 25.2,18.9 28.5,17.4 31.8,17.7 35.1,12.3 38.4,23.7 41.7,24.0 45.0,20.4 48.3,20.0 51.7,17.0 55.0,13.8 58.3,15.4 61.6,11.9 64.9,11.7 68.2,12.0 71.5,17.8 74.8,19.9 78.1,20.6 81.4,20.7 84.8,23.2 88.1,23.0 91.4,23.9 94.7,14.6 98.0,13.4"/></svg></td>
+        <td><b>69,488</b><span class="sid">2026-08-19 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-19 (1 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
+        <td class="pos">▲ +6,519.17</td>
+        <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CBBTCUSD" data-l='["07-21: 66,554","07-22: 66,064","07-23: 65,001","07-24: 64,108","07-25: 64,320","07-26: 65,243","07-27: 63,693","07-28: 63,946","07-29: 63,896","07-30: 64,818","07-31: 62,887","08-01: 62,835","08-02: 63,444","08-03: 63,503","08-04: 64,023","08-05: 64,555","08-06: 64,292","08-07: 64,877","08-08: 64,910","08-09: 64,856","08-10: 63,876","08-11: 63,528","08-12: 63,402","08-13: 63,388","08-14: 62,968","08-15: 62,999","08-16: 62,859","08-17: 64,424","08-18: 64,625","08-19: 69,488"]'><polyline points="2.0,11.7 5.3,13.3 8.6,16.8 11.9,19.8 15.2,19.1 18.6,16.0 21.9,21.2 25.2,20.3 28.5,20.5 31.8,17.4 35.1,23.8 38.4,24.0 41.7,22.0 45.0,21.8 48.3,20.1 51.7,18.3 55.0,19.2 58.3,17.2 61.6,17.1 64.9,17.3 68.2,20.6 71.5,21.7 74.8,22.1 78.1,22.2 81.4,23.6 84.8,23.5 88.1,23.9 91.4,18.7 94.7,18.1 98.0,2.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
         <td><span class="chip neu">ctx</span></td>
       </tr><tr>
@@ -644,7 +644,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-0.83</b><span class="sid">2026-08-14 · nhịp tuần</span></td>
+        <td><b>-0.83</b><span class="sid">2026-08-14 · nhịp tuần</span><span class="cadbar" title="nhịp tuần · obs cuối 2026-08-14 (6 ngày trước) · ngưỡng stale 14 ngày · kỳ tới 26/08 · FRED cập nhật series 19/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— -0.128</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="STLFSI4" data-l='["02-20: -0.48","02-27: -0.44","03-06: -0.43","03-13: -0.3","03-20: -0.36","03-27: -0.18","04-03: -0.23","04-10: -0.64","04-17: -0.75","04-24: -0.67","05-01: -0.67","05-08: -0.76","05-15: -0.74","05-22: -0.76","05-29: -0.68","06-05: -0.86","06-12: -0.77","06-19: -0.95","06-26: -0.64","07-03: -0.72","07-10: -0.88","07-17: -0.7","07-24: -0.83","07-31: -0.51","08-07: -0.77","08-14: -0.83"]'><polyline points="2.0,10.6 5.8,9.3 9.7,9.0 13.5,5.4 17.4,7.3 21.2,2.0 25.0,3.5 28.9,15.1 32.7,18.3 36.6,16.1 40.4,15.9 44.2,18.5 48.1,17.9 51.9,18.5 55.8,16.3 59.6,21.5 63.4,18.7 67.3,24.0 71.1,15.2 75.0,17.5 78.8,22.0 82.6,16.8 86.5,20.4 90.3,11.3 94.2,18.8 98.0,20.5"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -654,7 +654,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (20/08) — cao hơn 241.69 ⇒ đỡ vàng · USD mạnh; thấp hơn ⇒ ngược lại</span>
           </td>
-        <td><b>241.69</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>241.69</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 20/08 · FRED cập nhật series 10/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neg">▼ -41.02</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GEPUCURRENT" data-l='["08-01: 189.16","09-01: 200","10-01: 202.39","11-01: 279.04","12-01: 322.98","01-01: 306.56","02-01: 328.77","03-01: 469.38","04-01: 620.88","05-01: 505.17","06-01: 365.63","07-01: 401.52","08-01: 338.51","09-01: 304.99","10-01: 397.6","11-01: 364.98","12-01: 332.43","01-01: 375.63","02-01: 350.91","03-01: 445.85","04-01: 342.43","05-01: 321.59","06-01: 282.72","07-01: 241.69"]'><polyline points="2.0,24.0 6.2,23.4 10.3,23.3 14.5,19.4 18.7,17.2 22.9,18.0 27.0,16.9 31.2,9.7 35.4,2.0 39.6,7.9 43.7,15.0 47.9,13.2 52.1,16.4 56.3,18.1 60.4,13.4 64.6,15.0 68.8,16.7 73.0,14.5 77.1,15.8 81.3,10.9 85.5,16.2 89.7,17.3 93.8,19.2 98.0,21.3"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -664,7 +664,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (20/08) — cao hơn 334.8 ⇒ đỡ vàng · USD mạnh; thấp hơn ⇒ ngược lại</span>
           </td>
-        <td><b>334.8</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>334.8</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 20/08 · FRED cập nhật series 12/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="pos">▲ +103.35</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="CHNMAINLANDEPU" data-l='["08-01: 207.98","09-01: 223.66","10-01: 228.08","11-01: 233.83","12-01: 364.41","01-01: 256.9","02-01: 241.6","03-01: 426.84","04-01: 524.84","05-01: 494.11","06-01: 342.74","07-01: 345.48","08-01: 301.27","09-01: 221.76","10-01: 522.43","11-01: 454.24","12-01: 420.05","01-01: 375.82","02-01: 337.59","03-01: 570.77","04-01: 330.64","05-01: 267.23","06-01: 231.45","07-01: 334.8"]'><polyline points="2.0,24.0 6.2,23.0 10.3,22.8 14.5,22.4 18.7,14.5 22.9,21.0 27.0,22.0 31.2,10.7 35.4,4.8 39.6,6.6 43.7,15.8 47.9,15.7 52.1,18.3 56.3,23.2 60.4,4.9 64.6,9.1 68.8,11.1 73.0,13.8 77.1,16.1 81.3,2.0 85.5,16.6 89.7,20.4 93.8,22.6 98.0,16.3"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -674,7 +674,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>0 đpt</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>0 đpt</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.01</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="SOFR_IORB" data-l='["07-08: -0.07 đpt","07-09: -0.12 đpt","07-10: -0.1 đpt","07-13: -0.05 đpt","07-14: -0.02 đpt","07-15: -0.01 đpt","07-16: -0.03 đpt","07-17: -0.06 đpt","07-20: -0.08 đpt","07-21: -0.04 đpt","07-22: -0.03 đpt","07-23: -0.01 đpt","07-24: -0.01 đpt","07-27: -0.01 đpt","07-28: 0 đpt","07-29: 0 đpt","07-30: 0 đpt","07-31: 0.01 đpt","08-03: 0 đpt","08-04: 0.01 đpt","08-05: -0.01 đpt","08-06: 0 đpt","08-07: -0.03 đpt","08-10: -0.02 đpt","08-11: -0.01 đpt","08-12: -0.03 đpt","08-13: -0.03 đpt","08-14: -0.03 đpt","08-17: 0.01 đpt","08-18: 0 đpt"]'><polyline points="2.0,15.5 5.3,24.0 8.6,20.6 11.9,12.2 15.2,7.1 18.6,5.4 21.9,8.8 25.2,13.8 28.5,17.2 31.8,10.5 35.1,8.8 38.4,5.4 41.7,5.4 45.0,5.4 48.3,3.7 51.7,3.7 55.0,3.7 58.3,2.0 61.6,3.7 64.9,2.0 68.2,5.4 71.5,3.7 74.8,8.8 78.1,7.1 81.4,5.4 84.8,8.8 88.1,8.8 91.4,8.8 94.7,2.0 98.0,3.7"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -690,7 +690,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>2.195 %</b><span class="sid">2026-08-01 · nhịp tháng</span></td>
+        <td><b>2.195 %</b><span class="sid">2026-08-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-08-01 (19 ngày trước) · ngưỡng stale 90 ngày · FRED cập nhật series 12/08"><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="pos">▲ +0.122</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="REAINTRATREARAT10Y" data-l='["09-01: 1.582 %","10-01: 1.48 %","11-01: 1.958 %","12-01: 1.824 %","01-01: 2.056 %","02-01: 2.028 %","03-01: 1.859 %","04-01: 1.67 %","05-01: 1.666 %","06-01: 1.869 %","07-01: 1.66 %","08-01: 1.566 %","09-01: 1.565 %","10-01: 1.554 %","11-01: 1.608 %","12-01: 1.457 %","01-01: 1.666 %","02-01: 1.748 %","03-01: 1.475 %","04-01: 1.594 %","05-01: 1.628 %","06-01: 1.915 %","07-01: 2.073 %","08-01: 2.195 %"]'><polyline points="2.0,20.3 6.2,23.3 10.3,9.1 14.5,13.1 18.7,6.2 22.9,7.0 27.0,12.0 31.2,17.6 35.4,17.8 39.6,11.7 43.7,18.0 47.9,20.7 52.1,20.8 56.3,21.1 60.4,19.5 64.6,24.0 68.8,17.8 73.0,15.3 77.1,23.5 81.3,19.9 85.5,18.9 89.7,10.4 93.8,5.6 98.0,2.0"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -700,7 +700,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>0.839 %</b><span class="sid">2026-08-14 · nhịp ngày</span></td>
+        <td><b>0.839 %</b><span class="sid">2026-08-14 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-14 (6 ngày trước) · ngưỡng stale 21 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— +0.014</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="THREEFYTP10" data-l='["07-06: 0.726 %","07-07: 0.753 %","07-08: 0.771 %","07-09: 0.767 %","07-10: 0.779 %","07-13: 0.801 %","07-14: 0.79 %","07-15: 0.773 %","07-16: 0.78 %","07-17: 0.779 %","07-20: 0.793 %","07-21: 0.812 %","07-22: 0.831 %","07-23: 0.849 %","07-24: 0.838 %","07-27: 0.821 %","07-28: 0.8 %","07-29: 0.818 %","07-30: 0.833 %","07-31: 0.868 %","08-03: 0.853 %","08-04: 0.822 %","08-05: 0.813 %","08-06: 0.836 %","08-07: 0.826 %","08-10: 0.849 %","08-11: 0.848 %","08-12: 0.844 %","08-13: 0.823 %","08-14: 0.839 %"]'><polyline points="2.0,24.0 5.3,19.8 8.6,17.0 11.9,17.6 15.2,15.8 18.6,12.4 21.9,14.2 25.2,16.8 28.5,15.6 31.8,15.9 35.1,13.6 38.4,10.7 41.7,7.7 45.0,5.0 48.3,6.6 51.7,9.3 55.0,12.6 58.3,9.7 61.6,7.4 64.9,2.0 68.2,4.3 71.5,9.2 74.8,10.5 78.1,7.0 81.4,8.6 84.8,5.0 88.1,5.1 91.4,5.8 94.7,8.9 98.0,6.5"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -710,7 +710,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>0.57 đpt</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>0.57 đpt</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="pos">▲ +0.03</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_30Y_10Y" data-l='["07-08: 0.5 đpt","07-09: 0.51 đpt","07-10: 0.5 đpt","07-13: 0.48 đpt","07-14: 0.5 đpt","07-15: 0.53 đpt","07-16: 0.52 đpt","07-17: 0.51 đpt","07-20: 0.51 đpt","07-21: 0.5 đpt","07-22: 0.48 đpt","07-23: 0.46 đpt","07-24: 0.47 đpt","07-27: 0.47 đpt","07-28: 0.48 đpt","07-29: 0.53 đpt","07-30: 0.53 đpt","07-31: 0.52 đpt","08-03: 0.53 đpt","08-04: 0.55 đpt","08-05: 0.54 đpt","08-06: 0.53 đpt","08-07: 0.54 đpt","08-10: 0.53 đpt","08-11: 0.54 đpt","08-12: 0.56 đpt","08-13: 0.58 đpt","08-14: 0.57 đpt","08-17: 0.59 đpt","08-18: 0.57 đpt"]'><polyline points="2.0,17.2 5.3,15.5 8.6,17.2 11.9,20.6 15.2,17.2 18.6,12.2 21.9,13.8 25.2,15.5 28.5,15.5 31.8,17.2 35.1,20.6 38.4,24.0 41.7,22.3 45.0,22.3 48.3,20.6 51.7,12.2 55.0,12.2 58.3,13.8 61.6,12.2 64.9,8.8 68.2,10.5 71.5,12.2 74.8,10.5 78.1,12.2 81.4,10.5 84.8,7.1 88.1,3.7 91.4,5.4 94.7,2.0 98.0,5.4"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -720,7 +720,7 @@ tr:hover td{background:var(--card)}
           
           <span class="warn" style="background:color-mix(in srgb,var(--pos) 22%,transparent);color:var(--pos);font-weight:600">🔻 de-dollarization mạnh · đáy 26 tuần</span><span class="warn" style="background:rgba(212,166,66,.28);font-weight:700">⏰ release HÔM NAY (20/08) — cao hơn 2.597 nghìn tỷ $ ⇒ ép vàng · USD mạnh; thấp hơn ⇒ ngược lại</span>
           </td>
-        <td><b>2.597 nghìn tỷ $</b><span class="sid">2026-08-12 · nhịp tuần</span></td>
+        <td><b>2.597 nghìn tỷ $</b><span class="sid">2026-08-12 · nhịp tuần</span><span class="cadbar" title="nhịp tuần · obs cuối 2026-08-12 (8 ngày trước) · ngưỡng stale 14 ngày · kỳ tới 20/08 · FRED cập nhật series 13/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i></span></td>
         <td class="neu">— -0.001</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="WMTSECL1" data-l='["02-18: 2.791 nghìn tỷ $","02-25: 2.776 nghìn tỷ $","03-04: 2.766 nghìn tỷ $","03-11: 2.726 nghìn tỷ $","03-18: 2.717 nghìn tỷ $","03-25: 2.694 nghìn tỷ $","04-01: 2.732 nghìn tỷ $","04-08: 2.693 nghìn tỷ $","04-15: 2.705 nghìn tỷ $","04-22: 2.728 nghìn tỷ $","04-29: 2.735 nghìn tỷ $","05-06: 2.726 nghìn tỷ $","05-13: 2.687 nghìn tỷ $","05-20: 2.667 nghìn tỷ $","05-27: 2.68 nghìn tỷ $","06-03: 2.647 nghìn tỷ $","06-10: 2.633 nghìn tỷ $","06-17: 2.631 nghìn tỷ $","06-24: 2.637 nghìn tỷ $","07-01: 2.626 nghìn tỷ $","07-08: 2.597 nghìn tỷ $","07-15: 2.598 nghìn tỷ $","07-22: 2.623 nghìn tỷ $","07-29: 2.657 nghìn tỷ $","08-05: 2.631 nghìn tỷ $","08-12: 2.597 nghìn tỷ $"]'><polyline points="2.0,2.0 5.8,3.7 9.7,4.8 13.5,9.3 17.4,10.3 21.2,13.0 25.0,8.7 28.9,13.1 32.7,11.7 36.6,9.1 40.4,8.3 44.2,9.3 48.1,13.8 51.9,16.1 55.8,14.6 59.6,18.3 63.4,19.8 67.3,20.1 71.1,19.4 75.0,20.7 78.8,24.0 82.6,23.9 86.5,21.1 90.3,17.2 94.2,20.1 98.0,24.0"/></svg></td>
         <td><span class="chip neu">— 0</span></td>
@@ -730,7 +730,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>49.5</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>49.5</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 120 ngày · kỳ tới 28/08 · FRED cập nhật series 31/07"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="pos">▲ +4.7</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="UMCSENT" data-l='["07-01: 66.4","08-01: 67.9","09-01: 70.1","10-01: 70.5","11-01: 71.8","12-01: 74","01-01: 71.7","02-01: 64.7","03-01: 57","04-01: 52.2","05-01: 52.2","06-01: 60.7","07-01: 61.7","08-01: 58.2","09-01: 55.1","10-01: 53.6","11-01: 51","12-01: 52.9","01-01: 56.4","02-01: 56.6","03-01: 53.3","04-01: 49.8","05-01: 44.8","06-01: 49.5"]'><polyline points="2.0,7.7 6.2,6.6 10.3,4.9 14.5,4.6 18.7,3.7 22.9,2.0 27.0,3.7 31.2,9.0 35.4,14.8 39.6,18.4 43.7,18.4 47.9,12.0 52.1,11.3 56.3,13.9 60.4,16.2 64.6,17.4 68.8,19.3 73.0,17.9 77.1,15.3 81.3,15.1 85.5,17.6 89.7,20.2 93.8,24.0 98.0,20.5"/></svg></td>
         <td><span class="chip neg">▼ −1</span></td>
@@ -746,7 +746,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>-432.3 tỷ $</b><span class="sid">2026-07-01 · nhịp tháng</span></td>
+        <td><b>-432.3 tỷ $</b><span class="sid">2026-07-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-07-01 (50 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 11/09 · FRED cập nhật series 13/08"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="neg">▼ -141.17</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="MTSDS133FMS" data-l='["08-01: -380.1 tỷ $","09-01: 64.3 tỷ $","10-01: -257.5 tỷ $","11-01: -366.8 tỷ $","12-01: -86.7 tỷ $","01-01: -128.6 tỷ $","02-01: -307 tỷ $","03-01: -160.5 tỷ $","04-01: 258.4 tỷ $","05-01: -316 tỷ $","06-01: 27 tỷ $","07-01: -291.1 tỷ $","08-01: -344.8 tỷ $","09-01: 197.9 tỷ $","10-01: -284.4 tỷ $","11-01: -173.3 tỷ $","12-01: -144.7 tỷ $","01-01: -94.6 tỷ $","02-01: -307.5 tỷ $","03-01: -164.1 tỷ $","04-01: 215 tỷ $","05-01: -292.6 tỷ $","06-01: -120.3 tỷ $","07-01: -432.3 tỷ $"]'><polyline points="2.0,22.3 6.2,8.2 10.3,18.4 14.5,21.9 18.7,13.0 22.9,14.3 27.0,20.0 31.2,15.3 35.4,2.0 39.6,20.3 43.7,9.4 47.9,19.5 52.1,21.2 56.3,3.9 60.4,19.3 64.6,15.7 68.8,14.8 73.0,13.2 77.1,20.0 81.3,15.5 85.5,3.4 89.7,19.6 93.8,14.1 98.0,24.0"/></svg></td>
         <td><span class="chip pos">▲ +1</span></td>
@@ -756,7 +756,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>40.047 nghìn tỷ $</b><span class="sid">2026-08-18 · nhịp ngày</span></td>
+        <td><b>40.047 nghìn tỷ $</b><span class="sid">2026-08-18 · nhịp ngày</span><span class="cadbar" title="nhịp ngày · obs cuối 2026-08-18 (2 ngày trước) · ngưỡng stale 7 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></td>
         <td class="pos">▲ +0.459</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_DEBT_DAILY" data-l='["05-26: 39.171 nghìn tỷ $","05-27: 39.163 nghìn tỷ $","05-28: 39.176 nghìn tỷ $","05-29: 39.208 nghìn tỷ $","06-01: 39.196 nghìn tỷ $","06-02: 39.222 nghìn tỷ $","06-03: 39.205 nghìn tỷ $","06-04: 39.232 nghìn tỷ $","06-05: 39.22 nghìn tỷ $","06-08: 39.23 nghìn tỷ $","06-09: 39.242 nghìn tỷ $","06-10: 39.213 nghìn tỷ $","06-11: 39.221 nghìn tỷ $","06-12: 39.21 nghìn tỷ $","06-15: 39.293 nghìn tỷ $","06-16: 39.29 nghìn tỷ $","06-17: 39.283 nghìn tỷ $","06-18: 39.305 nghìn tỷ $","06-22: 39.324 nghìn tỷ $","06-23: 39.321 nghìn tỷ $","06-24: 39.321 nghìn tỷ $","06-25: 39.311 nghìn tỷ $","06-26: 39.338 nghìn tỷ $","06-29: 39.345 nghìn tỷ $","06-30: 39.462 nghìn tỷ $","07-01: 39.389 nghìn tỷ $","07-02: 39.375 nghìn tỷ $","07-03: 39.376 nghìn tỷ $","07-06: 39.388 nghìn tỷ $","07-07: 39.415 nghìn tỷ $","07-08: 39.395 nghìn tỷ $","07-09: 39.414 nghìn tỷ $","07-10: 39.413 nghìn tỷ $","07-13: 39.418 nghìn tỷ $","07-14: 39.47 nghìn tỷ $","07-15: 39.489 nghìn tỷ $","07-16: 39.519 nghìn tỷ $","07-17: 39.582 nghìn tỷ $","07-20: 39.588 nghìn tỷ $","07-21: 39.66 nghìn tỷ $","07-22: 39.636 nghìn tỷ $","07-23: 39.677 nghìn tỷ $","07-24: 39.692 nghìn tỷ $","07-27: 39.714 nghìn tỷ $","07-28: 39.797 nghìn tỷ $","07-29: 39.8 nghìn tỷ $","07-30: 39.841 nghìn tỷ $","07-31: 39.772 nghìn tỷ $","08-03: 39.739 nghìn tỷ $","08-04: 39.828 nghìn tỷ $","08-05: 39.83 nghìn tỷ $","08-06: 39.89 nghìn tỷ $","08-07: 39.885 nghìn tỷ $","08-10: 39.892 nghìn tỷ $","08-11: 39.942 nghìn tỷ $","08-12: 39.914 nghìn tỷ $","08-13: 39.935 nghìn tỷ $","08-14: 39.934 nghìn tỷ $","08-17: 39.987 nghìn tỷ $","08-18: 40.047 nghìn tỷ $"]'><polyline points="2.0,23.8 3.6,24.0 5.3,23.7 6.9,22.9 8.5,23.2 10.1,22.5 11.8,23.0 13.4,22.3 15.0,22.6 16.6,22.3 18.3,22.0 19.9,22.8 21.5,22.6 23.2,22.8 24.8,20.8 26.4,20.9 28.0,21.0 29.7,20.5 31.3,20.0 32.9,20.1 34.5,20.1 36.2,20.3 37.8,19.7 39.4,19.5 41.1,16.6 42.7,18.4 44.3,18.7 45.9,18.7 47.6,18.4 49.2,17.7 50.8,18.2 52.4,17.8 54.1,17.8 55.7,17.7 57.3,16.4 58.9,15.9 60.6,15.2 62.2,13.6 63.8,13.4 65.5,11.6 67.1,12.2 68.7,11.2 70.3,10.8 72.0,10.3 73.6,8.2 75.2,8.2 76.8,7.1 78.5,8.9 80.1,9.7 81.7,7.4 83.4,7.4 85.0,5.9 86.6,6.0 88.2,5.9 89.9,4.6 91.5,5.3 93.1,4.8 94.7,4.8 96.4,3.5 98.0,2.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -766,7 +766,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>122.6 %</b><span class="sid">2026-01-01 · nhịp quý</span></td>
+        <td><b>122.6 %</b><span class="sid">2026-01-01 · nhịp quý</span><span class="cadbar" title="nhịp quý · obs cuối 2026-01-01 (231 ngày trước) · ngưỡng stale 270 ngày · kỳ tới 26/08 · FRED cập nhật series 25/06"><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="neu">— +0.026</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="GFDEGDQ188S" data-l='["04-01: 132.7 %","07-01: 124.1 %","10-01: 125.6 %","01-01: 124 %","04-01: 121.8 %","07-01: 118.5 %","10-01: 119.4 %","01-01: 120.4 %","04-01: 118.2 %","07-01: 117.4 %","10-01: 117.4 %","01-01: 115.6 %","04-01: 117.4 %","07-01: 118.1 %","10-01: 119.6 %","01-01: 120.5 %","04-01: 119.5 %","07-01: 120.2 %","10-01: 121.4 %","01-01: 120.5 %","04-01: 118.8 %","07-01: 121 %","10-01: 122.6 %","01-01: 122.6 %"]'><polyline points="2.0,2.0 6.2,13.0 10.3,11.1 14.5,13.1 18.7,16.0 22.9,20.2 27.0,19.1 31.2,17.8 35.4,20.6 39.6,21.6 43.7,21.7 47.9,24.0 52.1,21.6 56.3,20.7 60.4,18.8 64.6,17.7 68.8,19.0 73.0,18.1 77.1,16.5 81.3,17.6 85.5,19.9 89.7,17.0 93.8,15.0 98.0,15.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -776,7 +776,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>1,247 tỷ $</b><span class="sid">2026-04-01 · nhịp quý</span></td>
+        <td><b>1,247 tỷ $</b><span class="sid">2026-04-01 · nhịp quý</span><span class="cadbar" title="nhịp quý · obs cuối 2026-04-01 (141 ngày trước) · ngưỡng stale 210 ngày"><i class="cb-ok"></i><i class="cb-ok"></i></span></td>
         <td class="pos">▲ +28.09</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="A091RC1Q027SBEA" data-l='["07-01: 508.01 tỷ $","10-01: 516.71 tỷ $","01-01: 533.52 tỷ $","04-01: 560.63 tỷ $","07-01: 587.92 tỷ $","10-01: 612.28 tỷ $","01-01: 636.97 tỷ $","04-01: 684.76 tỷ $","07-01: 752.08 tỷ $","10-01: 823.11 tỷ $","01-01: 861.27 tỷ $","04-01: 894.11 tỷ $","07-01: 966.9 tỷ $","10-01: 1,031 tỷ $","01-01: 1,071 tỷ $","04-01: 1,104 tỷ $","07-01: 1,146 tỷ $","10-01: 1,156 tỷ $","01-01: 1,144 tỷ $","04-01: 1,161 tỷ $","07-01: 1,199 tỷ $","10-01: 1,227 tỷ $","01-01: 1,219 tỷ $","04-01: 1,247 tỷ $"]'><polyline points="2.0,24.0 6.2,23.7 10.3,23.2 14.5,22.4 18.7,21.6 22.9,20.9 27.0,20.2 31.2,18.7 35.4,16.7 39.6,14.6 43.7,13.5 47.9,12.5 52.1,10.3 56.3,8.4 60.4,7.2 64.6,6.3 68.8,5.0 73.0,4.7 77.1,5.1 81.3,4.6 85.5,3.4 89.7,2.6 93.8,2.8 98.0,2.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -786,7 +786,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>33.4 %</b><span class="sid">2026-01-01 · nhịp quý</span></td>
+        <td><b>33.4 %</b><span class="sid">2026-01-01 · nhịp quý</span><span class="cadbar" title="nhịp quý · obs cuối 2026-01-01 (231 ngày trước) · ngưỡng stale 270 ngày"><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="neu">— +0.315</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="US_INT_BURDEN" data-l='["07-01: 23.4 %","10-01: 22.6 %","01-01: 21.6 %","04-01: 21.2 %","07-01: 21.5 %","10-01: 21.5 %","01-01: 19.8 %","04-01: 20.9 %","07-01: 22.9 %","10-01: 25.4 %","01-01: 29.7 %","04-01: 30.9 %","07-01: 33.1 %","10-01: 34.9 %","01-01: 35.3 %","04-01: 35.6 %","07-01: 36.5 %","10-01: 36.1 %","01-01: 35.2 %","04-01: 33.6 %","07-01: 33.2 %","10-01: 33.1 %","01-01: 33.4 %"]'><polyline points="2.0,19.2 6.4,20.3 10.7,21.5 15.1,22.1 19.5,21.8 23.8,21.7 28.2,24.0 32.5,22.5 36.9,19.8 41.3,16.6 45.6,10.9 50.0,9.3 54.4,6.5 58.7,4.1 63.1,3.6 67.5,3.2 71.8,2.0 76.2,2.5 80.5,3.6 84.9,5.8 89.3,6.3 93.6,6.4 98.0,6.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -802,7 +802,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>23.6 tỷ $</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>23.6 tỷ $</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 90 ngày · kỳ tới 03/09 · FRED cập nhật series 04/08"><i class="cb-warm"></i><i class="cb-warm"></i><i class="cb-warm"></i></span></td>
         <td class="pos">▲ +3.33</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="VN_US_TRADE" data-l='["07-01: 10 tỷ $","08-01: 10.9 tỷ $","09-01: 12.9 tỷ $","10-01: 11.6 tỷ $","11-01: 10.9 tỷ $","12-01: 10.4 tỷ $","01-01: 12 tỷ $","02-01: 10.9 tỷ $","03-01: 13.6 tỷ $","04-01: 13.6 tỷ $","05-01: 14.7 tỷ $","06-01: 16.6 tỷ $","07-01: 16.6 tỷ $","08-01: 15 tỷ $","09-01: 16.7 tỷ $","10-01: 16.2 tỷ $","11-01: 15.4 tỷ $","12-01: 16.9 tỷ $","01-01: 18.3 tỷ $","02-01: 14.4 tỷ $","03-01: 19 tỷ $","04-01: 18.4 tỷ $","05-01: 20.3 tỷ $","06-01: 23.6 tỷ $"]'><polyline points="2.0,24.0 6.2,22.5 10.3,19.3 14.5,21.3 18.7,22.5 22.9,23.4 27.0,20.7 31.2,22.5 35.4,18.2 39.6,18.2 43.7,16.4 47.9,13.4 52.1,13.3 56.3,15.9 60.4,13.2 64.6,13.9 68.8,15.3 73.0,12.8 77.1,10.7 81.3,16.8 85.5,9.5 89.7,10.4 93.8,7.4 98.0,2.0"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -812,7 +812,7 @@ tr:hover td{background:var(--card)}
           
           
           </td>
-        <td><b>88.3 tỷ $</b><span class="sid">2026-06-01 · nhịp tháng</span></td>
+        <td><b>88.3 tỷ $</b><span class="sid">2026-06-01 · nhịp tháng</span><span class="cadbar" title="nhịp tháng · obs cuối 2026-06-01 (80 ngày trước) · ngưỡng stale 165 ngày"><i class="cb-ok"></i><i class="cb-ok"></i><i class=""></i></span></td>
         <td class="pos">▲ +3.21</td>
         <td class="obscol"><svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" data-t="VN_RESERVES" data-l='["01-01: 88.3 tỷ $","02-01: 87.6 tỷ $","03-01: 88.2 tỷ $","04-01: 90 tỷ $","05-01: 89.5 tỷ $","06-01: 91.1 tỷ $","07-01: 89.1 tỷ $","08-01: 89.6 tỷ $","09-01: 89.5 tỷ $","10-01: 89 tỷ $","11-01: 90 tỷ $","12-01: 92.2 tỷ $","01-01: 90 tỷ $","02-01: 90.2 tỷ $","03-01: 91 tỷ $","04-01: 90.1 tỷ $","05-01: 86 tỷ $","06-01: 84.7 tỷ $","07-01: 83.1 tỷ $","08-01: 83.9 tỷ $","09-01: 84.3 tỷ $","10-01: 84.4 tỷ $","11-01: 83.9 tỷ $","12-01: 83.1 tỷ $","01-01: 80.9 tỷ $","02-01: 81.3 tỷ $","03-01: 82.6 tỷ $","04-01: 82 tỷ $","05-01: 81.7 tỷ $","06-01: 83.1 tỷ $","07-01: 82.2 tỷ $","08-01: 82.8 tỷ $","09-01: 84.2 tỷ $","10-01: 82.2 tỷ $","11-01: 83.3 tỷ $","12-01: 85.6 tỷ $","01-01: 84.5 tỷ $","02-01: 86.4 tỷ $","03-01: 85.4 tỷ $","04-01: 84.5 tỷ $","05-01: 85.1 tỷ $","06-01: 88.3 tỷ $"]'><polyline points="2.0,9.7 4.3,10.9 6.7,9.8 9.0,6.3 11.4,7.2 13.7,4.2 16.0,8.0 18.4,7.2 20.7,7.3 23.1,8.2 25.4,6.4 27.8,2.0 30.1,6.4 32.4,5.9 34.8,4.5 37.1,6.1 39.5,14.1 41.8,16.5 44.1,19.7 46.5,18.1 48.8,17.4 51.2,17.2 53.5,18.1 55.9,19.7 58.2,24.0 60.5,23.0 62.9,20.7 65.2,21.7 67.6,22.4 69.9,19.7 72.2,21.4 74.6,20.3 76.9,17.6 79.3,21.4 81.6,19.2 84.0,14.9 86.3,16.9 88.6,13.3 91.0,15.3 93.3,16.9 95.7,15.9 98.0,9.7"/></svg></td>
         <td><span class="chip neu">ctx</span></td>
@@ -950,6 +950,11 @@ body.showobs .kpi svg{display:initial}
 .baxis{position:relative;height:12px;margin-top:1px;display:none}
 .baxis span{position:absolute;transform:translateX(-50%);font-size:9px;line-height:12px;color:var(--ink2);white-space:nowrap}
 body.showobs .kpi .baxis{display:block}
+.cadbar{display:flex;gap:2px;width:66px;margin-top:4px}
+.cadbar i{flex:1;height:5px;border-radius:2px;background:var(--line)}
+.cadbar i.cb-ok{background:var(--ink2);opacity:.55}
+.cadbar i.cb-warm{background:#d4a642}
+.cadbar i.cb-hot{background:var(--neg)}
 #obsbtn,#obsbtn2{margin-left:8px;font:inherit;font-size:12px;font-weight:400;padding:2px 10px;border-radius:6px;cursor:pointer;
   background:var(--neu);color:var(--ink);border:1px solid var(--line);vertical-align:middle}
 #obsbtn:hover,#obsbtn2:hover{background:var(--card)}
