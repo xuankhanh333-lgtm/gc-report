@@ -1,6 +1,6 @@
 {
-  "stamp": "20261022_0728",
-  "generated_at": 1792654100,
+  "stamp": "20261022_1029",
+  "generated_at": 1792664989,
   "range": {
     "start": "2026-09-22",
     "end": "2026-10-22"
@@ -164,10 +164,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 20.4,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 20.5,
+          "propTradingNetValue": -4231130000.0,
+          "propTradingNetDealValue": -4231130000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -305,9 +305,314 @@
         },
         {
           "date": "2026-10-22",
-          "close": 20.4,
-          "foreignNetVolume": -1908333.0,
-          "foreignNetValue": -38907509404.287605
+          "close": 20.5,
+          "foreignNetVolume": -2171133.0,
+          "foreignNetValue": -44299657719.73184
+        }
+      ]
+    },
+    "ACV": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 39.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 39.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 39.4,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 39.4,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 39.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 39.1,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 39.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 39.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 39.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 39.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 39.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 40.9,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 41.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 40.9,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 41.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 40.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 41.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 41.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 41.4,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 41.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 41.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 41.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 43.0,
+          "propTradingNetValue": null,
+          "propTradingNetDealValue": null,
+          "propTradingNetPTValue": null
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 39.6,
+          "foreignNetVolume": 7100.0,
+          "foreignNetValue": 281333600.2834869
+        },
+        {
+          "date": "2026-09-23",
+          "close": 39.3,
+          "foreignNetVolume": 9700.0,
+          "foreignNetValue": 382334055.871702
+        },
+        {
+          "date": "2026-09-24",
+          "close": 39.4,
+          "foreignNetVolume": 15300.0,
+          "foreignNetValue": 599475690.8289948
+        },
+        {
+          "date": "2026-09-25",
+          "close": 39.4,
+          "foreignNetVolume": -1600.0,
+          "foreignNetValue": -62824742.70557028
+        },
+        {
+          "date": "2026-09-28",
+          "close": 39.2,
+          "foreignNetVolume": 6484.0,
+          "foreignNetValue": 253225019.138756
+        },
+        {
+          "date": "2026-09-29",
+          "close": 39.1,
+          "foreignNetVolume": -10700.0,
+          "foreignNetValue": -416666239.45147675
+        },
+        {
+          "date": "2026-09-30",
+          "close": 39.2,
+          "foreignNetVolume": -27315.0,
+          "foreignNetValue": -1070628851.8141052
+        },
+        {
+          "date": "2026-10-01",
+          "close": 39.2,
+          "foreignNetVolume": -7000.0,
+          "foreignNetValue": -274182391.3043479
+        },
+        {
+          "date": "2026-10-02",
+          "close": 39.2,
+          "foreignNetVolume": 13500.0,
+          "foreignNetValue": 525531212.3493976
+        },
+        {
+          "date": "2026-10-05",
+          "close": 39.2,
+          "foreignNetVolume": 9190.0,
+          "foreignNetValue": 360325270.66603684
+        },
+        {
+          "date": "2026-10-06",
+          "close": 39.3,
+          "foreignNetVolume": 15800.0,
+          "foreignNetValue": 616243203.125
+        },
+        {
+          "date": "2026-10-07",
+          "close": 40.9,
+          "foreignNetVolume": 38600.0,
+          "foreignNetValue": 1555291840.9575007
+        },
+        {
+          "date": "2026-10-08",
+          "close": 41.3,
+          "foreignNetVolume": 49200.0,
+          "foreignNetValue": 2035332333.8788872
+        },
+        {
+          "date": "2026-10-09",
+          "close": 40.9,
+          "foreignNetVolume": 23400.0,
+          "foreignNetValue": 955416732.783597
+        },
+        {
+          "date": "2026-10-12",
+          "close": 41.0,
+          "foreignNetVolume": 55970.0,
+          "foreignNetValue": 2327577788.960424
+        },
+        {
+          "date": "2026-10-13",
+          "close": 40.7,
+          "foreignNetVolume": 17700.0,
+          "foreignNetValue": 721847492.5816023
+        },
+        {
+          "date": "2026-10-14",
+          "close": 41.3,
+          "foreignNetVolume": 50148.0,
+          "foreignNetValue": 2069965126.3563592
+        },
+        {
+          "date": "2026-10-15",
+          "close": 41.0,
+          "foreignNetVolume": 22500.0,
+          "foreignNetValue": 923279907.9754602
+        },
+        {
+          "date": "2026-10-16",
+          "close": 41.4,
+          "foreignNetVolume": 71600.0,
+          "foreignNetValue": 2983766885.0506253
+        },
+        {
+          "date": "2026-10-19",
+          "close": 41.3,
+          "foreignNetVolume": 42100.0,
+          "foreignNetValue": 1731302630.6852639
+        },
+        {
+          "date": "2026-10-20",
+          "close": 41.2,
+          "foreignNetVolume": 11663.0,
+          "foreignNetValue": 477175872.45657563
+        },
+        {
+          "date": "2026-10-21",
+          "close": 41.7,
+          "foreignNetVolume": 70340.0,
+          "foreignNetValue": 2924106985.862271
+        },
+        {
+          "date": "2026-10-22",
+          "close": 43.0,
+          "foreignNetVolume": 66600.0,
+          "foreignNetValue": 2851737527.514072
         }
       ]
     },
@@ -469,10 +774,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 31.45,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 31.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -610,9 +915,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 31.45,
-          "foreignNetVolume": 205179.0,
-          "foreignNetValue": 6421881712.970795
+          "close": 31.5,
+          "foreignNetVolume": 224379.0,
+          "foreignNetValue": 7032384535.449917
         }
       ]
     },
@@ -774,10 +1079,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 33.9,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 33.8,
+          "propTradingNetValue": -2536890000.0,
+          "propTradingNetDealValue": -2536890000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -915,9 +1220,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 33.9,
-          "foreignNetVolume": -558082.0,
-          "foreignNetValue": -18966946014.98536
+          "close": 33.8,
+          "foreignNetVolume": -552882.0,
+          "foreignNetValue": -18783368664.18855
         }
       ]
     },
@@ -1079,10 +1384,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 29.0,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 29.2,
+          "propTradingNetValue": -1883455000.0,
+          "propTradingNetDealValue": -1883455000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -1220,9 +1525,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 29.0,
-          "foreignNetVolume": 374400.0,
-          "foreignNetValue": 10723765804.508005
+          "close": 29.2,
+          "foreignNetVolume": 374100.0,
+          "foreignNetValue": 10727056916.537779
         }
       ]
     },
@@ -1384,10 +1689,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 30.45,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 30.55,
+          "propTradingNetValue": -4416560000.0,
+          "propTradingNetDealValue": -4416560000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -1525,9 +1830,924 @@
         },
         {
           "date": "2026-10-22",
-          "close": 30.45,
-          "foreignNetVolume": -663500.0,
-          "foreignNetValue": -20203770500.90662
+          "close": 30.55,
+          "foreignNetVolume": 595900.0,
+          "foreignNetValue": 18155050174.045708
+        }
+      ]
+    },
+    "DCM": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 33.95,
+          "propTradingNetValue": -1103375000.0,
+          "propTradingNetDealValue": -1103375000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 34.5,
+          "propTradingNetValue": 1935510000.0,
+          "propTradingNetDealValue": 1935510000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 34.0,
+          "propTradingNetValue": 68600000.0,
+          "propTradingNetDealValue": 68600000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 34.3,
+          "propTradingNetValue": -5193435000.0,
+          "propTradingNetDealValue": -5193435000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 35.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 34.85,
+          "propTradingNetValue": 10455000.0,
+          "propTradingNetDealValue": 10455000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 33.5,
+          "propTradingNetValue": -24130000.0,
+          "propTradingNetDealValue": -24130000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 33.7,
+          "propTradingNetValue": 50550000.0,
+          "propTradingNetDealValue": 50550000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 32.75,
+          "propTradingNetValue": -298025000.0,
+          "propTradingNetDealValue": -298025000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 32.5,
+          "propTradingNetValue": 195555000.0,
+          "propTradingNetDealValue": 195555000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 33.7,
+          "propTradingNetValue": -129000000.0,
+          "propTradingNetDealValue": -129000000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 34.2,
+          "propTradingNetValue": 502740000.0,
+          "propTradingNetDealValue": 502740000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 34.4,
+          "propTradingNetValue": -3443170000.0,
+          "propTradingNetDealValue": -3443170000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 34.85,
+          "propTradingNetValue": -871250000.0,
+          "propTradingNetDealValue": -871250000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 33.75,
+          "propTradingNetValue": 303315000.0,
+          "propTradingNetDealValue": 303315000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 33.05,
+          "propTradingNetValue": -280925000.0,
+          "propTradingNetDealValue": -280925000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 34.1,
+          "propTradingNetValue": -847500000.0,
+          "propTradingNetDealValue": -847500000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 33.9,
+          "propTradingNetValue": -3335000.0,
+          "propTradingNetDealValue": -3335000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 33.9,
+          "propTradingNetValue": 250675000.0,
+          "propTradingNetDealValue": 250675000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 33.85,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 34.4,
+          "propTradingNetValue": -1287615000.0,
+          "propTradingNetDealValue": -1287615000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 34.35,
+          "propTradingNetValue": -1009770000.0,
+          "propTradingNetDealValue": -1009770000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 35.25,
+          "propTradingNetValue": 197700000.0,
+          "propTradingNetDealValue": 197700000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 33.95,
+          "foreignNetVolume": 521700.0,
+          "foreignNetValue": 17638750473.55273
+        },
+        {
+          "date": "2026-09-23",
+          "close": 34.5,
+          "foreignNetVolume": 880000.0,
+          "foreignNetValue": 30032177025.776604
+        },
+        {
+          "date": "2026-09-24",
+          "close": 34.0,
+          "foreignNetVolume": 506000.0,
+          "foreignNetValue": 17428697060.95686
+        },
+        {
+          "date": "2026-09-25",
+          "close": 34.3,
+          "foreignNetVolume": 1321400.0,
+          "foreignNetValue": 45193172332.8334
+        },
+        {
+          "date": "2026-09-28",
+          "close": 35.2,
+          "foreignNetVolume": 1384700.0,
+          "foreignNetValue": 47823484799.85799
+        },
+        {
+          "date": "2026-09-29",
+          "close": 34.85,
+          "foreignNetVolume": 78017.0,
+          "foreignNetValue": 2739959891.7963443
+        },
+        {
+          "date": "2026-09-30",
+          "close": 33.5,
+          "foreignNetVolume": -266840.0,
+          "foreignNetValue": -9093222071.26165
+        },
+        {
+          "date": "2026-10-01",
+          "close": 33.7,
+          "foreignNetVolume": -13600.0,
+          "foreignNetValue": -458295428.2543011
+        },
+        {
+          "date": "2026-10-02",
+          "close": 32.75,
+          "foreignNetVolume": 261480.0,
+          "foreignNetValue": 8633905726.24778
+        },
+        {
+          "date": "2026-10-05",
+          "close": 32.5,
+          "foreignNetVolume": 224400.0,
+          "foreignNetValue": 7324079041.533546
+        },
+        {
+          "date": "2026-10-06",
+          "close": 33.7,
+          "foreignNetVolume": 1368500.0,
+          "foreignNetValue": 44873933932.82901
+        },
+        {
+          "date": "2026-10-07",
+          "close": 34.2,
+          "foreignNetVolume": 618320.0,
+          "foreignNetValue": 20894624457.65008
+        },
+        {
+          "date": "2026-10-08",
+          "close": 34.4,
+          "foreignNetVolume": 172300.0,
+          "foreignNetValue": 5948754202.73154
+        },
+        {
+          "date": "2026-10-09",
+          "close": 34.85,
+          "foreignNetVolume": 448900.0,
+          "foreignNetValue": 15371659240.65464
+        },
+        {
+          "date": "2026-10-12",
+          "close": 33.75,
+          "foreignNetVolume": -156688.0,
+          "foreignNetValue": -5341890832.51858
+        },
+        {
+          "date": "2026-10-13",
+          "close": 33.05,
+          "foreignNetVolume": -319600.0,
+          "foreignNetValue": -10609740041.811846
+        },
+        {
+          "date": "2026-10-14",
+          "close": 34.1,
+          "foreignNetVolume": 151001.0,
+          "foreignNetValue": 5041168102.090358
+        },
+        {
+          "date": "2026-10-15",
+          "close": 33.9,
+          "foreignNetVolume": 216208.0,
+          "foreignNetValue": 7257219532.913349
+        },
+        {
+          "date": "2026-10-16",
+          "close": 33.9,
+          "foreignNetVolume": 603184.0,
+          "foreignNetValue": 20295043790.256264
+        },
+        {
+          "date": "2026-10-19",
+          "close": 33.85,
+          "foreignNetVolume": 209600.0,
+          "foreignNetValue": 7079413448.580689
+        },
+        {
+          "date": "2026-10-20",
+          "close": 34.4,
+          "foreignNetVolume": 522200.0,
+          "foreignNetValue": 17876705341.733307
+        },
+        {
+          "date": "2026-10-21",
+          "close": 34.35,
+          "foreignNetVolume": 101600.0,
+          "foreignNetValue": 3497231703.1974616
+        },
+        {
+          "date": "2026-10-22",
+          "close": 35.25,
+          "foreignNetVolume": 737000.0,
+          "foreignNetValue": 25660114100.469673
+        }
+      ]
+    },
+    "DGW": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 45.1,
+          "propTradingNetValue": 13530000.0,
+          "propTradingNetDealValue": 13530000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 46.55,
+          "propTradingNetValue": 327865000.0,
+          "propTradingNetDealValue": 327865000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 45.8,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 44.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 45.55,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 45.8,
+          "propTradingNetValue": 13740000.0,
+          "propTradingNetDealValue": 13740000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 45.2,
+          "propTradingNetValue": 13770000.0,
+          "propTradingNetDealValue": 13770000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 45.2,
+          "propTradingNetValue": 67800000.0,
+          "propTradingNetDealValue": 67800000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 45.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 47.4,
+          "propTradingNetValue": 28365000.0,
+          "propTradingNetDealValue": 28365000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 47.75,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 47.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 47.75,
+          "propTradingNetValue": -290820000.0,
+          "propTradingNetDealValue": -290820000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 47.25,
+          "propTradingNetValue": 14325000.0,
+          "propTradingNetDealValue": 14325000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 46.95,
+          "propTradingNetValue": 95720000.0,
+          "propTradingNetDealValue": 95720000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 45.95,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 45.5,
+          "propTradingNetValue": -118655000.0,
+          "propTradingNetDealValue": -118655000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 45.05,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 44.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 45.45,
+          "propTradingNetValue": 121285000.0,
+          "propTradingNetDealValue": 121285000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 46.0,
+          "propTradingNetValue": 9170000.0,
+          "propTradingNetDealValue": 9170000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 46.35,
+          "propTradingNetValue": 287370000.0,
+          "propTradingNetDealValue": 287370000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 45.7,
+          "propTradingNetValue": -123660000.0,
+          "propTradingNetDealValue": -123660000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 45.1,
+          "foreignNetVolume": 199900.0,
+          "foreignNetValue": 9120581524.01601
+        },
+        {
+          "date": "2026-09-23",
+          "close": 46.55,
+          "foreignNetVolume": 66400.0,
+          "foreignNetValue": 3069983296.545536
+        },
+        {
+          "date": "2026-09-24",
+          "close": 45.8,
+          "foreignNetVolume": 85100.0,
+          "foreignNetValue": 3881175293.2873287
+        },
+        {
+          "date": "2026-09-25",
+          "close": 44.5,
+          "foreignNetVolume": 276610.0,
+          "foreignNetValue": 12421772990.91997
+        },
+        {
+          "date": "2026-09-28",
+          "close": 45.55,
+          "foreignNetVolume": 676700.0,
+          "foreignNetValue": 30375494747.420677
+        },
+        {
+          "date": "2026-09-29",
+          "close": 45.8,
+          "foreignNetVolume": 215200.0,
+          "foreignNetValue": 9874085671.004076
+        },
+        {
+          "date": "2026-09-30",
+          "close": 45.2,
+          "foreignNetVolume": -30300.0,
+          "foreignNetValue": -1395135811.5020943
+        },
+        {
+          "date": "2026-10-01",
+          "close": 45.2,
+          "foreignNetVolume": 351400.0,
+          "foreignNetValue": 15889868947.842537
+        },
+        {
+          "date": "2026-10-02",
+          "close": 45.6,
+          "foreignNetVolume": 479000.0,
+          "foreignNetValue": 21883923833.88138
+        },
+        {
+          "date": "2026-10-05",
+          "close": 47.4,
+          "foreignNetVolume": 1230806.0,
+          "foreignNetValue": 57505509932.05348
+        },
+        {
+          "date": "2026-10-06",
+          "close": 47.75,
+          "foreignNetVolume": 192198.0,
+          "foreignNetValue": 9154786166.678373
+        },
+        {
+          "date": "2026-10-07",
+          "close": 47.2,
+          "foreignNetVolume": -20390.0,
+          "foreignNetValue": -968271621.7728529
+        },
+        {
+          "date": "2026-10-08",
+          "close": 47.75,
+          "foreignNetVolume": 434100.0,
+          "foreignNetValue": 20687368978.498203
+        },
+        {
+          "date": "2026-10-09",
+          "close": 47.25,
+          "foreignNetVolume": 482522.0,
+          "foreignNetValue": 22874704569.329334
+        },
+        {
+          "date": "2026-10-12",
+          "close": 46.95,
+          "foreignNetVolume": 126700.0,
+          "foreignNetValue": 5992911454.315886
+        },
+        {
+          "date": "2026-10-13",
+          "close": 45.95,
+          "foreignNetVolume": 332641.0,
+          "foreignNetValue": 15154812081.91434
+        },
+        {
+          "date": "2026-10-14",
+          "close": 45.5,
+          "foreignNetVolume": 21300.0,
+          "foreignNetValue": 976494974.8336449
+        },
+        {
+          "date": "2026-10-15",
+          "close": 45.05,
+          "foreignNetVolume": 90706.0,
+          "foreignNetValue": 4097729096.8659315
+        },
+        {
+          "date": "2026-10-16",
+          "close": 44.5,
+          "foreignNetVolume": -139800.0,
+          "foreignNetValue": -6241244039.192745
+        },
+        {
+          "date": "2026-10-19",
+          "close": 45.45,
+          "foreignNetVolume": -116600.0,
+          "foreignNetValue": -5235664984.05951
+        },
+        {
+          "date": "2026-10-20",
+          "close": 46.0,
+          "foreignNetVolume": -229254.0,
+          "foreignNetValue": -10457617224.07305
+        },
+        {
+          "date": "2026-10-21",
+          "close": 46.35,
+          "foreignNetVolume": -261700.0,
+          "foreignNetValue": -12040439794.327417
+        },
+        {
+          "date": "2026-10-22",
+          "close": 45.7,
+          "foreignNetVolume": -160500.0,
+          "foreignNetValue": -7396333289.383169
+        }
+      ]
+    },
+    "DPM": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 22.9,
+          "propTradingNetValue": 13740000.0,
+          "propTradingNetDealValue": 13740000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 23.1,
+          "propTradingNetValue": -16418000.0,
+          "propTradingNetDealValue": -16418000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 22.7,
+          "propTradingNetValue": 27675000.0,
+          "propTradingNetDealValue": 27675000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 22.6,
+          "propTradingNetValue": 1140000000.0,
+          "propTradingNetDealValue": 1140000000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 22.9,
+          "propTradingNetValue": -299990000.0,
+          "propTradingNetDealValue": -299990000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 23.0,
+          "propTradingNetValue": -1135700000.0,
+          "propTradingNetDealValue": -1135700000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 22.4,
+          "propTradingNetValue": 13620000.0,
+          "propTradingNetDealValue": 13620000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 22.4,
+          "propTradingNetValue": 67200000.0,
+          "propTradingNetDealValue": 67200000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 21.85,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 21.6,
+          "propTradingNetValue": 1123480000.0,
+          "propTradingNetDealValue": 1123480000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 21.65,
+          "propTradingNetValue": 6315000.0,
+          "propTradingNetDealValue": 6315000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 21.65,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 22.15,
+          "propTradingNetValue": -1088390000.0,
+          "propTradingNetDealValue": -1088390000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 21.9,
+          "propTradingNetValue": 1099130000.0,
+          "propTradingNetDealValue": 1099130000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 21.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 21.2,
+          "propTradingNetValue": -227000000.0,
+          "propTradingNetDealValue": -227000000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 21.35,
+          "propTradingNetValue": -2500000.0,
+          "propTradingNetDealValue": -2500000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 21.2,
+          "propTradingNetValue": 1480780000.0,
+          "propTradingNetDealValue": 1480780000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 21.2,
+          "propTradingNetValue": 6360000.0,
+          "propTradingNetDealValue": 6360000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 21.25,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 21.5,
+          "propTradingNetValue": -1221865000.0,
+          "propTradingNetDealValue": -1221865000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 21.75,
+          "propTradingNetValue": -653000000.0,
+          "propTradingNetDealValue": -653000000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 21.85,
+          "propTradingNetValue": -1503878000.0,
+          "propTradingNetDealValue": -1503878000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 22.9,
+          "foreignNetVolume": -215800.0,
+          "foreignNetValue": -4932602340.335467
+        },
+        {
+          "date": "2026-09-23",
+          "close": 23.1,
+          "foreignNetVolume": 547413.0,
+          "foreignNetValue": 12571158851.62193
+        },
+        {
+          "date": "2026-09-24",
+          "close": 22.7,
+          "foreignNetVolume": -161300.0,
+          "foreignNetValue": -3700193246.856597
+        },
+        {
+          "date": "2026-09-25",
+          "close": 22.6,
+          "foreignNetVolume": 9400.0,
+          "foreignNetValue": 214214866.53665662
+        },
+        {
+          "date": "2026-09-28",
+          "close": 22.9,
+          "foreignNetVolume": -466400.0,
+          "foreignNetValue": -10477105415.874592
+        },
+        {
+          "date": "2026-09-29",
+          "close": 23.0,
+          "foreignNetVolume": 471281.0,
+          "foreignNetValue": 10815545120.379038
+        },
+        {
+          "date": "2026-09-30",
+          "close": 22.4,
+          "foreignNetVolume": -263277.0,
+          "foreignNetValue": -5974404132.278408
+        },
+        {
+          "date": "2026-10-01",
+          "close": 22.4,
+          "foreignNetVolume": -127600.0,
+          "foreignNetValue": -2872188461.9833612
+        },
+        {
+          "date": "2026-10-02",
+          "close": 21.85,
+          "foreignNetVolume": -967432.0,
+          "foreignNetValue": -21379291512.8621
+        },
+        {
+          "date": "2026-10-05",
+          "close": 21.6,
+          "foreignNetVolume": -46700.0,
+          "foreignNetValue": -1015373373.1478682
+        },
+        {
+          "date": "2026-10-06",
+          "close": 21.65,
+          "foreignNetVolume": 356826.0,
+          "foreignNetValue": 7629516628.520695
+        },
+        {
+          "date": "2026-10-07",
+          "close": 21.65,
+          "foreignNetVolume": -103400.0,
+          "foreignNetValue": -2237296113.8439913
+        },
+        {
+          "date": "2026-10-08",
+          "close": 22.15,
+          "foreignNetVolume": 470800.0,
+          "foreignNetValue": 10416124253.582388
+        },
+        {
+          "date": "2026-10-09",
+          "close": 21.9,
+          "foreignNetVolume": 99700.0,
+          "foreignNetValue": 2193299938.4544663
+        },
+        {
+          "date": "2026-10-12",
+          "close": 21.6,
+          "foreignNetVolume": -45828.0,
+          "foreignNetValue": -993373663.764062
+        },
+        {
+          "date": "2026-10-13",
+          "close": 21.2,
+          "foreignNetVolume": -357981.0,
+          "foreignNetValue": -7637614155.538287
+        },
+        {
+          "date": "2026-10-14",
+          "close": 21.35,
+          "foreignNetVolume": -120417.0,
+          "foreignNetValue": -2566645508.685993
+        },
+        {
+          "date": "2026-10-15",
+          "close": 21.2,
+          "foreignNetVolume": -125513.0,
+          "foreignNetValue": -2664215132.939664
+        },
+        {
+          "date": "2026-10-16",
+          "close": 21.2,
+          "foreignNetVolume": -68733.0,
+          "foreignNetValue": -1457040798.6724043
+        },
+        {
+          "date": "2026-10-19",
+          "close": 21.25,
+          "foreignNetVolume": -172700.0,
+          "foreignNetValue": -3673205693.768056
+        },
+        {
+          "date": "2026-10-20",
+          "close": 21.5,
+          "foreignNetVolume": -41955.0,
+          "foreignNetValue": -902978184.2845241
+        },
+        {
+          "date": "2026-10-21",
+          "close": 21.75,
+          "foreignNetVolume": 306628.0,
+          "foreignNetValue": 6659557762.207519
+        },
+        {
+          "date": "2026-10-22",
+          "close": 21.85,
+          "foreignNetVolume": 261000.0,
+          "foreignNetValue": 5682663360.341335
         }
       ]
     },
@@ -1689,10 +2909,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 10.55,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 10.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -1830,9 +3050,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 10.55,
-          "foreignNetVolume": -234000.0,
-          "foreignNetValue": -2457730901.619819
+          "close": 10.6,
+          "foreignNetVolume": -260600.0,
+          "foreignNetValue": -2740775690.028447
         }
       ]
     },
@@ -1995,9 +3215,9 @@
         {
           "date": "2026-10-22",
           "close": 16.95,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "propTradingNetValue": 17100000.0,
+          "propTradingNetDealValue": 17100000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -2136,8 +3356,8 @@
         {
           "date": "2026-10-22",
           "close": 16.95,
-          "foreignNetVolume": -251900.0,
-          "foreignNetValue": -4298076117.929517
+          "foreignNetVolume": -270800.0,
+          "foreignNetValue": -4618103305.602661
         }
       ]
     },
@@ -2299,10 +3519,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 57.6,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 57.4,
+          "propTradingNetValue": -29390430000.0,
+          "propTradingNetDealValue": -29390430000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -2440,9 +3660,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 57.6,
-          "foreignNetVolume": -3994510.0,
-          "foreignNetValue": -230654937629.62885
+          "close": 57.4,
+          "foreignNetVolume": -4586510.0,
+          "foreignNetValue": -264677974472.32
         }
       ]
     },
@@ -2604,10 +3824,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 72.0,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 73.0,
+          "propTradingNetValue": -50811000.0,
+          "propTradingNetDealValue": -50811000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -2745,9 +3965,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 72.0,
-          "foreignNetVolume": 464005.0,
-          "foreignNetValue": 34144281965.395565
+          "close": 73.0,
+          "foreignNetVolume": 456605.0,
+          "foreignNetValue": 33581300683.667534
         }
       ]
     },
@@ -2910,9 +4130,9 @@
         {
           "date": "2026-10-22",
           "close": 23.65,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "propTradingNetValue": -211515000.0,
+          "propTradingNetDealValue": -211515000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -3051,8 +4271,618 @@
         {
           "date": "2026-10-22",
           "close": 23.65,
-          "foreignNetVolume": -782300.0,
-          "foreignNetValue": -18596567262.095795
+          "foreignNetVolume": -783600.0,
+          "foreignNetValue": -18622255959.255554
+        }
+      ]
+    },
+    "GVR": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 32.2,
+          "propTradingNetValue": -488105000.0,
+          "propTradingNetDealValue": -488105000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 32.15,
+          "propTradingNetValue": -2019555000.0,
+          "propTradingNetDealValue": -2019555000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 32.8,
+          "propTradingNetValue": 3688730000.0,
+          "propTradingNetDealValue": 3688730000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 32.9,
+          "propTradingNetValue": 8305720000.0,
+          "propTradingNetDealValue": 8305720000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 32.2,
+          "propTradingNetValue": 4528645000.0,
+          "propTradingNetDealValue": 4528645000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 33.3,
+          "propTradingNetValue": 446355000.0,
+          "propTradingNetDealValue": 446355000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 33.3,
+          "propTradingNetValue": -476460000.0,
+          "propTradingNetDealValue": -476460000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 32.75,
+          "propTradingNetValue": 134140000.0,
+          "propTradingNetDealValue": 134140000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 32.75,
+          "propTradingNetValue": 2725295000.0,
+          "propTradingNetDealValue": 2725295000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 32.7,
+          "propTradingNetValue": -224165000.0,
+          "propTradingNetDealValue": -224165000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 32.8,
+          "propTradingNetValue": 1073275000.0,
+          "propTradingNetDealValue": 1073275000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 34.0,
+          "propTradingNetValue": -12575000.0,
+          "propTradingNetDealValue": -12575000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 33.85,
+          "propTradingNetValue": -1622545000.0,
+          "propTradingNetDealValue": -1622545000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 32.85,
+          "propTradingNetValue": 1754300000.0,
+          "propTradingNetDealValue": 1754300000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 32.4,
+          "propTradingNetValue": -600305000.0,
+          "propTradingNetDealValue": -600305000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 32.35,
+          "propTradingNetValue": 27865000.0,
+          "propTradingNetDealValue": 27865000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 31.4,
+          "propTradingNetValue": 115595000.0,
+          "propTradingNetDealValue": 115595000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 30.9,
+          "propTradingNetValue": -1749760000.0,
+          "propTradingNetDealValue": -1749760000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 31.25,
+          "propTradingNetValue": 398445000.0,
+          "propTradingNetDealValue": 398445000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 31.35,
+          "propTradingNetValue": 955800000.0,
+          "propTradingNetDealValue": 955800000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 31.8,
+          "propTradingNetValue": 1510145000.0,
+          "propTradingNetDealValue": 1510145000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 31.8,
+          "propTradingNetValue": -2159250000.0,
+          "propTradingNetDealValue": -2159250000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 31.9,
+          "propTradingNetValue": -594795000.0,
+          "propTradingNetDealValue": -594795000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 32.2,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 32.15,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 32.8,
+          "foreignNetVolume": -1400.0,
+          "foreignNetValue": -46368187.192662574
+        },
+        {
+          "date": "2026-09-25",
+          "close": 32.9,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 32.2,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 33.3,
+          "foreignNetVolume": -99900.0,
+          "foreignNetValue": -3303215363.7270226
+        },
+        {
+          "date": "2026-09-30",
+          "close": 33.3,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 32.75,
+          "foreignNetVolume": -200.0,
+          "foreignNetValue": -6611076.849642005
+        },
+        {
+          "date": "2026-10-02",
+          "close": 32.75,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 32.7,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 32.8,
+          "foreignNetVolume": -100.0,
+          "foreignNetValue": -3253013.2536382535
+        },
+        {
+          "date": "2026-10-07",
+          "close": 34.0,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 33.85,
+          "foreignNetVolume": -10800.0,
+          "foreignNetValue": -369019466.7300703
+        },
+        {
+          "date": "2026-10-09",
+          "close": 32.85,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 32.4,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 32.35,
+          "foreignNetVolume": -200.0,
+          "foreignNetValue": -6489813.97841231
+        },
+        {
+          "date": "2026-10-14",
+          "close": 31.4,
+          "foreignNetVolume": -5000.0,
+          "foreignNetValue": -158184722.38859606
+        },
+        {
+          "date": "2026-10-15",
+          "close": 30.9,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 31.25,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 31.35,
+          "foreignNetVolume": -300900.0,
+          "foreignNetValue": -9388702915.789474
+        },
+        {
+          "date": "2026-10-20",
+          "close": 31.8,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 31.8,
+          "foreignNetVolume": -608200.0,
+          "foreignNetValue": -19369723246.321526
+        },
+        {
+          "date": "2026-10-22",
+          "close": 31.9,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        }
+      ]
+    },
+    "HCM": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 25.0,
+          "propTradingNetValue": 590260000.0,
+          "propTradingNetDealValue": 590260000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 25.5,
+          "propTradingNetValue": -114631000.0,
+          "propTradingNetDealValue": -114631000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 25.1,
+          "propTradingNetValue": 70280000.0,
+          "propTradingNetDealValue": 70280000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 24.9,
+          "propTradingNetValue": -206520000.0,
+          "propTradingNetDealValue": -206520000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 23.9,
+          "propTradingNetValue": -155350000.0,
+          "propTradingNetDealValue": -155350000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 24.45,
+          "propTradingNetValue": -1251095000.0,
+          "propTradingNetDealValue": -1251095000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 23.8,
+          "propTradingNetValue": 38740000.0,
+          "propTradingNetDealValue": 38740000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 23.55,
+          "propTradingNetValue": 211950000.0,
+          "propTradingNetDealValue": 211950000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 23.5,
+          "propTradingNetValue": 46450000.0,
+          "propTradingNetDealValue": 46450000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 23.4,
+          "propTradingNetValue": 42300000.0,
+          "propTradingNetDealValue": 42300000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 23.5,
+          "propTradingNetValue": -989110000.0,
+          "propTradingNetDealValue": -989110000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 23.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 23.6,
+          "propTradingNetValue": 31780000.0,
+          "propTradingNetDealValue": 31780000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 23.15,
+          "propTradingNetValue": 16170000.0,
+          "propTradingNetDealValue": 16170000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 23.2,
+          "propTradingNetValue": -347865000.0,
+          "propTradingNetDealValue": -347865000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 23.0,
+          "propTradingNetValue": -161435000.0,
+          "propTradingNetDealValue": -161435000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 23.1,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 24.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 23.75,
+          "propTradingNetValue": 16660000.0,
+          "propTradingNetDealValue": 16660000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 24.2,
+          "propTradingNetValue": -635350000.0,
+          "propTradingNetDealValue": -635350000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 23.9,
+          "propTradingNetValue": 67155000.0,
+          "propTradingNetDealValue": 67155000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 24.25,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 24.1,
+          "propTradingNetValue": 13739000.0,
+          "propTradingNetDealValue": 13739000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 25.0,
+          "foreignNetVolume": -70200.0,
+          "foreignNetValue": -1761470429.0700061
+        },
+        {
+          "date": "2026-09-23",
+          "close": 25.5,
+          "foreignNetVolume": 465100.0,
+          "foreignNetValue": 11801943864.862488
+        },
+        {
+          "date": "2026-09-24",
+          "close": 25.1,
+          "foreignNetVolume": -242200.0,
+          "foreignNetValue": -6104599587.273849
+        },
+        {
+          "date": "2026-09-25",
+          "close": 24.9,
+          "foreignNetVolume": -99400.0,
+          "foreignNetValue": -2483595566.999796
+        },
+        {
+          "date": "2026-09-28",
+          "close": 23.9,
+          "foreignNetVolume": -97300.0,
+          "foreignNetValue": -2346423198.0092144
+        },
+        {
+          "date": "2026-09-29",
+          "close": 24.45,
+          "foreignNetVolume": 81500.0,
+          "foreignNetValue": 1952988843.4249783
+        },
+        {
+          "date": "2026-09-30",
+          "close": 23.8,
+          "foreignNetVolume": -11010.0,
+          "foreignNetValue": -266492777.10290274
+        },
+        {
+          "date": "2026-10-01",
+          "close": 23.55,
+          "foreignNetVolume": -153700.0,
+          "foreignNetValue": -3647231608.89415
+        },
+        {
+          "date": "2026-10-02",
+          "close": 23.5,
+          "foreignNetVolume": -28750.0,
+          "foreignNetValue": -672248157.31781
+        },
+        {
+          "date": "2026-10-05",
+          "close": 23.4,
+          "foreignNetVolume": -137700.0,
+          "foreignNetValue": -3241613649.1342697
+        },
+        {
+          "date": "2026-10-06",
+          "close": 23.5,
+          "foreignNetVolume": 772685.0,
+          "foreignNetValue": 17829992790.36244
+        },
+        {
+          "date": "2026-10-07",
+          "close": 23.0,
+          "foreignNetVolume": -220200.0,
+          "foreignNetValue": -5103702857.142857
+        },
+        {
+          "date": "2026-10-08",
+          "close": 23.6,
+          "foreignNetVolume": 1010900.0,
+          "foreignNetValue": 23613959659.67178
+        },
+        {
+          "date": "2026-10-09",
+          "close": 23.15,
+          "foreignNetVolume": -765800.0,
+          "foreignNetValue": -17856539238.196114
+        },
+        {
+          "date": "2026-10-12",
+          "close": 23.2,
+          "foreignNetVolume": 283489.0,
+          "foreignNetValue": 6582709574.287258
+        },
+        {
+          "date": "2026-10-13",
+          "close": 23.0,
+          "foreignNetVolume": -27950.0,
+          "foreignNetValue": -646909997.5951481
+        },
+        {
+          "date": "2026-10-14",
+          "close": 23.1,
+          "foreignNetVolume": -48679.0,
+          "foreignNetValue": -1114705362.5920181
+        },
+        {
+          "date": "2026-10-15",
+          "close": 24.0,
+          "foreignNetVolume": 546186.0,
+          "foreignNetValue": 12911986030.820072
+        },
+        {
+          "date": "2026-10-16",
+          "close": 23.75,
+          "foreignNetVolume": 342030.0,
+          "foreignNetValue": 8198819360.245922
+        },
+        {
+          "date": "2026-10-19",
+          "close": 24.2,
+          "foreignNetVolume": -390600.0,
+          "foreignNetValue": -9404986795.390844
+        },
+        {
+          "date": "2026-10-20",
+          "close": 23.9,
+          "foreignNetVolume": -120000.0,
+          "foreignNetValue": -2873837635.0808253
+        },
+        {
+          "date": "2026-10-21",
+          "close": 24.25,
+          "foreignNetVolume": -192000.0,
+          "foreignNetValue": -4644715587.287546
+        },
+        {
+          "date": "2026-10-22",
+          "close": 24.1,
+          "foreignNetVolume": -114008.0,
+          "foreignNetValue": -2746395576.538486
         }
       ]
     },
@@ -3214,10 +5044,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 22.2,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 22.35,
+          "propTradingNetValue": -161566503000.0,
+          "propTradingNetDealValue": 6100997000.0,
+          "propTradingNetPTValue": -167667500000.0
         }
       ],
       "foreignNet": [
@@ -3355,9 +5185,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 22.2,
-          "foreignNetVolume": -1188900.0,
-          "foreignNetValue": -26067394319.510838
+          "close": 22.35,
+          "foreignNetVolume": 219800.0,
+          "foreignNetValue": 4835028550.350136
         }
       ]
     },
@@ -3520,9 +5350,9 @@
         {
           "date": "2026-10-22",
           "close": 21.25,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "propTradingNetValue": -3296392000.0,
+          "propTradingNetDealValue": -3296392000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -3661,8 +5491,313 @@
         {
           "date": "2026-10-22",
           "close": 21.25,
-          "foreignNetVolume": 973866.0,
-          "foreignNetValue": 20711494151.298927
+          "foreignNetVolume": 2812262.0,
+          "foreignNetValue": 59804856490.593216
+        }
+      ]
+    },
+    "HUT": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 12.8,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 12.8,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 12.7,
+          "propTradingNetValue": -60960000.0,
+          "propTradingNetDealValue": -60960000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 12.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 12.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 12.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 12.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 12.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 12.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 12.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 11.9,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 12.4,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 12.4,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 12.4,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 12.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 12.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 12.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 12.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 12.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 12.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 12.4,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 12.9,
+          "propTradingNetValue": -645000000.0,
+          "propTradingNetDealValue": -645000000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 12.5,
+          "propTradingNetValue": null,
+          "propTradingNetDealValue": null,
+          "propTradingNetPTValue": null
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 12.8,
+          "foreignNetVolume": -6500.0,
+          "foreignNetValue": -82892196.76706594
+        },
+        {
+          "date": "2026-09-23",
+          "close": 12.8,
+          "foreignNetVolume": -55600.0,
+          "foreignNetValue": -707262044.6484456
+        },
+        {
+          "date": "2026-09-24",
+          "close": 12.7,
+          "foreignNetVolume": -6800.0,
+          "foreignNetValue": -86091632.69684617
+        },
+        {
+          "date": "2026-09-25",
+          "close": 12.7,
+          "foreignNetVolume": 3100.0,
+          "foreignNetValue": 39191033.955115125
+        },
+        {
+          "date": "2026-09-28",
+          "close": 12.7,
+          "foreignNetVolume": 21900.0,
+          "foreignNetValue": 275583728.1422807
+        },
+        {
+          "date": "2026-09-29",
+          "close": 12.6,
+          "foreignNetVolume": -49100.0,
+          "foreignNetValue": -616324132.6129665
+        },
+        {
+          "date": "2026-09-30",
+          "close": 12.6,
+          "foreignNetVolume": -27032.0,
+          "foreignNetValue": -338840827.0849791
+        },
+        {
+          "date": "2026-10-01",
+          "close": 12.5,
+          "foreignNetVolume": -10700.0,
+          "foreignNetValue": -132733553.28685258
+        },
+        {
+          "date": "2026-10-02",
+          "close": 12.3,
+          "foreignNetVolume": -108843.0,
+          "foreignNetValue": -1335537725.949367
+        },
+        {
+          "date": "2026-10-05",
+          "close": 12.0,
+          "foreignNetVolume": 22500.0,
+          "foreignNetValue": 269460601.5897868
+        },
+        {
+          "date": "2026-10-06",
+          "close": 11.9,
+          "foreignNetVolume": -29900.0,
+          "foreignNetValue": -353819100.7992896
+        },
+        {
+          "date": "2026-10-07",
+          "close": 12.4,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 12.4,
+          "foreignNetVolume": -15900.0,
+          "foreignNetValue": -194218889.3951475
+        },
+        {
+          "date": "2026-10-09",
+          "close": 12.4,
+          "foreignNetVolume": -24500.0,
+          "foreignNetValue": -300076264.9015803
+        },
+        {
+          "date": "2026-10-12",
+          "close": 12.3,
+          "foreignNetVolume": -39703.0,
+          "foreignNetValue": -486694016.24113476
+        },
+        {
+          "date": "2026-10-13",
+          "close": 12.2,
+          "foreignNetVolume": 50500.0,
+          "foreignNetValue": 615443406.4237183
+        },
+        {
+          "date": "2026-10-14",
+          "close": 12.2,
+          "foreignNetVolume": -44934.0,
+          "foreignNetValue": -546702045.7113242
+        },
+        {
+          "date": "2026-10-15",
+          "close": 12.2,
+          "foreignNetVolume": 52009.0,
+          "foreignNetValue": 630151396.1239979
+        },
+        {
+          "date": "2026-10-16",
+          "close": 12.2,
+          "foreignNetVolume": 5669.0,
+          "foreignNetValue": 68914313.81520778
+        },
+        {
+          "date": "2026-10-19",
+          "close": 12.3,
+          "foreignNetVolume": 8600.0,
+          "foreignNetValue": 105045561.86815944
+        },
+        {
+          "date": "2026-10-20",
+          "close": 12.4,
+          "foreignNetVolume": 0,
+          "foreignNetValue": 0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 12.9,
+          "foreignNetVolume": 201700.0,
+          "foreignNetValue": 2536195818.3458643
+        },
+        {
+          "date": "2026-10-22",
+          "close": 12.5,
+          "foreignNetVolume": -50300.0,
+          "foreignNetValue": -633537764.7735994
         }
       ]
     },
@@ -3824,10 +5959,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 26.9,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 27.1,
+          "propTradingNetValue": 2533770000.0,
+          "propTradingNetDealValue": 2533770000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -3965,9 +6100,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 26.9,
-          "foreignNetVolume": 81100.0,
-          "foreignNetValue": 2183965716.8383436
+          "close": 27.1,
+          "foreignNetVolume": 80600.0,
+          "foreignNetValue": 2173998467.606814
         }
       ]
     },
@@ -4129,10 +6264,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 14.85,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 14.9,
+          "propTradingNetValue": 6711753000.0,
+          "propTradingNetDealValue": 6711753000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -4270,9 +6405,314 @@
         },
         {
           "date": "2026-10-22",
-          "close": 14.85,
-          "foreignNetVolume": -95033.0,
-          "foreignNetValue": -1407933752.6417904
+          "close": 14.9,
+          "foreignNetVolume": -77433.0,
+          "foreignNetValue": -1147498948.1080742
+        }
+      ]
+    },
+    "LPB": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 46.3,
+          "propTradingNetValue": -5064954000.0,
+          "propTradingNetDealValue": -5059720000.0,
+          "propTradingNetPTValue": -5234000.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 47.3,
+          "propTradingNetValue": 8062181000.0,
+          "propTradingNetDealValue": 8064164000.0,
+          "propTradingNetPTValue": -1983000.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 46.4,
+          "propTradingNetValue": 11223916000.0,
+          "propTradingNetDealValue": 11225500000.0,
+          "propTradingNetPTValue": -1584000.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 46.45,
+          "propTradingNetValue": 2695343000.0,
+          "propTradingNetDealValue": 2696725000.0,
+          "propTradingNetPTValue": -1382000.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 45.5,
+          "propTradingNetValue": -3778417000.0,
+          "propTradingNetDealValue": -3775825000.0,
+          "propTradingNetPTValue": -2592000.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 43.5,
+          "propTradingNetValue": -779663000.0,
+          "propTradingNetDealValue": -777800000.0,
+          "propTradingNetPTValue": -1863000.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 44.0,
+          "propTradingNetValue": -485664190000.0,
+          "propTradingNetDealValue": 976205000.0,
+          "propTradingNetPTValue": -486640395000.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 42.0,
+          "propTradingNetValue": -6628101000.0,
+          "propTradingNetDealValue": -6627200000.0,
+          "propTradingNetPTValue": -901000.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 40.2,
+          "propTradingNetValue": -3031396000.0,
+          "propTradingNetDealValue": -3029910000.0,
+          "propTradingNetPTValue": -1486000.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 43.0,
+          "propTradingNetValue": 273459007000.0,
+          "propTradingNetDealValue": -6038300000.0,
+          "propTradingNetPTValue": 279497307000.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 43.9,
+          "propTradingNetValue": 24637930000.0,
+          "propTradingNetDealValue": 24603530000.0,
+          "propTradingNetPTValue": 34400000.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 42.0,
+          "propTradingNetValue": -12879091000.0,
+          "propTradingNetDealValue": -12873780000.0,
+          "propTradingNetPTValue": -5311000.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 40.65,
+          "propTradingNetValue": -21313074000.0,
+          "propTradingNetDealValue": -21305880000.0,
+          "propTradingNetPTValue": -7194000.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 40.7,
+          "propTradingNetValue": 12822825000.0,
+          "propTradingNetDealValue": 12828275000.0,
+          "propTradingNetPTValue": -5450000.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 40.25,
+          "propTradingNetValue": -6404278000.0,
+          "propTradingNetDealValue": -6398290000.0,
+          "propTradingNetPTValue": -5988000.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 39.3,
+          "propTradingNetValue": -7324825000.0,
+          "propTradingNetDealValue": -7324825000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 38.1,
+          "propTradingNetValue": -1171675000.0,
+          "propTradingNetDealValue": -1171675000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 37.2,
+          "propTradingNetValue": -16016670000.0,
+          "propTradingNetDealValue": -16016670000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 38.0,
+          "propTradingNetValue": 6346010000.0,
+          "propTradingNetDealValue": 6346010000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 38.45,
+          "propTradingNetValue": 9012435000.0,
+          "propTradingNetDealValue": 9012435000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 37.85,
+          "propTradingNetValue": -562040000.0,
+          "propTradingNetDealValue": -562040000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 39.7,
+          "propTradingNetValue": -16904530000.0,
+          "propTradingNetDealValue": -16904530000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 39.0,
+          "propTradingNetValue": -7119914000.0,
+          "propTradingNetDealValue": -7119914000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 46.3,
+          "foreignNetVolume": -70500.0,
+          "foreignNetValue": -3254428497.456395
+        },
+        {
+          "date": "2026-09-23",
+          "close": 47.3,
+          "foreignNetVolume": 145100.0,
+          "foreignNetValue": 6817544794.0661335
+        },
+        {
+          "date": "2026-09-24",
+          "close": 46.4,
+          "foreignNetVolume": -45200.0,
+          "foreignNetValue": -2109120924.5699158
+        },
+        {
+          "date": "2026-09-25",
+          "close": 46.45,
+          "foreignNetVolume": -141700.0,
+          "foreignNetValue": -6590761630.890385
+        },
+        {
+          "date": "2026-09-28",
+          "close": 45.5,
+          "foreignNetVolume": -140500.0,
+          "foreignNetValue": -6444156972.342978
+        },
+        {
+          "date": "2026-09-29",
+          "close": 43.5,
+          "foreignNetVolume": 237980.0,
+          "foreignNetValue": 10503684592.857935
+        },
+        {
+          "date": "2026-09-30",
+          "close": 44.0,
+          "foreignNetVolume": 59200.0,
+          "foreignNetValue": 2609589926.496325
+        },
+        {
+          "date": "2026-10-01",
+          "close": 42.0,
+          "foreignNetVolume": -143000.0,
+          "foreignNetValue": -6118911378.075837
+        },
+        {
+          "date": "2026-10-02",
+          "close": 40.2,
+          "foreignNetVolume": 359500.0,
+          "foreignNetValue": 14746970379.959291
+        },
+        {
+          "date": "2026-10-05",
+          "close": 43.0,
+          "foreignNetVolume": 488366.0,
+          "foreignNetValue": 20512049950.32591
+        },
+        {
+          "date": "2026-10-06",
+          "close": 43.9,
+          "foreignNetVolume": -378300.0,
+          "foreignNetValue": -16554329504.423359
+        },
+        {
+          "date": "2026-10-07",
+          "close": 42.0,
+          "foreignNetVolume": -61900.0,
+          "foreignNetValue": -2651624939.5886917
+        },
+        {
+          "date": "2026-10-08",
+          "close": 40.65,
+          "foreignNetVolume": 80000.0,
+          "foreignNetValue": 3337725180.3188286
+        },
+        {
+          "date": "2026-10-09",
+          "close": 40.7,
+          "foreignNetVolume": -464800.0,
+          "foreignNetValue": -19030854808.091854
+        },
+        {
+          "date": "2026-10-12",
+          "close": 40.25,
+          "foreignNetVolume": -136400.0,
+          "foreignNetValue": -5514973773.237057
+        },
+        {
+          "date": "2026-10-13",
+          "close": 39.3,
+          "foreignNetVolume": 227737.0,
+          "foreignNetValue": 9004688819.023743
+        },
+        {
+          "date": "2026-10-14",
+          "close": 38.1,
+          "foreignNetVolume": 236200.0,
+          "foreignNetValue": 9086321801.003838
+        },
+        {
+          "date": "2026-10-15",
+          "close": 37.2,
+          "foreignNetVolume": -18101.0,
+          "foreignNetValue": -679815862.0236435
+        },
+        {
+          "date": "2026-10-16",
+          "close": 38.0,
+          "foreignNetVolume": -313000.0,
+          "foreignNetValue": -11911650024.4822
+        },
+        {
+          "date": "2026-10-19",
+          "close": 38.45,
+          "foreignNetVolume": -338250.0,
+          "foreignNetValue": -12980169283.142021
+        },
+        {
+          "date": "2026-10-20",
+          "close": 37.85,
+          "foreignNetVolume": -258800.0,
+          "foreignNetValue": -9823502033.968233
+        },
+        {
+          "date": "2026-10-21",
+          "close": 39.7,
+          "foreignNetVolume": 398900.0,
+          "foreignNetValue": 15507682714.576609
+        },
+        {
+          "date": "2026-10-22",
+          "close": 39.0,
+          "foreignNetVolume": -591900.0,
+          "foreignNetValue": -23228079544.08729
         }
       ]
     },
@@ -4435,9 +6875,9 @@
         {
           "date": "2026-10-22",
           "close": 19.9,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "propTradingNetValue": -15958508000.0,
+          "propTradingNetDealValue": -15958508000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -4576,8 +7016,8 @@
         {
           "date": "2026-10-22",
           "close": 19.9,
-          "foreignNetVolume": -708588.0,
-          "foreignNetValue": -14063150090.040247
+          "foreignNetVolume": -255788.0,
+          "foreignNetValue": -5078352279.172134
         }
       ]
     },
@@ -4881,8 +7321,8 @@
         {
           "date": "2026-10-22",
           "close": 15.6,
-          "foreignNetVolume": -39100.0,
-          "foreignNetValue": -612274155.2657974
+          "foreignNetVolume": -55400.0,
+          "foreignNetValue": -867186246.1303129
         }
       ]
     },
@@ -5044,10 +7484,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 15.35,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 15.4,
+          "propTradingNetValue": -1326351000.0,
+          "propTradingNetDealValue": -1326351000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -5185,9 +7625,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 15.35,
-          "foreignNetVolume": -1800340.0,
-          "foreignNetValue": -27742765411.257374
+          "close": 15.4,
+          "foreignNetVolume": -1794140.0,
+          "foreignNetValue": -27645210705.33942
         }
       ]
     },
@@ -5349,10 +7789,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 74.0,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 73.9,
+          "propTradingNetValue": -7386050000.0,
+          "propTradingNetDealValue": -7386050000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -5490,9 +7930,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 74.0,
-          "foreignNetVolume": 1413080.0,
-          "foreignNetValue": 104564305840.58246
+          "close": 73.9,
+          "foreignNetVolume": 1903780.0,
+          "foreignNetValue": 140856640313.7098
         }
       ]
     },
@@ -5654,7 +8094,7 @@
         },
         {
           "date": "2026-10-22",
-          "close": 63.4,
+          "close": 63.0,
           "propTradingNetValue": null,
           "propTradingNetDealValue": null,
           "propTradingNetPTValue": null
@@ -5795,9 +8235,924 @@
         },
         {
           "date": "2026-10-22",
-          "close": 63.4,
-          "foreignNetVolume": -20489.0,
-          "foreignNetValue": -1271792008.1489854
+          "close": 63.0,
+          "foreignNetVolume": -22389.0,
+          "foreignNetValue": -1391474111.3238676
+        }
+      ]
+    },
+    "MWG": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 72.8,
+          "propTradingNetValue": 5299870000.0,
+          "propTradingNetDealValue": 5299870000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 73.2,
+          "propTradingNetValue": 19713070000.0,
+          "propTradingNetDealValue": 19713070000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 72.9,
+          "propTradingNetValue": 11428140000.0,
+          "propTradingNetDealValue": 11428140000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 73.4,
+          "propTradingNetValue": 7639550000.0,
+          "propTradingNetDealValue": 7639550000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 72.0,
+          "propTradingNetValue": 9430950000.0,
+          "propTradingNetDealValue": 9430950000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 71.9,
+          "propTradingNetValue": 4457150000.0,
+          "propTradingNetDealValue": 4457150000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 72.4,
+          "propTradingNetValue": -2242796000.0,
+          "propTradingNetDealValue": -2242796000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 72.6,
+          "propTradingNetValue": 790260000.0,
+          "propTradingNetDealValue": 790260000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 73.2,
+          "propTradingNetValue": -95929950000.0,
+          "propTradingNetDealValue": 12710050000.0,
+          "propTradingNetPTValue": -108640000000.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 74.4,
+          "propTradingNetValue": -23224550000.0,
+          "propTradingNetDealValue": -23224550000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 76.0,
+          "propTradingNetValue": 26865340000.0,
+          "propTradingNetDealValue": 26865340000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 76.9,
+          "propTradingNetValue": -19781905000.0,
+          "propTradingNetDealValue": -19781905000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 76.1,
+          "propTradingNetValue": 36861885000.0,
+          "propTradingNetDealValue": 36861885000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 75.9,
+          "propTradingNetValue": 35216146000.0,
+          "propTradingNetDealValue": 35216146000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 75.6,
+          "propTradingNetValue": 17715611000.0,
+          "propTradingNetDealValue": 17715611000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 74.8,
+          "propTradingNetValue": 25059270000.0,
+          "propTradingNetDealValue": 25059270000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 73.5,
+          "propTradingNetValue": 20645620000.0,
+          "propTradingNetDealValue": 20645620000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 72.8,
+          "propTradingNetValue": -24439750000.0,
+          "propTradingNetDealValue": -24439750000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 73.9,
+          "propTradingNetValue": 7598312000.0,
+          "propTradingNetDealValue": 7598312000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 74.2,
+          "propTradingNetValue": 20464788000.0,
+          "propTradingNetDealValue": 20464788000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 74.9,
+          "propTradingNetValue": 10230963000.0,
+          "propTradingNetDealValue": 10230963000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 75.8,
+          "propTradingNetValue": -16017225000.0,
+          "propTradingNetDealValue": -16017225000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 75.3,
+          "propTradingNetValue": -20081996000.0,
+          "propTradingNetDealValue": -20081996000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 72.8,
+          "foreignNetVolume": 6000.0,
+          "foreignNetValue": 436352040.7789078
+        },
+        {
+          "date": "2026-09-23",
+          "close": 73.2,
+          "foreignNetVolume": 32700.0,
+          "foreignNetValue": 2399710114.0590897
+        },
+        {
+          "date": "2026-09-24",
+          "close": 72.9,
+          "foreignNetVolume": -100.0,
+          "foreignNetValue": -7265002.402980804
+        },
+        {
+          "date": "2026-09-25",
+          "close": 73.4,
+          "foreignNetVolume": -300.0,
+          "foreignNetValue": -21941093.556732178
+        },
+        {
+          "date": "2026-09-28",
+          "close": 72.0,
+          "foreignNetVolume": -9800.0,
+          "foreignNetValue": -708427488.0361176
+        },
+        {
+          "date": "2026-09-29",
+          "close": 71.9,
+          "foreignNetVolume": -731.0,
+          "foreignNetValue": -52531704.65400696
+        },
+        {
+          "date": "2026-09-30",
+          "close": 72.4,
+          "foreignNetVolume": -100.0,
+          "foreignNetValue": -7228887.05327034
+        },
+        {
+          "date": "2026-10-01",
+          "close": 72.6,
+          "foreignNetVolume": 9800.0,
+          "foreignNetValue": 715169313.4638062
+        },
+        {
+          "date": "2026-10-02",
+          "close": 73.2,
+          "foreignNetVolume": -2468.0,
+          "foreignNetValue": -179752276.41340637
+        },
+        {
+          "date": "2026-10-05",
+          "close": 74.4,
+          "foreignNetVolume": -8269.0,
+          "foreignNetValue": -614293826.1054935
+        },
+        {
+          "date": "2026-10-06",
+          "close": 76.0,
+          "foreignNetVolume": -4016.0,
+          "foreignNetValue": -301586542.5940094
+        },
+        {
+          "date": "2026-10-07",
+          "close": 76.9,
+          "foreignNetVolume": -4501.0,
+          "foreignNetValue": -342983359.2495117
+        },
+        {
+          "date": "2026-10-08",
+          "close": 76.1,
+          "foreignNetVolume": 11368.0,
+          "foreignNetValue": 866331132.4864197
+        },
+        {
+          "date": "2026-10-09",
+          "close": 75.9,
+          "foreignNetVolume": -12784.0,
+          "foreignNetValue": -966335048.5899963
+        },
+        {
+          "date": "2026-10-12",
+          "close": 75.6,
+          "foreignNetVolume": 9217.0,
+          "foreignNetValue": 696801182.0211334
+        },
+        {
+          "date": "2026-10-13",
+          "close": 74.8,
+          "foreignNetVolume": -100.0,
+          "foreignNetValue": -7470345.371337891
+        },
+        {
+          "date": "2026-10-14",
+          "close": 73.5,
+          "foreignNetVolume": 11844.0,
+          "foreignNetValue": 873810547.3957825
+        },
+        {
+          "date": "2026-10-15",
+          "close": 72.8,
+          "foreignNetVolume": -1309.0,
+          "foreignNetValue": -95486561.6640091
+        },
+        {
+          "date": "2026-10-16",
+          "close": 73.9,
+          "foreignNetVolume": -390.0,
+          "foreignNetValue": -28608043.73815918
+        },
+        {
+          "date": "2026-10-19",
+          "close": 74.2,
+          "foreignNetVolume": -58360.0,
+          "foreignNetValue": -4348218518.044983
+        },
+        {
+          "date": "2026-10-20",
+          "close": 74.9,
+          "foreignNetVolume": -1901.0,
+          "foreignNetValue": -141386358.39804077
+        },
+        {
+          "date": "2026-10-21",
+          "close": 75.8,
+          "foreignNetVolume": 767.0,
+          "foreignNetValue": 57828820.27572632
+        },
+        {
+          "date": "2026-10-22",
+          "close": 75.3,
+          "foreignNetVolume": 60332.0,
+          "foreignNetValue": 4553065487.248159
+        }
+      ]
+    },
+    "NAB": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 12.2,
+          "propTradingNetValue": 151075000.0,
+          "propTradingNetDealValue": 151075000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 12.15,
+          "propTradingNetValue": -4855000.0,
+          "propTradingNetDealValue": -4855000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 12.0,
+          "propTradingNetValue": 76320000.0,
+          "propTradingNetDealValue": 76320000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 12.4,
+          "propTradingNetValue": 300080000.0,
+          "propTradingNetDealValue": 300080000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 12.35,
+          "propTradingNetValue": -92607400000.0,
+          "propTradingNetDealValue": 142600000.0,
+          "propTradingNetPTValue": -92750000000.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 12.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 12.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 12.35,
+          "propTradingNetValue": -8575000.0,
+          "propTradingNetDealValue": -8575000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 12.5,
+          "propTradingNetValue": -126765000.0,
+          "propTradingNetDealValue": -126765000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 12.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 12.9,
+          "propTradingNetValue": 25460605000.0,
+          "propTradingNetDealValue": 20605000.0,
+          "propTradingNetPTValue": 25440000000.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 12.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 12.35,
+          "propTradingNetValue": 278610000.0,
+          "propTradingNetDealValue": 278610000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 12.15,
+          "propTradingNetValue": 19360000.0,
+          "propTradingNetDealValue": 19360000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 12.3,
+          "propTradingNetValue": 65705000.0,
+          "propTradingNetDealValue": 65705000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 12.0,
+          "propTradingNetValue": -8505000.0,
+          "propTradingNetDealValue": -8505000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 12.05,
+          "propTradingNetValue": -291610000.0,
+          "propTradingNetDealValue": -291610000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 12.1,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 12.1,
+          "propTradingNetValue": 19200000.0,
+          "propTradingNetDealValue": 19200000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 12.0,
+          "propTradingNetValue": -26180000.0,
+          "propTradingNetDealValue": -26180000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 11.95,
+          "propTradingNetValue": 349475000.0,
+          "propTradingNetDealValue": 349475000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 12.25,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 12.25,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 12.2,
+          "foreignNetVolume": -94200.0,
+          "foreignNetValue": -1121564953.6539495
+        },
+        {
+          "date": "2026-09-23",
+          "close": 12.15,
+          "foreignNetVolume": -151664.0,
+          "foreignNetValue": -1848590939.7498207
+        },
+        {
+          "date": "2026-09-24",
+          "close": 12.0,
+          "foreignNetVolume": -93800.0,
+          "foreignNetValue": -1123672459.1553638
+        },
+        {
+          "date": "2026-09-25",
+          "close": 12.4,
+          "foreignNetVolume": 261340.0,
+          "foreignNetValue": 3204113012.854805
+        },
+        {
+          "date": "2026-09-28",
+          "close": 12.35,
+          "foreignNetVolume": -188000.0,
+          "foreignNetValue": -2327671841.2171826
+        },
+        {
+          "date": "2026-09-29",
+          "close": 12.3,
+          "foreignNetVolume": -89800.0,
+          "foreignNetValue": -1103964865.6397946
+        },
+        {
+          "date": "2026-09-30",
+          "close": 12.3,
+          "foreignNetVolume": 8387.0,
+          "foreignNetValue": 103085754.34913921
+        },
+        {
+          "date": "2026-10-01",
+          "close": 12.35,
+          "foreignNetVolume": -58900.0,
+          "foreignNetValue": -726057017.8799489
+        },
+        {
+          "date": "2026-10-02",
+          "close": 12.5,
+          "foreignNetVolume": 49385.0,
+          "foreignNetValue": 616974589.8367982
+        },
+        {
+          "date": "2026-10-05",
+          "close": 12.5,
+          "foreignNetVolume": -190600.0,
+          "foreignNetValue": -2372033893.457602
+        },
+        {
+          "date": "2026-10-06",
+          "close": 12.9,
+          "foreignNetVolume": 143505.0,
+          "foreignNetValue": 1838141188.5274682
+        },
+        {
+          "date": "2026-10-07",
+          "close": 12.7,
+          "foreignNetVolume": -539700.0,
+          "foreignNetValue": -6858044316.004258
+        },
+        {
+          "date": "2026-10-08",
+          "close": 12.35,
+          "foreignNetVolume": -251400.0,
+          "foreignNetValue": -3149163300.510846
+        },
+        {
+          "date": "2026-10-09",
+          "close": 12.15,
+          "foreignNetVolume": -22100.0,
+          "foreignNetValue": -269682717.2619047
+        },
+        {
+          "date": "2026-10-12",
+          "close": 12.3,
+          "foreignNetVolume": -52452.0,
+          "foreignNetValue": -640748151.1856565
+        },
+        {
+          "date": "2026-10-13",
+          "close": 12.0,
+          "foreignNetVolume": -43025.0,
+          "foreignNetValue": -523651756.960292
+        },
+        {
+          "date": "2026-10-14",
+          "close": 12.05,
+          "foreignNetVolume": 418748.0,
+          "foreignNetValue": 4988437085.886288
+        },
+        {
+          "date": "2026-10-15",
+          "close": 12.1,
+          "foreignNetVolume": 35646.0,
+          "foreignNetValue": 426362754.7528517
+        },
+        {
+          "date": "2026-10-16",
+          "close": 12.1,
+          "foreignNetVolume": 19002.0,
+          "foreignNetValue": 228487653.41633773
+        },
+        {
+          "date": "2026-10-19",
+          "close": 12.0,
+          "foreignNetVolume": -294580.0,
+          "foreignNetValue": -3494561294.271893
+        },
+        {
+          "date": "2026-10-20",
+          "close": 11.95,
+          "foreignNetVolume": 117300.0,
+          "foreignNetValue": 1393764518.5185184
+        },
+        {
+          "date": "2026-10-21",
+          "close": 12.25,
+          "foreignNetVolume": 155500.0,
+          "foreignNetValue": 1892336822.2002745
+        },
+        {
+          "date": "2026-10-22",
+          "close": 12.25,
+          "foreignNetVolume": 78400.0,
+          "foreignNetValue": 956309620.795677
+        }
+      ]
+    },
+    "NVB": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 13.9,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 14.1,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 13.6,
+          "propTradingNetValue": -58194600.0,
+          "propTradingNetDealValue": -58194600.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 13.4,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 13.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 13.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 14.3,
+          "propTradingNetValue": 798720000.0,
+          "propTradingNetDealValue": 798720000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 13.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 15.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 16.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 16.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 15.9,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 16.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 17.1,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 16.5,
+          "propTradingNetValue": 1081650000.0,
+          "propTradingNetDealValue": 1081650000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 14.9,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 14.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 13.8,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 13.8,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 13.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 13.5,
+          "propTradingNetValue": -289110000.0,
+          "propTradingNetDealValue": -289110000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 13.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 13.7,
+          "propTradingNetValue": null,
+          "propTradingNetDealValue": null,
+          "propTradingNetPTValue": null
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 13.9,
+          "foreignNetVolume": -39800.0,
+          "foreignNetValue": -560725687.1792661
+        },
+        {
+          "date": "2026-09-23",
+          "close": 14.1,
+          "foreignNetVolume": 53100.0,
+          "foreignNetValue": 755370915.4515522
+        },
+        {
+          "date": "2026-09-24",
+          "close": 13.6,
+          "foreignNetVolume": 130000.0,
+          "foreignNetValue": 1798613086.563684
+        },
+        {
+          "date": "2026-09-25",
+          "close": 13.4,
+          "foreignNetVolume": 125300.0,
+          "foreignNetValue": 1699838658.2947786
+        },
+        {
+          "date": "2026-09-28",
+          "close": 13.6,
+          "foreignNetVolume": 22000.0,
+          "foreignNetValue": 297523799.81464314
+        },
+        {
+          "date": "2026-09-29",
+          "close": 13.5,
+          "foreignNetVolume": -24300.0,
+          "foreignNetValue": -330102440.7145057
+        },
+        {
+          "date": "2026-09-30",
+          "close": 14.3,
+          "foreignNetVolume": 56500.0,
+          "foreignNetValue": 780439502.8621526
+        },
+        {
+          "date": "2026-10-01",
+          "close": 13.7,
+          "foreignNetVolume": -181200.0,
+          "foreignNetValue": -2538699022.411953
+        },
+        {
+          "date": "2026-10-02",
+          "close": 15.0,
+          "foreignNetVolume": 263400.0,
+          "foreignNetValue": 3846959184.71897
+        },
+        {
+          "date": "2026-10-05",
+          "close": 16.5,
+          "foreignNetVolume": -142800.0,
+          "foreignNetValue": -2236105188.458119
+        },
+        {
+          "date": "2026-10-06",
+          "close": 16.5,
+          "foreignNetVolume": 4000.0,
+          "foreignNetValue": 67676559.4161656
+        },
+        {
+          "date": "2026-10-07",
+          "close": 15.9,
+          "foreignNetVolume": -209100.0,
+          "foreignNetValue": -3358968532.8185334
+        },
+        {
+          "date": "2026-10-08",
+          "close": 16.6,
+          "foreignNetVolume": 36700.0,
+          "foreignNetValue": 601190951.3100779
+        },
+        {
+          "date": "2026-10-09",
+          "close": 17.1,
+          "foreignNetVolume": -5000.0,
+          "foreignNetValue": -85030719.67605375
+        },
+        {
+          "date": "2026-10-12",
+          "close": 16.5,
+          "foreignNetVolume": -176200.0,
+          "foreignNetValue": -2956783960.7110744
+        },
+        {
+          "date": "2026-10-13",
+          "close": 14.9,
+          "foreignNetVolume": 13800.0,
+          "foreignNetValue": 216191096.47695112
+        },
+        {
+          "date": "2026-10-14",
+          "close": 14.0,
+          "foreignNetVolume": 234400.0,
+          "foreignNetValue": 3260459457.4117074
+        },
+        {
+          "date": "2026-10-15",
+          "close": 13.8,
+          "foreignNetVolume": 10800.0,
+          "foreignNetValue": 152019262.24876907
+        },
+        {
+          "date": "2026-10-16",
+          "close": 13.8,
+          "foreignNetVolume": -119000.0,
+          "foreignNetValue": -1641939883.2684827
+        },
+        {
+          "date": "2026-10-19",
+          "close": 13.3,
+          "foreignNetVolume": 119400.0,
+          "foreignNetValue": 1586312314.5194843
+        },
+        {
+          "date": "2026-10-20",
+          "close": 13.5,
+          "foreignNetVolume": 57500.0,
+          "foreignNetValue": 771452974.7260121
+        },
+        {
+          "date": "2026-10-21",
+          "close": 13.7,
+          "foreignNetVolume": -80300.0,
+          "foreignNetValue": -1102378852.5795944
+        },
+        {
+          "date": "2026-10-22",
+          "close": 13.7,
+          "foreignNetVolume": -44700.0,
+          "foreignNetValue": -619195451.8447533
         }
       ]
     },
@@ -5959,10 +9314,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 10.65,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 10.7,
+          "propTradingNetValue": 10329000.0,
+          "propTradingNetDealValue": 10329000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -6100,9 +9455,314 @@
         },
         {
           "date": "2026-10-22",
-          "close": 10.65,
-          "foreignNetVolume": -2714581.0,
-          "foreignNetValue": -28965914038.82867
+          "close": 10.7,
+          "foreignNetVolume": -2855231.0,
+          "foreignNetValue": -30471242377.04241
+        }
+      ]
+    },
+    "OCB": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 10.45,
+          "propTradingNetValue": -184856000.0,
+          "propTradingNetDealValue": -184730000.0,
+          "propTradingNetPTValue": -126000.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 10.45,
+          "propTradingNetValue": -91637000.0,
+          "propTradingNetDealValue": -91520000.0,
+          "propTradingNetPTValue": -117000.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 10.3,
+          "propTradingNetValue": 57714000.0,
+          "propTradingNetDealValue": 57860000.0,
+          "propTradingNetPTValue": -146000.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 10.2,
+          "propTradingNetValue": -201000.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": -201000.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 10.1,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 10.05,
+          "propTradingNetValue": 16113000.0,
+          "propTradingNetDealValue": 16160000.0,
+          "propTradingNetPTValue": -47000.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 10.1,
+          "propTradingNetValue": 16156000.0,
+          "propTradingNetDealValue": 16240000.0,
+          "propTradingNetPTValue": -84000.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 10.2,
+          "propTradingNetValue": -220236000.0,
+          "propTradingNetDealValue": -220180000.0,
+          "propTradingNetPTValue": -56000.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 10.1,
+          "propTradingNetValue": -157704000.0,
+          "propTradingNetDealValue": -157600000.0,
+          "propTradingNetPTValue": -104000.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 10.0,
+          "propTradingNetValue": -31796000.0,
+          "propTradingNetDealValue": -31730000.0,
+          "propTradingNetPTValue": -66000.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 9.99,
+          "propTradingNetValue": 73983000.0,
+          "propTradingNetDealValue": 73955000.0,
+          "propTradingNetPTValue": 28000.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 9.99,
+          "propTradingNetValue": -32068000.0,
+          "propTradingNetDealValue": -31984000.0,
+          "propTradingNetPTValue": -84000.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 9.96,
+          "propTradingNetValue": -82857000.0,
+          "propTradingNetDealValue": -82783000.0,
+          "propTradingNetPTValue": -74000.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 9.96,
+          "propTradingNetValue": -336249000.0,
+          "propTradingNetDealValue": -336156000.0,
+          "propTradingNetPTValue": -93000.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 10.05,
+          "propTradingNetValue": 44080000.0,
+          "propTradingNetDealValue": 44173000.0,
+          "propTradingNetPTValue": -93000.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 9.99,
+          "propTradingNetValue": 1949000.0,
+          "propTradingNetDealValue": 2014000.0,
+          "propTradingNetPTValue": -65000.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 9.99,
+          "propTradingNetValue": 37944000.0,
+          "propTradingNetDealValue": 38000000.0,
+          "propTradingNetPTValue": -56000.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 10.0,
+          "propTradingNetValue": -89921000.0,
+          "propTradingNetDealValue": -89856000.0,
+          "propTradingNetPTValue": -65000.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 10.05,
+          "propTradingNetValue": 40345000.0,
+          "propTradingNetDealValue": 40410000.0,
+          "propTradingNetPTValue": -65000.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 10.05,
+          "propTradingNetValue": 20294000.0,
+          "propTradingNetDealValue": 20350000.0,
+          "propTradingNetPTValue": -56000.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 10.05,
+          "propTradingNetValue": 53530000.0,
+          "propTradingNetDealValue": 53595000.0,
+          "propTradingNetPTValue": -65000.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 10.25,
+          "propTradingNetValue": 98716000.0,
+          "propTradingNetDealValue": 98800000.0,
+          "propTradingNetPTValue": -84000.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 10.35,
+          "propTradingNetValue": -48000.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": -48000.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 10.45,
+          "foreignNetVolume": 72200.0,
+          "foreignNetValue": 752781453.8102643
+        },
+        {
+          "date": "2026-09-23",
+          "close": 10.45,
+          "foreignNetVolume": -70100.0,
+          "foreignNetValue": -732859595.5429697
+        },
+        {
+          "date": "2026-09-24",
+          "close": 10.3,
+          "foreignNetVolume": -514000.0,
+          "foreignNetValue": -5288409207.416834
+        },
+        {
+          "date": "2026-09-25",
+          "close": 10.2,
+          "foreignNetVolume": 106400.0,
+          "foreignNetValue": 1093174319.657073
+        },
+        {
+          "date": "2026-09-28",
+          "close": 10.1,
+          "foreignNetVolume": 134900.0,
+          "foreignNetValue": 1364505514.5150828
+        },
+        {
+          "date": "2026-09-29",
+          "close": 10.05,
+          "foreignNetVolume": 250100.0,
+          "foreignNetValue": 2519866756.790815
+        },
+        {
+          "date": "2026-09-30",
+          "close": 10.1,
+          "foreignNetVolume": 11000.0,
+          "foreignNetValue": 111294076.61085743
+        },
+        {
+          "date": "2026-10-01",
+          "close": 10.2,
+          "foreignNetVolume": -212100.0,
+          "foreignNetValue": -2150378325.250076
+        },
+        {
+          "date": "2026-10-02",
+          "close": 10.1,
+          "foreignNetVolume": -46400.0,
+          "foreignNetValue": -469526077.4762236
+        },
+        {
+          "date": "2026-10-05",
+          "close": 10.0,
+          "foreignNetVolume": -303200.0,
+          "foreignNetValue": -3056497616.701917
+        },
+        {
+          "date": "2026-10-06",
+          "close": 9.99,
+          "foreignNetVolume": -428500.0,
+          "foreignNetValue": -4273927853.6698313
+        },
+        {
+          "date": "2026-10-07",
+          "close": 9.99,
+          "foreignNetVolume": -114800.0,
+          "foreignNetValue": -1147006049.8374865
+        },
+        {
+          "date": "2026-10-08",
+          "close": 9.96,
+          "foreignNetVolume": -111400.0,
+          "foreignNetValue": -1110925186.5726101
+        },
+        {
+          "date": "2026-10-09",
+          "close": 9.96,
+          "foreignNetVolume": -97400.0,
+          "foreignNetValue": -961368582.9080069
+        },
+        {
+          "date": "2026-10-12",
+          "close": 10.05,
+          "foreignNetVolume": 130900.0,
+          "foreignNetValue": 1309297207.2482898
+        },
+        {
+          "date": "2026-10-13",
+          "close": 9.99,
+          "foreignNetVolume": -26300.0,
+          "foreignNetValue": -262867088.43073776
+        },
+        {
+          "date": "2026-10-14",
+          "close": 9.99,
+          "foreignNetVolume": 34100.0,
+          "foreignNetValue": 341186708.35513693
+        },
+        {
+          "date": "2026-10-15",
+          "close": 10.0,
+          "foreignNetVolume": 73700.0,
+          "foreignNetValue": 736300347.24784
+        },
+        {
+          "date": "2026-10-16",
+          "close": 10.05,
+          "foreignNetVolume": -16400.0,
+          "foreignNetValue": -165078708.19797438
+        },
+        {
+          "date": "2026-10-19",
+          "close": 10.05,
+          "foreignNetVolume": -41000.0,
+          "foreignNetValue": -413223563.93384314
+        },
+        {
+          "date": "2026-10-20",
+          "close": 10.05,
+          "foreignNetVolume": -2124000.0,
+          "foreignNetValue": -21440992279.92548
+        },
+        {
+          "date": "2026-10-21",
+          "close": 10.25,
+          "foreignNetVolume": -819074.0,
+          "foreignNetValue": -8348134134.143435
+        },
+        {
+          "date": "2026-10-22",
+          "close": 10.35,
+          "foreignNetVolume": -3100.0,
+          "foreignNetValue": -32015608.573998213
         }
       ]
     },
@@ -6264,10 +9924,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.1,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 12.05,
+          "propTradingNetValue": 5975000.0,
+          "propTradingNetDealValue": 5975000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -6405,9 +10065,314 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.1,
+          "close": 12.05,
           "foreignNetVolume": -122100.0,
-          "foreignNetValue": -1464856581.2825673
+          "foreignNetValue": -1465786916.4060056
+        }
+      ]
+    },
+    "PLX": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 36.5,
+          "propTradingNetValue": 10950000.0,
+          "propTradingNetDealValue": 10950000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 36.4,
+          "propTradingNetValue": -1820000.0,
+          "propTradingNetDealValue": -1820000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 35.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 35.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 35.6,
+          "propTradingNetValue": 2368160000.0,
+          "propTradingNetDealValue": 2368160000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 36.45,
+          "propTradingNetValue": 3630465000.0,
+          "propTradingNetDealValue": 3630465000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 35.6,
+          "propTradingNetValue": 1437715000.0,
+          "propTradingNetDealValue": 1437715000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 36.65,
+          "propTradingNetValue": 54975000.0,
+          "propTradingNetDealValue": 54975000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 35.8,
+          "propTradingNetValue": 616860000.0,
+          "propTradingNetDealValue": 616860000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 35.5,
+          "propTradingNetValue": 21375000.0,
+          "propTradingNetDealValue": 21375000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 36.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 36.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 37.6,
+          "propTradingNetValue": 244280000.0,
+          "propTradingNetDealValue": 244280000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 37.35,
+          "propTradingNetValue": 11355000.0,
+          "propTradingNetDealValue": 11355000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 36.2,
+          "propTradingNetValue": 163800000.0,
+          "propTradingNetDealValue": 163800000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 35.9,
+          "propTradingNetValue": -1810000000.0,
+          "propTradingNetDealValue": -1810000000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 36.25,
+          "propTradingNetValue": 2454340000.0,
+          "propTradingNetDealValue": 2454340000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 35.55,
+          "propTradingNetValue": -3767740000.0,
+          "propTradingNetDealValue": -3767740000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 35.05,
+          "propTradingNetValue": -273390000.0,
+          "propTradingNetDealValue": -273390000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 35.15,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 35.1,
+          "propTradingNetValue": 7040000.0,
+          "propTradingNetDealValue": 7040000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 35.15,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 35.85,
+          "propTradingNetValue": 1778000.0,
+          "propTradingNetDealValue": 1778000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 36.5,
+          "foreignNetVolume": -512000.0,
+          "foreignNetValue": -18597656194.85656
+        },
+        {
+          "date": "2026-09-23",
+          "close": 36.4,
+          "foreignNetVolume": -318500.0,
+          "foreignNetValue": -11591363554.987213
+        },
+        {
+          "date": "2026-09-24",
+          "close": 35.0,
+          "foreignNetVolume": -953800.0,
+          "foreignNetValue": -33896933771.125206
+        },
+        {
+          "date": "2026-09-25",
+          "close": 35.0,
+          "foreignNetVolume": 148200.0,
+          "foreignNetValue": 5177479247.454853
+        },
+        {
+          "date": "2026-09-28",
+          "close": 35.6,
+          "foreignNetVolume": 97900.0,
+          "foreignNetValue": 3428253750.1751432
+        },
+        {
+          "date": "2026-09-29",
+          "close": 36.45,
+          "foreignNetVolume": 967000.0,
+          "foreignNetValue": 35265514081.78215
+        },
+        {
+          "date": "2026-09-30",
+          "close": 35.6,
+          "foreignNetVolume": -252800.0,
+          "foreignNetValue": -9053903484.479836
+        },
+        {
+          "date": "2026-10-01",
+          "close": 36.65,
+          "foreignNetVolume": 1387300.0,
+          "foreignNetValue": 51187266151.582565
+        },
+        {
+          "date": "2026-10-02",
+          "close": 35.8,
+          "foreignNetVolume": -221200.0,
+          "foreignNetValue": -8036932768.084388
+        },
+        {
+          "date": "2026-10-05",
+          "close": 35.5,
+          "foreignNetVolume": 55000.0,
+          "foreignNetValue": 1966082850.2815504
+        },
+        {
+          "date": "2026-10-06",
+          "close": 36.2,
+          "foreignNetVolume": 270100.0,
+          "foreignNetValue": 9661361657.118097
+        },
+        {
+          "date": "2026-10-07",
+          "close": 36.2,
+          "foreignNetVolume": 72400.0,
+          "foreignNetValue": 2616680042.9960423
+        },
+        {
+          "date": "2026-10-08",
+          "close": 37.6,
+          "foreignNetVolume": 2435300.0,
+          "foreignNetValue": 90734399718.8086
+        },
+        {
+          "date": "2026-10-09",
+          "close": 37.35,
+          "foreignNetVolume": 645700.0,
+          "foreignNetValue": 24479461457.111095
+        },
+        {
+          "date": "2026-10-12",
+          "close": 36.2,
+          "foreignNetVolume": -336400.0,
+          "foreignNetValue": -12303765718.803995
+        },
+        {
+          "date": "2026-10-13",
+          "close": 35.9,
+          "foreignNetVolume": -630300.0,
+          "foreignNetValue": -22697299639.443554
+        },
+        {
+          "date": "2026-10-14",
+          "close": 36.25,
+          "foreignNetVolume": -237800.0,
+          "foreignNetValue": -8624421444.21452
+        },
+        {
+          "date": "2026-10-15",
+          "close": 35.55,
+          "foreignNetVolume": -36100.0,
+          "foreignNetValue": -1288536266.3787613
+        },
+        {
+          "date": "2026-10-16",
+          "close": 35.05,
+          "foreignNetVolume": -882500.0,
+          "foreignNetValue": -31103691529.11712
+        },
+        {
+          "date": "2026-10-19",
+          "close": 35.15,
+          "foreignNetVolume": -375800.0,
+          "foreignNetValue": -13259462028.24916
+        },
+        {
+          "date": "2026-10-20",
+          "close": 35.1,
+          "foreignNetVolume": -464800.0,
+          "foreignNetValue": -16303150429.114231
+        },
+        {
+          "date": "2026-10-21",
+          "close": 35.15,
+          "foreignNetVolume": 96500.0,
+          "foreignNetValue": 3401757801.07987
+        },
+        {
+          "date": "2026-10-22",
+          "close": 35.85,
+          "foreignNetVolume": -308600.0,
+          "foreignNetValue": -10996606104.277416
         }
       ]
     },
@@ -6569,10 +10534,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 18.9,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 18.6,
+          "propTradingNetValue": -413170000.0,
+          "propTradingNetDealValue": -413170000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -6710,9 +10675,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 18.9,
-          "foreignNetVolume": 34004.0,
-          "foreignNetValue": 639651950.055521
+          "close": 18.6,
+          "foreignNetVolume": 81605.0,
+          "foreignNetValue": 1533402855.2124367
         }
       ]
     },
@@ -6875,9 +10840,9 @@
         {
           "date": "2026-10-22",
           "close": 12.55,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "propTradingNetValue": 6300000.0,
+          "propTradingNetDealValue": 6300000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -7016,8 +10981,8 @@
         {
           "date": "2026-10-22",
           "close": 12.55,
-          "foreignNetVolume": 534900.0,
-          "foreignNetValue": 6745718032.43513
+          "foreignNetVolume": 657000.0,
+          "foreignNetValue": 8281838348.903272
         }
       ]
     },
@@ -7179,10 +11144,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 18.8,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 18.9,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -7320,9 +11285,314 @@
         },
         {
           "date": "2026-10-22",
-          "close": 18.8,
-          "foreignNetVolume": 1061800.0,
-          "foreignNetValue": 19593447223.901493
+          "close": 18.9,
+          "foreignNetVolume": 1412000.0,
+          "foreignNetValue": 26094547220.19857
+        }
+      ]
+    },
+    "PVS": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 33.2,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 33.2,
+          "propTradingNetValue": 5246880000.0,
+          "propTradingNetDealValue": 5246880000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 32.3,
+          "propTradingNetValue": 3291000000.0,
+          "propTradingNetDealValue": 3291000000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 31.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 33.4,
+          "propTradingNetValue": 303940000.0,
+          "propTradingNetDealValue": 303940000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 34.1,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 33.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 34.0,
+          "propTradingNetValue": -3338840000.0,
+          "propTradingNetDealValue": -3338840000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 33.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 33.1,
+          "propTradingNetValue": 173770000.0,
+          "propTradingNetDealValue": 173770000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 33.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 33.6,
+          "propTradingNetValue": -1690500000.0,
+          "propTradingNetDealValue": -1690500000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 34.2,
+          "propTradingNetValue": 3836340000.0,
+          "propTradingNetDealValue": 3836340000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 33.9,
+          "propTradingNetValue": -5117400000.0,
+          "propTradingNetDealValue": -5117400000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 33.5,
+          "propTradingNetValue": -325270000.0,
+          "propTradingNetDealValue": -325270000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 33.0,
+          "propTradingNetValue": -300300000.0,
+          "propTradingNetDealValue": -300300000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 33.0,
+          "propTradingNetValue": -1815320000.0,
+          "propTradingNetDealValue": -1815320000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 31.6,
+          "propTradingNetValue": -3533200000.0,
+          "propTradingNetDealValue": -3533200000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 31.4,
+          "propTradingNetValue": -136740000.0,
+          "propTradingNetDealValue": -136740000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 31.8,
+          "propTradingNetValue": -165300000.0,
+          "propTradingNetDealValue": -165300000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 32.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 31.8,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 32.5,
+          "propTradingNetValue": null,
+          "propTradingNetDealValue": null,
+          "propTradingNetPTValue": null
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 33.2,
+          "foreignNetVolume": 82950.0,
+          "foreignNetValue": 2743280880.7363925
+        },
+        {
+          "date": "2026-09-23",
+          "close": 33.2,
+          "foreignNetVolume": -299100.0,
+          "foreignNetValue": -9862619474.247162
+        },
+        {
+          "date": "2026-09-24",
+          "close": 32.3,
+          "foreignNetVolume": -70100.0,
+          "foreignNetValue": -2294503069.633641
+        },
+        {
+          "date": "2026-09-25",
+          "close": 31.6,
+          "foreignNetVolume": -254300.0,
+          "foreignNetValue": -8075147101.353197
+        },
+        {
+          "date": "2026-09-28",
+          "close": 33.4,
+          "foreignNetVolume": 1270950.0,
+          "foreignNetValue": 41331401557.30078
+        },
+        {
+          "date": "2026-09-29",
+          "close": 34.1,
+          "foreignNetVolume": 745770.0,
+          "foreignNetValue": 25315440011.03247
+        },
+        {
+          "date": "2026-09-30",
+          "close": 33.5,
+          "foreignNetVolume": -107584.0,
+          "foreignNetValue": -3612405673.3888965
+        },
+        {
+          "date": "2026-10-01",
+          "close": 34.0,
+          "foreignNetVolume": 8700.0,
+          "foreignNetValue": 297031108.5410614
+        },
+        {
+          "date": "2026-10-02",
+          "close": 33.5,
+          "foreignNetVolume": -264007.0,
+          "foreignNetValue": -8880883798.519314
+        },
+        {
+          "date": "2026-10-05",
+          "close": 33.1,
+          "foreignNetVolume": 37600.0,
+          "foreignNetValue": 1252580998.4209886
+        },
+        {
+          "date": "2026-10-06",
+          "close": 33.6,
+          "foreignNetVolume": -35900.0,
+          "foreignNetValue": -1178308543.2833252
+        },
+        {
+          "date": "2026-10-07",
+          "close": 33.6,
+          "foreignNetVolume": -497000.0,
+          "foreignNetValue": -16784727379.392311
+        },
+        {
+          "date": "2026-10-08",
+          "close": 34.2,
+          "foreignNetVolume": 227100.0,
+          "foreignNetValue": 7757582837.696739
+        },
+        {
+          "date": "2026-10-09",
+          "close": 33.9,
+          "foreignNetVolume": -352000.0,
+          "foreignNetValue": -12108557597.955057
+        },
+        {
+          "date": "2026-10-12",
+          "close": 33.5,
+          "foreignNetVolume": -281010.0,
+          "foreignNetValue": -9400140794.67439
+        },
+        {
+          "date": "2026-10-13",
+          "close": 33.0,
+          "foreignNetVolume": -406342.0,
+          "foreignNetValue": -13474990493.14691
+        },
+        {
+          "date": "2026-10-14",
+          "close": 33.0,
+          "foreignNetVolume": -381091.0,
+          "foreignNetValue": -12578663094.658438
+        },
+        {
+          "date": "2026-10-15",
+          "close": 31.6,
+          "foreignNetVolume": -286040.0,
+          "foreignNetValue": -9147131190.915163
+        },
+        {
+          "date": "2026-10-16",
+          "close": 31.4,
+          "foreignNetVolume": -5481.0,
+          "foreignNetValue": -173543615.44270343
+        },
+        {
+          "date": "2026-10-19",
+          "close": 31.8,
+          "foreignNetVolume": -81300.0,
+          "foreignNetValue": -2586758601.026769
+        },
+        {
+          "date": "2026-10-20",
+          "close": 32.0,
+          "foreignNetVolume": 350599.0,
+          "foreignNetValue": 11154778977.278765
+        },
+        {
+          "date": "2026-10-21",
+          "close": 31.8,
+          "foreignNetVolume": -505150.0,
+          "foreignNetValue": -16009383484.351831
+        },
+        {
+          "date": "2026-10-22",
+          "close": 32.5,
+          "foreignNetVolume": -157630.0,
+          "foreignNetValue": -5086637261.735322
         }
       ]
     },
@@ -7484,10 +11754,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 23.4,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 23.6,
+          "propTradingNetValue": -1389000000.0,
+          "propTradingNetDealValue": -1389000000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -7625,9 +11895,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 23.4,
-          "foreignNetVolume": 99800.0,
-          "foreignNetValue": 2303890335.626606
+          "close": 23.6,
+          "foreignNetVolume": 298400.0,
+          "foreignNetValue": 6897684381.617218
         }
       ]
     },
@@ -7789,10 +12059,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 45.85,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 46.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -7930,9 +12200,314 @@
         },
         {
           "date": "2026-10-22",
-          "close": 45.85,
+          "close": 46.0,
           "foreignNetVolume": 0,
           "foreignNetValue": 0
+        }
+      ]
+    },
+    "SBT": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 22.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 22.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 22.6,
+          "propTradingNetValue": 54150000.0,
+          "propTradingNetDealValue": 54150000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 22.75,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 22.75,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 23.0,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 22.75,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 22.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 22.3,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 22.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 22.9,
+          "propTradingNetValue": 13730000.0,
+          "propTradingNetDealValue": 13730000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 22.8,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 22.8,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 22.85,
+          "propTradingNetValue": 13560000.0,
+          "propTradingNetDealValue": 13560000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 22.9,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 22.7,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 22.6,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 22.65,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 22.65,
+          "propTradingNetValue": 13560000.0,
+          "propTradingNetDealValue": 13560000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 22.5,
+          "propTradingNetValue": 0.0,
+          "propTradingNetDealValue": 0.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 21.1,
+          "propTradingNetValue": -2152660000.0,
+          "propTradingNetDealValue": -2152660000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 21.2,
+          "propTradingNetValue": -5690574000.0,
+          "propTradingNetDealValue": -5690574000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 21.2,
+          "propTradingNetValue": -106318000.0,
+          "propTradingNetDealValue": -106318000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 22.6,
+          "foreignNetVolume": 6190000.0,
+          "foreignNetValue": 140101481496.5617
+        },
+        {
+          "date": "2026-09-23",
+          "close": 22.7,
+          "foreignNetVolume": 213500.0,
+          "foreignNetValue": 4838910400.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 22.6,
+          "foreignNetVolume": 77700.0,
+          "foreignNetValue": 1748954401.333457
+        },
+        {
+          "date": "2026-09-25",
+          "close": 22.75,
+          "foreignNetVolume": 11721216.0,
+          "foreignNetValue": 265475779265.22104
+        },
+        {
+          "date": "2026-09-28",
+          "close": 22.75,
+          "foreignNetVolume": 97100.0,
+          "foreignNetValue": 2197492308.4563
+        },
+        {
+          "date": "2026-09-29",
+          "close": 23.0,
+          "foreignNetVolume": 135300.0,
+          "foreignNetValue": 3108132770.3109326
+        },
+        {
+          "date": "2026-09-30",
+          "close": 22.75,
+          "foreignNetVolume": -124602.0,
+          "foreignNetValue": -2853805936.073903
+        },
+        {
+          "date": "2026-10-01",
+          "close": 22.6,
+          "foreignNetVolume": 7552502.0,
+          "foreignNetValue": 170719494494.10495
+        },
+        {
+          "date": "2026-10-02",
+          "close": 22.3,
+          "foreignNetVolume": -148509.0,
+          "foreignNetValue": -3325918287.6192436
+        },
+        {
+          "date": "2026-10-05",
+          "close": 22.5,
+          "foreignNetVolume": 178900.0,
+          "foreignNetValue": 4006587921.396445
+        },
+        {
+          "date": "2026-10-06",
+          "close": 22.9,
+          "foreignNetVolume": 182400.0,
+          "foreignNetValue": 4174645694.238715
+        },
+        {
+          "date": "2026-10-07",
+          "close": 22.8,
+          "foreignNetVolume": -29881.0,
+          "foreignNetValue": -680745497.2224746
+        },
+        {
+          "date": "2026-10-08",
+          "close": 22.8,
+          "foreignNetVolume": 11600.0,
+          "foreignNetValue": 263857783.4674468
+        },
+        {
+          "date": "2026-10-09",
+          "close": 22.85,
+          "foreignNetVolume": 37200.0,
+          "foreignNetValue": 843264732.5395415
+        },
+        {
+          "date": "2026-10-12",
+          "close": 22.9,
+          "foreignNetVolume": 127300.0,
+          "foreignNetValue": 2926758564.352279
+        },
+        {
+          "date": "2026-10-13",
+          "close": 22.7,
+          "foreignNetVolume": -56617.0,
+          "foreignNetValue": -1289148851.3438914
+        },
+        {
+          "date": "2026-10-14",
+          "close": 22.6,
+          "foreignNetVolume": 65916.0,
+          "foreignNetValue": 1490456161.7797477
+        },
+        {
+          "date": "2026-10-15",
+          "close": 22.65,
+          "foreignNetVolume": 166117.0,
+          "foreignNetValue": 3757127165.987418
+        },
+        {
+          "date": "2026-10-16",
+          "close": 22.65,
+          "foreignNetVolume": 13013.0,
+          "foreignNetValue": 295292015.1275244
+        },
+        {
+          "date": "2026-10-19",
+          "close": 22.5,
+          "foreignNetVolume": -181600.0,
+          "foreignNetValue": -4095362680.782343
+        },
+        {
+          "date": "2026-10-20",
+          "close": 21.1,
+          "foreignNetVolume": -763666.0,
+          "foreignNetValue": -16235705717.180326
+        },
+        {
+          "date": "2026-10-21",
+          "close": 21.2,
+          "foreignNetVolume": -1114182.0,
+          "foreignNetValue": -23284072368.909725
+        },
+        {
+          "date": "2026-10-22",
+          "close": 21.2,
+          "foreignNetVolume": -301021.0,
+          "foreignNetValue": -6352857478.629411
         }
       ]
     },
@@ -8094,10 +12669,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 10.7,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 10.8,
+          "propTradingNetValue": -924610000.0,
+          "propTradingNetDealValue": -924560000.0,
+          "propTradingNetPTValue": -50000.0
         }
       ],
       "foreignNet": [
@@ -8235,9 +12810,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 10.7,
-          "foreignNetVolume": -1452100.0,
-          "foreignNetValue": -15556187484.977602
+          "close": 10.8,
+          "foreignNetVolume": -1391500.0,
+          "foreignNetValue": -14925914776.671318
         }
       ]
     },
@@ -8399,7 +12974,7 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.8,
+          "close": 12.9,
           "propTradingNetValue": null,
           "propTradingNetDealValue": null,
           "propTradingNetPTValue": null
@@ -8540,9 +13115,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.8,
-          "foreignNetVolume": -85900.0,
-          "foreignNetValue": -1104070344.2056823
+          "close": 12.9,
+          "foreignNetVolume": -113000.0,
+          "foreignNetValue": -1452608035.3990452
         }
       ]
     },
@@ -8704,10 +13279,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 16.1,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 16.05,
+          "propTradingNetValue": -2098745000.0,
+          "propTradingNetDealValue": -2098745000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -8845,9 +13420,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 16.1,
-          "foreignNetVolume": -154400.0,
-          "foreignNetValue": -2480774982.5221834
+          "close": 16.05,
+          "foreignNetVolume": -152800.0,
+          "foreignNetValue": -2454962110.039705
         }
       ]
     },
@@ -9009,10 +13584,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 20.2,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 20.15,
+          "propTradingNetValue": 16060091000.0,
+          "propTradingNetDealValue": 16060091000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -9150,9 +13725,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 20.2,
-          "foreignNetVolume": 296961.0,
-          "foreignNetValue": 6029150997.774273
+          "close": 20.15,
+          "foreignNetVolume": 12161.0,
+          "foreignNetValue": 246745803.5777092
         }
       ]
     },
@@ -9314,10 +13889,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 64.5,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 64.1,
+          "propTradingNetValue": -8201477000.0,
+          "propTradingNetDealValue": -8197896000.0,
+          "propTradingNetPTValue": -3581000.0
         }
       ],
       "foreignNet": [
@@ -9455,9 +14030,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 64.5,
-          "foreignNetVolume": -1331100.0,
-          "foreignNetValue": -85305430636.02791
+          "close": 64.1,
+          "foreignNetVolume": -1330400.0,
+          "foreignNetValue": -85263980507.75063
         }
       ]
     },
@@ -9619,10 +14194,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 34.35,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 34.15,
+          "propTradingNetValue": 60008145000.0,
+          "propTradingNetDealValue": -73991855000.0,
+          "propTradingNetPTValue": 134000000000.0
         }
       ],
       "foreignNet": [
@@ -9760,9 +14335,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 34.35,
-          "foreignNetVolume": 2957159.0,
-          "foreignNetValue": 100994201488.84111
+          "close": 34.15,
+          "foreignNetVolume": 5196429.0,
+          "foreignNetValue": 177518367600.0144
         }
       ]
     },
@@ -9924,10 +14499,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.05,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 12.0,
+          "propTradingNetValue": 124950000.0,
+          "propTradingNetDealValue": 124950000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -10065,9 +14640,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.05,
-          "foreignNetVolume": -784300.0,
-          "foreignNetValue": -9277813765.910807
+          "close": 12.0,
+          "foreignNetVolume": -429200.0,
+          "foreignNetValue": -5092288830.873327
         }
       ]
     },
@@ -10229,10 +14804,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 29.9,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 29.85,
+          "propTradingNetValue": -973395000.0,
+          "propTradingNetDealValue": -973395000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -10370,9 +14945,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 29.9,
-          "foreignNetVolume": 557300.0,
-          "foreignNetValue": 16481421370.233536
+          "close": 29.85,
+          "foreignNetVolume": 695000.0,
+          "foreignNetValue": 20565783410.04898
         }
       ]
     },
@@ -10534,10 +15109,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.8,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 12.75,
+          "propTradingNetValue": 818553000.0,
+          "propTradingNetDealValue": 818553000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -10675,9 +15250,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.8,
-          "foreignNetVolume": 827800.0,
-          "foreignNetValue": 10517178476.960321
+          "close": 12.75,
+          "foreignNetVolume": 769400.0,
+          "foreignNetValue": 9776487256.728966
         }
       ]
     },
@@ -10840,9 +15415,9 @@
         {
           "date": "2026-10-22",
           "close": 56.3,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "propTradingNetValue": 126009538000.0,
+          "propTradingNetDealValue": 6409538000.0,
+          "propTradingNetPTValue": 119600000000.0
         }
       ],
       "foreignNet": [
@@ -10981,8 +15556,8 @@
         {
           "date": "2026-10-22",
           "close": 56.3,
-          "foreignNetVolume": -320698.0,
-          "foreignNetValue": -18144792449.618553
+          "foreignNetVolume": -419198.0,
+          "foreignNetValue": -23705381246.12018
         }
       ]
     },
@@ -11144,10 +15719,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 15.45,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 15.5,
+          "propTradingNetValue": 2662402000.0,
+          "propTradingNetDealValue": 2662402000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -11285,9 +15860,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 15.45,
+          "close": 15.5,
           "foreignNetVolume": 136800.0,
-          "foreignNetValue": 2098143413.673705
+          "foreignNetValue": 2100123533.3251202
         }
       ]
     },
@@ -11450,9 +16025,9 @@
         {
           "date": "2026-10-22",
           "close": 19.5,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "propTradingNetValue": 391500000.0,
+          "propTradingNetDealValue": 391500000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -11591,8 +16166,8 @@
         {
           "date": "2026-10-22",
           "close": 19.5,
-          "foreignNetVolume": -256200.0,
-          "foreignNetValue": -5004701842.105263
+          "foreignNetVolume": -266500.0,
+          "foreignNetValue": -5205198463.104507
         }
       ]
     },
@@ -11754,10 +16329,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 64.1,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 64.0,
+          "propTradingNetValue": 4530946000.0,
+          "propTradingNetDealValue": 4530946000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -11895,9 +16470,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 64.1,
-          "foreignNetVolume": 2518636.0,
-          "foreignNetValue": 161197161345.78653
+          "close": 64.0,
+          "foreignNetVolume": 2504536.0,
+          "foreignNetValue": 160307914188.6538
         }
       ]
     },
@@ -12059,10 +16634,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 14.0,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 14.05,
+          "propTradingNetValue": -295925000.0,
+          "propTradingNetDealValue": -295925000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -12200,9 +16775,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 14.0,
-          "foreignNetVolume": -311200.0,
-          "foreignNetValue": -4351675758.826225
+          "close": 14.05,
+          "foreignNetVolume": 239000.0,
+          "foreignNetValue": 3343659117.969719
         }
       ]
     },
@@ -12364,10 +16939,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 233.0,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 232.9,
+          "propTradingNetValue": -28441485000.0,
+          "propTradingNetDealValue": -28441485000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -12505,9 +17080,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 233.0,
-          "foreignNetVolume": 981115.0,
-          "foreignNetValue": 227268290940.0947
+          "close": 232.9,
+          "foreignNetVolume": 1032625.0,
+          "foreignNetValue": 239270792782.67493
         }
       ]
     },
@@ -12669,10 +17244,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.6,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 12.55,
+          "propTradingNetValue": 21296000.0,
+          "propTradingNetDealValue": 21296000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -12810,9 +17385,314 @@
         },
         {
           "date": "2026-10-22",
-          "close": 12.6,
-          "foreignNetVolume": -783100.0,
-          "foreignNetValue": -9861956782.174614
+          "close": 12.55,
+          "foreignNetVolume": -594400.0,
+          "foreignNetValue": -7484817758.015823
+        }
+      ]
+    },
+    "VJC": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 135.9,
+          "propTradingNetValue": -2351780000.0,
+          "propTradingNetDealValue": -2351780000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 135.0,
+          "propTradingNetValue": 8606990000.0,
+          "propTradingNetDealValue": 8606990000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 132.0,
+          "propTradingNetValue": 9287450000.0,
+          "propTradingNetDealValue": 9287450000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 132.8,
+          "propTradingNetValue": 67505000.0,
+          "propTradingNetDealValue": 67505000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 132.9,
+          "propTradingNetValue": -1868720000.0,
+          "propTradingNetDealValue": -1868720000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 133.5,
+          "propTradingNetValue": 4472410000.0,
+          "propTradingNetDealValue": 4472410000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 132.0,
+          "propTradingNetValue": 2443610000.0,
+          "propTradingNetDealValue": 2443610000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 129.6,
+          "propTradingNetValue": -367410000.0,
+          "propTradingNetDealValue": -367410000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 129.4,
+          "propTradingNetValue": 4520500000.0,
+          "propTradingNetDealValue": 4520500000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 128.8,
+          "propTradingNetValue": -1245630000.0,
+          "propTradingNetDealValue": -1245630000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 128.8,
+          "propTradingNetValue": 6474480000.0,
+          "propTradingNetDealValue": 6474480000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 128.0,
+          "propTradingNetValue": -8688920000.0,
+          "propTradingNetDealValue": -8688920000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 128.5,
+          "propTradingNetValue": -9914510000.0,
+          "propTradingNetDealValue": -9914510000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 129.0,
+          "propTradingNetValue": 11436080000.0,
+          "propTradingNetDealValue": 11436080000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 129.0,
+          "propTradingNetValue": -2391600000.0,
+          "propTradingNetDealValue": -2391600000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 128.2,
+          "propTradingNetValue": -376660000.0,
+          "propTradingNetDealValue": -376660000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 128.1,
+          "propTradingNetValue": 1322300000.0,
+          "propTradingNetDealValue": 1322300000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 127.3,
+          "propTradingNetValue": -12996150000.0,
+          "propTradingNetDealValue": -12996150000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 127.5,
+          "propTradingNetValue": 4852570000.0,
+          "propTradingNetDealValue": 4852570000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 127.5,
+          "propTradingNetValue": 6453750000.0,
+          "propTradingNetDealValue": 6453750000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 127.4,
+          "propTradingNetValue": -1056680000.0,
+          "propTradingNetDealValue": -1056680000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 128.0,
+          "propTradingNetValue": 286299410000.0,
+          "propTradingNetDealValue": -13659590000.0,
+          "propTradingNetPTValue": 299959000000.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 128.6,
+          "propTradingNetValue": -5386850000.0,
+          "propTradingNetDealValue": -5386850000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 135.9,
+          "foreignNetVolume": -33776.0,
+          "foreignNetValue": -4549174858.420781
+        },
+        {
+          "date": "2026-09-23",
+          "close": 135.0,
+          "foreignNetVolume": -45100.0,
+          "foreignNetValue": -6053431921.7855015
+        },
+        {
+          "date": "2026-09-24",
+          "close": 132.0,
+          "foreignNetVolume": -35649.0,
+          "foreignNetValue": -4733082802.332268
+        },
+        {
+          "date": "2026-09-25",
+          "close": 132.8,
+          "foreignNetVolume": -7700.0,
+          "foreignNetValue": -1021809221.4749799
+        },
+        {
+          "date": "2026-09-28",
+          "close": 132.9,
+          "foreignNetVolume": 107000.0,
+          "foreignNetValue": 14125322522.712868
+        },
+        {
+          "date": "2026-09-29",
+          "close": 133.5,
+          "foreignNetVolume": 47756.0,
+          "foreignNetValue": 6373580264.928118
+        },
+        {
+          "date": "2026-09-30",
+          "close": 132.0,
+          "foreignNetVolume": -42428.0,
+          "foreignNetValue": -5646647666.626837
+        },
+        {
+          "date": "2026-10-01",
+          "close": 129.6,
+          "foreignNetVolume": -67100.0,
+          "foreignNetValue": -8770733049.219688
+        },
+        {
+          "date": "2026-10-02",
+          "close": 129.4,
+          "foreignNetVolume": -63369.0,
+          "foreignNetValue": -8144604684.916748
+        },
+        {
+          "date": "2026-10-05",
+          "close": 128.8,
+          "foreignNetVolume": -7790.0,
+          "foreignNetValue": -1001315200.4696574
+        },
+        {
+          "date": "2026-10-06",
+          "close": 128.8,
+          "foreignNetVolume": -6314690.0,
+          "foreignNetValue": -808069965958.1184
+        },
+        {
+          "date": "2026-10-07",
+          "close": 128.0,
+          "foreignNetVolume": 44600.0,
+          "foreignNetValue": 5700231358.232257
+        },
+        {
+          "date": "2026-10-08",
+          "close": 128.5,
+          "foreignNetVolume": 78500.0,
+          "foreignNetValue": 10069310510.51051
+        },
+        {
+          "date": "2026-10-09",
+          "close": 129.0,
+          "foreignNetVolume": -43700.0,
+          "foreignNetValue": -5634669453.715776
+        },
+        {
+          "date": "2026-10-12",
+          "close": 129.0,
+          "foreignNetVolume": -56400.0,
+          "foreignNetValue": -7234599934.768428
+        },
+        {
+          "date": "2026-10-13",
+          "close": 128.2,
+          "foreignNetVolume": -22100.0,
+          "foreignNetValue": -2826881137.7245507
+        },
+        {
+          "date": "2026-10-14",
+          "close": 128.1,
+          "foreignNetVolume": -13189.0,
+          "foreignNetValue": -1682788671.138546
+        },
+        {
+          "date": "2026-10-15",
+          "close": 127.3,
+          "foreignNetVolume": -29792.0,
+          "foreignNetValue": -3788449720.890573
+        },
+        {
+          "date": "2026-10-16",
+          "close": 127.5,
+          "foreignNetVolume": -47222.0,
+          "foreignNetValue": -5992771305.285412
+        },
+        {
+          "date": "2026-10-19",
+          "close": 127.5,
+          "foreignNetVolume": -571650.0,
+          "foreignNetValue": -72341765563.76614
+        },
+        {
+          "date": "2026-10-20",
+          "close": 127.4,
+          "foreignNetVolume": -416020.0,
+          "foreignNetValue": -52485553510.38389
+        },
+        {
+          "date": "2026-10-21",
+          "close": 128.0,
+          "foreignNetVolume": 16041.0,
+          "foreignNetValue": 2040306669.8141265
+        },
+        {
+          "date": "2026-10-22",
+          "close": 128.6,
+          "foreignNetVolume": -6620.0,
+          "foreignNetValue": -852215742.9581757
         }
       ]
     },
@@ -12974,10 +17854,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 13.85,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 13.75,
+          "propTradingNetValue": 9660000.0,
+          "propTradingNetDealValue": 9660000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -13115,9 +17995,314 @@
         },
         {
           "date": "2026-10-22",
-          "close": 13.85,
-          "foreignNetVolume": -504950.0,
-          "foreignNetValue": -6987863706.0927
+          "close": 13.75,
+          "foreignNetVolume": -516950.0,
+          "foreignNetValue": -7150511161.404909
+        }
+      ]
+    },
+    "VNM": {
+      "proprietary": [
+        {
+          "date": "2026-09-22",
+          "close": 61.2,
+          "propTradingNetValue": -2205030000.0,
+          "propTradingNetDealValue": -2205030000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "close": 60.5,
+          "propTradingNetValue": 8493463000.0,
+          "propTradingNetDealValue": 8493463000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-24",
+          "close": 60.6,
+          "propTradingNetValue": 12120920000.0,
+          "propTradingNetDealValue": 12120920000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-25",
+          "close": 59.8,
+          "propTradingNetValue": 691230000.0,
+          "propTradingNetDealValue": 691230000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 60.3,
+          "propTradingNetValue": -486690000.0,
+          "propTradingNetDealValue": -486690000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-29",
+          "close": 60.3,
+          "propTradingNetValue": 7856380000.0,
+          "propTradingNetDealValue": 7856380000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-09-30",
+          "close": 59.4,
+          "propTradingNetValue": -41214000.0,
+          "propTradingNetDealValue": -41214000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 58.6,
+          "propTradingNetValue": -579409000.0,
+          "propTradingNetDealValue": -579409000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-02",
+          "close": 57.3,
+          "propTradingNetValue": 1364518000.0,
+          "propTradingNetDealValue": 1364518000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-05",
+          "close": 57.2,
+          "propTradingNetValue": -4606440000.0,
+          "propTradingNetDealValue": -4606440000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-06",
+          "close": 58.4,
+          "propTradingNetValue": 8852420000.0,
+          "propTradingNetDealValue": 8852420000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-07",
+          "close": 58.0,
+          "propTradingNetValue": -13796670000.0,
+          "propTradingNetDealValue": -13796670000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-08",
+          "close": 57.9,
+          "propTradingNetValue": -9757100000.0,
+          "propTradingNetDealValue": -9757100000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-09",
+          "close": 57.7,
+          "propTradingNetValue": 14916290000.0,
+          "propTradingNetDealValue": 14916290000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 58.4,
+          "propTradingNetValue": -1081140000.0,
+          "propTradingNetDealValue": -1081140000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-13",
+          "close": 58.0,
+          "propTradingNetValue": 59310000.0,
+          "propTradingNetDealValue": 59310000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-14",
+          "close": 57.9,
+          "propTradingNetValue": 3297550000.0,
+          "propTradingNetDealValue": 3297550000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-15",
+          "close": 57.2,
+          "propTradingNetValue": -20627080000.0,
+          "propTradingNetDealValue": -20627080000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-16",
+          "close": 57.8,
+          "propTradingNetValue": 32455580000.0,
+          "propTradingNetDealValue": 32455580000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-19",
+          "close": 57.5,
+          "propTradingNetValue": 7292500000.0,
+          "propTradingNetDealValue": 7292500000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-20",
+          "close": 57.7,
+          "propTradingNetValue": -4102840000.0,
+          "propTradingNetDealValue": -4102840000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-21",
+          "close": 58.3,
+          "propTradingNetValue": -18996555000.0,
+          "propTradingNetDealValue": -18996555000.0,
+          "propTradingNetPTValue": 0.0
+        },
+        {
+          "date": "2026-10-22",
+          "close": 58.1,
+          "propTradingNetValue": -5804339000.0,
+          "propTradingNetDealValue": -5804339000.0,
+          "propTradingNetPTValue": 0.0
+        }
+      ],
+      "foreignNet": [
+        {
+          "date": "2026-09-22",
+          "close": 61.2,
+          "foreignNetVolume": 680499.0,
+          "foreignNetValue": 41526080583.57376
+        },
+        {
+          "date": "2026-09-23",
+          "close": 60.5,
+          "foreignNetVolume": -64178.0,
+          "foreignNetValue": -3906488707.5957623
+        },
+        {
+          "date": "2026-09-24",
+          "close": 60.6,
+          "foreignNetVolume": 236398.0,
+          "foreignNetValue": 14360601419.803555
+        },
+        {
+          "date": "2026-09-25",
+          "close": 59.8,
+          "foreignNetVolume": -399967.0,
+          "foreignNetValue": -24038869653.253902
+        },
+        {
+          "date": "2026-09-28",
+          "close": 60.3,
+          "foreignNetVolume": 126302.0,
+          "foreignNetValue": 7544216187.048855
+        },
+        {
+          "date": "2026-09-29",
+          "close": 60.3,
+          "foreignNetVolume": 152944.0,
+          "foreignNetValue": 9193669686.73027
+        },
+        {
+          "date": "2026-09-30",
+          "close": 59.4,
+          "foreignNetVolume": -53154.0,
+          "foreignNetValue": -3179764097.1679535
+        },
+        {
+          "date": "2026-10-01",
+          "close": 58.6,
+          "foreignNetVolume": -798500.0,
+          "foreignNetValue": -46983554342.58306
+        },
+        {
+          "date": "2026-10-02",
+          "close": 57.3,
+          "foreignNetVolume": -484876.0,
+          "foreignNetValue": -28114078525.11943
+        },
+        {
+          "date": "2026-10-05",
+          "close": 57.2,
+          "foreignNetVolume": -773262.0,
+          "foreignNetValue": -44392062476.68875
+        },
+        {
+          "date": "2026-10-06",
+          "close": 58.4,
+          "foreignNetVolume": 236262.0,
+          "foreignNetValue": 13643335205.760002
+        },
+        {
+          "date": "2026-10-07",
+          "close": 58.0,
+          "foreignNetVolume": -82473.0,
+          "foreignNetValue": -4801740268.564369
+        },
+        {
+          "date": "2026-10-08",
+          "close": 57.9,
+          "foreignNetVolume": 153818.0,
+          "foreignNetValue": 8894180653.487188
+        },
+        {
+          "date": "2026-10-09",
+          "close": 57.7,
+          "foreignNetVolume": -41480.0,
+          "foreignNetValue": -2402212450.5421543
+        },
+        {
+          "date": "2026-10-12",
+          "close": 58.4,
+          "foreignNetVolume": -126848.0,
+          "foreignNetValue": -7356487997.627287
+        },
+        {
+          "date": "2026-10-13",
+          "close": 58.0,
+          "foreignNetVolume": -276829.0,
+          "foreignNetValue": -16004155651.438242
+        },
+        {
+          "date": "2026-10-14",
+          "close": 57.9,
+          "foreignNetVolume": -551065.0,
+          "foreignNetValue": -31780096162.12892
+        },
+        {
+          "date": "2026-10-15",
+          "close": 57.2,
+          "foreignNetVolume": -411778.0,
+          "foreignNetValue": -23599759654.904137
+        },
+        {
+          "date": "2026-10-16",
+          "close": 57.8,
+          "foreignNetVolume": 213965.0,
+          "foreignNetValue": 12380469245.432095
+        },
+        {
+          "date": "2026-10-19",
+          "close": 57.5,
+          "foreignNetVolume": -332550.0,
+          "foreignNetValue": -19240582544.996895
+        },
+        {
+          "date": "2026-10-20",
+          "close": 57.7,
+          "foreignNetVolume": -49741.0,
+          "foreignNetValue": -2871592621.446907
+        },
+        {
+          "date": "2026-10-21",
+          "close": 58.3,
+          "foreignNetVolume": 81000.0,
+          "foreignNetValue": 4694326615.682896
+        },
+        {
+          "date": "2026-10-22",
+          "close": 58.1,
+          "foreignNetVolume": -159750.0,
+          "foreignNetValue": -9282855619.573154
         }
       ]
     },
@@ -13279,10 +18464,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 23.85,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 23.95,
+          "propTradingNetValue": 69479683000.0,
+          "propTradingNetDealValue": 69479683000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -13420,9 +18605,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 23.85,
-          "foreignNetVolume": -101795.0,
-          "foreignNetValue": -2428758534.929474
+          "close": 23.95,
+          "foreignNetVolume": 123505.0,
+          "foreignNetValue": 2949749829.2588043
         }
       ]
     },
@@ -13584,10 +18769,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 55.7,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 55.8,
+          "propTradingNetValue": 5940000.0,
+          "propTradingNetDealValue": 5940000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -13725,9 +18910,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 55.7,
-          "foreignNetVolume": -319100.0,
-          "foreignNetValue": -17263788710.026337
+          "close": 55.8,
+          "foreignNetVolume": -339100.0,
+          "foreignNetValue": -18374955668.559166
         }
       ]
     },
@@ -13889,10 +19074,10 @@
         },
         {
           "date": "2026-10-22",
-          "close": 25.0,
-          "propTradingNetValue": null,
-          "propTradingNetDealValue": null,
-          "propTradingNetPTValue": null
+          "close": 25.3,
+          "propTradingNetValue": 1648420000.0,
+          "propTradingNetDealValue": 1648420000.0,
+          "propTradingNetPTValue": 0.0
         }
       ],
       "foreignNet": [
@@ -14030,9 +19215,9 @@
         },
         {
           "date": "2026-10-22",
-          "close": 25.0,
-          "foreignNetVolume": 667400.0,
-          "foreignNetValue": 16802464692.280045
+          "close": 25.3,
+          "foreignNetVolume": 865200.0,
+          "foreignNetValue": 21787084559.874687
         }
       ]
     }
